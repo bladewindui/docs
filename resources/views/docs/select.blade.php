@@ -132,13 +132,13 @@
 <pre class="language-html line-numbers">
 <code>
 &lt;x-bladewind::select name="labels" required="true" :data="$countries"
-    label="WWhere are you from?"/&gt;
+    label="Where are you from?"/&gt;
 </code>
 </pre>
     <p><x-bladewind::select name="clear_labels" :data="$countries" data="{{ json_encode($countries) }}" clearable="true" label="Where are you from?" /></p>
 <pre class="language-html line-numbers">
 <code>
-&lt;x-bladewind::select name="clear_labels" label="WWhere are you from?"
+&lt;x-bladewind::select name="clear_labels" label="Where are you from?"
     :data="$countries" /&gt;
 </code>
 </pre>
@@ -491,7 +491,7 @@
 &lt;x-bladewind::empty-state
     name="no_users"
     for_select="true"
-    message="TThere are currently no users in your workspace. We need to fix that"
+    message="There are currently no users in your workspace. We need to fix that"
     button_label="Add User"
     image="/assets/images/user.png"
     onclick="showModal('new-user')"&gt;&lt;/x-bladewind::empty-state&gt;
@@ -779,7 +779,7 @@
         <tr>
             <td>selectByValue(value)</td>
             <td>Select one of the component values. The value you pass needs to exist in the Select's list of items else the command will simply be ignored.
-                This does not work for multiple values yet. You can use it on a mutiple select to select multiple values but you will need to call the method multiple times.
+                This does not work for multiple values yet. You can use it on a multiple select to select multiple values but you will need to call the method multiple times.
                 <br /><br />
                 <code class="inline">bw_country_multiple::selectByValue('gh');</code>
                 <code class="inline">bw_country_multiple::selectByValue('ng');</code>

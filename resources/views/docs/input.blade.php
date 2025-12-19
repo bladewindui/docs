@@ -658,7 +658,7 @@
         <tr>
             <td>numeric</td>
             <td>false</td>
-            <td>Sepcifies if the input element should accept only numeric characters. <br /><code class="inline">true</code> <code class="inline">false</code></td>
+            <td>Specifies if the input element should accept only numeric characters. <br /><code class="inline">true</code> <code class="inline">false</code></td>
         </tr>
         <tr>
             <td>required</td>

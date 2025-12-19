@@ -97,7 +97,7 @@
     </pre>
 
     <p>
-        You can also have empty states with no call to action buttons. For example, a "Recent Activities" section that fills up when users perform activities throughtout the app. An empty state for a case like that will necessarily need no action to be performed.
+        You can also have empty states with no call to action buttons. For example, a "Recent Activities" section that fills up when users perform activities throughout the app. An empty state for a case like that will necessarily need no action to be performed.
         To achieve this, you should leave out the <code class="inline text-red-500">button_label</code> attribute or set it to an empty string.
     </p>
 
@@ -115,8 +115,8 @@
 
                 &lt;x-bladewind::empty-state
                     image="/assets/images/no-activity.svg"
-                    message="Your recent activites list will take shape as
-                            &lt;br/&gt; soon as your organization has some activty"&gt;
+                    message="Your recent activities list will take shape as
+                            &lt;br/&gt; soon as your organization has some activity"&gt;
                 &lt;/x-bladewind::empty-state&gt;
 
             &lt;/x-bladewind.card&gt;

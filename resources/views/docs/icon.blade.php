@@ -122,7 +122,7 @@
     </p>
     <h3>SVG Image Files</h3>
     <p>
-        BladewindUI serves all the Hericons icons from <code class="inline">public > vendor > bladewind > icons > [solid, outline]</code>.
+        BladewindUI serves all the Heroicon icons from <code class="inline">public > vendor > bladewind > icons > [solid, outline]</code>.
         As stated earlier, the default icons served are outlines, so the <em>outline</em> directory is used. When you specify <code class="inline text-red-500">type="solid"</code>, the <em>solid</em> directory is used.
         You can place your own SVG files in either the outline or solid directories and then enter the file name (without .svg) in the name attribute of the component.
     </p>

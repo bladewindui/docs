@@ -128,7 +128,7 @@
     </pre>
     <h3>trigger_on</h3>
     <p>
-        By default the Dropomenu is displayed when you click on the trigger. It is possible to change this behaviour by defining the
+        By default the Dropmenu is displayed when you click on the trigger. It is possible to change this behaviour by defining the
         <code class="text-red-500 inline">trigger_on</code> attribute. There are only two available options: <code class="inline">click</code> and <code class="inline">mouseover</code>.
     </p>
     <div class="text-center">

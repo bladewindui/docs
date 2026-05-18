@@ -1,15 +1,15 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "mkocansey/bladewind-docs",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "laravel/framework": "^11.31",
+        "laravel/framework": "^12.0",
         "laravel/tinker": "^2.9",
-        "mkocansey/bladewind": "^3.0"
+        "mkocansey/bladewind": "dev-development"
     },
     "require-dev": {
         "deployer/deployer": "^7.5",
@@ -35,8 +35,7 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
@@ -71,5 +70,10 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "repositories": {}
+    "repositories": {
+        "mkocansey/bladewind": {
+            "type": "path",
+            "url": "/Users/mkocansey/projects/kursor/bladewindui"
+        }
+    }
 }

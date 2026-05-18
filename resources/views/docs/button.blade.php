@@ -33,7 +33,7 @@
         the attribute <code class="inline text-red-500">tag="a"</code>.
     </p>
     <div class="text-center p-4">
-        <x-bladewind::button tag="a">Subscribe Now</x-bladewind::button>
+        <x-bladewind::button tag="a" href="{{ route('home') }}">Subscribe Now</x-bladewind::button>
     </div>
     <pre class="language-markup">
         <code>

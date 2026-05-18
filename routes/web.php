@@ -3,7 +3,7 @@
 use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'docs/index');
+Route::view('/', 'docs/index')->name('home');
 Route::view('install', 'docs/install');
 Route::view('customize', 'docs/customize');
 Route::view('customize/colours', 'docs/colours');

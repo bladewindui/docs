@@ -31,3 +31,4 @@ deploy.php
 /public/vendor
 dev-composer.json
 deploy.php
+/.claude

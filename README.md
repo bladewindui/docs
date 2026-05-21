@@ -103,6 +103,44 @@ Check out the full documentation on https://bladewindui.com.
 
 <br /><br />
 
+## MCP Documentation
+
+The `mcp/` directory contains clean, machine-readable Markdown documentation for every component. These files are intended for consumption by MCP (Model Context Protocol) servers so that AI assistants can understand how to use BladewindUI components.
+
+Each file includes frontmatter, prose descriptions, fenced `blade` code examples, and a full attribute reference table. An index of all components is at `mcp/index.md`.
+
+### Generating MCP docs for new components
+
+When you add a new component to the documentation site, run `generate-mcp.php` to produce its MCP entry automatically.
+
+**Requirements:** PHP 8+, an [Anthropic API key](https://console.anthropic.com/).
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+**Generate a new entry:**
+
+```bash
+php generate-mcp.php <component-name>
+```
+
+**Preview without writing files:**
+
+```bash
+php generate-mcp.php <component-name> --dry-run
+```
+
+**Generate and add to `mcp/index.md`:**
+
+```bash
+php generate-mcp.php <component-name> --update-index
+```
+
+The script looks for `resources/views/docs/<component-name>.blade.php`. If the blade filename differs from the component slug (e.g. `empty-state` → `emptystate.blade.php`), add an entry to the `$FILENAME_OVERRIDES` map near the top of `generate-mcp.php`.
+
+<br /><br />
+
 ## Questions and General Info
 
 If you want to ask anything at all or report a security vulnerability, please e-mail [mike@bladewindui.com](mailto:mike@bladewindui.com) or tweet [@bladewindui](https://twitter.com/bladewindui)

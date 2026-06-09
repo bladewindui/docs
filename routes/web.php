@@ -28,7 +28,6 @@ Route::view('component/horizontal-line-graph', 'docs/horizontal-line-graph');
 Route::view('contribute', 'docs/contribute');
 Route::view('mcp', 'docs/mcp');
 
-// MCP (Model Context Protocol) server — consumed by AI tools, not browsers
 Route::post('mcp/server', [McpController::class, 'handle']);
 Route::view('component/icon', 'docs/icon');
 Route::view('component/input', 'docs/input');
@@ -36,6 +35,7 @@ Route::view('component/list-view', 'docs/list');
 Route::view('component/modal', 'docs/modal');
 Route::view('component/notification', 'docs/notification');
 Route::view('component/number', 'docs/number');
+Route::view('component/popover', 'docs/popover');
 Route::view('component/process-indicator', 'docs/process-indicator');
 Route::view('component/progress-bar', 'docs/progress-bar');
 Route::view('component/progress-circle', 'docs/progress-circle');

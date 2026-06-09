@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 /**
  * Remote MCP (Model Context Protocol) server for BladewindUI documentation.
  *
- * Implements the MCP Streamable HTTP transport (spec 2025-03-26).
+ * Implements the MCP Streamable HTTP transport (spec 2025-11-25).
  * Endpoint: POST /mcp/server
  *
  * Capabilities exposed:
@@ -18,10 +18,10 @@ use Illuminate\Http\Response;
  */
 class McpController extends Controller
 {
-    private const PROTOCOL_VERSION = '2025-03-26';
-    private const SERVER_NAME      = 'bladewindui-docs';
-    private const SERVER_VERSION   = '1.0.0';
-    private const URI_SCHEME       = 'bladewindui://docs/';
+    private const string PROTOCOL_VERSION = '2025-11-25';
+    private const string SERVER_NAME      = 'bladewindui-docs';
+    private const string SERVER_VERSION   = '1.0.0';
+    private const string URI_SCHEME       = 'bladewindui://docs/';
 
     private string $mcpDir;
 

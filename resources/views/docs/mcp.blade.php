@@ -33,6 +33,11 @@
 
     <h2 id="claude-desktop">Claude Desktop</h2>
     <p>
+        Claude Desktop communicates with MCP servers over stdio, so connecting to a remote HTTP server requires
+        a small proxy called <code class="inline">mcp-remote</code>. You will need
+        <a href="https://nodejs.org" target="_blank">Node.js</a> installed on your machine.
+    </p>
+    <p>
         Open your Claude Desktop configuration file:
     </p>
     <ul class="list-disc pl-6 space-y-1">
@@ -40,22 +45,26 @@
         <li>Windows: <code class="inline">%APPDATA%\Claude\claude_desktop_config.json</code></li>
     </ul>
     <p>
-        Add the following entry inside <code class="inline">mcpServers</code>:
+        Add the following entry inside <code class="inline">mcpServers</code>, replacing <code class="inline">/usr/local/bin/npx</code>
+        with the full path to <code class="inline">npx</code> on your machine
+        (run <code class="inline">which npx</code> in your terminal to find it):
     </p>
     <pre class="language-js line-numbers">
 <code>
 {
   "mcpServers": {
     "bladewindui": {
-      "type": "http",
-      "url": "https://bladewindui.com/mcp/server"
+      "command": "/usr/local/bin/npx",
+      // "command": "npx", use this on Windows or if npx is in your PATH
+      "args": ["-y", "mcp-remote", "https://bladewindui.com/mcp/server"]
     }
   }
 }
 </code>
     </pre>
     <p>
-        Save the file and restart Claude Desktop. You will see <strong>bladewindui</strong> listed as a connected MCP server.
+        Save the file and restart Claude Desktop fully (quit and reopen — do not just close the window).
+        Once connected, a hammer icon will appear at the bottom of a new chat showing the available tools.
         You can then ask questions like <em>"Show me all the attributes for the BladewindUI table component"</em>
         or <em>"How do I use the filepicker with automatic uploads?"</em> and Claude will read the answer directly from the docs.
     </p>

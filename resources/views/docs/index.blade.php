@@ -22,7 +22,7 @@
         @include('docs/nav')
     </nav>
 
-    <div class="bg-gradient-to-tr from-purple-600 via-blue-800 to-pink-500 sm:px-10 px-5 pb-10 shadow-sm dark:from-dark-700 dark:via-black dark:to-violet-950">
+    <div class="bg-gradient-to-tr from-purple-600 via-blue-800 to-pink-700 sm:px-10 px-5 pb-10 shadow-sm dark:from-dark-700 dark:via-black dark:to-violet-950">
         <div class="sm:max-w-7xl mx-auto flex justify-between items-center py-7">
             <div>
                 <img src="/assets/images/bw-logo-white.png" alt="logo" class="h-7 mx-auto opacity-80" />

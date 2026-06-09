@@ -2,10 +2,11 @@
     <x-slot:title>Customizing BladewindUI</x-slot:title>
     <x-slot:page_title>Customizing BladewindUI</x-slot:page_title>
     <p>
-        BladewindUI has been designed to not interfere with the existing components in your project.
-        Probably you just want to take this for a spin before deciding if BladewindUI components will be the only components you use in your project.
-        Once installed, all BladewindUI components are invoked by default from your project's <code class="inline">vendor > mkocansey > bladewind</code> directory.
-        Per Laravel convention, this results in you having to type the <code class="inline text-red-400">&lt;x-bladewind</code> prefix everytime you want to use a BladewindUI component.
+        BladewindUI is designed to work seamlessly with your existing project components. Once installed, all BladewindUI
+        components are served directly from your project’s vendor directory.  Each component resides in its own Composer
+        package, such as <code class="inline">vendor/mkocansey/bladewind-button</code> or
+        <code class="inline">vendor/mkocansey/bladewind-table</code>. However, they all share
+        the same <code class="inline text-red-400">bladewind::</code> view namespace.  This Laravel convention means you’ll need to type the <code class="inline text-red-400">&lt;x-bladewind</code> prefix every time you use a BladewindUI component.
     </p>
     <pre class="language-markup">
         <code>
@@ -18,12 +19,27 @@
     </p>
     <pre class="language-markup">
         <code>
-            &lt;<b>x-bladewind</b>.button&gt;Save User&lt;/x-bladewind.button&gt;
+            &lt;x-bladewind.button&gt;Save User&lt;/x-bladewind.button&gt;
         </code>
     </pre>
     <h2 id="noprefix">Getting rid of the <b class="font-bold">bladewind</b> prefix </h2>
+    <p>It is possible to get rid of the bladewind prefix entirely. </p>
+    <pre class="language-markup">
+        <code>
+            &lt;x-bladewind.button&gt;Save User&lt;/x-bladewind.button&gt;
+
+            // or
+
+            &lt;x-bladewind::button&gt;Save User&lt;/x-bladewind::button&gt;
+        </code>
+    </pre>
+    becomes
+    <pre class="language-markup">
+        <code>
+            &lt;x.button&gt;Save User&lt;/x-button&gt;
+        </code>
+    </pre>
     <p>
-        It is possible to get rid of the bladewind prefix entirely. <code class="inline text-red-400">&lt;x-bladewind.button&gt;Save User&lt;/x-bladewind.button&gt;</code> becomes <code class="inline text-red-400">&lt;x-button&gt;Save User&lt;/x-button&gt;</code>.
         To achieve this, you should have already <a href="/#publishing">published the Bladewind components</a>. Next you will move all the blade files in <code class="inline">resources > views > components > bladewind</code> into <code class="inline">resources > views > components</code>.
         You can then delete the <span>bladewind</span> folder from your <code class="inline">resources > views > components</code> folder since it should technically be empty at this point.
     </p>
@@ -53,9 +69,9 @@
      </p>
     <h2 id="datepicker-translations">Changing Datepicker Translations</h2>
     <p>
-        The <a href="/component/datepicker">Datepicker component</a> is wired to speak a couple of languages. The language files are served from BladewindUI's vendor directory,
+        The <a href="/component/datepicker">Datepicker component</a> is wired to speak a couple of languages. The language files are part of the <code class="inline">bladewind-core</code> package and are served from
         <code class="inline">
-            vendor > mkocansey > bladewind > lang
+            vendor > mkocansey > bladewind-core > lang
         </code>. Currently the available languages contributed by the community are English, French, Italian, Arabic, German, Chinese, Spanish and Indonesian. You can add more languages as you see fit or even modify the existing translations. If you want to do this for just your project you will first need to publish the language files by running the command below from the root of your project.
         You can <a href="/contribute">contribute</a> a new language translation.
     </p>
@@ -72,22 +88,29 @@
         Now what if you also need all your buttons to be <b>small</b> and to have <b>no focus rings</b>, your code every time will be
     </p>
     <pre class="lang-markup">
-        <code> &lt;x-bladewind-button show_focus_ring="false" size="small" uppercasing="false"&gt
+        <code> &lt;x-bladewind::button show_focus_ring="false" size="small" uppercasing="false"&gt
             Save
-        &lt;/x-bladewind-button&gt;</code>
+        &lt;/x-bladewind::button&gt;</code>
     </pre>
     <p>
-        Mehn!! This is crazily tedious. Won't it be great to just type the code below to get a button looking the way you'd want for your project?
+        This is tedious. Won't it be great to just type the code below to get a button looking the way you'd want for your project?
     </p>
     <pre class="lang-markup">
-        <code> &lt;x-bladewind-button&gtSave&lt;/x-bladewind-button&gt;</code>
+        <code> &lt;x-bladewind::button&gtSave&lt;/x-bladewind::button&gt;</code>
     </pre>
     <p>
-        To achieve this, simply publish the BladewindUI config file by running the code below from the root of your proejct.
+        To achieve this, create a <code class="inline">config/bladewind.php</code> file in the root of your project. If you installed the full
+        <code class="inline">mkocansey/bladewind</code> package you can have Laravel generate this file for you:
     </p>
-    <pre class="lang-bash"><code>php artisan vendor:publish --tag=bladewind-config --force</code></pre><br />
+    <pre class="lang-bash"><code>php artisan vendor:publish --tag=bladewind-config --force</code></pre>
     <p>
-        You will now have a <code class="inline">your project root > config > bladewind.php</code> file with some boilerplate code you can edit or add to.
+        If you installed individual component packages (e.g. <code class="inline">mkocansey/bladewind-button</code>) the <code class="inline">bladewind-config</code>
+        publish tag is not available. Simply create the file manually instead:
+    </p>
+    <pre class="lang-bash"><code>touch config/bladewind.php</code></pre>
+    <p>
+        Either way, you will end up with a <code class="inline">config/bladewind.php</code> file you can edit.
+        You only need to define the components and attributes you want to change. You do not have to copy the full default configuration.
         Every BladewindUI component is defined as an array key with some default values. Whatever attributes you wish to define as a default should be
         defined within its corresponding tag's array key. The code below is for the above example where we want all our buttons to be small, have no
         focus rings and not be uppercase.

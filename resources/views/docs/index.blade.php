@@ -5,10 +5,9 @@
 <x-bladewind::notification />
 <body class="text-gray-500/80 bg-slate-100 dark:bg-gradient-to-b from-slate-900 to-slate-800 dark:text-slate-400">
     <div class="md:hidden block absolute right-6 top-6" onclick="animateCss('.navigation','slideInRight');">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </a>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
     </div>
 
     <nav class="w-[280px] z-50 py-6 bg-white/95 border-l border-gray-200 fixed right-0 top-0 h-screen shadow-2xl
@@ -23,23 +22,25 @@
         @include('docs/nav')
     </nav>
 
-    <div class="bg-gradient-to-tr from-indigo-900 via-black to-violet-500 sm:px-10 px-5 pb-10 shadow-sm dark:from-dark-700 dark:via-black dark:to-violet-950">
+    <div class="bg-gradient-to-tr from-purple-600 via-blue-800 to-pink-700 sm:px-10 px-5 pb-10 shadow-sm dark:from-dark-700 dark:via-black dark:to-violet-950">
         <div class="sm:max-w-7xl mx-auto flex justify-between items-center py-7">
             <div>
                 <img src="/assets/images/bw-logo-white.png" alt="logo" class="h-7 mx-auto opacity-80" />
             </div>
             <div class="hidden md:flex justify-end items-center space-x-5">
-                <a href="/install" class="text-white/70 hover:text-white/80 pr-6 border-r border-dashed border-r-white/20 tracking-wider">Docs</a>
                 <x-topright />
+                <a href="/install">
+                    <x-bladewind::button radius="full"  size="small" color="black">Get Started</x-bladewind::button>
+                </a>
             </div>
         </div>
         <div class="sm:text-6xl tracking-wide font-bold text-3xl sm:max-w-5xl mx-auto text-fuchsia-100 dark:text-dark-200 text-center px-6 pt-10 md:px-3 md:pt-20 font-bladewind">
             Beautifully crafted UI components for your Laravel applications.
         </div>
-        <div class="sm:text-2xl text-sm font-light tracking-wide sm:max-w-2xl mx-auto text-center text-slate-100 dark:text-dark-400 sm:py-8 px-5 pt-3 pb-6">
-            Just <code class="font-bladewind2 md:text-xl text-sm">`composer require mkocansey/bladewind`</code> and start combining our elements to build something amazing.
+        <div class="sm:text-2xl text-sm font-light tracking-wide sm:max-w-3xl mx-auto text-center text-slate-100 dark:text-dark-400 sm:py-8 px-5 pt-3 pb-6">
+            With over 40 components at your disposal, you can build experiences like what is shown in the demo below in no time. Even works seamlessly with most of Laravel's starter kits.
         </div>
-        <div class="text-center sm:py-6 px-6">
+        <div class="text-center sm:py-6 px-6 hidden">
             <x-bladewind::button radius="full" color="orange" tag="a" href="/install" size="big" class="font-bladewind w-full md:w-fit">Get Started Now</x-bladewind::button>
         </div>
 
@@ -85,9 +86,9 @@
         </div>
     </div>
 
-    <div class="bg-slate-200 sm:px-10 sm:py-20 py-10 px-4 shadow-sm dark:bg-dark-700">
-        <div class="text-3xl sm:text-6xl sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-300 text-center px-10">
-            Usually just one line but packed with cool stuff
+    <div class="bg-purple-200 sm:px-10 sm:py-20 py-10 px-4 shadow-sm dark:bg-dark-700 border-t-8 border-purple-300">
+        <div class="text-3xl font-bladewind font-semibold tracking-tight sm:text-6xl sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-300 text-center px-5">
+            One line of code unpacks a ton of useful features.
         </div>
         <div class="text-sm sm:text-2xl tracking-wide font-light sm:max-w-xl mx-auto sm:pt-6 pt-2 text-center text-slate-500 dark:text-dark-400 px-4 sm:px-0">
             This library follows the Laravel way of simplicity and development fun.
@@ -103,25 +104,34 @@
             </div>
         </div>
     </div>
-<div class="bg-white sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800">
-    <div class="text-3xl sm:text-6xl font-light sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-200 text-center px-10 font-bladewind">
-        There's no Pro or Pro Max. Just <span class="underline">free</span> everything.
+<div class="bg-blue-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-8 border-blue-300">
+    <div class="text-3xl sm:text-6xl font-semibold sm:max-w-4xl mx-auto tracking-tight text-slate-700 dark:text-dark-200 text-center px-5 font-bladewind">
+        Only install the components you need. Not everything.
     </div>
-    <div class="text-sm sm:text-xl font-light sm:max-w-xl mx-auto sm:py-8 pt-4 pb-6 text-center text-slate-500 dark:text-dark-400 px-4 tracking-wide font-bladewind">
-        All current and future UI components plus their frequent updates remain free forever. <a href="/contribute" class="text-indigo-500 hover:text-indigo-700">Contributions</a> are welcome.
+    <div class="text-sm sm:text-xl font-light sm:max-w-2xl mx-auto sm:py-8 pt-4 pb-6 text-center text-slate-500 dark:text-dark-400 px-4 tracking-wide font-bladewind">
+        All components are standalone composer packages and can be installed separately. Dependencies are automatically carried along.
+        <pre class="language-php !text-center"><code>composer require mkocansey/bladewind-table</code></pre>
     </div>
 
     <div class="sm:max-w-7xl home-nav mx-auto pt-4 pb-6 sm:grid-cols-5 grid grid-cols-2 sm:gap-6 gap-3">
         @include('docs.components-list', [ 'class' => 'home'])
     </div>
 </div>
+<div class="bg-yellow-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-8 border-yellow-300">
+    <div class="text-3xl sm:text-6xl font-semibold sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-200 text-center px-5 font-bladewind">
+        Now with an MCP Server to support your favourite AI tools.
+    </div>
+    <div class="text-sm sm:text-xl font-light sm:max-w-2xl mx-auto sm:py-8 pt-4 pb-6 text-center text-slate-500 dark:text-dark-400 px-4 tracking-wide font-bladewind">
+        This means tools like Claude Desktop, Cursor, and VS Code Copilot can answer questions about BladewindUI components, generate correct usage examples, and look up attribute names and defaults
+    </div>
+</div>
 
 <div class="bg-slate-900 sm:px-10 sm:py-20 py-10 px-4">
-    <div class="text-3xl sm:text-6xl sm:max-w-4xl mx-auto text-slate-200 text-center px-10 font-bladewind">
+    <div class="text-3xl font-semibold sm:text-6xl sm:max-w-4xl mx-auto text-slate-200 text-center px-10 font-bladewind">
         BladewindUI components shine even in dark mode.
     </div>
     <div class="text-sm sm:text-2xl font-light sm:max-w-xl mx-auto pt-4 text-center text-slate-300 px-4 sm:px-0 font-bladewind tracking-wide">
-        <a href="/customize/darkmode" class="text-yellow-500 hover:text-yellow-700">Customizing</a> dark mode in BladewinUI is as easy as setting your preferred dark colour and voila!.
+        <a href="/customize/darkmode" class="text-yellow-500 hover:text-yellow-700">Customizing</a> dark mode in BladewinUI is as easy as setting your preferred dark colour and voila!
     </div>
 
     <div class="sm:max-w-7xl home-nav mx-auto pt-16">

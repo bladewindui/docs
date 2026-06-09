@@ -9,6 +9,7 @@
             </span>
         </x-slot:trigger>
         <x-bladewind::dropmenu.item>{{\Composer\InstalledVersions::getPrettyVersion('mkocansey/bladewind')}}</x-bladewind::dropmenu.item>
+        <x-bladewind::dropmenu.item onclick="location.href='https://v3.bladewindui.com/install'">3.x</x-bladewind::dropmenu.item>
         <x-bladewind::dropmenu.item onclick="location.href='https://v2.bladewindui.com/install'">2.x</x-bladewind::dropmenu.item>
     </x-bladewind::dropmenu>
 </div>

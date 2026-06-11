@@ -34,7 +34,7 @@
     .line-numbers { @apply !leading-[30px] }
     .copy-to-clipboard-button { @apply !pt-0.5 !pb-1.5 !px-2 mr-2 !rounded-none !text-gray-300 hover:!text-white }
     .bw-alert code.inline { @apply  dark:text-gray-400 }
-    .home-nav div.home { @apply border border-transparent text-slate-600 dark:text-dark-400 !text-center bg-slate-200 rounded-xl hover:bg-slate-400 cursor-pointer hover:text-white inline-block sm:block dark:bg-dark-700 dark:hover:border-dark-500 }
+    .home-nav div.home { @apply border border-transparent text-slate-600 dark:text-dark-400 !text-center bg-white rounded-full hover:bg-slate-700 cursor-pointer hover:text-white inline-block sm:block dark:bg-dark-700 dark:hover:border-dark-500 }
     .home-nav div.home a { @apply block w-full px-5 py-3 sm:p-3  }
     .home-nav div.home div.dot { @apply hidden }
     div.mnos div.bw-progress-bar div.w-full { @apply !bg-slate-700 }

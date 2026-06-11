@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <div class="bg-purple-200 sm:px-10 sm:py-20 py-10 px-4 shadow-sm dark:bg-dark-700 border-t-8 border-purple-300">
+    <div class="bg-purple-200 sm:px-10 sm:py-20 py-10 px-4 shadow-sm dark:bg-dark-700 border-t-2 border-purple-300">
         <div class="text-3xl font-bladewind font-semibold tracking-tight sm:text-6xl sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-300 text-center px-5">
             One line of code unpacks a ton of useful features.
         </div>
@@ -100,11 +100,11 @@
             <pre class="language-markup"><code>&lt;x-bladewind::datepicker type="range" /&gt;</code></pre>
             <pre class="language-markup"><code>&lt;x-bladewind::filepicker accepted_file_types="images/*" /&gt;</code></pre>
             <div class="text-center sm:pt-6">
-                <x-bladewind::button radius="full" color="orange" tag="a" href="/install" size="big" class="font-bladewind hidden md:inline-block">Get Started Now</x-bladewind::button>
+                <x-bladewind::button radius="full" color="purple" tag="a" href="/install" size="big" class="font-bladewind hidden md:inline-block">Get Started Now</x-bladewind::button>
             </div>
         </div>
     </div>
-<div class="bg-blue-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-8 border-blue-300">
+<div class="bg-blue-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-2 border-blue-400">
     <div class="text-3xl sm:text-6xl font-semibold sm:max-w-4xl mx-auto tracking-tight text-slate-700 dark:text-dark-200 text-center px-5 font-bladewind">
         Only install the components you need. Not everything.
     </div>
@@ -117,12 +117,15 @@
         @include('docs.components-list', [ 'class' => 'home'])
     </div>
 </div>
-<div class="bg-yellow-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-8 border-yellow-300">
+<div class="bg-yellow-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-2 border-yellow-400">
     <div class="text-3xl sm:text-6xl font-semibold sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-200 text-center px-5 font-bladewind">
         Now with an MCP Server to support your favourite AI tools.
     </div>
     <div class="text-sm sm:text-xl font-light sm:max-w-2xl mx-auto sm:py-8 pt-4 pb-6 text-center text-slate-500 dark:text-dark-400 px-4 tracking-wide font-bladewind">
         This means tools like Claude Desktop, Cursor, and VS Code Copilot can answer questions about BladewindUI components, generate correct usage examples, and look up attribute names and defaults
+    </div>
+    <div class="text-center sm:py-6 px-6">
+        <x-bladewind::button radius="full" color="orange" tag="a" href="/mcp" size="big" class="font-bladewind w-full md:w-fit">Integrate Now</x-bladewind::button>
     </div>
 </div>
 

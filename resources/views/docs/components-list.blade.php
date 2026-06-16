@@ -23,7 +23,7 @@
 <div class="{{ $css }} component-modal"><div class="dot"></div><a href="/component/modal">Modal</a></div>
 <div class="{{ $css }} component-notification"><div class="dot"></div><a href="/component/notification">Notification</a></div>
 <div class="{{ $css }} component-number"><div class="dot"></div><a href="/component/number">Number</a></div>
-{{--<div class="{{ $css }} component-popover hidden"><div class="dot"></div><a href="/component/popover">Popover</a></div>--}}
+<div class="{{ $css }} component-popover"><div class="dot"></div><a href="/component/popover">Popover</a></div>
 <div class="{{ $css }} component-process-indicator"><div class="dot"></div><a href="/component/process-indicator">Process Indicator</a></div>
 <div class="{{ $css }} component-progress-bar"><div class="dot"></div><a href="/component/progress-bar">Progress Bar</a></div>
 <div class="{{ $css }} component-progress-circle"><div class="dot"></div><a href="/component/progress-circle">Progress Circle</a></div>
@@ -41,6 +41,6 @@
 <div class="{{ $css }} component-theme-switcher"><div class="dot"></div><a href="/component/theme-switcher">Theme Switcher</a></div>
 <div class="{{ $css }} component-timeline"><div class="dot"></div><a href="/component/timeline">Timeline</a></div>
 <div class="{{ $css }} component-timepicker"><div class="dot"></div><a href="/component/timepicker">Timepicker</a></div>
-{{--<div class="{{ $css }} component-tooltip hidden"><div class="dot"></div><a href="/component/tooltip">Tooltip</a></div>--}}
+<div class="{{ $css }} component-tooltip"><div class="dot"></div><a href="/component/tooltip">Tooltip</a></div>
 <div class="{{ $css }} component-toggle"><div class="dot"></div><a href="/component/toggle">Toggle</a></div>
 <div class="{{ $css }} component-code"><div class="dot"></div><a href="/component/verification-code">Verification Code</a></div>

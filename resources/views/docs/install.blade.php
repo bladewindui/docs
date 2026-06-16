@@ -9,8 +9,9 @@
 
     <h3 id="requirements">Requirements</h3 id="requirements">
     <div class="pl-5">
-    <li class="pb-2">PHP &gt;= 8.0</li>
-    <li>Laravel &gt;= 9.x</li>
+    <li>PHP &gt;= 8.0</li>
+    <li class="py-2">Laravel &gt;= 9.x</li>
+    <li>TailwindCSS >= 4.x</li>
     </div>
 
     <h2 id="install">Installation Options</h2>

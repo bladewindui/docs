@@ -67,124 +67,156 @@
         </div>
     </div>
     <p>&nbsp;</p>
-    <p>You can tell from the palette above that BladewindUI uses <strong>Emerald</strong> for its green and <strong>Amber</strong> for its yellow.
-    As stated earlier, the default colour used for the BladewindUI components is blue. If your primary theme is not blue, you can change this in a few steps. This assumes you have some basic knowledge of <a href="https://tailwindcss.com" target="_blank">Tailwind CSS</a>.</p>
+    <p>
+        You can tell from the palette above that BladewindUI uses <strong>Emerald</strong> for its green and <strong>Amber</strong> for its yellow.
+        The default colour for all BladewindUI components is blue. If your primary theme is different, you can override it in a few steps.
+        This assumes you have some basic knowledge of <a href="https://tailwindcss.com" target="_blank">Tailwind CSS</a>.
+    </p>
 
-    <p>Below is the tailwind.config.js file that ships with the library.</p>
-<pre class="language-js line-numbers" data-line="7">
-    <code>
-// your-project/vendor/mkocansey/bladewind/tailwind.config.js
-  theme: {
-    extend: {
-      colors: {
-        primary: colors.blue,
-        secondary: colors.slate,
-        dark: {
-            100: '#f0f1f2',
-            200: '#d2d4d7',
-            300: '#a7aaad',
-            400: '#6c7075',
-            500: '#4a4e53',
-            600: '#33373c',
-            700: '#262a2f',
-            800: '#1C1F24',
-            900: '#101114',
-            950: '#0a0b0d'
-        },
-        green: colors.emerald,
-      }
-},
+    <h2 id="how-colours-work">How Colours Work in Tailwind v4</h2>
+    <p>
+        Tailwind CSS v4 moves all configuration out of <code class="inline">tailwind.config.js</code> and into your CSS file using the
+        <code class="inline">@theme</code> directive. Colours are expressed as CSS custom properties following the naming pattern
+        <code class="inline">--color-{name}-{shade}</code>.
+    </p>
+    <p>
+        BladewindUI internally uses <code class="inline">primary</code> as the colour key for all component accents.
+        Here is what the library's default theme definition looks like:
+    </p>
+    <pre class="language-css line-numbers" data-line="4">
+<code>
+/* vendor/mkocansey/bladewind — default theme */
+@theme {
+    /* primary → blue (default) */
+    --color-primary-50:  #eff6ff;
+    --color-primary-100: #dbeafe;
+    --color-primary-200: #bfdbfe;
+    --color-primary-300: #93c5fd;
+    --color-primary-400: #60a5fa;
+    --color-primary-500: #3b82f6;
+    --color-primary-600: #2563eb;
+    --color-primary-700: #1d4ed8;
+    --color-primary-800: #1e40af;
+    --color-primary-900: #1e3a8a;
+    --color-primary-950: #172554;
+
+    /* dark colour scale */
+    --color-dark-100: #f0f1f2;
+    --color-dark-200: #d2d4d7;
+    --color-dark-300: #a7aaad;
+    --color-dark-400: #6c7075;
+    --color-dark-500: #4a4e53;
+    --color-dark-600: #33373c;
+    --color-dark-700: #262a2f;
+    --color-dark-800: #1C1F24;
+    --color-dark-900: #101114;
+    --color-dark-950: #0a0b0d;
+}
 </code>
-</pre>
-    <br />
-<p>
-    If the default colours used in the library fit your project's colour theme you don't need to perform this next step. To change the colours used above, simply define overwriting values in your project's <code class="inline">tailwind.config.js</code>.
-    This documentation website uses indigo as its primary colour.
-</p>
-    <pre class="language-js line-numbers" data-line="5">
-    <code>
-        // your-project/tailwind.config.js
-  theme: {
-    extend: {
-      colors: {
-        primary: colors.indigo,
-        secondary: colors.zinc,
-        dark: colors.gray,
-        green: colors.emerald,
-      }
-},
-    </code>
     </pre>
-    <br />
-    <pre class="language-js line-numbers" data-line="5">
-    <code>
-        // your-project/tailwind.config.js
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-            100: '#f3e8ff',
-            200: '#e9d5ff',
-            300: '#d8b4fe',
-            400: '#c084fc',
-            500: '#a855f7',
-            600: '#9333ea',
-            700: '#7e22ce',
-            800: '#6d28d9',
-            900: '#4c1d95',
-        },
-        secondary: colors.zinc,
-        dark: colors.gray,
-        green: colors.emerald,
-      }
-},
-    </code>
-    </pre>
-    <br />
+
+    <h2 id="changing-colours">Changing the Primary Colour</h2>
     <p>
-        All components use the colour defined in the <code class="inline">primary</code> key above to display their background colour. This makes it easy for all components to quickly blend in to your preferred theme.
-        From the example above, now all components will use shades of <strong>indigo</strong> as their background colour instead of blue.
+        To override the primary colour, redefine the <code class="inline">--color-primary-*</code> variables in your own
+        <code class="inline">app.css</code> file after importing Tailwind. Your values will win because they appear later in the cascade.
+    </p>
+    <p>This documentation website uses indigo as its primary colour:</p>
+    <pre class="language-css line-numbers" data-line="5">
+<code>
+/* resources/css/app.css */
+@import "tailwindcss";
+
+@theme {
+    /* Override primary with indigo */
+    --color-primary-50:  #eef2ff;
+    --color-primary-100: #e0e7ff;
+    --color-primary-200: #c7d2fe;
+    --color-primary-300: #a5b4fc;
+    --color-primary-400: #818cf8;
+    --color-primary-500: #6366f1;
+    --color-primary-600: #4f46e5;
+    --color-primary-700: #4338ca;
+    --color-primary-800: #3730a3;
+    --color-primary-900: #312e81;
+    --color-primary-950: #1e1b4b;
+}
+</code>
+    </pre>
+    <p>
+        You can use any hex, rgb, hsl, or oklch value. If you prefer a custom palette that does not map to a Tailwind built-in scale,
+        simply supply your own hex values:
+    </p>
+    <pre class="language-css line-numbers">
+<code>
+@theme {
+    /* Custom purple palette */
+    --color-primary-100: #f3e8ff;
+    --color-primary-200: #e9d5ff;
+    --color-primary-300: #d8b4fe;
+    --color-primary-400: #c084fc;
+    --color-primary-500: #a855f7;
+    --color-primary-600: #9333ea;
+    --color-primary-700: #7e22ce;
+    --color-primary-800: #6d28d9;
+    --color-primary-900: #4c1d95;
+}
+</code>
+    </pre>
+    <p>
+        All BladewindUI components read from the <code class="inline">primary</code> scale, so every component updates automatically
+        without any further changes.
     </p>
 
-    <h3>If you are feeling geeky</h3>
-    <p>The changes to the Tailwind config should be enough to get you your right colours. If however, for some reason you are in your geeky elements and prefer to access all the uncompiled BladewindUI CSS files, you can run the command below.</p>
-    <pre class="lang-bash command-line">
-        <code>
-            php artisan vendor:publish --tag=bladewind-assets --force
-        </code></pre>
+    <h2 id="dark-mode">Dark Mode</h2>
     <p>
-        You should now have in your <code class="inline">public</code> directory, a <code class="inline">vendor > bladewind > <span class=" text-red-400">assets</span></code> folder containing all the uncompiled tailwind css files.
-        You can modify these files to suit your theme specification.
-        <a href="https://laravel.com/docs/11.x/vite" target="_blank">Refer to this article</a> if you are not familiar with compiling assets in Laravel.
+        BladewindUI ships dark-mode variants for every component. In Tailwind v4, class-based dark mode is configured with
+        <code class="inline">@custom-variant</code> instead of the old <code class="inline">darkMode: 'class'</code> config key.
+        Add this line once in your <code class="inline">app.css</code>, above your <code class="inline">@theme</code> block:
     </p>
+    <pre class="language-css line-numbers">
+<code>
+/* resources/css/app.css */
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+</code>
+    </pre>
+    <p>
+        Then toggle the <code class="inline">dark</code> class on your <code class="inline">&lt;html&gt;</code> element to switch modes.
+        BladewindUI's <a href="/component/theme-switcher">Theme Switcher</a> component handles this for you automatically.
+    </p>
+
     <h2 id="debug">Debug Compilation Issues</h2>
     <p>
     <x-bladewind::alert show_close_icon="false">
-        Consider the information below if your styles don't seem to be compiling or components appear transparent.
+        Consider the information below if your styles don't seem to be compiling or components appear unstyled.
     </x-bladewind::alert>
     </p>
     <p>
-        As explained earlier, BladewindUI allows you to define your own colour theme in your project's <code class="inline">tailwind.config.js</code> file.
-        The BladewindUI styles will get compiled once you build your assets. Since <a href="/install#publishing">publishing</a> the
-        BladewindUI assets is completely optional, your components will still exist in <code class="inline">vendor/mkocansey/bladewind</code> if you have not published the Bladewind components.
-        In that case you will need to tell Tailwind to also compile the CSS classes in <code class="inline">vendor/mkocansey/bladewind</code> as shown in the code below.
+        In Tailwind v4, class scanning is automatic for files inside your project. However, BladewindUI component files live inside
+        <code class="inline">vendor/mkocansey/bladewind</code> and are not scanned by default. You need to add an
+        <code class="inline">@source</code> directive so Tailwind knows to look there:
     </p>
-    <pre class="language-js line-numbers" data-line="8">
-    <code>
-        // your-project/tailwind.config.js
-        ...
-        module.exports = {
-          darkMode: 'class',
-          content: [
-              "./resources/**/*.blade.php",
-              "./resources/**/*.js",
-              "./vendor/mkocansey/bladewind/resources/views/**/*.blade.php",
-          ],
-        ...
-    </code>
+    <pre class="language-css line-numbers" data-line="5">
+<code>
+/* resources/css/app.css */
+@import "tailwindcss";
+
+/* Tell Tailwind to scan vendor BladewindUI files */
+@source "../../vendor/mkocansey/bladewind/**/*.blade.php";
+@source "../../public/vendor/bladewind/js/*.js";
+</code>
     </pre>
+    <p>
+        The paths are relative to your CSS file. If your <code class="inline">app.css</code> is at
+        <code class="inline">resources/css/app.css</code>, two levels of <code class="inline">../../</code> will reach the project root.
+        Adjust the depth if your CSS file is located elsewhere.
+    </p>
 
     <x-slot:side_nav>
+        <div class="flex items-center"><div class="dot"></div><a href="#how-colours-work">How colours work</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#changing-colours">Changing the primary colour</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#dark-mode">Dark mode</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#debug">Debug compile issues</a></div>
     </x-slot:side_nav>
 

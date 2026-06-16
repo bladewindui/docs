@@ -1,7 +1,104 @@
-@import 'prism.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import './prism.css';
+
+/* Scan vendor blade and JS files for class names */
+@source "../../vendor/mkocansey/bladewind/**/*.blade.php";
+@source "../../public/vendor/bladewind/js/*.js";
+
+/* Class-based dark mode (.dark on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* primary → indigo */
+    --color-primary-50: #eef2ff;
+    --color-primary-100: #e0e7ff;
+    --color-primary-200: #c7d2fe;
+    --color-primary-300: #a5b4fc;
+    --color-primary-400: #818cf8;
+    --color-primary-500: #6366f1;
+    --color-primary-600: #4f46e5;
+    --color-primary-700: #4338ca;
+    --color-primary-800: #3730a3;
+    --color-primary-900: #312e81;
+    --color-primary-950: #1e1b4b;
+
+    /* secondary → slate */
+    --color-secondary-50: #f8fafc;
+    --color-secondary-100: #f1f5f9;
+    --color-secondary-200: #e2e8f0;
+    --color-secondary-300: #cbd5e1;
+    --color-secondary-400: #94a3b8;
+    --color-secondary-500: #64748b;
+    --color-secondary-600: #475569;
+    --color-secondary-700: #334155;
+    --color-secondary-800: #1e293b;
+    --color-secondary-900: #0f172a;
+    --color-secondary-950: #020617;
+
+    /* dark colour scale */
+    --color-dark-100: #f0f1f2;
+    --color-dark-200: #d2d4d7;
+    --color-dark-300: #a7aaad;
+    --color-dark-400: #6c7075;
+    --color-dark-500: #4a4e53;
+    --color-dark-600: #33373c;
+    --color-dark-700: #262a2f;
+    --color-dark-800: #1C1F24;
+    --color-dark-900: #101114;
+    --color-dark-950: #0a0b0d;
+
+    /* fonts */
+    --font-bladewind: 'Inter', sans-serif;
+    --font-bladewind2: 'Anonymous Pro', sans-serif;
+}
+
+/* ─── Animation keyframes ─────────────────────────────────────────────── */
+
+@keyframes slideInLeft {
+    0%   { transform: translateX(calc(var(--slide-distance) * -1)); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideInRight {
+    0%   { transform: translateX(var(--slide-distance)); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideInUp {
+    0%   { transform: translateY(var(--slide-distance)); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideInDown {
+    0%   { transform: translateY(calc(var(--slide-distance) * -1)); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeInUp {
+    0%   { opacity: 0; transform: translateY(var(--fade-distance)); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+    0%   { opacity: 0; transform: translateY(calc(var(--fade-distance) * -1)); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+    0%   { opacity: 0; transform: translateX(calc(var(--fade-distance) * -1)); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    0%   { opacity: 0; transform: translateX(var(--fade-distance)); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Animation utilities ─────────────────────────────────────────────── */
+
+@utility animate-slideInLeft  { animation: slideInLeft  var(--slide-duration) ease-out forwards; }
+@utility animate-slideInRight { animation: slideInRight var(--slide-duration) ease-out forwards; }
+@utility animate-slideInUp    { animation: slideInUp    var(--slide-duration) ease-out forwards; }
+@utility animate-slideInDown  { animation: slideInDown  var(--slide-duration) ease-out forwards; }
+@utility animate-fadeInUp     { animation: fadeInUp     var(--fade-duration)  ease-out forwards; }
+@utility animate-fadeInDown   { animation: fadeInDown   var(--fade-duration)  ease-out forwards; }
+@utility animate-fadeInLeft   { animation: fadeInLeft   var(--fade-duration)  ease-out forwards; }
+@utility animate-fadeInRight  { animation: fadeInRight  var(--fade-duration)  ease-out forwards; }
+
+/* ─── Base styles ─────────────────────────────────────────────────────── */
 
 @layer base {
     :root { --primary: rgba(255,255,255, 1%); --secondary: #1e293b; --slide-distance: 20px; --slide-duration: 1s; }

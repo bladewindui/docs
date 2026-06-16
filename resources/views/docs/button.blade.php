@@ -1,9 +1,9 @@
 <x-app>
     <x-slot:title>Button Component</x-slot:title>
     <x-slot:page_title>Button</x-slot:page_title>
-    <x-bladewind::alert type="warning" show_close_icon="false">
-        The primary and secondary colours for BladewindUI buttons is picked from what you define in your <code class="inline">tailwind.config.js</code> file as <a href="/customize/colours">described here</a>.
-        If you don't set this, your buttons will be transparent.
+    <x-bladewind::alert show_close_icon="false">
+        The primary and secondary colours for BladewindUI buttons are picked from what is defined in the <code class="inline">@theme</code> block of your project's <code class="inline">app.css</code>. <a href="/customize/colours">More here</a>.
+        If you don't set this, your buttons will either default to the library's blue colour default or be transparent.
     </x-bladewind::alert>
 <x-bladewind::notification />
     <br />

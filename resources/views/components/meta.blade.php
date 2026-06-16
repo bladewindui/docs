@@ -20,7 +20,6 @@
         <meta name="description" content="Super simple but elegant Laravel blade-based UI components using TailwindCSS and vanilla Javascript. All for free!" />
         <link rel="apple-touch-icon" href="{{ asset('assets/images/icon.png') }}" />
         <link rel="icon" href="{{ asset('assets/images/icon.png') }}" />
-        <link href="{{ asset('vendor/bladewind/css/animate.min.css')}}" rel="stylesheet" />
         <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css')}}?<?php echo uniqid() ?>" rel="stylesheet" />
         <script src="{{ asset('assets/js/prism.js') }}"></script>
         <link href="{{ asset('assets/css/carbon-ads.css') }}?<?php echo uniqid() ?>" rel="stylesheet" />

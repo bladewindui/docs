@@ -6,7 +6,7 @@ url: /component/button
 
 # Button
 
-The button component renders as an HTML `<button>` tag by default. Primary and secondary colours are derived from what you define as `primary` and `secondary` in your `tailwind.config.js`. Buttons come in four types: primary, secondary, circular, and outline. All types support multiple sizes, colours, icons, and spinners.
+The button component renders as an HTML `<button>` tag by default. Primary and secondary colours are picked from what you define in the `@theme` block of your `app.css`. Buttons come in four types: primary, secondary, circular, and outline. All types support multiple sizes, colours, icons, and spinners.
 
 ## Basic Usage
 

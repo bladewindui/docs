@@ -34,6 +34,7 @@ BladewindUI is a collection of Laravel Blade components. Each file in this direc
 | Modal | `x-bladewind::modal` | [modal.md](modal.md) |
 | Notification | `x-bladewind::notification` | [notification.md](notification.md) |
 | Number | `x-bladewind::number` | [number.md](number.md) |
+| Popover | `x-bladewind::popover` | [popover.md](popover.md) |
 | Process Indicator | `x-bladewind::processing` | [process-indicator.md](process-indicator.md) |
 | Progress Bar | `x-bladewind::progress-bar` | [progress-bar.md](progress-bar.md) |
 | Progress Circle | `x-bladewind::progress-circle` | [progress-circle.md](progress-circle.md) |

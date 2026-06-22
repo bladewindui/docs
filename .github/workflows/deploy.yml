@@ -1,0 +1,36 @@
+name: Deploy
+
+# Deploys to production via Deployer (reuses deploy.php).
+# Runs when a version tag is pushed, when a GitHub Release is published,
+# or manually from the Actions tab.
+on:
+  push:
+    tags:
+      - 'v*'
+  release:
+    types: [published]
+  workflow_dispatch:
+
+# Avoid overlapping deploys.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy with Deployer
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          # `config` is the task graph deploy.php's `build` runs after its
+          # interactive confirmation, so this matches a normal deploy without
+          # prompting.
+          dep: config production -v

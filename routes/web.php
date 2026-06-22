@@ -9,6 +9,7 @@ Route::view('install', 'docs/install');
 Route::view('customize', 'docs/customize');
 Route::view('customize/colours', 'docs/colours');
 Route::view('customize/darkmode', 'docs/darkmode');
+Route::view('releasing', 'docs/releasing');
 Route::view('component/accordion', 'docs/accordion');
 Route::view('component/alert', 'docs/alert');
 Route::view('component/avatar', 'docs/avatar');

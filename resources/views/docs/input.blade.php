@@ -76,6 +76,143 @@
 </code>
 </pre>
 
+    <h2 id="masking">Input Masking</h2>
+    <p>
+        Masking guides users into a fixed format as they type — phone numbers, dates, credit cards, money, and more.
+        BladewindUI's masking is modelled on the <a href="https://alpinejs.dev/plugins/mask" target="_blank">Alpine.js mask plugin</a>.
+        Build a template with these wildcards; every other character is a literal that is inserted automatically.
+    </p>
+    <x-bladewind::table striped="true" has_shadow="false">
+        <x-slot name="header">
+            <th>Wildcard</th>
+            <th>Matches</th>
+        </x-slot>
+        <tr><td><code class="inline">9</code></td><td>Any digit (0-9)</td></tr>
+        <tr><td><code class="inline">a</code></td><td>Any letter (a-z, A-Z)</td></tr>
+        <tr><td><code class="inline">*</code></td><td>Any alphanumeric character</td></tr>
+    </x-bladewind::table>
+
+    <p class="pt-4">
+        Pass the template to the <code class="inline text-red-500">mask</code> attribute. As the user types, the literal
+        characters (spaces, dashes, slashes, brackets) are added for them. The examples below cover all three wildcard types.
+    </p>
+    <div class="grid grid-cols-2 gap-6">
+        <div>
+            <div class="mb-1"><b>Phone</b> (Digits: Using wildcard <code class="inline">9</code>)</div>
+            <x-bladewind::input name="mask-phone" mask="(999) 999-9999" placeholder="(999) 999-9999" />
+        </div>
+        <div>
+            <div class="mb-1"><b>Date</b> (Digits: Using wildcard <code class="inline">9</code>)</div>
+            <x-bladewind::input name="mask-date" mask="99/99/9999" placeholder="MM/DD/YYYY" />
+        </div>
+        <div>
+            <div class="mb-1"><b>Canadian Post Code</b> <br />(Letters + Digits: Using wildcard <code class="inline">a</code> and <code class="inline">9</code>)</div>
+            <x-bladewind::input name="mask-postcode" mask="a9a 9a9" placeholder="A9A 9A9" />
+        </div>
+        <div>
+            <div class="mb-1"><b>Licence Key</b><br />(Alphanumeric: Using wildcard <code class="inline">*</code>)</div>
+            <x-bladewind::input name="mask-key" mask="****-****-****-****" placeholder="XXXX-XXXX-XXXX-XXXX" />
+        </div>
+    </div>
+
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-bladewind::input name="phone" mask="(999) 999-9999" /&gt;
+        </code>
+    </pre>
+
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-bladewind::input name="dob" mask="99/99/9999" placeholder="MM/DD/YYYY" /&gt;
+        </code>
+    </pre>
+
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-bladewind::input name="postcode" mask="a9a 9a9" placeholder="A9A 9A9" /&gt;
+        </code>
+    </pre>
+
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-bladewind::input name="key" mask="****-****-****-****" placeholder="XXXX-XXXX-XXXX-XXXX" /&gt;
+        </code>
+    </pre>
+
+    <h3 id="dynamic-mask">Dynamic Masks</h3>
+    <p>
+        Sometimes the format depends on what has been typed. The <code class="inline text-red-500">dynamicMask</code> attribute
+        chooses a different mask template as the user types.
+    </p>
+
+    <h4 class="font-semibold pt-2">Built-in: credit cards</h4>
+    <p>
+        BladewindUI ships with a built-in <code class="inline text-red-500">creditCard</code> dynamic mask. It detects the card type
+        from the number and switches between the American Express format (4-6-5), Diners Club (4-6-4) and the standard
+        Visa / Mastercard / Discover format (4-4-4-4) — no JavaScript required on your part.
+    </p>
+    <x-bladewind::input name="mask-card" dynamicMask="creditCard" placeholder="0000 0000 0000 0000" />
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-bladewind::input name="card" dynamicMask="creditCard" /&gt;
+        </code>
+    </pre>
+
+    <h4 class="font-semibold pt-4">Custom dynamic masks</h4>
+    <p>
+        For your own dynamic masks, point <code class="inline text-red-500">dynamicMask</code> at the name of a global JavaScript
+        function that receives the current value and returns a mask template. The example below masks a US ZIP code, expanding
+        from <code class="inline">99999</code> to the ZIP+4 format <code class="inline">99999-9999</code> once more than five digits are entered.
+    </p>
+    <x-bladewind::input name="mask-zip" dynamicMask="zipCode" placeholder="ZIP or ZIP+4" />
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-bladewind::input name="zip" dynamicMask="zipCode" /&gt;
+        </code>
+    </pre>
+    <pre class="language-js line-numbers">
+        <code>
+            function zipCode(input) {
+                const digits = input.replace(/\D/g, '');
+                return digits.length &lt;= 5
+                    ? '99999'           // ZIP
+                    : '99999-9999';     // ZIP+4
+            }
+        </code>
+    </pre>
+    <x-bladewind::alert type="info" show_close_icon="false">
+        A global function with the same name as a built-in (e.g. your own <code class="inline">creditCard</code>) takes precedence,
+        so you can override the built-ins when you need to.
+    </x-bladewind::alert>
+
+    <h3 id="money-mask">Money Inputs</h3>
+    <p>
+        Set <code class="inline text-red-500">money="true"</code> to format the field as an amount — thousands are grouped
+        and the decimal places are fixed. Customise the separators and precision with
+        <code class="inline text-red-500">moneyThousandsSeparator</code>, <code class="inline text-red-500">moneyDecimalSeparator</code>
+        and <code class="inline text-red-500">moneyPrecision</code> (set precision to <code class="inline">0</code> to disable decimals).
+    </p>
+    <div class="grid grid-cols-2 gap-6">
+        <div><x-bladewind::input name="mask-money" money="true" placeholder="1,234.56" /></div>
+        <div><x-bladewind::input name="mask-money-eu" money="true" moneyThousandsSeparator="." moneyDecimalSeparator="," placeholder="1.234,56" /></div>
+    </div>
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-bladewind::input name="price" money="true" /&gt;
+
+            &lt;x-bladewind::input
+                name="price_eu"
+                money="true"
+                moneyThousandsSeparator="."
+                moneyDecimalSeparator=","
+                moneyPrecision="2" /&gt;
+        </code>
+    </pre>
+    <x-bladewind::alert type="info" show_close_icon="false">
+        Masking forces the field to <code class="inline">type="text"</code> so formatted values (separators and letters)
+        are preserved, so you don't need to set <code class="inline">numeric="true"</code> on a masked field.
+    </x-bladewind::alert>
+
     <h2 id="labels-placeholders">Inputs With Labels</h2>
     <p>
         You can display the BladewindUI textbox with labels. Labels present themselves as placeholders but jump to the top border of the textbox when that field has focus.
@@ -713,6 +850,36 @@
             </td>
         </tr>
         <tr>
+            <td>mask</td>
+            <td><em>blank</em></td>
+            <td>Static mask template using the wildcards <code class="inline">9</code> (digit), <code class="inline">a</code> (letter) and <code class="inline">*</code> (alphanumeric). Every other character is a literal that is inserted automatically. Example: <code class="inline">mask="(999) 999-9999"</code>.</td>
+        </tr>
+        <tr>
+            <td>dynamicMask</td>
+            <td>null</td>
+            <td>A dynamic mask for formats that change as the user types. Use the built-in <code class="inline">creditCard</code>, or the name of your own global JavaScript function that receives the current value and returns a mask template. See <a href="#dynamic-mask">Dynamic masks</a>.</td>
+        </tr>
+        <tr>
+            <td>money</td>
+            <td>false</td>
+            <td>Format the field as a money input — groups thousands and fixes the decimal places.<br /><code class="inline">true</code> <code class="inline">false</code></td>
+        </tr>
+        <tr>
+            <td><span class="sm:hidden">money Decimal Separator</span><span class="sm:block hidden">moneyDecimalSeparator</span></td>
+            <td>.</td>
+            <td>Character used to separate the decimal part when <code class="inline">money="true"</code>.</td>
+        </tr>
+        <tr>
+            <td><span class="sm:hidden">money Thousands Separator</span><span class="sm:block hidden">moneyThousandsSeparator</span></td>
+            <td>,</td>
+            <td>Character used to group thousands when <code class="inline">money="true"</code>.</td>
+        </tr>
+        <tr>
+            <td>moneyPrecision</td>
+            <td>2</td>
+            <td>Number of decimal places allowed when <code class="inline">money="true"</code>. Set to <code class="inline">0</code> to disable decimals.</td>
+        </tr>
+        <tr>
             <td>prefix</td>
             <td>blank</td>
             <td>
@@ -878,6 +1045,9 @@
             <div class="flex items-center pl-5"><div class="dot"></div><a href="#reveal-password">Reveal passwords</a></div>
             <div class="flex items-center"><div class="dot"></div><a href="#numeric">Numeric Input</a></div>
             <div class="flex items-center pl-5"><div class="dot"></div><a href="#min-max">Min and max validations</a></div>
+            <div class="flex items-center"><div class="dot"></div><a href="#masking">Input masking</a></div>
+            <div class="flex items-center pl-5"><div class="dot"></div><a href="#dynamic-mask">Dynamic masks</a></div>
+            <div class="flex items-center pl-5"><div class="dot"></div><a href="#money-mask">Money inputs</a></div>
             <div class="flex items-center"><div class="dot"></div><a href="#labels-placeholders">Labels & Placeholders</a></div>
             <div class="flex items-center"><div class="dot"></div><a href="#required">Required Input Fields</a></div>
             <div class="flex items-center"><div class="dot"></div><a href="#events-validations">Events & Validations</a></div>
@@ -895,6 +1065,13 @@
     <x-slot name="scripts">
         <script>
             selectNavigationItem('.component-input');
+
+            // custom dynamicMask example used in the Input Masking section
+            // (the creditCard mask is built into BladewindUI and needs no JS)
+            function zipCode(input) {
+                const digits = input.replace(/\D/g, '');
+                return digits.length <= 5 ? '99999' : '99999-9999';
+            }
 
             domEl('.signup-form').addEventListener('submit', function (e){
                 e.preventDefault();

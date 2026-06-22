@@ -7,6 +7,17 @@ url: /components
 
 BladewindUI is a collection of Laravel Blade components. Each file in this directory documents one component with its usage, examples, and full attribute reference.
 
+## Guides
+
+Start here for installation, configuration, and theming.
+
+| Guide | File |
+|---|---|
+| Installation & Getting Started | [installation.md](installation.md) |
+| Customizing BladewindUI | [customization.md](customization.md) |
+| Theme Colours | [colours.md](colours.md) |
+| Dark Mode Support | [dark-mode.md](dark-mode.md) |
+
 ## Component List
 
 | Component | Tag | File |
@@ -43,6 +54,7 @@ BladewindUI is a collection of Laravel Blade components. Each file in this direc
 | Select | `x-bladewind::select` | [select.md](select.md) |
 | Shimmer | `x-bladewind::shimmer` | [shimmer.md](shimmer.md) |
 | Slider | `x-bladewind::slider` | [slider.md](slider.md) |
+| Sortable | `x-bladewind::sortable` | [sortable.md](sortable.md) |
 | Spinner | `x-bladewind::spinner` | [spinner.md](spinner.md) |
 | Statistic | `x-bladewind::statistic` | [statistic.md](statistic.md) |
 | Tab | `x-bladewind::tab` | [tab.md](tab.md) |

@@ -21,8 +21,10 @@
     <ul class="list-disc pl-6 space-y-2">
         <li>
             <strong>Resources</strong> — one resource per component (e.g. <code class="inline">bladewindui://docs/button</code>),
-            plus an index at <code class="inline">bladewindui://docs/index</code>.
-            Each resource is the full Markdown documentation for that component including usage examples and attribute tables.
+            plus guide resources for <a href="/install">installation</a>, <a href="/customize">customization</a>,
+            <a href="/customize/colours">theme colours</a> and <a href="/customize/darkmode">dark mode</a>
+            (e.g. <code class="inline">bladewindui://docs/installation</code>), and an index at <code class="inline">bladewindui://docs/index</code>.
+            Each resource is the full Markdown documentation including usage examples and attribute tables.
         </li>
         <li>
             <strong>Tools</strong> — three callable tools the AI can invoke:
@@ -120,7 +122,7 @@
         </x-slot>
         <tr>
             <td nowrap="nowrap"><code class="inline">list_components</code></td>
-            <td>Returns every component with its Blade tag and resource URI.</td>
+            <td>Returns every component with its Blade tag and resource URI, followed by the installation, customization and theming guides.</td>
             <td>none</td>
         </tr>
         <tr>
@@ -143,6 +145,8 @@
         <li><em>"What attributes does the filepicker accept?"</em></li>
         <li><em>"Show me a BladewindUI modal that confirms a destructive action."</em></li>
         <li><em>"Search BladewindUI docs for anything related to dark mode."</em></li>
+        <li><em>"How do I install BladewindUI and publish its assets?"</em></li>
+        <li><em>"How do I change the primary theme colour in BladewindUI?"</em></li>
         <li><em>"Generate a BladewindUI dashboard card with a statistic and an icon."</em></li>
     </ul>
 

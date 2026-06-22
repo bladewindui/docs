@@ -6,7 +6,7 @@
         This component is a wrapper for the very popular <a href="https://pqina.nl/filepond/" target="_blank">Filepond</a> filepicker project by PQINA. We have tried to include the most important features Filepond offers.
         Most important here refers to the features applicable to most projects and serves most use-cases. The component allows both dragging and dropping of files on the control as well as browsing for files using the browser's default file picker.
     </p>
-    <x-bladewind::filepicker/>
+    <x-bladewind::filepicker required="true" />
 
     <pre class="language-markup">
         <code>
@@ -413,7 +413,7 @@ class FileUploadController extends Controller
     <br />
     <form method="POST" action="/manual-upload" enctype="multipart/form-data" target="_blank" class="text-center">
         @csrf
-        <x-bladewind::filepicker name="manual_upload[]" max_file_size="1mb" max_files="3" />
+        <x-bladewind::filepicker required="true" name="manual_upload[]" max_file_size="1mb" max_files="3" class="border-red-200" />
         <x-bladewind::button can_submit="true">Upload Files</x-bladewind::button>
     </form>
 <br />
@@ -494,7 +494,7 @@ class FileUploadController extends Controller
     <br />
     <form method="POST" action="/base64-upload" enctype="multipart/form-data" target="_blank" class="text-center">
         @csrf
-        <x-bladewind::filepicker name="base64" max_file_size="1mb" max_files="3" :base64="true" />
+        <x-bladewind::filepicker name="base64" max_file_size="1mb" max_files="3" :base64="true" required="true" />
         <x-bladewind::button can_submit="true">Upload Files</x-bladewind::button>
     </form>
 <br />

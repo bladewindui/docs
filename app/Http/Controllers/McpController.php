@@ -123,16 +123,19 @@ class McpController extends Controller
             ];
         }
 
-        // One resource per component file
+        // One resource per component / guide file
         foreach ($files as $slug => $path) {
             if ($slug === 'index') continue;
 
-            $title = $this->extractTitle($path) ?? $this->slugToTitle($slug);
+            $title   = $this->extractTitle($path) ?? $this->slugToTitle($slug);
+            $isGuide = $this->extractFrontmatter($path, 'component') === null;
 
             $resources[] = [
                 'uri'         => self::URI_SCHEME . $slug,
                 'name'        => $title,
-                'description' => "BladewindUI {$title} documentation — usage, examples, and attribute reference.",
+                'description' => $isGuide
+                    ? "BladewindUI {$title} — installation, configuration, and theming guide."
+                    : "BladewindUI {$title} documentation — usage, examples, and attribute reference.",
                 'mimeType'    => 'text/markdown',
             ];
         }
@@ -226,21 +229,33 @@ class McpController extends Controller
 
     private function toolListComponents(mixed $id): array
     {
-        $files  = $this->getMarkdownFiles();
-        $output = [];
+        $files      = $this->getMarkdownFiles();
+        $components = [];
+        $guides     = [];
 
         foreach ($files as $slug => $path) {
             if ($slug === 'index') continue;
 
             $title     = $this->extractTitle($path) ?? $this->slugToTitle($slug);
-            $component = $this->extractFrontmatter($path, 'component') ?? "x-bladewind::{$slug}";
+            $component = $this->extractFrontmatter($path, 'component');
 
-            $output[] = "- **{$title}** — `{$component}` — `bladewindui://docs/{$slug}`";
+            // Files without a `component` frontmatter are guides, not components.
+            if ($component === null) {
+                $guides[] = "- **{$title}** — `bladewindui://docs/{$slug}`";
+            } else {
+                $components[] = "- **{$title}** — `{$component}` — `bladewindui://docs/{$slug}`";
+            }
         }
 
-        sort($output);
+        sort($components);
+        sort($guides);
 
-        return $this->toolResult($id, implode("\n", $output));
+        $output = implode("\n", $components);
+        if (!empty($guides)) {
+            $output .= "\n\n## Guides\n\n" . implode("\n", $guides);
+        }
+
+        return $this->toolResult($id, $output);
     }
 
     private function toolGetComponentDocs(mixed $id, array $args): array
@@ -300,11 +315,11 @@ class McpController extends Controller
         }
 
         if (empty($matches)) {
-            return $this->toolResult($id, "No components found matching \"{$query}\".");
+            return $this->toolResult($id, "No results found matching \"{$query}\".");
         }
 
         $count  = count($matches);
-        $header = "Found {$count} component" . ($count !== 1 ? 's' : '') . " matching \"{$query}\":\n\n";
+        $header = "Found {$count} result" . ($count !== 1 ? 's' : '') . " matching \"{$query}\":\n\n";
 
         return $this->toolResult($id, $header . implode("\n\n---\n\n", $matches));
     }

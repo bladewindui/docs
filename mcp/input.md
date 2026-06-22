@@ -59,6 +59,74 @@ You may want users to enter a minimum or maximum number when using the numeric i
     error_message="Maximum value must be 12" />
 ```
 
+## Input Masking
+
+Masking guides users into a fixed format as they type — phone numbers, dates, credit cards, money, and more. It is modelled on the [Alpine.js mask plugin](https://alpinejs.dev/plugins/mask). Build a template using these wildcards; every other character is a literal that is inserted automatically.
+
+| Wildcard | Matches |
+|---|---|
+| `9` | Any digit (0-9) |
+| `a` | Any letter (a-z, A-Z) |
+| `*` | Any alphanumeric character |
+
+Pass the template to the `mask` attribute. The examples below cover all three wildcard types.
+
+```blade
+{{-- 9 → any digit --}}
+<x-bladewind::input name="phone" mask="(999) 999-9999" />
+<x-bladewind::input name="dob" mask="99/99/9999" placeholder="MM/DD/YYYY" />
+
+{{-- a → any letter (mixed here with digits) --}}
+<x-bladewind::input name="postcode" mask="a9a 9a9" placeholder="A9A 9A9" />
+
+{{-- * → any letter or digit --}}
+<x-bladewind::input name="key" mask="****-****-****" placeholder="XXXX-XXXX-XXXX" />
+```
+
+### Dynamic Masks
+
+When the format depends on what has been typed, `dynamicMask` chooses a different mask template as the user types.
+
+**Built-in: credit cards.** BladewindUI ships with a built-in `creditCard` dynamic mask that detects the card type and switches between American Express (4-6-5), Diners Club (4-6-4) and the standard Visa / Mastercard / Discover format (4-4-4-4). No JavaScript required.
+
+```blade
+<x-bladewind::input name="card" dynamicMask="creditCard" />
+```
+
+**Custom dynamic masks.** Point `dynamicMask` at the name of a global JavaScript function that receives the current value and returns a mask template. The example below masks a US ZIP code, expanding to ZIP+4 once more than five digits are entered.
+
+```blade
+<x-bladewind::input name="zip" dynamicMask="zipCode" />
+```
+
+```javascript
+function zipCode(input) {
+    const digits = input.replace(/\D/g, '');
+    return digits.length <= 5
+        ? '99999'           // ZIP
+        : '99999-9999';     // ZIP+4
+}
+```
+
+A global function with the same name as a built-in (e.g. your own `creditCard`) takes precedence, so you can override the built-ins when needed.
+
+### Money Inputs
+
+Set `money="true"` to format the field as an amount — thousands are grouped and the decimal places are fixed. Customise the separators and precision with `moneyThousandsSeparator`, `moneyDecimalSeparator` and `moneyPrecision` (set precision to `0` to disable decimals).
+
+```blade
+<x-bladewind::input name="price" money="true" />
+
+<x-bladewind::input
+    name="price_eu"
+    money="true"
+    moneyThousandsSeparator="."
+    moneyDecimalSeparator=","
+    moneyPrecision="2" />
+```
+
+Masking forces the field to `type="text"` so formatted values (separators and letters) are preserved — you don't need `numeric="true"` on a masked field.
+
 ## Inputs With Labels
 
 You can display the BladewindUI textbox with labels. Labels present themselves as placeholders but jump to the top border of the textbox when that field has focus. This is a nice way to build compact looking forms without having form labels in the way. If you prefer to create and style your own form labels, simply ignore the `label` attribute and use the `placeholder` attribute instead.
@@ -363,6 +431,12 @@ The input field comes in sizes to match the various button sizes. This is useful
 | error_heading | Error | Only used when displaying validation errors using the Notification component. Provides a way to specify a translatable heading for the error. |
 | selected_value | _(blank)_ | Default value to display in the input element. Useful when in edit mode. |
 | with_dots | true | Mostly relevant if `numeric="true"`. Determines if numeric values can contain dots or not. `true` \| `false` |
+| mask | _(blank)_ | Static mask template using the wildcards `9` (digit), `a` (letter) and `*` (alphanumeric). Every other character is a literal that is inserted automatically. e.g. `mask="(999) 999-9999"`. |
+| dynamicMask | null | A dynamic mask for formats that change as the user types. Use the built-in `creditCard`, or the name of your own global JavaScript function that receives the current value and returns a mask template. |
+| money | false | Format the field as a money input — groups thousands and fixes the decimal places. `true` \| `false` |
+| moneyDecimalSeparator | . | Character used to separate the decimal part when `money="true"`. |
+| moneyThousandsSeparator | , | Character used to group thousands when `money="true"`. |
+| moneyPrecision | 2 | Number of decimal places allowed when `money="true"`. Set to `0` to disable decimals. |
 | prefix | blank | Specify the prefix for the input field. |
 | prefix_is_icon | false | If prefix is specified, is it an icon. By default prefixes are treated as text. `true` \| `false` |
 | prefix_icon_type | outline | If an icon is used as a prefix, should it be a solid or outline icon. `outline` \| `solid` |

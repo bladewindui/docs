@@ -35,11 +35,6 @@ add('shared_dirs', [
     'storage',
 ]);
 
-add('writable_dirs', [
-    'bootstrap/cache',
-    'storage',
-]);
-
 set('writable_mode', 'chmod');
 set('writable_chmod_mode', '0775');
 set('writable_chmod_recursive', true);

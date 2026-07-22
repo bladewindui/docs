@@ -9,7 +9,7 @@
         "php": "^8.4",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.9",
-        "mkocansey/bladewind": "~4.1"
+        "mkocansey/bladewind": "~4.2"
     },
     "require-dev": {
         "deployer/deployer": "^7.5",

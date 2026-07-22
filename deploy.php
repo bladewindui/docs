@@ -41,8 +41,9 @@ add('writable_dirs', [
 ]);
 
 set('writable_mode', 'chmod');
-set('writable_chmod_mode', 'ug=rwx,o=rx');
-set('writable_recursive', true);
+set('writable_chmod_mode', '0775');
+set('writable_chmod_recursive', true);
+set('writable_use_sudo', false);
 
 /*
 |--------------------------------------------------------------------------

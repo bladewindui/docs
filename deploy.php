@@ -84,12 +84,16 @@ set('node_version', '20');
 desc('Install frontend dependencies and build production assets');
 task('deploy:assets', function (): void {
     within('{{release_path}}', function (): void {
-        $nvm = get('nvm');
-        $nodeVersion = get('node_version');
+        run('node --version');
+        run('npm --version');
 
-        run("{$nvm} && nvm install {$nodeVersion}");
-        run("{$nvm} && nvm use {$nodeVersion} && npm ci");
-        run("{$nvm} && nvm use {$nodeVersion} && npm run build");
+        if (test('[ -f package-lock.json ]')) {
+            run('npm ci --no-audit --no-fund');
+        } else {
+            run('npm install --no-audit --no-fund');
+        }
+
+        run('npm run build');
     });
 });
 

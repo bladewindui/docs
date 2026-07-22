@@ -1,0 +1,45 @@
+name: Deploy
+
+# Deploys to production when a GitHub Release is published
+# or manually from the Actions tab.
+on:
+  release:
+    types:
+      - published
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Prevent overlapping production deployments.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout release
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Deploy with Deployer
+        uses: deployphp/action@v1.0.26
+        with:
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+          # This is the custom CI entry task defined in deploy.php.
+          # It executes the production deployment without prompting
+          # for interactive confirmation.
+          dep: config production
+
+          verbosity: -vvv

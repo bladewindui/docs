@@ -53,7 +53,7 @@ set('writable_recursive', true);
 host('production')
     ->setHostname('bladewindui.com')
     ->setRemoteUser('mkocansey')
-    ->setBranch('main')
+    ->set('branch', 'main')
     ->setDeployPath('/var/www/html/{{application}}')
     ->setLabels([
         'stage' => 'production',

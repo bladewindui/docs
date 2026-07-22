@@ -32,7 +32,7 @@ jobs:
           persist-credentials: false
 
       - name: Deploy with Deployer
-        uses: deployphp/action@v1
+        uses: deployphp/action@v1.0.26
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}

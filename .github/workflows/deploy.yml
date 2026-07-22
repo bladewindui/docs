@@ -12,7 +12,7 @@ on:
 permissions:
   contents: read
 
-# Prevent multiple production deployments from running simultaneously.
+# Prevent overlapping production deployments.
 concurrency:
   group: deploy-production
   cancel-in-progress: false
@@ -25,13 +25,21 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout release
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Deploy with Deployer
         uses: deployphp/action@v1
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          dep: deploy production
+
+          # This is the custom CI entry task defined in deploy.php.
+          # It executes the production deployment without prompting
+          # for interactive confirmation.
+          dep: config production
+
           verbosity: -vvv

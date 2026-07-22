@@ -40,6 +40,6 @@ jobs:
           # This is the custom CI entry task defined in deploy.php.
           # It executes the production deployment without prompting
           # for interactive confirmation.
-          dep: deploy production
+          dep: "deploy production"
 
           verbosity: -vvv

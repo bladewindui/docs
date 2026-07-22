@@ -133,6 +133,7 @@ desc('Deploy Bladewind documentation to production');
 task('deploy', [
     'deploy:prepare',
     'deploy:vendors',
+    'artisan:publish-bladewind-assets',
     'artisan:storage:link',
     'artisan:migrate',
     'artisan:optimize',
@@ -142,20 +143,12 @@ task('deploy', [
     'php-fpm:reload',
 ]);
 
-/*
-|--------------------------------------------------------------------------
-| Optional interactive local deployment
-|--------------------------------------------------------------------------
-|
-| Use:
-|
-|   dep build production
-|
-| GitHub Actions should use:
-|
-|   dep deploy production
-|
-*/
+desc('Publish Bladewind UI public assets');
+task('artisan:publish-bladewind-assets', function (): void {
+    within('{{release_path}}', function (): void {
+        run('php artisan vendor:publish --tag=bladewind-public --force');
+    });
+});
 
 desc('Confirm and deploy interactively');
 task('build', function (): void {

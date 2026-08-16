@@ -119,9 +119,12 @@ task('deploy:verify', function (): void {
     }
 });
 
+// sudoers grants NOPASSWD for /usr/sbin/service but not for systemctl,
+// so use service here or the reload prompts for a password and fails
+// under CI, where there is no TTY to answer it.
 desc('Reload PHP-FPM');
 task('php-fpm:reload', function (): void {
-    run('sudo /usr/bin/systemctl reload php8.4-fpm');
+    run('sudo /usr/sbin/service php8.4-fpm reload');
 });
 
 /*

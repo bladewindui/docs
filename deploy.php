@@ -17,6 +17,7 @@ set('repository', 'git@github.com:mkocansey/bladewind-docs.git');
 set('branch', 'main');
 
 set('keep_releases', 3);
+set('node_path', '/home/mkocansey/.nvm/versions/node/v22.23.1/bin');
 
 set('composer_options', implode(' ', [
     '--no-dev',
@@ -79,16 +80,18 @@ set('node_version', '20');
 desc('Install frontend dependencies and build production assets');
 task('deploy:assets', function (): void {
     within('{{release_path}}', function (): void {
-        run('node --version');
-        run('npm --version');
+        $nodePath = '/home/mkocansey/.nvm/versions/node/v22.23.1/bin';
+
+        run("export PATH={$nodePath}:\$PATH && node --version");
+        run("export PATH={$nodePath}:\$PATH && npm --version");
 
         if (test('[ -f package-lock.json ]')) {
-            run('npm ci --no-audit --no-fund');
+            run("export PATH={$nodePath}:\$PATH && npm ci --no-audit --no-fund");
         } else {
-            run('npm install --no-audit --no-fund');
+            run("export PATH={$nodePath}:\$PATH && npm install --no-audit --no-fund");
         }
 
-        run('npm run build');
+        run("export PATH={$nodePath}:\$PATH && npm run build");
     });
 });
 

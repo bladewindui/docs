@@ -36,10 +36,13 @@ add('shared_dirs', [
     'storage',
 ]);
 
-set('writable_mode', 'chmod');
-set('writable_chmod_mode', '0775');
-set('writable_chmod_recursive', true);
-set('writable_use_sudo', false);
+// php-fpm runs as www-data, which is not a member of the deploy user's
+// group. Hand the writable dirs to the www-data group instead of relying
+// on chmod alone, or the web server cannot write logs, sessions or views.
+set('writable_mode', 'chgrp');
+set('http_group', 'www-data');
+set('writable_recursive', true);
+set('writable_use_sudo', true);
 
 /*
 |--------------------------------------------------------------------------

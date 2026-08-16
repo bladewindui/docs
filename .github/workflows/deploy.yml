@@ -1,8 +1,12 @@
 name: Deploy
 
-# Deploys to production when a GitHub Release is published
-# or manually from the Actions tab.
+# Deploys to production when a commit lands on main (merge or direct push),
+# when a GitHub Release is published, or manually from the Actions tab.
 on:
+  push:
+    branches:
+      - main
+
   release:
     types:
       - published

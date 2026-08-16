@@ -15,11 +15,11 @@
     <p>
         @php
             $countries = [
-                [ 'label' => 'Benin', 'value' => 'bj' ],
-                [ 'label' => 'Burkina Faso', 'value' => 'bf' ],
-                [ 'label' => 'Ghana', 'value' => 'gh' ],
-                [ 'label' => 'Nigeria', 'value' => 'ng' ],
-                [ 'label' => 'Kenya', 'value' => 'ke' ]
+                [ 'label' => 'Benin', 'value' => 'bj', 'description' => 'A francophone African country' ],
+                [ 'label' => 'Burkina Faso', 'value' => 'bf', 'description' => 'Sits right above Ghana to the north' ],
+                [ 'label' => 'Ghana', 'value' => 'gh', 'description' => 'Known as the most peaceful in Africa' ],
+                [ 'label' => 'Nigeria', 'value' => 'ng', 'description' => 'Has a couple of fintech unicorns on the continent' ],
+                [ 'label' => 'Kenya', 'value' => 'ke', 'description' => 'Has a vibrant tech hub in East Africa' ]
             ];
             $countries_mixed_keys = [
                 [ 'country' => 'Benin', 'code' => 'bj' ],
@@ -254,6 +254,31 @@
     :data="$countries" /&gt;
 </code>
 </pre>
+    <link href="{{ asset('vendor/bladewind/css/flags.css') }}" rel="stylesheet" />
+    <h2 id="descriptions">With Descriptions</h2>
+    <p>
+        The select component can accept a second line that helps to provide more context to the label.
+        This can be achieved by specifying the <code class="inline text-red-500">description_key</code> attribute on the select. This should be the name of the key in your array that has the description.
+        If you are using the select component without dynamic data (<code class="inline text-red-500">date="manual"</code>), you can specify the description for each option by using the <code class="inline text-red-500">description</code> attribute.
+        Descriptions are only displayed in the item list, not when an item is selected.
+    </p>
+    <p>
+        Still working with our <code class="inline text-red-500">$countries</code> array from above, our select code will now be
+    </p>
+    <p>
+        <x-bladewind::select name="country_desc" data="{{json_encode($countries)}}" flag_key="value" description_key="description" />
+    </p>
+<pre class="language-markup line-numbers" data-line="5">
+<code>
+&lt;x-bladewind::select
+    name="country"
+    label_key="country"
+    value_key="code"
+    flag_key="code"
+    description_key="description"
+    :data="$countries" /&gt;
+</code>
+</pre>
 
     <h2 id="flags">With Country Flags</h2>
     <p>
@@ -265,7 +290,6 @@
     <p>
         Still working with our <code class="inline text-red-500">$countries</code> array from above, our select code will now be
     </p>
-    <link href="{{ asset('vendor/bladewind/css/flags.css') }}" rel="stylesheet" />
     <p>
         <x-bladewind::select name="country3" data="{{json_encode($countries)}}" flag_key="value" />
     </p>
@@ -1507,6 +1531,7 @@
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#required">Required field</a></div>
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#disabled">Disabled</a></div>
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#readonly">Readonly</a></div>
+    <div class="flex items-center"><div class="dot"></div><a href="#descriptions">With descriptions</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#flags">With country flags</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#images">With images</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#searchable">Searchable select</a></div>

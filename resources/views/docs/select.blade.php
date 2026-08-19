@@ -1251,6 +1251,59 @@
             &lt;/select&gt;
         </code>
     </pre>
+    <h2 id="form-state">Laravel Form State</h2>
+    <p>
+        When validation fails, Laravel redirects back with the submitted values flashed to the
+        session and the messages in <code class="inline">$errors</code>. The Select component
+        can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
+        and an error block on every single field.
+    </p>
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::select
+    name="country"
+    label="Country"
+    :data="$countries"
+    fill_from_old="true"
+    show_validation_error="true" /&gt;
+        </code>
+    </pre>
+    <p>
+        <code class="inline">fill_from_old</code> repopulates the field from
+        <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
+        the field its error state and renders <code class="inline">$errors-&gt;first()</code>
+        underneath it. Add <code class="inline">error_bag</code> if you validate into a named bag.
+    </p>
+    <p>
+        A <code class="inline">multiple</code> select gets back an array from
+        <code class="inline">old()</code> and re-selects every one of the previous choices. The
+        error state is applied to the select trigger, since that is the element carrying the border.
+    </p>
+    <x-bladewind::alert type="warning" show_close_icon="false">
+        Both are <b>off by default</b>. If your form already prints its own validation messages,
+        switching this on without removing them would print every message twice.
+    </x-bladewind::alert>
+
+    <h3 id="form-state-globally">Turning it on for every form</h3>
+    <p>
+        Rather than setting the attributes field by field, set them once in your
+        <code class="inline">config/bladewind.php</code> and every form component follows.
+    </p>
+    <pre class="language-php line-numbers">
+        <code>
+// config/bladewind.php
+'forms' =&gt; [
+    'fill_from_old' =&gt; true,
+    'show_validation_error' =&gt; true,
+    'error_bag' =&gt; null,
+],
+        </code>
+    </pre>
+    <p>
+        An attribute on a single field always wins over the config, so you can opt one field out
+        with <code class="inline">show_validation_error="false"</code>.
+    </p>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Dropdown component.</p>
     @include('docs/announcement')
@@ -1434,6 +1487,34 @@
             <td>null</td>
             <td>Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your <code class="inline">nonce</code> value in the <code class="inline">config/bladewind.php</code> file under the "script" key. This value will be used everywhere nonce is required. </td>
         </tr>
+        <tr>
+            <td>fill_from_old</td>
+            <td>false</td>
+            <td>
+                Repopulate the field from <code class="inline">old()</code> when Laravel redirects
+                back after a failed validation. Defaults to the
+                <code class="inline">bladewind.forms.fill_from_old</code> config value.<br />
+                <code class="inline">true</code> <code class="inline">false</code>
+            </td>
+        </tr>
+        <tr>
+            <td>show_validation_error</td>
+            <td>false</td>
+            <td>
+                Give the field its error state and render <code class="inline">$errors-&gt;first()</code>
+                beneath it. Defaults to the
+                <code class="inline">bladewind.forms.show_validation_error</code> config value.<br />
+                <code class="inline">true</code> <code class="inline">false</code>
+            </td>
+        </tr>
+        <tr>
+            <td>error_bag</td>
+            <td><em>null</em></td>
+            <td>
+                Which error bag to read when <code class="inline">show_validation_error</code> is on.
+                Leave it unset to use Laravel's default bag.
+            </td>
+        </tr>
     </x-bladewind::table>
 
 
@@ -1548,6 +1629,7 @@
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#another-select">Filter a Select component <br />based on the value of <br />another Select component</a></div>
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#another-value">Filter a Select component <br />based on some value</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#native">Native select</a></div>
+    <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
 </x-slot:side_nav>
 <x-slot name="scripts">

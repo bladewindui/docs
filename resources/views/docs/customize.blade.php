@@ -153,11 +153,59 @@
     </x-bladewind::alert>
     <pre class="lang-bash"><code>php artisan config:clear</code></pre>
     <br />
+
+    <h2 id="form-state">Laravel Form State</h2>
+    <p>
+        One block in the same file turns on form-state handling for every form component at once:
+        <code class="inline">input</code>, <code class="inline">textarea</code>,
+        <code class="inline">select</code>, <code class="inline">checkbox</code>,
+        <code class="inline">radio</code>, <code class="inline">datepicker</code> and
+        <code class="inline">filepicker</code>. Unlike the other sections here, this one is not
+        named after a component &mdash; it is shared by all of them.
+    </p>
+    <pre class="lang-php">
+    <code>
+        // config/bladewind.php
+
+    ...
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel form-state integration
+    |--------------------------------------------------------------------------
+    */
+    'forms' => [
+        // repopulate fields from old() after a failed validation
+        'fill_from_old' => true,
+
+        // give a field its error state and print $errors->first() beneath it
+        'show_validation_error' => true,
+
+        // which error bag to read. null uses Laravel's default bag
+        'error_bag' => null,
+    ],
+    ...
+    </code>
+    </pre>
+    <p>
+        With that in place a plain <code class="inline">&lt;x-bladewind::input name="email" /&gt;</code>
+        keeps whatever the user typed after a validation redirect and prints its own error message.
+        An attribute on an individual field still wins, so you can opt a single field out with
+        <code class="inline">show_validation_error="false"</code>.
+    </p>
+    <x-bladewind::alert type="warning" show_close_icon="false">
+        Both switches are <b>off by default</b> so that upgrading BladewindUI never changes what
+        your existing forms render. If your forms already print their own validation messages,
+        remove those before switching this on, or every message will appear twice.
+    </x-bladewind::alert>
+    <br />
+
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#noprefix">Remove bladewind prefix</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#change-it-all">Change everything</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#datepicker-translations">Translating the Datepicker</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#defaults">Setting global defaults</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

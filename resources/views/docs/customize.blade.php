@@ -154,6 +154,58 @@
     <pre class="lang-bash"><code>php artisan config:clear</code></pre>
     <br />
 
+    <h2 id="new-config-groups">Newer Config Groups</h2>
+    <p>
+        A few groups are worth knowing about because they are not simply a mirror of a
+        component's attributes.
+    </p>
+    <pre class="lang-php">
+    <code>
+        // config/bladewind.php
+
+    ...
+
+    'card' =&gt; [
+        // house style once, rather than on every card. border on + shadow on is
+        // the shipped pairing, but border off + shadow on is what most apps land on
+        'has_border' =&gt; false,
+        'has_shadow' =&gt; true,
+        // a padding scale, or any tailwind padding utility
+        'padding' =&gt; 'regular',
+    ],
+
+    'icon' =&gt; [
+        // tiny small regular medium big large, or a utility like size-[18px]
+        'size' =&gt; 'medium',
+    ],
+
+    'statistic' =&gt; [
+        // neutral positive negative warning info
+        'tone' =&gt; 'neutral',
+        // for metrics where down is good, like arrears or churn
+        'invert_direction' =&gt; false,
+    ],
+
+    'input_group' =&gt; [
+        // run attached controls flush against each other
+        'attached' =&gt; true,
+    ],
+
+    'pagination' =&gt; [
+        // server mode, used when the component is handed a Laravel paginator
+        'per_page_options' =&gt; [15, 30, 50],
+        'per_page_name' =&gt; 'per_page',
+        'on_each_side' =&gt; 1,
+    ],
+
+    'table' =&gt; [
+        // most apps that care about density set this
+        'divider' =&gt; 'thin',
+    ],
+    ...
+    </code>
+    </pre>
+
     <h2 id="form-state">Laravel Form State</h2>
     <p>
         One block in the same file turns on form-state handling for every form component at once:
@@ -205,6 +257,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#change-it-all">Change everything</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#datepicker-translations">Translating the Datepicker</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#defaults">Setting global defaults</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#new-config-groups">Newer config groups</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
     </x-slot:side_nav>
 

@@ -725,6 +725,11 @@
             <td>null</td>
             <td>Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your <code class="inline">nonce</code> value in the <code class="inline">config/bladewind.php</code> file under the "script" key. This value will be used everywhere nonce is required. </td>
         </tr>
+        <tr>
+            <td>trigger_label</td>
+            <td><em>blank</em></td>
+            <td>Accessible name for the trigger, exposed as <code class="inline">aria-label</code>. Worth setting whenever the trigger is only an icon, which otherwise reaches a screen reader as an unnamed control.</td>
+        </tr>
     </x-bladewind::table>
     <h3>Dropmenu Item Component Attributes</h3>
     <x-bladewind::table striped="true">

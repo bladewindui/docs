@@ -178,6 +178,11 @@
             <td>null</td>
             <td>Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your <code class="inline">nonce</code> value in the <code class="inline">config/bladewind.php</code> file under the "script" key. This value will be used everywhere nonce is required. </td>
         </tr>
+        <tr>
+            <td>aria_label</td>
+            <td>Value</td>
+            <td>Accessible name for the range input. A slider with no name is announced as an anonymous control.</td>
+        </tr>
     </x-bladewind::table>
 
     <h3>Slider with all attributes defined</h3>

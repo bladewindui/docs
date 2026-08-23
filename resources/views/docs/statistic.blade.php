@@ -168,6 +168,80 @@
         </code>
     </pre>
 
+    <h2 id="kpi">Trends, Tones And Progress</h2>
+    <p>
+        A statistic is rarely just a number. It usually needs to say whether the number is
+        good news, which way it is moving, and how far along something is. Those live on the
+        component rather than in your markup, so the same figure reads the same way on every
+        page.
+    </p>
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::statistic
+    label="Revenue"
+    number="12,400"
+    currency="GHS"
+    direction="up"
+    note="up 12% on last month" /&gt;
+        </code>
+    </pre>
+    <p>
+        <code class="inline">direction</code> draws a trend arrow beside the figure and colours
+        it: <code class="inline">up</code> is good, <code class="inline">down</code> is bad,
+        <code class="inline">flat</code> is neutral. The <code class="inline">note</code> takes
+        the same colour.
+    </p>
+
+    <h3 id="invert-direction">When Down Is Good</h3>
+    <p>
+        Plenty of metrics improve by falling &mdash; arrears, churn, cost per unit, response
+        time. Set <code class="inline">invert_direction</code> and a downward arrow turns green
+        instead of red.
+    </p>
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::statistic
+    label="Arrears"
+    number="1,204"
+    direction="down"
+    invert_direction="true"
+    note="down 8% this week" /&gt;
+        </code>
+    </pre>
+
+    <h3 id="tones">Tones</h3>
+    <p>
+        <code class="inline">tone</code> sets the colour explicitly and always wins over the
+        direction. Available tones are <code class="inline">neutral</code>,
+        <code class="inline">positive</code>, <code class="inline">negative</code>,
+        <code class="inline">warning</code> and <code class="inline">info</code>.
+    </p>
+    <x-bladewind::alert type="info" show_close_icon="false">
+        The tone &rarr; colour map is owned by BladewindUI, on purpose. Keeping it in the
+        component is what stops the same neutral sentence rendering as a warning on one page
+        and as description on another.
+    </x-bladewind::alert>
+
+    <h3 id="hints-progress">Hints And Progress Bars</h3>
+    <p>
+        <code class="inline">hint</code> adds a small marker beside the label with explanatory
+        text on hover &mdash; useful when a metric needs defining and the label has no room.
+        <code class="inline">progress</code> takes a number from 0 to 100 and draws a bar in
+        place of the note, tinted with the same tone. Out-of-range values are clamped and a
+        non-numeric one is ignored.
+    </p>
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::statistic
+    label="Collections"
+    number="72%"
+    hint="Invoices settled within 30 days"
+    tone="positive"
+    progress="72"
+    progress_label="of monthly target" /&gt;
+        </code>
+    </pre>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Statistic component.</p>
     @include('docs/announcement')
@@ -244,6 +318,41 @@
             <td>bw-spinner</td>
             <td>Any additional CSS you wish to add. You can add css to help you uniquely identify a statistic.</td>
         </tr>
+        <tr>
+            <td>tone</td>
+            <td>neutral</td>
+            <td>Named tone for the note and the trend arrow. The colour map is owned by the component. <br /><code class="inline">neutral</code> <code class="inline">positive</code> <code class="inline">negative</code> <code class="inline">warning</code> <code class="inline">info</code></td>
+        </tr>
+        <tr>
+            <td>direction</td>
+            <td><em>blank</em></td>
+            <td>Draws a trend arrow beside the figure and colours it by meaning. <br /><code class="inline">up</code> <code class="inline">down</code> <code class="inline">flat</code></td>
+        </tr>
+        <tr>
+            <td>invert_direction</td>
+            <td>false</td>
+            <td>For metrics where down is good &mdash; arrears, churn, cost per unit. Swaps which direction reads as positive. <br /><code class="inline">true</code> <code class="inline">false</code></td>
+        </tr>
+        <tr>
+            <td>note</td>
+            <td><em>blank</em></td>
+            <td>A short sentence under the figure, coloured by the tone (or by the direction when no tone is set).</td>
+        </tr>
+        <tr>
+            <td>hint</td>
+            <td><em>blank</em></td>
+            <td>Explanatory text shown on hover beside the label.</td>
+        </tr>
+        <tr>
+            <td>progress</td>
+            <td><em>null</em></td>
+            <td>A number from 0 to 100. Draws a progress bar in place of the note, tinted with the tone. Values outside the range are clamped; a non-numeric value is ignored.</td>
+        </tr>
+        <tr>
+            <td>progress_label</td>
+            <td><em>blank</em></td>
+            <td>Caption shown above the progress bar, with the percentage on the right.</td>
+        </tr>
     </x-bladewind::table>
     <h3 class="pb-2 ">Statistic with all attributes defined</h3>
     <pre class="language-markup line-numbers">
@@ -276,6 +385,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#icons">With icons</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#currency">With currency</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#spinner">With spinners</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#kpi">Trends, tones and progress</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
     </x-slot:side_nav>
 

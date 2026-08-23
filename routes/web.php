@@ -32,6 +32,7 @@ Route::view('mcp', 'docs/mcp');
 Route::post('mcp/server', [McpController::class, 'handle']);
 Route::view('component/icon', 'docs/icon');
 Route::view('component/input', 'docs/input');
+Route::view('component/input-group', 'docs/input-group');
 Route::view('component/list-view', 'docs/list');
 Route::view('component/modal', 'docs/modal');
 Route::view('component/notification', 'docs/notification');

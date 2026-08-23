@@ -69,12 +69,50 @@
     </pre>
     <p>
         Add the JavaScript anywhere before the closing <code class="inline">&lt;/body&gt;</code> tag.
+        The <code class="inline">@@bladewindScripts</code> directive emits the tags for you.
+    </p>
+    <pre class="language-markup">
+        <code>
+            @@bladewindScripts
+        </code>
+    </pre>
+    <p>
+        That gives you <code class="inline">helpers.js</code>, which every component assumes.
+        Components with their own JavaScript take their name as an argument:
+    </p>
+    <pre class="language-markup">
+        <code>
+            @@bladewindScripts('select', 'dropmenu', 'datepicker')
+        </code>
+    </pre>
+    <p>
+        Recognised names are <code class="inline">select</code>,
+        <code class="inline">dropmenu</code>, <code class="inline">datepicker</code>,
+        <code class="inline">table</code>, <code class="inline">notification</code>,
+        <code class="inline">mask</code>, <code class="inline">animations</code> and
+        <code class="inline">sortable</code>. An unrecognised name is ignored rather than
+        breaking the page, and a nonce set in
+        <code class="inline">config('bladewind.script.nonce')</code> is applied to every tag.
+    </p>
+    <x-bladewind::alert show_close_icon="false">
+        Chart, Filepicker and the image cropper are not in that list on purpose. Those
+        components load their own dependencies when they render, so a page that does not use
+        them never fetches them.
+    </x-bladewind::alert>
+    <p>
+        Writing the tags by hand still works, if you prefer:
     </p>
     <pre class="language-markup">
         <code>
             &lt;script src="&#123;&#123; asset('vendor/bladewind/js/helpers.js') }}"&gt;&lt;/script&gt;
         </code>
     </pre>
+    <p>
+        Helper functions such as <code class="inline">showModal()</code> and
+        <code class="inline">hideModal()</code> are available on
+        <code class="inline">window</code>, so you can call them from your own scripts and
+        inline handlers without any extra wiring.
+    </p>
     <p>You are ready to use any BladewindUI component in your application.</p>
     <br />
     <p class="text-center">

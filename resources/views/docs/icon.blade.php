@@ -186,6 +186,29 @@
         </x-bladewind::alert>
     </p>
 
+    <h2 id="sizing">Sizing Icons</h2>
+    <p>
+        Use the <code class="inline">size</code> attribute rather than reaching for a utility
+        class. It takes a named size, or any Tailwind sizing utility verbatim if you need
+        something in between.
+    </p>
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::icon name="user" size="tiny" /&gt;
+&lt;x-bladewind::icon name="user" size="small" /&gt;
+&lt;x-bladewind::icon name="user" size="regular" /&gt;
+&lt;x-bladewind::icon name="user" size="medium" /&gt;   {{-- the default --}}
+&lt;x-bladewind::icon name="user" size="big" /&gt;
+&lt;x-bladewind::icon name="user" size="large" /&gt;
+&lt;x-bladewind::icon name="user" size="size-[18px]" /&gt;
+        </code>
+    </pre>
+    <p>
+        A sizing class in the <code class="inline">class</code> attribute still wins over
+        <code class="inline">size</code>. That was the only way to size an icon before this
+        attribute existed, so markup written that way keeps working unchanged.
+    </p>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Bell component.</p>
     @include('docs/announcement')
@@ -210,6 +233,11 @@
             <td>h-6 w-6 inline-block</td>
             <td>CSS classes for defining of the icon. Accepts any <a href="https://tailwindcss.com">TailwindCSS</a> classes applicable to SVGs.</td>
         </tr>
+        <tr>
+            <td>size</td>
+            <td><em>blank</em></td>
+            <td>Size of the icon. Accepts a named size or any Tailwind sizing utility, used verbatim.<br /><code class="inline">tiny</code> size-3 &nbsp; <code class="inline">small</code> size-4 &nbsp; <code class="inline">regular</code> size-5 &nbsp; <code class="inline">medium</code> size-6 &nbsp; <code class="inline">big</code> size-8 &nbsp; <code class="inline">large</code> size-10<br />A <code class="inline">size-</code>, <code class="inline">h-</code> or <code class="inline">w-</code> class in <code class="inline">class</code> takes precedence over this.</td>
+        </tr>
     </x-bladewind::table>
 
     <h3>Icon with all attributes defined</h3>
@@ -233,6 +261,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#solid-icons">Solid icons</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#svg-icons">SVG icons</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#custom-dir">Custom directory</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#sizing">Sizing icons</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
     </x-slot:side_nav>
     <x-slot name="scripts">

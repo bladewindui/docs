@@ -466,6 +466,40 @@
         </code>
     </pre>
 
+    <h2 id="padding">Padding And Radius</h2>
+    <p>
+        <code class="inline">padding</code> is a scale rather than a switch. It replaces
+        reaching for <code class="inline">!p-5</code> and friends when
+        <code class="inline">compact</code> is too tight and the default is too loose.
+    </p>
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::card padding="none"&gt;...&lt;/x-bladewind::card&gt;
+&lt;x-bladewind::card padding="tiny"&gt;...&lt;/x-bladewind::card&gt;      {{-- p-2 --}}
+&lt;x-bladewind::card padding="small"&gt;...&lt;/x-bladewind::card&gt;     {{-- p-4 --}}
+&lt;x-bladewind::card padding="regular"&gt;...&lt;/x-bladewind::card&gt;   {{-- p-6, the default --}}
+&lt;x-bladewind::card padding="medium"&gt;...&lt;/x-bladewind::card&gt;    {{-- p-8 --}}
+&lt;x-bladewind::card padding="big"&gt;...&lt;/x-bladewind::card&gt;       {{-- p-10 --}}
+&lt;x-bladewind::card padding="large"&gt;...&lt;/x-bladewind::card&gt;     {{-- p-12 --}}
+&lt;x-bladewind::card padding="p-5"&gt;...&lt;/x-bladewind::card&gt;       {{-- or a utility verbatim --}}
+        </code>
+    </pre>
+    <p>
+        <code class="inline">compact</code> and <code class="inline">no_padding</code> still
+        behave exactly as before; an explicit <code class="inline">padding</code> simply wins
+        over both.
+    </p>
+    <p>
+        <code class="inline">radius</code> also covers more ground now:
+        <code class="inline">none</code>, <code class="inline">tiny</code>,
+        <code class="inline">small</code>, <code class="inline">medium</code>,
+        <code class="inline">large</code>, <code class="inline">xl</code>,
+        <code class="inline">omg</code> and <code class="inline">full</code>. Anything that
+        already looks like a Tailwind radius utility passes straight through, so
+        <code class="inline">radius="rounded-l-none"</code> works for attaching a card to
+        something on its left.
+    </p>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Card component.</p>
     @include('docs/announcement')
@@ -528,6 +562,11 @@
             <td>class</td>
             <td>bw-card</td>
             <td>Any additional css classes can be added using this attribute. For example if you prefer to have non-rounded cards you can set <code class="inline">class="!rounded-none"</code>.</td>
+        </tr>
+        <tr>
+            <td>padding</td>
+            <td><em>blank</em></td>
+            <td>Padding scale, or any Tailwind padding utility used verbatim. Wins over <code class="inline">compact</code> and <code class="inline">no_padding</code>.<br /><code class="inline">none</code> <code class="inline">tiny</code> <code class="inline">small</code> <code class="inline">regular</code> <code class="inline">medium</code> <code class="inline">big</code> <code class="inline">large</code></td>
         </tr>
     </x-bladewind::table>
 
@@ -667,6 +706,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#examples">Practical examples</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#contact">Contact card</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#header-footer">Header and footer</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#padding">Padding and radius</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
     </x-slot:side_nav>
     <x-slot:scripts>

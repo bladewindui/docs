@@ -1570,6 +1570,66 @@
     From the example above, if we later change <code class="inline text-red-500">page_size="20"</code>, we will need to also update <code class="inline">pagination_row($loop->iteration, 20, 6)</code>.
 </p>
 
+<h2 id="server-pagination">Paginating A Laravel Query</h2>
+<p>
+    The pagination described above is client-side: it shows and hides rows already in the DOM.
+    That cannot work against a <code class="inline">LengthAwarePaginator</code>, which is how a
+    server-rendered Laravel app paginates. Hand the component a paginator and it switches to
+    server mode, rendering real links.
+</p>
+<pre class="language-php line-numbers">
+    <code>
+// in your controller
+$orders = Order::latest()-&gt;paginate(request('per_page', 15));
+    </code>
+</pre>
+<pre class="language-markup line-numbers">
+    <code>
+&lt;x-bladewind::pagination :paginator="$orders" :per_page_options="[15, 30, 50]" /&gt;
+    </code>
+</pre>
+<p>
+    You get three controls, because prev and next alone give the reader no sense of where they
+    are: a &ldquo;showing x to y of z&rdquo; summary, an optional per-page selector, and
+    windowed page numbers with the first and last page always reachable and an ellipsis
+    standing in for the gap.
+</p>
+<x-bladewind::table striped="true">
+    <x-slot name="header">
+        <th>Option</th>
+        <th>Default</th>
+        <th>Available Values</th>
+    </x-slot>
+    <tr>
+        <td>paginator</td>
+        <td><em>null</em></td>
+        <td>A Laravel paginator. Passing one switches the component to server mode. Works with <code class="inline">paginate()</code> and <code class="inline">simplePaginate()</code>.</td>
+    </tr>
+    <tr>
+        <td>per_page_options</td>
+        <td><em>empty</em></td>
+        <td>Page sizes offered in a per-page selector, e.g. <code class="inline">[15, 30, 50]</code>. Leave empty to hide the selector.</td>
+    </tr>
+    <tr>
+        <td>per_page_name</td>
+        <td>per_page</td>
+        <td>The query string parameter the per-page selector writes to.</td>
+    </tr>
+    <tr>
+        <td>on_each_side</td>
+        <td>1</td>
+        <td>How many page numbers to show either side of the current one. First and last are always shown.</td>
+    </tr>
+</x-bladewind::table>
+<p>
+    Changing the per-page selector returns to page 1, which is almost always what you want
+    &mdash; page 40 of a 15-per-page list does not exist at 50 per page.
+</p>
+<x-bladewind::alert type="info" show_close_icon="false">
+    A <code class="inline">simplePaginate()</code> result gets previous and next only, with no
+    numbers and no summary, because it does not know the total.
+</x-bladewind::alert>
+
 <h2 id="pagination-styles">Pagination Styles</h2>
 <p>
     There are three pagination styles to choose from. The default style is <code class="inline">arrows</code>. The page
@@ -1634,6 +1694,77 @@
 
 
 
+
+    <h2 id="columns">Defining Columns</h2>
+    <p>
+        Passing <code class="inline">:columns</code> gives the table a column model, so
+        alignment, width, sorting and formatting live on the column instead of being
+        hand-applied to every cell. The header and body slots stay available as the escape
+        hatch, and existing tables are unaffected.
+    </p>
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::table :columns="[
+        ['key' =&gt; 'when',   'label' =&gt; 'When',   'width' =&gt; '160px'],
+        ['key' =&gt; 'amount', 'label' =&gt; 'Amount', 'align' =&gt; 'right', 'sortable' =&gt; true],
+    ]" :rows="$rows"&gt;
+    &lt;x-slot:empty&gt;No transactions yet&lt;/x-slot:empty&gt;
+&lt;/x-bladewind::table&gt;
+        </code>
+    </pre>
+
+    <h3 id="column-keys">Column Keys</h3>
+    <x-bladewind::table striped="true">
+        <x-slot name="header">
+            <th>Key</th>
+            <th>Purpose</th>
+        </x-slot>
+        <tr><td>key</td><td>The array key to read from each row. Required.</td></tr>
+        <tr><td>label</td><td>Heading text. Defaults to the key with underscores turned into spaces.</td></tr>
+        <tr><td>align</td><td><code class="inline">left</code> <code class="inline">center</code> <code class="inline">right</code>. Applied to the heading and every cell in the column.</td></tr>
+        <tr><td>width</td><td>Any CSS width, applied to the heading as an inline style.</td></tr>
+        <tr><td>sortable</td><td>Makes the column sortable and turns on sorting for the table.</td></tr>
+        <tr><td>format</td><td>A callable receiving <code class="inline">($value, $row)</code> and returning what to render.</td></tr>
+        <tr><td>class</td><td>Extra classes for the heading and the column's cells.</td></tr>
+    </x-bladewind::table>
+
+    <h3 id="column-shorthands">Shorthands</h3>
+    <p>Most columns need none of those options, so two shorter forms are accepted.</p>
+    <pre class="language-markup line-numbers">
+        <code>
+{{-- keys only; labels are derived --}}
+&lt;x-bladewind::table :columns="['when', 'amount']" :rows="$rows" /&gt;
+
+{{-- key =&gt; label --}}
+&lt;x-bladewind::table :columns="['when' =&gt; 'Date placed', 'amount' =&gt; 'Total']" :rows="$rows" /&gt;
+        </code>
+    </pre>
+
+    <h3 id="column-format">Formatting A Column</h3>
+    <p>
+        <code class="inline">format</code> receives the whole row as well as the value, so a
+        column can render something the row does not literally contain.
+    </p>
+    <pre class="language-php line-numbers">
+        <code>
+$columns = [
+    ['key' =&gt; 'amount', 'align' =&gt; 'right',
+     'format' =&gt; fn ($value) =&gt; 'GHS ' . number_format($value, 2)],
+
+    ['key' =&gt; 'first_name', 'label' =&gt; 'Name',
+     'format' =&gt; fn ($value, $row) =&gt; $value . ' ' . $row['last_name']],
+];
+        </code>
+    </pre>
+    <p>A key missing from a row renders an empty cell rather than failing.</p>
+
+    <h3 id="empty-slot">The Empty Slot</h3>
+    <p>
+        When <code class="inline">rows</code> is empty the <code class="inline">empty</code>
+        slot renders in place of the body, spanning the full width of the table including the
+        row-number and actions columns. Without the slot you get the usual
+        <code class="inline">no_data_message</code> or empty state.
+    </p>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Table component.</p>
@@ -1879,6 +2010,21 @@
             <td>null</td>
             <td>Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your <code class="inline">nonce</code> value in the <code class="inline">config/bladewind.php</code> file under the "script" key. This value will be used everywhere nonce is required. </td>
         </tr>
+        <tr>
+            <td>columns</td>
+            <td><em>empty</em></td>
+            <td>Column model. An array of column definitions, or one of the two shorthands. Accepts the keys <code class="inline">key, label, align, width, sortable, format, class</code>. See <a href="#columns">Defining columns</a>.</td>
+        </tr>
+        <tr>
+            <td>rows</td>
+            <td><em>null</em></td>
+            <td>The rows to render against <code class="inline">columns</code>. An alias for <code class="inline">data</code>.</td>
+        </tr>
+        <tr>
+            <td>empty <em>(slot)</em></td>
+            <td><em>null</em></td>
+            <td>Rendered in place of the table body when there are no rows. Falls back to <code class="inline">no_data_message</code>.</td>
+        </tr>
     </x-bladewind::table>
 
     <h3>Table with all attributes defined</h3>
@@ -1963,8 +2109,10 @@
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#groupby">Group rows</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#sorting">Sorting <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-4" /></a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#pagination">Pagination <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-4" /></a></div>
+        <div class="flex items-center pl-5"><div class="dot"></div><a href="#server-pagination">Laravel paginators</a></div>
         <div class="flex items-center pl-10"><div class="dot"></div><a href="#custom-layout">Custom layout</a></div>
         <div class="flex items-center pl-10"><div class="dot"></div><a href="#pagination-styles">Styles</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#columns">Column model</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
     </x-slot:side_nav>
     <x-slot name="scripts">

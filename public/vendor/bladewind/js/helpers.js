@@ -37,8 +37,11 @@ const domEls = (element, scope = null) => {
         }
         return scope.querySelectorAll(element);
     }
-    const elements = document.querySelectorAll(element);
-    return elements.length ? elements : false;
+    // an empty NodeList, not false. returning false meant every
+    // `domEls(...).forEach(...)` in the library — 23 of them — was a TypeError
+    // waiting for a page where the selector happened to match nothing, and one of
+    // those runs at load time. See #595.
+    return document.querySelectorAll(element);
 };
 
 /**
@@ -489,7 +492,63 @@ const goToTab = (element, colour, scope, tabHeading = null) => {
     });
     unhide(tabContent, true);
     positionTabActiveLine(tabHeading?.closest('.bw-tab') ?? domEl(`.bw-tab-${scope}`));
+    syncTabAccessibility(scope, element);
 };
+
+/**
+ * Keep aria-selected and the roving tabindex in step with the visible selection.
+ * Only the selected tab stays in the tab order; the arrow keys reach the others.
+ */
+const syncTabAccessibility = (scope, activeName) => {
+    domEls(`.${scope}-headings li.atab`).forEach((tab) => {
+        const isActive = tab.classList.contains(`atab-${activeName}`);
+        const isDisabled = tab.getAttribute('aria-disabled') === 'true';
+
+        tab.setAttribute('aria-selected', String(isActive));
+        tab.setAttribute('tabindex', isActive && !isDisabled ? '0' : '-1');
+    });
+};
+
+/**
+ * Arrow-key navigation for a tab list, per the ARIA tabs pattern: Left/Right move
+ * between tabs, Home/End jump to the ends, and the newly focused tab is selected.
+ * Disabled tabs are skipped rather than focused and ignored.
+ */
+const enableTabKeyboardNavigation = () => {
+    domEls('[role="tablist"]').forEach((tablist) => {
+        if (tablist.dataset.bwKeyboard === '1') return;
+        tablist.dataset.bwKeyboard = '1';
+
+        tablist.addEventListener('keydown', (e) => {
+            const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+            if (!keys.includes(e.key)) return;
+
+            const tabs = [...tablist.querySelectorAll('li.atab')]
+                .filter((t) => t.getAttribute('aria-disabled') !== 'true');
+            if (tabs.length === 0) return;
+
+            const current = tabs.indexOf(document.activeElement.closest('li.atab'));
+            let next;
+
+            if (e.key === 'Home') next = tabs[0];
+            else if (e.key === 'End') next = tabs[tabs.length - 1];
+            else if (current === -1) next = tabs[0];
+            else {
+                // wrap around, which is what the pattern expects of a tab list
+                const step = e.key === 'ArrowRight' ? 1 : -1;
+                next = tabs[(current + step + tabs.length) % tabs.length];
+            }
+
+            if (!next) return;
+
+            e.preventDefault();
+            next.focus();
+            next.click();
+        });
+    });
+};
+
+document.addEventListener('DOMContentLoaded', enableTabKeyboardNavigation);
 
 /**
  * Position the animated line under the active heading in a simple tab group.
@@ -931,3 +990,73 @@ const setDatepickerValue = (elName, date) => {
     }
     input._x_model.set(date);
 };
+
+/*
+ |----------------------------------------------------------------------------
+ | Global exports
+ |----------------------------------------------------------------------------
+ |
+ | Everything above is declared with `const` at the top level of a classic
+ | script, which creates a script-scoped binding rather than a property of
+ | window. Inline handlers in component markup resolve against window, and so
+ | does anything a consumer writes in their own <script> block — which is why
+ | every project using modals ended up copying the same shim into its layout:
+ |
+ |     window.showModal = showModal;
+ |     window.hideModal = hideModal;
+ |     …
+ |
+ | Assigning them here makes that shim unnecessary. See issue #595.
+ */
+Object.assign(window, {
+    domEl,
+    dom_el,
+    domEls,
+    dom_els,
+    isEmpty,
+    isNumeric,
+    hide,
+    unhide,
+    clearErrors,
+    changeCss,
+    validateForm,
+    isNumberKey,
+    callUserFunction,
+    serialize,
+    stringContains,
+    changeCssForDomArray,
+    animateCss,
+    animateCSS,
+    showModal,
+    trapFocusInModal,
+    hideModal,
+    showButtonSpinner,
+    hideButtonSpinner,
+    showModalActionButtons,
+    hideModalActionButtons,
+    show,
+    addToStorage,
+    getFromStorage,
+    removeFromStorage,
+    goToTab,
+    syncTabAccessibility,
+    enableTabKeyboardNavigation,
+    positionTabActiveLine,
+    initialiseTabActiveLines,
+    getPrefixSuffixOffsetWidth,
+    positionPrefix,
+    positionSuffix,
+    togglePassword,
+    partition,
+    filterTable,
+    filterTableDebounced,
+    stripComma,
+    selectTag,
+    highlightSelectedTags,
+    compareDates,
+    checkMinMax,
+    makeClearable,
+    convertToBase64,
+    allowedFileSize,
+    setDatepickerValue,
+});

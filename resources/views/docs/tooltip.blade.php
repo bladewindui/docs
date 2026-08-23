@@ -87,6 +87,28 @@
         </code>
     </pre>
 
+    <h2 id="scrolling">Tooltips In Scrolling Containers</h2>
+    <p>
+        A tooltip is drawn as its own element attached to the page body and positioned against
+        its trigger, so it is never cut off by whatever the trigger happens to sit inside.
+        That matters most in tables: a wide table needs a horizontally scrolling wrapper, and
+        such a wrapper clips vertically as well &mdash; which used to swallow the tooltips on a
+        table's action icons.
+    </p>
+    <p>
+        Nothing is required of you. It applies to the Tooltip component, to the
+        <code class="inline">tip</code> on a table's action icons, and to any element you have
+        given a <code class="inline">data-tooltip</code> attribute by hand.
+    </p>
+    <x-bladewind::alert show_close_icon="false">
+        Tooltips need <code class="inline">tooltip.js</code>, which the components load for
+        you. If you are using <code class="inline">data-tooltip</code> on your own markup with
+        no BladewindUI tooltip or table on the page, add
+        <code class="inline">@@bladewindScripts('tooltip')</code> to your layout.
+        Without the script the tooltip still renders from CSS alone &mdash; it is just clipped
+        by scrolling ancestors, as it was before.
+    </x-bladewind::alert>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Tooltip component.</p>
     @include('docs/announcement')
@@ -149,6 +171,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#position">Position</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#colour">Colour</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#size">Size</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#scrolling">Tooltips in scrolling containers</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
     </x-slot:side_nav>
 

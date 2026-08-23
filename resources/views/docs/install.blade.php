@@ -131,6 +131,38 @@
         </x-bladewind::alert>
     </p>
 
+    <h2 id="csp">Content Security Policy</h2>
+    <p>
+        BladewindUI works under a strict <code class="inline">script-src</code> without
+        <code class="inline">'unsafe-inline'</code>. No component attaches its behaviour with
+        an inline <code class="inline">onclick</code> or similar &mdash; those are bound as
+        delegated listeners instead, which a CSP allows.
+    </p>
+    <p>
+        Set your nonce once and every script tag the library emits carries it:
+    </p>
+    <pre class="lang-php">
+    <code>
+        // config/bladewind.php
+
+    'script' =&gt; [
+        'nonce' =&gt; fn () =&gt; request()-&gt;attributes-&gt;get('csp-nonce'),
+    ],
+    </code>
+    </pre>
+    <p>
+        Individual components also take a <code class="inline">nonce</code> attribute if you
+        would rather pass it per component.
+    </p>
+    <x-bladewind::alert type="warning" show_close_icon="false">
+        One thing still needs <code class="inline">'unsafe-inline'</code>: attributes where
+        <em>you</em> supply the JavaScript. <code class="inline">onclick</code> on a button,
+        <code class="inline">action</code> on an icon, <code class="inline">url</code> on a
+        card, <code class="inline">click</code> on a table action icon &mdash; passing a string
+        of JavaScript is inherently inline, so the library renders it as given. Use a delegated
+        listener of your own if you need those under a strict policy.
+    </x-bladewind::alert>
+
     <h2 id="publishing">Publishing Components</h2>
     <p>
         The double-colon syntax (<code class="inline">x-bladewind::button</code>) serves views directly from the package's
@@ -451,6 +483,7 @@
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#install-group">Install a group</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#install-single">Install a single component</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#setup">First-time setup</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#csp">Content Security Policy</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#publishing">Publishing components</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#groups">Component groups</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#standalone">Standalone</a></div>

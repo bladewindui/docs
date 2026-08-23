@@ -18,6 +18,14 @@ report() {
     fail=1
 }
 
+# grep -q exits the moment it matches, which closes the pipe while the shell is
+# still writing composer.lock into it — the shell then reports "printf: write
+# error: Broken pipe" on every commit. Dropping -q and discarding stdout instead
+# makes grep read all of its input, so nothing is writing to a closed pipe.
+matches() {
+    printf '%s' "$1" | grep -E "$2" >/dev/null 2>&1
+}
+
 # Only inspect staged content, not the working tree. Keeping the dev setup in
 # your working tree is the normal state and must stay allowed.
 if git diff --cached --name-only | grep -qx 'composer.json'; then
@@ -31,7 +39,7 @@ if git diff --cached --name-only | grep -qx 'composer.json'; then
         *dev-development*) report composer.json 'mkocansey/bladewind: dev-development' ;;
     esac
 
-    if printf '%s' "$staged" | grep -Eq '"minimum-stability"[[:space:]]*:[[:space:]]*"dev"'; then
+    if matches "$staged" '"minimum-stability"[[:space:]]*:[[:space:]]*"dev"'; then
         report composer.json 'minimum-stability: dev'
     fi
 fi
@@ -43,9 +51,10 @@ if git diff --cached --name-only | grep -qx 'composer.lock'; then
         *'../bladewindui'*) report composer.lock 'path reference to ../bladewindui' ;;
     esac
 
-    if printf '%s' "$staged" | grep -Eq '"name": "mkocansey/bladewind",[[:space:]]*$'; then
-        # Confirm the pinned version is not a dev branch build.
-        if printf '%s' "$staged" | grep -A2 '"name": "mkocansey/bladewind"' | grep -q 'dev-development'; then
+    if matches "$staged" '"name": "mkocansey/bladewind",[[:space:]]*$'; then
+        # Confirm the pinned version is not a dev branch build. grep -A2 is fed
+        # into a second grep, so that one must consume its input too.
+        if printf '%s' "$staged" | grep -A2 '"name": "mkocansey/bladewind"' | grep 'dev-development' >/dev/null 2>&1; then
             report composer.lock 'mkocansey/bladewind pinned to dev-development'
         fi
     fi

@@ -67,6 +67,30 @@
             &lt;link href="&#123;&#123; asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" /&gt;
         </code>
     </pre>
+
+    <h3 id="no-preflight">If your app already has its own Tailwind build</h3>
+    <p>
+        The stylesheet above ships Tailwind's Preflight, a global reset including
+        <code class="inline">*,::before,::after &#123; border: 0 solid }</code>. That is the right
+        thing for a page whose only stylesheet is BladewindUI, and the wrong thing for an app
+        that already compiles its own Tailwind: the document gets reset twice, in an order
+        nobody controls. Use the Preflight-free variant instead.
+    </p>
+    <pre class="language-markup">
+        <code>
+            &lt;link href="&#123;&#123; asset('vendor/bladewind/css/bladewind-ui-no-preflight.min.css') }}" rel="stylesheet" /&gt;
+        </code>
+    </pre>
+    <p>
+        The component rules in the two files are identical, because both are built from one
+        shared source, so they cannot drift. The variant only drops the global reset. Tailwind's
+        forms base styles stay in, because the components are built on them.
+    </p>
+    <x-bladewind::alert show_close_icon="false">
+        Load one or the other, never both. If you are not sure which you need, start with
+        <code class="inline">bladewind-ui.min.css</code>; reach for the variant only if adding
+        BladewindUI visibly changes your own components.
+    </x-bladewind::alert>
     <p>
         Add the JavaScript anywhere before the closing <code class="inline">&lt;/body&gt;</code> tag.
         The <code class="inline">@@bladewindScripts</code> directive emits the tags for you.
@@ -89,8 +113,9 @@
         Recognised names are <code class="inline">select</code>,
         <code class="inline">dropmenu</code>, <code class="inline">datepicker</code>,
         <code class="inline">table</code>, <code class="inline">notification</code>,
-        <code class="inline">mask</code>, <code class="inline">animations</code> and
-        <code class="inline">sortable</code>. An unrecognised name is ignored rather than
+        <code class="inline">mask</code>, <code class="inline">animations</code>,
+        <code class="inline">sortable</code> and <code class="inline">tooltip</code>. An
+        unrecognised name is ignored rather than
         breaking the page, and a nonce set in
         <code class="inline">config('bladewind.script.nonce')</code> is applied to every tag.
     </p>
@@ -483,6 +508,7 @@
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#install-group">Install a group</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#install-single">Install a single component</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#setup">First-time setup</a></div>
+        <div class="flex items-center pl-5"><div class="dot"></div><a href="#no-preflight">Apps with their own Tailwind</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#csp">Content Security Policy</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#publishing">Publishing components</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#groups">Component groups</a></div>

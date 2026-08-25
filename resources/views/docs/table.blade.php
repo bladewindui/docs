@@ -896,6 +896,14 @@
         There is also the <code class="text-red-500 inline">include_columns</code> attribute that lets you specify the only columns to be displayed.
     </p>
     <p>
+        These two attributes belong to the <code class="inline text-red-500">data</code>
+        attribute described above, where the table works out its columns from the array keys
+        and these subtract from that list. If you would rather state your columns up front and
+        set their alignment, width and formatting at the same time, see
+        <a href="#columns">Defining columns</a>. The two approaches are alternatives, so you
+        would use one or the other, not both.
+    </p>
+    <p>
         If you have an array with 20 fields and you want to display 5 out of the 20 fields, it will be easier to specify the 5 columns in the <code class="inline text-red-500">include_columns</code>
         attribute rather than specifying 15 columns in the <code class="inline text-red-500">exclude_columns</code> attribute.
         Let us exclude <code class="inline">id</code> and <code class="inline">marital_status</code> from our table above.
@@ -1702,6 +1710,15 @@ $orders = Order::latest()-&gt;paginate(request('per_page', 15));
         hand-applied to every cell. The header and body slots stay available as the escape
         hatch, and existing tables are unaffected.
     </p>
+    <x-bladewind::alert type="warning" show_close_icon="false">
+        <code class="inline text-red-500">exclude_columns</code> and
+        <code class="inline text-red-500">include_columns</code> do not apply here, and are
+        ignored without warning if you pass them. They filter the headings the table works out
+        from your array keys, which is the
+        <a href="#customize-columns">Excluding and including columns</a> approach. With
+        <code class="inline">:columns</code> there is nothing to exclude, since a column
+        appears only because you listed it. Drop a column by removing it from the array.
+    </x-bladewind::alert>
     <pre class="language-markup line-numbers">
         <code>
 &lt;x-bladewind::table :columns="[

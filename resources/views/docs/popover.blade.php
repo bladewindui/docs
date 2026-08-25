@@ -163,6 +163,24 @@
         </code>
     </pre>
 
+    <h2 id="scrolling">Popovers In Scrolling Containers</h2>
+    <p>
+        The popover panel is positioned against its trigger rather than laid out inside it, so
+        it is not cut off by whatever the trigger happens to sit in. This matters most in
+        tables: a wide table needs a horizontally scrolling wrapper, and such a wrapper clips
+        vertically as well, which used to swallow any popover opened from inside one.
+    </p>
+    <p>
+        Nothing is required of you. The panel keeps the side you asked for in
+        <code class="inline text-red-500">position</code>, flips vertically when the viewport
+        cannot hold it on the requested side, and follows its trigger when you scroll. That
+        applies when what scrolls is an inner container, not just the page itself.
+    </p>
+    <x-bladewind::alert show_close_icon="false">
+        The panel is repositioned, not moved elsewhere in the page. It stays inside the popover
+        component, so your own CSS selecting it through an ancestor still matches.
+    </x-bladewind::alert>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Popover component.</p>
     @include('docs/announcement')
@@ -261,6 +279,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#position">Position</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#trigger-on">Trigger event</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#width">Width</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#scrolling">Popovers in scrolling containers</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
     </x-slot:side_nav>
 

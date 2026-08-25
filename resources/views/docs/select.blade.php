@@ -1304,6 +1304,24 @@
         with <code class="inline">show_validation_error="false"</code>.
     </p>
 
+    <h2 id="scrolling">Selects In Scrolling Containers</h2>
+    <p>
+        The dropdown list is positioned against the select rather than laid out inside it, so
+        it is not cut off by whatever the select happens to sit in. The usual culprit is a
+        table: a wide table needs a horizontally scrolling wrapper, and
+        <code class="inline">overflow-x</code> quietly clips vertically too, which used
+        to swallow the list of any select placed in a table cell.
+    </p>
+    <p>
+        Nothing is required of you. The list opens below the select, flips above it when the
+        space below cannot hold it, and follows the select when you scroll. That applies
+        when what scrolls is an inner container, not just the page itself.
+    </p>
+    <x-bladewind::alert show_close_icon="false">
+        The list is repositioned, not moved elsewhere in the page. It stays inside the select
+        component, so your own CSS selecting it through an ancestor still matches.
+    </x-bladewind::alert>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Dropdown component.</p>
     @include('docs/announcement')
@@ -1630,6 +1648,7 @@
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#another-value">Filter a Select component <br />based on some value</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#native">Native select</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
+    <div class="flex items-center"><div class="dot"></div><a href="#scrolling">Selects in scrolling containers</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
 </x-slot:side_nav>
 <x-slot name="scripts">

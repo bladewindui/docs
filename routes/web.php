@@ -64,6 +64,7 @@ Route::view('component/verification-code', 'docs/code');
 Route::view('extra/app-layouts', 'docs/app-layouts');
 Route::view('extra/error-pages', 'docs/error-pages');
 Route::view('extra/helper-functions', 'docs/helpers');
+Route::view('extra/accessibility', 'docs/accessibility');
 Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
 Route::post('/upload-delete', [FileUploadController::class, 'delete']);
 Route::post('/manual-upload', [FileUploadController::class, 'manual_upload']);

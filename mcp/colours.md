@@ -18,7 +18,7 @@ Tailwind CSS v4 moves all configuration out of `tailwind.config.js` and into you
 BladewindUI internally uses `primary` as the colour key for all component accents. Here is what the library's default theme definition looks like:
 
 ```css
-/* vendor/mkocansey/bladewind — default theme */
+/* vendor/bladewindui/bladewindui — default theme */
 @theme {
     /* primary → blue (default) */
     --color-primary-50:  #eff6ff;
@@ -109,14 +109,14 @@ Then toggle the `dark` class on your `<html>` element to switch modes. Bladewind
 
 > Consider the information below if your styles don't seem to be compiling or components appear unstyled.
 
-In Tailwind v4, class scanning is automatic for files inside your project. However, BladewindUI component files live inside `vendor/mkocansey/bladewind` and are not scanned by default. You need to add an `@source` directive so Tailwind knows to look there:
+In Tailwind v4, class scanning is automatic for files inside your project. However, BladewindUI component files live inside `vendor/bladewindui/bladewindui` and are not scanned by default. You need to add an `@source` directive so Tailwind knows to look there:
 
 ```css
 /* resources/css/app.css */
 @import "tailwindcss";
 
 /* Tell Tailwind to scan vendor BladewindUI files */
-@source "../../vendor/mkocansey/bladewind/**/*.blade.php";
+@source "../../vendor/bladewindui/bladewindui/**/*.blade.php";
 @source "../../public/vendor/bladewind/js/*.js";
 ```
 

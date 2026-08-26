@@ -4,7 +4,7 @@
         <div class="flex items-center justify-between">
             <div onclick="location.href='/'" class="cursor-pointer flex">
                 <img src="/assets/images/bw-logo-white.png" alt="logo" class="h-7" />
-                <div class="sm:hidden bg-indigo-200 opacity-60 rounded-sm tracking-wider text-[10px] font-semibold text-black absolute left-43.5 top-10 px-1">{{\Composer\InstalledVersions::getPrettyVersion('mkocansey/bladewind')}}</div>
+                <div class="sm:hidden bg-indigo-200 opacity-60 rounded-sm tracking-wider text-[10px] font-semibold text-black absolute left-43.5 top-10 px-1">{{\Composer\InstalledVersions::getPrettyVersion('bladewindui/bladewindui')}}</div>
             </div>
             <div class="text-xs sm:rtl:flex-row-reverse sm:flex sm:items-center sm:space-x-2 hidden text-white/50">
                 <span>LTR</span> <x-bladewind::toggle name="rtltr" onclick="switchDirection(dom_el('input[name=rtltr]'))" class="rtl:peer-checked:after:translate-x-full!" /> <span>RTL</span>

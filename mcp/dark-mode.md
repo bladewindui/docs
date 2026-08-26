@@ -8,7 +8,7 @@ url: /customize/darkmode
 BladewindUI ships with support for dark mode for all components. The dark mode colour palette is defined in its `tailwind.css` file as shown below.
 
 ```css
-// your-project/vendor/mkocansey/bladewind/tailwind.css
+// your-project/vendor/bladewindui/bladewindui/tailwind.css
 @theme {
     /* ... */
     --color-dark-100: #f0f1f2;

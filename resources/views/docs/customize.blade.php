@@ -100,7 +100,7 @@
     </pre>
     <p>
         To achieve this, create a <code class="inline">config/bladewind.php</code> file in the root of your project. If you installed the full
-        <code class="inline">mkocansey/bladewind</code> package you can have Laravel generate this file for you:
+        <code class="inline">bladewindui/bladewindui</code> package you can have Laravel generate this file for you:
     </p>
     <pre class="lang-bash"><code>php artisan vendor:publish --tag=bladewind-config --force</code></pre>
     <p>

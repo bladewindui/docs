@@ -23,7 +23,7 @@
     <p>
         Pull in every component at once. This is the easiest way to get started and is ideal for new projects or if you want to explore the full library.
     </p>
-    <pre class="lang-bash command-line"><code>composer require mkocansey/bladewind</code></pre>
+    <pre class="lang-bash command-line"><code>composer require bladewindui/bladewindui</code></pre>
 
     <h3 id="install-group">Install a component group</h3>
     <p>
@@ -360,7 +360,7 @@
     <h2 id="customising">Customising Defaults</h2>
     <p>
         Every attribute in every component has a project-level default you can override once and have it apply everywhere.
-        Publish the config file (available when using the full <code class="inline">mkocansey/bladewind</code> package):
+        Publish the config file (available when using the full <code class="inline">bladewindui/bladewindui</code> package):
     </p>
     <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-config</code></pre>
     <p>

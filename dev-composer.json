@@ -11,7 +11,7 @@
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "mkocansey/bladewind": "dev-development"
+        "bladewindui/bladewindui": "dev-development"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -61,7 +61,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": {
-        "mkocansey/bladewind": {
+        "bladewindui/bladewindui": {
             "type": "path",
             "url": "/Users/mkocansey/projects/kursor/bladewindui"
         }

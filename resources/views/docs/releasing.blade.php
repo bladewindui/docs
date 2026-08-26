@@ -3,31 +3,33 @@
     <x-slot:page_title>Releasing BladewindUI</x-slot:page_title>
 
     <p>
-        All work happens in <strong>this monorepo</strong>, hosted at <code class="inline">mkocansey/bladewind</code>
-        (your local clone may sit in a directory called <code class="inline">bladewindui</code> — that's just a local folder name;
-        the GitHub remote and the Packagist source are both <code class="inline">mkocansey/bladewind</code>).
+        All work happens in <strong>this monorepo</strong>, hosted at <code class="inline">bladewindui/bladewindui</code>.
         The individual package repos (<code class="inline">mkocansey/bladewind-table</code> etc.) are
         <strong>read-only mirrors</strong> — never push to them directly.
     </p>
 
     <x-bladewind::alert type="warning" show_close_icon="false">
-        <strong>Never target a split repo named <code class="inline">bladewind</code>.</strong> That name belongs to <em>this</em>
-        monorepo's own remote. A matrix entry that splits <code class="inline">packages/meta</code> into a repo called
-        <code class="inline">bladewind</code> makes the split action force-push filtered subtree history into its own parent,
-        overwriting <code class="inline">main</code> (this happened on 2026-06-08 — <code class="inline">main</code> was wiped
-        down to 3 files and had to be restored from a contributor's local clone). See the note above the (deliberately absent)
-        <code class="inline">packages/meta</code> entry in <code class="inline">split-packages.yml</code>.
+        <strong>Never target a split repo that resolves to this monorepo's own remote.</strong> A matrix entry whose
+        <code class="inline">repository_organization</code> + <code class="inline">split_repository</code> add up to the monorepo
+        itself makes the split action force-push filtered subtree history into its own parent, overwriting
+        <code class="inline">main</code> (this happened on 2026-06-08, when an entry targeted <code class="inline">bladewind</code>
+        while the monorepo lived at <code class="inline">mkocansey/bladewind</code> — <code class="inline">main</code> was wiped
+        down to 3 files and had to be restored from a contributor's local clone). <strong>The forbidden name moved with the
+        repo</strong> — it is now <code class="inline">bladewindui</code> + <code class="inline">bladewindui</code>. The splits
+        still push to the <code class="inline">mkocansey</code> org, so nothing can collide today; if they are ever moved, that
+        pairing recreates the incident. See the note above the (deliberately absent) <code class="inline">packages/meta</code>
+        entry in <code class="inline">split-packages.yml</code>.
     </x-bladewind::alert>
 
     <h2 id="root-composer">Root <code class="inline">composer.json</code> — why it is a <code class="inline">library</code> with <code class="inline">replace</code></h2>
     <p>
-        The monorepo root is named <code class="inline">mkocansey/bladewind</code> and declares <code class="inline">type: library</code>
+        The monorepo root is named <code class="inline">bladewindui/bladewindui</code> and declares <code class="inline">type: library</code>
         so that downstream projects can depend on it directly via a Composer <strong>path repository</strong> during local development:
     </p>
     <pre class="language-js line-numbers">
 <code>
 "repositories": {
-    "mkocansey/bladewind": {
+    "bladewindui/bladewindui": {
         "type": "path",
         "url": "/path/to/bladewindui"
     }
@@ -44,19 +46,93 @@
         auto-discovers them from a single path-repo install.
     </p>
     <p>
-        <strong>On Packagist</strong>, <code class="inline">mkocansey/bladewind</code> is sourced <strong>directly from this monorepo</strong>
-        (<code class="inline">github.com/mkocansey/bladewind</code>) — and has been since 2022 (versions v3.0.10 through the current
-        release all resolve to this repo's root, per Packagist's own <code class="inline">source.url</code> metadata). The root
-        <code class="inline">composer.json</code> <em>is</em> the published full-install package: its <code class="inline">replace</code>
-        block declares every granular sub-package at <code class="inline">self.version</code>, so installing
-        <code class="inline">mkocansey/bladewind</code> transparently satisfies <code class="inline">mkocansey/bladewind-button</code>,
-        <code class="inline">mkocansey/bladewind-table</code>, etc. without Composer ever touching the split repos.
+        <strong>On Packagist</strong>, <code class="inline">bladewindui/bladewindui</code> is sourced <strong>directly from this monorepo</strong>.
+        The root <code class="inline">composer.json</code> <em>is</em> the published full-install package: its
+        <code class="inline">replace</code> block declares every granular sub-package at <code class="inline">self.version</code>,
+        so installing <code class="inline">bladewindui/bladewindui</code> transparently satisfies
+        <code class="inline">mkocansey/bladewind-button</code>, <code class="inline">mkocansey/bladewind-table</code>, etc.
+        without Composer ever touching the split repos.
+    </p>
+    <p>
+        That <code class="inline">replace</code> block also declares the package's <strong>former name</strong>,
+        <code class="inline">mkocansey/bladewind</code>, at <code class="inline">self.version</code>. Anything that still
+        depends on the old name — a consuming app, or a third-party package — is satisfied by installing this one.
     </p>
     <p>
         <code class="inline">packages/meta</code> is <strong>intentionally not split</strong> into its own repo — doing so would
         require a split target literally named <code class="inline">bladewind</code>, which collides with this monorepo's own
         remote (see the warning above, and the explanatory note in <code class="inline">split-packages.yml</code> where that
         matrix entry would otherwise go).
+    </p>
+
+    <h2 id="moving">Moving from <code class="inline">mkocansey/bladewind</code></h2>
+    <p>
+        BladewindUI was originally published as <code class="inline">mkocansey/bladewind</code>. In August 2026 the package
+        moved to the <code class="inline">bladewindui</code> org as <code class="inline">bladewindui/bladewindui</code> — the
+        GitHub repo was <strong>transferred</strong> (not recreated), so its stars, watchers and issue history carried over
+        intact.
+    </p>
+    <p>
+        <strong>Only the Composer package name and the GitHub location changed.</strong> Everything a consuming app actually
+        touches stayed exactly the same:
+    </p>
+    <x-bladewind::table>
+        <x-slot name="header">
+            <th>identifier</th>
+            <th>value</th>
+        </x-slot>
+        <tr>
+            <td nowrap="nowrap">PHP namespace</td>
+            <td><code class="inline">Mkocansey\Bladewind\…</code></td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap">Blade namespace</td>
+            <td><code class="inline">bladewind</code> → <code class="inline">x-bladewind::card</code></td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap">config key</td>
+            <td><code class="inline">bladewind</code></td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap">published assets</td>
+            <td><code class="inline">public/vendor/bladewind</code></td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap">lang path</td>
+            <td><code class="inline">lang/vendor/bladewind</code></td>
+        </tr>
+    </x-bladewind::table>
+    <p>
+        Renaming the Blade namespace would rewrite every component tag in every consuming app — one audited application alone
+        has ~4,600 of them — for no benefit, so it wasn't touched.
+    </p>
+    <p>
+        <code class="inline">mkocansey/bladewind</code> still exists as a small <strong>metapackage</strong> that requires
+        <code class="inline">bladewindui/bladewindui</code>. Existing installs pick up the real package transparently on their
+        next <code class="inline">composer update</code> — no code changes needed. When convenient, update your own
+        <code class="inline">composer.json</code>:
+    </p>
+    <pre class="language-diff line-numbers">
+<code>-        "mkocansey/bladewind": "^4.3"
++        "bladewindui/bladewindui": "^4.4"</code>
+    </pre>
+    <p>
+        <strong>The one thing that can silently break:</strong> a hardcoded vendor path. If your app scans BladeWind's own
+        templates for Tailwind utilities:
+    </p>
+    <pre class="language-diff line-numbers">
+<code>-@source '../../vendor/mkocansey/bladewind/packages';
++@source '../../vendor/bladewindui/bladewindui/packages';</code>
+    </pre>
+    <p>
+        Missing this doesn't error — the build just stops generating those utility classes and styles quietly disappear. Same
+        risk for deploy scripts, IDE helper config, and static analysis paths reaching into
+        <code class="inline">vendor/mkocansey/bladewind</code>.
+    </p>
+    <p>
+        The 48 <code class="inline">mkocansey/bladewind-*</code> split mirrors are <strong>not moving</strong> — they're
+        read-only, they keep working under the old org, and most installs pull them transitively through the full package or a
+        group metapackage anyway.
     </p>
 
     <h2 id="first-time">First-time Setup</h2>
@@ -215,7 +291,7 @@ composer require mkocansey/bladewind-navigation  # all navigation components
     <p>
         The full install meta-package pulls everything:
     </p>
-    <pre class="lang-bash command-line"><code>composer require mkocansey/bladewind</code></pre>
+    <pre class="lang-bash command-line"><code>composer require bladewindui/bladewindui</code></pre>
     <p>
         Aggregate packages are <code class="inline">type: metapackage</code> — they contain no code, only a <code class="inline">require</code> list.
     </p>
@@ -303,6 +379,7 @@ class Bladewind&lt;Name&gt;ServiceProvider extends ServiceProvider
 
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#root-composer">Root composer.json</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#moving">Moving from mkocansey/bladewind</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#first-time">First-time setup</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#create-repos">Create split repos</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#actions-secret">Actions secret</a></div>

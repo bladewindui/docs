@@ -371,7 +371,7 @@
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > datepicker.blade.php</code>
     </x-bladewind::alert><br />
     <x-bladewind::alert show_close_icon="false">
-        The source language (translation) files for this component are available in <code class="inline">vendor/mkocansey/bladewind/lang/[lang]/datepicker.php</code>
+        The source language (translation) files for this component are available in <code class="inline">vendor/bladewindui/bladewindui/lang/[lang]/datepicker.php</code>
     </x-bladewind::alert><br />
     <x-bladewind::alert show_close_icon="false">
         The source javascript file for this component is available in <code class="inline">public/vendor/bladewind/js/datepicker.js</code>

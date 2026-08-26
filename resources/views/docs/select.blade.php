@@ -907,7 +907,7 @@
     <h2 id="filtering">Filtering</h2>
     <h3 id="table">Dynamically filter a table based on selected values</h3>
     <p>
-        In this next example (<a href="https://github.com/mkocansey/bladewind/issues/154#issuecomment-1742930457" target="_blank">inspired by this comment</a>) we will filter an employee directory based on what departments are selected in the multi select component.
+        In this next example (<a href="https://github.com/bladewindui/bladewindui/issues/154#issuecomment-1742930457" target="_blank">inspired by this comment</a>) we will filter an employee directory based on what departments are selected in the multi select component.
         Each employee card in the employee directory below is generated using the BladewindUI <a href="/component/card#contact">Contact card component</a>.
     </p>
     @php

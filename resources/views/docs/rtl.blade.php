@@ -40,7 +40,7 @@
     </p>
     <pre class="language-js line-numbers">
     <code>
-        // your-project/vendor/mkocansey/bladewind/tailwind.config.js
+        // your-project/vendor/bladewindui/bladewindui/tailwind.config.js
   theme: {
     extend: {
       colors: {

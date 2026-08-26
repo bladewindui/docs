@@ -14,7 +14,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/bladewindui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -71,7 +71,7 @@
     <x-bladewind::accordion.item title="How can I install the latest version of the library?">
         <div>
             At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-            <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+            <pre class="language-php line-numbers"><code>composer require bladewindui/bladewindui</code></pre>
             Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
         </div>
     </x-bladewind::accordion.item>
@@ -118,7 +118,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/bladewindui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -168,7 +168,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/bladewindui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -216,7 +216,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/bladewindui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -253,7 +253,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/bladewindui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>

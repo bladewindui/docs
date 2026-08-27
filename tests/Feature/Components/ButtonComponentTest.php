@@ -19,15 +19,14 @@ class ButtonComponentTest extends TestCase
     {
         $view = $this->blade('<x-bladewind::button>Click Me</x-bladewind::button>');
 
-        // Blade escapes attribute values — type="button" becomes type=&quot;button&quot;
-        $view->assertSee('type=&quot;button&quot;', false);
+        $view->assertSee('type="button"', false);
     }
 
     public function test_renders_submit_when_can_submit_is_true()
     {
         $view = $this->blade('<x-bladewind::button can_submit="true">Submit</x-bladewind::button>');
 
-        $view->assertSee('type=&quot;submit&quot;', false);
+        $view->assertSee('type="submit"', false);
     }
 
     public function test_renders_secondary_type()

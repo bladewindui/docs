@@ -26,7 +26,7 @@ class CardComponentTest extends TestCase
     {
         $view = $this->blade('<x-bladewind::card>Content</x-bladewind::card>');
 
-        $view->assertSee('shadow-', false);
+        $view->assertSee('shadowed', false);
     }
 
     public function test_card_can_hide_shadow()
@@ -40,7 +40,7 @@ class CardComponentTest extends TestCase
     {
         $view = $this->blade('<x-bladewind::card has_hover="true">Content</x-bladewind::card>');
 
-        $view->assertSee('hover:shadow', false);
+        $view->assertSee('shadowed-hover', false);
     }
 
     public function test_card_renders_with_compact_mode()

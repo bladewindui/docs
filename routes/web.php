@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\McpController;
+use App\Http\Controllers\DocsSearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'docs/index')->name('home');
+Route::view('components', 'docs/components')->name('components');
+Route::get('api/docs/search', DocsSearchController::class)->name('docs.search');
 Route::view('install', 'docs/install');
 Route::view('customize', 'docs/customize');
 Route::view('customize/colours', 'docs/colours');
@@ -15,6 +18,7 @@ Route::view('component/alert', 'docs/alert');
 Route::view('component/avatar', 'docs/avatar');
 Route::view('component/bell', 'docs/bell');
 Route::view('component/button', 'docs/button');
+Route::view('component/breadcrumbs', 'docs/breadcrumbs');
 Route::view('component/card', 'docs/card');
 Route::view('component/centered-content', 'docs/centered-content');
 Route::view('component/checkbox', 'docs/checkbox');

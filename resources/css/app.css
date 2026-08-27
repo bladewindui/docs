@@ -2,7 +2,7 @@
 @import './prism.css';
 
 /* Scan vendor blade and JS files for class names */
-@source "../../vendor/mkocansey/bladewind/**/*.blade.php";
+@source "../../vendor/bladewindui/bladewindui/**/*.blade.php";
 @source "../../public/vendor/bladewind/js/*.js";
 
 /* Class-based dark mode (.dark on <html>) */
@@ -101,38 +101,53 @@
 /* ─── Base styles ─────────────────────────────────────────────────────── */
 
 @layer base {
-    :root { --primary: rgba(255,255,255, 1%); --secondary: #1e293b; --slide-distance: 20px; --slide-duration: 1s; }
+    :root { --primary: rgba(255,255,255,.01); --secondary: #334155; --slide-distance: 20px; --slide-duration: 1s; }
     * { scrollbar-width: thin; scrollbar-color: var(--secondary) var(--primary); }
-    *::-webkit-scrollbar { @apply w-1 h-1 }
-    *::-webkit-scrollbar-track {  @apply bg-slate-100/10 dark:bg-dark-700/5 }
-    *::-webkit-scrollbar-thumb { @apply bg-slate-200 dark:bg-dark-600/40 border-4 rounded-md }
-    body { font-family: 'Lineal', ui-sans-serif, system-ui,-apple-system,BlinkMacSystemFont,sans-serif !important; }
-    .pre-font { font-family: 'Inconsolata','Source Code Pro', monospace !important; }
-    nav a { @apply text-gray-700 hover:text-indigo-500 dark:text-dark-400 dark:hover:text-dark-300 text-sm  tracking-wider }
-    .nav-heading { @apply font-semibold text-xs text-black tracking-wider uppercase px-6 pt-6 pb-4 md:pb-0 md:mr-4 dark:text-dark-200 }
-    .dot { @apply border border-slate-300 inline-block h-2 w-2 rounded-full mr-2 ml-6 rtl:ml-2 }
-    .active .dot { @apply border border-indigo-400 bg-indigo-400 }
-    .active { @apply  bg-gradient-to-r from-white via-indigo-300/50 to-white dark:from-dark-700 dark:via-dark-600 dark:to-dark-700 }
-    .active a { @apply text-indigo-700 py-1.5 dark:text-indigo-200 }
-    .page-title { @apply font-light text-4xl text-slate-700  mb-9 dark:text-slate-300 tracking-wide }
-    .adoc p { @apply leading-8 text-slate-600 dark:text-slate-400 mb-7 }
-    .adoc a { @apply text-indigo-400 hover:underline }
-    .side-nav a { @apply text-indigo-500 hover:text-black }
-    .adoc h2, .adoc h3, .adoc h4, .adoc h5, .adoc h6 { @apply scroll-mt-24 font-bold mb-4 mt-10 block tracking-wide }
-    h2 { @apply !font-light text-2xl text-slate-600 dark:text-orange-400 pt-5 }
-    h3 { @apply text-xl text-slate-600 dark:text-orange-400 !font-light }
-    .navigation a { @apply border-t border-slate-300 pt-4 block w-full pl-6 dark:border-gray-800 }
-    .navigation div.dot { @apply hidden }
-    .navigation h5 { @apply pl-6 }
-    pre { @apply rounded-xl !bg-slate-700 dark:!bg-dark-800/90 dark:drop-shadow-lg !text-sm !my-6 }
-    code.inline { @apply bg-gray-200/80 text-sm px-2 py-1 rounded-lg mb-1 mr-1 inline-block dark:bg-gray-800/50 }
-    code.text-red-500 { @apply dark:text-red-300 }
-    .line-numbers-rows { @apply !leading-[29.5px] }
-    .line-numbers { @apply !leading-[30px] }
-    .copy-to-clipboard-button { @apply !pt-0.5 !pb-1.5 !px-2 mr-2 !rounded-none !text-gray-300 hover:!text-white }
-    .bw-alert code.inline { @apply  dark:text-gray-400 }
-    .home-nav div.home { @apply border border-transparent text-slate-600 dark:text-dark-400 !text-center bg-white rounded-full hover:bg-slate-700 cursor-pointer hover:text-white inline-block sm:block dark:bg-dark-700 dark:hover:border-dark-500 }
-    .home-nav div.home a { @apply block w-full px-5 py-3 sm:p-3  }
-    .home-nav div.home div.dot { @apply hidden }
-    div.mnos div.bw-progress-bar div.w-full { @apply !bg-slate-700 }
+    *::-webkit-scrollbar { width: 5px; height: 5px; }
+    *::-webkit-scrollbar-track { background: rgba(241,245,249,.1); }
+    *::-webkit-scrollbar-thumb { border-radius: 999px; background: #cbd5e1; }
+    .dark *::-webkit-scrollbar-thumb { background: rgba(71,85,105,.65); }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important; }
+    .pre-font { font-family: 'Anonymous Pro', monospace !important; }
+    pre { @apply !my-7 overflow-x-auto !rounded-2xl !bg-[#0b1020] !text-sm shadow-lg shadow-slate-950/5 dark:!bg-slate-950 dark:shadow-none; }
+    code.inline { @apply mb-1 mr-1 inline-block rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-[13px] font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300; }
+    code.text-red-500 { @apply dark:text-red-300; }
+}
+
+@layer components {
+    .docs-header-tools > a[href="#"] { display: none !important; }
+    .page-title { @apply !m-0 text-4xl font-semibold tracking-[-.035em] text-slate-950 dark:text-white sm:text-5xl; }
+    .adoc p { @apply mb-7 text-[15px] leading-8 text-slate-600 dark:text-slate-400; }
+    .adoc a { @apply font-medium text-indigo-600 underline-offset-4 hover:underline dark:text-indigo-300; }
+    .adoc h2, .adoc h3, .adoc h4, .adoc h5, .adoc h6 { @apply scroll-mt-24 tracking-[-.02em]; }
+    .adoc h2 { @apply mb-4 mt-12 border-0 pt-0 text-3xl font-semibold text-slate-950 dark:text-white; }
+    .adoc h3 { @apply mb-3 mt-10 text-xl font-semibold text-slate-900 dark:text-slate-100; }
+    .adoc h4, .adoc h5, .adoc h6 { @apply mb-3 mt-8 font-semibold text-slate-800 dark:text-slate-200; }
+    .adoc ul:not([class]), .adoc ol:not([class]) { @apply mb-7 space-y-2 pl-6; }
+    .adoc ul:not([class]) { @apply list-disc; }
+    .adoc ol:not([class]) { @apply list-decimal; }
+    .docs-article .adoc > .border-collapse { @apply max-w-full overflow-x-auto; }
+
+    .nav-heading { @apply mb-2 mt-7 px-3 text-[10px] font-bold uppercase tracking-[.18em] text-slate-400 first:mt-0 dark:text-slate-600; }
+    .docs-nav > div { @apply !mr-0 space-y-1 !py-0 pb-2; }
+    .docs-nav > div > div { @apply rounded-lg transition; }
+    .docs-nav > div > div + div { margin-top: 2px !important; }
+    .docs-nav a { @apply flex w-full items-center rounded-lg px-3 py-1.5 text-[13px] font-medium tracking-normal text-slate-600 transition hover:bg-indigo-50 hover:text-indigo-700 dark:text-slate-400 dark:hover:bg-indigo-400/10 dark:hover:text-indigo-200; }
+    .docs-nav .dot { @apply hidden; }
+    .docs-nav .active { @apply bg-indigo-50 dark:bg-indigo-400/10; }
+    .docs-nav .active a { @apply font-semibold text-indigo-700 dark:text-indigo-200; }
+
+    .navigation .nav-heading { @apply px-3; }
+    .navigation .docs-nav a { @apply py-2.5; }
+    .side-nav a { @apply flex items-center gap-3 text-[12px] leading-5 text-slate-500 no-underline transition hover:text-indigo-600 dark:text-slate-500 dark:hover:text-indigo-300; }
+    .side-nav .dot { @apply mr-2.5 size-1.5 shrink-0 rounded-full bg-slate-300 dark:bg-slate-700 rtl:mr-0 rtl:ml-2.5; }
+
+    .line-numbers-rows { @apply !leading-[29.5px]; }
+    .line-numbers { @apply !leading-[30px]; }
+    .copy-to-clipboard-button { @apply mr-2 !rounded-lg !px-2 !pb-1.5 !pt-0.5 !text-gray-300 hover:!text-white; }
+    .bw-alert code.inline { @apply dark:text-gray-400; }
+    .home-nav div.home { @apply inline-block cursor-pointer rounded-full border border-transparent bg-white !text-center text-slate-600 hover:bg-slate-700 hover:text-white dark:bg-dark-700 dark:text-dark-400 dark:hover:border-dark-500 sm:block; }
+    .home-nav div.home a { @apply block w-full px-5 py-3 sm:p-3; }
+    .home-nav div.home div.dot { @apply hidden; }
+    div.mnos div.bw-progress-bar div.w-full { @apply !bg-slate-700; }
 }

@@ -386,8 +386,8 @@ class DataDisplayComponentsTest extends TestCase
     {
         $view = $this->blade('<x-bladewind::tag label="Removable" can_close="true" />');
 
-        // Close icon triggers parentElement removal via inline JS
-        $view->assertSee('this.parentElement.remove()', false);
+        // The shared helper delegates removal to this CSP-safe data hook.
+        $view->assertSee('data-bw-tag-remove', false);
     }
 
     public function test_tag_renders_dark_shade()

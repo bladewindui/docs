@@ -1,197 +1,149 @@
 <x-meta>
     <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
-    <x-slot name="title">Super simple but elegant Laravel blade-based UI component library using TailwindCSS and vanilla Javascript</x-slot>
+    <x-slot name="title">Elegant Laravel Blade components for teams that ship</x-slot>
+    <style>
+        .home-shell { background: #f8fafc; color: #0f172a; }
+        .home-hero { background: radial-gradient(circle at 76% 18%, rgba(129,92,246,.3), transparent 28rem), radial-gradient(circle at 8% 85%, rgba(14,165,233,.16), transparent 24rem), #080b14; }
+        .home-grid { background-image: linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px); background-size:48px 48px; mask-image:linear-gradient(to bottom,black 15%,transparent 95%); }
+        .home-glow { box-shadow:0 35px 100px rgba(79,70,229,.26); }
+        .home-code { font-family:'Anonymous Pro',monospace; }
+        .home-kicker { letter-spacing:.18em; }
+        .home-card { transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease; }
+        .home-card:hover { transform:translateY(-4px); box-shadow:0 24px 55px rgba(15,23,42,.1); border-color:#c7d2fe; }
+        .dark .home-card:hover { box-shadow:none; border-color:#475569; }
+        .home-marquee { scrollbar-width:none; }
+        .home-marquee::-webkit-scrollbar { display:none; }
+        .home-header-tools > a[href="#"] { display:none !important; }
+        .dark .home-shell { background:#080b14; color:#e2e8f0; }
+        .dark .home-light { background:#0f172a; }
+        .dark .home-light h2 { color:#f8fafc !important; }
+        .dark .home-light > div > div > p, .dark .home-light p { color:#94a3b8; }
+        .dark .home-card:not(.home-card-dark) { background:#111827; border-color:#334155; }
+        .dark .home-card:not(.home-card-dark) h3 { color:#f8fafc !important; }
+        .dark .home-card:not(.home-card-dark) p { color:#94a3b8; }
+        .dark .home-card:not(.home-card-dark) [class*="border-slate-1"], .dark .home-card:not(.home-card-dark) [class*="border-slate-2"] { border-color:#334155; }
+        .dark .home-card:not(.home-card-dark) [class*="bg-slate-50"] { background:#0f172a; }
+        .dark .home-card:not(.home-card-dark) [class*="text-slate-8"] { color:#e2e8f0; }
+        .dark .home-component-link { background:#111827; border-color:#334155; color:#cbd5e1; }
+        .dark .home-component-link > span { background:#1e293b; }
+        @media (prefers-reduced-motion:no-preference) { .home-float { animation:home-float 5s ease-in-out infinite; } @keyframes home-float { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-10px) rotate(1deg)} } }
+    </style>
 </x-meta>
 <x-bladewind::notification />
-<body class="text-gray-500/80 bg-slate-100 dark:bg-gradient-to-b from-slate-900 to-slate-800 dark:text-slate-400">
-    <div class="md:hidden block absolute right-6 top-6" onclick="animateCss('.navigation','slideInRight');">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-    </div>
 
-    <nav class="w-[280px] z-50 py-6 bg-white/95 border-l border-gray-200 fixed right-0 top-0 h-screen shadow-2xl
-            hidden sm:hidden dark:bg-dark-900 dark:border-gray-800 shadow-blue-300 dark:shadow-slate-800 overflow-y-scroll navigation">
-        <div class="text-right cursor-pointer"
-             onclick="animateCss('.navigation','slideOutRight').then((message) => { hide('.navigation'); });">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline mr-4" fill="none" viewBox="0 0 24 24"
-                 stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </div>
-        @include('docs/nav')
-    </nav>
+<body class="home-shell antialiased">
+<nav class="navigation fixed right-0 top-0 z-50 hidden h-screen w-[290px] overflow-y-auto border-l border-slate-200 bg-white px-2 py-6 shadow-2xl dark:border-slate-800 dark:bg-slate-950 sm:hidden">
+    <button type="button" class="mb-5 ml-auto mr-3 grid size-10 place-items-center rounded-full bg-slate-100 text-slate-700" aria-label="Close navigation" onclick="animateCss('.navigation','slideOutRight').then(() => hide('.navigation'))">
+        <x-bladewind::icon name="x-mark" class="!size-5" />
+    </button>
+    @include('docs/nav')
+</nav>
 
-    <div class="bg-gradient-to-tr from-purple-600 via-blue-800 to-pink-700 sm:px-10 px-5 pb-10 shadow-sm dark:from-dark-700 dark:via-black dark:to-violet-950">
-        <div class="sm:max-w-7xl mx-auto flex justify-between items-center py-7">
+<main>
+    <section class="home-hero relative isolate overflow-hidden text-white">
+        <div class="home-grid pointer-events-none absolute inset-0"></div>
+        <div class="pointer-events-none absolute -right-32 top-36 size-[34rem] rounded-full border border-violet-400/10"></div>
+        <div class="pointer-events-none absolute -right-12 top-56 size-[22rem] rounded-full border border-violet-400/10"></div>
+
+        <header class="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-5 py-6 sm:px-8 lg:px-10">
+            <a href="/" aria-label="BladewindUI home"><img src="/assets/images/bw-logo-white.png" alt="BladewindUI" class="h-7 w-auto" /></a>
+            <div class="flex items-center gap-3 sm:gap-5">
+                <a href="/components" class="hidden text-sm font-medium text-slate-300 transition hover:text-white md:block">Components</a>
+                <a href="/mcp" class="hidden text-sm font-medium text-slate-300 transition hover:text-white md:block">MCP server</a>
+                <div class="home-header-tools flex items-center gap-5"><x-topright /></div>
+                <a href="/install" class="hidden rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-indigo-100 sm:inline-flex">Get started</a>
+                <button type="button" aria-label="Open navigation" class="grid size-10 place-items-center rounded-full border border-white/15 bg-white/5 text-white sm:hidden" onclick="animateCss('.navigation','slideInRight')"><x-bladewind::icon name="bars-3" class="!size-5" /></button>
+            </div>
+        </header>
+
+        <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-16 px-5 pb-20 pt-14 sm:px-8 sm:pb-28 sm:pt-20 lg:grid-cols-[1.02fr_.98fr] lg:px-10 lg:pb-32 lg:pt-24">
             <div>
-                <img src="/assets/images/bw-logo-white.png" alt="logo" class="h-7 mx-auto opacity-80" />
-            </div>
-            <div class="hidden md:flex justify-end items-center space-x-5">
-                <x-topright />
-                <a href="/install">
-                    <x-bladewind::button radius="full"  size="small" color="black">Get Started</x-bladewind::button>
+                <a href="/mcp" class="mb-7 inline-flex items-center gap-2 rounded-full border border-indigo-300/20 bg-indigo-300/10 px-3 py-1.5 text-xs font-semibold text-indigo-100 backdrop-blur">
+                    <span class="size-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_#67e8f9]"></span>Now with an MCP server<x-bladewind::icon name="arrow-right" class="!size-3.5" />
                 </a>
+                <h1 class="max-w-3xl text-5xl font-semibold leading-[.98] tracking-[-.045em] text-white sm:text-6xl lg:text-7xl xl:text-[5.35rem]">Laravel interfaces, <span class="bg-gradient-to-r from-indigo-300 via-violet-300 to-pink-300 bg-clip-text text-transparent">beautiful by default.</span></h1>
+                <p class="mt-7 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl">A thoughtfully crafted collection of Blade components for building polished applications without leaving the Laravel workflow you know.</p>
+                <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+                    <a href="/install" class="inline-flex items-center justify-center gap-2 rounded-full bg-indigo-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-950/40 transition hover:bg-indigo-400">Start building<x-bladewind::icon name="arrow-right" class="!size-4" /></a>
+                    <a href="/components" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition hover:bg-white/10">Explore components</a>
+                </div>
+                <div class="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-slate-400">
+                    @foreach(['Tailwind CSS','Vanilla JavaScript','Free and open source'] as $point)<span class="inline-flex items-center gap-2"><x-bladewind::icon name="check" class="!size-4 text-emerald-400" />{{ $point }}</span>@endforeach
+                </div>
             </div>
-        </div>
-        <div class="sm:text-6xl tracking-wide font-bold text-3xl sm:max-w-5xl mx-auto text-fuchsia-100 dark:text-dark-200 text-center px-6 pt-10 md:px-3 md:pt-20 font-bladewind">
-            Beautifully crafted UI components for your Laravel applications.
-        </div>
-        <div class="sm:text-2xl text-sm font-light tracking-wide sm:max-w-3xl mx-auto text-center text-slate-100 dark:text-dark-400 sm:py-8 px-5 pt-3 pb-6">
-            With over 40 components at your disposal, you can build experiences like what is shown in the demo below in no time. Even works seamlessly with most of Laravel's starter kits.
-        </div>
-        <div class="text-center sm:py-6 px-6 hidden">
-            <x-bladewind::button radius="full" color="orange" tag="a" href="/install" size="big" class="font-bladewind w-full md:w-fit">Get Started Now</x-bladewind::button>
-        </div>
 
-        <div class="hidden sm:block">
-        <div class="relative mx-auto flex w-full justify-center overflow-hidden p-8">
-            <div style="--fade-distance: 20px; --fade-duration: 1.2s" class="relative w-full max-w-7xl rounded-xl bg-default animate-fadeInUp delay-500">
-                <div class="pointer-events-none absolute inset-0 m-3 rounded-3xl border border-white/20 bg-default/20 mix-blend-plus-lighter animate-fadeInDown delay-700"></div>
-                <div class="relative z-10 min-h-[700px] rounded-md bg-gray-200 dark:bg-dark-800 animate-fadeInLeft delay-1000 m-8">
-                    @include('docs.demo-topbar')
-                    <div class="p-6">
-                        @include('docs.demo-dashboard')
-                        @include('docs.demo-employees')
-                        @include('docs.demo-jobs')
-                        @include('docs.demo-signup')
-                        @include('docs.demo-signin')
+            <div class="relative hidden lg:block">
+                <div class="home-glow overflow-hidden rounded-3xl border border-white/10 bg-slate-950/80 p-2 backdrop-blur-xl">
+                    <div class="flex items-center gap-2 border-b border-white/10 px-4 py-3"><span class="size-2.5 rounded-full bg-rose-400"></span><span class="size-2.5 rounded-full bg-amber-300"></span><span class="size-2.5 rounded-full bg-emerald-400"></span><span class="ml-3 text-xs text-slate-500">dashboard.blade.php</span></div>
+                    <div class="home-code space-y-1.5 px-5 py-6 text-[13px] leading-6 text-slate-300">
+                        <p><span class="text-pink-400">&lt;x-bladewind::card</span> <span class="text-cyan-300">title</span>=<span class="text-amber-200">&quot;Monthly revenue&quot;</span><span class="text-pink-400">&gt;</span></p>
+                        <p class="pl-5"><span class="text-pink-400">&lt;x-bladewind::statistic</span></p>
+                        <p class="pl-10"><span class="text-cyan-300">number</span>=<span class="text-amber-200">&quot;48,290&quot;</span></p>
+                        <p class="pl-10"><span class="text-cyan-300">percentage-change</span>=<span class="text-amber-200">&quot;12.8&quot;</span></p>
+                        <p class="pl-10"><span class="text-cyan-300">icon</span>=<span class="text-amber-200">&quot;banknotes&quot;</span> <span class="text-pink-400">/&gt;</span></p>
+                        <p class="pl-5"><span class="text-pink-400">&lt;x-bladewind::progress-bar</span> <span class="text-cyan-300">percentage</span>=<span class="text-amber-200">&quot;72&quot;</span> <span class="text-pink-400">/&gt;</span></p>
+                        <p><span class="text-pink-400">&lt;/x-bladewind::card&gt;</span></p>
                     </div>
-                    <x-bladewind::modal title="Send Birthday Wishes" name="birthday-wishes-modal" ok-button-label="Send Wishes"
-                                        ok-button-action="showNotification('Wishes sent successfully', 'The wishes have been sent successfully to the birthday fella! They sure will feel happy', 'success')">
-                        <div class="space-y-4 pt-4">
-                            <p class="text-gray-600 dark:text-dark-300">Enter your custom message for <b>:name</b>.</p>
-                            <x-bladewind::textarea :toolbar="true" except="align, indent, color, background" name="wishes" placeholder="Type your wishes here...">
-                                <x-slot:selectedValue>
-                                    This day comes once every every and it ought to be a special one. Wishing you the very best day today and make sure you have a blast 💥 🚀! I owe you a pizza 🍕, just one slice 😁. Find me after work.</x-slot:selectedValue>
-                            </x-bladewind::textarea>
-                        </div>
-                    </x-bladewind::modal>
-                    <x-bladewind::modal title="Send a Message" name="chat-modal" ok-button-label="Send message"
-                                        ok-button-action="showNotification('Message sent successfully', 'The message has been sent successfully. If you scheduled this, we got you covered.', 'success')">
-                        <div class="space-y-4 pt-4">
-                            <x-bladewind::input label="Subject" name="subject" prefix="chat-bubble-bottom-center" :prefix-is-icon="true" />
-                            <x-bladewind::textarea :toolbar="true" except="align, indent, color, background" name="chat" placeholder="Type your message here..."></x-bladewind::textarea>
-                            <x-bladewind::timepicker label="Send at" />
-                        </div>
-                    </x-bladewind::modal>
-                    <x-bladewind::modal name="phone-modal" size="omg" show_action_buttons="false">
-                        <div class="space-y-4 text-8xl font-bold text-center">
-                            +233.244.987.654
-                        </div>
-                    </x-bladewind::modal>
+                </div>
+                <div class="home-float absolute -bottom-20 -left-12 w-[88%] rounded-3xl border border-slate-200 bg-white p-6 text-slate-900 shadow-2xl shadow-black/30">
+                    <div class="flex items-start justify-between"><div><p class="text-xs font-semibold uppercase tracking-[.18em] text-slate-400">Monthly revenue</p><p class="mt-2 text-4xl font-semibold tracking-tight">$48,290</p></div><div class="grid size-11 place-items-center rounded-2xl bg-indigo-50 text-indigo-600"><x-bladewind::icon name="banknotes" class="!size-6" /></div></div>
+                    <div class="mt-6 flex items-center gap-3"><div class="h-2 flex-1 overflow-hidden rounded-full bg-slate-100"><div class="h-full w-[72%] rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"></div></div><span class="text-xs font-semibold text-emerald-600">+12.8%</span></div>
+                    <div class="mt-5 flex items-center justify-between border-t border-slate-100 pt-4 text-xs text-slate-500"><span>Updated just now</span><span class="font-semibold text-indigo-600">View report →</span></div>
                 </div>
             </div>
         </div>
-        </div>
-    </div>
 
-    <div class="bg-purple-200 sm:px-10 sm:py-20 py-10 px-4 shadow-sm dark:bg-dark-700 border-t-2 border-purple-300">
-        <div class="text-3xl font-bladewind font-semibold tracking-tight sm:text-6xl sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-300 text-center px-5">
-            One line of code unpacks a ton of useful features.
-        </div>
-        <div class="text-sm sm:text-2xl tracking-wide font-light sm:max-w-xl mx-auto sm:pt-6 pt-2 text-center text-slate-500 dark:text-dark-400 px-4 sm:px-0">
-            This library follows the Laravel way of simplicity and development fun.
-        </div>
-        <div class="max-w-3xl mx-auto sm:pt-10 pt-4">
-            <pre class="language-markup"><code>&lt;x-bladewind::avatar image="/assets/images/edwin.jpeg" /&gt;</code></pre>
-            <pre class="language-markup"><code>&lt;x-bladewind::toggle bar="thicker" /&gt;</code></pre>
-            <pre class="language-markup"><code>&lt;x-bladewind::alert&gt;Your storage is 80% full&lt;/x:bladewind::alert&gt;</code></pre>
-            <pre class="language-markup"><code>&lt;x-bladewind::datepicker type="range" /&gt;</code></pre>
-            <pre class="language-markup"><code>&lt;x-bladewind::filepicker accepted_file_types="images/*" /&gt;</code></pre>
-            <div class="text-center sm:pt-6">
-                <x-bladewind::button radius="full" color="purple" tag="a" href="/install" size="big" class="font-bladewind hidden md:inline-block">Get Started Now</x-bladewind::button>
+        <div class="relative z-10 border-t border-white/10 bg-white/[.025]"><div class="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 px-5 sm:grid-cols-4 sm:px-8 lg:px-10">
+            @foreach([['40+','Production-ready components'],['1 line','To render a polished UI'],['RTL','And dark mode included'],['MIT','Open-source license']] as $stat)
+                <div class="border-t border-white/10 px-5 py-6 first:border-t-0 sm:border-t-0"><p class="text-2xl font-semibold">{{ $stat[0] }}</p><p class="mt-1 text-xs text-slate-400">{{ $stat[1] }}</p></div>
+            @endforeach
+        </div></div>
+    </section>
+
+    <section class="home-light px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+        <div class="mx-auto max-w-7xl">
+            <div class="max-w-3xl"><p class="home-kicker text-xs font-bold uppercase text-indigo-600 dark:text-indigo-300">A better starting point</p><h2 class="mt-4 !pt-0 text-4xl font-semibold tracking-[-.035em] !text-slate-950 dark:!text-white sm:text-5xl">Spend time on your product, not on rebuilding interface basics.</h2><p class="mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">BladewindUI gives Laravel teams a consistent, accessible foundation that remains easy to customize.</p></div>
+            <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                <a href="/component/table" class="home-card rounded-3xl border border-slate-200 bg-white p-7 lg:col-span-2">
+                    <div class="flex items-start justify-between"><div><p class="text-xs font-bold uppercase tracking-[.18em] text-indigo-600 dark:text-indigo-300">Data display</p><h3 class="mt-2 !text-2xl !font-semibold !text-slate-950 dark:!text-white">Tables that already feel finished</h3></div><span class="grid size-10 place-items-center rounded-full bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"><x-bladewind::icon name="arrow-up-right" class="!size-4" /></span></div>
+                    <div class="mt-8 overflow-hidden rounded-2xl border border-slate-200"><div class="grid grid-cols-[1.4fr_1fr_.7fr] bg-slate-50 px-4 py-3 text-[11px] font-bold uppercase tracking-wider text-slate-400"><span>Customer</span><span>Plan</span><span>Status</span></div>
+                    @foreach([['Olivia Martin','Business','Active'],['Jackson Lee','Startup','Active'],['Sophia Brown','Trial','Pending']] as $customer)<div class="grid grid-cols-[1.4fr_1fr_.7fr] items-center border-t border-slate-100 px-4 py-3 text-sm"><span class="font-medium text-slate-800">{{ $customer[0] }}</span><span class="text-slate-500">{{ $customer[1] }}</span><span><span class="rounded-full {{ $customer[2] === 'Active' ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700' }} px-2 py-1 text-[11px] font-semibold">{{ $customer[2] }}</span></span></div>@endforeach</div>
+                </a>
+                <a href="/customize/darkmode" class="home-card home-card-dark relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 p-7 text-white"><div class="absolute -right-16 -top-16 size-48 rounded-full bg-violet-600/25 blur-3xl"></div><p class="relative text-xs font-bold uppercase tracking-[.18em] text-violet-300">Theme ready</p><h3 class="relative mt-2 !text-2xl !font-semibold !text-white">Dark mode without the afterthought.</h3><p class="relative mt-4 leading-7 text-slate-400">Every component ships with carefully considered dark styles.</p><div class="relative mt-10 rounded-2xl border border-white/10 bg-white/5 p-4"><div class="flex items-center gap-3"><div class="grid size-10 place-items-center rounded-full bg-violet-500/20 text-violet-300"><x-bladewind::icon name="moon" class="!size-5" /></div><div><p class="text-sm font-semibold">Night shift</p><p class="text-xs text-slate-500">Theme enabled</p></div><div class="ml-auto h-6 w-11 rounded-full bg-violet-500 p-1"><div class="ml-auto size-4 rounded-full bg-white"></div></div></div></div></a>
+                @foreach([['/customize','swatch','bg-pink-50 text-pink-600','Make it unmistakably yours.','Tune colours, sizes, shadows and behaviour while keeping a stable API.'],['/extra/accessibility','eye','bg-cyan-50 text-cyan-600','Inclusive from the start.','Keyboard-friendly patterns, readable contrast and semantic foundations.'],['/customize/colours','paint-brush','bg-indigo-50 text-indigo-600','A coherent design language.','One system across forms, feedback, navigation and data.']] as $card)
+                    <a href="{{ $card[0] }}" class="home-card rounded-3xl border border-slate-200 bg-white p-7"><div class="grid size-11 place-items-center rounded-2xl {{ $card[2] }}"><x-bladewind::icon :name="$card[1]" class="!size-6" /></div><h3 class="mt-7 !text-2xl !font-semibold !text-slate-950 dark:!text-white">{{ $card[3] }}</h3><p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">{{ $card[4] }}</p></a>
+                @endforeach
             </div>
         </div>
-    </div>
-<div class="bg-blue-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-2 border-blue-400">
-    <div class="text-3xl sm:text-6xl font-semibold sm:max-w-4xl mx-auto tracking-tight text-slate-700 dark:text-dark-200 text-center px-5 font-bladewind">
-        Only install the components you need. Not everything.
-    </div>
-    <div class="text-sm sm:text-xl font-light sm:max-w-2xl mx-auto sm:py-8 pt-4 pb-6 text-center text-slate-500 dark:text-dark-400 px-4 tracking-wide font-bladewind">
-        All components are standalone composer packages and can be installed separately. Dependencies are automatically carried along.
-        <pre class="language-php !text-center"><code>composer require mkocansey/bladewind-table</code></pre>
-    </div>
+    </section>
 
-    <div class="sm:max-w-7xl home-nav mx-auto pt-4 pb-6 sm:grid-cols-5 grid grid-cols-2 sm:gap-6 gap-3">
-        @include('docs.components-list', [ 'class' => 'home'])
-    </div>
-</div>
-<div class="bg-yellow-200 sm:px-10 sm:py-16 px-6 py-8 shadow-sm dark:bg-dark-800 border-t-2 border-yellow-400">
-    <div class="text-3xl sm:text-6xl font-semibold sm:max-w-4xl mx-auto text-slate-700 dark:text-dark-200 text-center px-5 font-bladewind">
-        Now with an MCP Server to support your favourite AI tools.
-    </div>
-    <div class="text-sm sm:text-xl font-light sm:max-w-2xl mx-auto sm:py-8 pt-4 pb-6 text-center text-slate-500 dark:text-dark-400 px-4 tracking-wide font-bladewind">
-        This means tools like Claude Desktop, Cursor, and VS Code Copilot can answer questions about BladewindUI components, generate correct usage examples, and look up attribute names and defaults
-    </div>
-    <div class="text-center sm:py-6 px-6">
-        <x-bladewind::button radius="full" color="orange" tag="a" href="/mcp" size="big" class="font-bladewind w-full md:w-fit">Integrate Now</x-bladewind::button>
-    </div>
-</div>
-
-<div class="bg-slate-900 sm:px-10 sm:py-20 py-10 px-4">
-    <div class="text-3xl font-semibold sm:text-6xl sm:max-w-4xl mx-auto text-slate-200 text-center px-10 font-bladewind">
-        BladewindUI components shine even in dark mode.
-    </div>
-    <div class="text-sm sm:text-2xl font-light sm:max-w-xl mx-auto pt-4 text-center text-slate-300 px-4 sm:px-0 font-bladewind tracking-wide">
-        <a href="/customize/darkmode" class="text-yellow-500 hover:text-yellow-700">Customizing</a> dark mode in BladewinUI is as easy as setting your preferred dark colour and voila!
-    </div>
-
-    <div class="sm:max-w-7xl home-nav mx-auto pt-16">
-        <div class="grid sm:grid-cols-3 grid-cols-1 gap-6">
-            <div>
-                <x-bladewind::card has_shaodw="false" class="!bg-slate-800 !shadow-none !border-0" title="Your profile">
-                    <div class="flex">
-                        <div> <x-bladewind::avatar show_ring="false" image="/assets/images/francis.png" stacked="true" size="huge" class="!mx-auto" /></div>
-                        <div class="grow pl-10">
-                            <div class="text-slate-400 text-2xl tracking-wider">John C. Doe</div>
-                            <div class="text-slate-400 text-sm tracking-wider">john.doe@bladewindui.com</div>
-                            <div class="-mt-3 -ml-1 mb-6"> <x-bladewind::rating :rating="4" color="purple" /></div>
-                            <x-bladewind::button size="small" radius="small" color="purple" icon="pencil-square">Edit Profile</x-bladewind::button>
-                        </div>
-                    </div>
-                </x-bladewind::card>
-            </div>
-            <div>
-                <x-bladewind::card has_shaodw="false" class="!bg-slate-800 !shadow-none  !border-0 mnos" title="Mobile Network Penetration">
-                    <div class="py-2">
-                    <x-bladewind::horizontal-line-graph label="MTN: " percentage="55" color="yellow" shade="dark" class="text-slate-400" />
-                    <x-bladewind::horizontal-line-graph label="Vodafone: " percentage="30" color="red" shade="dark" class="text-slate-400 py-3" />
-                    <x-bladewind::horizontal-line-graph label="AirtelTigo: " percentage="65" color="blue" shade="dark" class="text-slate-400" />
-                    </div>
-                </x-bladewind::card>
-            </div>
-            <div>
-                <x-bladewind::card has_shaodw="false" class="!bg-slate-800  !border-0 !shadow-none" reduce_padding>
-                    <x-bladewind::empty-state show_image="false">
-                        <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-12 mx-auto text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
-                        </svg>
-                        </div>
-                        <p class="py-5 text-slate-500">You have no biometric data uploaded</p>
-                        <x-bladewind::button color="red" size="small" class="mb-1.5">
-                            Add biometric info
-                        </x-bladewind::button>
-                    </x-bladewind::empty-state>
-                </x-bladewind::card>
-            </div>
+    <section class="overflow-hidden bg-[#0b1020] px-5 py-20 text-white sm:px-8 sm:py-28 lg:px-10"><div class="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
+        <div><p class="home-kicker text-xs font-bold uppercase text-cyan-300">Feels like Laravel</p><h2 class="mt-4 !pt-0 text-4xl font-semibold tracking-[-.035em] !text-white sm:text-5xl">Small markup.<br />Serious capability.</h2><p class="mt-5 max-w-xl text-lg leading-8 text-slate-400">Use expressive Blade tags, pass the data you already have, and let the component handle the details.</p>
+            <div class="mt-9 space-y-4"><div class="flex gap-3"><span class="mt-1 grid size-6 shrink-0 place-items-center rounded-full bg-emerald-400/15 text-emerald-300"><x-bladewind::icon name="check" class="!size-3.5" /></span><p class="text-slate-300"><strong class="text-white">Install what you need.</strong> Use the full library or individual component packages.</p></div><div class="flex gap-3"><span class="mt-1 grid size-6 shrink-0 place-items-center rounded-full bg-emerald-400/15 text-emerald-300"><x-bladewind::icon name="check" class="!size-3.5" /></span><p class="text-slate-300"><strong class="text-white">No frontend framework required.</strong> Laravel, Tailwind and vanilla JavaScript are enough.</p></div></div>
+            <a href="/install" class="mt-9 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-cyan-200">Read the installation guide <x-bladewind::icon name="arrow-right" class="!size-4" /></a>
         </div>
-    </div>
-</div>
+        <div class="overflow-hidden rounded-3xl border border-white/10 bg-slate-950 shadow-2xl"><div class="flex items-center justify-between border-b border-white/10 px-5 py-4"><span class="text-xs text-slate-500">resources/views/dashboard.blade.php</span><span class="rounded-full bg-emerald-400/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-300">Blade</span></div>
+            <pre class="home-code !m-0 !rounded-none !bg-transparent p-6 !text-sm leading-7"><code><span class="text-pink-400">&lt;x-bladewind::alert</span>
+    <span class="text-cyan-300">type</span>=<span class="text-amber-200">&quot;success&quot;</span>
+    <span class="text-cyan-300">shade</span>=<span class="text-amber-200">&quot;faint&quot;</span><span class="text-pink-400">&gt;</span>
+    Payment received successfully.
+<span class="text-pink-400">&lt;/x-bladewind::alert&gt;</span>
 
-<div class="w-full py-8 px-5 bg-slate-900 text-slate-400">
-    <div class="max-w-7xl mx-auto flex">
-        <div class="tracking-wider text-xs grow">
-            {{\Composer\InstalledVersions::getPrettyVersion('mkocansey/bladewind')}}
+<span class="text-pink-400">&lt;x-bladewind::datepicker</span>
+    <span class="text-cyan-300">type</span>=<span class="text-amber-200">&quot;range&quot;</span>
+    <span class="text-cyan-300">label</span>=<span class="text-amber-200">&quot;Reporting period&quot;</span> <span class="text-pink-400">/&gt;</span></code></pre>
         </div>
-        <div class="text-right flex gap-4">
-{{--            <iframe src="https://github.com/sponsors/mkocansey/button" title="Sponsor mkocansey" height="32" width="114" style="border: 0; border-radius: 6px;" class="inline-block"></iframe>--}}
-            <a href="https://github.com/mkocansey/bladewind" target="_blank" class="text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"><span class="sr-only">BladewindUI on GitHub</span>
-                <svg viewBox="0 0 16 16" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
+    </div></section>
+
+    <section class="px-5 py-20 sm:px-8 sm:py-28 lg:px-10"><div class="mx-auto max-w-7xl"><div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-10 text-white shadow-2xl shadow-indigo-200 dark:shadow-none sm:px-12 sm:py-14 lg:px-16"><div class="absolute right-0 top-0 size-80 translate-x-1/3 -translate-y-1/3 rounded-full border-[60px] border-white/10"></div><div class="relative grid items-center gap-10 lg:grid-cols-[1fr_auto]"><div class="max-w-3xl"><div class="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[.16em]"><x-bladewind::icon name="sparkles" class="!size-4" /> Built for AI workflows</div><h2 class="!pt-0 text-4xl font-semibold tracking-[-.035em] !text-white sm:text-5xl">Your coding assistant can speak BladewindUI.</h2><p class="mt-5 max-w-2xl text-lg leading-8 text-indigo-100">Connect the MCP server so tools like Claude Desktop, Cursor and VS Code Copilot can find components, verify attributes and generate accurate examples.</p></div><a href="/mcp" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-indigo-700 shadow-xl transition hover:bg-indigo-50 dark:shadow-none">Connect the MCP server <x-bladewind::icon name="arrow-right" class="!size-4" /></a></div></div></div></section>
+
+    <section class="home-light border-y border-slate-200 bg-white py-16 dark:border-slate-800 sm:py-20"><div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><div class="flex items-end justify-between gap-5"><div><p class="home-kicker text-xs font-bold uppercase text-indigo-600 dark:text-indigo-300">Explore the library</p><h2 class="mt-3 !pt-0 text-3xl font-semibold tracking-tight !text-slate-950 dark:!text-white sm:text-4xl">Everything you need to keep moving.</h2></div><a href="/components" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 sm:block">View all components →</a></div>
+        <div class="home-marquee mt-9 flex gap-3 overflow-x-auto pb-2">@foreach([['Table','table','table-cells'],['Datepicker','datepicker','calendar-days'],['Modal','modal','window'],['Chart','chart','chart-bar'],['Filepicker','filepicker','paper-clip'],['Notification','notification','bell'],['Select','select','chevron-up-down'],['Avatar','avatar','user-circle']] as $library_item)<a href="/component/{{ $library_item[1] }}" class="home-component-link flex min-w-[170px] items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700"><span class="grid size-9 place-items-center rounded-xl bg-white shadow-sm"><x-bladewind::icon :name="$library_item[2]" class="!size-4" /></span>{{ $library_item[0] }}</a>@endforeach</div>
+    </div></section>
+
+    <section class="bg-slate-950 px-5 py-20 text-center text-white sm:px-8 sm:py-28"><div class="mx-auto max-w-3xl"><p class="home-kicker text-xs font-bold uppercase text-indigo-300">Build the part that matters</p><h2 class="mt-4 !pt-0 text-4xl font-semibold tracking-[-.04em] !text-white sm:text-6xl">Your next Laravel interface can start here.</h2><p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-400">Install BladewindUI, choose your components, and turn your product idea into a polished experience.</p><div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="/install" class="rounded-full bg-indigo-500 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-indigo-400">Get started for free</a><a href="https://github.com/mkocansey/bladewind" target="_blank" class="rounded-full border border-white/15 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-white/5">View on GitHub</a></div></div></section>
+</main>
+
+<x-site-footer />
 </body>
 </html>

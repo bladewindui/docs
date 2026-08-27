@@ -4,11 +4,11 @@
 <div class="hidden sm:block">
     <x-bladewind::dropmenu modular="true">
         <x-slot:trigger>
-            <span class="text-sm border border-transparent text-white/50 bg-white/10 hover:border hover:border-white/15 py-1 px-2 rounded-full">{{\Composer\InstalledVersions::getPrettyVersion('mkocansey/bladewind')}}
+            <span class="text-sm border border-transparent text-white/50 bg-white/10 hover:border hover:border-white/15 py-1 px-2 rounded-full">{{\Composer\InstalledVersions::getPrettyVersion('bladewindui/bladewindui')}}
             <x-bladewind::icon name="chevron-down" class="!size-4" />
             </span>
         </x-slot:trigger>
-        <x-bladewind::dropmenu.item>{{\Composer\InstalledVersions::getPrettyVersion('mkocansey/bladewind')}}</x-bladewind::dropmenu.item>
+        <x-bladewind::dropmenu.item>{{\Composer\InstalledVersions::getPrettyVersion('bladewindui/bladewindui')}}</x-bladewind::dropmenu.item>
         <x-bladewind::dropmenu.item onclick="location.href='https://v3.bladewindui.com/install'">3.x</x-bladewind::dropmenu.item>
         <x-bladewind::dropmenu.item onclick="location.href='https://v2.bladewindui.com/install'">2.x</x-bladewind::dropmenu.item>
     </x-bladewind::dropmenu>

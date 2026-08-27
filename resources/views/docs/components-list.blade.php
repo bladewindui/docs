@@ -15,6 +15,7 @@
 <div class="{{ $css }} component-colorpicker"><div class="dot"></div><a href="/component/colorpicker">Colorpicker</a></div>
 <div class="{{ $css }} component-datepicker"><div class="dot"></div><a href="/component/datepicker">Datepicker</a></div>
 <div class="{{ $css }} component-dropmenu"><div class="dot"></div><a href="/component/dropmenu">Dropmenu</a></div>
+<div class="{{ $css }} component-drawer"><div class="dot"></div><a href="/component/drawer">Drawer <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-empty-state"><div class="dot"></div><a href="/component/empty-state">Empty State</a></div>
 <div class="{{ $css }} component-filepicker"><div class="dot"></div><a href="/component/filepicker">Filepicker</a></div>
 <div class="{{ $css }} component-hlg"><div class="dot"></div><a href="/component/horizontal-line-graph">Horizontal Line Graph</a></div>

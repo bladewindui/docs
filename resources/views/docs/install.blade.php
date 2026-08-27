@@ -249,6 +249,11 @@
             <td>Modal, Modal Icon</td>
         </tr>
         <tr>
+            <td><a href="/component/drawer">Drawer</a></td>
+            <td><code class="inline">mkocansey/bladewind-drawer</code></td>
+            <td>Drawer</td>
+        </tr>
+        <tr>
             <td><a href="/component/alert">Alert</a></td>
             <td><code class="inline">mkocansey/bladewind-alert</code></td>
             <td>Alert, Notification, Bell</td>
@@ -417,6 +422,11 @@
             <td><a href="/component/list-view">List View</a></td>
             <td><code class="inline">mkocansey/bladewind-listview</code></td>
             <td>List View, List View Item</td>
+        </tr>
+        <tr>
+            <td><a href="/component/drawer">Drawer</a></td>
+            <td><code class="inline">mkocansey/bladewind-drawer</code></td>
+            <td>Drawer</td>
         </tr>
     </x-bladewind::table>
 

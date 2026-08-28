@@ -73,6 +73,7 @@
                 ['Modal', 'modal', 'Focus attention on confirmations, forms and details.'],
                 ['Popover', 'popover', 'Reveal contextual content beside a trigger.'],
                 ['Process Indicator', 'process-indicator', 'Show progress through a multi-step workflow.'],
+                ['Stepper', 'stepper', 'Guide users through named linear or non-linear workflows.'],
                 ['Sortable', 'sortable', 'Reorder items through intuitive drag-and-drop.'],
                 ['Tab', 'tab', 'Switch between related panels without leaving the page.'],
                 ['Theme Switcher', 'theme-switcher', 'Offer light, dark and system appearance modes.'],

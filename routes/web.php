@@ -55,6 +55,7 @@ Route::view('component/slider', 'docs/slider');
 Route::view('component/sortable', 'docs/sortable');
 Route::view('component/spinner', 'docs/spinner');
 Route::view('component/statistic', 'docs/statistic');
+Route::view('component/stepper', 'docs/stepper');
 Route::view('component/tab', 'docs/tab');
 Route::view('component/table', 'docs/table');
 Route::view('component/tag', 'docs/tag');

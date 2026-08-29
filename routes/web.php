@@ -60,6 +60,7 @@ Route::view('component/statistic', 'docs/statistic');
 Route::view('component/stepper', 'docs/stepper');
 Route::view('component/tab', 'docs/tab');
 Route::view('component/table', 'docs/table');
+Route::view('component/data-grid', 'docs/data-grid');
 Route::view('component/tag', 'docs/tag');
 Route::view('component/textarea', 'docs/textarea');
 Route::view('component/textbox', 'docs/input');

@@ -288,6 +288,11 @@
             <td><code class="inline">mkocansey/bladewind-data-grid</code></td>
             <td>Data Grid</td>
         </tr>
+        <tr>
+            <td><a href="/component/calendar">Calendar</a></td>
+            <td><code class="inline">mkocansey/bladewind-calendar</code></td>
+            <td>Calendar</td>
+        </tr>
     </x-bladewind::table>
 
     <h3 id="group-forms">Forms Group &mdash; <code class="inline">mkocansey/bladewind-forms</code></h3>

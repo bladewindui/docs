@@ -6,6 +6,7 @@
 <div class="{{ $css }} component-avatar"><div class="dot"></div><a href="/component/avatar">Avatar</a></div>
 <div class="{{ $css }} component-bell"><div class="dot"></div><a href="/component/bell">Bell</a></div>
 <div class="{{ $css }} component-button"><div class="dot"></div><a href="/component/button">Button</a></div>
+<div class="{{ $css }} component-calendar"><div class="dot"></div><a href="/component/calendar">Calendar <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-breadcrumbs"><div class="dot"></div><a href="/component/breadcrumbs">Breadcrumbs <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-card"><div class="dot"></div><a href="/component/card">Card</a></div>
 <div class="{{ $css }} component-centered-content"><div class="dot"></div><a href="/component/centered-content">Centered Content</a></div>

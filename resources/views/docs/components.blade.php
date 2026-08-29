@@ -56,6 +56,7 @@
                 ['List View', 'list-view', 'Display structured records in scannable rows.'],
                 ['Statistic', 'statistic', 'Highlight important metrics and percentage changes.'],
                 ['Table', 'table', 'Build searchable, sortable and responsive data tables.'],
+                ['Data Grid', 'data-grid', 'Sort, filter, select and paginate data with client or server-driven state.'],
                 ['Timeline', 'timeline', 'Present events and milestones in chronological order.'],
             ],
         ],

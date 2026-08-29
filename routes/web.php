@@ -26,6 +26,7 @@ Route::view('component/chart', 'docs/chart');
 Route::view('component/checkcard', 'docs/checkcard');
 Route::view('component/datepicker', 'docs/datepicker');
 Route::view('component/colorpicker', 'docs/colorpicker');
+Route::view('component/command-palette', 'docs/command-palette');
 Route::view('component/dropmenu', 'docs/dropmenu');
 Route::view('component/drawer', 'docs/drawer');
 Route::view('component/empty-state', 'docs/emptystate');

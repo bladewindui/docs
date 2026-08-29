@@ -71,6 +71,7 @@
                 ['Dropmenu', 'dropmenu', 'Present compact menus from any trigger.'],
                 ['Drawer', 'drawer', 'Reveal supporting content from any viewport edge.'],
                 ['Sidebar', 'sidebar', 'Build responsive application navigation with nested groups and mobile Drawer presentation.'],
+                ['Command Palette', 'command-palette', 'Launch actions from a searchable, keyboard-first dialog.'],
                 ['Modal', 'modal', 'Focus attention on confirmations, forms and details.'],
                 ['Popover', 'popover', 'Reveal contextual content beside a trigger.'],
                 ['Process Indicator', 'process-indicator', 'Show progress through a multi-step workflow.'],

@@ -239,6 +239,11 @@
             <td>Sidebar, Sidebar Group, Sidebar Item</td>
         </tr>
         <tr>
+            <td><a href="/component/command-palette">Command Palette</a></td>
+            <td><code class="inline">mkocansey/bladewind-command-palette</code></td>
+            <td>Command Palette, Command Palette Group, Command Palette Item</td>
+        </tr>
+        <tr>
             <td>Core</td>
             <td><code class="inline">mkocansey/bladewind-core</code></td>
             <td>Shared helpers, CSS variables, helpers.js</td>
@@ -462,6 +467,11 @@
             <td><a href="/component/sidebar">Sidebar</a></td>
             <td><code class="inline">mkocansey/bladewind-sidebar</code></td>
             <td>Sidebar, Sidebar Group, Sidebar Item</td>
+        </tr>
+        <tr>
+            <td><a href="/component/command-palette">Command Palette</a></td>
+            <td><code class="inline">mkocansey/bladewind-command-palette</code></td>
+            <td>Command Palette, Command Palette Group, Command Palette Item</td>
         </tr>
         <tr>
             <td><a href="/component/tab">Tab</a></td>

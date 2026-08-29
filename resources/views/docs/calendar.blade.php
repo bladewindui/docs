@@ -12,12 +12,18 @@
             ['date' => now()->startOfMonth()->addDays(18)->toDateString(), 'label' => 'Deploy freeze', 'type' => 'danger'],
             ['date' => now()->startOfMonth()->addDays(18)->toDateString(), 'label' => 'Client call', 'type' => 'info'],
             ['date' => now()->startOfMonth()->addDays(18)->toDateString(), 'label' => 'Retro', 'type' => 'info'],
+            // these last three sit on today itself, so switching this same
+            // calendar to week view or day view shows real timed events
+            // right away, with no need to navigate to a different date first
+            ['date' => now()->format('Y-m-d').' 09:00', 'end' => now()->format('Y-m-d').' 10:00', 'label' => 'Standup', 'type' => 'info'],
+            ['date' => now()->format('Y-m-d').' 09:30', 'end' => now()->format('Y-m-d').' 10:30', 'label' => 'Design sync', 'type' => 'success'],
+            ['date' => now()->format('Y-m-d').' 14:00', 'end' => now()->format('Y-m-d').' 15:30', 'label' => 'Kenya project review', 'type' => 'warning'],
         ];
     @endphp
 
     <x-bladewind::calendar name="team-calendar" label="Team calendar" :events="$teamEvents" />
 
-    <p>This is the basic version of the component. It needs a <code class="inline">name</code>, which is used internally to keep track of the calendar and, later on, to call JavaScript helper functions on it. It needs a <code class="inline">label</code>, which screen readers announce so a visually impaired visitor knows what the grid in front of them is for. Everything else, including the list of events, is optional.</p>
+    <p>This is the basic version of the component. It needs a <code class="inline">name</code>, which is used internally to keep track of the calendar and, later on, to call JavaScript helper functions on it. It needs a <code class="inline">label</code>, which screen readers announce so a visually impaired visitor knows what the grid in front of them is for. Everything else, including the list of events, is optional. Try the Month, Week, and Day buttons above: this same list of events, all day and timed alike, is what feeds every view, so switching between them is a good way to see how your own events will look in each one before you decide which view fits your page.</p>
 
     <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar
     name="team-calendar"

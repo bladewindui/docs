@@ -34,6 +34,7 @@
 <div class="{{ $css }} component-rating"><div class="dot"></div><a href="/component/rating">Rating</a></div>
 <div class="{{ $css }} component-select"><div class="dot"></div><a href="/component/select">Select</a></div>
 <div class="{{ $css }} component-shimmer"><div class="dot"></div><a href="/component/shimmer">Shimmer</a></div>
+<div class="{{ $css }} component-sidebar"><div class="dot"></div><a href="/component/sidebar">Sidebar <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-slider"><div class="dot"></div><a href="/component/slider">Slider</a></div>
 <div class="{{ $css }} component-sortable"><div class="dot"></div><a href="/component/sortable">Sortable</a></div>
 <div class="{{ $css }} component-spinner"><div class="dot"></div><a href="/component/spinner">Spinner</a></div>

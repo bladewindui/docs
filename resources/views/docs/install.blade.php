@@ -234,6 +234,11 @@
             <td>Stepper, Stepper Item, Stepper Content</td>
         </tr>
         <tr>
+            <td><a href="/component/sidebar">Sidebar</a></td>
+            <td><code class="inline">mkocansey/bladewind-sidebar</code></td>
+            <td>Sidebar, Sidebar Group, Sidebar Item</td>
+        </tr>
+        <tr>
             <td>Core</td>
             <td><code class="inline">mkocansey/bladewind-core</code></td>
             <td>Shared helpers, CSS variables, helpers.js</td>
@@ -452,6 +457,11 @@
             <td><a href="/component/stepper">Stepper</a></td>
             <td><code class="inline">mkocansey/bladewind-stepper</code></td>
             <td>Stepper, Stepper Item, Stepper Content</td>
+        </tr>
+        <tr>
+            <td><a href="/component/sidebar">Sidebar</a></td>
+            <td><code class="inline">mkocansey/bladewind-sidebar</code></td>
+            <td>Sidebar, Sidebar Group, Sidebar Item</td>
         </tr>
         <tr>
             <td><a href="/component/tab">Tab</a></td>

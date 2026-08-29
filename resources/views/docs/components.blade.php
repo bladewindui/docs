@@ -70,6 +70,7 @@
                 ['Centered Content', 'centered-content', 'Center focused content within the viewport.'],
                 ['Dropmenu', 'dropmenu', 'Present compact menus from any trigger.'],
                 ['Drawer', 'drawer', 'Reveal supporting content from any viewport edge.'],
+                ['Sidebar', 'sidebar', 'Build responsive application navigation with nested groups and mobile Drawer presentation.'],
                 ['Modal', 'modal', 'Focus attention on confirmations, forms and details.'],
                 ['Popover', 'popover', 'Reveal contextual content beside a trigger.'],
                 ['Process Indicator', 'process-indicator', 'Show progress through a multi-step workflow.'],

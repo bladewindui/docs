@@ -48,6 +48,7 @@
             'icon_class' => 'bg-cyan-50 text-cyan-600 dark:bg-cyan-400/10 dark:text-cyan-300',
             'items' => [
                 ['Avatar', 'avatar', 'Represent people and teams with images or initials.'],
+                ['Calendar', 'calendar', 'Display and select dates or events in an inline month or week grid.'],
                 ['Card', 'card', 'Group related content and actions in a flexible surface.'],
                 ['Chart', 'chart', 'Visualize application data with configurable charts.'],
                 ['Empty State', 'empty-state', 'Guide users when there is no content to display.'],

@@ -43,6 +43,11 @@
         :disabled-dates="[now()->addDays(3)->toDateString(), now()->addDays(4)->toDateString()]" />
     <p><code class="inline">show-other-month-days</code> (default <code class="inline">true</code>) renders adjacent-month days to fill the grid, dimmed and disabled; set it to <code class="inline">false</code> to leave those cells empty instead.</p>
 
+    <h2 id="height">Fixed Height</h2>
+    <p>Without <code class="inline">height</code>, the calendar's overall size follows its content: a month can render 4, 5, or 6 weeks depending on where it starts, and week view is naturally much shorter than month view. Set <code class="inline">height</code> to cap the grid at a fixed size with an internal scrollbar instead, so the calendar doesn't change size as the user navigates or switches views.</p>
+    <x-bladewind::calendar name="fixed-height-calendar" label="Fixed-height calendar" height="20rem" :events="$teamEvents" />
+    <p>Every day cell already has a fixed height regardless of how many events it holds &mdash; a day with more events than <code class="inline">max-events-per-day</code> gets its own small internal scrollbar once "+N more" is expanded, rather than growing the row and pushing the rest of the grid down.</p>
+
     <h2 id="navigation">Navigation</h2>
     <p>Previous/next/today and PageUp/PageDown (Shift+PageUp/PageDown for the year in month view, or the month in week view) rebuild the grid in the browser using the <code class="inline">events</code> already passed in &mdash; no round trip. Set <code class="inline">client-navigation="false"</code> for a server-driven calendar instead: navigation only fires <code class="inline">before-navigate</code>/<code class="inline">navigate</code>, and the application re-renders &mdash; a fresh page, or your own Livewire/Inertia update, the same escape hatch Data Grid gives <code class="inline">client-sort</code>/<code class="inline">client-search</code>.</p>
 
@@ -81,6 +86,7 @@
         <tr><td>max-events-per-day</td><td>3</td><td>Visible events per day before "+N more".</td></tr>
         <tr><td>show-other-month-days</td><td>true</td><td>Render adjacent-month days, dimmed and disabled, to fill the grid.</td></tr>
         <tr><td>show-week-numbers</td><td>false</td><td>Render an ISO week-number column.</td></tr>
+        <tr><td>height</td><td>null</td><td>Caps the grid at a fixed height (e.g. 28rem) with an internal scrollbar.</td></tr>
         <tr><td>client-navigation</td><td>true</td><td>Rebuild the grid in the browser on navigation. Set false for a server-driven calendar.</td></tr>
         <tr><td>today-label</td><td>Today</td><td>Label for the jump-to-today control.</td></tr>
         <tr><td>previous-label</td><td>Previous</td><td>Accessible label for the previous-period control.</td></tr>
@@ -105,6 +111,7 @@ calendarSelectedDates('team-calendar'); // ['2026-08-14']</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#selection">Selection</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#events">Events</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#restricting-dates">Restricting dates</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#height">Fixed height</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#navigation">Navigation</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#keyboard">Keyboard interaction</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#events-js">JavaScript events</a></div>

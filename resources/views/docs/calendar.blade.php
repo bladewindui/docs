@@ -12,12 +12,19 @@
             ['date' => now()->startOfMonth()->addDays(18)->toDateString(), 'label' => 'Deploy freeze', 'type' => 'danger'],
             ['date' => now()->startOfMonth()->addDays(18)->toDateString(), 'label' => 'Client call', 'type' => 'info'],
             ['date' => now()->startOfMonth()->addDays(18)->toDateString(), 'label' => 'Retro', 'type' => 'info'],
+            // these last three sit on today itself, so switching this same
+            // calendar to week view or day view shows real timed events
+            // right away, with no need to navigate to a different date first
+            ['date' => now()->format('Y-m-d').' 09:00', 'end' => now()->format('Y-m-d').' 10:00', 'label' => 'Standup', 'type' => 'info'],
+            ['date' => now()->format('Y-m-d').' 09:30', 'end' => now()->format('Y-m-d').' 10:30', 'label' => 'Design sync', 'type' => 'success'],
+            ['date' => now()->format('Y-m-d').' 14:00', 'end' => now()->format('Y-m-d').' 15:30', 'label' => 'Kenya project review', 'type' => 'warning'],
         ];
     @endphp
 
     <x-bladewind::calendar name="team-calendar" label="Team calendar" :events="$teamEvents" />
+    <br />
 
-    <p>This is the basic version of the component. It needs a <code class="inline">name</code>, which is used internally to keep track of the calendar and, later on, to call JavaScript helper functions on it. It needs a <code class="inline">label</code>, which screen readers announce so a visually impaired visitor knows what the grid in front of them is for. Everything else, including the list of events, is optional.</p>
+    <p>This is the basic version of the component. It needs a <code class="inline">name</code>, which is used internally to keep track of the calendar and, later on, to call JavaScript helper functions on it. It needs a <code class="inline">label</code>, which screen readers announce so a visually impaired visitor knows what the grid in front of them is for. Everything else, including the list of events, is optional. Try the Month, Week, and Day buttons above: this same list of events, all day and timed alike, is what feeds every view, so switching between them is a good way to see how your own events will look in each one before you decide which view fits your page.</p>
 
     <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar
     name="team-calendar"
@@ -35,6 +42,7 @@
     <p>The <code class="inline">selectable</code> attribute controls whether a visitor can click a date to select it. It accepts three values. <code class="inline">none</code> is the default, and it means Calendar is for looking at only, nothing can be clicked to select it. <code class="inline">single</code> means a visitor can pick exactly one date at a time, and clicking a new date replaces whatever was picked before. <code class="inline">multiple</code> means a visitor can pick several separate dates, and clicking a date that is already picked removes it again.</p>
     <p>You can set which dates start out selected using the <code class="inline">selected</code> attribute. It accepts a single date written as <code class="inline">Y-m-d</code>, several dates separated by commas in one string, or an array of dates. When selection is turned on, Calendar quietly adds hidden form fields behind the scenes, named after the <code class="inline">name</code> attribute (with <code class="inline">[]</code> added at the end for multiple selection), so the dates someone picks are included automatically the next time the surrounding form is submitted. You do not need to write any extra code to make that happen. Try clicking a few of the days below to see it in action.</p>
     <x-bladewind::calendar name="availability" label="Mark your availability" selectable="multiple" :selected="[now()->addDays(2)->toDateString(), now()->addDays(5)->toDateString()]" />
+    <br />
     <x-bladewind::alert show_close_icon="false">Calendar does not have a mode for picking a start date and an end date together as one range. If you need that, Datepicker's <code class="inline">range</code> option already does it well, and it is built for exactly that job: a date range typed into a form field. Calendar is meant for looking at a whole month or week and picking individual days out of it, not for choosing a single continuous range.</x-bladewind::alert>
 
     <h2 id="events">Events</h2>
@@ -58,21 +66,25 @@
         ];
     @endphp
     <x-bladewind::calendar name="week-demo" label="Week demo calendar" view="week" :events="$weekEvents" />
+    <br />
     <p>Week view and day view do not scroll to the very top of the day when they open, because very few meetings happen at midnight and scrolling past several empty hours to find the working day would be annoying. Instead they open already scrolled down to a reasonable hour in the morning, so the events people actually care about are visible right away.</p>
     <p>Here is the same set of meetings again, this time on the same day but in day view. Notice that the overlapping meetings are still placed side by side, exactly like in week view, because it is the same layout code underneath, just with one column instead of seven.</p>
     <x-bladewind::calendar name="day-demo" label="Day demo calendar" view="day" :date="$weekAnchor->copy()->addDays(1)->toDateString()" :events="$weekEvents" />
+    <br />
 
     <h2 id="restricting-dates">Restricting Dates</h2>
     <p>Sometimes you need to stop a visitor from picking certain dates. <code class="inline">min-date</code> and <code class="inline">max-date</code> set the earliest and latest dates Calendar will allow someone to navigate to or select, which is useful for things like a booking calendar that should not allow dates in the past. <code class="inline">disabled-dates</code> lets you turn off specific individual dates within that range too, for example public holidays or days that are already fully booked. Dates that are disabled, whether by the range or by the list, are still shown and can still be reached with the arrow keys, but a visitor cannot click or press Enter to select them.</p>
     <x-bladewind::calendar name="booking" label="Booking calendar" selectable="single"
         :min-date="now()->toDateString()" :max-date="now()->addDays(20)->toDateString()"
         :disabled-dates="[now()->addDays(3)->toDateString(), now()->addDays(4)->toDateString()]" />
+    <br />
     <p>By default, month view also shows a few grayed out days from the previous and next month so every row of the grid stays full. This is controlled by <code class="inline">show-other-month-days</code>, which is <code class="inline">true</code> unless you turn it off. Setting it to <code class="inline">false</code> leaves those cells empty instead of showing the neighboring month's dates.</p>
 
     <h2 id="height">Fixed Height</h2>
     <p>Calendar keeps the same overall height no matter what you are looking at, and it does this by default without you needing to configure anything. Left to its own devices, a calendar's size would naturally change all the time: some months have four weeks, some have five, some have six, week view is much shorter than month view because it only shows one row of days, and day view is narrower still. Without a fixed height, switching between any of these would make the whole calendar grow or shrink, which looks jumpy and can shift everything else around it on the page.</p>
     <p>To avoid that, Calendar reserves enough room for the largest case it will ever need, a six week month, which comes out to <code class="inline">40rem</code> by default. If what is currently showing needs less room than that, for example a shorter month, week view, or day view, the extra space is simply left empty at the bottom rather than the calendar shrinking to fit. If what is showing needs more room than that, the calendar adds its own scrollbar inside the grid rather than growing past the height you asked for. You can set your own value with the <code class="inline">height</code> attribute, for example <code class="inline">28rem</code>, if the default is not right for your layout. If you would rather Calendar sized itself naturally to whatever it is showing, with no fixed height at all, pass an empty value like <code class="inline">height=""</code>.</p>
     <x-bladewind::calendar name="fixed-height-calendar" label="Fixed-height calendar" height="20rem" :events="$teamEvents" />
+    <br />
     <p>This height rule also applies inside a single day. Each day cell has a fixed height regardless of how many events are packed into it, so one busy day never pushes its own row taller than the days next to it. If a day has more events than <code class="inline">max-events-per-day</code> and someone opens its "+N more" button, the extra events appear in their own small scrolling list inside that one cell, rather than making the whole row grow and pushing every other row down the page.</p>
 
     <h2 id="navigation">Navigation</h2>
@@ -130,6 +142,38 @@ setCalendarView('team-calendar', 'week');
 selectCalendarDate('team-calendar', '2026-08-14');
 clearCalendarSelection('team-calendar');
 calendarSelectedDates('team-calendar'); // ['2026-08-14']</code></pre>
+
+    <h3>Calendar with all attributes defined</h3>
+    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar
+    name="team-calendar"
+    label="Team calendar"
+    view="week"
+    date="2026-08-14"
+    week-starts="monday"
+    selectable="multiple"
+    :selected="['2026-08-10', '2026-08-14']"
+    min-date="2026-01-01"
+    max-date="2026-12-31"
+    :disabled-dates="['2026-12-25']"
+    :events="[
+        [
+            'date' => '2026-08-14 15:00',
+            'end' => '2026-08-14 16:00',
+            'label' => 'Sprint planning',
+            'type' => 'info',
+            'href' => '/events/sprint-planning',
+            'description' => 'Review the roadmap and assign owners for Q3.',
+        ],
+    ]"
+    max-events-per-day="3"
+    show-other-month-days="true"
+    show-week-numbers="false"
+    height="40rem"
+    client-navigation="true"
+    today-label="Today"
+    previous-label="Previous"
+    next-label="Next"
+    class="shadow-sm" /&gt;</code></pre>
 
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; calendar</code></x-bladewind::alert>
 

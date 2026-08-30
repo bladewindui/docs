@@ -138,6 +138,11 @@
     <section class="px-5 py-20 sm:px-8 sm:py-28 lg:px-10"><div class="mx-auto max-w-7xl"><div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-10 text-white shadow-2xl shadow-indigo-200 dark:shadow-none sm:px-12 sm:py-14 lg:px-16"><div class="absolute right-0 top-0 size-80 translate-x-1/3 -translate-y-1/3 rounded-full border-[60px] border-white/10"></div><div class="relative grid items-center gap-10 lg:grid-cols-[1fr_auto]"><div class="max-w-3xl"><div class="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[.16em]"><x-bladewind::icon name="sparkles" class="!size-4" /> Built for AI workflows</div><h2 class="!pt-0 text-4xl font-semibold tracking-[-.035em] !text-white sm:text-5xl">Your coding assistant can speak BladewindUI.</h2><p class="mt-5 max-w-2xl text-lg leading-8 text-indigo-100">Connect the MCP server so tools like Claude Desktop, Cursor and VS Code Copilot can find components, verify attributes and generate accurate examples.</p></div><a href="/mcp" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-indigo-700 shadow-xl transition hover:bg-indigo-50 dark:shadow-none">Connect the MCP server <x-bladewind::icon name="arrow-right" class="!size-4" /></a></div></div></div></section>
 
     @php
+        $homePlans = [
+            ['label' => 'Startup', 'value' => 'startup'],
+            ['label' => 'Business', 'value' => 'business'],
+            ['label' => 'Enterprise', 'value' => 'enterprise'],
+        ];
         $homeChartData = [
             'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
             'datasets' => [
@@ -153,18 +158,23 @@
                 <div class="flex items-center gap-4"><div class="grid size-11 shrink-0 place-items-center rounded-2xl bg-indigo-50 text-indigo-600 dark:bg-indigo-400/10 dark:text-indigo-300"><x-bladewind::icon name="pencil-square" class="!size-5" /></div><div><h3 class="!text-lg !font-semibold !text-slate-950 dark:!text-white">Forms and input</h3><p class="text-xs text-slate-500 dark:text-slate-400">16 components</p></div></div>
                 <div class="mt-6 space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
                     <x-bladewind::input label="Workspace name" placeholder="Acme Studio" prefix="building-office" :prefix-is-icon="true" :add-clearing="false" />
-                    <div class="grid grid-cols-2 gap-4"><x-bladewind::select name="home-plan" placeholder="Choose a plan" :add-clearing="false"><x-bladewind::select.item label="Startup" value="startup" /><x-bladewind::select.item label="Business" value="business" /></x-bladewind::select><x-bladewind::datepicker placeholder="Start date" /></div>
+                    <div class="grid grid-cols-2 gap-4"><x-bladewind::select name="home-plan" placeholder="Choose a plan" :data="$homePlans" :add-clearing="false" /><x-bladewind::datepicker placeholder="Start date" /></div>
                     <div class="flex items-center gap-6"><x-bladewind::toggle label="Remember me" label-position="right" /><x-bladewind::checkbox label="I agree to the terms" /></div>
                 </div>
                 <div class="mt-5 flex flex-wrap gap-2">@foreach(['Filepicker','Slider','Timepicker'] as $chip)<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{{ $chip }}</span>@endforeach<a href="/components" class="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-300">+8 more</a></div>
             </div>
             <div class="home-card rounded-3xl border border-slate-200 bg-white p-7 dark:border-slate-800 dark:bg-slate-900">
                 <div class="flex items-center gap-4"><div class="grid size-11 shrink-0 place-items-center rounded-2xl bg-pink-50 text-pink-600 dark:bg-pink-400/10 dark:text-pink-300"><x-bladewind::icon name="bell-alert" class="!size-5" /></div><div><h3 class="!text-lg !font-semibold !text-slate-950 dark:!text-white">Feedback and status</h3><p class="text-xs text-slate-500 dark:text-slate-400">9 components</p></div></div>
-                <div class="mt-6 space-y-5 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
-                    <div><div class="mb-2 flex justify-between text-xs"><span class="text-slate-500">Customer satisfaction</span><span class="font-semibold text-slate-800 dark:text-slate-200">87%</span></div><x-bladewind::progress-bar percentage="87" color="green" /></div>
-                    <div><div class="mb-2 flex justify-between text-xs"><span class="text-slate-500">Uptime this month</span><span class="font-semibold text-slate-800 dark:text-slate-200">99%</span></div><x-bladewind::progress-bar percentage="99" color="violet" /></div>
+                <div class="mt-6 space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
+                    <x-bladewind::alert type="success" shade="faint">Payment received successfully.</x-bladewind::alert>
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+                        <div><div class="mb-2 flex justify-between text-xs"><span class="text-slate-500">Satisfaction</span><span class="font-semibold text-slate-800 dark:text-slate-200">87%</span></div><x-bladewind::progress-bar percentage="87" color="green" /></div>
+                        <div><div class="mb-2 flex justify-between text-xs"><span class="text-slate-500">Uptime</span><span class="font-semibold text-slate-800 dark:text-slate-200">99%</span></div><x-bladewind::progress-bar percentage="99" color="violet" /></div>
+                        <div><div class="mb-2 flex justify-between text-xs"><span class="text-slate-500">Adoption</span><span class="font-semibold text-slate-800 dark:text-slate-200">64%</span></div><x-bladewind::progress-bar percentage="64" color="cyan" /></div>
+                        <div><div class="mb-2 flex justify-between text-xs"><span class="text-slate-500">Churn risk</span><span class="font-semibold text-slate-800 dark:text-slate-200">18%</span></div><x-bladewind::progress-bar percentage="18" color="pink" /></div>
+                    </div>
                 </div>
-                <div class="mt-5 flex flex-wrap gap-2">@foreach(['Alert','Tag','Rating','Spinner'] as $chip)<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{{ $chip }}</span>@endforeach<a href="/components" class="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-300">+4 more</a></div>
+                <div class="mt-5 flex flex-wrap gap-2">@foreach(['Tag','Rating','Spinner'] as $chip)<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{{ $chip }}</span>@endforeach<a href="/components" class="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-300">+4 more</a></div>
             </div>
             <div class="home-card rounded-3xl border border-slate-200 bg-white p-7 dark:border-slate-800 dark:bg-slate-900">
                 <div class="flex items-center gap-4"><div class="grid size-11 shrink-0 place-items-center rounded-2xl bg-cyan-50 text-cyan-600 dark:bg-cyan-400/10 dark:text-cyan-300"><x-bladewind::icon name="table-cells" class="!size-5" /></div><div><h3 class="!text-lg !font-semibold !text-slate-950 dark:!text-white">Data and content</h3><p class="text-xs text-slate-500 dark:text-slate-400">12 components</p></div></div>
@@ -175,7 +185,11 @@
                 <div class="flex items-center gap-4"><div class="grid size-11 shrink-0 place-items-center rounded-2xl bg-violet-50 text-violet-600 dark:bg-violet-400/10 dark:text-violet-300"><x-bladewind::icon name="squares-2x2" class="!size-5" /></div><div><h3 class="!text-lg !font-semibold !text-slate-950 dark:!text-white">Navigation and overlays</h3><p class="text-xs text-slate-500 dark:text-slate-400">15 components</p></div></div>
                 <div class="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
                     <x-bladewind::breadcrumbs aria-label="Breadcrumb"><x-bladewind::breadcrumbs.item href="/" icon="home">Home</x-bladewind::breadcrumbs.item><x-bladewind::breadcrumbs.item href="/components">Components</x-bladewind::breadcrumbs.item></x-bladewind::breadcrumbs>
-                    <div class="mt-4"><x-bladewind::accordion><x-bladewind::accordion.item title="What is BladewindUI?"><p>BladewindUI is a Blade component library for Laravel teams. It gives you production-ready, accessible components that are easy to theme, so you can focus on your product instead of rebuilding interface basics.</p></x-bladewind::accordion.item></x-bladewind::accordion></div>
+                    <div class="mt-4"><x-bladewind::accordion>
+                        <x-bladewind::accordion.item title="What is BladewindUI?"><p>BladewindUI is a Blade component library for Laravel teams. It gives you production-ready, accessible components that are easy to theme, so you can focus on your product instead of rebuilding interface basics.</p></x-bladewind::accordion.item>
+                        <x-bladewind::accordion.item title="Does it work with dark mode?"><p>Yes. Every component ships with carefully considered dark styles out of the box, and a theme switcher component lets visitors pick light, dark or system appearance.</p></x-bladewind::accordion.item>
+                        <x-bladewind::accordion.item title="Do I need a frontend framework?"><p>No. BladewindUI is built with Blade, Tailwind CSS and vanilla JavaScript, so it fits naturally into any Laravel project without React, Vue or Alpine.</p></x-bladewind::accordion.item>
+                    </x-bladewind::accordion></div>
                 </div>
                 <div class="mt-5 flex flex-wrap gap-2">@foreach(['Modal','Tab','Tooltip','Drawer','Command Palette'] as $chip)<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{{ $chip }}</span>@endforeach<a href="/components" class="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-400/10 dark:text-indigo-300">+8 more</a></div>
             </div>

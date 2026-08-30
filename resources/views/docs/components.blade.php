@@ -51,13 +51,13 @@
                 ['Calendar', 'calendar', 'Display and select dates or events in an inline month or week grid.'],
                 ['Card', 'card', 'Group related content and actions in a flexible surface.'],
                 ['Chart', 'chart', 'Visualize application data with configurable charts.'],
+                ['Data Grid', 'data-grid', 'Sort, filter, select and paginate data with client or server-driven state.'],
                 ['Empty State', 'empty-state', 'Guide users when there is no content to display.'],
                 ['Horizontal Line Graph', 'horizontal-line-graph', 'Compare values through compact horizontal bars.'],
                 ['Icon', 'icon', 'Use the full Heroicons collection through Blade.'],
                 ['List View', 'list-view', 'Display structured records in scannable rows.'],
                 ['Statistic', 'statistic', 'Highlight important metrics and percentage changes.'],
                 ['Table', 'table', 'Build searchable, sortable and responsive data tables.'],
-                ['Data Grid', 'data-grid', 'Sort, filter, select and paginate data with client or server-driven state.'],
                 ['Timeline', 'timeline', 'Present events and milestones in chronological order.'],
             ],
         ],
@@ -138,26 +138,7 @@
             </div>
         </section>
 
-        <section class="px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-            <div class="mx-auto max-w-7xl">
-                <div class="grid gap-5 lg:grid-cols-3">
-                    <div class="rounded-3xl border border-slate-200 bg-white p-7 dark:border-slate-800 dark:bg-slate-900 lg:col-span-2">
-                        <div class="flex items-center justify-between"><div><p class="text-xs font-bold uppercase tracking-[.18em] text-indigo-600 dark:text-indigo-300">Live preview</p><h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950 dark:text-white">Sensible defaults. Flexible details.</h2></div><span class="hidden rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300 sm:block">Blade native</span></div>
-                        <div class="mt-8 grid items-center gap-5 rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950 sm:grid-cols-[1fr_auto]">
-                            <x-bladewind::input label="Workspace name" placeholder="Acme Studio" prefix="building-office" :prefix-is-icon="true" :add-clearing="false" />
-                            <x-bladewind::button radius="medium">Create workspace</x-bladewind::button>
-                        </div>
-                    </div>
-                    <div class="rounded-3xl border border-slate-200 bg-white p-7 dark:border-slate-800 dark:bg-slate-900">
-                        <p class="text-xs font-bold uppercase tracking-[.18em] text-violet-600 dark:text-violet-300">One design language</p>
-                        <div class="mt-7 flex items-center justify-between"><div class="flex -space-x-2"><x-bladewind::avatar image="/assets/images/audrey.jpeg" stacked size="small" /><x-bladewind::avatar image="/assets/images/francis.png" stacked size="small" /><x-bladewind::avatar image="/assets/images/sarpong.png" stacked size="small" /></div><x-bladewind::tag label="Active team" color="green" /></div>
-                        <div class="mt-8"><div class="mb-2 flex justify-between text-xs"><span class="text-slate-500">Setup progress</span><span class="font-semibold text-slate-800 dark:text-slate-200">72%</span></div><x-bladewind::progress-bar percentage="72" color="violet" /></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="px-5 pb-24 sm:px-8 sm:pb-32 lg:px-10">
+        <section class="px-5 pb-24 pt-16 sm:px-8 sm:pb-32 sm:pt-20 lg:px-10">
             <div class="mx-auto max-w-7xl">
                 @foreach($groups as $group)
                     <section data-component-group class="mb-16 last:mb-0">

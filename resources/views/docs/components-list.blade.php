@@ -15,6 +15,7 @@
 <div class="{{ $css }} component-checkcard"><div class="dot"></div><a href="/component/checkcard">CheckCard </a></div>
 <div class="{{ $css }} component-colorpicker"><div class="dot"></div><a href="/component/colorpicker">Colorpicker</a></div>
 <div class="{{ $css }} component-command-palette"><div class="dot"></div><a href="/component/command-palette">Command Palette <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
+<div class="{{ $css }} component-data-grid"><div class="dot"></div><a href="/component/data-grid">Data Grid <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-datepicker"><div class="dot"></div><a href="/component/datepicker">Datepicker</a></div>
 <div class="{{ $css }} component-dropmenu"><div class="dot"></div><a href="/component/dropmenu">Dropmenu</a></div>
 <div class="{{ $css }} component-drawer"><div class="dot"></div><a href="/component/drawer">Drawer <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
@@ -44,7 +45,6 @@
 <div class="{{ $css }} component-stepper"><div class="dot"></div><a href="/component/stepper">Stepper <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-tab"><div class="dot"></div><a href="/component/tab">Tab</a></div>
 <div class="{{ $css }} component-table"><div class="dot"></div><a href="/component/table">Table</a></div>
-<div class="{{ $css }} component-data-grid"><div class="dot"></div><a href="/component/data-grid">Data Grid <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-tag"><div class="dot"></div><a href="/component/tag">Tag</a></div>
 <div class="{{ $css }} component-textarea"><div class="dot"></div><a href="/component/textarea">Textarea</a></div>
 <div class="{{ $css }} component-theme-switcher"><div class="dot"></div><a href="/component/theme-switcher">Theme Switcher</a></div>

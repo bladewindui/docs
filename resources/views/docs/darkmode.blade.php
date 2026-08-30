@@ -11,7 +11,7 @@
     </p>
     <pre class="language-js line-numbers">
     <code>
-    // your-project/vendor/mkocansey/bladewind/tailwind.css
+    // your-project/vendor/bladewindui/ui/tailwind.css
     @theme {
         ...
         --color-dark-100: #f0f1f2;

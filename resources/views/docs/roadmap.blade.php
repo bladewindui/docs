@@ -14,7 +14,7 @@
         <x-bladewind::timeline date="all completed" completed>
             <x-slot:content>
                 <ul class="list-outside list-disc leading-8 ml-3 text-base">
-                    <li>See <a href="https://github.com/mkocansey/bladewind/releases" target="_blank">release notes</a> for all completed versions</li>
+                    <li>See <a href="https://github.com/bladewindui/ui/releases" target="_blank">release notes</a> for all completed versions</li>
                 </ul>
             </x-slot:content>
         </x-bladewind::timeline>

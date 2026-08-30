@@ -14,14 +14,14 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
         <x-bladewind::accordion.item title="How can I customize the library for my theme?">
             <div>
                 BladewindUI has been designed to not interfere with the existing components in your project. Probably you just want to take this for a spin before deciding if BladewindUI components will be the only components
-                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > mkocansey > bladewind</code> directory. Per Laravel convention, this results in you having to type the
+                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > bladewindui > ui</code> directory. Per Laravel convention, this results in you having to type the
                 <code class="inline text-red-500">&lt;x-bladewind</code> prefix everytime you want to use a BladewindUI component.
             </div>
         </x-bladewind::accordion.item>
@@ -71,14 +71,14 @@
     <x-bladewind::accordion.item title="How can I install the latest version of the library?">
         <div>
             At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-            <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+            <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
             Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
         </div>
     </x-bladewind::accordion.item>
     <x-bladewind::accordion.item title="How can I customize the library for my theme?">
         <div>
             BladewindUI has been designed to not interfere with the existing components in your project. Probably you just want to take this for a spin before deciding if BladewindUI components will be the only components
-            you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > mkocansey > bladewind</code> directory. Per Laravel convention, this results in you having to type the
+            you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > bladewindui > ui</code> directory. Per Laravel convention, this results in you having to type the
             <code class="inline text-red-500">&lt;x-bladewind</code> prefix everytime you want to use a BladewindUI component.
         </div>
     </x-bladewind::accordion.item>
@@ -118,14 +118,14 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
         <x-bladewind::accordion.item title="How can I customize the library for my theme?">
             <div>
                 BladewindUI has been designed to not interfere with the existing components in your project. Probably you just want to take this for a spin before deciding if BladewindUI components will be the only components
-                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > mkocansey > bladewind</code> directory. Per Laravel convention, this results in you having to type the
+                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > bladewindui > ui</code> directory. Per Laravel convention, this results in you having to type the
                 <code class="inline text-red-500">&lt;x-bladewind</code> prefix everytime you want to use a BladewindUI component.
             </div>
         </x-bladewind::accordion.item>
@@ -168,14 +168,14 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
         <x-bladewind::accordion.item title="How can I customize the library for my theme?">
             <div>
                 BladewindUI has been designed to not interfere with the existing components in your project. Probably you just want to take this for a spin before deciding if BladewindUI components will be the only components
-                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > mkocansey > bladewind</code> directory. Per Laravel convention, this results in you having to type the
+                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > bladewindui > ui</code> directory. Per Laravel convention, this results in you having to type the
                 <code class="inline text-red-500">&lt;x-bladewind</code> prefix everytime you want to use a BladewindUI component.
             </div>
         </x-bladewind::accordion.item>
@@ -216,14 +216,14 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
         <x-bladewind::accordion.item title="How can I customize the library for my theme?">
             <div>
                 BladewindUI has been designed to not interfere with the existing components in your project. Probably you just want to take this for a spin before deciding if BladewindUI components will be the only components
-                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > mkocansey > bladewind</code> directory. Per Laravel convention, this results in you having to type the
+                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > bladewindui > ui</code> directory. Per Laravel convention, this results in you having to type the
                 <code class="inline text-red-500">&lt;x-bladewind</code> prefix everytime you want to use a BladewindUI component.
             </div>
         </x-bladewind::accordion.item>
@@ -253,14 +253,14 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require mkocansey/bladewind</code></pre>
+                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
         <x-bladewind::accordion.item title="How can I customize the library for my theme?">
             <div>
                 BladewindUI has been designed to not interfere with the existing components in your project. Probably you just want to take this for a spin before deciding if BladewindUI components will be the only components
-                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > mkocansey > bladewind</code> directory. Per Laravel convention, this results in you having to type the
+                you use in your project. Once installed, all BladewindUI components are invoked by default from your <code class="inline">project's vendor > bladewindui > ui</code> directory. Per Laravel convention, this results in you having to type the
                 <code class="inline text-red-500">&lt;x-bladewind</code> prefix everytime you want to use a BladewindUI component.
             </div>
         </x-bladewind::accordion.item>

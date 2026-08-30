@@ -4,8 +4,8 @@
     <p>
         BladewindUI is designed to work seamlessly with your existing project components. Once installed, all BladewindUI
         components are served directly from your project’s vendor directory.  Each component resides in its own Composer
-        package, such as <code class="inline">vendor/mkocansey/bladewind-button</code> or
-        <code class="inline">vendor/mkocansey/bladewind-table</code>. However, they all share
+        package, such as <code class="inline">vendor/bladewindui/button</code> or
+        <code class="inline">vendor/bladewindui/table</code>. However, they all share
         the same <code class="inline text-red-400">bladewind::</code> view namespace.  This Laravel convention means you’ll need to type the <code class="inline text-red-400">&lt;x-bladewind</code> prefix every time you use a BladewindUI component.
     </p>
     <pre class="language-markup">
@@ -71,7 +71,7 @@
     <p>
         The <a href="/component/datepicker">Datepicker component</a> is wired to speak a couple of languages. The language files are part of the <code class="inline">bladewind-core</code> package and are served from
         <code class="inline">
-            vendor > mkocansey > bladewind-core > lang
+            vendor > bladewindui > core > lang
         </code>. Currently the available languages contributed by the community are English, French, Italian, Arabic, German, Chinese, Spanish and Indonesian. You can add more languages as you see fit or even modify the existing translations. If you want to do this for just your project you will first need to publish the language files by running the command below from the root of your project.
         You can <a href="/contribute">contribute</a> a new language translation.
     </p>
@@ -100,11 +100,11 @@
     </pre>
     <p>
         To achieve this, create a <code class="inline">config/bladewind.php</code> file in the root of your project. If you installed the full
-        <code class="inline">mkocansey/bladewind</code> package you can have Laravel generate this file for you:
+        <code class="inline">bladewindui/ui</code> package you can have Laravel generate this file for you:
     </p>
     <pre class="lang-bash"><code>php artisan vendor:publish --tag=bladewind-config --force</code></pre>
     <p>
-        If you installed individual component packages (e.g. <code class="inline">mkocansey/bladewind-button</code>) the <code class="inline">bladewind-config</code>
+        If you installed individual component packages (e.g. <code class="inline">bladewindui/button</code>) the <code class="inline">bladewind-config</code>
         publish tag is not available. Simply create the file manually instead:
     </p>
     <pre class="lang-bash"><code>touch config/bladewind.php</code></pre>

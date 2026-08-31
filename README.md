@@ -1,4 +1,4 @@
-<p><img src="https://img.shields.io/github/license/mkocansey/bladewind" alt="License" /></p><br />
+<p><img src="https://img.shields.io/github/license/bladewindui/bladewindui" alt="License" /></p><br />
 <p><img src="https://bladewindui.com/assets/images/bw-logo.png" style="height: 30px; margin-bottom:10px" /></p>
 
 BladewindUI is a collection of UI components written purely using TailwindCSS, Laravel blade templates and Vanilla Javascript. These components are super simple to use and come with different levels of customization.
@@ -12,7 +12,7 @@ BladewindUI is very specific to Laravel since all components are written purely 
 <br /><br />
 
 ```
-composer require mkocansey/bladewind
+composer require bladewindui/bladewindui
 ```
 <br />
 

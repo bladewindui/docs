@@ -22,7 +22,7 @@ There are three ways to install BladewindUI depending on how much of the library
 Pull in every component at once. This is the easiest way to get started and is ideal for new projects or if you want to explore the full library.
 
 ```bash
-composer require mkocansey/bladewind
+composer require bladewindui/bladewindui
 ```
 
 ### Install a component group
@@ -181,7 +181,7 @@ The three group packages (`bladewind-forms`, `bladewind-content`, `bladewind-nav
 
 ## Customising Defaults
 
-Every attribute in every component has a project-level default you can override once and have it apply everywhere. Publish the config file (available when using the full `mkocansey/bladewind` package):
+Every attribute in every component has a project-level default you can override once and have it apply everywhere. Publish the config file (available when using the full `bladewindui/bladewindui` package):
 
 ```bash
 php artisan vendor:publish --tag=bladewind-config

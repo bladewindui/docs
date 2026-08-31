@@ -1273,8 +1273,8 @@
     </pre>
 
     <x-bladewind::alert show_close_icon="false">
-        The source file for this component is available in <code class="inline">resources > views > components > bladewind > modal.blade.php</code> and
-        <code class="inline">resources > views > components > bladewind > modal-icons.blade.php</code>
+        The source files for this component are available in <code class="inline">resources > views > components > bladewind > modal.blade.php</code> and
+        <code class="inline">resources > views > components > bladewind > modal-icon.blade.php</code>
     </x-bladewind::alert>
 
     <x-slot:side_nav>

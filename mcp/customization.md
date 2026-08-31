@@ -79,7 +79,7 @@ This is tedious. Wouldn't it be great to just type the code below to get a butto
 <x-bladewind::button>Save</x-bladewind::button>
 ```
 
-To achieve this, create a `config/bladewind.php` file in the root of your project. If you installed the full `mkocansey/bladewind` package you can have Laravel generate this file for you:
+To achieve this, create a `config/bladewind.php` file in the root of your project. If you installed the full `bladewindui/bladewindui` package you can have Laravel generate this file for you:
 
 ```bash
 php artisan vendor:publish --tag=bladewind-config --force

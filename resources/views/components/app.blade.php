@@ -30,7 +30,7 @@
 
         <main class="min-w-0">
             <article class="docs-article rounded-3xl border border-slate-200/80 bg-white px-5 py-8 shadow-sm shadow-slate-200/40 dark:border-slate-800 dark:bg-slate-900/60 dark:shadow-none sm:px-8 sm:py-10 xl:px-12">
-                <div class="mb-9 border-b border-slate-100 pb-8 dark:border-slate-800">
+                <div class="mb-5 border-b border-slate-100 pb-4 dark:border-slate-800">
                     <h1 class="page-title">{{ $page_title ?? '' }}</h1>
                 </div>
                 <div class="adoc">{{ $slot ?? '' }}</div>

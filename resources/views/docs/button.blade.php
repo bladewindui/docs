@@ -788,7 +788,7 @@
     </pre>
 
     <x-bladewind::alert show_close_icon="false">
-        The source file for this component is available in <code class="inline">resources > views > components > bladewind > button.blade.php</code>
+        The source files for this component are available in <code class="inline">resources > views > components > bladewind > button > [index.blade.php, circle.blade.php]</code>
     </x-bladewind::alert>
 
 

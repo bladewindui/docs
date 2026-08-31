@@ -23,6 +23,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
+    # .env.example is gitignored in this repo (not committed), so there's no
+    # file to copy on a fresh checkout. Laravel reads config straight from
+    # the process environment when no .env is present, so these just need to
+    # be set here instead of written to a file.
+    env:
+      APP_ENV: testing
+      # fixed, non-secret key used only for this CI run's encrypter/session
+      # services, never for anything that leaves the job
+      APP_KEY: base64:x2wpl+1P7795gSHrhxI/ScoDZfPRK62nvvqt3VejQFs=
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -33,14 +45,8 @@ jobs:
           php-version: '8.4'
           coverage: none
 
-      - name: Copy .env
-        run: cp .env.example .env
-
       - name: Install PHP dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
-
-      - name: Generate app key
-        run: php artisan key:generate
 
       - name: Create SQLite database
         run: touch database/database.sqlite

@@ -18,8 +18,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: PHP tests & style
+  ci:
+    name: Test, style & build
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -45,8 +45,24 @@ jobs:
           php-version: '8.4'
           coverage: none
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
       - name: Install PHP dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Audit Node dependencies
+        run: npm audit --audit-level=high
+
+      - name: Build assets
+        # tests render docs pages through @vite, which needs the manifest
+        run: npm run build
 
       - name: Create SQLite database
         run: touch database/database.sqlite
@@ -56,27 +72,3 @@ jobs:
 
       - name: Check code style
         run: vendor/bin/pint --test
-
-  build:
-    name: Front-end build
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build assets
-        run: npm run build
-
-      - name: Audit dependencies
-        run: npm audit --audit-level=high

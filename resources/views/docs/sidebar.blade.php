@@ -48,6 +48,10 @@
     &lt;x-slot:footer&gt;&lt;x-bladewind::avatar image="/images/avatar.png" name="Ama Mensah" /&gt;&lt;/x-slot:footer&gt;
 &lt;/x-bladewind::sidebar&gt;</code></pre>
 
+    <h2 id="desktop">Desktop Expanded and Collapsed States</h2>
+    <p>Set <code class="inline">collapsible="true"</code> to allow compact icon-only presentation. The optional collapse control is shown by default for a collapsible Sidebar. Labels remain available through accessible names and native tooltips. Nested destinations stay in the navigation tree and group state is preserved.</p>
+    <div class="flex flex-wrap gap-3"><x-bladewind::button onclick="collapseSidebar('workspace-navigation'); location.href='#top'">Collapse workspace</x-bladewind::button><x-bladewind::button type="secondary" onclick="expandSidebar('workspace-navigation')">Expand workspace</x-bladewind::button><x-bladewind::button type="secondary" onclick="toggleSidebar('workspace-navigation')">Toggle workspace</x-bladewind::button></div>
+
     <h2 id="sections-active">Navigation Sections and Active State</h2>
     <p>Groups create named navigation sections. Set <code class="inline">active</code> on the Sidebar to one item name. This value is the canonical active state and takes precedence over item-level <code class="inline">active</code> values. If the Sidebar has no active value, the first enabled item marked active wins. Sidebar does not inspect the current request URL.</p>
     <x-bladewind::alert show_close_icon="false">Only the selected destination receives <code class="inline">aria-current="page"</code>. Set <code class="inline">multiple-active="true"</code> only when the application intentionally has several current destinations.</x-bladewind::alert>
@@ -66,10 +70,6 @@
             </x-bladewind::sidebar.group>
         </x-bladewind::sidebar.group>
     </x-bladewind::sidebar></div>
-
-    <h2 id="desktop">Desktop Expanded and Collapsed States</h2>
-    <p>Set <code class="inline">collapsible="true"</code> to allow compact icon-only presentation. The optional collapse control is shown by default for a collapsible Sidebar. Labels remain available through accessible names and native tooltips. Nested destinations stay in the navigation tree and group state is preserved.</p>
-    <div class="flex flex-wrap gap-3"><x-bladewind::button onclick="collapseSidebar('workspace-navigation')">Collapse workspace</x-bladewind::button><x-bladewind::button type="secondary" onclick="expandSidebar('workspace-navigation')">Expand workspace</x-bladewind::button><x-bladewind::button type="secondary" onclick="toggleSidebar('workspace-navigation')">Toggle workspace</x-bladewind::button></div>
 
     <h2 id="mobile">Mobile Drawer Presentation</h2>
     <p><code class="inline">mobile="drawer"</code> is the default. Below 1024 pixels, <code class="inline">openSidebar()</code> moves the same Sidebar into the existing Bladewind Drawer. Drawer supplies Escape dismissal, backdrop dismissal, focus trapping, focus restoration, and body scroll locking. The Sidebar returns to its desktop host after close.</p>
@@ -92,8 +92,9 @@ expandSidebarGroup('account-navigation', 'settings');</code></pre>
 
     <h2 id="large-trees">Long Labels and Large Navigation Sets</h2>
     <p>Long labels wrap inside the available width. Full-height and content-height Sidebars cap themselves at the viewport and keep scrolling inside the navigation region. The header and footer remain sticky while a large tree scrolls.</p>
-    <div class="h-[430px] max-w-sm"><x-bladewind::sidebar name="large-navigation" label="Large report navigation" mobile="none"><x-slot:header><strong>Regional reports</strong></x-slot:header><x-bladewind::sidebar.group name="reports" label="Reports" expanded="true">@foreach(range(1, 14) as $report)<x-bladewind::sidebar.item :name="'report-'.$report" :label="'Regional operations and customer success report '.$report" :href="'#report-'.$report" icon="document-text" />@endforeach</x-bladewind::sidebar.group><x-slot:footer><x-bladewind::tag label="14 reports" color="blue" /></x-slot:footer></x-bladewind::sidebar></div>
-
+    <div class="h-[430px] max-w-sm"><x-bladewind::sidebar name="large-navigation" label="Large report navigation" mobile="none"><x-slot:header><strong>Regional reports</strong></x-slot:header><x-bladewind::sidebar.group name="reports" label="Reports" expanded="true">
+                @foreach(range(1, 3) as $report)<x-bladewind::sidebar.item :name="'report-'.$report" :label="'Regional operations and customer success report '.$report" :href="'#report-'.$report" icon="document-text" />@endforeach</x-bladewind::sidebar.group><x-slot:footer><x-bladewind::tag label="3 reports" color="blue" /></x-slot:footer></x-bladewind::sidebar></div>
+<br /><br />
     <h2 id="dark-mode">Dark Mode</h2>
     <p>Sidebar follows the page dark class and keeps active, hover, focus, border, description, and badge contrast readable. Drawer uses the same dark theme because it receives the original Sidebar DOM.</p>
     <div class="dark h-80 max-w-sm bg-dark-900"><x-bladewind::sidebar name="dark-navigation" label="Dark navigation" mobile="none"><x-bladewind::sidebar.item name="dashboard" label="Dashboard" href="#dark-dashboard" icon="squares-2x2" active="true" /><x-bladewind::sidebar.item name="billing" label="Billing" href="#dark-billing" icon="credit-card" description="Plans and invoices" /></x-bladewind::sidebar></div>

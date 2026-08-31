@@ -14,7 +14,7 @@
         </code>
     </pre>
     <p>
-        Once you <a href="/#publishing">publish</a> the BladewindUI components, the files get moved to your project's <code class="inline">resources > views > components > <span class="text-red-400">bladewind</span></code> directory.
+        Once you <a href="/install#publishing">publish</a> the BladewindUI components, the files get moved to your project's <code class="inline">resources > views > components > <span class="text-red-400">bladewind</span></code> directory.
         You can then use the dot, instead of the colon syntax to access a component.
     </p>
     <pre class="language-markup">
@@ -40,7 +40,7 @@
         </code>
     </pre>
     <p>
-        To achieve this, you should have already <a href="/#publishing">published the Bladewind components</a>. Next you will move all the blade files in <code class="inline">resources > views > components > bladewind</code> into <code class="inline">resources > views > components</code>.
+        To achieve this, you should have already <a href="/install#publishing">published the Bladewind components</a>. Next you will move all the blade files in <code class="inline">resources > views > components > bladewind</code> into <code class="inline">resources > views > components</code>.
         You can then delete the <span>bladewind</span> folder from your <code class="inline">resources > views > components</code> folder since it should technically be empty at this point.
     </p>
     <p>

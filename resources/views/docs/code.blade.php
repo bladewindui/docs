@@ -36,13 +36,46 @@
     <br />
     <p>
         If you don't want the code being entered to be visible, set the
-        <code class="inline text-red-500">mask="true"</code> attribute.
+        <code class="inline text-red-500">hide-input="true"</code> attribute. Each box will then behave like a
+        password field, showing a dot instead of the number typed.
     </p>
     <br/>
-    <p><x-bladewind::code mask="true"  /></p>
+    <p><x-bladewind::code hide-input="true"  /></p>
     <pre class="language-markup">
         <code>
-            &lt;x-bladewind::code mask="true"  /&gt;
+            &lt;x-bladewind::code hide-input="true"  /&gt;
+        </code>
+    </pre>
+    <br />
+    <p>
+        <x-bladewind::alert show_close_icon="false">
+            The <code class="inline">mask</code> attribute did the same thing in earlier versions and still works, but
+            <code class="inline">hide-input</code> is the name to use going forward. <code class="inline">mask</code> will be removed in a future major release.
+        </x-bladewind::alert>
+    </p>
+    <br />
+    <p>
+        If you want the boxes split into two groups with a separator between them, similar to how a bank card number
+        is often shown, set the <code class="inline text-red-500">has-separator="true"</code> attribute. When the
+        total number of boxes does not split evenly, the left group gets the extra box. So seven digits split into a
+        group of four on the left and a group of three on the right.
+    </p>
+    <br/>
+    <p><x-bladewind::code total_digits="7" has-separator="true"  /></p>
+    <pre class="language-markup">
+        <code>
+            &lt;x-bladewind::code total_digits="7" has-separator="true"  /&gt;
+        </code>
+    </pre>
+    <br />
+    <p>
+        <code class="inline text-red-500">has-separator</code> and <code class="inline text-red-500">hide-input</code> can be combined with each other and with any other attribute.
+    </p>
+    <br/>
+    <p><x-bladewind::code total_digits="7" has-separator="true" hide-input="true"  /></p>
+    <pre class="language-markup">
+        <code>
+            &lt;x-bladewind::code total_digits="7" has-separator="true" hide-input="true"  /&gt;
         </code>
     </pre>
 
@@ -429,9 +462,19 @@ triggerTimerManually = (code, name) => {
             <td>Error message to display when the verification code entered is invalid</td>
         </tr>
         <tr>
-            <td>mask</td>
+            <td>hide_input</td>
             <td>false</td>
             <td>Should the text being entered be hidden like a password field. <br /><code class="inline">true</code> <code class="inline">false</code> </td>
+        </tr>
+        <tr>
+            <td>mask</td>
+            <td>false</td>
+            <td>Older name for <code class="inline">hide_input</code>, kept for backward compatibility. Use <code class="inline">hide_input</code> instead, this attribute will be removed in a future major release. <br /><code class="inline">true</code> <code class="inline">false</code> </td>
+        </tr>
+        <tr>
+            <td>has_separator</td>
+            <td>false</td>
+            <td>Splits the boxes into two groups with a dash between them. When <code class="inline">total_digits</code> does not split evenly, the left group gets the extra box. <br /><code class="inline">true</code> <code class="inline">false</code> </td>
         </tr>
         <tr>
             <td>timer</td>
@@ -452,7 +495,8 @@ triggerTimerManually = (code, name) => {
         total_digits="5"
         onverify="verifyPin"
         has_spinner="false"
-        mask="false"
+        hide_input="false"
+        has_separator="false"
         timer="15"
         error_message="please enter the correct code"  /&gt;
 </code>

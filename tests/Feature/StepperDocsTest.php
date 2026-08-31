@@ -61,8 +61,8 @@ class StepperDocsTest extends TestCase
         $this->get('/component/button')->assertOk()->assertSee('/component/stepper', false);
         $this->get('/components')->assertOk()->assertSee('/component/stepper', false);
         $this->get('/install')->assertOk()
-            ->assertSee('mkocansey/bladewind-stepper')
-            ->assertSee('mkocansey/bladewind-navigation');
+            ->assertSee('bladewindui/stepper')
+            ->assertSee('bladewindui/navigation');
     }
 
     public function test_stepper_and_its_sections_are_discoverable_in_search(): void

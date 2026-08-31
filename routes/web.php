@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\DocsSearchController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\McpController;
-use App\Http\Controllers\DocsSearchController;
 use Illuminate\Support\Facades\Route;
+use Mkocansey\Bladewind\BladewindServiceProvider;
 
 Route::view('/', 'docs/index')->name('home');
 Route::view('components', 'docs/components')->name('components');
@@ -83,9 +84,10 @@ Route::post('/base64-upload', [FileUploadController::class, 'base64_upload']);
 // Test route for BladewindServiceProvider
 Route::get('/test-bladewind', function () {
     try {
-        app()->register(\Mkocansey\Bladewind\BladewindServiceProvider::class);
+        app()->register(BladewindServiceProvider::class);
+
         return 'Bladewind service provider registered successfully!';
     } catch (Exception $e) {
-        return 'Error registering Bladewind service provider: ' . $e->getMessage();
+        return 'Error registering Bladewind service provider: '.$e->getMessage();
     }
 });

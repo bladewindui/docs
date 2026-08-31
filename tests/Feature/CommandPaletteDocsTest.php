@@ -54,8 +54,8 @@ class CommandPaletteDocsTest extends TestCase
         $this->get('/component/button')->assertOk()->assertSee('/component/command-palette', false);
         $this->get('/components')->assertOk()->assertSee('/component/command-palette', false);
         $this->get('/install')->assertOk()
-            ->assertSee('mkocansey/bladewind-command-palette')
-            ->assertSee('mkocansey/bladewind-navigation');
+            ->assertSee('bladewindui/command-palette')
+            ->assertSee('bladewindui/navigation');
     }
 
     public function test_command_palette_and_relevant_sections_are_discoverable_in_search(): void

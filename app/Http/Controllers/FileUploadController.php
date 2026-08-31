@@ -21,6 +21,7 @@ class FileUploadController extends Controller
         }
         dd($uploadedFiles);
     }
+
     public function base64_upload(Request $request)
     {
         $base64Files = $request->input('base64_b64');
@@ -40,18 +41,21 @@ class FileUploadController extends Controller
         return response()->json(['path' => $path]);
     }
 
-    #[NoReturn] public function delete(Request $request)
+    #[NoReturn]
+    public function delete(Request $request)
     {
         $filePath = $request->input('path');
 
-        if (!$filePath) {
+        if (! $filePath) {
             return response()->json(['error' => 'No file path provided'], 400);
         }
 
         if (Storage::disk('public')->exists($filePath)) {
             Storage::disk('public')->delete($filePath);
+
             return response()->json(['message' => 'File deleted']);
         }
+
         return response()->json(['error' => 'File not found'], 404);
     }
 }

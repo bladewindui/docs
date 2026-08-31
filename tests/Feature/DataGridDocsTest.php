@@ -56,8 +56,8 @@ class DataGridDocsTest extends TestCase
         $this->get('/component/button')->assertOk()->assertSee('/component/data-grid', false);
         $this->get('/components')->assertOk()->assertSee('/component/data-grid', false);
         $this->get('/install')->assertOk()
-            ->assertSee('mkocansey/bladewind-data-grid')
-            ->assertSee('mkocansey/bladewind-table');
+            ->assertSee('bladewindui/data-grid')
+            ->assertSee('bladewindui/table');
     }
 
     public function test_data_grid_and_relevant_sections_are_discoverable_in_search(): void

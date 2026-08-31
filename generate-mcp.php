@@ -21,9 +21,9 @@
 
 // ── Config ──────────────────────────────────────────────────────────────────
 
-$BLADE_DIR = __DIR__ . '/resources/views/docs';
-$MCP_DIR   = __DIR__ . '/mcp';
-$MODEL     = 'claude-opus-4-7';
+$BLADE_DIR = __DIR__.'/resources/views/docs';
+$MCP_DIR = __DIR__.'/mcp';
+$MODEL = 'claude-opus-4-7';
 
 // Blade files where the filename differs from the component slug
 $FILENAME_OVERRIDES = [
@@ -32,11 +32,11 @@ $FILENAME_OVERRIDES = [
 
 // ── Argument parsing ─────────────────────────────────────────────────────────
 
-$args        = array_slice($argv, 1);
-$dryRun      = in_array('--dry-run', $args);
+$args = array_slice($argv, 1);
+$dryRun = in_array('--dry-run', $args);
 $updateIndex = in_array('--update-index', $args);
-$args        = array_filter($args, fn($a) => !str_starts_with($a, '--'));
-$args        = array_values($args);
+$args = array_filter($args, fn ($a) => ! str_starts_with($a, '--'));
+$args = array_values($args);
 
 if (count($args) === 0) {
     fwrite(STDERR, "Usage: php generate-mcp.php <component-name> [--dry-run] [--update-index]\n");
@@ -48,16 +48,16 @@ $componentSlug = strtolower(trim($args[0]));
 // ── Locate the blade file ────────────────────────────────────────────────────
 
 $apiKey = getenv('ANTHROPIC_API_KEY');
-if (!$apiKey) {
+if (! $apiKey) {
     fwrite(STDERR, "Error: ANTHROPIC_API_KEY environment variable is not set.\n");
     exit(1);
 }
 
-$bladeName     = $FILENAME_OVERRIDES[$componentSlug] ?? $componentSlug;
+$bladeName = $FILENAME_OVERRIDES[$componentSlug] ?? $componentSlug;
 $bladeCandidates = [
     "$BLADE_DIR/{$bladeName}.blade.php",
-    "$BLADE_DIR/" . str_replace('-', '', $bladeName) . ".blade.php",
-    "$BLADE_DIR/" . str_replace('-', '_', $bladeName) . ".blade.php",
+    "$BLADE_DIR/".str_replace('-', '', $bladeName).'.blade.php',
+    "$BLADE_DIR/".str_replace('-', '_', $bladeName).'.blade.php',
 ];
 
 $bladePath = null;
@@ -68,7 +68,7 @@ foreach ($bladeCandidates as $candidate) {
     }
 }
 
-if (!$bladePath) {
+if (! $bladePath) {
     fwrite(STDERR, "Error: Could not find blade file for '{$componentSlug}'.\n");
     fwrite(STDERR, "Tried:\n");
     foreach ($bladeCandidates as $c) {
@@ -81,14 +81,16 @@ $outputPath = "$MCP_DIR/{$componentSlug}.md";
 
 echo "Source : $bladePath\n";
 echo "Output : $outputPath\n";
-if ($dryRun) echo "(dry-run — no files will be written)\n";
+if ($dryRun) {
+    echo "(dry-run — no files will be written)\n";
+}
 echo "\n";
 
 // ── Read source ──────────────────────────────────────────────────────────────
 
 $bladeContent = file_get_contents($bladePath);
-$fileSize     = strlen($bladeContent);
-echo "Source size: " . number_format($fileSize) . " bytes\n";
+$fileSize = strlen($bladeContent);
+echo 'Source size: '.number_format($fileSize)." bytes\n";
 
 // ── System prompt ────────────────────────────────────────────────────────────
 
@@ -187,10 +189,10 @@ PROMPT;
 echo "Calling Claude API ({$MODEL})...\n";
 
 $payload = json_encode([
-    'model'      => $MODEL,
+    'model' => $MODEL,
     'max_tokens' => 8192,
-    'system'     => $systemPrompt,
-    'messages'   => [
+    'system' => $systemPrompt,
+    'messages' => [
         ['role' => 'user', 'content' => $userPrompt],
     ],
 ]);
@@ -198,14 +200,14 @@ $payload = json_encode([
 $ch = curl_init('https://api.anthropic.com/v1/messages');
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POST           => true,
-    CURLOPT_POSTFIELDS     => $payload,
-    CURLOPT_HTTPHEADER     => [
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => $payload,
+    CURLOPT_HTTPHEADER => [
         'Content-Type: application/json',
-        'x-api-key: ' . $apiKey,
+        'x-api-key: '.$apiKey,
         'anthropic-version: 2023-06-01',
     ],
-    CURLOPT_TIMEOUT        => 300,
+    CURLOPT_TIMEOUT => 300,
 ]);
 
 $response = curl_exec($ch);
@@ -225,14 +227,14 @@ if ($httpCode !== 200) {
 
 $data = json_decode($response, true);
 
-if (!isset($data['content'][0]['text'])) {
+if (! isset($data['content'][0]['text'])) {
     fwrite(STDERR, "Unexpected API response structure:\n$response\n");
     exit(1);
 }
 
 $markdown = trim($data['content'][0]['text']);
 
-$inputTokens  = $data['usage']['input_tokens'] ?? '?';
+$inputTokens = $data['usage']['input_tokens'] ?? '?';
 $outputTokens = $data['usage']['output_tokens'] ?? '?';
 echo "Tokens: {$inputTokens} in / {$outputTokens} out\n\n";
 
@@ -240,16 +242,16 @@ echo "Tokens: {$inputTokens} in / {$outputTokens} out\n\n";
 
 if ($dryRun) {
     echo "── Generated markdown (dry-run) ──────────────────────────────────────\n";
-    echo $markdown . "\n";
+    echo $markdown."\n";
     echo "──────────────────────────────────────────────────────────────────────\n";
     exit(0);
 }
 
-if (!is_dir($MCP_DIR)) {
+if (! is_dir($MCP_DIR)) {
     mkdir($MCP_DIR, 0755, true);
 }
 
-file_put_contents($outputPath, $markdown . "\n");
+file_put_contents($outputPath, $markdown."\n");
 echo "Written: $outputPath\n";
 
 // ── Update index.md ───────────────────────────────────────────────────────────
@@ -257,7 +259,7 @@ echo "Written: $outputPath\n";
 if ($updateIndex) {
     $indexPath = "$MCP_DIR/index.md";
 
-    if (!file_exists($indexPath)) {
+    if (! file_exists($indexPath)) {
         echo "Warning: index.md not found at $indexPath — skipping index update.\n";
     } else {
         $indexContent = file_get_contents($indexPath);
@@ -272,7 +274,7 @@ if ($updateIndex) {
             echo "Index: entry for '{$componentSlug}' already exists — skipping.\n";
         } else {
             // Append before the final newline of the table
-            $indexContent = rtrim($indexContent) . "\n" . $newRow . "\n";
+            $indexContent = rtrim($indexContent)."\n".$newRow."\n";
             file_put_contents($indexPath, $indexContent);
             echo "Index: added entry for '{$componentSlug}'.\n";
         }

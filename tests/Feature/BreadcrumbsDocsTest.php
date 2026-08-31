@@ -12,7 +12,7 @@ class BreadcrumbsDocsTest extends TestCase
             ->assertOk()
             ->assertSee('Breadcrumbs')
             ->assertSee('aria-current="page"', false)
-            ->assertSee('icon-dir=""', false)
+            ->assertSee('bw-breadcrumb-icon', false)
             ->assertDontSee('<h2 id="installation">', false)
             ->assertDontSee('<h2 id="basic-usage">', false)
             ->assertSee('Long And Collapsed Trails');
@@ -22,7 +22,7 @@ class BreadcrumbsDocsTest extends TestCase
     {
         $this->get('/component/button')->assertOk()->assertSee('/component/breadcrumbs', false);
         $this->get('/components')->assertOk()->assertSee('/component/breadcrumbs', false);
-        $this->get('/install')->assertOk()->assertSee('mkocansey/bladewind-breadcrumbs');
+        $this->get('/install')->assertOk()->assertSee('bladewindui/breadcrumbs');
     }
 
     public function test_breadcrumbs_is_discoverable_in_documentation_search(): void

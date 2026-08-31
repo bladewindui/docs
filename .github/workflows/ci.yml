@@ -1,0 +1,74 @@
+name: CI
+
+# Runs the PHP test suite, code style check, and the front-end build against
+# every pull request and every push to development, so a broken docs page or
+# a failing build can't reach main (which deploys to production on tag/release,
+# see deploy.yml).
+on:
+  pull_request:
+  push:
+    branches:
+      - development
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Test, style & build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    # .env.example is gitignored in this repo (not committed), so there's no
+    # file to copy on a fresh checkout. Laravel reads config straight from
+    # the process environment when no .env is present, so these just need to
+    # be set here instead of written to a file.
+    env:
+      APP_ENV: testing
+      # fixed, non-secret key used only for this CI run's encrypter/session
+      # services, never for anything that leaves the job
+      APP_KEY: base64:x2wpl+1P7795gSHrhxI/ScoDZfPRK62nvvqt3VejQFs=
+      DB_CONNECTION: sqlite
+      DB_DATABASE: ${{ github.workspace }}/database/database.sqlite
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Audit Node dependencies
+        run: npm audit --audit-level=high
+
+      - name: Build assets
+        # tests render docs pages through @vite, which needs the manifest
+        run: npm run build
+
+      - name: Create SQLite database
+        run: touch database/database.sqlite
+
+      - name: Run tests
+        run: php artisan test
+
+      - name: Check code style
+        run: vendor/bin/pint --test

@@ -23,7 +23,7 @@ class DrawerDocsTest extends TestCase
 
     public function test_drawer_is_discoverable_from_navigation_and_catalogue(): void
     {
-        $this->get('/install')->assertOk()->assertSee('/component/drawer', false)->assertSee('mkocansey/bladewind-drawer');
+        $this->get('/install')->assertOk()->assertSee('/component/drawer', false)->assertSee('bladewindui/drawer');
         $this->get('/components')->assertOk()->assertSee('/component/drawer', false);
     }
 

@@ -19,9 +19,12 @@ use Illuminate\Http\Response;
 class McpController extends Controller
 {
     private const string PROTOCOL_VERSION = '2025-11-25';
-    private const string SERVER_NAME      = 'bladewindui-docs';
-    private const string SERVER_VERSION   = '1.0.0';
-    private const string URI_SCHEME       = 'bladewindui://docs/';
+
+    private const string SERVER_NAME = 'bladewindui-docs';
+
+    private const string SERVER_VERSION = '1.0.0';
+
+    private const string URI_SCHEME = 'bladewindui://docs/';
 
     private string $mcpDir;
 
@@ -41,6 +44,7 @@ class McpController extends Controller
             $responses = array_values(
                 array_filter(array_map([$this, 'dispatch'], $body))
             );
+
             return response()->json($responses);
         }
 
@@ -59,24 +63,24 @@ class McpController extends Controller
 
     private function dispatch(array $message): ?array
     {
-        $id     = $message['id']     ?? null;
+        $id = $message['id'] ?? null;
         $method = $message['method'] ?? '';
         $params = $message['params'] ?? [];
 
         // JSON-RPC notifications (no id) must not receive a response
-        if ($id === null && !str_starts_with($method, 'initialize')) {
+        if ($id === null && ! str_starts_with($method, 'initialize')) {
             return null;
         }
 
         return match ($method) {
-            'initialize'              => $this->initialize($id, $params),
+            'initialize' => $this->initialize($id, $params),
             'notifications/initialized' => null,
-            'ping'                    => $this->pong($id),
-            'resources/list'          => $this->resourcesList($id, $params),
-            'resources/read'          => $this->resourcesRead($id, $params),
-            'tools/list'              => $this->toolsList($id),
-            'tools/call'              => $this->toolsCall($id, $params),
-            default                   => $this->methodNotFound($id, $method),
+            'ping' => $this->pong($id),
+            'resources/list' => $this->resourcesList($id, $params),
+            'resources/read' => $this->resourcesRead($id, $params),
+            'tools/list' => $this->toolsList($id),
+            'tools/call' => $this->toolsCall($id, $params),
+            default => $this->methodNotFound($id, $method),
         };
     }
 
@@ -86,12 +90,12 @@ class McpController extends Controller
     {
         return $this->result($id, [
             'protocolVersion' => self::PROTOCOL_VERSION,
-            'capabilities'    => [
+            'capabilities' => [
                 'resources' => ['subscribe' => false, 'listChanged' => false],
-                'tools'     => new \stdClass(),
+                'tools' => new \stdClass,
             ],
             'serverInfo' => [
-                'name'    => self::SERVER_NAME,
+                'name' => self::SERVER_NAME,
                 'version' => self::SERVER_VERSION,
             ],
             'instructions' => implode(' ', [
@@ -105,7 +109,7 @@ class McpController extends Controller
 
     private function pong(mixed $id): array
     {
-        return $this->result($id, new \stdClass());
+        return $this->result($id, new \stdClass);
     }
 
     private function resourcesList(mixed $id, array $params): array
@@ -116,27 +120,29 @@ class McpController extends Controller
         // Index first
         if (isset($files['index'])) {
             $resources[] = [
-                'uri'         => self::URI_SCHEME . 'index',
-                'name'        => 'BladewindUI Component Index',
+                'uri' => self::URI_SCHEME.'index',
+                'name' => 'BladewindUI Component Index',
                 'description' => 'Index of all BladewindUI components with their tags and doc links.',
-                'mimeType'    => 'text/markdown',
+                'mimeType' => 'text/markdown',
             ];
         }
 
         // One resource per component / guide file
         foreach ($files as $slug => $path) {
-            if ($slug === 'index') continue;
+            if ($slug === 'index') {
+                continue;
+            }
 
-            $title   = $this->extractTitle($path) ?? $this->slugToTitle($slug);
+            $title = $this->extractTitle($path) ?? $this->slugToTitle($slug);
             $isGuide = $this->extractFrontmatter($path, 'component') === null;
 
             $resources[] = [
-                'uri'         => self::URI_SCHEME . $slug,
-                'name'        => $title,
+                'uri' => self::URI_SCHEME.$slug,
+                'name' => $title,
                 'description' => $isGuide
                     ? "BladewindUI {$title} — installation, configuration, and theming guide."
                     : "BladewindUI {$title} documentation — usage, examples, and attribute reference.",
-                'mimeType'    => 'text/markdown',
+                'mimeType' => 'text/markdown',
             ];
         }
 
@@ -145,24 +151,24 @@ class McpController extends Controller
 
     private function resourcesRead(mixed $id, array $params): array
     {
-        $uri  = $params['uri'] ?? '';
+        $uri = $params['uri'] ?? '';
         $slug = str_replace(self::URI_SCHEME, '', $uri);
 
-        if (!$slug || !preg_match('/^[\w-]+$/', $slug)) {
+        if (! $slug || ! preg_match('/^[\w-]+$/', $slug)) {
             return $this->error($id, -32602, "Invalid resource URI: {$uri}");
         }
 
         $path = "{$this->mcpDir}/{$slug}.md";
 
-        if (!file_exists($path)) {
+        if (! file_exists($path)) {
             return $this->error($id, -32002, "Resource not found: {$uri}");
         }
 
         return $this->result($id, [
             'contents' => [[
-                'uri'      => $uri,
+                'uri' => $uri,
                 'mimeType' => 'text/markdown',
-                'text'     => file_get_contents($path),
+                'text' => file_get_contents($path),
             ]],
         ]);
     }
@@ -172,22 +178,22 @@ class McpController extends Controller
         return $this->result($id, [
             'tools' => [
                 [
-                    'name'        => 'list_components',
+                    'name' => 'list_components',
                     'description' => 'List all available BladewindUI components with their Blade tag and doc URI.',
                     'inputSchema' => [
-                        'type'       => 'object',
-                        'properties' => new \stdClass(),
-                        'required'   => [],
+                        'type' => 'object',
+                        'properties' => new \stdClass,
+                        'required' => [],
                     ],
                 ],
                 [
-                    'name'        => 'get_component_docs',
+                    'name' => 'get_component_docs',
                     'description' => 'Get the full documentation for a specific BladewindUI component by name.',
                     'inputSchema' => [
-                        'type'       => 'object',
+                        'type' => 'object',
                         'properties' => [
                             'name' => [
-                                'type'        => 'string',
+                                'type' => 'string',
                                 'description' => 'Component slug, e.g. "button", "table", "horizontal-line-graph".',
                             ],
                         ],
@@ -195,13 +201,13 @@ class McpController extends Controller
                     ],
                 ],
                 [
-                    'name'        => 'search_components',
+                    'name' => 'search_components',
                     'description' => 'Search BladewindUI component docs by keyword. Returns matching component names and relevant excerpts.',
                     'inputSchema' => [
-                        'type'       => 'object',
+                        'type' => 'object',
                         'properties' => [
                             'query' => [
-                                'type'        => 'string',
+                                'type' => 'string',
                                 'description' => 'Keyword or phrase to search for, e.g. "pagination", "color", "slot".',
                             ],
                         ],
@@ -214,14 +220,14 @@ class McpController extends Controller
 
     private function toolsCall(mixed $id, array $params): array
     {
-        $name      = $params['name']      ?? '';
+        $name = $params['name'] ?? '';
         $arguments = $params['arguments'] ?? [];
 
         return match ($name) {
-            'list_components'    => $this->toolListComponents($id),
+            'list_components' => $this->toolListComponents($id),
             'get_component_docs' => $this->toolGetComponentDocs($id, $arguments),
-            'search_components'  => $this->toolSearchComponents($id, $arguments),
-            default              => $this->error($id, -32601, "Unknown tool: {$name}"),
+            'search_components' => $this->toolSearchComponents($id, $arguments),
+            default => $this->error($id, -32601, "Unknown tool: {$name}"),
         };
     }
 
@@ -229,14 +235,16 @@ class McpController extends Controller
 
     private function toolListComponents(mixed $id): array
     {
-        $files      = $this->getMarkdownFiles();
+        $files = $this->getMarkdownFiles();
         $components = [];
-        $guides     = [];
+        $guides = [];
 
         foreach ($files as $slug => $path) {
-            if ($slug === 'index') continue;
+            if ($slug === 'index') {
+                continue;
+            }
 
-            $title     = $this->extractTitle($path) ?? $this->slugToTitle($slug);
+            $title = $this->extractTitle($path) ?? $this->slugToTitle($slug);
             $component = $this->extractFrontmatter($path, 'component');
 
             // Files without a `component` frontmatter are guides, not components.
@@ -251,8 +259,8 @@ class McpController extends Controller
         sort($guides);
 
         $output = implode("\n", $components);
-        if (!empty($guides)) {
-            $output .= "\n\n## Guides\n\n" . implode("\n", $guides);
+        if (! empty($guides)) {
+            $output .= "\n\n## Guides\n\n".implode("\n", $guides);
         }
 
         return $this->toolResult($id, $output);
@@ -262,13 +270,13 @@ class McpController extends Controller
     {
         $name = trim(strtolower($args['name'] ?? ''));
 
-        if (!$name) {
+        if (! $name) {
             return $this->toolError($id, 'The `name` argument is required.');
         }
 
         $path = "{$this->mcpDir}/{$name}.md";
 
-        if (!file_exists($path)) {
+        if (! file_exists($path)) {
             // Fuzzy fallback: try matching by partial slug
             $files = $this->getMarkdownFiles();
             foreach (array_keys($files) as $slug) {
@@ -279,7 +287,7 @@ class McpController extends Controller
             }
         }
 
-        if (!file_exists($path)) {
+        if (! file_exists($path)) {
             return $this->toolError($id, "No documentation found for component \"{$name}\". Use list_components to see available components.");
         }
 
@@ -290,19 +298,21 @@ class McpController extends Controller
     {
         $query = trim($args['query'] ?? '');
 
-        if (!$query) {
+        if (! $query) {
             return $this->toolError($id, 'The `query` argument is required.');
         }
 
-        $files   = $this->getMarkdownFiles();
+        $files = $this->getMarkdownFiles();
         $matches = [];
 
         foreach ($files as $slug => $path) {
-            if ($slug === 'index') continue;
+            if ($slug === 'index') {
+                continue;
+            }
 
             $content = file_get_contents($path);
 
-            if (!stripos($content, $query) && !stripos($slug, $query)) {
+            if (! stripos($content, $query) && ! stripos($slug, $query)) {
                 continue;
             }
 
@@ -311,17 +321,17 @@ class McpController extends Controller
             // Extract up to 3 context lines around each match
             $excerpts = $this->extractExcerpts($content, $query, 3);
 
-            $matches[] = "### {$title} (`bladewindui://docs/{$slug}`)\n\n" . implode("\n\n---\n\n", $excerpts);
+            $matches[] = "### {$title} (`bladewindui://docs/{$slug}`)\n\n".implode("\n\n---\n\n", $excerpts);
         }
 
         if (empty($matches)) {
             return $this->toolResult($id, "No results found matching \"{$query}\".");
         }
 
-        $count  = count($matches);
-        $header = "Found {$count} result" . ($count !== 1 ? 's' : '') . " matching \"{$query}\":\n\n";
+        $count = count($matches);
+        $header = "Found {$count} result".($count !== 1 ? 's' : '')." matching \"{$query}\":\n\n";
 
-        return $this->toolResult($id, $header . implode("\n\n---\n\n", $matches));
+        return $this->toolResult($id, $header.implode("\n\n---\n\n", $matches));
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
@@ -332,7 +342,7 @@ class McpController extends Controller
         $files = [];
 
         foreach (glob("{$this->mcpDir}/*.md") as $path) {
-            $slug         = basename($path, '.md');
+            $slug = basename($path, '.md');
             $files[$slug] = $path;
         }
 
@@ -344,9 +354,10 @@ class McpController extends Controller
     private function extractFrontmatter(string $path, string $key): ?string
     {
         $content = file_get_contents($path);
-        if (preg_match('/^' . preg_quote($key, '/') . ':\s*(.+)$/m', $content, $m)) {
+        if (preg_match('/^'.preg_quote($key, '/').':\s*(.+)$/m', $content, $m)) {
             return trim($m[1]);
         }
+
         return null;
     }
 
@@ -363,24 +374,30 @@ class McpController extends Controller
     /** Return up to $max excerpts (3 lines of context) around each occurrence of $query in $content. */
     private function extractExcerpts(string $content, string $query, int $max): array
     {
-        $lines    = explode("\n", $content);
+        $lines = explode("\n", $content);
         $excerpts = [];
-        $found    = [];
+        $found = [];
 
         foreach ($lines as $i => $line) {
-            if (count($excerpts) >= $max) break;
+            if (count($excerpts) >= $max) {
+                break;
+            }
 
-            if (!stripos($line . ' ', $query)) continue;
+            if (! stripos($line.' ', $query)) {
+                continue;
+            }
 
             // Avoid overlapping excerpts
             foreach ($found as $prev) {
-                if (abs($i - $prev) < 4) continue 2;
+                if (abs($i - $prev) < 4) {
+                    continue 2;
+                }
             }
 
-            $found[]    = $i;
-            $start      = max(0, $i - 1);
-            $end        = min(count($lines) - 1, $i + 1);
-            $excerpts[] = '> ' . implode("\n> ", array_slice($lines, $start, $end - $start + 1));
+            $found[] = $i;
+            $start = max(0, $i - 1);
+            $end = min(count($lines) - 1, $i + 1);
+            $excerpts[] = '> '.implode("\n> ", array_slice($lines, $start, $end - $start + 1));
         }
 
         return $excerpts ?: ['*(no excerpt available)*'];
@@ -407,7 +424,7 @@ class McpController extends Controller
     {
         return $this->result($id, [
             'content' => [['type' => 'text', 'text' => $text]],
-            'isError'  => false,
+            'isError' => false,
         ]);
     }
 
@@ -415,7 +432,7 @@ class McpController extends Controller
     {
         return $this->result($id, [
             'content' => [['type' => 'text', 'text' => $message]],
-            'isError'  => true,
+            'isError' => true,
         ]);
     }
 }

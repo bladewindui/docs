@@ -1,12 +1,11 @@
 name: Deploy
 
-# Deploys to production when a commit lands on main (merge or direct push),
-# when a version tag (v*) is pushed, when a GitHub Release is published,
-# or manually from the Actions tab.
+# Deploys to production when a version tag (v*) is pushed to main, when a
+# GitHub Release is published, or manually from the Actions tab. Merging to
+# main on its own no longer deploys — CI (ci.yml) is what gates that merge,
+# a tag or release is what ships it.
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 

@@ -55,8 +55,8 @@ class SidebarDocsTest extends TestCase
         $this->get('/component/button')->assertOk()->assertSee('/component/sidebar', false);
         $this->get('/components')->assertOk()->assertSee('/component/sidebar', false);
         $this->get('/install')->assertOk()
-            ->assertSee('mkocansey/bladewind-sidebar')
-            ->assertSee('mkocansey/bladewind-navigation');
+            ->assertSee('bladewindui/sidebar')
+            ->assertSee('bladewindui/navigation');
     }
 
     public function test_sidebar_and_relevant_sections_are_discoverable_in_search(): void

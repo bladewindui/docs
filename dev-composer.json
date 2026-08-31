@@ -2,18 +2,18 @@
     "$schema": "https://getcomposer.org/schema.json",
     "description": "Reference only. Local path repository settings live in composer.json.",
     "require": {
-        "bladewindui/bladewindui": "dev-development"
+        "bladewindui/ui": "dev-development"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": {
-        "bladewindui/bladewindui": {
+        "bladewindui/ui": {
             "type": "path",
             "url": "../bladewindui",
             "options": {
                 "symlink": true,
                 "versions": {
-                    "bladewindui/bladewindui": "dev-development"
+                    "bladewindui/ui": "dev-development"
                 }
             }
         }

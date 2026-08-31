@@ -163,6 +163,24 @@
         </code>
     </pre>
 
+    <h2 id="scrolling">Popovers In Scrolling Containers</h2>
+    <p>
+        The popover panel is positioned against its trigger rather than laid out inside it, so
+        it is not cut off by whatever the trigger happens to sit in. This matters most in
+        tables: a wide table needs a horizontally scrolling wrapper, and such a wrapper clips
+        vertically as well, which used to swallow any popover opened from inside one.
+    </p>
+    <p>
+        Nothing is required of you. The panel keeps the side you asked for in
+        <code class="inline text-red-500">position</code>, flips vertically when the viewport
+        cannot hold it on the requested side, and follows its trigger when you scroll. That
+        applies when what scrolls is an inner container, not just the page itself.
+    </p>
+    <x-bladewind::alert show_close_icon="false">
+        The panel is repositioned, not moved elsewhere in the page. It stays inside the popover
+        component, so your own CSS selecting it through an ancestor still matches.
+    </x-bladewind::alert>
+
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Popover component.</p>
     @include('docs/announcement')
@@ -230,6 +248,23 @@
         </tr>
     </x-bladewind::table>
 
+    <h2 id="javascript-api">JavaScript API</h2>
+    <p>
+        Each popover creates a <code class="inline">BladewindPopover</code> instance assigned to a variable named after the
+        component's <code class="inline text-red-500">name</code>, so it can be called directly from your own scripts or inline
+        handlers. If you set <code class="inline text-red-500">name</code> yourself, use only letters, numbers, and underscores,
+        since hyphens are not valid in a JavaScript identifier. The auto-generated default already does this for you.
+    </p>
+    <x-bladewind::table>
+        <x-slot:header><th>Method</th><th>Description</th></x-slot:header>
+        <tr><td><code class="inline">name.show()</code></td><td>Open the popover and position it against its trigger.</td></tr>
+        <tr><td><code class="inline">name.hide()</code></td><td>Close the popover.</td></tr>
+        <tr><td><code class="inline">name.toggle()</code></td><td>Open or close the popover based on its current state.</td></tr>
+    </x-bladewind::table>
+    <pre class="language-javascript"><code>user_menu.show();
+user_menu.hide();
+user_menu.toggle();</code></pre>
+
     <h3 class="pb-2">Popover with all attributes defined</h3>
     <pre class="language-markup line-numbers">
         <code>
@@ -261,7 +296,9 @@
         <div class="flex items-center"><div class="dot"></div><a href="#position">Position</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#trigger-on">Trigger event</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#width">Width</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#scrolling">Popovers in scrolling containers</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

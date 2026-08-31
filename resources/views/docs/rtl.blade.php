@@ -40,7 +40,7 @@
     </p>
     <pre class="language-js line-numbers">
     <code>
-        // your-project/vendor/bladewindui/bladewindui/tailwind.config.js
+        // your-project/vendor/bladewindui/ui/tailwind.config.js
   theme: {
     extend: {
       colors: {
@@ -107,7 +107,7 @@
     <p>
         The <a href="/component/datepicker">Datepicker component</a> is wired to speak a couple of languages. The language files are served from BladewindUI's vendor directory,
         <code class="inline">
-            vendor > mkocansey > bladewind > lang
+            vendor > bladewindui > ui > lang
         </code>. Currently, the available languages are English, French, Italian, Arabic, German, Chinese and Indonesian. You can add more languages as you see fit or even modify the existing translations. If you want to do this for just your project you will first need to publish the language files by running the command below from the root of your project.
     </p>
     <pre class="lang-bash command-line"><code>php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-lang --force</code></pre><br />

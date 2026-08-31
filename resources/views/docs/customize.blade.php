@@ -4,8 +4,8 @@
     <p>
         BladewindUI is designed to work seamlessly with your existing project components. Once installed, all BladewindUI
         components are served directly from your project’s vendor directory.  Each component resides in its own Composer
-        package, such as <code class="inline">vendor/mkocansey/bladewind-button</code> or
-        <code class="inline">vendor/mkocansey/bladewind-table</code>. However, they all share
+        package, such as <code class="inline">vendor/bladewindui/button</code> or
+        <code class="inline">vendor/bladewindui/table</code>. However, they all share
         the same <code class="inline text-red-400">bladewind::</code> view namespace.  This Laravel convention means you’ll need to type the <code class="inline text-red-400">&lt;x-bladewind</code> prefix every time you use a BladewindUI component.
     </p>
     <pre class="language-markup">
@@ -71,7 +71,7 @@
     <p>
         The <a href="/component/datepicker">Datepicker component</a> is wired to speak a couple of languages. The language files are part of the <code class="inline">bladewind-core</code> package and are served from
         <code class="inline">
-            vendor > mkocansey > bladewind-core > lang
+            vendor > bladewindui > core > lang
         </code>. Currently the available languages contributed by the community are English, French, Italian, Arabic, German, Chinese, Spanish and Indonesian. You can add more languages as you see fit or even modify the existing translations. If you want to do this for just your project you will first need to publish the language files by running the command below from the root of your project.
         You can <a href="/contribute">contribute</a> a new language translation.
     </p>
@@ -100,11 +100,11 @@
     </pre>
     <p>
         To achieve this, create a <code class="inline">config/bladewind.php</code> file in the root of your project. If you installed the full
-        <code class="inline">bladewindui/bladewindui</code> package you can have Laravel generate this file for you:
+        <code class="inline">bladewindui/ui</code> package you can have Laravel generate this file for you:
     </p>
     <pre class="lang-bash"><code>php artisan vendor:publish --tag=bladewind-config --force</code></pre>
     <p>
-        If you installed individual component packages (e.g. <code class="inline">mkocansey/bladewind-button</code>) the <code class="inline">bladewind-config</code>
+        If you installed individual component packages (e.g. <code class="inline">bladewindui/button</code>) the <code class="inline">bladewind-config</code>
         publish tag is not available. Simply create the file manually instead:
     </p>
     <pre class="lang-bash"><code>touch config/bladewind.php</code></pre>
@@ -153,11 +153,112 @@
     </x-bladewind::alert>
     <pre class="lang-bash"><code>php artisan config:clear</code></pre>
     <br />
+
+    <h2 id="new-config-groups">Newer Config Groups</h2>
+    <p>
+        A few groups are worth knowing about because they are not simply a mirror of a
+        component's attributes.
+    </p>
+    <pre class="lang-php">
+    <code>
+        // config/bladewind.php
+
+    ...
+
+    'card' =&gt; [
+        // house style once, rather than on every card. border on + shadow on is
+        // the shipped pairing, but border off + shadow on is what most apps land on
+        'has_border' =&gt; false,
+        'has_shadow' =&gt; true,
+        // a padding scale, or any tailwind padding utility
+        'padding' =&gt; 'regular',
+    ],
+
+    'icon' =&gt; [
+        // tiny small regular medium big large, or a utility like size-[18px]
+        'size' =&gt; 'medium',
+    ],
+
+    'statistic' =&gt; [
+        // neutral positive negative warning info
+        'tone' =&gt; 'neutral',
+        // for metrics where down is good, like arrears or churn
+        'invert_direction' =&gt; false,
+    ],
+
+    'input_group' =&gt; [
+        // run attached controls flush against each other
+        'attached' =&gt; true,
+    ],
+
+    'pagination' =&gt; [
+        // server mode, used when the component is handed a Laravel paginator
+        'per_page_options' =&gt; [15, 30, 50],
+        'per_page_name' =&gt; 'per_page',
+        'on_each_side' =&gt; 1,
+    ],
+
+    'table' =&gt; [
+        // most apps that care about density set this
+        'divider' =&gt; 'thin',
+    ],
+    ...
+    </code>
+    </pre>
+
+    <h2 id="form-state">Laravel Form State</h2>
+    <p>
+        One block in the same file turns on form-state handling for every form component at once:
+        <code class="inline">input</code>, <code class="inline">textarea</code>,
+        <code class="inline">select</code>, <code class="inline">checkbox</code>,
+        <code class="inline">radio</code>, <code class="inline">datepicker</code> and
+        <code class="inline">filepicker</code>. Unlike the other sections here, this one is not
+        named after a component &mdash; it is shared by all of them.
+    </p>
+    <pre class="lang-php">
+    <code>
+        // config/bladewind.php
+
+    ...
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel form-state integration
+    |--------------------------------------------------------------------------
+    */
+    'forms' => [
+        // repopulate fields from old() after a failed validation
+        'fill_from_old' => true,
+
+        // give a field its error state and print $errors->first() beneath it
+        'show_validation_error' => true,
+
+        // which error bag to read. null uses Laravel's default bag
+        'error_bag' => null,
+    ],
+    ...
+    </code>
+    </pre>
+    <p>
+        With that in place a plain <code class="inline">&lt;x-bladewind::input name="email" /&gt;</code>
+        keeps whatever the user typed after a validation redirect and prints its own error message.
+        An attribute on an individual field still wins, so you can opt a single field out with
+        <code class="inline">show_validation_error="false"</code>.
+    </p>
+    <x-bladewind::alert type="warning" show_close_icon="false">
+        Both switches are <b>off by default</b> so that upgrading BladewindUI never changes what
+        your existing forms render. If your forms already print their own validation messages,
+        remove those before switching this on, or every message will appear twice.
+    </x-bladewind::alert>
+    <br />
+
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#noprefix">Remove bladewind prefix</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#change-it-all">Change everything</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#datepicker-translations">Translating the Datepicker</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#defaults">Setting global defaults</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#new-config-groups">Newer config groups</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

@@ -1,0 +1,70 @@
+#!/bin/sh
+#
+# Blocks commits that would put the local development setup into composer.json
+# or composer.lock. The path repository points at ../bladewindui, which does not
+# exist on the production server, so committing it breaks composer install and
+# fails the deploy.
+#
+# Reference settings live in dev-composer.json.
+#
+# To commit anyway (you almost never want this):
+#   git commit --no-verify
+
+fail=0
+
+report() {
+    echo "pre-commit: refusing to commit local dev settings in $1"
+    echo "  found: $2"
+    fail=1
+}
+
+# grep -q exits the moment it matches, which closes the pipe while the shell is
+# still writing composer.lock into it — the shell then reports "printf: write
+# error: Broken pipe" on every commit. Dropping -q and discarding stdout instead
+# makes grep read all of its input, so nothing is writing to a closed pipe.
+matches() {
+    printf '%s' "$1" | grep -E "$2" >/dev/null 2>&1
+}
+
+# Only inspect staged content, not the working tree. Keeping the dev setup in
+# your working tree is the normal state and must stay allowed.
+if git diff --cached --name-only | grep -qx 'composer.json'; then
+    staged=$(git show :composer.json)
+
+    case $staged in
+        *'"type": "path"'*) report composer.json 'path repository' ;;
+    esac
+
+    case $staged in
+        *dev-development*) report composer.json 'mkocansey/bladewind: dev-development' ;;
+    esac
+
+    if matches "$staged" '"minimum-stability"[[:space:]]*:[[:space:]]*"dev"'; then
+        report composer.json 'minimum-stability: dev'
+    fi
+fi
+
+if git diff --cached --name-only | grep -qx 'composer.lock'; then
+    staged=$(git show :composer.lock)
+
+    case $staged in
+        *'../bladewindui'*) report composer.lock 'path reference to ../bladewindui' ;;
+    esac
+
+    if matches "$staged" '"name": "mkocansey/bladewind",[[:space:]]*$'; then
+        # Confirm the pinned version is not a dev branch build. grep -A2 is fed
+        # into a second grep, so that one must consume its input too.
+        if printf '%s' "$staged" | grep -A2 '"name": "mkocansey/bladewind"' | grep 'dev-development' >/dev/null 2>&1; then
+            report composer.lock 'mkocansey/bladewind pinned to dev-development'
+        fi
+    fi
+fi
+
+if [ "$fail" -ne 0 ]; then
+    echo
+    echo "Restore the deployable versions before committing:"
+    echo "  git checkout HEAD -- composer.json composer.lock"
+    exit 1
+fi
+
+exit 0

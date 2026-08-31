@@ -85,7 +85,7 @@
     </p>
     <pre class="language-css line-numbers" data-line="4">
 <code>
-/* vendor/bladewindui/bladewindui — default theme */
+/* vendor/bladewindui/ui, default theme */
 @theme {
     /* primary → blue (default) */
     --color-primary-50:  #eff6ff;
@@ -194,7 +194,7 @@
     </p>
     <p>
         In Tailwind v4, class scanning is automatic for files inside your project. However, BladewindUI component files live inside
-        <code class="inline">vendor/bladewindui/bladewindui</code> and are not scanned by default. You need to add an
+        <code class="inline">vendor/bladewindui/ui</code> and are not scanned by default. You need to add an
         <code class="inline">@source</code> directive so Tailwind knows to look there:
     </p>
     <pre class="language-css line-numbers" data-line="5">
@@ -203,7 +203,7 @@
 @import "tailwindcss";
 
 /* Tell Tailwind to scan vendor BladewindUI files */
-@source "../../vendor/bladewindui/bladewindui/**/*.blade.php";
+@source "../../vendor/bladewindui/ui/**/*.blade.php";
 @source "../../public/vendor/bladewind/js/*.js";
 </code>
     </pre>

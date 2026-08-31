@@ -382,7 +382,7 @@
             }
 
             // ----- this option uses the HTMLFormElement ------------------------
-            // https://github.com/bladewindui/bladewindui/issues/403#issue-2662756420
+            // https://github.com/bladewindui/ui/issues/403
             const forms = document.getElementsByTagName('form');
             for (let i = 0; i < forms.length; i++) {
                 forms[i].addEventListener('submit', function (e) {

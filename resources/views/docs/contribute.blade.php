@@ -3,11 +3,11 @@
     <x-slot:page_title>Contribution Guide</x-slot:page_title>
     <p>
         Contributions to BladewindUI are very much welcome. A good place to find something to contribute will be our
-        <a href="https://github.com/bladewindui/bladewindui/issues" target="_blank">GitHub issues page</a> or our development <a href="/roadmap">roadmap</a>. Any discussion that contains anything feature-worthy will already have a corresponding issue.
+        <a href="https://github.com/bladewindui/ui/issues" target="_blank">GitHub issues page</a> or our development <a href="/roadmap">roadmap</a>. Any discussion that contains anything feature-worthy will already have a corresponding issue.
     </p>
     <h2 id="bugs">Bug Reports and Questions</h2>
     <p>
-        To help us keep all bug reports and questions consolidated, and to also serve as a reference for others who might have the same questions or reports, we encourage you to post all questions and bug reports on our <a href="https://github.com/bladewindui/bladewindui/issues" target="_blank">GitHub issues page</a>.
+        To help us keep all bug reports and questions consolidated, and to also serve as a reference for others who might have the same questions or reports, we encourage you to post all questions and bug reports on our <a href="https://github.com/bladewindui/ui/issues" target="_blank">GitHub issues page</a>.
         Bug reports should be descriptive enough to be reproducible. It is good practice to include the following in your bug report.
     </p>
     <ul class="list-disc list-outside leading-9 mb-6 ml-3.5 !text-slate-600 dark:!text-slate-400">
@@ -17,9 +17,9 @@
         <li>Browser type and version</li>
     </ul>
     <h2 id="prs-branching">Pull Requests and Branching</h2>
-    <p>Before working on a feature or issue, we encourage you to take a look at our <a href="https://github.com/bladewindui/bladewindui/issues">GitHub issues page</a> to ensure you are not planning to work on something already in progress or that has already been closed and probably awaiting a merge into <code class="inline">main</code>. Every issue or feature being worked on will have an assignee. Any issue without an assignee can be picked up and worked on by anyone.</p>
-    <p>To work on an issue that is not listed, kindly create the issue on our <a href="https://github.com/bladewindui/bladewindui/issues">GitHub issues page</a> and assign to yourself. In fact, the rule of thumb is to assign any issue you decide to work on to yourself. That is how the community knows what is in progress.</p>
-    <p>For changes that address core functionality or would require breaking changes (e.g. a major release), it is best to <a href="https://github.com/bladewindui/bladewindui/issues">open an Issue</a> to discuss your proposal first. This is not a must but can save time creating and reviewing changes down the line.</p>
+    <p>Before working on a feature or issue, we encourage you to take a look at our <a href="https://github.com/bladewindui/ui/issues">GitHub issues page</a> to ensure you are not planning to work on something already in progress or that has already been closed and probably awaiting a merge into <code class="inline">main</code>. Every issue or feature being worked on will have an assignee. Any issue without an assignee can be picked up and worked on by anyone.</p>
+    <p>To work on an issue that is not listed, kindly create the issue on our <a href="https://github.com/bladewindui/ui/issues">GitHub issues page</a> and assign to yourself. In fact, the rule of thumb is to assign any issue you decide to work on to yourself. That is how the community knows what is in progress.</p>
+    <p>For changes that address core functionality or would require breaking changes (e.g. a major release), it is best to <a href="https://github.com/bladewindui/ui/issues">open an Issue</a> to discuss your proposal first. This is not a must but can save time creating and reviewing changes down the line.</p>
     <p>In general, BladewindUI follows the &quot;<a href="https://github.com/susam/gitpr">fork-and-pull</a>&quot; Git workflow</p>
 
     <ul class="list-disc list-outside leading-9 mb-6 ml-3.5 !text-slate-600 dark:!text-slate-400">
@@ -28,7 +28,7 @@
         <li>Create a local branch (from the development branch) with an <code class="inline">issue</code> prefix followed by issue number. If what you are working on does not exist on our issues page, please create the issue. If what intend to work on is a feature from our <a href="/roadmap">roadmap</a>, still create the issue and assign the <code class="inline">enhancement</code> label to it. </li>
         <li>Commit changes to the branch following the formatting guidelines specific to this repo (yet to implement <a href="https://styleci.io/" target="_blank">StyleCI</a>).</li>
         <li>Push changes to your fork.</li>
-        <li>Open a PR against <code class="inline">bladewindui/bladewindui</code> repository, <code class="inline">development</code> branch.</li>
+        <li>Open a PR against <code class="inline">bladewindui/ui</code> repository, <code class="inline">development</code> branch.</li>
         <li>Once the PR is reviewed and accepted, it will be merged. The code will then make its way into the <code class="inline">main</code> branch and then a release.</li>
     </ul>
 
@@ -54,15 +54,15 @@
             if you checked out the development branch,
             you will type "dev-development"
             */
-            "bladewindui/bladewindui": "dev-issue-184",
+            "bladewindui/ui": "dev-issue-184",
             ...
         },
         "repositories": {
-            "bladewindui/bladewindui": {
+            "bladewindui/ui": {
                 "type": "path",
-                "url": "/path/to/bladewind/folder/on/your/computer"
+                "url": "/path/to/bladewindui/folder/on/your/computer"
                 // on my computer, the value for url is
-                //  "/Users/mkocansey/projects/kursor/bladewind"
+                //  "/Users/mkocansey/projects/kursor/bladewindui"
             }
         }
         </code>
@@ -72,7 +72,7 @@
     </p>
     <pre class="lang-bash command-line"><code>composer update</code></pre>
     <p>
-        Your project should be using your local version of BladewindUI now. To test the components directly from the <code class="inline">vendor/mkocansey</code> directory, use the colon notation for invoking components.
+        Your project should be using your local version of BladewindUI now. To test the components directly from the <code class="inline">vendor/bladewindui</code> directory, use the colon notation for invoking components.
     </p>
     <pre class="lang-markup"><code>
     &lt;x-bladewind::bell /&gt;

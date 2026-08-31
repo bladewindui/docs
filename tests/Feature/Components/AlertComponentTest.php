@@ -74,7 +74,8 @@ class AlertComponentTest extends TestCase
     {
         $view = $this->blade('<x-bladewind::alert>Has close</x-bladewind::alert>');
 
-        $view->assertSee("this.parentElement.style.display='none'", false);
+        $view->assertSee('data-bw-alert-dismiss', false);
+        $view->assertSee("bwOn('click', '[data-bw-alert-dismiss]'", false);
     }
 
     public function test_hides_type_icon_when_disabled()

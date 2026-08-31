@@ -8,27 +8,71 @@
     </p>
 
     <x-bladewind::button onclick="showDrawer('customer-details')">Open drawer</x-bladewind::button>
-    <x-bladewind::drawer name="customer-details" title="Customer details" description="Review this customer without leaving the page.">
-        <p class="!mt-0">Ama Mensah is an active customer on the Business plan.</p>
+    <x-bladewind::drawer name="customer-details" size="medium" :show-close-button="false">
+        <div class="relative rounded-2xl bg-white p-6 text-center shadow dark:bg-dark-800">
+            <button type="button" aria-label="Close drawer" onclick="hideDrawer('customer-details')" class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                <x-bladewind::icon name="x-mark" class="!size-5" />
+            </button>
+            <div class="relative mx-auto w-fit">
+                <x-bladewind::avatar image="/assets/images/audrey.jpeg" size="big" />
+                <span class="absolute bottom-0 right-0 grid size-6 place-items-center rounded-full bg-green-500 text-white ring-2 ring-white dark:ring-dark-800">
+                    <x-bladewind::icon name="check" class="!size-4" />
+                </span>
+            </div>
+            <p class="!mb-0 !mt-4 text-lg font-bold text-gray-900 dark:text-white">Victoria Ferguson</p>
+            <p class="!mt-1 text-gray-400">victoria@ferguson.eu</p>
+
+            <div class="mt-6 flex items-center justify-center divide-x divide-gray-200 dark:divide-dark-600">
+                <div class="px-6">
+                    <p class="!mb-0 text-xs uppercase text-gray-400">Role</p>
+                    <p class="!mt-1 flex items-center justify-center gap-1 font-bold text-gray-900 dark:text-white">
+                        Admin <x-bladewind::icon name="pencil" class="!size-3.5 text-gray-400" />
+                    </p>
+                </div>
+                <div class="px-6">
+                    <p class="!mb-0 text-xs uppercase text-gray-400">Team</p>
+                    <p class="!mt-1 flex items-center justify-center gap-1 font-bold text-gray-900 dark:text-white">
+                        Product <x-bladewind::icon name="pencil" class="!size-3.5 text-gray-400" />
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-center gap-4">
+                <a href="mailto:victoria@ferguson.eu" class="grid size-11 place-items-center rounded-full bg-indigo-500 text-white hover:bg-indigo-400"><x-bladewind::icon name="envelope" class="!size-5" /></a>
+                <button type="button" class="grid size-11 place-items-center rounded-full bg-blue-500 text-white hover:bg-blue-400"><x-bladewind::icon name="chat-bubble-oval-left" class="!size-5" /></button>
+                <a href="tel:+15551234567" class="grid size-11 place-items-center rounded-full bg-green-500 text-white hover:bg-green-400"><x-bladewind::icon name="phone" class="!size-5" /></a>
+            </div>
+        </div>
+
         <dl class="mt-6 space-y-4 text-sm">
-            <div><dt class="font-semibold text-gray-900 dark:text-white">Email</dt><dd>ama@example.com</dd></div>
-            <div><dt class="font-semibold text-gray-900 dark:text-white">Account</dt><dd>Business, active since March 2025</dd></div>
+            <div><dt class="text-gray-400">Address</dt><dd class="font-bold text-gray-900 dark:text-white">99 Meadow City</dd></div>
+            <div><dt class="text-gray-400">Zip code</dt><dd class="font-bold text-gray-900 dark:text-white">60584-3274</dd></div>
+            <div><dt class="text-gray-400">City</dt><dd class="font-bold text-gray-900 dark:text-white">San Francisco</dd></div>
+            <div><dt class="text-gray-400">Country</dt><dd class="font-bold text-gray-900 dark:text-white">United States of America</dd></div>
         </dl>
     </x-bladewind::drawer>
 
-    <pre class="language-markup line-numbers"><code>
-&lt;x-bladewind::drawer
-    name="customer-details"
-    title="Customer details"
-    position="right"
-    size="medium"&gt;
-    Drawer content
-&lt;/x-bladewind::drawer&gt;
+    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::drawer name="customer-details" position="right" size="medium" show-close-button="false"&gt;
+    &lt;div class="relative rounded-2xl bg-white p-6 text-center shadow dark:bg-dark-800"&gt;
+        &lt;button type="button" onclick="hideDrawer('customer-details')" class="absolute right-4 top-4 text-gray-400"&gt;
+            &lt;x-bladewind::icon name="x-mark" /&gt;
+        &lt;/button&gt;
 
-&lt;x-bladewind::button onclick="showDrawer('customer-details')"&gt;
-    Open drawer
-&lt;/x-bladewind::button&gt;
-    </code></pre>
+        &lt;div class="relative mx-auto w-fit"&gt;
+            &lt;x-bladewind::avatar image="/path/to/image" size="big" /&gt;
+            &lt;span class="absolute bottom-0 right-0 rounded-full bg-green-500 text-white ring-2 ring-white"&gt;
+                &lt;x-bladewind::icon name="check" /&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;p class="font-bold"&gt;Victoria Ferguson&lt;/p&gt;
+        &lt;p class="text-gray-400"&gt;victoria@ferguson.eu&lt;/p&gt;
+
+        &lt;!-- role / team, then mail / chat / phone action buttons --&gt;
+    &lt;/div&gt;
+
+    &lt;!-- address details list --&gt;
+&lt;/x-bladewind::drawer&gt;</code></pre>
 
     <h2 id="positions">Positions</h2>
     <p>Use <code class="inline">left</code>, <code class="inline">right</code>, <code class="inline">top</code>, or <code class="inline">bottom</code>. These are physical viewport edges, so left and right remain predictable in RTL pages.</p>

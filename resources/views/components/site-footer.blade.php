@@ -9,13 +9,13 @@
             @else
                 <img src="/assets/images/bw-logo-white.png" alt="BladewindUI" class="h-5 w-auto opacity-60" />
             @endif
-            <span>{{ \Composer\InstalledVersions::getPrettyVersion('bladewindui/bladewindui') }}</span>
+            <span>{{ \Composer\InstalledVersions::getPrettyVersion('bladewindui/ui') }}</span>
         </div>
         <div class="flex flex-wrap gap-5">
             <a href="/install" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">Documentation</a>
             <a href="/mcp" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">MCP server</a>
             <a href="/contribute" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">Contribute</a>
-            <a href="https://github.com/mkocansey/bladewind" target="_blank" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">GitHub</a>
+            <a href="https://github.com/bladewindui/ui" target="_blank" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">GitHub</a>
         </div>
     </div>
 </footer>

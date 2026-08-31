@@ -2,7 +2,10 @@
     <x-slot:title>Command Palette Component</x-slot:title>
     <x-slot:page_title>Command Palette</x-slot:page_title>
 
-    <p>Command Palette is a keyboard-first, searchable action launcher. It opens with a configurable shortcut or a helper call, filters grouped actions as the user types, and supports full keyboard navigation, asynchronous results, and dark mode.</p>
+    <p>
+        Command Palette provides a fast, searchable way to find and run actions using the keyboard. Open it with a configurable shortcut or helper method, then start typing to filter available actions.
+        Actions can be organized into groups, and the palette supports full keyboard navigation, asynchronous results, and dark mode.
+    </p>
 
     <x-bladewind::button icon="magnifying-glass" onclick="openCommandPalette('app-commands')">Search commands<span class="ml-3 hidden rounded border border-white/30 px-1.5 py-0.5 text-xs opacity-80 sm:inline">&#8984;K</span></x-bladewind::button>
 
@@ -19,27 +22,44 @@
         </x-bladewind::command-palette.group>
     </x-bladewind::command-palette>
 
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::command-palette name="app-commands" label="Command palette" placeholder="Search for a command or page…"&gt;
-    &lt;x-bladewind::command-palette.group name="navigate" label="Navigate"&gt;
-        &lt;x-bladewind::command-palette.item name="dashboard" label="Dashboard" href="/dashboard" icon="home" /&gt;
-        &lt;x-bladewind::command-palette.item name="orders" label="Orders" description="Review recent orders" href="/orders" icon="shopping-bag" /&gt;
-    &lt;/x-bladewind::command-palette.group&gt;
-    &lt;x-bladewind::command-palette.group name="actions" label="Actions"&gt;
-        &lt;x-bladewind::command-palette.item name="new-order" label="Create order" icon="plus-circle" shortcut="Ctrl+N" keywords="add new" /&gt;
-    &lt;/x-bladewind::command-palette.group&gt;
-&lt;/x-bladewind::command-palette&gt;
-
+    <pre class="language-markup line-numbers"><code>
 &lt;x-bladewind::button onclick="openCommandPalette('app-commands')"&gt;
     Search commands
 &lt;/x-bladewind::button&gt;</code></pre>
 
+    <pre class="language-markup line-numbers">
+        <code>
+&lt;x-bladewind::command-palette name="app-commands"
+    label="Command palette" placeholder="Search for a command or page…"&gt;
+    &lt;x-bladewind::command-palette.group name="navigate" label="Navigate"&gt;
+        &lt;x-bladewind::command-palette.item name="dashboard"
+            label="Dashboard"
+            description="Overview of your workspace"
+            href="#dashboard"
+            icon="home" /&gt;
+        &lt;x-bladewind::command-palette.item name="orders"
+            label="Orders"
+            description="Review recent orders"
+            href="#orders"
+            icon="shopping-bag" /&gt;
+        &lt;x-bladewind::command-palette.item name="customers"
+            label="Customers"
+            href="#customers" icon="users" /&gt;
+    &lt;/x-bladewind::command-palette.group&gt;
+    ...
+&lt;/x-bladewind::command-palette&gt;
+        </code>
+    </pre>
+
     <h2 id="opening">Opening the Palette</h2>
-    <p>Command Palette renders hidden. It is not tied to a trigger button by default: open it with its keyboard shortcut, or call <code class="inline">openCommandPalette(name)</code> from any element. Try the demo above with <kbd>Ctrl</kbd> + <kbd>K</kbd> (<kbd>&#8984;</kbd> + <kbd>K</kbd> on macOS).</p>
+    <p>Command Palette renders hidden. It is not tied to a trigger button by default. Open it with its keyboard shortcut, or call <code class="inline">openCommandPalette(name)</code> from any element. Try the demo above with <kbd>Ctrl</kbd> + <kbd>K</kbd> (<kbd>&#8984;</kbd> + <kbd>K</kbd> on macOS).</p>
     <x-bladewind::alert show_close_icon="false">The shortcut works even while focus sits inside another field on the page, which is the convention command palettes across editors, chat apps, and issue trackers already share.</x-bladewind::alert>
 
     <h2 id="searching">Searching and Grouped Results</h2>
-    <p>Typing in the search field filters items by label, description, and an optional <code class="inline">keywords</code> attribute, matched case-insensitively as a substring. A group hides itself once none of its items match. Try typing <em>"add new"</em> in the demo above &mdash; it matches Create order by its keywords even though neither word appears in the visible label.</p>
-    <p>Command Palette emits <code class="inline">bladewind:command-palette:search</code> with the current query on every keystroke. Applications that need server-driven search can listen for this event, fetch matching results, and replace the item list. Set <code class="inline">loading="true"</code> on the component &mdash; or call <code class="inline">setCommandPaletteLoading(name, true)</code> &mdash; while results are in flight; the built-in empty state stays hidden until loading finishes.</p>
+    <p>As you type, Command Palette filters items by their label, description, and optional <code class="inline text-red-500">keywords</code> attribute. Matching is case-insensitive and works on partial text. Groups are automatically hidden when none of their items match.
+        For example, try searching for <em>add new</em> in the demo above. It finds Create order through its keywords, even though those words do not appear in the visible label.</p>
+    <p>For server-side search, Command Palette emits <code class="inline">bladewind:command-palette:search</code> with the current query on every keystroke. Listen for this event to fetch and display matching results asynchronously.</p>
+    <p>While results are loading, set <code class="inline text-red-500">loading="true"</code> or call <code class="inline">setCommandPaletteLoading(name, true)</code>. The built-in empty state remains hidden until loading is complete.</p>
 
     <h2 id="keyboard">Keyboard Behavior</h2>
     <p>Focus stays in the search field the entire time the palette is open. Navigation moves a highlighted state between items instead of moving real focus, so screen readers track the current option through <code class="inline">aria-activedescendant</code> on the search field.</p>
@@ -52,7 +72,7 @@
     </x-bladewind::table>
 
     <h2 id="items">Links, Actions, and Disabled Items</h2>
-    <p>An item with <code class="inline">href</code> renders as a link and navigates normally. An item without <code class="inline">href</code> renders as a button, for actions handled entirely in JavaScript through the <code class="inline">select</code> event. Disabled items stay visible but cannot be highlighted or activated.</p>
+    <p>An item with <code class="inline">href</code> renders as a link and navigates normally. An item without <code class="inline text-red-500">href</code> renders as a button, for actions handled entirely in JavaScript through the <code class="inline">select</code> event. Disabled items stay visible but cannot be highlighted or activated.</p>
 
     <h2 id="dark-mode">Dark Mode</h2>
     <p>Command Palette follows the page dark class and keeps the backdrop, panel, highlighted item, description, and shortcut key contrast readable.</p>
@@ -67,7 +87,7 @@
     <h2 id="events">Events</h2>
     <p>Before events are cancelable. Call <code class="inline">preventDefault()</code> to stop the related change. All event names start with <code class="inline">bladewind:command-palette:</code>. Item events include the item name and, for links, the destination.</p>
     <x-bladewind::table><x-slot:header><th>Event suffix</th><th>When it runs</th></x-slot:header>
-        <tr><td><code class="inline">before-open</code>, <code class="inline">before-close</code></td><td>Before the palette opens or closes.</td></tr>
+        <tr><td><code class="inline">before-open</code>, <br /><code class="inline">before-close</code></td><td>Before the palette opens or closes.</td></tr>
         <tr><td><code class="inline">opened</code>, <code class="inline">closed</code></td><td>After the palette finishes opening or closing.</td></tr>
         <tr><td><code class="inline">before-select</code></td><td>Before an item is activated. Preventing this stops navigation and the close-on-select behavior.</td></tr>
         <tr><td><code class="inline">select</code></td><td>After an item is activated.</td></tr>

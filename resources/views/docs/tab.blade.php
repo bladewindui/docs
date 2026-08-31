@@ -657,10 +657,10 @@
     </pre>
 
     <x-bladewind::alert show_close_icon="false">
-        The source files for this component are available in <code class="inline">resources > views > components > bladewind > index.blade.php</code>,
-        <code class="inline">resources > views > components > bladewind > tab.heading.blade.php</code>,
-        <code class="inline">resources > views > components > bladewind > tab.body.blade.php</code> and
-        <code class="inline">resources > views > components > bladewind > tab.content.blade.php</code>
+        The source files for this component are available in <code class="inline">resources > views > components > bladewind > tab > index.blade.php</code>,
+        <code class="inline">resources > views > components > bladewind > tab > heading.blade.php</code>,
+        <code class="inline">resources > views > components > bladewind > tab > body.blade.php</code> and
+        <code class="inline">resources > views > components > bladewind > tab > content.blade.php</code>
     </x-bladewind::alert>
 
     <x-slot:side_nav>

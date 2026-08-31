@@ -269,7 +269,7 @@ return view('staff.index', ['staff' =&gt; $staff]);</code></pre>
     <x-bladewind::data-grid name="loading-demo" label="Orders" :columns="$orderColumns" :rows="array_slice($orders, 0, 5)" />
     <br />
     <p class="text-center">
-        <x-bladewind::button size="small" onclick="setDataGridLoading('loading-demo', true); setTimeout(() =&gt; setDataGridLoading('loading-demo', false), 1500)">Simulate a 1.5 second fetch</x-bladewind::button>
+        <x-bladewind::button size="small" onclick="setDataGridLoading('loading-demo', true); setTimeout(() => setDataGridLoading('loading-demo', false), 5000)">Simulate a 5 second fetch</x-bladewind::button>
     </p>
 
     <h2 id="appearance">Appearance</h2>

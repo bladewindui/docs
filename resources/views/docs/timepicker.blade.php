@@ -216,9 +216,16 @@
     <x-bladewind::alert show_close_icon="false">
         The source language (translation) files for this component are available in <code class="inline">lang/[lang]/timepicker.php</code>
     </x-bladewind::alert><br />
+    <h2 id="livewire">Using Timepicker Inside Livewire</h2>
+    <p>
+        When a time is set or cleared, the value field dispatches a real, native <code class="inline">change</code> event, so
+        Livewire's <code class="inline">wire:model</code> picks it up without any extra work on your part. The bindings that drive
+        the timepicker are safe to re-run, so a Livewire re-render will not leave behind duplicate listeners.
+    </p>
     <p>&nbsp;</p>
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Timepicker inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot name="scripts">
         <script>

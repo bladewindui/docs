@@ -364,6 +364,16 @@
         </code>
     </pre>
 
+    <h2 id="livewire">Using Sortable Inside Livewire</h2>
+    <p>
+        The component guards against a Livewire re-render creating a second copy of the drag and drop instance for the same list.
+        When <code class="inline">input-name</code> is set, the hidden field that stores the current order now dispatches a real,
+        native <code class="inline">change</code> event on every reorder, so Livewire's <code class="inline">wire:model</code> picks
+        it up. The order itself is runtime state kept in the DOM rather than in Livewire's component state, so if the list sits
+        inside a component that can re-render for reasons unrelated to the list, wrap the list in
+        <code class="inline">wire:ignore</code>. Otherwise a reorder in progress can be reset partway through.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; sortable &gt; index.blade.php</code>
     </x-bladewind::alert>
@@ -378,6 +388,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#disable-sort">Disabling sorting</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#save-order">Submitting &amp; saving the order</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Sortable inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

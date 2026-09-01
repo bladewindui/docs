@@ -457,6 +457,19 @@ resetDataGrid('orders-grid');</code></pre>
         </x-slot:bulk-actions>
     </x-bladewind::data-grid>
 
+    <h2 id="livewire">Using Data Grid Inside Livewire</h2>
+    <p>
+        Client-side sorting, searching, pagination, and row selection all live in the grid's own DOM, in attributes and checkbox
+        state, rather than in Livewire's component state. This means those interactions work fine on their own even inside a
+        Livewire component. What can still catch you out is an unrelated re-render, one that happens for a reason that has nothing
+        to do with the grid. Because that state is not mirrored back to Livewire, such a re-render can reset the current page, the
+        sort order, or the selection. If your grid lives inside a component that re-renders for other reasons, wrap the grid in
+        <code class="inline">wire:ignore</code>. If you would rather have the grid's state live in Livewire itself, set
+        <code class="inline">client-sort="false"</code> and <code class="inline">client-search="false"</code> and drive the grid
+        from Livewire using the <code class="inline">before-*</code> and <code class="inline">*-change</code> events described
+        above.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; data-grid</code></x-bladewind::alert>
 
     <x-slot:side_nav>
@@ -491,6 +504,7 @@ resetDataGrid('orders-grid');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#complete-example">Putting it all together</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Data Grid inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-data-grid');</script></x-slot:scripts>
 </x-app>

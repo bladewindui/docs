@@ -1613,6 +1613,18 @@
         </code>
     </pre>
 
+<h2 id="livewire">Using Select Inside Livewire</h2>
+<p>
+    The selected value is written to a hidden field that dispatches a real, native <code class="inline">change</code> event, the same
+    kind of event a plain HTML select would dispatch. This means Livewire's <code class="inline">wire:model</code> picks up a
+    selection without any extra work on your part. The part that does need attention is the dropdown's own open and closed state,
+    along with its search filter if the select is searchable. Both of those live outside the DOM that Livewire manages, so if a
+    Livewire component re-renders this markup for a reason that has nothing to do with the select, they reset. If that happens in
+    your application, wrap the select in <code class="inline">wire:ignore</code> so Livewire leaves it alone. The component also
+    guards against a Livewire re-render creating a second copy of itself, so re-rendering it will not leave behind duplicate click
+    listeners on the page.
+</p>
+
 <x-bladewind::alert show_close_icon="false">
     The source file for this component is available in <code class="inline">resources > views > components > bladewind > select > index.blade.php</code> and
     <code class="inline">resources > views > components > bladewind > select > item.blade.php</code>
@@ -1650,6 +1662,7 @@
     <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#scrolling">Selects in scrolling containers</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+    <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Select inside Livewire</a></div>
 </x-slot:side_nav>
 <x-slot name="scripts">
     <script>

@@ -201,6 +201,14 @@
 </code>
 </pre>
 
+    <h2 id="livewire">Using Slider Inside Livewire</h2>
+    <p>
+        As the slider is dragged, the hidden value field dispatches a real, native <code class="inline">change</code> event, so
+        Livewire's <code class="inline">wire:model</code> picks it up without any extra work on your part. The slider's handlers are
+        assigned as a single property rather than added as separate listeners, so a Livewire re-render simply replaces that
+        assignment instead of stacking up duplicates.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > slider.blade.php</code>
     </x-bladewind::alert>
@@ -209,6 +217,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#range">Range selection</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#form">Form submission</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Slider inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

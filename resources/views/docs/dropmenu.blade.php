@@ -835,6 +835,15 @@ profile_menu.toggle();</code></pre>
         </code>
     </pre>
 
+    <h2 id="livewire">Using Dropmenu Inside Livewire</h2>
+    <p>
+        The menu keeps track of whether it is open or closed outside of the DOM that Livewire manages, so if a Livewire component
+        re-renders this markup for a reason that has nothing to do with the menu, the menu resets to closed. If you find that happening,
+        wrap the trigger and the menu in <code class="inline">wire:ignore</code> so Livewire leaves that part of the page alone.
+        The component also guards against a Livewire re-render creating a second copy of itself, so re-rendering it will not leave
+        behind duplicate click listeners on the page.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > dropmenu > index.blade.php</code>,
         <code class="inline">resources > views > components > bladewind > dropmenu > item.blade.php</code>
@@ -848,6 +857,7 @@ profile_menu.toggle();</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#scrollable">Scrollable items</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Dropmenu inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

@@ -163,6 +163,16 @@ resetSidebar('workspace-navigation');</code></pre>
     &lt;x-slot:footer&gt;Account footer&lt;/x-slot:footer&gt;
 &lt;/x-bladewind::sidebar&gt;</code></pre>
 
+    <h2 id="livewire">Using Sidebar Inside Livewire</h2>
+    <p>
+        Which groups are expanded or collapsed, and on mobile whether the sidebar itself is open, live in the sidebar's own DOM
+        rather than in Livewire's component state. The persistence options described above re-read that state from storage when the
+        sidebar first initialises, but a Livewire re-render that touches this markup mid-interaction, for a reason that has nothing
+        to do with the sidebar, can still reset it. If your sidebar lives inside a component that can re-render for other reasons,
+        wrap the sidebar in <code class="inline">wire:ignore</code>. The bindings that drive the sidebar are delegated and safe to
+        re-run, so a re-render will not leave behind duplicate listeners.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; sidebar</code></x-bladewind::alert>
 
     <x-slot:side_nav>
@@ -181,6 +191,7 @@ resetSidebar('workspace-navigation');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full List of Attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Sidebar inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-sidebar');</script></x-slot:scripts>
 </x-app>

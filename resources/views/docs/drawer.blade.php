@@ -227,6 +227,14 @@ toggleDrawer('customer-details');</code></pre>
     Customer profile content
 &lt;/x-bladewind::drawer&gt;</code></pre>
 
+    <h2 id="livewire">Using Drawer Inside Livewire</h2>
+    <p>
+        Whether the drawer is open or closed lives in the drawer's own DOM rather than in Livewire's component state. If a Livewire
+        component re-renders this markup for a reason that has nothing to do with the drawer, it silently closes. This matters most
+        for a drawer that can stay open for a while, such as a filter panel or a form, inside a component that can also re-render
+        for other reasons. In that situation, wrap the drawer in <code class="inline">wire:ignore</code> so Livewire leaves it alone.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; drawer.blade.php</code>
     </x-bladewind::alert>
@@ -245,6 +253,7 @@ toggleDrawer('customer-details');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#props">Full list of attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Drawer inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-drawer');</script></x-slot:scripts>
 </x-app>

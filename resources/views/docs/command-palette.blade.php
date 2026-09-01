@@ -173,6 +173,15 @@ setCommandPaletteLoading('app-commands', true);</code></pre>
     &lt;x-slot:footer&gt;Signed in as Ama Mensah&lt;/x-slot:footer&gt;
 &lt;/x-bladewind::command-palette&gt;</code></pre>
 
+    <h2 id="livewire">Using Command Palette Inside Livewire</h2>
+    <p>
+        Whether the palette is open, and the current search filter, live in the palette's own DOM rather than in Livewire's
+        component state. If a Livewire component re-renders this markup for a reason that has nothing to do with the palette, it
+        resets to closed. If your palette lives inside a component that can re-render for other reasons, wrap the palette in
+        <code class="inline">wire:ignore</code>. The bindings that drive the palette are delegated and safe to re-run, so a
+        re-render will not leave behind duplicate listeners.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; command-palette</code></x-bladewind::alert>
 
     <x-slot:side_nav>
@@ -185,6 +194,7 @@ setCommandPaletteLoading('app-commands', true);</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full List of Attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Command Palette inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-command-palette');</script></x-slot:scripts>
 </x-app>

@@ -878,6 +878,17 @@ $existingFiles = [
         </x-bladewind::alert>
     </p>
 
+    <h2 id="livewire">Using Filepicker Inside Livewire</h2>
+    <p>
+        The component guards against a Livewire re-render building a second FilePond instance, and a second Cropper.js instance when
+        cropping is enabled, around the same field. Before this guard existed, every re-render left the previous instance and its DOM
+        behind. When base64 mode is used, the hidden field it creates for each file dispatches a real, native
+        <code class="inline">change</code> event, so Livewire's <code class="inline">wire:model</code> picks it up. FilePond manages
+        its own DOM inside the field while a file is being added, cropped, or uploaded, so if the filepicker sits inside a Livewire
+        component that can re-render for reasons unrelated to the picker while that is happening, wrap the picker in
+        <code class="inline">wire:ignore</code> to keep Livewire from interfering.
+    </p>
+
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#placeholder">Change placeholder</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#draggable">Allow drag and drop only</a></div>
@@ -897,6 +908,7 @@ $existingFiles = [
         <div class="flex items-center"><div class="dot"></div><a href="#edit-mode">Edit mode</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Filepicker inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

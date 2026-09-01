@@ -132,11 +132,19 @@
 </code>
     </pre>
 
+    <h2 id="livewire">Using Colorpicker Inside Livewire</h2>
+    <p>
+        When a colour is picked, the value field dispatches a real, native <code class="inline">change</code> event, so Livewire's
+        <code class="inline">wire:model</code> picks it up without any extra work on your part. The bindings that drive the picker
+        are safe to re-run, so a Livewire re-render will not leave behind duplicate listeners.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > colorpicker.blade.php</code>
     </x-bladewind::alert>
 
     <x-slot:side_nav>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Colorpicker inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

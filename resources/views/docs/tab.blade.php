@@ -663,6 +663,15 @@
         <code class="inline">resources > views > components > bladewind > tab > content.blade.php</code>
     </x-bladewind::alert>
 
+    <h2 id="livewire">Using Tab Group Inside Livewire</h2>
+    <p>
+        Which tab is active lives in the tab group's own DOM rather than in Livewire's component state. If a Livewire component
+        re-renders this markup for a reason that has nothing to do with the tabs, the active tab resets back to its initial value.
+        If your tab group lives inside a component that can re-render for other reasons, wrap the tab group in
+        <code class="inline">wire:ignore</code>. The bindings that drive the tabs are delegated and safe to re-run, so a re-render
+        will not leave behind duplicate listeners.
+    </p>
+
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#colours">Different colours</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#styles">Other tab styles</a></div>
@@ -670,6 +679,7 @@
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#pills">Pills</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#icons">With icons</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Tab Group inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

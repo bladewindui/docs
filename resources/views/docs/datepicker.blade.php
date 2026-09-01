@@ -331,6 +331,17 @@
 
     <a href="/customize#datepicker-translations">Read the notes</a> on how to modify the Calendar translations
 
+    <h2 id="livewire">Using Datepicker Inside Livewire</h2>
+    <p>
+        When a date is picked, the field dispatches a real, native <code class="inline">change</code> event, so Livewire's
+        <code class="inline">wire:model</code> picks up the selection without any extra work on your part. The calendar popup keeps
+        track of whether it is open or closed outside of the DOM that Livewire manages, so if a Livewire component re-renders this
+        markup for a reason that has nothing to do with the datepicker, the popup resets to closed. If you find that happening,
+        wrap the field in <code class="inline">wire:ignore</code> so Livewire leaves that part of the page alone. The component also
+        guards against a Livewire re-render building a second calendar popup, which used to happen on every re-render and left
+        orphaned popups behind on the page.
+    </p>
+
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#range">Range datepicker</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#required">Show as required</a></div>
@@ -339,6 +350,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#minmax">Min and max dates</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Datepicker inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

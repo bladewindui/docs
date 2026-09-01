@@ -386,6 +386,15 @@ resetStepper('account-setup');</code></pre>
     &lt;/x-bladewind::stepper.content&gt;
 &lt;/x-bladewind::stepper&gt;</code></pre>
 
+    <h2 id="livewire">Using Stepper Inside Livewire</h2>
+    <p>
+        The current step lives in the stepper's own DOM rather than in Livewire's component state. If a Livewire component
+        re-renders this markup for a reason that has nothing to do with the stepper, the current step resets back to its initial
+        value. If your stepper lives inside a component that can re-render for other reasons, wrap the stepper in
+        <code class="inline">wire:ignore</code>. The bindings that drive the stepper are delegated and safe to re-run, so a
+        re-render will not leave behind duplicate listeners.
+    </p>
+
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; stepper &gt; index.blade.php</code>
     </x-bladewind::alert>
@@ -409,6 +418,7 @@ resetStepper('account-setup');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Stepper inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-stepper');</script></x-slot:scripts>
 </x-app>

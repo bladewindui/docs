@@ -21,6 +21,7 @@
 <div class="{{ $css }} component-drawer"><div class="dot"></div><a href="/component/drawer">Drawer <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-empty-state"><div class="dot"></div><a href="/component/empty-state">Empty State</a></div>
 <div class="{{ $css }} component-filepicker"><div class="dot"></div><a href="/component/filepicker">Filepicker</a></div>
+<div class="{{ $css }} component-file-preview"><div class="dot"></div><a href="/component/file-preview">File Preview <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-hlg"><div class="dot"></div><a href="/component/horizontal-line-graph">Horizontal Line Graph</a></div>
 <div class="{{ $css }} component-icon"><div class="dot"></div><a href="/component/icon">Icon</a></div>
 <div class="{{ $css }} component-input"><div class="dot"></div><a href="/component/input">Input</a></div>

@@ -33,6 +33,7 @@ Route::view('component/dropmenu', 'docs/dropmenu');
 Route::view('component/drawer', 'docs/drawer');
 Route::view('component/empty-state', 'docs/emptystate');
 Route::view('component/filepicker', 'docs/filepicker');
+Route::view('component/file-preview', 'docs/file-preview');
 Route::view('component/horizontal-line-graph', 'docs/horizontal-line-graph');
 Route::view('contribute', 'docs/contribute');
 Route::view('mcp', 'docs/mcp');

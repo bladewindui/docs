@@ -12,6 +12,7 @@
                 ['Colorpicker', 'colorpicker', 'Choose colours through a compact visual control.'],
                 ['Datepicker', 'datepicker', 'Select single dates, ranges and preset periods.'],
                 ['Filepicker', 'filepicker', 'Handle drag-and-drop and conventional file selection.'],
+                ['File Preview', 'file-preview', 'Show an already-uploaded file with download and remove actions.'],
                 ['Input', 'input', 'Capture text with labels, icons, prefixes and validation.'],
                 ['Input Group', 'input-group', 'Combine related controls into one cohesive field.'],
                 ['Number', 'number', 'Capture numeric values with controlled stepping.'],

@@ -31,6 +31,7 @@ Route::view('component/colorpicker', 'docs/colorpicker');
 Route::view('component/command-palette', 'docs/command-palette');
 Route::view('component/dropmenu', 'docs/dropmenu');
 Route::view('component/drawer', 'docs/drawer');
+Route::view('component/divider', 'docs/divider');
 Route::view('component/empty-state', 'docs/emptystate');
 Route::view('component/filepicker', 'docs/filepicker');
 Route::view('component/horizontal-line-graph', 'docs/horizontal-line-graph');

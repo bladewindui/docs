@@ -52,6 +52,7 @@
                 ['Card', 'card', 'Group related content and actions in a flexible surface.'],
                 ['Chart', 'chart', 'Visualize application data with configurable charts.'],
                 ['Data Grid', 'data-grid', 'Sort, filter, select and paginate data with client or server-driven state.'],
+                ['Divider', 'divider', 'Separate layout regions with a plain, labelled or vertical rule.'],
                 ['Empty State', 'empty-state', 'Guide users when there is no content to display.'],
                 ['Horizontal Line Graph', 'horizontal-line-graph', 'Compare values through compact horizontal bars.'],
                 ['Icon', 'icon', 'Use the full Heroicons collection through Blade.'],

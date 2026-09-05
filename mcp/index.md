@@ -35,6 +35,7 @@ Start here for installation, configuration, and theming.
 | Check Card | `x-bladewind::checkcard` | [checkcard.md](checkcard.md) |
 | Color Picker | `x-bladewind::colorpicker` | [colorpicker.md](colorpicker.md) |
 | Date Picker | `x-bladewind::datepicker` | [datepicker.md](datepicker.md) |
+| Divider | `x-bladewind::divider` | [divider.md](divider.md) |
 | Drop Menu | `x-bladewind::dropmenu` | [dropmenu.md](dropmenu.md) |
 | Empty State | `x-bladewind::empty-state` | [empty-state.md](empty-state.md) |
 | Filepicker | `x-bladewind::filepicker` | [filepicker.md](filepicker.md) |

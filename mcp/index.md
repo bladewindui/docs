@@ -25,6 +25,7 @@ Start here for installation, configuration, and theming.
 | Accordion | `x-bladewind::accordion` | [accordion.md](accordion.md) |
 | Alert | `x-bladewind::alert` | [alert.md](alert.md) |
 | Avatar | `x-bladewind::avatar` | [avatar.md](avatar.md) |
+| Banner | `x-bladewind::banner` | [banner.md](banner.md) |
 | Bell | `x-bladewind::bell` | [bell.md](bell.md) |
 | Button | `x-bladewind::button` | [button.md](button.md) |
 | Calendar | `x-bladewind::calendar` | [calendar.md](calendar.md) |

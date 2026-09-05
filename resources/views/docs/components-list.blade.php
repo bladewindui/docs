@@ -4,6 +4,7 @@
 <div class="{{ $css }} component-accordion"><div class="dot"></div><a href="/component/accordion">Accordion</a></div>
 <div class="{{ $css }} component-alert"><div class="dot"></div><a href="/component/alert">Alert</a></div>
 <div class="{{ $css }} component-avatar"><div class="dot"></div><a href="/component/avatar">Avatar</a></div>
+<div class="{{ $css }} component-banner"><div class="dot"></div><a href="/component/banner">Banner <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-bell"><div class="dot"></div><a href="/component/bell">Bell</a></div>
 <div class="{{ $css }} component-button"><div class="dot"></div><a href="/component/button">Button</a></div>
 <div class="{{ $css }} component-breadcrumbs"><div class="dot"></div><a href="/component/breadcrumbs">Breadcrumbs <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>

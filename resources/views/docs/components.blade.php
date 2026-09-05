@@ -31,6 +31,7 @@
             'icon_class' => 'bg-pink-50 text-pink-600 dark:bg-pink-400/10 dark:text-pink-300',
             'items' => [
                 ['Alert', 'alert', 'Surface contextual information in multiple semantic styles.'],
+                ['Banner', 'banner', 'Show a page-level announcement with tone, actions and dismissibility.'],
                 ['Bell', 'bell', 'Display notification counts and recent activity.'],
                 ['Notification', 'notification', 'Show transient success, warning and error messages.'],
                 ['Progress Bar', 'progress-bar', 'Represent completion with a horizontal progress track.'],

@@ -16,6 +16,7 @@ Route::view('customize/darkmode', 'docs/darkmode');
 Route::view('releasing', 'docs/releasing');
 Route::view('component/accordion', 'docs/accordion');
 Route::view('component/alert', 'docs/alert');
+Route::view('component/banner', 'docs/banner');
 Route::view('component/avatar', 'docs/avatar');
 Route::view('component/bell', 'docs/bell');
 Route::view('component/button', 'docs/button');

@@ -29,6 +29,7 @@ Start here for installation, configuration, and theming.
 | Button | `x-bladewind::button` | [button.md](button.md) |
 | Calendar | `x-bladewind::calendar` | [calendar.md](calendar.md) |
 | Card | `x-bladewind::card` | [card.md](card.md) |
+| Carousel | `x-bladewind::carousel` | [carousel.md](carousel.md) |
 | Centered Content | `x-bladewind::centered-content` | [centered-content.md](centered-content.md) |
 | Chart | `x-bladewind::chart` | [chart.md](chart.md) |
 | Checkbox | `x-bladewind::checkbox` | [checkbox.md](checkbox.md) |

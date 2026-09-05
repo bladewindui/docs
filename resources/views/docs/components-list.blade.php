@@ -9,6 +9,7 @@
 <div class="{{ $css }} component-breadcrumbs"><div class="dot"></div><a href="/component/breadcrumbs">Breadcrumbs <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-calendar"><div class="dot"></div><a href="/component/calendar">Calendar <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-card"><div class="dot"></div><a href="/component/card">Card</a></div>
+<div class="{{ $css }} component-carousel"><div class="dot"></div><a href="/component/carousel">Carousel <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-centered-content"><div class="dot"></div><a href="/component/centered-content">Centered Content</a></div>
 <div class="{{ $css }} component-chart"><div class="dot"></div><a href="/component/chart">Chart</a></div>
 <div class="{{ $css }} component-checkbox"><div class="dot"></div><a href="/component/checkbox">Checkbox</a></div>

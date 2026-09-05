@@ -50,6 +50,7 @@
                 ['Avatar', 'avatar', 'Represent people and teams with images or initials.'],
                 ['Calendar', 'calendar', 'Display and select dates or events in an inline month or week grid.'],
                 ['Card', 'card', 'Group related content and actions in a flexible surface.'],
+                ['Carousel', 'carousel', 'Slide through content or media with arrows, indicators, and swipe support.'],
                 ['Chart', 'chart', 'Visualize application data with configurable charts.'],
                 ['Data Grid', 'data-grid', 'Sort, filter, select and paginate data with client or server-driven state.'],
                 ['Empty State', 'empty-state', 'Guide users when there is no content to display.'],

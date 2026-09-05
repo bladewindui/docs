@@ -39,6 +39,7 @@
                 ['Shimmer', 'shimmer', 'Provide skeleton loading states while content arrives.'],
                 ['Spinner', 'spinner', 'Indicate short-running asynchronous activity.'],
                 ['Tag', 'tag', 'Label statuses, categories and compact metadata.'],
+                ['Keyboard Key', 'kbd', 'Document a shortcut with a styled physical-key display.'],
             ],
         ],
         [

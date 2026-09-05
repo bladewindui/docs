@@ -16,7 +16,7 @@
         </code>
     </pre>
 
-    <h2>Label</h2>
+    <h2 id="label">Label</h2>
     <p>
         Pass <code class="inline">label</code> to split the line around centered text — the familiar "or" divider between
         a form and an alternate action.
@@ -31,7 +31,7 @@
     </pre>
     <p>A label only applies to a horizontal divider — it is ignored on a vertical one.</p>
 
-    <h2>Orientation</h2>
+    <h2 id="orientation">Orientation</h2>
     <p>
         Set <code class="inline">orientation</code> to <code class="inline">vertical</code> to separate content
         side-by-side, such as items in a toolbar. A vertical divider stretches to fill its container's height, so give
@@ -58,7 +58,7 @@
         </code>
     </pre>
 
-    <h2>Spacing</h2>
+    <h2 id="spacing">Spacing</h2>
     <p>
         <code class="inline">spacing</code> controls the margin either side of the line — <code class="inline">none</code>,
         <code class="inline">small</code>, <code class="inline">medium</code> (default), or <code class="inline">large</code>.
@@ -76,7 +76,7 @@
         </code>
     </pre>
 
-    <h2>Colour</h2>
+    <h2 id="colour">Colour</h2>
     <p>
         <code class="inline">color</code> tints the line and label with any of BladewindUI's accepted colours instead of
         the neutral slate default.
@@ -90,7 +90,7 @@
         </code>
     </pre>
 
-    <h2>Decorative vs semantic</h2>
+    <h2 id="decorative">Decorative vs semantic</h2>
     <p>
         By default a divider is purely visual: it renders <code class="inline">role="none"</code> and
         <code class="inline">aria-hidden="true"</code>, so assistive technology skips it entirely. Set
@@ -143,4 +143,19 @@
             <td>Additional CSS classes for the wrapper element.</td>
         </tr>
     </x-bladewind::table>
+
+    <x-slot:side_nav>
+        <div class="flex items-center"><div class="dot"></div><a href="#label">Label</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#orientation">Orientation</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#spacing">Spacing</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#colour">Colour</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#decorative">Decorative vs semantic</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+    </x-slot:side_nav>
+
+    <x-slot name="scripts">
+        <script>
+            selectNavigationItem('.component-divider');
+        </script>
+    </x-slot>
 </x-app>

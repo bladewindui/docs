@@ -29,7 +29,7 @@
         anywhere on the page.
     </p>
 
-    <h2>Tone</h2>
+    <h2 id="tone">Tone</h2>
     <p>
         <code class="inline">tone</code> picks the icon and the confirm button's colour in one attribute:
         <code class="inline">danger</code> (default, for destructive actions), <code class="inline">warning</code>,
@@ -45,7 +45,7 @@
         </code>
     </pre>
 
-    <h2>An async confirm action</h2>
+    <h2 id="async">An async confirm action</h2>
     <p>
         Pass <code class="inline">onConfirm</code> as a raw JavaScript expression, wrapped internally in a function
         that may return a <code class="inline">Promise</code>. While that promise is pending, both buttons disable
@@ -75,14 +75,14 @@
         after also updating the rest of the page.
     </p>
 
-    <h2>Backdrop</h2>
+    <h2 id="backdrop">Backdrop</h2>
     <p>
         Unlike a plain Modal, the backdrop cannot dismiss a confirm dialog by default — a destructive action should be
         explicitly confirmed or cancelled, not accidentally dismissed by a stray click. Set
         <code class="inline">backdrop-can-close="true"</code> to restore Modal's usual behaviour.
     </p>
 
-    <h2>Attributes</h2>
+    <h2 id="attributes">Full List Of Attributes</h2>
     <x-bladewind::table striped="true">
         <x-slot name="header">
             <th>Option</th>
@@ -140,4 +140,17 @@
             <td>Overrides the icon <code class="inline">tone</code> would otherwise pick, using any <a href="https://heroicons.com/" target="_blank">Heroicons</a> name.</td>
         </tr>
     </x-bladewind::table>
+
+    <x-slot:side_nav>
+        <div class="flex items-center"><div class="dot"></div><a href="#tone">Tone</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#async">An async confirm action</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#backdrop">Backdrop</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+    </x-slot:side_nav>
+
+    <x-slot name="scripts">
+        <script>
+            selectNavigationItem('.component-confirm-dialog');
+        </script>
+    </x-slot>
 </x-app>

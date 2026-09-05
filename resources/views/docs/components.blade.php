@@ -18,6 +18,7 @@
                 ['Radio Button', 'radio-button', 'Choose a single option from a visible group.'],
                 ['Select', 'select', 'Search and choose from single or multiple options.'],
                 ['Slider', 'slider', 'Select a value or range on a visual scale.'],
+                ['Transfer List', 'transfer-list', 'Move items between available and selected lists.'],
                 ['Textarea', 'textarea', 'Collect longer content with an optional toolbar.'],
                 ['Timepicker', 'timepicker', 'Choose a time through an accessible interface.'],
                 ['Toggle', 'toggle', 'Switch settings on or off with immediate feedback.'],

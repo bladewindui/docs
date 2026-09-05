@@ -54,6 +54,7 @@ Start here for installation, configuration, and theming.
 | Select | `x-bladewind::select` | [select.md](select.md) |
 | Shimmer | `x-bladewind::shimmer` | [shimmer.md](shimmer.md) |
 | Slider | `x-bladewind::slider` | [slider.md](slider.md) |
+| Transfer List | `x-bladewind::transfer-list` | [transfer-list.md](transfer-list.md) |
 | Sortable | `x-bladewind::sortable` | [sortable.md](sortable.md) |
 | Spinner | `x-bladewind::spinner` | [spinner.md](spinner.md) |
 | Statistic | `x-bladewind::statistic` | [statistic.md](statistic.md) |

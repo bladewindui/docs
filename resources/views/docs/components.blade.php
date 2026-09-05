@@ -75,6 +75,7 @@
                 ['Sidebar', 'sidebar', 'Build responsive application navigation with nested groups and mobile Drawer presentation.'],
                 ['Command Palette', 'command-palette', 'Launch actions from a searchable, keyboard-first dialog.'],
                 ['Modal', 'modal', 'Focus attention on confirmations, forms and details.'],
+                ['Confirm Dialog', 'confirm-dialog', 'Gate destructive actions with a tone-aware, async-ready confirmation.'],
                 ['Popover', 'popover', 'Reveal contextual content beside a trigger.'],
                 ['Process Indicator', 'process-indicator', 'Show progress through a multi-step workflow.'],
                 ['Stepper', 'stepper', 'Guide users through named linear or non-linear workflows.'],

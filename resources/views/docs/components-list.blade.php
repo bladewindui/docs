@@ -27,6 +27,7 @@
 <div class="{{ $css }} component-input-group"><div class="dot"></div><a href="/component/input-group">Input Group</a></div>
 <div class="{{ $css }} component-list"><div class="dot"></div><a href="/component/list-view">List View</a></div>
 <div class="{{ $css }} component-modal"><div class="dot"></div><a href="/component/modal">Modal</a></div>
+<div class="{{ $css }} component-confirm-dialog"><div class="dot"></div><a href="/component/confirm-dialog">Confirm Dialog <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-notification"><div class="dot"></div><a href="/component/notification">Notification</a></div>
 <div class="{{ $css }} component-number"><div class="dot"></div><a href="/component/number">Number</a></div>
 <div class="{{ $css }} component-popover"><div class="dot"></div><a href="/component/popover">Popover</a></div>

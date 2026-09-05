@@ -43,6 +43,7 @@ Start here for installation, configuration, and theming.
 | Input | `x-bladewind::input` | [input.md](input.md) |
 | List View | `x-bladewind::list-view` | [list-view.md](list-view.md) |
 | Modal | `x-bladewind::modal` | [modal.md](modal.md) |
+| Confirm Dialog | `x-bladewind::confirm-dialog` | [confirm-dialog.md](confirm-dialog.md) |
 | Notification | `x-bladewind::notification` | [notification.md](notification.md) |
 | Number | `x-bladewind::number` | [number.md](number.md) |
 | Popover | `x-bladewind::popover` | [popover.md](popover.md) |

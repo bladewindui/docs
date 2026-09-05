@@ -43,6 +43,7 @@ Route::view('component/input', 'docs/input');
 Route::view('component/input-group', 'docs/input-group');
 Route::view('component/list-view', 'docs/list');
 Route::view('component/modal', 'docs/modal');
+Route::view('component/confirm-dialog', 'docs/confirm-dialog');
 Route::view('component/notification', 'docs/notification');
 Route::view('component/number', 'docs/number');
 Route::view('component/popover', 'docs/popover');

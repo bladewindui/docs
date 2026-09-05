@@ -30,6 +30,7 @@ Route::view('component/datepicker', 'docs/datepicker');
 Route::view('component/colorpicker', 'docs/colorpicker');
 Route::view('component/command-palette', 'docs/command-palette');
 Route::view('component/dropmenu', 'docs/dropmenu');
+Route::view('component/context-menu', 'docs/context-menu');
 Route::view('component/drawer', 'docs/drawer');
 Route::view('component/empty-state', 'docs/emptystate');
 Route::view('component/filepicker', 'docs/filepicker');

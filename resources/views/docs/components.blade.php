@@ -71,6 +71,7 @@
                 ['Accordion', 'accordion', 'Organize dense information into expandable sections.'],
                 ['Centered Content', 'centered-content', 'Center focused content within the viewport.'],
                 ['Dropmenu', 'dropmenu', 'Present compact menus from any trigger.'],
+                ['Context Menu', 'context-menu', 'Give any region a right-click menu with nested submenus.'],
                 ['Drawer', 'drawer', 'Reveal supporting content from any viewport edge.'],
                 ['Sidebar', 'sidebar', 'Build responsive application navigation with nested groups and mobile Drawer presentation.'],
                 ['Command Palette', 'command-palette', 'Launch actions from a searchable, keyboard-first dialog.'],

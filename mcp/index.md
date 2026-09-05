@@ -36,6 +36,7 @@ Start here for installation, configuration, and theming.
 | Color Picker | `x-bladewind::colorpicker` | [colorpicker.md](colorpicker.md) |
 | Date Picker | `x-bladewind::datepicker` | [datepicker.md](datepicker.md) |
 | Drop Menu | `x-bladewind::dropmenu` | [dropmenu.md](dropmenu.md) |
+| Context Menu | `x-bladewind::context-menu` | [context-menu.md](context-menu.md) |
 | Empty State | `x-bladewind::empty-state` | [empty-state.md](empty-state.md) |
 | Filepicker | `x-bladewind::filepicker` | [filepicker.md](filepicker.md) |
 | Horizontal Line Graph | `x-bladewind::horizontal-line-graph` | [horizontal-line-graph.md](horizontal-line-graph.md) |

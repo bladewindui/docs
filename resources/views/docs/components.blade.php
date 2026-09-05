@@ -39,6 +39,7 @@
                 ['Shimmer', 'shimmer', 'Provide skeleton loading states while content arrives.'],
                 ['Spinner', 'spinner', 'Indicate short-running asynchronous activity.'],
                 ['Tag', 'tag', 'Label statuses, categories and compact metadata.'],
+                ['Copy Button', 'copy-button', 'Copy a value or wrapped text to the clipboard.'],
             ],
         ],
         [

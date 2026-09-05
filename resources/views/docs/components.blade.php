@@ -39,6 +39,7 @@
                 ['Shimmer', 'shimmer', 'Provide skeleton loading states while content arrives.'],
                 ['Spinner', 'spinner', 'Indicate short-running asynchronous activity.'],
                 ['Tag', 'tag', 'Label statuses, categories and compact metadata.'],
+                ['Meter', 'meter', 'Show a bounded measurement with semantic low/medium/high zones.'],
             ],
         ],
         [

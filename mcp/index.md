@@ -60,6 +60,7 @@ Start here for installation, configuration, and theming.
 | Tab | `x-bladewind::tab` | [tab.md](tab.md) |
 | Table | `x-bladewind::table` | [table.md](table.md) |
 | Tag | `x-bladewind::tag` | [tag.md](tag.md) |
+| Meter | `x-bladewind::meter` | [meter.md](meter.md) |
 | Textarea | `x-bladewind::textarea` | [textarea.md](textarea.md) |
 | Theme Switcher | `x-bladewind::theme-switcher` | [theme-switcher.md](theme-switcher.md) |
 | Timeline | `x-bladewind::timeline` | [timeline.md](timeline.md) |

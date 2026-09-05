@@ -31,6 +31,7 @@ Start here for installation, configuration, and theming.
 | Card | `x-bladewind::card` | [card.md](card.md) |
 | Centered Content | `x-bladewind::centered-content` | [centered-content.md](centered-content.md) |
 | Chart | `x-bladewind::chart` | [chart.md](chart.md) |
+| Code Block | `x-bladewind::code-block` | [code-block.md](code-block.md) |
 | Checkbox | `x-bladewind::checkbox` | [checkbox.md](checkbox.md) |
 | Check Card | `x-bladewind::checkcard` | [checkcard.md](checkcard.md) |
 | Color Picker | `x-bladewind::colorpicker` | [colorpicker.md](colorpicker.md) |

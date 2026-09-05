@@ -51,6 +51,7 @@
                 ['Calendar', 'calendar', 'Display and select dates or events in an inline month or week grid.'],
                 ['Card', 'card', 'Group related content and actions in a flexible surface.'],
                 ['Chart', 'chart', 'Visualize application data with configurable charts.'],
+                ['Code Block', 'code-block', 'Display syntax-highlighted code with line numbers and a copy action.'],
                 ['Data Grid', 'data-grid', 'Sort, filter, select and paginate data with client or server-driven state.'],
                 ['Empty State', 'empty-state', 'Guide users when there is no content to display.'],
                 ['Horizontal Line Graph', 'horizontal-line-graph', 'Compare values through compact horizontal bars.'],

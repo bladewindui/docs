@@ -22,6 +22,7 @@
                 ['Timepicker', 'timepicker', 'Choose a time through an accessible interface.'],
                 ['Toggle', 'toggle', 'Switch settings on or off with immediate feedback.'],
                 ['Verification Code', 'verification-code', 'Capture OTP and verification digits cleanly.'],
+                ['Currency Input', 'currency-input', 'Capture money amounts with locale-aware symbols and separators.'],
             ],
         ],
         [

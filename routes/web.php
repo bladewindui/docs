@@ -45,6 +45,7 @@ Route::view('component/list-view', 'docs/list');
 Route::view('component/modal', 'docs/modal');
 Route::view('component/notification', 'docs/notification');
 Route::view('component/number', 'docs/number');
+Route::view('component/password-meter', 'docs/password-meter');
 Route::view('component/popover', 'docs/popover');
 Route::view('component/process-indicator', 'docs/process-indicator');
 Route::view('component/progress-bar', 'docs/progress-bar');

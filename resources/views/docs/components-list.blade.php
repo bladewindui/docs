@@ -29,6 +29,7 @@
 <div class="{{ $css }} component-modal"><div class="dot"></div><a href="/component/modal">Modal</a></div>
 <div class="{{ $css }} component-notification"><div class="dot"></div><a href="/component/notification">Notification</a></div>
 <div class="{{ $css }} component-number"><div class="dot"></div><a href="/component/number">Number</a></div>
+<div class="{{ $css }} component-password-meter"><div class="dot"></div><a href="/component/password-meter">Password Meter <x-bladewind::icon name="bolt" type="solid" class="text-pink-600 !size-3 ml-1" /></a></div>
 <div class="{{ $css }} component-popover"><div class="dot"></div><a href="/component/popover">Popover</a></div>
 <div class="{{ $css }} component-process-indicator"><div class="dot"></div><a href="/component/process-indicator">Process Indicator</a></div>
 <div class="{{ $css }} component-progress-bar"><div class="dot"></div><a href="/component/progress-bar">Progress Bar</a></div>

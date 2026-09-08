@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Scan vendor blade and JS files for class names */
-@source "../../vendor/bladewindui/bladewindui/**/*.blade.php";
+@source "../../vendor/bladewindui/ui/**/*.blade.php";
 @source "../../public/vendor/bladewind/js/*.js";
 
 /* Class-based dark mode (.dark on <html>) */

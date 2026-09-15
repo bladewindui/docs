@@ -9,11 +9,12 @@
 
     <x-bladewind::radio name="tnc" />
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::radio name="tnc"  /&gt;
-        </code>
-    </pre>
+    @php
+        $radiobuttonExample1 = <<<'HTML'
+            <x-bladewind::radio name="tnc"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$radiobuttonExample1"></x-bladewind::code-block>
 
     <h3>What kind of movies do you like?</h3>
     <x-bladewind::radio label="Action" name="genre"  />
@@ -21,36 +22,39 @@
     <x-bladewind::radio label="Drama" name="genre"  />
     <x-bladewind::radio label="Thriller" name="genre" />
 
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::radio label="Action" name="genre"  /&gt;
-    &lt;x-bladewind::radio label="Comedy" name="genre"  /&gt;
-    &lt;x-bladewind::radio label="Drama" name="genre"  /&gt;
-    &lt;x-bladewind::radio label="Thriller" name="genre" /&gt;
-</code>
-</pre>
+@php
+        $radiobuttonExample2 = <<<'HTML'
+            <x-bladewind::radio label="Action" name="genre"  />
+            <x-bladewind::radio label="Comedy" name="genre"  />
+            <x-bladewind::radio label="Drama" name="genre"  />
+            <x-bladewind::radio label="Thriller" name="genre" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$radiobuttonExample2"></x-bladewind::code-block>
 
     <x-bladewind::radio label="I am checked by default" checked="true" name="check_me"  />
 
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::radio
-        label="I am checked by default"
-        checked="true"
-        name="check_me"  /&gt;
-</code>
-</pre>
+@php
+        $radiobuttonExample3 = <<<'HTML'
+            <x-bladewind::radio
+                label="I am checked by default"
+                checked="true"
+                name="check_me"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$radiobuttonExample3"></x-bladewind::code-block>
 
     <x-bladewind::radio label="I am disabled" disabled="true"  /> &nbsp;&nbsp;
     <x-bladewind::radio label="I am checked and disabled" disabled="true" checked="true"  />
 
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::radio
-        label="I am disabled"
-        disabled="true"  /&gt;
-</code>
-</pre>
+@php
+        $radiobuttonExample4 = <<<'HTML'
+            <x-bladewind::radio
+                label="I am disabled"
+                disabled="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$radiobuttonExample4"></x-bladewind::code-block>
 
     <h2 id="coloured">Coloured Checkboxes</h2>
     <p>
@@ -71,69 +75,70 @@
         <x-bladewind::radio color="fuchsia" label="I am a fuchsia radio" />
     </div>
 
-    <pre class="language-markup line-numbers" data-line="2,7,12,17,23,28,33,38,43,49,54,59">
-        <code>
-            &lt;x-bladewind::radio
+    @php
+        $radiobuttonExample5 = <<<'HTML'
+            <x-bladewind::radio
                 color="red"
                 checked="true"
-                label="I am a red radio" /&gt;
+                label="I am a red radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="yellow"
                 checked="true"
-                label="I am a yellow radio" /&gt;
+                label="I am a yellow radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="green"
                 checked="true"
-                label="I am a green radio" /&gt;
+                label="I am a green radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="pink"
                 checked="true"
-                label="I am a pink radio" /&gt;
+                label="I am a pink radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="cyan"
                 checked="true"
-                label="I am a cyan radio" /&gt;
+                label="I am a cyan radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="black"
                 checked="true"
-                label="I am a black radio" /&gt;
+                label="I am a black radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="purple"
                 checked="true"
-                label="I am a purple radio" /&gt;
+                label="I am a purple radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="orange"
                 checked="true"
-                label="I am a orange radio" /&gt;
+                label="I am a orange radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="blue"
                 checked="true"
-                label="I am a blue radio" /&gt;
+                label="I am a blue radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="violet"
                 checked="true"
-                label="I am a violet radio" /&gt;
+                label="I am a violet radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="indigo"
                 checked="true"
-                label="I am a indigo radio" /&gt;
+                label="I am a indigo radio" />
 
-            &lt;x-bladewind::radio
+            <x-bladewind::radio
                 color="fuchsia"
                 checked="true"
-                label="I am a fuchsia radio" /&gt;
-        </code>
-    </pre>
+                label="I am a fuchsia radio" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,7,12,17,23,28,33,38,43,49,54,59" :code="$radiobuttonExample5"></x-bladewind::code-block>
 
     <h3>Radio buttons and forms</h3>
     <p>
@@ -143,14 +148,15 @@
     </p>
 
     <x-bladewind::radio name="notify_me" value="1" label="Send me weekly newsletters" />
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::radio
-            name="notify_me"
-            value="1"
-            label="Send me weekly newsletters" /&gt;
-        </code>
-    </pre>
+    @php
+        $radiobuttonExample6 = <<<'HTML'
+            <x-bladewind::radio
+                        name="notify_me"
+                        value="1"
+                        label="Send me weekly newsletters" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$radiobuttonExample6"></x-bladewind::code-block>
     <h2 id="form-state">Laravel Form State</h2>
     <p>
         When validation fails, Laravel redirects back with the submitted values flashed to the
@@ -158,16 +164,17 @@
         can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
         and an error block on every single field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::radio
-    name="plan"
-    value="pro"
-    label="Pro"
-    fill_from_old="true"
-    show_validation_error="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $radiobuttonExample7 = <<<'HTML'
+            <x-bladewind::radio
+                name="plan"
+                value="pro"
+                label="Pro"
+                fill_from_old="true"
+                show_validation_error="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$radiobuttonExample7"></x-bladewind::code-block>
     <p>
         <code class="inline">fill_from_old</code> repopulates the field from
         <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
@@ -187,16 +194,17 @@
         Rather than setting the attributes field by field, set them once in your
         <code class="inline">config/bladewind.php</code> and every form component follows.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-// config/bladewind.php
-'forms' =&gt; [
-    'fill_from_old' =&gt; true,
-    'show_validation_error' =&gt; true,
-    'error_bag' =&gt; null,
-],
-        </code>
-    </pre>
+    @php
+        $radiobuttonExample8 = <<<'HTML'
+            // config/bladewind.php
+            'forms' => [
+                'fill_from_old' => true,
+                'show_validation_error' => true,
+                'error_bag' => null,
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$radiobuttonExample8"></x-bladewind::code-block>
     <p>
         An attribute on a single field always wins over the config, so you can opt one field out
         with <code class="inline">show_validation_error="false"</code>.
@@ -290,18 +298,19 @@
     </x-bladewind::table>
 
     <h3>Radio button with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::radio
+    @php
+        $radiobuttonExample9 = <<<'HTML'
+            <x-bladewind::radio
                 label="I agree to the terms and conditions"
                 checked="false"
                 disabled="false"
                 color="pink"
                 name="tnc"
                 value="yes"
-                class="shadow-sm" /&gt;
-        </code>
-    </pre>
+                class="shadow-sm" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$radiobuttonExample9"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > radio.blade.php</code>

@@ -16,18 +16,20 @@
         <x-bladewind::chart :labels="$labels" :data="$data" title="Colour ranks" />
     </div>
 
-<pre class="language-php line-numbers">
-<code>
-    &lt;?php
-        $labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple'];
-        $data = [12, 19, 13, 15, 9, 10];
-</code>
-</pre>
-<pre class="language-markup">
-    <code>
-        &lt;x-bladewind::chart :labels="$labels" :data="$data" title="Colour ranks" /&gt;
-    </code>
-</pre>
+@php
+        $chartExample1 = <<<'HTML'
+            <?php
+                $labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple'];
+                $data = [12, 19, 13, 15, 9, 10];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$chartExample1"></x-bladewind::code-block>
+@php
+        $chartExample2 = <<<'HTML'
+            <x-bladewind::chart :labels="$labels" :data="$data" title="Colour ranks" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$chartExample2"></x-bladewind::code-block>
     <h2 id="options">Common Chart Options</h2>
     <p>
         There are four top level options in the <a href="https://www.chartjs.org/docs/latest/configuration/" target="_blank">Chart.js configuration</a>.
@@ -36,18 +38,20 @@
         Passing each attribute expects you to have defined the data in a format Chart.js expects.
         For example, whatever array you pass into the <code class="inline">data</code> attribute will simply be formatted into JSON and passed to Chart.js as shown below.
     </p>
-    <pre class="language-js line-numbers">
-    <code>
-    // chart.js configuration
-    const config = {
-        type: '&#123;&#123;$type}}',
-        // $data was passed as an attribute to the chart component
-        data: @@json($data),
-        options: @@json($options),
-        plugins: @@json($plugins)
-    }
-    </code>
-</pre>
+    @php
+        $chartExample3 = <<<'HTML'
+            // chart.js configuration
+            const config = {
+                type: '{{$type}}',
+                // $data was passed as an attribute to the chart component
+                data: BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERjson($data),
+                options: BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERjson($options),
+                plugins: BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERjson($plugins)
+            }
+            HTML;
+        $chartExample3 = str_replace('BWATSIGNPLACEHOLDER', '@', $chartExample3);
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$chartExample3"></x-bladewind::code-block>
     <p>
         BladewindUI however, exposes a few common chart options that can be passed as attributes for convenience.
         The list is provided below.
@@ -144,19 +148,20 @@
             show_axis_lines="false"
             show_axis_labels="false" />
     </p>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::chart
-    type="bar"
-    :labels="$labels"
-    :data="$data"
-    title=""
-    show_legend="false"
-    show_borders="false"
-    show_axis_lines="false"
-    show_axis_labels="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample4 = <<<'HTML'
+            <x-bladewind::chart
+                type="bar"
+                :labels="$labels"
+                :data="$data"
+                title=""
+                show_legend="false"
+                show_borders="false"
+                show_axis_lines="false"
+                show_axis_labels="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$chartExample4"></x-bladewind::code-block>
 <h2 id="chart-types">Chart Types</h2>
 <h3 id="area">Area Chart</h3>
 <p>
@@ -167,13 +172,14 @@
     :labels="$labels"
     :data="$data" />
 
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="area"
-    :labels="$labels" :data="$data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample5 = <<<'HTML'
+            <x-bladewind::chart
+                type="area"
+                :labels="$labels" :data="$data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample5"></x-bladewind::code-block>
 <h3 id="bar">Bar Chart</h3>
 <p>
     Set <code class="inline text-red-500">type="bar"</code> to display a bar chart. This is the default.
@@ -183,13 +189,14 @@
     :labels="$labels"
     :data="$data" />
 
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="bar"
-    :labels="$labels" :data="$data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample6 = <<<'HTML'
+            <x-bladewind::chart
+                type="bar"
+                :labels="$labels" :data="$data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample6"></x-bladewind::code-block>
 <h3 id="bubble">Bubble Chart</h3>
 <p>
     Set <code class="inline text-red-500">type="bubble"</code> to display a bubble chart.
@@ -226,27 +233,29 @@
     :labels="$bubble_labels"
     :data="$bubble_data" />
 
-<pre class="language-php line-numbers">
-<code>
-$bubble_labels = [];
-$bubble_data = [
-    ['x' => 5, 'y' => 10, 'r' => 8],
-    ['x' => 10, 'y' => 15, 'r' => 6],
-    ...
-    ['x' => 85, 'y' => 26, 'r' => 7],
-    ['x' => 100, 'y' => 30, 'r' => 10],
-];
-</code>
-</pre>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="bubble"
-    bg_color="rgba(153, 102, 255, 0.5)"
-    border_color="rgb(153, 102, 255)"
-    :labels="$bubble_labels" :data="$bubble_data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample7 = <<<'HTML'
+            $bubble_labels = [];
+            $bubble_data = [
+                ['x' => 5, 'y' => 10, 'r' => 8],
+                ['x' => 10, 'y' => 15, 'r' => 6],
+                ...
+                ['x' => 85, 'y' => 26, 'r' => 7],
+                ['x' => 100, 'y' => 30, 'r' => 10],
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$chartExample7"></x-bladewind::code-block>
+@php
+        $chartExample8 = <<<'HTML'
+            <x-bladewind::chart
+                type="bubble"
+                bg_color="rgba(153, 102, 255, 0.5)"
+                border_color="rgb(153, 102, 255)"
+                :labels="$bubble_labels" :data="$bubble_data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample8"></x-bladewind::code-block>
 
 <h3 id="doughnut">Doughnut Chart</h3>
 <p>
@@ -258,13 +267,14 @@ $bubble_data = [
     :labels="$labels"
     :data="$data" />
     </div>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="doughnut"
-    :labels="$labels" :data="$data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample9 = <<<'HTML'
+            <x-bladewind::chart
+                type="doughnut"
+                :labels="$labels" :data="$data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample9"></x-bladewind::code-block>
 
 <h3 id="line">Line Chart</h3>
 <p>
@@ -275,13 +285,14 @@ $bubble_data = [
     :labels="$labels" border_width="5"
     :data="$data" />
 
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="line" border_width="5"
-    :labels="$labels" :data="$data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample10 = <<<'HTML'
+            <x-bladewind::chart
+                type="line" border_width="5"
+                :labels="$labels" :data="$data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample10"></x-bladewind::code-block>
 
 <h3 id="pie">Pie Chart</h3>
 <p>
@@ -293,13 +304,14 @@ $bubble_data = [
     :labels="$labels"
     :data="$data" />
 </div>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="pie"
-    :labels="$labels" :data="$data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample11 = <<<'HTML'
+            <x-bladewind::chart
+                type="pie"
+                :labels="$labels" :data="$data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample11"></x-bladewind::code-block>
 
 <h3 id="polar">Polar Chart</h3>
 <p>
@@ -310,13 +322,14 @@ $bubble_data = [
     :labels="$labels"
     :data="$data" />
 
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="polar"
-    :labels="$labels" :data="$data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample12 = <<<'HTML'
+            <x-bladewind::chart
+                type="polar"
+                :labels="$labels" :data="$data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample12"></x-bladewind::code-block>
 
 <h3 id="radar">Radar Chart</h3>
 <p>
@@ -333,21 +346,23 @@ $bubble_data = [
     border_color="#36A2EB" border_width="2"
     :data="$radar_data" />
 
-<pre class="language-php line-numbers">
-<code>
-$radar_labels = ['Speed', 'Strength', 'Agility', 'Endurance', 'Skill'];
-$radar_data = [65, 59, 90, 81, 56]
-</code>
-</pre>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="radar"
-    bg_color="rgba(54, 162, 235, 0.3)"
-    border_color="#36A2EB" border_width="2"
-    :labels="$radar_labels" :data="$radar_data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample13 = <<<'HTML'
+            $radar_labels = ['Speed', 'Strength', 'Agility', 'Endurance', 'Skill'];
+            $radar_data = [65, 59, 90, 81, 56]
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$chartExample13"></x-bladewind::code-block>
+@php
+        $chartExample14 = <<<'HTML'
+            <x-bladewind::chart
+                type="radar"
+                bg_color="rgba(54, 162, 235, 0.3)"
+                border_color="#36A2EB" border_width="2"
+                :labels="$radar_labels" :data="$radar_data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample14"></x-bladewind::code-block>
 
 <h3 id="scatter">Scatter Chart</h3>
 <p>
@@ -383,25 +398,27 @@ $radar_data = [65, 59, 90, 81, 56]
     :labels="$scatter_labels"
     :data="$scatter_data" />
 
-<pre class="language-php line-numbers">
-<code>
-$scatter_labels = [];
-$scatter_data = [
-    ['x' => -15, 'y' => 10],
-    ['x' => -5, 'y' => 5],
-    ...
-    ['x' => 30, 'y' => 13],
-    ['x' => 32, 'y' => 10],
-]
-</code>
-</pre>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="scatter"
-    :labels="$scatter_labels" :data="$scatter_data" show_legend="false" /&gt;
-</code>
-</pre>
+@php
+        $chartExample15 = <<<'HTML'
+            $scatter_labels = [];
+            $scatter_data = [
+                ['x' => -15, 'y' => 10],
+                ['x' => -5, 'y' => 5],
+                ...
+                ['x' => 30, 'y' => 13],
+                ['x' => 32, 'y' => 10],
+            ]
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$chartExample15"></x-bladewind::code-block>
+@php
+        $chartExample16 = <<<'HTML'
+            <x-bladewind::chart
+                type="scatter"
+                :labels="$scatter_labels" :data="$scatter_data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample16"></x-bladewind::code-block>
 <br />
     <p>Scatter charts can have lines connecting the dots. This is turned off by default and can be displayed by setting
     <code class="inline text-red-500">show_line="true"</code>. This attribute only applies to scatter charts.
@@ -410,13 +427,14 @@ $scatter_data = [
         type="scatter" show_legend="false" show_line="true"
         :labels="$scatter_labels"
         :data="$scatter_data" />
-    <pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::chart
-    type="scatter" show_line="true"
-    :labels="$scatter_labels" :data="$scatter_data" show_legend="false" /&gt;
-</code>
-</pre>
+    @php
+        $chartExample17 = <<<'HTML'
+            <x-bladewind::chart
+                type="scatter" show_line="true"
+                :labels="$scatter_labels" :data="$scatter_data" show_legend="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$chartExample17"></x-bladewind::code-block>
     <h3 id="mixed">Mixed Charts</h3>
     <p>
         To define a mixture of chart types, you need to create your own chart data array that includes data for all the chart types you want to display.
@@ -446,35 +464,37 @@ $scatter_data = [
         ];
     @endphp
     <x-bladewind::chart :data="$data" />
-<pre class="language-php line-numbers">
-<code>
-$data = [
-    "labels" => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-    "datasets" => [
-        [
-            'type' => 'bar',
-            'label' => 'Sales',
-            'data' => [10, 20, 30, 25, 15],
-            'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
-            'borderColor' => 'rgb(75, 192, 192)',
-        ],
-        [
-            'type' => 'line',
-            'label' => 'Trend',
-            'data' => [12, 18, 28, 22, 17],
-            'borderColor' => '#FF6384',
-            'borderWidth' => 2,
-            'fill' => false,
-        ]
-    ]
-];
-</code>
-</pre>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::chart :data="$data"  /&gt;
-</code>
-</pre>
+@php
+        $chartExample18 = <<<'HTML'
+            $data = [
+                "labels" => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                "datasets" => [
+                    [
+                        'type' => 'bar',
+                        'label' => 'Sales',
+                        'data' => [10, 20, 30, 25, 15],
+                        'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
+                        'borderColor' => 'rgb(75, 192, 192)',
+                    ],
+                    [
+                        'type' => 'line',
+                        'label' => 'Trend',
+                        'data' => [12, 18, 28, 22, 17],
+                        'borderColor' => '#FF6384',
+                        'borderWidth' => 2,
+                        'fill' => false,
+                    ]
+                ]
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$chartExample18"></x-bladewind::code-block>
+@php
+        $chartExample19 = <<<'HTML'
+            <x-bladewind::chart :data="$data"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$chartExample19"></x-bladewind::code-block>
     <h2 id="data">Chart Data</h2>
     <p>
         All data is passed to the chart via the <code class="inline text-red-500">data</code> attribute, but there are two ways to define this data.
@@ -484,18 +504,20 @@ $data = [
         This requires you to set values for both the <code class="inline text-red-500">labels</code> and <code class="inline text-red-500">data</code> attributes.
         The data in this case should only be the data points to be displayed in the chart. Each data point is matched against a corresponding label depending on the type of chart being displayed.
     </p>
-    <pre class="language-php line-numbers">
-<code>
-    &lt;?php
-        $labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple'];
-        $data = [12, 19, 13, 15, 9, 10];
-</code>
-</pre>
-    <pre class="language-markup">
-    <code>
-        &lt;x-bladewind::chart :labels="$labels" :data="$data" /&gt;
-    </code>
-</pre>
+    @php
+        $chartExample20 = <<<'HTML'
+            <?php
+                $labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple'];
+                $data = [12, 19, 13, 15, 9, 10];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$chartExample20"></x-bladewind::code-block>
+    @php
+        $chartExample21 = <<<'HTML'
+            <x-bladewind::chart :labels="$labels" :data="$data" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$chartExample21"></x-bladewind::code-block>
     <h3>Option 2</h3>
     <p>
         This requires you to define the entire chart datasets in an array and pass that to the <code class="inline text-red-500">data</code> attribute.
@@ -505,36 +527,38 @@ $data = [
         <code class="inline text-red-500">options</code> and
         <code class="inline text-red-500">plugins</code>. All other attributes are ignored since they will need to be defined in your data array.
     </p>
-    <pre class="language-php line-numbers">
-<code>
-&lt;?php
-$data = [
-    "labels" => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-    "datasets" => [
-        [
-            'type' => 'bar',
-            'label' => 'Sales',
-            'data' => [10, 20, 30, 25, 15],
-            'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
-            'borderColor' => 'rgb(75, 192, 192)',
-        ],
-        [
-            'type' => 'line',
-            'label' => 'Trend',
-            'data' => [12, 18, 28, 22, 17],
-            'borderColor' => '#FF6384',
-            'borderWidth' => 2,
-            'fill' => false,
-        ]
-    ]
-];
-</code>
-</pre>
-    <pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::chart :data="$data"  /&gt;
-</code>
-</pre>
+    @php
+        $chartExample22 = <<<'HTML'
+            <?php
+            $data = [
+                "labels" => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                "datasets" => [
+                    [
+                        'type' => 'bar',
+                        'label' => 'Sales',
+                        'data' => [10, 20, 30, 25, 15],
+                        'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
+                        'borderColor' => 'rgb(75, 192, 192)',
+                    ],
+                    [
+                        'type' => 'line',
+                        'label' => 'Trend',
+                        'data' => [12, 18, 28, 22, 17],
+                        'borderColor' => '#FF6384',
+                        'borderWidth' => 2,
+                        'fill' => false,
+                    ]
+                ]
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$chartExample22"></x-bladewind::code-block>
+    @php
+        $chartExample23 = <<<'HTML'
+            <x-bladewind::chart :data="$data"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$chartExample23"></x-bladewind::code-block>
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Chart component.</p>
     @include('docs/announcement')
@@ -667,25 +691,26 @@ $data = [
     </x-bladewind::table>
 
     <h3>Chart with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::chart
-        :labels="$labels"
-        :data="$data"
-        :options="$options"
-        :plugins="$plugins"
-        name="population"
-        type="line"
-        bg_color="green"
-        border_color="yellow"
-        border_width="3"
-        show_axis_lines="false"
-        show_axis_labels="false"
-        show_borders="false"
-        show_legend="false"
-        title="Population Distribution" /&gt;
-</code>
-</pre>
+@php
+        $chartExample24 = <<<'HTML'
+            <x-bladewind::chart
+                :labels="$labels"
+                :data="$data"
+                :options="$options"
+                :plugins="$plugins"
+                name="population"
+                type="line"
+                bg_color="green"
+                border_color="yellow"
+                border_width="3"
+                show_axis_lines="false"
+                show_axis_labels="false"
+                show_borders="false"
+                show_legend="false"
+                title="Population Distribution" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$chartExample24"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">

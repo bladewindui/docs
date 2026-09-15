@@ -6,7 +6,9 @@ url: /component/input
 
 # Input
 
-Displays a text input element. This is also commonly known as a text box. This component works for all the possible values of `<input type="" .../>`. The default is `input type="text"`. This Bladewind component simply wraps the HTML input so you are free to use all the various [input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes) available in HTML.
+Displays a text input element, also known as a text box. It wraps the native HTML `<input>` so all standard input attributes and types are available, with `text` as the default type.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::input />
@@ -14,7 +16,7 @@ Displays a text input element. This is also commonly known as a text box. This c
 
 ## Password Input
 
-This behaves just like the regular HTML password input. Nothing fancy. Any values entered into this field are masked.
+Behaves like a regular HTML password input, masking any value entered.
 
 ```blade
 <x-bladewind::input type="password" />
@@ -22,7 +24,7 @@ This behaves just like the regular HTML password input. Nothing fancy. Any value
 
 ### Reveal Passwords
 
-The component allows you to specify if the user should be able to view the password they entered by clicking on an eye. This can be achieved by setting `viewable="true"`. The eye is appended as a suffix to the input. Clicking on the eye when the password is revealed, hides the password. The eye icon will be displayed ONLY if the input `type="password"`. It will be ignored in all other cases.
+Set `viewable="true"` to let the user reveal the password by clicking an eye icon appended as a suffix. Clicking again hides it. The eye only appears when `type="password"`.
 
 ```blade
 <x-bladewind::input type="password" viewable="true" />
@@ -30,7 +32,7 @@ The component allows you to specify if the user should be able to view the passw
 
 ## Numeric Input
 
-This accepts only numeric values. Useful when entering phone numbers, age or amounts. By default the decimal point is not allowed as it is technically not a number. In cases where you need decimals, use the attribute `with_dots="true"`.
+Set `numeric="true"` to accept only numeric values, useful for phone numbers, age, or amounts. The decimal point is disallowed by default; enable it with `with_dots="true"`.
 
 ```blade
 <x-bladewind::input numeric="true" />
@@ -38,7 +40,7 @@ This accepts only numeric values. Useful when entering phone numbers, age or amo
 
 ### Minimum & Maximum Values
 
-You may want users to enter a minimum or maximum number when using the numeric input. For example, let's say employees cannot request more than 5 days off per leave request. Your input could restrict the maximum number of days off to 5 when a user is filling the form.
+Restrict the numeric range with `min` and `max`.
 
 ```blade
 <x-bladewind::input
@@ -48,9 +50,7 @@ You may want users to enter a minimum or maximum number when using the numeric i
     min="3"
     error_message="Minimum value must be 3"
     show_error_inline="true" />
-```
 
-```blade
 <x-bladewind::input
     placeholder="Maximum is 12"
     name="input-max"
@@ -61,7 +61,7 @@ You may want users to enter a minimum or maximum number when using the numeric i
 
 ## Input Masking
 
-Masking guides users into a fixed format as they type — phone numbers, dates, credit cards, money, and more. It is modelled on the [Alpine.js mask plugin](https://alpinejs.dev/plugins/mask). Build a template using these wildcards; every other character is a literal that is inserted automatically.
+Masking guides users into a fixed format as they type: phone numbers, dates, credit cards, money, and more. BladewindUI's masking is modelled on the Alpine.js mask plugin. Build a template with wildcards; every other character is a literal inserted automatically.
 
 | Wildcard | Matches |
 |---|---|
@@ -69,37 +69,35 @@ Masking guides users into a fixed format as they type — phone numbers, dates, 
 | `a` | Any letter (a-z, A-Z) |
 | `*` | Any alphanumeric character |
 
-Pass the template to the `mask` attribute. The examples below cover all three wildcard types.
+Pass the template to the `mask` attribute. As the user types, literal characters (spaces, dashes, slashes, brackets) are added automatically.
 
 ```blade
-{{-- 9 → any digit --}}
 <x-bladewind::input name="phone" mask="(999) 999-9999" />
+
 <x-bladewind::input name="dob" mask="99/99/9999" placeholder="MM/DD/YYYY" />
 
-{{-- a → any letter (mixed here with digits) --}}
 <x-bladewind::input name="postcode" mask="a9a 9a9" placeholder="A9A 9A9" />
 
-{{-- * → any letter or digit --}}
-<x-bladewind::input name="key" mask="****-****-****" placeholder="XXXX-XXXX-XXXX" />
+<x-bladewind::input name="key" mask="****-****-****-****" placeholder="XXXX-XXXX-XXXX-XXXX" />
 ```
 
 ### Dynamic Masks
 
-When the format depends on what has been typed, `dynamicMask` chooses a different mask template as the user types.
+Sometimes the format depends on what has been typed. The `dynamicMask` attribute chooses a different mask template as the user types.
 
-**Built-in: credit cards.** BladewindUI ships with a built-in `creditCard` dynamic mask that detects the card type and switches between American Express (4-6-5), Diners Club (4-6-4) and the standard Visa / Mastercard / Discover format (4-4-4-4). No JavaScript required.
+BladewindUI ships with a built-in `creditCard` dynamic mask. It detects the card type from the number and switches between American Express (4-6-5), Diners Club (4-6-4), and the standard Visa / Mastercard / Discover format (4-4-4-4), no JavaScript required.
 
 ```blade
 <x-bladewind::input name="card" dynamicMask="creditCard" />
 ```
 
-**Custom dynamic masks.** Point `dynamicMask` at the name of a global JavaScript function that receives the current value and returns a mask template. The example below masks a US ZIP code, expanding to ZIP+4 once more than five digits are entered.
+For custom dynamic masks, point `dynamicMask` at the name of a global JavaScript function that receives the current value and returns a mask template. The example below expands a US ZIP code to ZIP+4 once more than five digits are entered.
 
 ```blade
 <x-bladewind::input name="zip" dynamicMask="zipCode" />
 ```
 
-```javascript
+```js
 function zipCode(input) {
     const digits = input.replace(/\D/g, '');
     return digits.length <= 5
@@ -108,11 +106,11 @@ function zipCode(input) {
 }
 ```
 
-A global function with the same name as a built-in (e.g. your own `creditCard`) takes precedence, so you can override the built-ins when needed.
+A global function with the same name as a built-in (e.g. your own `creditCard`) takes precedence, so you can override built-ins when needed.
 
 ### Money Inputs
 
-Set `money="true"` to format the field as an amount — thousands are grouped and the decimal places are fixed. Customise the separators and precision with `moneyThousandsSeparator`, `moneyDecimalSeparator` and `moneyPrecision` (set precision to `0` to disable decimals).
+Set `money="true"` to format the field as an amount: thousands are grouped and decimal places are fixed. Customise separators and precision with `moneyThousandsSeparator`, `moneyDecimalSeparator`, and `moneyPrecision` (set precision to `0` to disable decimals).
 
 ```blade
 <x-bladewind::input name="price" money="true" />
@@ -125,34 +123,28 @@ Set `money="true"` to format the field as an amount — thousands are grouped an
     moneyPrecision="2" />
 ```
 
-Masking forces the field to `type="text"` so formatted values (separators and letters) are preserved — you don't need `numeric="true"` on a masked field.
+Masking forces the field to `type="text"` so formatted values (separators and letters) are preserved, so you don't need to set `numeric="true"` on a masked field.
 
 ## Inputs With Labels
 
-You can display the BladewindUI textbox with labels. Labels present themselves as placeholders but jump to the top border of the textbox when that field has focus. This is a nice way to build compact looking forms without having form labels in the way. If you prefer to create and style your own form labels, simply ignore the `label` attribute and use the `placeholder` attribute instead.
+Labels present themselves as placeholders but jump to the top border of the textbox when it has focus, making compact forms without labels getting in the way. To style your own labels, ignore `label` and use `placeholder` instead.
 
 ```blade
 <x-bladewind::input label="Full name" />
 ```
 
-### Placeholder Text
+### What Happens When Both Placeholder and Label Are Set
 
-```blade
-<x-bladewind::input placeholder="Full name" />
-```
-
-### What Happens When Both Placeholder and Label are Set
-
-The `label` attribute actually replaces `placeholder`. In most common cases input labels are displayed above the input box and don't interfere with the input's placeholder text. However, the label for Bladewind's Textbox component is designed to sit in the same spot where the placeholder text is displayed and covers it up. Having a placeholder text that is longer than your label text results in some parts of the placeholder text sticking out under the label. If you want the placeholder to still be shown even when there is a label, set `show_placeholder_always="true"`.
+The `label` attribute replaces `placeholder` visually: the label sits where the placeholder text is displayed and covers it up. If the placeholder is longer than the label, part of it can stick out. Set `show_placeholder_always="true"` to keep the placeholder visible alongside the label.
 
 ```blade
 <x-bladewind::input
-    name="mobile" label="Mobile" placeholder="000.0000.000" />
+    name="mobile" label="Mobile" placeholder="000.0000.000" show_placeholder_always="true" />
 ```
 
 ## Required Fields
 
-This either adds a red asterisk sign to the placeholder text or a red star to the label of the input field.
+Setting `required="true"` adds a red asterisk to the placeholder text or a red star to the label.
 
 ```blade
 <x-bladewind::input required="true" label="Full name" />
@@ -160,7 +152,7 @@ This either adds a red asterisk sign to the placeholder text or a red star to th
 
 ## Events
 
-You can append any of the available HTML event attributes (_onclick, onblur, onfocus, onmouseover, onmouseout, onkeyup, onkeydown_ etc) to the component, just like you would to a regular `<input ...` tag.
+Any HTML event attribute (`onclick`, `onblur`, `onfocus`, `onmouseover`, `onmouseout`, `onkeyup`, `onkeydown`, etc.) can be appended to the component just like a regular `<input>` tag.
 
 ```blade
 <x-bladewind::input
@@ -173,15 +165,15 @@ You can append any of the available HTML event attributes (_onclick, onblur, onf
 
 ### Validating Required Fields
 
-Bladewind comes with a very handy Javascript helper function (`validateForm(element)`) for validating input and textarea fields that have the attribute `required='true"` set. Error messages can either be displayed inline or using the [Bladewind notification](/component/notification) component.
-
-The `error_message` attribute defines what will be displayed if the field is empty when the form is validated. The `show_error_inline="true"` attribute will display the error message beneath the field it was set on.
+BladewindUI ships with a JavaScript helper, `validateForm(element)`, for validating input and textarea fields with `required="true"`. Error messages can be displayed inline or via the [Notification](/component/notification) component. Set `error_message` on a field to show a message when the field is empty and validation runs; set `show_error_inline="true"` to render that message beneath the field instead of via the notification.
 
 ```blade
 <x-bladewind::notification />
 
 <x-bladewind::card>
     <form method="get" class="signup-form">
+        <h1>Create Account</h1>
+
         <x-bladewind::input
             name="fname"
             required="true"
@@ -221,10 +213,9 @@ The `error_message` attribute defines what will be displayed if the field is emp
 </x-bladewind::card>
 ```
 
-## JavaScript
-
 ```js
-// domEl, unhide and hide are helper functions in BladewindUI
+// domEl(), validateForm(), hide() and unhide() are helper functions available in BladewindUI
+
 domEl('.signup-form').addEventListener('submit', function (e){
     e.preventDefault();
     signUp();
@@ -232,16 +223,16 @@ domEl('.signup-form').addEventListener('submit', function (e){
 
 signUp = () => {
     (validateForm('.signup-form')) ?
-        unhide('.btn-save .bw-spinner') :
-        hide('.btn-save .bw-spinner');
+        unhide('.btn-save .bw-spinner') : // do this if validated
+        hide('.btn-save .bw-spinner'); // do this if not validated
 }
 ```
 
-## Manipulating Inputs Using Javascript
+## Manipulating Inputs Using JavaScript
 
-There are several instances where you will want to manipulate input fields for different reasons. Most times, manipulating an input field will be dependent on a user's selection. This can be achieved in Javascript since BladewindUI uses the `name` attribute defined on an input as part of its `class` attribute.
+BladewindUI uses the `name` attribute defined on an input as part of its `class` attribute, making it easy to target fields in JavaScript based on user selections.
 
-The name you provided to the Input component has been used as part of the `class` names of the component. This makes it easy for you to access the component in Javascript.
+For example, a form that only reveals guardian fields for users under 18:
 
 ```blade
 <div class="flex gap-4">
@@ -257,6 +248,19 @@ The name you provided to the Input component has been used as part of the `class
         onkeyup="showAddress(this.value)" />
 </div>
 <x-bladewind::input name="guardian_address" placeholder="Guardian's address" class="hidden" />
+```
+
+The rendered `age_camp` input carries the name in its class, so it can be targeted directly:
+
+```blade
+<input
+    class="bw-input peer required age_camp placeholder-transparent dark:placeholder-transparent"
+    type="text"
+    id="age_camp"
+    name="age_camp"
+    value=""
+    autocomplete="off"
+    placeholder="How old are you?" />
 ```
 
 ```js
@@ -276,33 +280,26 @@ showAddress = (value) => {
 }
 ```
 
-To manipulate BladewindUI input elements using Javascript, simply target them using the name defined either in the class or id attributes.
+To manipulate BladewindUI input elements using JavaScript, target them using the name defined either in the class or id attributes.
 
 ## Prefixes and Suffixes
 
-There are cases where you need to prefix or append something to an input field. For example, you want to prefix a URL input field with 'https://' so your users wouldn't need to type that in every time. Or, when asking your app users for their social media handles you may want to always have the '@' prefix. For now prefixes and suffixes support only text and [icons](/component/icon).
+Prefix or append content to an input field, for example a `https://` prefix on a URL field, or an `@` prefix for social handles. Prefixes and suffixes support text and [icons](/component/icon).
 
 ### Prefixes
 
-You can use prefixes even when your input has a label.
+Prefixes work even when the input has a label.
 
 ```blade
 <x-bladewind::input name="site" label="website address" prefix="https://" />
 ```
 
+They also work with a placeholder instead of a label.
+
 ```blade
 <x-bladewind::input name="site2" placeholder="website address" prefix="https://" />
-```
-
-```blade
-<x-bladewind::input name="usd" placeholder="0.00" prefix="USD" />
-```
-
-```blade
+<x-bladewind::input name="usd" placeholder="0.00" prefix="USD" numeric />
 <x-bladewind::input name="twitter" placeholder="Twitter handle" prefix="@" />
-```
-
-```blade
 <x-bladewind::input name="gh" placeholder="username" prefix="https://github.com/" />
 ```
 
@@ -312,9 +309,7 @@ Suffixes get appended to the end of the input field.
 
 ```blade
 <x-bladewind::input name="space" placeholder="workspace-name" suffix=".slack.com" />
-```
 
-```blade
 <x-bladewind::input
     name="tnc"
     placeholder="Your bio. Keep it brief and nice"
@@ -323,7 +318,7 @@ Suffixes get appended to the end of the input field.
 
 ### Prefix and Suffix Transparency
 
-You can opt for non-transparent prefixes and suffixes by setting the attribute `transparent_prefix="false"` and/or `transparent_suffix="false"`. You can specify both a prefix and suffix on your input fields.
+Opt for non-transparent prefixes and suffixes with `transparent_prefix="false"` and/or `transparent_suffix="false"`. Both a prefix and suffix can be specified together.
 
 ```blade
 <x-bladewind::input
@@ -332,17 +327,13 @@ You can opt for non-transparent prefixes and suffixes by setting the attribute `
     prefix="USD"
     transparent_prefix="false"
     numeric />
-```
 
-```blade
 <x-bladewind::input
     name="spacex"
     placeholder="workspace-name"
     transparent_suffix="false"
     suffix=".slack.com" />
-```
 
-```blade
 <x-bladewind::input
     name="spacexx"
     prefix="https://"
@@ -354,41 +345,61 @@ You can opt for non-transparent prefixes and suffixes by setting the attribute `
 
 ## Inputs With Icons
 
-The BladewindUI input field can have an icon for those moments where you want a simple icon to describe the field. This is not a different kind of input field. We simply make use of prefixes and suffixes to achieve this effect. All [Heroicons](https://heroicons.com) names are supported out of the box. You can also specify an SVG tag to be used as an icon.
+Input icons are achieved using prefixes and suffixes, not a different kind of field. All [Heroicons](https://heroicons.com) names are supported out of the box, and custom SVG tags can be used too.
 
-Since input icons are achieved using prefixes, it is important to add the attribute `prefix_is_icon="true"` if you are using icons as prefixes or `suffix_is_icon="true"` if you are using icons as suffixes. This way Bladewind forces your prefix or suffix to be an icon and not text.
+Since icons are achieved via prefixes/suffixes, set `prefix_is_icon="true"` or `suffix_is_icon="true"` so BladewindUI looks up an icon by that name instead of rendering it as plain text.
+
+```blade
+<x-bladewind::centered-content size="small">
+    <x-bladewind::input
+        name="fullname"
+        placeholder="John T. Doe"
+        prefix="user"
+        prefix_is_icon="true" />
+
+    <x-bladewind::input
+        name="emailic"
+        placeholder="me@bladewindui.com"
+        prefix="envelope"
+        prefix_is_icon="true" />
+
+    <div class="flex gap-4">
+        <x-bladewind::input
+            name="fon"
+            placeholder="0000.000.00"
+            prefix="phone"
+            prefix_is_icon="true" />
+
+        <x-bladewind::input
+            name="passw" type="password"
+            placeholder="Password"
+            prefix="key"
+            prefix_is_icon="true"
+            prefix_icon_css="text-orange-500"
+            viewable="true" />
+    </div>
+
+    <x-bladewind::button class="w-full">Sign Up</x-bladewind::button>
+</x-bladewind::centered-content>
+```
+
+An SVG tag or custom SVG file can be used as the icon directly:
 
 ```blade
 <x-bladewind::input
-    name="fullname"
-    placeholder="John T. Doe"
-    prefix="user"
-    prefix_is_icon="true" />
-
-<x-bladewind::input
-    name="emailic"
-    placeholder="me@bladewindui.com"
-    prefix="envelope"
-    prefix_is_icon="true" />
-
-<x-bladewind::input
-    name="fon"
-    placeholder="0000.000.00"
-    prefix="phone"
-    prefix_is_icon="true" />
-
-<x-bladewind::input
-    name="passw" type="password"
-    placeholder="Password"
-    prefix="key"
+    name="www"
+    placeholder="website address"
     prefix_is_icon="true"
-    prefix_icon_css="text-orange-500"
-    viewable="true" />
+    prefix='<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+    class="w-6 h-6">
+<path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+</svg>' />
 ```
 
 ## Clearable Inputs
 
-Clearable fields display an x icon when a field has a value entered. Clicking on the x icon deletes the text in the input field. Quite handy and saves users from clicking the backspace several times in say, a search field. This is achieved by setting the `clearable="true"` attribute. If there is a table that shares the same name as the input field, it will be reset as well.
+Clearable fields display an x icon when the field has a value; clicking it clears the text. Set `clearable="true"`. If a table shares the same name as the input, it is reset as well, useful for searchable [tables](/component/table#searchable).
 
 ```blade
 <x-bladewind::input placeholder="I am clearable" clearable />
@@ -396,63 +407,88 @@ Clearable fields display an x icon when a field has a value entered. Clicking on
 
 ## Input Field Sizes
 
-The input field comes in sizes to match the various button sizes. This is useful if you wish to have an input field and a button on one line. Set the `size` attribute to achieve this. The `tiny` size is not supported for input fields.
+The input comes in sizes matching the various button sizes, useful for putting an input and a button on one line. Set the `size` attribute. The `tiny` size is not supported for inputs.
 
 ```blade
 <x-bladewind::input label="I am small" size="small" />
-```
-
-```blade
 <x-bladewind::input label="I am regular" />
-```
-
-```blade
 <x-bladewind::input label="I am medium" size="medium" />
-```
-
-```blade
 <x-bladewind::input label="I am big" size="big" />
 ```
+
+## Laravel Form State
+
+When validation fails, Laravel redirects back with submitted values flashed to the session and messages in `$errors`. The Input component can read both, avoiding manual `old('...')` and error blocks on every field.
+
+```blade
+<x-bladewind::input
+    name="email"
+    label="Email address"
+    fill_from_old="true"
+    show_validation_error="true" />
+```
+
+`fill_from_old` repopulates the field from `old()`. `show_validation_error` gives the field its error state and renders `$errors->first()` underneath it. Add `error_bag` if validating into a named bag.
+
+Both are off by default. If your form already prints its own validation messages, switching this on without removing them prints every message twice.
+
+### Turning It On For Every Form
+
+Rather than setting attributes field by field, set them once in `config/bladewind.php` and every form component follows.
+
+```php
+// config/bladewind.php
+'forms' => [
+    'fill_from_old' => true,
+    'show_validation_error' => true,
+    'error_bag' => null,
+],
+```
+
+An attribute on a single field always wins over the config, so a field can opt out with `show_validation_error="false"`.
 
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | input-uniqid() | Unique name to identify the input element by. Useful for retrieving value from the input when it is submitted in a form. |
-| type | text | Accepts list of valid HTML input element types. `text` \| `email` \| `password` \| `search` \| `tel` |
-| label | _(blank)_ | Label that describes the input element. Example: Full name |
-| numeric | false | Specifies if the input element should accept only numeric characters. `true` \| `false` |
-| required | false | Specifies if the input element is required or not. When required, a red asterisk is displayed next to the placeholder or label. `true` \| `false` |
-| add_clearing | true | Specifies if an 8px margin should be added to the bottom of the element. `true` \| `false` |
-| placeholder | _(blank)_ | Placeholder text to display in the input element. |
-| show_placeholder_always | false | Placeholder text is hidden when the label attribute has a value. Setting this to true always shows the placeholder. `true` \| `false` |
-| error_message | _(blank)_ | The message to display when the form is validated and field happens to be blank. |
-| show_error_inline | false | Error messages can either be displayed inline or using the Notification component (default). `true` \| `false` |
-| error_heading | Error | Only used when displaying validation errors using the Notification component. Provides a way to specify a translatable heading for the error. |
-| selected_value | _(blank)_ | Default value to display in the input element. Useful when in edit mode. |
-| with_dots | true | Mostly relevant if `numeric="true"`. Determines if numeric values can contain dots or not. `true` \| `false` |
-| mask | _(blank)_ | Static mask template using the wildcards `9` (digit), `a` (letter) and `*` (alphanumeric). Every other character is a literal that is inserted automatically. e.g. `mask="(999) 999-9999"`. |
-| dynamicMask | null | A dynamic mask for formats that change as the user types. Use the built-in `creditCard`, or the name of your own global JavaScript function that receives the current value and returns a mask template. |
-| money | false | Format the field as a money input — groups thousands and fixes the decimal places. `true` \| `false` |
-| moneyDecimalSeparator | . | Character used to separate the decimal part when `money="true"`. |
-| moneyThousandsSeparator | , | Character used to group thousands when `money="true"`. |
-| moneyPrecision | 2 | Number of decimal places allowed when `money="true"`. Set to `0` to disable decimals. |
-| prefix | blank | Specify the prefix for the input field. |
-| prefix_is_icon | false | If prefix is specified, is it an icon. By default prefixes are treated as text. `true` \| `false` |
-| prefix_icon_type | outline | If an icon is used as a prefix, should it be a solid or outline icon. `outline` \| `solid` |
-| transparent_prefix | true | If a prefix is defined, should it have a transparent background or not. `true` \| `false` |
-| prefix_icon_div_css | blank | Additional css classes to apply to the DIV containing the prefix if **prefix_is_icon=true**. |
-| prefix_icon_css | blank | Additional css classes to apply to the prefix if **prefix_is_icon=true**. |
-| suffix | blank | Specify the suffix for the input field. |
-| suffix_is_icon | false | If suffix is specified, is it an icon. By default suffixes are treated as text. `true` \| `false` |
-| suffix_icon_type | outline | If an icon is used as a suffix, should it be a solid or outline icon. `outline` \| `solid` |
-| transparent_suffix | true | If a suffix is defined, should it have a transparent background or not. `true` \| `false` |
-| suffix_icon_div_css | blank | Additional css classes to apply to the DIV containing the suffix if **suffix_is_icon=true**. |
-| suffix_icon_css | blank | Additional css classes to apply to the suffix if **suffix_is_icon=true**. |
-| viewable | false | Works only if **type=password**. Should the password be viewable? If `true`, an eye icon is displayed. `true` \| `false` |
-| clearable | false | Appends an 'x' circle for clearing any text that has been entered in the input field. `true` \| `false` |
-| size | medium | Sizing of the input to match button sizes. `small` \| `regular` \| `medium` \| `big` |
-| nonce | null | Used when implementing context security policies and require to pass a nonce to inline scripts. |
+| name | input-uniqid() | Unique name to identify the input element by. Useful for retrieving the value when the form is submitted. Defaults to a random name prefixed with `input-`. |
+| type | text | Valid HTML input element types, e.g. `text` \| `email` \| `password` \| `search` \| `tel`. |
+| label | blank | Label that describes the input element. |
+| numeric | false | Restrict the input to numeric characters only. `true` \| `false` |
+| required | false | Whether the field is required. Displays a red asterisk next to the placeholder or label. `true` \| `false` |
+| add_clearing | true | Add an 8px bottom margin so form fields are evenly spaced by default. `true` \| `false` |
+| placeholder | blank | Placeholder text. |
+| show_placeholder_always | false | Placeholder is normally hidden when `label` has a value; set true to always show it. `true` \| `false` |
+| error_message | blank | Message shown when the form is validated and the field is blank. |
+| show_error_inline | false | Display error messages inline instead of via the Notification component (default). `true` \| `false` |
+| error_heading | Error | Translatable heading for the error, used only when displaying validation errors via the Notification component. |
+| selected_value | blank | Default value for the input, useful in edit mode. |
+| with_dots | true | Relevant when `numeric="true"`. Whether numeric values may contain dots. `true` \| `false` |
+| mask | blank | Static mask template using wildcards `9` (digit), `a` (letter), `*` (alphanumeric). Example: `mask="(999) 999-9999"`. |
+| dynamicMask | null | Dynamic mask for formats that change as the user types. Use the built-in `creditCard`, or the name of a global JS function returning a mask template. |
+| money | false | Format the field as a money input, grouping thousands and fixing decimal places. `true` \| `false` |
+| moneyDecimalSeparator | . | Character separating the decimal part when `money="true"`. |
+| moneyThousandsSeparator | , | Character grouping thousands when `money="true"`. |
+| moneyPrecision | 2 | Number of decimal places when `money="true"`. Set to `0` to disable decimals. |
+| prefix | blank | Prefix for the input field. |
+| prefix_is_icon | false | Whether `prefix` is an icon rather than text. `true` \| `false` |
+| prefix_icon_type | outline | Style of icon used as a prefix. `outline` \| `solid` |
+| transparent_prefix | true | Whether the prefix has a transparent background. `true` \| `false` |
+| prefix_icon_div_css | blank | Additional CSS classes for the DIV containing the prefix when `prefix_is_icon=true`. |
+| prefix_icon_css | blank | Additional CSS classes for the prefix icon when `prefix_is_icon=true`. |
+| suffix | blank | Suffix for the input field. |
+| suffix_is_icon | false | Whether `suffix` is an icon rather than text. `true` \| `false` |
+| suffix_icon_type | outline | Style of icon used as a suffix. `outline` \| `solid` |
+| transparent_suffix | true | Whether the suffix has a transparent background. `true` \| `false` |
+| suffix_icon_div_css | blank | Additional CSS classes for the DIV containing the suffix when `suffix_is_icon=true`. |
+| suffix_icon_css | blank | Additional CSS classes for the suffix icon when `suffix_is_icon=true`. |
+| viewable | false | Works only if `type=password`. Show an eye icon to reveal the password. `true` \| `false` |
+| clearable | false | Appends an 'x' circle suffix to clear the entered text. `true` \| `false` |
+| size | medium | Sizing to match button sizes. `small` \| `regular` \| `medium` \| `big` |
+| nonce | null | Nonce for content security policies on inline scripts. Can also be set globally via `config/bladewind.php` under `script`. |
+| fill_from_old | false | Repopulate the field from `old()` after a failed Laravel validation redirect. Defaults to `bladewind.forms.fill_from_old`. `true` \| `false` |
+| show_validation_error | false | Give the field its error state and render `$errors->first()` beneath it. Defaults to `bladewind.forms.show_validation_error`. `true` \| `false` |
+| error_bag | null | Error bag to read from when `show_validation_error` is on. Leave unset for Laravel's default bag. |
 
 ## Full Example
 

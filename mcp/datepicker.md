@@ -6,107 +6,124 @@ url: /component/datepicker
 
 # Datepicker
 
-Display a datepicker so user can select a date. The datepicker component is locale friendly. Months and days of the week are translated.
+Display a datepicker so users can select a date. It is locale friendly: months and days of the week are translated.
 
 ## Basic Usage
 
 ```blade
-<x-bladewind::datepicker  />
+<x-bladewind::datepicker />
 ```
 
-By default the datepicker fills up the width of its parent container. You can however specify a width of your choice using the datepicker's `css` attribute.
-
-You can also change the placeholder text from the default `Select a date`.
+By default the datepicker fills the width of its parent container; restrict this with a wrapping element or the component's `css` attribute. Change the placeholder text from the default "Select a date" with `placeholder`.
 
 ```blade
 <div class="w-40">
-    <x-bladewind::datepicker placeholder="Invoice Date"  />
+    <x-bladewind::datepicker placeholder="Invoice Date" has_label="true" />
 </div>
 ```
 
 ## Range Calendar
 
-The range datepicker allows you to select a range of dates by setting `range="true"`. In the input field, the range of dates selected are separated with a dash (-). For example, a selected date range will be displayed in the input as **2025-01-10 - 2025-01-31**.
+Set `range="true"` to select a range of dates. In the input field, the two dates are separated with a dash, e.g. `2025-01-10 - 2025-01-31`.
 
 ```blade
-<x-bladewind::datepicker range="true"  />
+<x-bladewind::datepicker range="true" />
 ```
 
-### Show As a Required Field
+### Show as a Required Field
 
 An asterisk is appended to the placeholder text when `required="true"`.
 
 ```blade
-<x-bladewind::datepicker required="true"  />
+<x-bladewind::datepicker required="true" />
 ```
 
 ## Date Formats
 
-You can specify how you want dates selected in the datepicker to be displayed. There are four options to pick from. The default format is `format="yyyy-mm-dd"`. When using a range datepicker, the format you specify is applied to both datepickers.
+Specify how dates should display. The default format is `yyyy-mm-dd`. For a range datepicker, the format applies to both dates.
 
 ```blade
 <x-bladewind::datepicker name="date1" type="range" format="dd-mm-yyyy" />
-```
-
-```blade
 <x-bladewind::datepicker name="date2" format="mm-dd-yyyy" />
-```
-
-```blade
 <x-bladewind::datepicker name="date3" format="D d M, Y" type="range" />
-```
-
-```blade
 <x-bladewind::datepicker name="date4" format="yyyy-mm-dd" />
 ```
 
 ## With Default Values
 
-There are times you will want the datepicker to load prepopulated with a default value. This is useful when in edit mode or when using filters and you want to show the user what dates they filtered by.
+Useful in edit mode or when showing users what dates they filtered by.
 
 ```blade
-<x-bladewind::datepicker selected_value="2021-12-03"  />
-```
+<x-bladewind::datepicker class="!w-44" selected_value="2021-12-03" />
 
-It is possible to have default dates for a range datepicker also.
-
-```blade
-<x-bladewind::datepicker range="true" selected_value="2021-12-03 - 2022-01-03"  />
+<x-bladewind::datepicker range="true" selected_value="2025-02-03 - 2025-02-23" />
 ```
 
 ## Min and Max Dates
 
-Setting minimum and maximum dates restrict the datepicker to display dates only within these specified dates. The `min_date` attribute allows you to set the accepted minimum date. Any dates before this date will be disabled and grayed out. The `max_date` attribute allows you to set the accepted maximum date. Any dates after this date will be disabled and grayed out.
+`min_date` restricts selection to dates on or after it; `max_date` restricts to dates on or before it. Dates outside the range are disabled and grayed out.
 
 ```blade
-<x-bladewind::datepicker min_date="{{date('Y-m-d')}}" />
+<x-bladewind::datepicker min_date="{{ date('Y-m-d') }}" />
+
+<x-bladewind::datepicker max_date="{{ date('Y-m-t') }}" />
+
+<x-bladewind::datepicker min_date="{{ date('Y-m-01') }}" max_date="{{ date('Y-m-t') }}" />
 ```
 
-```blade
-<x-bladewind::datepicker max_date="{{date('Y-m-t')}}" />
-```
+## Laravel Form State
+
+When validation fails, Laravel redirects back with the submitted values flashed to the session and the messages in `$errors`. The Datepicker component can read both for you, so you no longer write `old('...')` and an error block on every field.
 
 ```blade
-<x-bladewind::datepicker min_date="{{date('Y-m-01')}}" max_date="{{date('Y-m-t')}}" />
+<x-bladewind::datepicker
+    name="starts_on"
+    label="Start date"
+    fill_from_old="true"
+    show_validation_error="true" />
 ```
+
+`fill_from_old` repopulates the field from `old()`. `show_validation_error` gives the field its error state and renders `$errors->first()` underneath it. Add `error_bag` if you validate into a named bag.
+
+Both are off by default. If your form already prints its own validation messages, switching this on without removing them would print every message twice.
+
+### Turning It On for Every Form
+
+```php
+// config/bladewind.php
+'forms' => [
+    'fill_from_old' => true,
+    'show_validation_error' => true,
+    'error_bag' => null,
+],
+```
+
+An attribute on a single field always wins over the config, so you can opt one field out with `show_validation_error="false"`.
 
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | bw-datepicker | This name can be accessed when the input is submitted in the form. The name is also available as part of the css classes. |
+| name | bw-datepicker | Accessed when the input is submitted in the form. Also used as part of the CSS classes. |
 | range | false | Allow range selection. `true` \| `false` |
-| selected_value | _(blank)_ | In case you are editing a form, the value passed will be set on the value attribute of the datepicker input. |
-| min_date | _(blank)_ | Restrict the date to start from this. Any dates before this will be disabled and grayed out. |
-| max_date | _(blank)_ | Restrict the date to end at this. Any dates after this will be disabled and grayed out. |
-| format | yyyy-mm-dd | How date should be formatted. `yyyy-mm-dd` \| `dd-mm-yyyy` \| `mm-dd-yyyy` \| `yyyy/mm/dd` \| `dd/mm/yyyy` \| `mm/dd/yyyy` \| `D d M, Y` |
+| selected_value | *blank* | Value set on the input, useful when editing a form. |
+| min_date | *blank* | Dates before this are disabled and grayed out. |
+| max_date | *blank* | Dates after this are disabled and grayed out. |
+| format | yyyy-mm-dd | How the date should be formatted. `yyyy-mm-dd` \| `dd-mm-yyyy` \| `mm-dd-yyyy` \| `yyyy/mm/dd` \| `dd/mm/yyyy` \| `mm/dd/yyyy` \| `D d M, Y` |
 | placeholder | Select a date | Placeholder text to display. |
 | label | Select a date | Label text to display. |
-| required | false | Determines if the placeholder text should have an asterisk appended to it or not. `true` \| `false` |
-| week_starts | sunday | Choose between Sunday and Monday as the first day of the week. `sunday` \| `monday` |
-| class | bw-datepicker | Any additional css classes can be added using this attribute. |
+| required | false | Append an asterisk to the placeholder text. `true` \| `false` |
+| week_starts | sunday | First day of the week. `sunday` \| `monday` |
+| class | bw-datepicker | Any additional CSS classes. |
+| nonce | null | Nonce value for content security policies applied to inline scripts. Can also be set globally via `config/bladewind.php` under the "script" key. |
 | size | medium | Sizing of the input to match button sizes. `tiny` \| `small` \| `regular` \| `big` |
-| nonce | null | Used when implementing context security policies and require to pass a nonce to inline scripts. |
+| fill_from_old | false | Repopulate from `old()` after a failed validation redirect. Defaults to `bladewind.forms.fill_from_old`. `true` \| `false` |
+| show_validation_error | false | Give the field its error state and render `$errors->first()` beneath it. Defaults to `bladewind.forms.show_validation_error`. `true` \| `false` |
+| error_bag | null | Which error bag to read when `show_validation_error` is on. Leave unset for Laravel's default bag. |
+
+## Using Datepicker Inside Livewire
+
+When a date is picked, the field dispatches a real, native `change` event, so Livewire's `wire:model` picks up the selection without extra work. The calendar popup tracks its open/closed state outside of the DOM Livewire manages, so an unrelated re-render resets the popup to closed — wrap the field in `wire:ignore` if this happens. The component also guards against a Livewire re-render building a second calendar popup.
 
 ## Full Example
 

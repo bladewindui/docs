@@ -6,30 +6,30 @@ url: /component/theme-switcher
 
 # Theme Switcher
 
-It is common practice these days to build web sites/apps that allow users to switch between dark and light modes. This is one of those Bladewind components that takes away the headache of building your own theme switching mechanism.
+Lets users switch between light, dark, and system themes without you building the switching mechanism yourself. Only one theme switcher should exist on a page.
 
-There can be only one theme switcher on a page. The Bladwind docs uses the theme switcher in the top right corner of the website.
+## Basic Usage
 
 ```blade
 <x-bladewind::theme-switcher />
 ```
 
-There are a few customizations available. See the full list of attributes below. Also refer to our [dark mode customization page](/customize#dark-mode) for more.
+There are a few customizations available; see the attributes below, and refer to the dark mode customization page for more.
 
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| `icon_right` | `true` | Should the icons be placed on the left or right of the text. `true` `false` |
-| `icon_type` | *blank* | By default the outline icons from Heroicons are used. You can use the solid icons if you prefer. See details about this on the [Icon component](/component/icon#solid-icons) page. |
-| `icon_dir` | *blank* | If you plan on using custom icons instead of the defaults from Heroicons, specify the directory these icons will be loaded from. See details about this on the [Icon component](/component/icon#custom-dir) page. |
-| `light_icon` | `sun` | The icon displayed next to the word, Light. Use any icon from Heroicons or your [custom icons](/component/icon#custom-dir). |
-| `dark_icon` | `moon` | The icon displayed next to the word, Dark. Use any icon from Heroicons or your [custom icons](/component/icon#custom-dir). |
-| `system_icon` | `computer-desktop` | The icon displayed next to the word, System. Use any icon from Heroicons or your [custom icons](/component/icon#custom-dir). |
-| `light_text` | `Light` | Word displayed next to the light icon. This is provided as an option to make this translatable at your app level. |
-| `dark_text` | `Dark` | Word displayed next to the dark icon. This is provided as an option to make this translatable at your app level. |
-| `system_text` | `System` | Word displayed next to the system icon. This is provided as an option to make this translatable at your app level. Some people prefer to use 'Auto'. |
-| `nonce` | `null` | Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your `nonce` value in the `config/bladewind.php` file under the "script" key. This value will be used everywhere nonce is required. |
+| icon_right | true | Whether icons are placed on the left or right of the text. `true` \| `false` |
+| icon_type | *blank* | Uses outline Heroicons by default; set to use solid icons instead. See the Icon component. |
+| icon_dir | *blank* | Directory to load custom icons from instead of the Heroicons defaults. See the Icon component. |
+| light_icon | sun | Icon displayed next to "Light". Any Heroicons icon or custom icon. |
+| dark_icon | moon | Icon displayed next to "Dark". Any Heroicons icon or custom icon. |
+| system_icon | computer-desktop | Icon displayed next to "System". Any Heroicons icon or custom icon. |
+| light_text | Light | Word displayed next to the light icon. Translatable at the app level. |
+| dark_text | Dark | Word displayed next to the dark icon. Translatable at the app level. |
+| system_text | System | Word displayed next to the system icon. Translatable at the app level; some prefer "Auto". |
+| nonce | null | Nonce for content security policies on inline scripts. Can be set globally via `config/bladewind.php` under `script`. |
 
 ## Full Example
 

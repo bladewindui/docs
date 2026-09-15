@@ -6,23 +6,22 @@ url: /component/select
 
 # Select
 
-Select single or multiple values from a list.
+Select single or multiple values from a list, built from a PHP array or manually defined items. Supports search, flags, images, descriptions, filtering between selects, and empty states.
 
-If you have multiple select components on a page, it is important to give each one a **unique** name. Failure to do this will result in erratic behaviour of the component. If you specify no name, the component sets a unique name.
+If you have multiple select components on a page, give each one a unique name — failing to do so causes erratic behaviour. If no name is specified, the component sets a unique one.
 
 ## Basic Usage
 
-The `data` attribute is what really drives the BladewindUI select component. This attribute expects an `array` to be passed to it. The default array keys used to render the select are `label` and `value`.
+The `data` attribute drives the component. It expects an array with `label` and `value` keys by default.
 
-```blade
-<?php
-    $countries = [
-        [ 'label' => 'Benin',         'value' => 'bj' ],
-        [ 'label' => 'Burkina Faso',  'value' => 'bf' ],
-        [ 'label' => 'Ghana',         'value' => 'gh' ],
-        [ 'label' => 'Nigeria',       'value' => 'ng' ],
-        [ 'label' => 'Kenya',         'value' => 'ke' ]
-    ];
+```php
+$countries = [
+    [ 'label' => 'Benin',         'value' => 'bj' ],
+    [ 'label' => 'Burkina Faso',  'value' => 'bf' ],
+    [ 'label' => 'Ghana',         'value' => 'gh' ],
+    [ 'label' => 'Nigeria',       'value' => 'ng' ],
+    [ 'label' => 'Kenya',         'value' => 'ke' ]
+];
 ```
 
 ```blade
@@ -31,7 +30,7 @@ The `data` attribute is what really drives the BladewindUI select component. Thi
     :data="$countries" />
 ```
 
-Below is an alternative way to pass `data` to the component. Note there is no colon before the data attribute and in this case the data is passed as a json encoded string.
+Data can also be passed as a JSON-encoded string instead of a bound array, using `data` (no colon) instead of `:data`:
 
 ```blade
 <x-bladewind::select
@@ -50,16 +49,29 @@ Below is an alternative way to pass `data` to the component. Note there is no co
 
 ### Use Labels Instead of Placeholders
 
-Placeholders tell the user what to enter into the field and disappear once the user selects a value. Labels on the other hand are always visible. The BladewindUI Select defaults to using placeholders. To use labels, set the `label` attribute. When both a placeholder and label are defined, the label takes precedence.
+Placeholders behave like input placeholders and disappear once a value is entered. Labels stay visible even after a value is selected. Set the `label` attribute to use labels; when both `placeholder` and `label` are set, `label` wins.
 
 ```blade
 <x-bladewind::select name="labels" required="true" :data="$countries"
     label="Where are you from?"/>
+
+<x-bladewind::select name="clear_labels" label="Where are you from?"
+    :data="$countries" />
 ```
 
 ### Setting the Value and Label Keys
 
-It is not feasible to always rewrite your arrays to use the `value` and `label` keys expected by the component. Use the `label_key` and `value_key` attributes to map your own keys.
+If your array doesn't use `label`/`value` keys, point the component at the keys you do have with `label_key` and `value_key`.
+
+```php
+$countries = [
+    [ 'country' => 'Benin',         'code' => 'bj' ],
+    [ 'country' => 'Burkina Faso',  'code' => 'bf' ],
+    [ 'country' => 'Ghana',         'code' => 'gh' ],
+    [ 'country' => 'Nigeria',       'code' => 'ng' ],
+    [ 'country' => 'Kenya',         'code' => 'ke' ]
+];
+```
 
 ```blade
 <x-bladewind::select
@@ -71,7 +83,7 @@ It is not feasible to always rewrite your arrays to use the `value` and `label` 
 
 ### Selecting a Value By Default
 
-Like with the regular HTML `<select>` field, it is possible to have an item selected by default when the page loads. Useful when editing records.
+Like a native `<select>`, an item can be preselected on page load — useful when editing records.
 
 ```blade
 <x-bladewind::select
@@ -95,7 +107,7 @@ Setting a select as required appends a red asterisk to the placeholder text.
 
 ### Disabled Select
 
-A disabled select has a 50% opacity and a cursor indicating the field cannot be accessed.
+A disabled select has 50% opacity and a cursor indicating it cannot be accessed.
 
 ```blade
 <x-bladewind::select
@@ -107,7 +119,7 @@ A disabled select has a 50% opacity and a cursor indicating the field cannot be 
 
 ### Readonly Select
 
-A readonly select is quite visible but cannot be opened to view the list of items.
+A readonly select is visible but cannot be opened to view its items.
 
 ```blade
 <x-bladewind::select
@@ -117,9 +129,23 @@ A readonly select is quite visible but cannot be opened to view the list of item
     :data="$countries" />
 ```
 
+## With Descriptions
+
+A second line of context can be added under each label using `description_key` (the array key holding the description). For manual selects (`data="manual"`), use the `description` attribute on each item instead. Descriptions only display in the item list, not on the selected value.
+
+```blade
+<x-bladewind::select
+    name="country"
+    label_key="country"
+    value_key="code"
+    flag_key="code"
+    description_key="description"
+    :data="$countries" />
+```
+
 ## With Country Flags
 
-This is a simple way for users displaying lists of countries to show flags next to each country name. This implementation was ported from [Semantic UI library's flags](https://semantic-ui.com/elements/flag.html) feature. Flags are rendered using the country's ISO code. You will need to specify the `flag_key` attribute on the select — this should be the name of the key in your array that has the country codes.
+Display flags next to each option, rendered from the country's ISO code (ported from Semantic UI's flags feature). Set `flag_key` to the array key holding the ISO codes.
 
 ```blade
 <x-bladewind::select
@@ -130,7 +156,7 @@ This is a simple way for users displaying lists of countries to show flags next 
     :data="$countries" />
 ```
 
-For flags to work you will need to include the following stylesheet. It is deliberately not compiled into the core BladewindUI css because not everyone needs flags.
+For flags to render, include this stylesheet — it is deliberately not compiled into core BladewindUI CSS since not everyone needs flags:
 
 ```blade
 <link href="{{ asset('vendor/bladewind/css/flags.css') }}" rel="stylesheet" />
@@ -138,7 +164,14 @@ For flags to work you will need to include the following stylesheet. It is delib
 
 ## With Images
 
-You may wish to include images in your select list. Specify the `image_key` attribute on the select — this should be the name of the key in your array that has the image urls.
+Display an image next to each option (e.g. employee pictures) by setting `image_key` to the array key holding image URLs.
+
+```php
+$staff = [
+    [ 'id' => '1001', 'name' => 'Adam Nsiah', 'picture' => '/path/to/the/image/file' ],
+    // ...
+];
+```
 
 ```blade
 <x-bladewind::select
@@ -152,7 +185,7 @@ You may wish to include images in your select list. Specify the `image_key` attr
 
 ## Searchable Select
 
-Set `searchable="true"` to make the Select component searchable. This is turned off by default.
+For long lists, set `searchable="true"` to add a search box above the items. This is off by default. If there is no data to display, the search bar is automatically hidden.
 
 ```blade
 <x-bladewind::select
@@ -166,7 +199,7 @@ Set `searchable="true"` to make the Select component searchable. This is turned 
 
 ## Empty Select
 
-When pulling dynamic data from APIs or a database, you will not always have data available. In cases like this the Select component will display the message in the `empty_placeholder` attribute. If you set `searchable="true"` but there is no data to display, the search bar will automatically be hidden.
+When there is no data (e.g. from an API or database query that returned nothing), the component displays the message in `empty_placeholder` as a select item.
 
 ```blade
 <x-bladewind::select name="empty_users" searchable="true" :data="$users" />
@@ -174,7 +207,7 @@ When pulling dynamic data from APIs or a database, you will not always have data
 
 ### Display as Empty State
 
-It is possible to leverage the BladewindUI [Empty State](/component/empty-state) component to display the empty message. Set the `empty_state_from` attribute to the name of an empty state component defined on the same page with `for_select="true"`.
+Instead of a single line message, you can render the BladewindUI [Empty State](/component/empty-state) component. Define an empty state elsewhere on the page, give it a name, set `for_select="true"` on it so it isn't rendered inline, then point the select at it with `empty_state_from`.
 
 ```blade
 <x-bladewind::empty-state
@@ -182,16 +215,14 @@ It is possible to leverage the BladewindUI [Empty State](/component/empty-state)
     for_select="true"
     message="Awesome! You have no documents to approve.">
 </x-bladewind::empty-state>
-```
 
-```blade
 <x-bladewind::select searchable="true" :data="$users"
     empty_state_from="no_docs" />
 ```
 
 ## Select Multiple Items
 
-Set `multiple="true"` to allow selecting more than one item. Unlike the single select, multiple selects do not automatically close when you select items. To close a multiple select just click anywhere on the page outside the component.
+Set `multiple="true"` to allow selecting more than one item. Unlike a single select, a multiple select does not close automatically after a selection — click elsewhere on the page to close it. Left/right navigation arrows appear when some selected items are out of view (or scroll with two fingers).
 
 ```blade
 <x-bladewind::select
@@ -206,11 +237,11 @@ Set `multiple="true"` to allow selecting more than one item. Unlike the single s
     :data="$countries" />
 ```
 
-If you try to select more than the value set in `max_selectable`, the selection will be blocked. The default value is -1, which means there is no limit on selection. You can set `max_error_message` to customize the error message shown when the limit is reached.
+`max_selectable` caps how many items can be selected (default `-1`, no limit). `max_error_message` sets the message shown when the limit is exceeded.
 
 ### Automatic Selection of Items
 
-You can auto-select items by default using `selected_value` as a comma-separated list.
+Preselect multiple items (e.g. in edit mode) by passing a comma-separated list to `selected_value`.
 
 ```blade
 <x-bladewind::select
@@ -226,7 +257,7 @@ You can auto-select items by default using `selected_value` as a comma-separated
 
 ## Manually Building a Select
 
-There could be cases when your data will not come from an API call or array. Set `data="manual"` and use the child `x-bladewind::select.item` component to build the options.
+When data isn't coming from an API or array (e.g. a short, fixed list like gender), set `data="manual"` and declare each option as a child `x-bladewind::select.item`.
 
 ```blade
 <x-bladewind::select name="gender" placeholder="Select Gender" data="manual">
@@ -236,168 +267,125 @@ There could be cases when your data will not come from an API call or array. Set
 </x-bladewind::select>
 ```
 
-The manual Select can inherit all the cool features of an array-based Select — searchable or multiple selection, with flags and images.
+Manual selects support all the same features as array-based selects, including search and multiple selection, and can mix flags and images:
 
 ```blade
 <x-bladewind::select
-    name="tags"
-    placeholder="Tags for this music"
-    multiple="true"
-    searchable="true" data="manual">
+     name="tags"
+     placeholder="Tags for this music"
+     multiple="true"
+     searchable="true" data="manual">
 
-    <x-bladewind::select.item label="Pop" value="pop" image="/path/to/image" />
-    <x-bladewind::select.item label="Hip" value="hip" flag="gh" />
-    <x-bladewind::select.item label="Trendy" value="trendy" flag="ng" />
-    <x-bladewind::select.item label="GenZ" value="genz" image="/path/to/image" />
-    <x-bladewind::select.item label="Trance" value="trance" />
-    <x-bladewind::select.item label="For Coder's" value="devs" />
+     <x-bladewind::select.item label="Pop" value="pop" image="/path/to/image" />
+     <x-bladewind::select.item label="Hip" value="hip" flag="gh" />
+     <x-bladewind::select.item label="Trendy" value="trendy" flag="ng" />
+     <x-bladewind::select.item label="GenZ" value="genz" image="/path/to/image" />
+     <x-bladewind::select.item label="Trance" value="trance" />
+     <x-bladewind::select.item label="For Coder's" value="devs" />
 
 </x-bladewind::select>
 ```
 
 ## Get Value of Selected Item(s)
 
-Every BladewindUI select component creates a hidden form field `<input type="hidden" name="the-select-name-you-provided" />`. When you select an item, the hidden input field is updated with the value. You can access the value in Laravel via:
+Every select creates a hidden input, `<input type="hidden" name="the-select-name-you-provided" />`, whose value updates on selection using whatever you set as `value_key`. Access it after form submission the normal Laravel way:
 
-```blade
+```js
 $request->get('country');
 $request->input('country');
 $request->country;
 ```
 
-The **multiple select** generates a comma separated list of values. For example: `<input type="hidden" name="country_multi" value="gh,ci,bf,gm" />`.
+A multiple select generates a comma-separated list of values, e.g. `<input type="hidden" name="country_multi" value="gh,ci,bf,gm" />`.
 
 ## Execute Custom Functions
 
-It is possible to execute a JavaScript custom function when an item is selected. Set `onselect="function_name"` — just the name without parenthesis. The value and label of the selected item are passed to the custom function as `onselect="prependDialingCode(value, label, all_values)"`. The third parameter `all_values` is useful for multiple selects.
+Run a JavaScript function in addition to the default behavior by setting `onselect="function_name"` (name only, no parentheses). The function receives `(value, label, all_values)` — `all_values` is a comma-separated list, useful for multiple selects.
 
 ```blade
-<x-bladewind::select
-    name="cusfxns"
-    placeholder="Your country"
-    data="manual"
-    onselect="prependDialingCode">
-
+<x-bladewind::select name="cusfxns" placeholder="Your country" data="manual" onselect="prependDialingCode">
     <x-bladewind::select.item label="Burkina Faso" value="bf" />
     <x-bladewind::select.item label="Ghana" value="gh" />
     <x-bladewind::select.item label="Nigeria" value="ng" />
-
 </x-bladewind::select>
 ```
 
-```blade
-// javascript
+```js
 const dialing_codes = {
     'gh' : '+233',
     'ng' : '+234',
     'bf' : '+226'
 }
-
 prependDialingCode = (value) => {
-    domEl('.mobile-prefix').innerText = eval(`dialing_codes.${value}`);
+    dom_el('.mobile-prefix').innerText = eval(`dialing_codes.${value}`);
 }
 ```
 
 ## Manipulate Selects from JavaScript
 
-When you create a Select component and provide a name, BladewindUI initializes the component in JavaScript using that name, prefixed with `bw_` and with dashes replaced by underscores.
+When you create a select with a `name`, BladewindUI initializes it in JavaScript, prefixed with `bw_` and with dashes replaced by underscores. `name="country-multiple"` becomes `bw_country_multiple`.
 
-```blade
-// the following component declaration
-<x-bladewind::select name="country-multiple" placeholder="Select a country" />
-```
-
-```blade
-// will be initialized in JavaScript as
+```js
 const bw_country_multiple = new BladewindSelect('country_multiple', 'Select a country');
 ```
 
-The following methods are available on the component from JavaScript:
+Available methods:
 
 | Method | Description |
 |---|---|
-| enable | Enables the select and makes it clickable. `bw_country_multiple.enable();` |
-| disable | Disables the select and makes it non-clickable. `bw_country_multiple.disable();` |
-| reset | Removes any selected values from the component and empties the hidden input field. `bw_country_multiple.reset();` |
-| selectByValue(value) | Select one of the component values by value. `bw_country_multiple.selectByValue('gh');` |
-| filter(element, value) | Filter the items in `element` based on `value`. `bw_continents.filter('countries', 'AF');` |
-| clearFilter(element, value) | Clear all filtering in `element`. `bw_countries.clearFilter('countries');` |
+| `enable()` | Enables the select and makes it clickable. |
+| `disable()` | Disables the select and makes it non-clickable. On multiple selects with existing values, the user can still remove selected values via their close icons. |
+| `reset()` | Removes selected values and empties the hidden input. |
+| `selectByValue(value)` | Selects one value; ignored if it doesn't exist in the list. Not for multiple values at once — call it repeatedly on a multiple select. |
+| `filter(element, value)` | Filters items in `<element>` (the target select's name) based on `<value>`. A component can trigger filtering on itself if the value isn't coming from another select. |
+| `clearFilter(element, value)` | Clears filtering in `<element>` based on `<value>`; resets the component if `<value>` is blank. |
+
+```blade
+<x-bladewind::button size="small" type="secondary" onclick="bw_from_js.selectByValue('gh')">Select Ghana</x-bladewind::button>
+<x-bladewind::button size="small" type="secondary" onclick="bw_from_js.disable()">Disable</x-bladewind::button>
+<x-bladewind::button size="small" type="secondary" onclick="bw_from_js.reset()">Reset</x-bladewind::button>
+<x-bladewind::button size="small" type="secondary" onclick="bw_from_js.enable()">Enable</x-bladewind::button>
+```
 
 ## Filtering
 
-### Dynamically Filter a Table Based on Selected Values
+### Filter a Select Based on the Value of Another Select
 
-Use the `onselect` attribute to pass a JavaScript function that filters DOM elements based on the selected values.
-
-```blade
-<x-bladewind::select
-    name="department"
-    onselect="filterEmployees"
-    placeholder="filter by department"
-    data="manual"
-    multiple="true">
-    <x-bladewind::select.item label="Field Workers" value="field" />
-    <x-bladewind::select.item label="Finance" value="finance" />
-    <x-bladewind::select.item label="Tech" value="tech" />
-    <x-bladewind::select.item label="Marketing" value="marketing" />
-    <x-bladewind::select.item label="Operations" value="operations" />
-</x-bladewind::select>
-```
+Use `filter` (on the driving select, naming the target select) and `filter_by` (on the target select, naming the array key to filter on).
 
 ```blade
-filterEmployees = (value, label, all_values) => {
-    let employee_cards = domEls('.bw-contact-card');
-    let keywords = all_values.replaceAll(',','|');
-    let regex = new RegExp( `(${keywords})`, 'ig' );
-    employee_cards.forEach((el) => {
-        (! el.innerText.match(regex) ) ? hide(el, true) : unhide(el, true);
-    });
-}
-```
-
-### Filter a Select Component Based on Another Select
-
-Use `filter` and `filter_by` attributes to filter one select based on another. `filter` is the name of the target select to be filtered. `filter_by` is the key in the target select's data that should match the value of the source select.
-
-```blade
-<!-- the continents select component -->
-<x-bladewind::select name="continent" placeholder="Select Continent"
-    filter="continent-country"
-    data="manual">
+<x-bladewind::select name="continent" placeholder="Select Continent" data="manual" filter="continent-country" add_clearing="false">
     <x-bladewind::select.item label="Africa" value="af" />
     <x-bladewind::select.item label="Asia" value="as" />
     <x-bladewind::select.item label="Europe" value="eu" />
     <x-bladewind::select.item label="North America" value="na" />
 </x-bladewind::select>
-```
 
-```blade
-<!-- the countries select component -->
 <x-bladewind::select
     name="continent-country"
     placeholder="Select Country"
     searchable="true"
-    data="{{ json_encode($countries) }}"
-    filter_by="continent_code"
     empty-placeholder="no countries available"
-    label_key="name"
-    value_key="value" />
+    :data="$countries"
+    label_key="name" value_key="value" filter_by="continent_code" add_clearing="false" />
 ```
 
-### Filter a Select Based on an Arbitrary Value
+`filter_by` adds a `data-filter-value` attribute to each item's HTML, matched against the value selected in the driving select. The key named in `filter_by` must exist in the target select's data array.
 
-The select exposes a `filter()` method that allows for runtime filtering from any element such as a link, button, or tag.
+### Filter a Select Based on Some Arbitrary Value
 
-```blade
+Call the exposed `filter()` method directly for runtime filtering not tied to another select — for example, from a link or tag click.
+
+```js
 filterCountries = (continent) => {
-    // this is where we actually tell the component to filter
-    bw_continent_country2.filter('continent_country2', continent);
+    bw_continent_and_country2.filter('continent_and_country2');
+    bw_continent_and_country2.filter('continent_and_country2', continent);
 }
 ```
 
 ## Native Select
 
-It is possible to use the plain old HTML `<select>` element with the `bw-raw-select` class to style it like other BladewindUI form components.
+Apply the `bw-raw-select` class to a plain HTML `<select>` to match BladewindUI's styling without any of its JavaScript behavior (no search, only what native `<select>` supports).
 
 ```blade
 <select name="age" class="bw-raw-select">
@@ -408,56 +396,99 @@ It is possible to use the plain old HTML `<select>` element with the `bw-raw-sel
 </select>
 ```
 
+## Laravel Form State
+
+When validation fails, Laravel redirects back with flashed input and `$errors`. The select can read both, avoiding manual `old()` and error-block boilerplate.
+
+```blade
+<x-bladewind::select
+    name="country"
+    label="Country"
+    :data="$countries"
+    fill_from_old="true"
+    show_validation_error="true" />
+```
+
+`fill_from_old` repopulates the field from `old()`. `show_validation_error` applies the error state and renders `$errors->first()` beneath it. Add `error_bag` if validating into a named bag. Both are off by default — turning them on without removing existing manual error output will print messages twice.
+
+A `multiple` select receives an array back from `old()` and re-selects every previous choice. The error state is applied to the select trigger, since that's the element carrying the border.
+
+### Turning It On Globally
+
+Set defaults once in `config/bladewind.php` instead of per field:
+
+```php
+// config/bladewind.php
+'forms' => [
+    'fill_from_old' => true,
+    'show_validation_error' => true,
+    'error_bag' => null,
+],
+```
+
+An attribute set directly on a field always overrides the config.
+
+## Selects in Scrolling Containers
+
+The dropdown list is positioned against the select rather than laid out inside it, so it isn't clipped by a scrolling ancestor (a common case: a wide table needing a horizontally scrolling wrapper, where `overflow-x` also clips vertically). The list opens below the select, flips above when there isn't room, and follows the select on scroll — including when an inner container scrolls, not just the page. The list stays inside the select component in the DOM, so ancestor-based CSS selectors still match it.
+
+## Using Select Inside Livewire
+
+The selected value is written to a hidden field that dispatches a real, native `change` event, so Livewire's `wire:model` picks up a selection without extra work. The dropdown's open/closed state and its search filter live outside the DOM Livewire manages — if a re-render unrelated to the select resets them, wrap the select in `wire:ignore`. The component guards against re-renders creating duplicate click listeners.
+
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | bw-select | Assigned to the hidden input created for the select. Accessed when the select is submitted in a form. |
+| name | bw-select | Assigned to the hidden input created for the select; used to access its value after form submission. |
 | placeholder | Select One | Default text displayed on the select. |
-| label | null | Text displayed on the select **as a label** (always visible). |
-| onselect | _blank_ | Custom function to call when an item is selected. Specify just the function name without parenthesis. |
-| :data | [] | Array of elements to display. |
-| data | [] | JSON-encoded array of elements to display. |
-| value_key | value | Which key in your array the select picks its values from. |
-| label_key | label | Which key in your array the select picks its labels from. |
-| flag_key | _blank_ | When using flags, which key in your array holds the country ISO codes. |
-| image_key | _blank_ | When using images, which key in your array holds the image urls. |
-| data_serialize_as | _blank_ | Submit the select's value under a different name than its `name` attribute. |
-| required | false | Appends a red asterisk to the placeholder text. `true` \| `false` |
-| selected_value | _blank_ | Value(s) to select by default. Accepts comma-separated values for multiple selects. |
-| searchable | false | Adds a search box above the select items. `true` \| `false` |
+| label | null | Text displayed on the select as a label. |
+| onselect | *blank* | Custom function to call when an item is selected, name only, e.g. `assignToProject`. Called as `assignToProject(value, label)`. |
+| :data | [] | Array of elements to display. Ignore if using `data` instead. |
+| data | [] | JSON-encoded array of elements to display. Ignore if using `:data` instead. |
+| value_key | value | Which array key to pick values from. |
+| label_key | label | Which array key to pick labels from. |
+| flag_key | *blank* | Array key holding country ISO codes, when displaying flags. |
+| image_key | *blank* | Array key holding image URLs, when displaying images. |
+| data_serialize_as | *blank* | Serialize the select's submitted value under a different request key than `name`. |
+| required | false | Appends an asterisk to the placeholder to indicate the field is required. `true` \| `false` |
+| selected_value | *blank* | Value(s) to select by default. Comma-separate for multiple, e.g. `"to do, in progress, done"`. |
+| searchable | false | Adds a search box above the items. `true` \| `false` |
 | disabled | false | Disables the select. `true` \| `false` |
 | readonly | false | Makes the select readonly. `true` \| `false` |
-| multiple | false | Allows multiple items to be selected. `true` \| `false` |
-| add_clearing | true | Applies 12px bottom margin for spacing in forms. `true` \| `false` |
-| max_selectable | -1 | Maximum number of items that can be selected. -1 means no limit. Only applies when `multiple="true"`. |
-| max_error | Please select only %s items | Message shown when user exceeds `max_selectable`. `%s` is replaced with the number. |
-| filter | _blank_ | Name of the select component to filter when this select's value changes. |
-| filter_by | _blank_ | Key in the target select's data to use for filtering. |
-| modular | false | Adds `type="module"` to inline script tags. `true` \| `false` |
-| empty_placeholder | No options available | Text displayed when there are no items. |
-| empty_state | false | Displays an empty state component when no items are available. `true` \| `false` |
-| empty_state_message | No options available | Message for the empty state component. |
-| empty_state_button_label | Add | Action button text in the empty state. Leave blank to hide the button. |
-| empty_state_onclick | _blank_ | Javascript function to call when the empty state action button is clicked. |
-| empty_state_image | empty-state.svg | Image to display in the empty state. |
-| empty_state_show_image | true | Whether to show the image in the empty state. `true` \| `false` |
-| size | medium | Sizing to match other inputs and buttons. `small` \| `regular` \| `medium` \| `big` |
-| nonce | null | Nonce for Content Security Policy inline scripts. Can be set globally in `config/bladewind.php`. |
+| multiple | false | Allows selecting multiple items. `true` \| `false` |
+| add_clearing | true | Applies a 12px bottom margin for form spacing. `true` \| `false` |
+| max_selectable | -1 | Maximum number of items selectable when `multiple="true"`. -1 means no maximum. |
+| max_error | Please select only %s items | Message shown when selection exceeds `max_selectable`. %s is replaced with the limit. |
+| filter | *blank* | Name of the select component that should be filtered by this one. |
+| filter_by | *blank* | Which key in the target select's data should be used to filter its items. |
+| modular | false | Adds `type="module"` to script tags used within the component. `true` \| `false` |
+| empty_placeholder | No options available | Text to display when there are no items. |
+| empty_state | false | Displays an Empty State component when there are no items. `true` \| `false` |
+| empty_state_message | No options available | Message shown in the empty state component. |
+| empty_state_button_label | Add | Text for the empty state's action button. Leave blank to hide it. |
+| empty_state_onclick | *blank* | JavaScript function to call when the empty state's action button is clicked. |
+| empty_state_image | empty-state.svg | Image shown in the empty state component. |
+| empty_state_show_image | true | Whether to show an image in the empty state component. `true` \| `false` |
+| size | medium | Sizing to match other form components. `small` \| `regular` \| `medium` \| `big` |
+| nonce | null | Nonce value for content security policies on inline scripts. Can be set globally via `config/bladewind.php` under `script`. |
+| fill_from_old | false | Repopulate the field from `old()` after a failed validation redirect. Defaults to `bladewind.forms.fill_from_old`. `true` \| `false` |
+| show_validation_error | false | Apply the error state and render `$errors->first()` beneath the field. Defaults to `bladewind.forms.show_validation_error`. `true` \| `false` |
+| error_bag | null | Which error bag to read when `show_validation_error` is on. Defaults to Laravel's default bag. |
 
 ### Select Item Attributes
 
-When manually listing select items, the following attributes are available on `x-bladewind::select.item`:
+For manually listed items (`x-bladewind::select.item`):
 
 | Attribute | Default | Description |
 |---|---|---|
 | value | value | Value of the item. |
 | label | label | Label of the item. |
-| flag | _blank_ | ISO code of country whose flag to display. |
-| image | _blank_ | URL of image to display for the item. |
-| selected | false | Determines if the item should be selected by default. `true` \| `false` |
-| max_selectable | -1 | Maximum number of items that can be selected. |
-| max_error | Please select only %s items | Message when user exceeds `max_selectable`. |
+| flag | *blank* | ISO code of the country whose flag to display. |
+| image | *blank* | URL of image to display for the item. |
+| selected | false | Whether the item should be selected by default. `true` \| `false` |
+| max_selectable | -1 | Maximum number of items that can be selected. -1 means no maximum. |
+| max_error | Please select only %s items | Message shown when selection exceeds `max_selectable`. %s is replaced with the limit. |
 
 ## Full Example
 

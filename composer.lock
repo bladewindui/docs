@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e506d177933447c3b7fcf01473a23b8b",
+    "content-hash": "55b3f438d8174019bd4dd5b1a8ed96fa",
     "packages": [
         {
             "name": "bladewindui/ui",
-            "version": "v5.0.0",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bladewindui/ui.git",
-                "reference": "efb9f4efedf703dd5b3fdcf48659db8a16c613cb"
+                "reference": "29adfefb751278327edd229effba25c11438e4cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bladewindui/ui/zipball/efb9f4efedf703dd5b3fdcf48659db8a16c613cb",
-                "reference": "efb9f4efedf703dd5b3fdcf48659db8a16c613cb",
+                "url": "https://api.github.com/repos/bladewindui/ui/zipball/29adfefb751278327edd229effba25c11438e4cd",
+                "reference": "29adfefb751278327edd229effba25c11438e4cd",
                 "shasum": ""
             },
             "require": {
@@ -25,62 +25,79 @@
                 "php": ">=8.1"
             },
             "replace": {
-                "bladewindui/accordion": "5.0.0",
-                "bladewindui/alert": "5.0.0",
-                "bladewindui/avatar": "5.0.0",
-                "bladewindui/bell": "5.0.0",
-                "bladewindui/breadcrumbs": "5.0.0",
-                "bladewindui/button": "5.0.0",
-                "bladewindui/calendar": "5.0.0",
-                "bladewindui/card": "5.0.0",
-                "bladewindui/centered-content": "5.0.0",
-                "bladewindui/chart": "5.0.0",
-                "bladewindui/checkbox": "5.0.0",
-                "bladewindui/checkcards": "5.0.0",
-                "bladewindui/code": "5.0.0",
-                "bladewindui/colorpicker": "5.0.0",
-                "bladewindui/command-palette": "5.0.0",
-                "bladewindui/contact-card": "5.0.0",
-                "bladewindui/content": "5.0.0",
-                "bladewindui/core": "5.0.0",
-                "bladewindui/data-grid": "5.0.0",
-                "bladewindui/datepicker": "5.0.0",
-                "bladewindui/drawer": "5.0.0",
-                "bladewindui/dropmenu": "5.0.0",
-                "bladewindui/empty-state": "5.0.0",
-                "bladewindui/filepicker": "5.0.0",
-                "bladewindui/forms": "5.0.0",
-                "bladewindui/horizontal-line-graph": "5.0.0",
-                "bladewindui/icon": "5.0.0",
-                "bladewindui/input": "5.0.0",
-                "bladewindui/listview": "5.0.0",
-                "bladewindui/modal": "5.0.0",
-                "bladewindui/navigation": "5.0.0",
-                "bladewindui/notification": "5.0.0",
-                "bladewindui/number": "5.0.0",
-                "bladewindui/pagination": "5.0.0",
-                "bladewindui/popover": "5.0.0",
-                "bladewindui/progress": "5.0.0",
-                "bladewindui/radio": "5.0.0",
-                "bladewindui/rating": "5.0.0",
-                "bladewindui/script": "5.0.0",
-                "bladewindui/select": "5.0.0",
-                "bladewindui/sidebar": "5.0.0",
-                "bladewindui/slider": "5.0.0",
-                "bladewindui/sortable": "5.0.0",
-                "bladewindui/spinner": "5.0.0",
-                "bladewindui/statistic": "5.0.0",
-                "bladewindui/stepper": "5.0.0",
-                "bladewindui/tab": "5.0.0",
-                "bladewindui/table": "5.0.0",
-                "bladewindui/tag": "5.0.0",
-                "bladewindui/textarea": "5.0.0",
-                "bladewindui/theme-switcher": "5.0.0",
-                "bladewindui/timeline": "5.0.0",
-                "bladewindui/timepicker": "5.0.0",
-                "bladewindui/toggle": "5.0.0",
-                "bladewindui/tooltip": "5.0.0",
-                "mkocansey/bladewind": "5.0.0"
+                "bladewindui/accordion": "5.1.0",
+                "bladewindui/alert": "5.1.0",
+                "bladewindui/avatar": "5.1.0",
+                "bladewindui/bell": "5.1.0",
+                "bladewindui/breadcrumbs": "5.1.0",
+                "bladewindui/button": "5.1.0",
+                "bladewindui/calendar": "5.1.0",
+                "bladewindui/card": "5.1.0",
+                "bladewindui/carousel": "5.1.0",
+                "bladewindui/centered-content": "5.1.0",
+                "bladewindui/chart": "5.1.0",
+                "bladewindui/chat": "5.1.0",
+                "bladewindui/checkbox": "5.1.0",
+                "bladewindui/checkcards": "5.1.0",
+                "bladewindui/code": "5.1.0",
+                "bladewindui/code-block": "5.1.0",
+                "bladewindui/colorpicker": "5.1.0",
+                "bladewindui/command-palette": "5.1.0",
+                "bladewindui/contact-card": "5.1.0",
+                "bladewindui/content": "5.1.0",
+                "bladewindui/context-menu": "5.1.0",
+                "bladewindui/copy-button": "5.1.0",
+                "bladewindui/core": "5.1.0",
+                "bladewindui/credit-card": "5.1.0",
+                "bladewindui/currency-input": "5.1.0",
+                "bladewindui/data-grid": "5.1.0",
+                "bladewindui/datepicker": "5.1.0",
+                "bladewindui/description-list": "5.1.0",
+                "bladewindui/divider": "5.1.0",
+                "bladewindui/drawer": "5.1.0",
+                "bladewindui/dropmenu": "5.1.0",
+                "bladewindui/empty-state": "5.1.0",
+                "bladewindui/file-preview": "5.1.0",
+                "bladewindui/filepicker": "5.1.0",
+                "bladewindui/forms": "5.1.0",
+                "bladewindui/horizontal-line-graph": "5.1.0",
+                "bladewindui/icon": "5.1.0",
+                "bladewindui/inline-edit": "5.1.0",
+                "bladewindui/input": "5.1.0",
+                "bladewindui/kanban": "5.1.0",
+                "bladewindui/kbd": "5.1.0",
+                "bladewindui/listview": "5.1.0",
+                "bladewindui/meter": "5.1.0",
+                "bladewindui/modal": "5.1.0",
+                "bladewindui/navigation": "5.1.0",
+                "bladewindui/notification": "5.1.0",
+                "bladewindui/number": "5.1.0",
+                "bladewindui/pagination": "5.1.0",
+                "bladewindui/password-meter": "5.1.0",
+                "bladewindui/popover": "5.1.0",
+                "bladewindui/progress": "5.1.0",
+                "bladewindui/radio": "5.1.0",
+                "bladewindui/rating": "5.1.0",
+                "bladewindui/scheduler": "5.1.0",
+                "bladewindui/script": "5.1.0",
+                "bladewindui/select": "5.1.0",
+                "bladewindui/sidebar": "5.1.0",
+                "bladewindui/slider": "5.1.0",
+                "bladewindui/sortable": "5.1.0",
+                "bladewindui/spinner": "5.1.0",
+                "bladewindui/statistic": "5.1.0",
+                "bladewindui/stepper": "5.1.0",
+                "bladewindui/tab": "5.1.0",
+                "bladewindui/table": "5.1.0",
+                "bladewindui/tag": "5.1.0",
+                "bladewindui/textarea": "5.1.0",
+                "bladewindui/theme-switcher": "5.1.0",
+                "bladewindui/timeline": "5.1.0",
+                "bladewindui/timepicker": "5.1.0",
+                "bladewindui/toggle": "5.1.0",
+                "bladewindui/tooltip": "5.1.0",
+                "bladewindui/transfer-list": "5.1.0",
+                "mkocansey/bladewind": "5.1.0"
             },
             "require-dev": {
                 "orchestra/testbench": "^10.0",
@@ -106,6 +123,7 @@
                         "Mkocansey\\Bladewind\\Bell\\BladewindBellServiceProvider",
                         "Mkocansey\\Bladewind\\Modal\\BladewindModalServiceProvider",
                         "Mkocansey\\Bladewind\\Drawer\\BladewindDrawerServiceProvider",
+                        "Mkocansey\\Bladewind\\Divider\\BladewindDividerServiceProvider",
                         "Mkocansey\\Bladewind\\Table\\BladewindTableServiceProvider",
                         "Mkocansey\\Bladewind\\Input\\BladewindInputServiceProvider",
                         "Mkocansey\\Bladewind\\Textarea\\BladewindTextareaServiceProvider",
@@ -117,15 +135,30 @@
                         "Mkocansey\\Bladewind\\Timepicker\\BladewindTimepickerServiceProvider",
                         "Mkocansey\\Bladewind\\Colorpicker\\BladewindColorpickerServiceProvider",
                         "Mkocansey\\Bladewind\\Filepicker\\BladewindFilepickerServiceProvider",
+                        "Mkocansey\\Bladewind\\FilePreview\\BladewindFilePreviewServiceProvider",
                         "Mkocansey\\Bladewind\\Slider\\BladewindSliderServiceProvider",
                         "Mkocansey\\Bladewind\\Checkcards\\BladewindCheckcardsServiceProvider",
                         "Mkocansey\\Bladewind\\Number\\BladewindNumberServiceProvider",
+                        "Mkocansey\\Bladewind\\CurrencyInput\\BladewindCurrencyInputServiceProvider",
+                        "Mkocansey\\Bladewind\\PasswordMeter\\BladewindPasswordMeterServiceProvider",
+                        "Mkocansey\\Bladewind\\TransferList\\BladewindTransferListServiceProvider",
+                        "Mkocansey\\Bladewind\\InlineEdit\\BladewindInlineEditServiceProvider",
                         "Mkocansey\\Bladewind\\Code\\BladewindCodeServiceProvider",
+                        "Mkocansey\\Bladewind\\CodeBlock\\BladewindCodeBlockServiceProvider",
                         "Mkocansey\\Bladewind\\Card\\BladewindCardServiceProvider",
+                        "Mkocansey\\Bladewind\\Chat\\BladewindChatServiceProvider",
+                        "Mkocansey\\Bladewind\\Carousel\\BladewindCarouselServiceProvider",
+                        "Mkocansey\\Bladewind\\Kanban\\BladewindKanbanServiceProvider",
+                        "Mkocansey\\Bladewind\\Scheduler\\BladewindSchedulerServiceProvider",
+                        "Mkocansey\\Bladewind\\CreditCard\\BladewindCreditCardServiceProvider",
                         "Mkocansey\\Bladewind\\ContactCard\\BladewindContactCardServiceProvider",
                         "Mkocansey\\Bladewind\\Avatar\\BladewindAvatarServiceProvider",
                         "Mkocansey\\Bladewind\\Accordion\\BladewindAccordionServiceProvider",
                         "Mkocansey\\Bladewind\\Tag\\BladewindTagServiceProvider",
+                        "Mkocansey\\Bladewind\\Kbd\\BladewindKbdServiceProvider",
+                        "Mkocansey\\Bladewind\\CopyButton\\BladewindCopyButtonServiceProvider",
+                        "Mkocansey\\Bladewind\\Meter\\BladewindMeterServiceProvider",
+                        "Mkocansey\\Bladewind\\DescriptionList\\BladewindDescriptionListServiceProvider",
                         "Mkocansey\\Bladewind\\Timeline\\BladewindTimelineServiceProvider",
                         "Mkocansey\\Bladewind\\Statistic\\BladewindStatisticServiceProvider",
                         "Mkocansey\\Bladewind\\Rating\\BladewindRatingServiceProvider",
@@ -140,6 +173,7 @@
                         "Mkocansey\\Bladewind\\Sortable\\BladewindSortableServiceProvider",
                         "Mkocansey\\Bladewind\\Tab\\BladewindTabServiceProvider",
                         "Mkocansey\\Bladewind\\Dropmenu\\BladewindDropmenuServiceProvider",
+                        "Mkocansey\\Bladewind\\ContextMenu\\BladewindContextMenuServiceProvider",
                         "Mkocansey\\Bladewind\\Pagination\\BladewindPaginationServiceProvider",
                         "Mkocansey\\Bladewind\\ThemeSwitcher\\BladewindThemeSwitcherServiceProvider",
                         "Mkocansey\\Bladewind\\Notification\\BladewindNotificationServiceProvider",
@@ -153,34 +187,40 @@
                 ],
                 "psr-4": {
                     "Mkocansey\\Bladewind\\": "packages/meta/src/",
+                    "Mkocansey\\Bladewind\\Kbd\\": "packages/kbd/src/",
                     "Mkocansey\\Bladewind\\Tab\\": "packages/tab/src/",
                     "Mkocansey\\Bladewind\\Tag\\": "packages/tag/src/",
                     "Mkocansey\\Bladewind\\Bell\\": "packages/bell/src/",
                     "Mkocansey\\Bladewind\\Card\\": "packages/card/src/",
+                    "Mkocansey\\Bladewind\\Chat\\": "packages/chat/src/",
                     "Mkocansey\\Bladewind\\Code\\": "packages/code/src/",
                     "Mkocansey\\Bladewind\\Core\\": "packages/core/src/",
                     "Mkocansey\\Bladewind\\Icon\\": "packages/icon/src/",
                     "Mkocansey\\Bladewind\\Alert\\": "packages/alert/src/",
                     "Mkocansey\\Bladewind\\Chart\\": "packages/chart/src/",
                     "Mkocansey\\Bladewind\\Input\\": "packages/input/src/",
+                    "Mkocansey\\Bladewind\\Meter\\": "packages/meter/src/",
                     "Mkocansey\\Bladewind\\Modal\\": "packages/modal/src/",
                     "Mkocansey\\Bladewind\\Radio\\": "packages/radio/src/",
                     "Mkocansey\\Bladewind\\Table\\": "packages/table/src/",
                     "Mkocansey\\Bladewind\\Avatar\\": "packages/avatar/src/",
                     "Mkocansey\\Bladewind\\Button\\": "packages/button/src/",
                     "Mkocansey\\Bladewind\\Drawer\\": "packages/drawer/src/",
+                    "Mkocansey\\Bladewind\\Kanban\\": "packages/kanban/src/",
                     "Mkocansey\\Bladewind\\Number\\": "packages/number/src/",
                     "Mkocansey\\Bladewind\\Rating\\": "packages/rating/src/",
                     "Mkocansey\\Bladewind\\Script\\": "packages/script/src/",
                     "Mkocansey\\Bladewind\\Select\\": "packages/select/src/",
                     "Mkocansey\\Bladewind\\Slider\\": "packages/slider/src/",
                     "Mkocansey\\Bladewind\\Toggle\\": "packages/toggle/src/",
+                    "Mkocansey\\Bladewind\\Divider\\": "packages/divider/src/",
                     "Mkocansey\\Bladewind\\Popover\\": "packages/popover/src/",
                     "Mkocansey\\Bladewind\\Sidebar\\": "packages/sidebar/src/",
                     "Mkocansey\\Bladewind\\Spinner\\": "packages/spinner/src/",
                     "Mkocansey\\Bladewind\\Stepper\\": "packages/stepper/src/",
                     "Mkocansey\\Bladewind\\Tooltip\\": "packages/tooltip/src/",
                     "Mkocansey\\Bladewind\\Calendar\\": "packages/calendar/src/",
+                    "Mkocansey\\Bladewind\\Carousel\\": "packages/carousel/src/",
                     "Mkocansey\\Bladewind\\Checkbox\\": "packages/checkbox/src/",
                     "Mkocansey\\Bladewind\\DataGrid\\": "packages/data-grid/src/",
                     "Mkocansey\\Bladewind\\Dropmenu\\": "packages/dropmenu/src/",
@@ -190,20 +230,31 @@
                     "Mkocansey\\Bladewind\\Textarea\\": "packages/textarea/src/",
                     "Mkocansey\\Bladewind\\Timeline\\": "packages/timeline/src/",
                     "Mkocansey\\Bladewind\\Accordion\\": "packages/accordion/src/",
+                    "Mkocansey\\Bladewind\\CodeBlock\\": "packages/code-block/src/",
+                    "Mkocansey\\Bladewind\\Scheduler\\": "packages/scheduler/src/",
                     "Mkocansey\\Bladewind\\Statistic\\": "packages/statistic/src/",
                     "Mkocansey\\Bladewind\\Checkcards\\": "packages/checkcards/src/",
+                    "Mkocansey\\Bladewind\\CopyButton\\": "packages/copy-button/src/",
+                    "Mkocansey\\Bladewind\\CreditCard\\": "packages/credit-card/src/",
                     "Mkocansey\\Bladewind\\Datepicker\\": "packages/datepicker/src/",
                     "Mkocansey\\Bladewind\\EmptyState\\": "packages/empty-state/src/",
                     "Mkocansey\\Bladewind\\Filepicker\\": "packages/filepicker/src/",
+                    "Mkocansey\\Bladewind\\InlineEdit\\": "packages/inline-edit/src/",
                     "Mkocansey\\Bladewind\\Pagination\\": "packages/pagination/src/",
                     "Mkocansey\\Bladewind\\Timepicker\\": "packages/timepicker/src/",
                     "Mkocansey\\Bladewind\\Breadcrumbs\\": "packages/breadcrumbs/src/",
                     "Mkocansey\\Bladewind\\Colorpicker\\": "packages/colorpicker/src/",
                     "Mkocansey\\Bladewind\\ContactCard\\": "packages/contact-card/src/",
+                    "Mkocansey\\Bladewind\\ContextMenu\\": "packages/context-menu/src/",
+                    "Mkocansey\\Bladewind\\FilePreview\\": "packages/file-preview/src/",
                     "Mkocansey\\Bladewind\\Notification\\": "packages/notification/src/",
+                    "Mkocansey\\Bladewind\\TransferList\\": "packages/transfer-list/src/",
+                    "Mkocansey\\Bladewind\\CurrencyInput\\": "packages/currency-input/src/",
+                    "Mkocansey\\Bladewind\\PasswordMeter\\": "packages/password-meter/src/",
                     "Mkocansey\\Bladewind\\ThemeSwitcher\\": "packages/theme-switcher/src/",
                     "Mkocansey\\Bladewind\\CommandPalette\\": "packages/command-palette/src/",
                     "Mkocansey\\Bladewind\\CenteredContent\\": "packages/centered-content/src/",
+                    "Mkocansey\\Bladewind\\DescriptionList\\": "packages/description-list/src/",
                     "Mkocansey\\Bladewind\\HorizontalLineGraph\\": "packages/horizontal-line-graph/src/"
                 }
             },
@@ -227,9 +278,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bladewindui/ui/issues",
-                "source": "https://github.com/bladewindui/ui/tree/v5.0.0"
+                "source": "https://github.com/bladewindui/ui/tree/v5.1.0"
             },
-            "time": "2026-08-29T22:29:44+00:00"
+            "time": "2026-09-10T00:47:06+00:00"
         },
         {
             "name": "brick/math",
@@ -292,16 +343,16 @@
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
-                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d"
+                "reference": "5fa5eacafd9ef47c8c6ab9143fc901ba0194d3dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
-                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/5fa5eacafd9ef47c8c6ab9143fc901ba0194d3dc",
+                "reference": "5fa5eacafd9ef47c8c6ab9143fc901ba0194d3dc",
                 "shasum": ""
             },
             "require": {
@@ -316,6 +367,11 @@
                 "phpunit/phpunit": "^10.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Carbon\\Doctrine\\": "src/Carbon/Doctrine/"
@@ -341,7 +397,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CarbonPHP/carbon-doctrine-types/issues",
-                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.2.0"
+                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.2.1"
             },
             "funding": [
                 {
@@ -357,7 +413,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-09T16:56:22+00:00"
+            "time": "2026-09-06T14:11:38+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -867,16 +923,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "8.1.0",
+            "version": "8.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "2cdae51a4a02c3fe2c38d42e25a7bb952e27b768"
+                "reference": "93939470950a9b11e2e84204166ef5e048c55fe4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/2cdae51a4a02c3fe2c38d42e25a7bb952e27b768",
-                "reference": "2cdae51a4a02c3fe2c38d42e25a7bb952e27b768",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/93939470950a9b11e2e84204166ef5e048c55fe4",
+                "reference": "93939470950a9b11e2e84204166ef5e048c55fe4",
                 "shasum": ""
             },
             "require": {
@@ -896,7 +952,7 @@
                 "bamarni/composer-bin-plugin": "^1.8.2",
                 "ext-curl": "*",
                 "guzzle/client-integration-tests": "4.0.1",
-                "guzzlehttp/test-server": "^1.0",
+                "guzzlehttp/test-server": "^1.0.1",
                 "php-http/message-factory": "^1.1",
                 "phpunit/phpunit": "^9.6.34",
                 "psr/log": "^1.1 || ^2.0 || ^3.0"
@@ -973,7 +1029,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/8.1.0"
+                "source": "https://github.com/guzzle/guzzle/tree/8.2.0"
             },
             "funding": [
                 {
@@ -989,7 +1045,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-24T11:07:02+00:00"
+            "time": "2026-09-06T13:55:09+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1281,16 +1337,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v13.29.0",
+            "version": "v13.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6e2c363716964d8238cee7097b258119a984f0cf"
+                "reference": "7c75fbf93f91fa077d3df1c820cc14f4e59a9774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6e2c363716964d8238cee7097b258119a984f0cf",
-                "reference": "6e2c363716964d8238cee7097b258119a984f0cf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7c75fbf93f91fa077d3df1c820cc14f4e59a9774",
+                "reference": "7c75fbf93f91fa077d3df1c820cc14f4e59a9774",
                 "shasum": ""
             },
             "require": {
@@ -1504,7 +1560,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-08-25T20:57:16+00:00"
+            "time": "2026-09-08T14:22:55+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -1697,16 +1753,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.10.0",
+            "version": "2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "d2d1aa8b35e072966c89bc0c66cf926e56767dc4"
+                "reference": "9d489ab67a02960fd8ffe624d93f751daf95439e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/d2d1aa8b35e072966c89bc0c66cf926e56767dc4",
-                "reference": "d2d1aa8b35e072966c89bc0c66cf926e56767dc4",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9d489ab67a02960fd8ffe624d93f751daf95439e",
+                "reference": "9d489ab67a02960fd8ffe624d93f751daf95439e",
                 "shasum": ""
             },
             "require": {
@@ -1800,7 +1856,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-11T16:06:25+00:00"
+            "time": "2026-09-07T13:44:26+00:00"
         },
         {
             "name": "league/config",
@@ -1886,16 +1942,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.35.3",
+            "version": "3.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "5fc8404762179ae514678487b23494fd69b2309c"
+                "reference": "f7fb152932f30072d573510cbd4dd657d6475b25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/5fc8404762179ae514678487b23494fd69b2309c",
-                "reference": "5fc8404762179ae514678487b23494fd69b2309c",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f7fb152932f30072d573510cbd4dd657d6475b25",
+                "reference": "f7fb152932f30072d573510cbd4dd657d6475b25",
                 "shasum": ""
             },
             "require": {
@@ -1963,9 +2019,9 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.35.3"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.36.0"
             },
-            "time": "2026-08-22T12:55:54+00:00"
+            "time": "2026-09-02T08:00:27+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -2256,16 +2312,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "3.10.0",
+            "version": "3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "b321dd6749f0bf7189444158a3ce785cc16d69b0"
+                "reference": "72c534fc0ab181ef52d92a68382318631e301608"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/b321dd6749f0bf7189444158a3ce785cc16d69b0",
-                "reference": "b321dd6749f0bf7189444158a3ce785cc16d69b0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/72c534fc0ab181ef52d92a68382318631e301608",
+                "reference": "72c534fc0ab181ef52d92a68382318631e301608",
                 "shasum": ""
             },
             "require": {
@@ -2291,6 +2347,7 @@
                 "phpstan/phpstan-strict-rules": "^2",
                 "phpunit/phpunit": "^10.5.17 || ^11.0.7",
                 "predis/predis": "^1.1 || ^2",
+                "psr/clock": "^1.0",
                 "rollbar/rollbar": "^4.0",
                 "ruflin/elastica": "^7 || ^8",
                 "symfony/mailer": "^5.4 || ^6",
@@ -2309,6 +2366,7 @@
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
                 "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "psr/clock": "Required to pass a clock to the Logger and control the timestamp of log records",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
                 "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
@@ -2343,7 +2401,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/3.10.0"
+                "source": "https://github.com/Seldaek/monolog/tree/3.12.0"
             },
             "funding": [
                 {
@@ -2355,20 +2413,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-02T08:56:05+00:00"
+            "time": "2026-09-09T08:34:20+00:00"
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.13.2",
+            "version": "3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "a1c54919f5fff9800cd03c32bd01defd5a4061cb"
+                "reference": "0023eaa2c9110e47446dd512a263c69c40cd41f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/a1c54919f5fff9800cd03c32bd01defd5a4061cb",
-                "reference": "a1c54919f5fff9800cd03c32bd01defd5a4061cb",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/0023eaa2c9110e47446dd512a263c69c40cd41f2",
+                "reference": "0023eaa2c9110e47446dd512a263c69c40cd41f2",
                 "shasum": ""
             },
             "require": {
@@ -2460,7 +2518,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-08T11:40:35+00:00"
+            "time": "2026-09-12T20:45:19+00:00"
         },
         {
             "name": "nette/schema",
@@ -3563,16 +3621,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v8.1.6",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "eb7d9957d66739649e931ce7a9d05dab69f8abac"
+                "reference": "29afb89f4e941f68a6e90f28e3f52ff1f6793a7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/eb7d9957d66739649e931ce7a9d05dab69f8abac",
-                "reference": "eb7d9957d66739649e931ce7a9d05dab69f8abac",
+                "url": "https://api.github.com/repos/symfony/console/zipball/29afb89f4e941f68a6e90f28e3f52ff1f6793a7d",
+                "reference": "29afb89f4e941f68a6e90f28e3f52ff1f6793a7d",
                 "shasum": ""
             },
             "require": {
@@ -3639,7 +3697,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v8.1.6"
+                "source": "https://github.com/symfony/console/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -3659,7 +3717,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-25T14:18:42+00:00"
+            "time": "2026-09-13T10:55:57+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -4050,16 +4108,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v8.1.5",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "8d7acede2b2ae07605783d1c43e49b5767036474"
+                "reference": "4fbe46a3eb64abf8a57f0364075b91f4a233e062"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/8d7acede2b2ae07605783d1c43e49b5767036474",
-                "reference": "8d7acede2b2ae07605783d1c43e49b5767036474",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/4fbe46a3eb64abf8a57f0364075b91f4a233e062",
+                "reference": "4fbe46a3eb64abf8a57f0364075b91f4a233e062",
                 "shasum": ""
             },
             "require": {
@@ -4094,7 +4152,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v8.1.5"
+                "source": "https://github.com/symfony/finder/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -4114,20 +4172,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T12:16:08+00:00"
+            "time": "2026-09-10T19:14:39+00:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v8.1.6",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "093b78326f649c3a9db922b9f17123b6aeb3b8fb"
+                "reference": "d8fdc670ed510a69e3a9eb4f5eac89f5ed627e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/093b78326f649c3a9db922b9f17123b6aeb3b8fb",
-                "reference": "093b78326f649c3a9db922b9f17123b6aeb3b8fb",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/d8fdc670ed510a69e3a9eb4f5eac89f5ed627e17",
+                "reference": "d8fdc670ed510a69e3a9eb4f5eac89f5ed627e17",
                 "shasum": ""
             },
             "require": {
@@ -4175,7 +4233,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v8.1.6"
+                "source": "https://github.com/symfony/http-foundation/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -4195,20 +4253,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-30T20:10:55+00:00"
+            "time": "2026-09-14T17:47:24+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v8.1.6",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "2f73beb7c6f1a97d2c17bbf4dbd59da8cc18b355"
+                "reference": "ec7a3a5832c22cf880cf27d2fdc7ad2e94838e85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/2f73beb7c6f1a97d2c17bbf4dbd59da8cc18b355",
-                "reference": "2f73beb7c6f1a97d2c17bbf4dbd59da8cc18b355",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/ec7a3a5832c22cf880cf27d2fdc7ad2e94838e85",
+                "reference": "ec7a3a5832c22cf880cf27d2fdc7ad2e94838e85",
                 "shasum": ""
             },
             "require": {
@@ -4285,7 +4343,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v8.1.6"
+                "source": "https://github.com/symfony/http-kernel/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -4305,20 +4363,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-30T21:40:49+00:00"
+            "time": "2026-09-15T07:12:52+00:00"
         },
         {
             "name": "symfony/mailer",
-            "version": "v8.1.5",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "89f43137da74b8f1aab37c99926482b7084f51b9"
+                "reference": "8783380ecdafa23d36fc90c5873fd44b635c6e10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/89f43137da74b8f1aab37c99926482b7084f51b9",
-                "reference": "89f43137da74b8f1aab37c99926482b7084f51b9",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/8783380ecdafa23d36fc90c5873fd44b635c6e10",
+                "reference": "8783380ecdafa23d36fc90c5873fd44b635c6e10",
                 "shasum": ""
             },
             "require": {
@@ -4365,7 +4423,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailer/tree/v8.1.5"
+                "source": "https://github.com/symfony/mailer/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -4385,20 +4443,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T17:47:34+00:00"
+            "time": "2026-09-15T06:01:24+00:00"
         },
         {
             "name": "symfony/mime",
-            "version": "v8.1.6",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "1b36ccfd7ccb9ad1d6eafb9024b3dd3d9606b15f"
+                "reference": "773ac57f20e2795bdadb65b5b1b5f4850d498283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/1b36ccfd7ccb9ad1d6eafb9024b3dd3d9606b15f",
-                "reference": "1b36ccfd7ccb9ad1d6eafb9024b3dd3d9606b15f",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/773ac57f20e2795bdadb65b5b1b5f4850d498283",
+                "reference": "773ac57f20e2795bdadb65b5b1b5f4850d498283",
                 "shasum": ""
             },
             "require": {
@@ -4451,7 +4509,7 @@
                 "mime-type"
             ],
             "support": {
-                "source": "https://github.com/symfony/mime/tree/v8.1.6"
+                "source": "https://github.com/symfony/mime/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -4471,7 +4529,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-22T09:06:25+00:00"
+            "time": "2026-09-04T11:02:17+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -5384,16 +5442,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v8.1.6",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "d863f5e70d7c87abb906ac11b61f83036093000b"
+                "reference": "10823b09358e690df4ff943e24e8492bb1019fc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/d863f5e70d7c87abb906ac11b61f83036093000b",
-                "reference": "d863f5e70d7c87abb906ac11b61f83036093000b",
+                "url": "https://api.github.com/repos/symfony/process/zipball/10823b09358e690df4ff943e24e8492bb1019fc3",
+                "reference": "10823b09358e690df4ff943e24e8492bb1019fc3",
                 "shasum": ""
             },
             "require": {
@@ -5425,7 +5483,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v8.1.6"
+                "source": "https://github.com/symfony/process/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -5445,7 +5503,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-21T17:47:34+00:00"
+            "time": "2026-09-02T12:40:29+00:00"
         },
         {
             "name": "symfony/routing",
@@ -5616,16 +5674,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v8.1.2",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "286a76b7255e5cc4bf0101a0bc5388ecf1c38ccc"
+                "reference": "d950140b5f56f31901e5b7a0c04ffc3a3deb943c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/286a76b7255e5cc4bf0101a0bc5388ecf1c38ccc",
-                "reference": "286a76b7255e5cc4bf0101a0bc5388ecf1c38ccc",
+                "url": "https://api.github.com/repos/symfony/string/zipball/d950140b5f56f31901e5b7a0c04ffc3a3deb943c",
+                "reference": "d950140b5f56f31901e5b7a0c04ffc3a3deb943c",
                 "shasum": ""
             },
             "require": {
@@ -5682,7 +5740,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v8.1.2"
+                "source": "https://github.com/symfony/string/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -5702,7 +5760,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-28T07:35:25+00:00"
+            "time": "2026-09-11T14:51:16+00:00"
         },
         {
             "name": "symfony/translation",
@@ -5959,16 +6017,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v8.1.6",
+            "version": "v8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "3783365b58972f4779254d98372af80fbf15e170"
+                "reference": "741a8c4c948b0bb9bd3653daacd3644c73c40ea5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/3783365b58972f4779254d98372af80fbf15e170",
-                "reference": "3783365b58972f4779254d98372af80fbf15e170",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/741a8c4c948b0bb9bd3653daacd3644c73c40ea5",
+                "reference": "741a8c4c948b0bb9bd3653daacd3644c73c40ea5",
                 "shasum": ""
             },
             "require": {
@@ -6022,7 +6080,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v8.1.6"
+                "source": "https://github.com/symfony/var-dumper/tree/v8.1.7"
             },
             "funding": [
                 {
@@ -6042,7 +6100,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-30T20:10:55+00:00"
+            "time": "2026-09-03T16:02:27+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -6584,16 +6642,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.30.5",
+            "version": "v1.31.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "fe4148c503a0e266353d61396b79bbf7f35122df"
+                "reference": "b136cebaf0b3f7d288bdafad5088858d082580aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/fe4148c503a0e266353d61396b79bbf7f35122df",
-                "reference": "fe4148c503a0e266353d61396b79bbf7f35122df",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/b136cebaf0b3f7d288bdafad5088858d082580aa",
+                "reference": "b136cebaf0b3f7d288bdafad5088858d082580aa",
                 "shasum": ""
             },
             "require": {
@@ -6605,13 +6663,13 @@
             },
             "require-dev": {
                 "composer/semver": "^3.4.4",
-                "friendsofphp/php-cs-fixer": "^3.95.18",
-                "illuminate/view": "^13.24.0",
-                "larastan/larastan": "^3.10.0",
+                "friendsofphp/php-cs-fixer": "^3.95.25",
+                "illuminate/view": "^13.31.0",
+                "larastan/larastan": "^3.11.0",
                 "laravel-zero/framework": "^13.0.0",
                 "laravel/agent-detector": "^2.0.2",
-                "laravel/prompts": "^0.3.22",
-                "mockery/mockery": "^1.6.12",
+                "laravel/prompts": "^0.3.24",
+                "mockery/mockery": "^1.6.15",
                 "nunomaduro/termwind": "^2.4.0",
                 "pestphp/pest": "^4.7.8"
             },
@@ -6650,7 +6708,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2026-08-10T15:35:50+00:00"
+            "time": "2026-09-08T17:10:00+00:00"
         },
         {
             "name": "laravel/sail",

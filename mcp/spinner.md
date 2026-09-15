@@ -6,23 +6,23 @@ url: /component/spinner
 
 # Spinner
 
-Display a spinning icon.
+Displays a spinning icon, useful for indicating loading or in-progress states.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::spinner />
 ```
 
-## Different Colours
+## Different Colors
 
-The spinner supports multiple colours. The default colour is `gray`.
+The spinner supports the standard set of BladewindUI colours.
 
 ```blade
-<x-bladewind::spinner />
 <x-bladewind::spinner color="primary" />
 <x-bladewind::spinner color="red" />
 <x-bladewind::spinner color="yellow" />
 <x-bladewind::spinner color="green" />
-<x-bladewind::spinner color="blue" />
 <x-bladewind::spinner color="purple" />
 <x-bladewind::spinner color="pink" />
 <x-bladewind::spinner color="orange" />
@@ -34,10 +34,7 @@ The spinner supports multiple colours. The default colour is `gray`.
 
 ## Different Sizes
 
-There are five sizes available. The default size is `small`.
-
 ```blade
-<x-bladewind::spinner size="small" />
 <x-bladewind::spinner size="medium" />
 <x-bladewind::spinner size="big" />
 <x-bladewind::spinner size="xl" />
@@ -48,15 +45,14 @@ There are five sizes available. The default size is `small`.
 
 | Attribute | Default | Description |
 |---|---|---|
-| size | small | The size of the spinner. `small` \| `medium` \| `big` \| `xl` \| `omg` |
-| color | gray | Set the colour of the spinner. `primary` \| `blue` \| `red` \| `yellow` \| `green` \| `purple` \| `pink` \| `orange` \| `gray` \| `cyan` \| `violet` \| `indigo` \| `fuchsia` |
-| class | bw-spinner | Any additional css you wish to add. |
+| size | small | `small` \| `medium` \| `big` \| `xl` \| `omg` |
+| color | gray | Sets the colour of the spinner. `primary` \| `blue` \| `red` \| `yellow` \| `green` \| `purple` \| `pink` \| `orange` \| `gray` \| `cyan` \| `violet` \| `indigo` \| `fuchsia` |
+| class | bw-spinner | Additional CSS classes to add. |
 
 ## Full Example
 
 ```blade
 <x-bladewind::spinner
     size="medium"
-    color="blue"
     class="m-0" />
 ```

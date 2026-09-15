@@ -46,22 +46,27 @@
     <x-bladewind::data-grid name="orders-grid" label="Orders" searchable="true" selectable="true"
         sortable="true" paginated="true" page-size="10" :columns="$orderColumns" :rows="$orders" />
 
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid
-    name="orders-grid"
-    label="Orders"
-    searchable="true"
-    selectable="true"
-    sortable="true"
-    paginated="true"
-    page-size="10"
-    :columns="[
-        ['key' => 'reference', 'label' => 'Reference', 'sortable' => true],
-        ['key' => 'customer', 'label' => 'Customer', 'sortable' => true],
-        ['key' => 'status', 'label' => 'Status', 'align' => 'center', 'format' => $statusPill],
-        ['key' => 'total', 'label' => 'Total', 'align' => 'right', 'sortable' => true,
-            'format' => fn ($value) => '$'.number_format($value / 100, 2)],
-    ]"
-    :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample1 = <<<'HTML'
+            <x-bladewind::data-grid
+                name="orders-grid"
+                label="Orders"
+                searchable="true"
+                selectable="true"
+                sortable="true"
+                paginated="true"
+                page-size="10"
+                :columns="[
+                    ['key' => 'reference', 'label' => 'Reference', 'sortable' => true],
+                    ['key' => 'customer', 'label' => 'Customer', 'sortable' => true],
+                    ['key' => 'status', 'label' => 'Status', 'align' => 'center', 'format' => $statusPill],
+                    ['key' => 'total', 'label' => 'Total', 'align' => 'right', 'sortable' => true,
+                        'format' => fn ($value) => '$'.number_format($value / 100, 2)],
+                ]"
+                :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample1"></x-bladewind::code-block>
     <p>The example above uses 34 orders, enough for four real pages at the default page size, so paging, sorting, and searching all have something genuine to work against instead of a handful of rows that fit on one screen anyway.</p>
 
     <h2 id="columns">Columns and Rows</h2>
@@ -70,49 +75,69 @@
     <h3 id="column-shorthand">Shorthand Column Syntax</h3>
     <p>Writing out <code class="inline">['key' => 'name', 'label' => 'Name']</code> for every column is tedious when you just want the label auto-generated from the key. Pass a plain array of key strings instead, and the grid title-cases each key and swaps underscores for spaces to build the label.</p>
     <p>Shorthand columns skip the <code class="inline">format</code> and <code class="inline">sort</code> callbacks entirely, so cells render whatever raw value the field holds. That is fine for text and status fields, and the reason the example below leaves <code class="inline">total</code> out: an unformatted amount in cents is not something you would want to ship.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="short-columns" label="Reviewers"
-    :columns="['reference', 'customer', 'status']"
-    :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample2 = <<<'HTML'
+            <x-bladewind::data-grid name="short-columns" label="Reviewers"
+                :columns="['reference', 'customer', 'status']"
+                :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample2"></x-bladewind::code-block>
     <x-bladewind::data-grid name="short-columns" label="Reviewers" :columns="['reference', 'customer', 'status']" :rows="array_slice($orders, 0, 4)" />
     <p>You can also pass an associative array of <code class="inline">key => label</code> pairs when you only need to rename a column, without the full array shape.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="aliased-columns" label="Reviewers"
-    :columns="['reference' => 'Order #', 'customer' => 'Placed By', 'status' => 'State']"
-    :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample3 = <<<'HTML'
+            <x-bladewind::data-grid name="aliased-columns" label="Reviewers"
+                :columns="['reference' => 'Order #', 'customer' => 'Placed By', 'status' => 'State']"
+                :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample3"></x-bladewind::code-block>
     <x-bladewind::data-grid name="aliased-columns" label="Reviewers" :columns="['reference' => 'Order #', 'customer' => 'Placed By', 'status' => 'State']" :rows="array_slice($orders, 0, 4)" />
 
     <h3 id="column-format">Formatting a Column</h3>
     <p><code class="inline">format($value, $row)</code> receives the raw cell value and the full row, and its return value is rendered as raw HTML rather than escaped text. That means a format callback can return a styled badge, an icon, or a link, not just a plain string. The Status column in the orders grid above uses exactly this to render a colour-coded pill:</p>
-    <pre class="language-php line-numbers"><code>$statusColors = [
-    'paid' => 'bg-emerald-100 text-emerald-700',
-    'pending' => 'bg-amber-100 text-amber-700',
-    'refunded' => 'bg-slate-200 text-slate-600',
-];
+    @php
+        $dataUgridExample4 = <<<'HTML'
+            $statusColors = [
+                'paid' => 'bg-emerald-100 text-emerald-700',
+                'pending' => 'bg-amber-100 text-amber-700',
+                'refunded' => 'bg-slate-200 text-slate-600',
+            ];
 
-$columns = [
-    // ...
-    [
-        'key' => 'status',
-        'label' => 'Status',
-        'align' => 'center',
-        'format' => function ($value) use ($statusColors) {
-            $class = $statusColors[$value] ?? $statusColors['pending'];
-            return '&lt;span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium '.$class.'"&gt;'
-                .ucfirst($value).'&lt;/span&gt;';
-        },
-    ],
-];</code></pre>
+            $columns = [
+                // ...
+                [
+                    'key' => 'status',
+                    'label' => 'Status',
+                    'align' => 'center',
+                    'format' => function ($value) use ($statusColors) {
+                        $class = $statusColors[$value] ?? $statusColors['pending'];
+                        return '<span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium '.$class.'">'
+                            .ucfirst($value).'</span>';
+                    },
+                ],
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$dataUgridExample4"></x-bladewind::code-block>
     <x-bladewind::alert type="warning" show_close_icon="false">Because <code class="inline">format</code> output is not escaped, never feed it raw user input without sanitising first. Build the HTML yourself around a trusted value, as above, or run untrusted text through <code class="inline">e()</code> before it goes into the string.</x-bladewind::alert>
 
     <h3 id="column-sort">Custom Sort Values</h3>
     <p>Sorting compares the raw cell value by default, before <code class="inline">format</code> runs. That is correct for the currency column above, since <code class="inline">total</code> is already an integer number of cents. It breaks down for a column whose sortable order should not match either the raw value or the formatted text, a date stored as a display string, or a status that should sort by severity rather than alphabetically. Give the column its own <code class="inline">sort($value, $row)</code> callback to override just the comparison value.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="status-priority" label="Orders by priority" sortable="true"
-    :columns="[
-        ['key' => 'reference', 'label' => 'Reference'],
-        ['key' => 'status', 'label' => 'Status', 'align' => 'center',
-            'format' => $statusPill,
-            'sort' => fn ($value) => ['refunded' => 0, 'pending' => 1, 'paid' => 2][$value] ?? 1],
-    ]"
-    :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample5 = <<<'HTML'
+            <x-bladewind::data-grid name="status-priority" label="Orders by priority" sortable="true"
+                :columns="[
+                    ['key' => 'reference', 'label' => 'Reference'],
+                    ['key' => 'status', 'label' => 'Status', 'align' => 'center',
+                        'format' => $statusPill,
+                        'sort' => fn ($value) => ['refunded' => 0, 'pending' => 1, 'paid' => 2][$value] ?? 1],
+                ]"
+                :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample5"></x-bladewind::code-block>
     @php
         $priorityColumns = [
             ['key' => 'reference', 'label' => 'Reference'],
@@ -127,8 +152,13 @@ $columns = [
 
     <h3 id="row-key">Row Identity</h3>
     <p>Every row needs a stable, unique key so selection, sorting, and pagination can track it across re-renders. By default the grid reads <code class="inline">id</code> off each row. Set <code class="inline">row-key</code> when your data's identifier is called something else, an order reference, a UUID column, a database primary key with a different name.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="by-reference" label="Orders" row-key="reference"
-    :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample6 = <<<'HTML'
+            <x-bladewind::data-grid name="by-reference" label="Orders" row-key="reference"
+                :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample6"></x-bladewind::code-block>
 
     <h2 id="sorting">Sorting</h2>
     <p>Set <code class="inline">sortable="true"</code> on the grid to make every column sortable, or set <code class="inline">sortable</code> per column, as the Reference and Customer columns do in the first example on this page. Clicking a header cycles none, ascending, descending, none again.</p>
@@ -136,52 +166,77 @@ $columns = [
 
     <h3 id="default-sort">Sorting on Load</h3>
     <p>Pass <code class="inline">sort-key</code> and <code class="inline">sort-direction</code> to render the grid already sorted, useful for a grid that should default to showing the newest or highest-value rows first without the user having to click anything.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="highest-value-first" label="Orders by value"
-    sortable="true" sort-key="total" sort-direction="desc"
-    :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample7 = <<<'HTML'
+            <x-bladewind::data-grid name="highest-value-first" label="Orders by value"
+                sortable="true" sort-key="total" sort-direction="desc"
+                :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample7"></x-bladewind::code-block>
     <x-bladewind::data-grid name="highest-value-first" label="Orders by value" sortable="true" sort-key="total" sort-direction="desc" paginated="true" page-size="6" :columns="$orderColumns" :rows="$orders" />
 
     <h3 id="server-sort">Server-Driven Sorting</h3>
     <p>With <code class="inline">client-sort="false"</code>, clicking a sortable header does not touch the DOM. It fires a cancelable <code class="inline">before-sort-change</code> followed by <code class="inline">sort-change</code>, with the column key and the new direction in the event detail. Handle it, refetch the sorted page from your backend, and re-render the grid, the same pattern used by the search and pagination events further down this page.</p>
-    <pre class="language-js line-numbers"><code>document.addEventListener('bladewind:data-grid:sort-change', (event) =&gt; {
-    if (event.detail.name !== 'orders-grid') return;
-    const { key, direction } = event.detail;
-    setDataGridLoading('orders-grid', true);
-    fetch(`/orders?sort=${key}&amp;direction=${direction}`)
-        .then((response) =&gt; response.text())
-        .then((html) =&gt; {
-            document.getElementById('orders-grid-wrapper').innerHTML = html;
-        });
-});</code></pre>
+    @php
+        $dataUgridExample8 = <<<'HTML'
+            document.addEventListener('bladewind:data-grid:sort-change', (event) => {
+                if (event.detail.name !== 'orders-grid') return;
+                const { key, direction } = event.detail;
+                setDataGridLoading('orders-grid', true);
+                fetch(`/orders?sort=${key}&direction=${direction}`)
+                    .then((response) => response.text())
+                    .then((html) => {
+                        document.getElementById('orders-grid-wrapper').innerHTML = html;
+                    });
+            });
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$dataUgridExample8"></x-bladewind::code-block>
 
     <h2 id="searching">Searching</h2>
     <p><code class="inline">searchable="true"</code> renders a toolbar search field. <code class="inline">client-search</code> defaults to <code class="inline">true</code> and filters rows by their rendered cell text as you type. Try searching for a customer name in the first example on this page, or for a status like <em>refunded</em>.</p>
     <p>Customise the placeholder with <code class="inline">search-placeholder</code>:</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="orders-grid" searchable="true" search-placeholder="Search by reference or customer…"
-    :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample9 = <<<'HTML'
+            <x-bladewind::data-grid name="orders-grid" searchable="true" search-placeholder="Search by reference or customer…"
+                :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample9"></x-bladewind::code-block>
 
     <h3 id="server-search">Server-Driven Searching</h3>
     <p>Set <code class="inline">client-search="false"</code> to filter server-side instead. The grid renders no filtering itself, it emits <code class="inline">bladewind:data-grid:search</code> with the current query on every keystroke, so debounce it yourself before hitting your backend.</p>
-    <pre class="language-js line-numbers"><code>let searchTimer;
-document.addEventListener('bladewind:data-grid:search', (event) =&gt; {
-    if (event.detail.name !== 'orders-grid') return;
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() =&gt; {
-        setDataGridLoading('orders-grid', true);
-        fetch(`/orders?q=${encodeURIComponent(event.detail.query)}`)
-            .then((response) =&gt; response.text())
-            .then((html) =&gt; {
-                document.getElementById('orders-grid-wrapper').innerHTML = html;
+    @php
+        $dataUgridExample10 = <<<'HTML'
+            let searchTimer;
+            document.addEventListener('bladewind:data-grid:search', (event) => {
+                if (event.detail.name !== 'orders-grid') return;
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(() => {
+                    setDataGridLoading('orders-grid', true);
+                    fetch(`/orders?q=${encodeURIComponent(event.detail.query)}`)
+                        .then((response) => response.text())
+                        .then((html) => {
+                            document.getElementById('orders-grid-wrapper').innerHTML = html;
+                        });
+                }, 300);
             });
-    }, 300);
-});</code></pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$dataUgridExample10"></x-bladewind::code-block>
 
     <h2 id="selection">Row Selection</h2>
     <p><code class="inline">selectable="true"</code> adds a selection column. <code class="inline">selection-mode</code> is <code class="inline">multiple</code> (checkboxes, with a tri-state select-all in the header, scoped to the current page or search results) or <code class="inline">single</code> (radio buttons). A selection bar appears above the grid once anything is selected, with a clear-selection control and an optional <code class="inline">bulk-actions</code> slot for custom buttons.</p>
 
     <h3 id="multiple-selection">Multiple Selection</h3>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="bulk-orders" label="Orders" selectable="true" selection-mode="multiple"
-    paginated="true" page-size="8" :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample11 = <<<'HTML'
+            <x-bladewind::data-grid name="bulk-orders" label="Orders" selectable="true" selection-mode="multiple"
+                paginated="true" page-size="8" :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample11"></x-bladewind::code-block>
     <x-bladewind::data-grid name="bulk-orders" label="Orders" selectable="true" selection-mode="multiple" paginated="true" page-size="8" :columns="$orderColumns" :rows="$orders" />
 
     <h3 id="single-selection">Single Selection</h3>
@@ -196,20 +251,30 @@ document.addEventListener('bladewind:data-grid:search', (event) =&gt; {
 
     <h3 id="preselected">Preselected Rows</h3>
     <p>Pass <code class="inline">selected</code> with an array of row keys to render the grid with some rows already checked, useful for an edit form that reopens with a saved set of chosen rows.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="preselected-orders" label="Orders" selectable="true"
-    :selected="['3', '7', '12']"
-    :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample12 = <<<'HTML'
+            <x-bladewind::data-grid name="preselected-orders" label="Orders" selectable="true"
+                :selected="['3', '7', '12']"
+                :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample12"></x-bladewind::code-block>
     <x-bladewind::data-grid name="preselected-orders" label="Orders" selectable="true" :selected="['3', '7', '12']" paginated="true" page-size="6" :columns="$orderColumns" :rows="$orders" />
 
     <h3 id="bulk-actions">Bulk Actions</h3>
     <p>The <code class="inline">bulk-actions</code> slot renders inside the selection bar, next to the clear-selection control, and only appears once at least one row is selected. Pair it with <code class="inline">dataGridSelectedKeys()</code> to read the current selection when a bulk action fires.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="orders-with-actions" label="Orders" selectable="true"
-    :columns="$orderColumns" :rows="$orders"&gt;
-    &lt;x-slot:bulk-actions&gt;
-        &lt;x-bladewind::button size="small" onclick="alert('Exporting: ' + dataGridSelectedKeys('orders-with-actions').join(', '))"&gt;Export&lt;/x-bladewind::button&gt;
-        &lt;x-bladewind::button size="small" type="red" onclick="alert('Deleting: ' + dataGridSelectedKeys('orders-with-actions').join(', '))"&gt;Delete&lt;/x-bladewind::button&gt;
-    &lt;/x-slot:bulk-actions&gt;
-&lt;/x-bladewind::data-grid&gt;</code></pre>
+    @php
+        $dataUgridExample13 = <<<'HTML'
+            <x-bladewind::data-grid name="orders-with-actions" label="Orders" selectable="true"
+                :columns="$orderColumns" :rows="$orders">
+                <x-slot:bulk-actions>
+                    <x-bladewind::button size="small" onclick="alert('Exporting: ' + dataGridSelectedKeys('orders-with-actions').join(', '))">Export</x-bladewind::button>
+                    <x-bladewind::button size="small" type="red" onclick="alert('Deleting: ' + dataGridSelectedKeys('orders-with-actions').join(', '))">Delete</x-bladewind::button>
+                </x-slot:bulk-actions>
+            </x-bladewind::data-grid>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample13"></x-bladewind::code-block>
     <x-bladewind::data-grid name="orders-with-actions" label="Orders" selectable="true" paginated="true" page-size="6" :columns="$orderColumns" :rows="$orders">
         <x-slot:bulk-actions>
             <x-bladewind::button size="small" onclick="alert('Exporting: ' + dataGridSelectedKeys('orders-with-actions').join(', '))">Export</x-bladewind::button>
@@ -228,18 +293,28 @@ document.addEventListener('bladewind:data-grid:search', (event) =&gt; {
 
     <h3 id="server-pagination">Server-Driven Pagination</h3>
     <p>Pass a real Laravel paginator through <code class="inline">paginator</code> instead of setting <code class="inline">paginated</code> directly, the grid detects it and switches into server mode on its own, rendering Pagination's standard page links. <code class="inline">rows</code> should be the paginator's current-page items, not the full dataset.</p>
-    <pre class="language-php line-numbers"><code>// in your controller or route closure
-$staff = Staff::query()-&gt;orderBy('company_name')-&gt;paginate(8);
-return view('staff.index', ['staff' =&gt; $staff]);</code></pre>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="staff-directory" label="Staff directory" row-key="member_id"
-    :columns="[
-        ['key' =&gt; 'company_name', 'label' =&gt; 'Company', 'sortable' =&gt; true],
-        ['key' =&gt; 'first_name', 'label' =&gt; 'Contact', 'format' =&gt; fn ($v, $row) =&gt; $row['first_name'].' '.$row['last_name']],
-        ['key' =&gt; 'mobile', 'label' =&gt; 'Mobile'],
-        ['key' =&gt; 'email', 'label' =&gt; 'Email'],
-    ]"
-    :rows="$staff-&gt;items()"
-    :paginator="$staff" /&gt;</code></pre>
+    @php
+        $dataUgridExample14 = <<<'HTML'
+            // in your controller or route closure
+            $staff = Staff::query()->orderBy('company_name')->paginate(8);
+            return view('staff.index', ['staff' => $staff]);
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$dataUgridExample14"></x-bladewind::code-block>
+    @php
+        $dataUgridExample15 = <<<'HTML'
+            <x-bladewind::data-grid name="staff-directory" label="Staff directory" row-key="member_id"
+                :columns="[
+                    ['key' => 'company_name', 'label' => 'Company', 'sortable' => true],
+                    ['key' => 'first_name', 'label' => 'Contact', 'format' => fn ($v, $row) => $row['first_name'].' '.$row['last_name']],
+                    ['key' => 'mobile', 'label' => 'Mobile'],
+                    ['key' => 'email', 'label' => 'Email'],
+                ]"
+                :rows="$staff->items()"
+                :paginator="$staff" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample15"></x-bladewind::code-block>
     @php
         $staffAll = collect(include resource_path('views/docs/users.php'));
         $staffPage = \Illuminate\Pagination\Paginator::resolveCurrentPage('staff_page') ?: 1;
@@ -277,19 +352,39 @@ return view('staff.index', ['staff' =&gt; $staff]);</code></pre>
 
     <h3 id="striped-appearance">Striped</h3>
     <x-bladewind::data-grid name="striped-grid" label="Orders" striped="true" :columns="$orderColumns" :rows="array_slice($orders, 0, 6)" />
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="striped-grid" label="Orders" striped="true" :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample16 = <<<'HTML'
+            <x-bladewind::data-grid name="striped-grid" label="Orders" striped="true" :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample16"></x-bladewind::code-block>
 
     <h3 id="bordered-appearance">Bordered</h3>
     <x-bladewind::data-grid name="bordered-grid" label="Orders" bordered="true" :columns="$orderColumns" :rows="array_slice($orders, 0, 6)" />
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="bordered-grid" label="Orders" bordered="true" :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample17 = <<<'HTML'
+            <x-bladewind::data-grid name="bordered-grid" label="Orders" bordered="true" :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample17"></x-bladewind::code-block>
 
     <h3 id="sticky-header">Sticky Header</h3>
     <p><code class="inline">sticky</code> pins the header row while the body scrolls, and defaults to <code class="inline">true</code>. It only has something to do once the grid has a <code class="inline">height</code> short enough that the rows actually scroll, so the two go together. Scroll inside the grid below and the header stays put.</p>
     <x-bladewind::data-grid name="sticky-grid" label="Orders" height="12rem" :columns="$orderColumns" :rows="$orders" />
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="sticky-grid" label="Orders" height="12rem" :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample18 = <<<'HTML'
+            <x-bladewind::data-grid name="sticky-grid" label="Orders" height="12rem" :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample18"></x-bladewind::code-block>
     <p>Set <code class="inline">sticky="false"</code> to let the header scroll away with the rest of the content instead, useful if the grid already sits inside its own scroll container that provides a sticky header at a higher level.</p>
     <x-bladewind::data-grid name="non-sticky-grid" label="Orders" height="12rem" sticky="false" :columns="$orderColumns" :rows="$orders" />
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="non-sticky-grid" label="Orders" height="12rem" sticky="false" :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample19 = <<<'HTML'
+            <x-bladewind::data-grid name="non-sticky-grid" label="Orders" height="12rem" sticky="false" :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample19"></x-bladewind::code-block>
 
     <h3 id="dense-sticky">Dense, With a Fixed Scrollable Height</h3>
     <p><code class="inline">dense</code> and a fixed <code class="inline">height</code> pair well for a compact grid embedded inside a card or a dashboard widget, where the header should stay visible while the body scrolls internally instead of pushing the rest of the page down.</p>
@@ -297,18 +392,28 @@ return view('staff.index', ['staff' =&gt; $staff]);</code></pre>
         <x-bladewind::data-grid name="dense-grid" label="Compact orders" striped="true" dense="true" height="14rem"
             :columns="$orderColumns" :rows="$orders" />
     </div>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="dense-grid" label="Compact orders"
-    striped="true" dense="true" height="14rem"
-    :columns="$orderColumns" :rows="$orders" /&gt;</code></pre>
+    @php
+        $dataUgridExample20 = <<<'HTML'
+            <x-bladewind::data-grid name="dense-grid" label="Compact orders"
+                striped="true" dense="true" height="14rem"
+                :columns="$orderColumns" :rows="$orders" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample20"></x-bladewind::code-block>
 
     <h2 id="toolbar">Toolbar</h2>
     <p>The <code class="inline">toolbar</code> slot renders next to the search field, for controls that apply to the grid as a whole rather than to a selection, an export button, a view switcher, a status filter.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="orders-with-toolbar" label="Orders" searchable="true"
-    :columns="$orderColumns" :rows="$orders"&gt;
-    &lt;x-slot:toolbar&gt;
-        &lt;x-bladewind::button size="small" onclick="alert('Exporting all orders as CSV')"&gt;Export CSV&lt;/x-bladewind::button&gt;
-    &lt;/x-slot:toolbar&gt;
-&lt;/x-bladewind::data-grid&gt;</code></pre>
+    @php
+        $dataUgridExample21 = <<<'HTML'
+            <x-bladewind::data-grid name="orders-with-toolbar" label="Orders" searchable="true"
+                :columns="$orderColumns" :rows="$orders">
+                <x-slot:toolbar>
+                    <x-bladewind::button size="small" onclick="alert('Exporting all orders as CSV')">Export CSV</x-bladewind::button>
+                </x-slot:toolbar>
+            </x-bladewind::data-grid>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample21"></x-bladewind::code-block>
     <x-bladewind::data-grid name="orders-with-toolbar" label="Orders" searchable="true" paginated="true" page-size="6" :columns="$orderColumns" :rows="$orders">
         <x-slot:toolbar>
             <x-bladewind::button size="small" onclick="alert('Exporting all orders as CSV')">Export CSV</x-bladewind::button>
@@ -318,23 +423,28 @@ return view('staff.index', ['staff' =&gt; $staff]);</code></pre>
     <h2 id="custom-layout">Custom Layout</h2>
     <p>Skip <code class="inline">columns</code> and <code class="inline">rows</code> entirely for a fully custom layout: a <code class="inline">header</code> slot for <code class="inline">&lt;th&gt;</code> content, and the default slot for hand-written <code class="inline">&lt;tr&gt;</code> rows. This is the escape hatch for a table body that does not fit the column model at all, merged cells, a summary row, a layout the grid was never meant to describe.</p>
     <x-bladewind::alert type="warning" show_close_icon="false">A custom layout opts out of the grid's own sorting, searching, and pagination automation, since those all work against the <code class="inline">columns</code> and <code class="inline">rows</code> the grid normalises internally. You are responsible for reimplementing any of that behaviour yourself against your hand-written markup.</x-bladewind::alert>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="custom-orders" label="Orders summary"&gt;
-    &lt;x-slot:header&gt;
-        &lt;th&gt;Reference&lt;/th&gt;
-        &lt;th&gt;Customer&lt;/th&gt;
-        &lt;th class="text-right"&gt;Total&lt;/th&gt;
-    &lt;/x-slot:header&gt;
+    @php
+        $dataUgridExample22 = <<<'HTML'
+            <x-bladewind::data-grid name="custom-orders" label="Orders summary">
+                <x-slot:header>
+                    <th>Reference</th>
+                    <th>Customer</th>
+                    <th class="text-right">Total</th>
+                </x-slot:header>
 
-    &lt;tr&gt;
-        &lt;td&gt;ORD-1041&lt;/td&gt;
-        &lt;td&gt;Kofi Addo&lt;/td&gt;
-        &lt;td class="text-right"&gt;$84.00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr class="font-semibold"&gt;
-        &lt;td colspan="2"&gt;Total&lt;/td&gt;
-        &lt;td class="text-right"&gt;$84.00&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/x-bladewind::data-grid&gt;</code></pre>
+                <tr>
+                    <td>ORD-1041</td>
+                    <td>Kofi Addo</td>
+                    <td class="text-right">$84.00</td>
+                </tr>
+                <tr class="font-semibold">
+                    <td colspan="2">Total</td>
+                    <td class="text-right">$84.00</td>
+                </tr>
+            </x-bladewind::data-grid>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample22"></x-bladewind::code-block>
     <x-bladewind::data-grid name="custom-orders" label="Orders summary">
         <x-slot:header>
             <th>Reference</th>
@@ -361,14 +471,19 @@ return view('staff.index', ['staff' =&gt; $staff]);</code></pre>
         <tr><td><code class="inline">search</code></td><td>On every keystroke in the search field, with the current query.</td></tr>
     </x-bladewind::table>
     <p>A practical use for the before events is confirming a change rather than silently accepting it:</p>
-    <pre class="language-js line-numbers"><code>document.addEventListener('bladewind:data-grid:before-select-change', (event) =&gt; {
-    if (event.detail.name !== 'orders-grid') return;
-    if (event.detail.selecting &amp;&amp; event.detail.row.status === 'refunded') {
-        if (!confirm('This order was refunded. Select it anyway?')) {
-            event.preventDefault();
-        }
-    }
-});</code></pre>
+    @php
+        $dataUgridExample23 = <<<'HTML'
+            document.addEventListener('bladewind:data-grid:before-select-change', (event) => {
+                if (event.detail.name !== 'orders-grid') return;
+                if (event.detail.selecting && event.detail.row.status === 'refunded') {
+                    if (!confirm('This order was refunded. Select it anyway?')) {
+                        event.preventDefault();
+                    }
+                }
+            });
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$dataUgridExample23"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List of Attributes</h2>
     <x-bladewind::table><x-slot:header><th>Attribute</th><th>Default</th><th>Description</th></x-slot:header>
@@ -420,29 +535,39 @@ return view('staff.index', ['staff' =&gt; $staff]);</code></pre>
         <tr><td><code class="inline">setDataGridLoading(name, loading)</code></td><td>Toggles the dimmed, busy loading state. See <a href="#loading">Loading state</a>.</td></tr>
         <tr><td><code class="inline">resetDataGrid(name)</code></td><td>Clears search, sort, selection, and returns to page one, all at once.</td></tr>
     </x-bladewind::table>
-    <pre class="language-javascript"><code>sortDataGrid('orders-grid', 'total', 'desc');
-setDataGridPage('orders-grid', 2);
-selectAllDataGridRows('orders-grid', true);
-dataGridSelectedKeys('orders-grid'); // ['3', '7', '12']
-clearDataGridSelection('orders-grid');
-setDataGridLoading('orders-grid', true);
-resetDataGrid('orders-grid');</code></pre>
+    @php
+        $dataUgridExample24 = <<<'HTML'
+            sortDataGrid('orders-grid', 'total', 'desc');
+            setDataGridPage('orders-grid', 2);
+            selectAllDataGridRows('orders-grid', true);
+            dataGridSelectedKeys('orders-grid'); // ['3', '7', '12']
+            clearDataGridSelection('orders-grid');
+            setDataGridLoading('orders-grid', true);
+            resetDataGrid('orders-grid');
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$dataUgridExample24"></x-bladewind::code-block>
 
     <h2 id="complete-example">Putting It All Together</h2>
     <p>A grid combining most of what is documented above: searchable, multi-select with bulk actions, a toolbar export button, striped rows, and client pagination over the full 34-row order list.</p>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::data-grid name="complete-orders" label="Orders" row-key="reference"
-    searchable="true" search-placeholder="Search orders…"
-    selectable="true" selection-mode="multiple"
-    sortable="true" striped="true"
-    paginated="true" page-size="10"
-    :columns="$orderColumns" :rows="$orders"&gt;
-    &lt;x-slot:toolbar&gt;
-        &lt;x-bladewind::button size="small"&gt;Export CSV&lt;/x-bladewind::button&gt;
-    &lt;/x-slot:toolbar&gt;
-    &lt;x-slot:bulk-actions&gt;
-        &lt;x-bladewind::button size="small" type="red"&gt;Delete selected&lt;/x-bladewind::button&gt;
-    &lt;/x-slot:bulk-actions&gt;
-&lt;/x-bladewind::data-grid&gt;</code></pre>
+    @php
+        $dataUgridExample25 = <<<'HTML'
+            <x-bladewind::data-grid name="complete-orders" label="Orders" row-key="reference"
+                searchable="true" search-placeholder="Search orders…"
+                selectable="true" selection-mode="multiple"
+                sortable="true" striped="true"
+                paginated="true" page-size="10"
+                :columns="$orderColumns" :rows="$orders">
+                <x-slot:toolbar>
+                    <x-bladewind::button size="small">Export CSV</x-bladewind::button>
+                </x-slot:toolbar>
+                <x-slot:bulk-actions>
+                    <x-bladewind::button size="small" type="red">Delete selected</x-bladewind::button>
+                </x-slot:bulk-actions>
+            </x-bladewind::data-grid>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dataUgridExample25"></x-bladewind::code-block>
     <x-bladewind::data-grid name="complete-orders" label="Orders" row-key="reference"
         searchable="true" search-placeholder="Search orders…"
         selectable="true" selection-mode="multiple"
@@ -456,6 +581,19 @@ resetDataGrid('orders-grid');</code></pre>
             <x-bladewind::button size="small" type="red" onclick="alert('Deleting: ' + dataGridSelectedKeys('complete-orders').join(', '))">Delete selected</x-bladewind::button>
         </x-slot:bulk-actions>
     </x-bladewind::data-grid>
+
+    <h2 id="livewire">Using Data Grid Inside Livewire</h2>
+    <p>
+        Client-side sorting, searching, pagination, and row selection all live in the grid's own DOM, in attributes and checkbox
+        state, rather than in Livewire's component state. This means those interactions work fine on their own even inside a
+        Livewire component. What can still catch you out is an unrelated re-render, one that happens for a reason that has nothing
+        to do with the grid. Because that state is not mirrored back to Livewire, such a re-render can reset the current page, the
+        sort order, or the selection. If your grid lives inside a component that re-renders for other reasons, wrap the grid in
+        <code class="inline">wire:ignore</code>. If you would rather have the grid's state live in Livewire itself, set
+        <code class="inline">client-sort="false"</code> and <code class="inline">client-search="false"</code> and drive the grid
+        from Livewire using the <code class="inline">before-*</code> and <code class="inline">*-change</code> events described
+        above.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; data-grid</code></x-bladewind::alert>
 
@@ -491,6 +629,7 @@ resetDataGrid('orders-grid');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#complete-example">Putting it all together</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Data Grid inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-data-grid');</script></x-slot:scripts>
 </x-app>

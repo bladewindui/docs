@@ -15,11 +15,12 @@
     </p>
     <x-bladewind::slider />
 <br />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::slider /&gt;
-        </code>
-    </pre>
+    @php
+        $sliderExample1 = <<<'HTML'
+            <x-bladewind::slider />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sliderExample1"></x-bladewind::code-block>
 <h3 id="colours">Different Colours</h3>
     <p>
         The Slider component like most BladewindUI components supports multiple <a href="/customize/colours">colours</a>. The default colour is your project's primary colour defined in your
@@ -32,21 +33,24 @@
     <x-bladewind::slider selected="30" color="pink" />
     <x-bladewind::slider selected="70" color="indigo" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::slider selected="50" color="cyan" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::slider selected="30" color="pink" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::slider selected="70" color="indigo" /&gt;
-        </code>
-    </pre>
+    @php
+        $sliderExample2 = <<<'HTML'
+            <x-bladewind::slider selected="50" color="cyan" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sliderExample2"></x-bladewind::code-block>
+    @php
+        $sliderExample3 = <<<'HTML'
+            <x-bladewind::slider selected="30" color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sliderExample3"></x-bladewind::code-block>
+    @php
+        $sliderExample4 = <<<'HTML'
+            <x-bladewind::slider selected="70" color="indigo" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sliderExample4"></x-bladewind::code-block>
     <p>
         The full list of colours is available in the attributes list below.
     </p>
@@ -56,11 +60,12 @@
         setting the <code class="inline text-red-500">step</code> attribute. This must be a positive number greater than 1.
     </p>
     <x-bladewind::slider selected="10" step="5" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::slider selected="10" step="5" /&gt;
-        </code>
-    </pre>
+    @php
+        $sliderExample5 = <<<'HTML'
+            <x-bladewind::slider selected="10" step="5" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sliderExample5"></x-bladewind::code-block>
     <h3 id="step">Min and Max Values</h3>
     <p>
         By default the slider is set to a minimum of 0 and maximum of 100. This means you cannot slide beyond 0 or past 100.
@@ -68,11 +73,12 @@
         This is useful for example in a case where you are building a web app for youth and need to ensure they only select  ages between 18 and 35.
     </p>
     <x-bladewind::slider min="18" max="35" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::slider min="18" max="35" /&gt;
-        </code>
-    </pre>
+    @php
+        $sliderExample6 = <<<'HTML'
+            <x-bladewind::slider min="18" max="35" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sliderExample6"></x-bladewind::code-block>
     <h2 id="range">Range Selection</h2>
     <p>
         There are cases where you need to let users select a minimum and maximum value. For example, a video streaming app may want to restrict
@@ -84,35 +90,38 @@
     </x-bladewind::alert>
     <br />
     <x-bladewind::slider range="true" selected="20" max_selected="60" />
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::slider range="true" selected="20" max_selected="60" /&gt;
-</code>
-</pre>
+@php
+        $sliderExample7 = <<<'HTML'
+            <x-bladewind::slider range="true" selected="20" max_selected="60" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sliderExample7"></x-bladewind::code-block>
     <h2 id="form">Form Submission</h2>
     <p>
         The assumption is you will need to retrieve the value from the slider and do something with it. The <code class="inline text-red-500">name</code> you specify for the slider is what will be passed when your form is submitted.
         Assuming we named our slider <code class="inline">age</code>, below is the HTML input field that will be generated.
     </p>
-<pre class="language-markup line-numbers">
-<code>
-&lt;input type="hidden"
-       name="age"
-       id="age"
-       class="slider-selection-age-input bw-slider-age"
-       value="50" /&gt;
-</code>
-</pre>
-<pre class="language-markup line-numbers">
-<code>
-&lt;!-- when using a range slider and two values are selected --&gt;
-&lt;input type="hidden"
-       name="age"
-       id="age"
-       class="slider-selection-age-input bw-slider-age"
-       value="10,50" /&gt;
-</code>
-</pre>
+@php
+        $sliderExample8 = <<<'HTML'
+            <input type="hidden"
+                   name="age"
+                   id="age"
+                   class="slider-selection-age-input bw-slider-age"
+                   value="50" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sliderExample8"></x-bladewind::code-block>
+@php
+        $sliderExample9 = <<<'HTML'
+            <!-- when using a range slider and two values are selected -->
+            <input type="hidden"
+                   name="age"
+                   id="age"
+                   class="slider-selection-age-input bw-slider-age"
+                   value="10,50" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sliderExample9"></x-bladewind::code-block>
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Slider component.</p>
     @include('docs/announcement')
@@ -186,20 +195,29 @@
     </x-bladewind::table>
 
     <h3>Slider with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::slider
-    min="5"
-    max="50"
-    color="red"
-    show_values="false"
-    step="5"
-    range="true"
-    selected="34"
-    max_selected="45"
-    class="m-0" /&gt;
-</code>
-</pre>
+@php
+        $sliderExample10 = <<<'HTML'
+            <x-bladewind::slider
+                min="5"
+                max="50"
+                color="red"
+                show_values="false"
+                step="5"
+                range="true"
+                selected="34"
+                max_selected="45"
+                class="m-0" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sliderExample10"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Slider Inside Livewire</h2>
+    <p>
+        As the slider is dragged, the hidden value field dispatches a real, native <code class="inline">change</code> event, so
+        Livewire's <code class="inline">wire:model</code> picks it up without any extra work on your part. The slider's handlers are
+        assigned as a single property rather than added as separate listeners, so a Livewire re-render simply replaces that
+        assignment instead of stacking up duplicates.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > slider.blade.php</code>
@@ -209,6 +227,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#range">Range selection</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#form">Form submission</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Slider inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

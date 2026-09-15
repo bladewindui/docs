@@ -6,29 +6,27 @@ url: /component/centered-content
 
 # Centered Content
 
-Center content within a container. This container could be any block level element, say a `div`.
-
-There are different sizes for the centered content component which are too wide for this documentation space. Try them out in your layouts to see how they look.
+Centers content within a container. This container could be any block level element, such as a `div`.
 
 ## Basic Usage
 
 ```blade
 <x-bladewind::centered-content size="tiny">
-
     <x-bladewind::card>
         this content is centered in this column
     </x-bladewind::card>
-
 </x-bladewind::centered-content>
 ```
 
+## Sizes
+
+Different sizes are available for the centered content component. Try each in your own layout to see how it looks at full page width.
+
 ```blade
 <x-bladewind::centered-content size="small">
-
     <x-bladewind::card>
         this content is centered in this column
     </x-bladewind::card>
-
 </x-bladewind::centered-content>
 ```
 
@@ -36,11 +34,11 @@ There are different sizes for the centered content component which are too wide 
 
 | Attribute | Default | Description |
 |---|---|---|
-| size | `xl` | Size of the centered container. Available values: `tiny` `small` `medium` `big` `xl` `xxl` `omg` |
+| size | xl | `tiny` \| `small` \| `medium` \| `big` \| `xl` \| `xxl` \| `omg` |
 
 ## Full Example
 
 ```blade
 <x-bladewind::centered-content
-    size="medium"/>
+    size="medium" />
 ```

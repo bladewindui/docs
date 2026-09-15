@@ -14,15 +14,16 @@
         </x-bladewind::checkcards.card>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting"&gt;
-                &lt;x-bladewind::checkcards.card value="dOcean"&gt;
+    @php
+        $checkcardExample1 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting">
+                <x-bladewind::checkcards.card value="dOcean">
                     DigitalOcean
-                &lt;/x-bladewind::checkcards.card&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </x-bladewind::checkcards.card>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkcardExample1"></x-bladewind::code-block>
     <br />
     <x-bladewind::checkcards name="hosting-compact" compact="true">
         <x-bladewind::checkcards.card value="dOcean">
@@ -30,15 +31,16 @@
         </x-bladewind::checkcards.card>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-compact" compact="true"&gt;
-                &lt;x-bladewind::checkcards.card value="dOcean"&gt;
+    @php
+        $checkcardExample2 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-compact" compact="true">
+                <x-bladewind::checkcards.card value="dOcean">
                     DigitalOcean
-                &lt;/x-bladewind::checkcards.card&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </x-bladewind::checkcards.card>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkcardExample2"></x-bladewind::code-block>
     <br />
     <p>
         For convenience the component provides a <code class="inline text-red-500">title</code> attribute that can also be passed in as a slot if you prefer some more customized styling of the title.
@@ -56,19 +58,20 @@
     </x-bladewind::checkcards>
 
     <br />
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-3" max="3"&gt;
-                &lt;div class="grid grid-cols-2 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card value="AWS"
-                        title="Amazon Web Services"&gt;
+    @php
+        $checkcardExample3 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-3" max="3">
+                <div class="grid grid-cols-2 gap-4">
+                    <x-bladewind::checkcards.card value="AWS"
+                        title="Amazon Web Services">
                         A subsidiary of Amazon that provides on-demand ...
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                 ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$checkcardExample3"></x-bladewind::code-block>
 
     <p>
         The selectable card takes up the width of its parent element. If you don't want the cards to take up the entire width you will need to restrict this using flex or grids.
@@ -97,26 +100,27 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-small" max="3"&gt;
-                &lt;div class="grid grid-cols-3 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card name="hosting" value="AWS"&gt;
+    @php
+        $checkcardExample4 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-small" max="3">
+                <div class="grid grid-cols-3 gap-4">
+                    <x-bladewind::checkcards.card name="hosting" value="AWS">
                         Amazon Web Services
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="azure"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="azure">
                         Microsoft Azure
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="dOcean"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="dOcean">
                         DigitalOcean
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                 ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$checkcardExample4"></x-bladewind::code-block>
     <h2 id="max">Max Selection</h2>
     <p>
         By default only one card can be selected at a time. You can increase this by setting the
@@ -147,26 +151,27 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-small" max="3"&gt;
-                &lt;div class="grid grid-cols-3 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card name="hosting" value="AWS"&gt;
+    @php
+        $checkcardExample5 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-small" max="3">
+                <div class="grid grid-cols-3 gap-4">
+                    <x-bladewind::checkcards.card name="hosting" value="AWS">
                         Amazon Web Services
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="azure"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="azure">
                         Microsoft Azure
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="dOcean"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="dOcean">
                         DigitalOcean
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                 ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkcardExample5"></x-bladewind::code-block>
 
     <h3 id="max-errors">Max Selection Error Messages</h3>
     <p>
@@ -199,26 +204,27 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-small" max="3"&gt;
-                &lt;div class="grid grid-cols-3 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card name="hosting" value="AWS"&gt;
+    @php
+        $checkcardExample6 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-small" max="3">
+                <div class="grid grid-cols-3 gap-4">
+                    <x-bladewind::checkcards.card name="hosting" value="AWS">
                         Amazon Web Services
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="azure"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="azure">
                         Microsoft Azure
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="dOcean"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="dOcean">
                         DigitalOcean
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                 ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkcardExample6"></x-bladewind::code-block>
     <h2 id="auto">Automatically Select New Cards</h2>
     <p>
         From the max selection example above, you will notice every time three cards are selected, clicking on a fourth card automatically clears the third card that was previously selected.
@@ -249,30 +255,31 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers" data-line="3,5">
-        <code>
-            &lt;x-bladewind::checkcards
+    @php
+        $checkcardExample7 = <<<'HTML'
+            <x-bladewind::checkcards
                 name="hosting-auto"
                 show_error="true"
                 max="3"
-                auto_select_new="false"&gt;
-                &lt;div class="grid grid-cols-3 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card name="hosting" value="AWS"&gt;
+                auto_select_new="false">
+                <div class="grid grid-cols-3 gap-4">
+                    <x-bladewind::checkcards.card name="hosting" value="AWS">
                         Amazon Web Services
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="azure"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="azure">
                         Microsoft Azure
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
 
-                    &lt;x-bladewind::checkcards.card name="hosting" value="dOcean"&gt;
+                    <x-bladewind::checkcards.card name="hosting" value="dOcean">
                         DigitalOcean
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                 ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,5" :code="$checkcardExample7"></x-bladewind::code-block>
 
     <h2 id="icons-avatars">Icons and Avatars</h2>
     <p>
@@ -300,23 +307,24 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers" data-line="5,9">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-icons"&gt;
-                &lt;div class="grid grid-cols-2 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card
+    @php
+        $checkcardExample8 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-icons">
+                <div class="grid grid-cols-2 gap-4">
+                    <x-bladewind::checkcards.card
                         value="AWS" title="AWS"
-                        icon="cloud-arrow-up"&gt;
+                        icon="cloud-arrow-up">
                         A copy of your messages will be backed up to Amazon Web Services ...
-                    &lt;/x-bladewind::checkcards.card&gt;
-                    &lt;x-bladewind::checkcards.card value="gdrive" title="Google Drive"
-                        icon="circle-stack"&gt;
+                    </x-bladewind::checkcards.card>
+                    <x-bladewind::checkcards.card value="gdrive" title="Google Drive"
+                        icon="circle-stack">
                         A copy of your messages will be backed up to Google Drive ...
-                    &lt;/x-bladewind::checkcards.card&gt;
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                    </x-bladewind::checkcards.card>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,9" :code="$checkcardExample8"></x-bladewind::code-block>
     <h3>Avatars</h3>
     <p>
        Avatars can be used instead of icons. This also relies on a stripped down version of the BladewindUI <a href="/component/avatar">Avatar</a> component.
@@ -336,25 +344,26 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers" data-line="5,11">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-avatar" max="2"&gt;
-                &lt;div class="grid grid-cols-2 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card
+    @php
+        $checkcardExample9 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-avatar" max="2">
+                <div class="grid grid-cols-2 gap-4">
+                    <x-bladewind::checkcards.card
                         value="mike" title="Michael Ocansey"
-                        avatar="/assets/images/me.jpeg"&gt;
+                        avatar="/assets/images/me.jpeg">
                         Follow Michael K. Ocansey to know when they post a...
-                    &lt;/x-bladewind::checkcards.card&gt;
-                    &lt;x-bladewind::checkcards.card
+                    </x-bladewind::checkcards.card>
+                    <x-bladewind::checkcards.card
                         value="francis"
                         title="Francis Appiah"
-                        avatar="/assets/images/francis.png"&gt;
+                        avatar="/assets/images/francis.png">
                         Follow Francis Appiah to know when they post any new ...
-                    &lt;/x-bladewind::checkcards.card&gt;
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                    </x-bladewind::checkcards.card>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,11" :code="$checkcardExample9"></x-bladewind::code-block>
     <h2 id="colours">Colours</h2>
     <p>
         The border colour can be changed by setting the <code class="inline text-red-500">border_color</code> attribute.
@@ -373,20 +382,21 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-colours"
-                border_color="red"&gt;
-                &lt;div class="grid grid-cols-2 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card
-                        value="AWS" title="AWS" icon="cloud-arrow-up"&gt;
+    @php
+        $checkcardExample10 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-colours"
+                border_color="red">
+                <div class="grid grid-cols-2 gap-4">
+                    <x-bladewind::checkcards.card
+                        value="AWS" title="AWS" icon="cloud-arrow-up">
                         Your messages will be backed up to Amazon Web Services.
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                     ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$checkcardExample10"></x-bladewind::code-block>
     <br />
     <x-bladewind::checkcards name="hosting-colours2" border_color="orange" color="orange">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -399,20 +409,21 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-colours"
-                border_color="orange" color="orange"&gt;
-                &lt;div class="grid grid-cols-2 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card
-                        value="AWS" title="AWS" icon="cloud-arrow-up"&gt;
+    @php
+        $checkcardExample11 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-colours"
+                border_color="orange" color="orange">
+                <div class="grid grid-cols-2 gap-4">
+                    <x-bladewind::checkcards.card
+                        value="AWS" title="AWS" icon="cloud-arrow-up">
                         Your messages will be backed up to Amazon Web Services.
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                     ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$checkcardExample11"></x-bladewind::code-block>
     <br />
     <x-bladewind::checkcards name="hosting-avatar2" max="2" border_color="purple" color="purple">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -425,21 +436,22 @@
         </div>
     </x-bladewind::checkcards>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::checkcards name="hosting-avatar2" max="2"
-                 border_color="purple" color="purple"&gt;
-                &lt;div class="grid grid-cols-2 gap-4"&gt;
-                    &lt;x-bladewind::checkcards.card
+    @php
+        $checkcardExample12 = <<<'HTML'
+            <x-bladewind::checkcards name="hosting-avatar2" max="2"
+                 border_color="purple" color="purple">
+                <div class="grid grid-cols-2 gap-4">
+                    <x-bladewind::checkcards.card
                         value="mike" title="Michael Ocansey"
-                        avatar="MO"&gt;
+                        avatar="MO">
                         Follow Michael K. Ocansey to know when they post a...
-                    &lt;/x-bladewind::checkcards.card&gt;
+                    </x-bladewind::checkcards.card>
                     ...
-                &lt;/div&gt;
-            &lt;/x-bladewind::checkcards&gt;
-        </code>
-    </pre>
+                </div>
+            </x-bladewind::checkcards>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$checkcardExample12"></x-bladewind::code-block>
     <h2 id="forms">Form Submission</h2>
     <p>
         Checkable cards can be used within forms as a substitute for checkboxes or radio buttons. The <code class="inline text-red-500">name</code> specified
@@ -449,13 +461,14 @@
         Using the <b>hosting</b> name from our examples above, after submitting the form the value of the hosting checkcards can be accessed using any of the following ways permitted in Laravel.
     </p>
 
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $checkcardExample13 = <<<'HTML'
             $request->get('hosting');
             $request->input('hosting');
             $request->hosting;
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$checkcardExample13"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Checkcard component.</p>
@@ -624,42 +637,44 @@
     </x-bladewind::table>
 
     <h3 class="pb-2 ">Checkcards with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::checkcards
-    name="hosting"
-    icon="calculator",
-    avatar="OK",
-    avatar_size="medium",
-    class="",
-    required="false",
-    max="3",
-    compact="false",
-    color="primary",
-    radius="medium",
-    border_width="2",
-    border_color="gray",
-    align_items="top",
-    show_error="false",
-    auto_select_new="true",
-    selected_value="azure,google"
-    error_message="You can select only up to 3 companies"
-    error_heading="Check selection!"&gt;
-</code>
-    </pre>
+    @php
+        $checkcardExample14 = <<<'HTML'
+            <x-bladewind::checkcards
+                name="hosting"
+                icon="calculator",
+                avatar="OK",
+                avatar_size="medium",
+                class="",
+                required="false",
+                max="3",
+                compact="false",
+                color="primary",
+                radius="medium",
+                border_width="2",
+                border_color="gray",
+                align_items="top",
+                show_error="false",
+                auto_select_new="true",
+                selected_value="azure,google"
+                error_message="You can select only up to 3 companies"
+                error_heading="Check selection!">
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkcardExample14"></x-bladewind::code-block>
     <h3 class="pb-2 ">Checkcard with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::checkcards.card
-    title="Amazon Web Services"
-    value="aws"
-    icon="calculator",
-    avatar="OK",
-    avatar_size="medium",
-    class=""
-    icon_css="size-13" /&gt;
-</code>
-    </pre>
+    @php
+        $checkcardExample15 = <<<'HTML'
+            <x-bladewind::checkcards.card
+                title="Amazon Web Services"
+                value="aws"
+                icon="calculator",
+                avatar="OK",
+                avatar_size="medium",
+                class=""
+                icon_css="size-13" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkcardExample15"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for the card component is available in <code class="inline">resources > views > components > bladewind > checkcards > index.blade.php</code>

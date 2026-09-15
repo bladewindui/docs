@@ -22,19 +22,20 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-markup line-numbers" data-line="3-7">
-        <code>
-            &lt;x-bladewind.table hover_effect="false" divider="thin"&gt;
+    @php
+        $dropmenuExample1 = <<<'HTML'
+            <x-bladewind.table hover_effect="false" divider="thin">
             ...
-            &lt;x-bladewind::dropmenu&gt;
-                &lt;x-bladewind::dropmenu.item&gt;Invite to Project &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;x-bladewind::dropmenu.item&gt;Assign Task&lt;/x-bladewind::dropmenu.item&gt;
-                &lt;x-bladewind::dropmenu.item&gt;Send Message&lt;/x-bladewind::dropmenu.item&gt;
-            &lt;/x-bladewind::dropmenu&gt;
+            <x-bladewind::dropmenu>
+                <x-bladewind::dropmenu.item>Invite to Project </x-bladewind::dropmenu.item>
+                <x-bladewind::dropmenu.item>Assign Task</x-bladewind::dropmenu.item>
+                <x-bladewind::dropmenu.item>Send Message</x-bladewind::dropmenu.item>
+            </x-bladewind::dropmenu>
             ...
-            &lt;/x-bladewind.table&gt;
-        </code>
-    </pre>
+            </x-bladewind.table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3-7" :code="$dropmenuExample1"></x-bladewind::code-block>
 
     <p>
         By default the Dropmenu is triggered using the <code class="inline">horizontal ellipsis</code> icon found on <a href="https://heroicons.com/" target="_blank">Heroicons</a>.
@@ -62,42 +63,43 @@
         </div>
     </div>
     <br />
-    <pre class="language-markup line-numbers" data-line="3,13,24">
-        <code>
-            &lt;div class="grid grid-cols-3 gap-6"&gt;
-                &lt;div class="text-center"&gt;
-                    &lt;x-bladewind::dropmenu trigger="musical-note-icon"&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+    @php
+        $dropmenuExample2 = <<<'HTML'
+            <div class="grid grid-cols-3 gap-6">
+                <div class="text-center">
+                    <x-bladewind::dropmenu trigger="musical-note-icon">
+                        <x-bladewind::dropmenu.item>
                             Add to playlist
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                        <x-bladewind::dropmenu.item>
                             Play again
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                    &lt;/x-bladewind::dropmenu&gt;
-                &lt;/div&gt;
-                &lt;div class="text-center"&gt;
-                    &lt;x-bladewind::dropmenu trigger="arrow-down-circle-icon"&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                    </x-bladewind::dropmenu>
+                </div>
+                <div class="text-center">
+                    <x-bladewind::dropmenu trigger="arrow-down-circle-icon">
+                        <x-bladewind::dropmenu.item>
                             Download file
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                        <x-bladewind::dropmenu.item>
                             Add to library
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                    &lt;/x-bladewind::dropmenu&gt;
-                &lt;/div&gt;
-                &lt;div class="text-center"&gt;
-                    &lt;x-bladewind::dropmenu trigger="cog-6-tooth-icon"&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                    </x-bladewind::dropmenu>
+                </div>
+                <div class="text-center">
+                    <x-bladewind::dropmenu trigger="cog-6-tooth-icon">
+                        <x-bladewind::dropmenu.item>
                             Company settings
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                        <x-bladewind::dropmenu.item>
                             User settings
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                    &lt;/x-bladewind::dropmenu&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+                        </x-bladewind::dropmenu.item>
+                    </x-bladewind::dropmenu>
+                </div>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,13,24" :code="$dropmenuExample2"></x-bladewind::code-block>
     <h2 id="trigger">Trigger Properties</h2>
     <h3>trigger_css</h3>
     <p>
@@ -111,21 +113,22 @@
         </x-bladewind::dropmenu>
     </div>
     <br />
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;div class="text-center"&gt;
-                &lt;x-bladewind::dropmenu trigger="musical-note-icon"
-                     trigger_css="bg-pink-600 text-white p-2 rounded-full !h-10 !w-10"&gt;
-                    &lt;x-bladewind::dropmenu.item&gt;
+    @php
+        $dropmenuExample3 = <<<'HTML'
+            <div class="text-center">
+                <x-bladewind::dropmenu trigger="musical-note-icon"
+                     trigger_css="bg-pink-600 text-white p-2 rounded-full !h-10 !w-10">
+                    <x-bladewind::dropmenu.item>
                         Add to playlist
-                    &lt;/x-bladewind::dropmenu.item&gt;
-                    &lt;x-bladewind::dropmenu.item&gt;
+                    </x-bladewind::dropmenu.item>
+                    <x-bladewind::dropmenu.item>
                         Play again
-                    &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;/x-bladewind::dropmenu&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+                    </x-bladewind::dropmenu.item>
+                </x-bladewind::dropmenu>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$dropmenuExample3"></x-bladewind::code-block>
     <h3>trigger_on</h3>
     <p>
         By default the Dropmenu is displayed when you click on the trigger. It is possible to change this behaviour by defining the
@@ -138,22 +141,23 @@
         </x-bladewind::dropmenu>
     </div>
     <br />
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;div class="text-center"&gt;
-                &lt;x-bladewind::dropmenu trigger="musical-note-icon"
+    @php
+        $dropmenuExample4 = <<<'HTML'
+            <div class="text-center">
+                <x-bladewind::dropmenu trigger="musical-note-icon"
                     trigger_css="bg-green-600 text-white p-2 rounded-full !h-10 !w-10"
-                    trigger_on="mouseover"&gt;
-                    &lt;x-bladewind::dropmenu.item&gt;
+                    trigger_on="mouseover">
+                    <x-bladewind::dropmenu.item>
                         Add to playlist
-                    &lt;/x-bladewind::dropmenu.item&gt;
-                    &lt;x-bladewind::dropmenu.item&gt;
+                    </x-bladewind::dropmenu.item>
+                    <x-bladewind::dropmenu.item>
                         Play again
-                    &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;/x-bladewind::dropmenu&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+                    </x-bladewind::dropmenu.item>
+                </x-bladewind::dropmenu>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$dropmenuExample4"></x-bladewind::code-block>
     <h3>Non Icon Triggers</h3>
     <p>
         To trigger the Dropmenu using any HTML element other than an icon, you will need to define the trigger as a slot.
@@ -190,52 +194,53 @@
         </div>
     </div>
     <br />
-    <pre class="language-markup line-numbers" data-line="4,8,20,34">
-        <code>
-             &lt;div class="grid grid-cols-2 gap-6"&gt;
-                &lt;div class="text-center"&gt;
-                    &lt;x-bladewind::dropmenu&gt;
-                        &lt;x-slot:trigger&gt;
-                            &lt;x-bladewind.button type="secondary" size="tiny"&gt;
+    @php
+        $dropmenuExample5 = <<<'HTML'
+             <div class="grid grid-cols-2 gap-6">
+                <div class="text-center">
+                    <x-bladewind::dropmenu>
+                        <x-slot:trigger>
+                            <x-bladewind.button type="secondary" size="tiny">
                                 Options
-                            &lt;/x-bladewind.button&gt;
-                        &lt;/x-slot:trigger&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                            </x-bladewind.button>
+                        </x-slot:trigger>
+                        <x-bladewind::dropmenu.item>
                             Add to playlist
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                        <x-bladewind::dropmenu.item>
                             Play again
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                    &lt;/x-bladewind::dropmenu&gt;
-                &lt;/div&gt;
-                &lt;div class="text-center"&gt;
-                    &lt;x-bladewind::dropmenu&gt;
-                        &lt;x-slot:trigger&gt;
-                            &lt;div class="flex space-x-2 items-center shadow px-4 rounded-md"&gt;
-                                &lt;div class="grow"&gt;
-                                    &lt;x-bladewind.avatar image="/assets/...png" /&gt;
-                                &lt;/div&gt;
-                                &lt;div class="grow"&gt;
-                                    &lt;div&gt;&lt;strong&gt;John C. Doe&lt;/strong&gt;&lt;/div&gt;
-                                    &lt;div class="text-sm"&gt;Tech, IT Support&lt;/div&gt;
-                                &lt;/div&gt;
-                                &lt;div&gt;
-                                    &lt;x-bladewind.icon name="chevron-down"
-                                        class="!h-4 !w-4" /&gt;
-                                &lt;/div&gt;
-                            &lt;/div&gt;
-                        &lt;/x-slot:trigger&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                    </x-bladewind::dropmenu>
+                </div>
+                <div class="text-center">
+                    <x-bladewind::dropmenu>
+                        <x-slot:trigger>
+                            <div class="flex space-x-2 items-center shadow px-4 rounded-md">
+                                <div class="grow">
+                                    <x-bladewind.avatar image="/assets/...png" />
+                                </div>
+                                <div class="grow">
+                                    <div><strong>John C. Doe</strong></div>
+                                    <div class="text-sm">Tech, IT Support</div>
+                                </div>
+                                <div>
+                                    <x-bladewind.icon name="chevron-down"
+                                        class="!h-4 !w-4" />
+                                </div>
+                            </div>
+                        </x-slot:trigger>
+                        <x-bladewind::dropmenu.item>
                             Deactivate my account
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                        &lt;x-bladewind::dropmenu.item&gt;
+                        </x-bladewind::dropmenu.item>
+                        <x-bladewind::dropmenu.item>
                             Delete Profile
-                        &lt;/x-bladewind::dropmenu.item&gt;
-                    &lt;/x-bladewind::dropmenu&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+                        </x-bladewind::dropmenu.item>
+                    </x-bladewind::dropmenu>
+                </div>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,8,20,34" :code="$dropmenuExample5"></x-bladewind::code-block>
     <h2 id="menu-items">Dropmenu Item Actions</h2>
     <p>
         The Dropmenu items are the actual line items within your Dropmenu. Each item can contain any piece of HTML code
@@ -260,19 +265,20 @@
         <p>This is just n example of how Dropmenu Items can launch modals</p>
     </x-bladewind::modal>
 <br />
-    <pre class="language-markup line-numbers" data-line="4,7">
-        <code>
-            &lt;x-bladewind::dropmenu trigger="light-bulb-icon"
-                trigger_css="bg-yellow-400 ..."&gt;
-                &lt;x-bladewind::dropmenu.item&gt;
-                    &lt;a href="/library" target="_blank"&gt;Go to Library&lt;/a&gt;
-                &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;x-bladewind::dropmenu.item onclick="showModal('dropmenu-demo')"&gt;
+    @php
+        $dropmenuExample6 = <<<'HTML'
+            <x-bladewind::dropmenu trigger="light-bulb-icon"
+                trigger_css="bg-yellow-400 ...">
+                <x-bladewind::dropmenu.item>
+                    <a href="/library" target="_blank">Go to Library</a>
+                </x-bladewind::dropmenu.item>
+                <x-bladewind::dropmenu.item onclick="showModal('dropmenu-demo')">
                     Show a Modal
-                &lt;/x-bladewind::dropmenu.item&gt;
-            &lt;/x-bladewind::dropmenu&gt;
-        </code>
-    </pre>
+                </x-bladewind::dropmenu.item>
+            </x-bladewind::dropmenu>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,7" :code="$dropmenuExample6"></x-bladewind::code-block>
 
     <h2 id="headers">Headers, Icons and Dividers</h2>
     <h3>Headers</h3>
@@ -282,15 +288,16 @@
         the cursor displayed is the default pointer and there is a divider separating the header from the next menu item.
         To define a Dropmenu item as a header, set <code class="inline text-red-500">header="true</code>.
     </p>
-    <pre class="language-markup">
-        <code>
+    @php
+        $dropmenuExample7 = <<<'HTML'
             ...
-            &lt;x-bladewind::dropmenu.item header="true"&gt;
+            <x-bladewind::dropmenu.item header="true">
                 // define heading here
-            &lt;/x-bladewind::dropmenu.item&gt;
+            </x-bladewind::dropmenu.item>
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$dropmenuExample7"></x-bladewind::code-block>
 
     <h3>Icons</h3>
     <p>
@@ -298,32 +305,34 @@
         This makes use of the BladewindUI <a href="/component/icon">Icon component</a>. This is useful only if you have menu items that fit on one line and you want to prefix each line with an icon.
         To define a Dropmenu item with an icon , set the <code class="inline text-red-500">icon</code> attribute with any icon name from Heroicons. Unlike the icon used in the <code class="inline text-red-500">trigger</code> attribute of the Dropmenu component, items do not require the <strong>-icon</strong> at the end of the icon name.
     </p>
-    <pre class="language-markup">
-        <code>
+    @php
+        $dropmenuExample8 = <<<'HTML'
             ...
-            &lt;x-bladewind::dropmenu.item icon="square-pencil"&gt;
+            <x-bladewind::dropmenu.item icon="square-pencil">
                 Edit Profile
-            &lt;/x-bladewind::dropmenu.item&gt;
+            </x-bladewind::dropmenu.item>
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$dropmenuExample8"></x-bladewind::code-block>
 
     <p>
         By default, icons are positioned on the left of the menu item content. To switch the icon position to the right of the menu item content, set <code class="inline text-red-500">icon_right="true"</code>.
         Setting the attribute on the <code class="inline">x-bladewind::dropmenu</code> component will shift all menu items in the menu to the right.
         Alternatively, you can set the attribute on one or more menu items within the Dropmenu component.
     </p>
-    <pre class="language-markup">
-        <code>
+    @php
+        $dropmenuExample9 = <<<'HTML'
             ...
-            &lt;x-bladewind::dropmenu icon_right="true"&gt;
-                &lt;x-bladewind::dropmenu.item&gt;
+            <x-bladewind::dropmenu icon_right="true">
+                <x-bladewind::dropmenu.item>
                 ...
-                &lt;/x-bladewind::dropmenu.item&gt;
-            &lt;/x-bladewind::dropmenu&gt;
+                </x-bladewind::dropmenu.item>
+            </x-bladewind::dropmenu>
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$dropmenuExample9"></x-bladewind::code-block>
 
     <h3>Dividers</h3>
     <p>
@@ -331,26 +340,28 @@
         A divider is simply a non-clickable line separating menu items. To define a Dropmenu item as a divider , set <code class="inline text-red-500">divider="true"</code>.
          Any text added to the menu item will be ignored.
     </p>
-    <pre class="language-markup">
-        <code>
+    @php
+        $dropmenuExample10 = <<<'HTML'
             ...
-            &lt;x-bladewind::dropmenu.item divider="true" /&gt;
+            <x-bladewind::dropmenu.item divider="true" />
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$dropmenuExample10"></x-bladewind::code-block>
     <p>
         By default Dropmenu Items are not divided. You can tell each menu item apart on mouseover. If you prefer to have your menu items separated by a thin gray line you can set
         <code class="inline text-red-500">divided="true"</code> on the Dropmenu component itself (not on the menu items).
     </p>
-    <pre class="language-markup">
-        <code>
+    @php
+        $dropmenuExample11 = <<<'HTML'
             ...
-            &lt;x-bladewind::dropmenu divided="true"&gt;
+            <x-bladewind::dropmenu divided="true">
                 ...
-            &lt;/x-bladewind::dropmenu&gt;
+            </x-bladewind::dropmenu>
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$dropmenuExample11"></x-bladewind::code-block>
     <p>
         The example below addresses headers, icons and dividers.
     </p>
@@ -399,62 +410,64 @@
         </x-bladewind::dropmenu>
     </div>
 <br />
-    <pre class="language-markup line-numbers" data-line="14,30,46">
-        <code>
-            &lt;x-bladewind::dropmenu&gt;
+    @php
+        $dropmenuExample12 = <<<'HTML'
+            <x-bladewind::dropmenu>
 
-                &lt;x-slot:trigger&gt;
-                    &lt;div class="flex space-x-2 items-center rounded-md"&gt;
-                        &lt;div class="grow"&gt;
-                            &lt;x-bladewind.avatar image="/assets/...jpg" /&gt;
-                        &lt;/div&gt;
-                        &lt;div&gt;
-                            &lt;x-bladewind.icon name="chevron-down" class="!h-4 !w-4" /&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/x-slot:trigger&gt;
+                <x-slot:trigger>
+                    <div class="flex space-x-2 items-center rounded-md">
+                        <div class="grow">
+                            <x-bladewind.avatar image="/assets/...jpg" />
+                        </div>
+                        <div>
+                            <x-bladewind.icon name="chevron-down" class="!h-4 !w-4" />
+                        </div>
+                    </div>
+                </x-slot:trigger>
 
-                &lt;x-bladewind::dropmenu.item header="true"&gt;
-                    &lt;div class="grow"&gt;
-                        &lt;div&gt;&lt;strong&gt;Jane A. Doe&lt;/strong&gt;&lt;/div&gt;
-                        &lt;div class="text-sm"&gt;@jane-the-coder&lt;/div&gt;
-                        &lt;div class="text-sm"&gt;jane@bladewindui.com&lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/x-bladewind::dropmenu.item&gt;
+                <x-bladewind::dropmenu.item header="true">
+                    <div class="grow">
+                        <div><strong>Jane A. Doe</strong></div>
+                        <div class="text-sm">BWATSIGNPLACEHOLDERjane-the-coder</div>
+                        <div class="text-sm">janeBWATSIGNPLACEHOLDERbladewindui.com</div>
+                    </div>
+                </x-bladewind::dropmenu.item>
 
-                &lt;x-bladewind::dropmenu.item icon="pencil-square"&gt;
+                <x-bladewind::dropmenu.item icon="pencil-square">
                     Edit Profile
-                &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;x-bladewind::dropmenu.item icon="trash" icon_css="!text-red-300"&gt;
-                    &lt;span class="text-red-500"&gt;Delete Profile&lt;/span&gt;
-                &lt;/x-bladewind::dropmenu.item&gt;
+                </x-bladewind::dropmenu.item>
+                <x-bladewind::dropmenu.item icon="trash" icon_css="!text-red-300">
+                    <span class="text-red-500">Delete Profile</span>
+                </x-bladewind::dropmenu.item>
 
-                &lt;x-bladewind::dropmenu.item divider /&gt;
+                <x-bladewind::dropmenu.item divider />
 
-                &lt;x-bladewind::dropmenu.item icon="computer-desktop"&gt;
+                <x-bladewind::dropmenu.item icon="computer-desktop">
                     Your Repositories
-                &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;x-bladewind::dropmenu.item icon="briefcase"&gt;
+                </x-bladewind::dropmenu.item>
+                <x-bladewind::dropmenu.item icon="briefcase">
                     Your Projects
-                &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;x-bladewind::dropmenu.item icon="building-office"&gt;
+                </x-bladewind::dropmenu.item>
+                <x-bladewind::dropmenu.item icon="building-office">
                     Your Organizations
-                &lt;/x-bladewind::dropmenu.item&gt;
-                &lt;x-bladewind::dropmenu.item icon="star"&gt;
+                </x-bladewind::dropmenu.item>
+                <x-bladewind::dropmenu.item icon="star">
                     Your Stars
-                &lt;/x-bladewind::dropmenu.item&gt;
+                </x-bladewind::dropmenu.item>
 
-                &lt;x-bladewind::dropmenu.item divider /&gt;
+                <x-bladewind::dropmenu.item divider />
 
-                &lt;x-bladewind::dropmenu.item hover="false"&gt;
-                    &lt;x-bladewind.button color="purple" radius="small" size="small" class="w-full"&gt;
+                <x-bladewind::dropmenu.item hover="false">
+                    <x-bladewind.button color="purple" radius="small" size="small" class="w-full">
                         Sign Out
-                    &lt;/x-bladewind.button&gt;
-                &lt;/x-bladewind::dropmenu.item&gt;
+                    </x-bladewind.button>
+                </x-bladewind::dropmenu.item>
 
-            &lt;/x-bladewind::dropmenu&gt;
-        </code>
-    </pre>
+            </x-bladewind::dropmenu>
+            HTML;
+        $dropmenuExample12 = str_replace('BWATSIGNPLACEHOLDER', '@', $dropmenuExample12);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="14,30,46" :code="$dropmenuExample12"></x-bladewind::code-block>
 
     <h2 id="positions">Menu Position</h2>
     <p>
@@ -553,25 +566,27 @@
         </div>
         <div>
             <br />
-            <pre class="language-markup line-numbers" data-line="14,30,46">
-                <code>
-                    &lt;x-bladewind::dropmenu
-                        position="left"&gt;
-                    ...
-                    &lt;/x-bladewind::dropmenu&gt;
-                </code>
-            </pre>
+            @php
+        $dropmenuExample13 = <<<'HTML'
+            <x-bladewind::dropmenu
+                position="left">
+            ...
+            </x-bladewind::dropmenu>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="14,30,46" :code="$dropmenuExample13"></x-bladewind::code-block>
         </div>
         <div>
             <br />
-            <pre class="language-markup line-numbers" data-line="14,30,46">
-                <code>
-                    &lt;x-bladewind::dropmenu
-                        position="right"&gt;
-                    ...
-                    &lt;/x-bladewind::dropmenu&gt;
-                </code>
-            </pre>
+            @php
+        $dropmenuExample14 = <<<'HTML'
+            <x-bladewind::dropmenu
+                position="right">
+            ...
+            </x-bladewind::dropmenu>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="14,30,46" :code="$dropmenuExample14"></x-bladewind::code-block>
         </div>
     </div>
 
@@ -626,13 +641,14 @@
 
 
     <br />
-    <pre class="language-markup line-numbers" data-line="14,30,46">
-        <code>
-            &lt;x-bladewind::dropmenu scrollable="true"&gt;
+    @php
+        $dropmenuExample15 = <<<'HTML'
+            <x-bladewind::dropmenu scrollable="true">
             ...
-            &lt;/x-bladewind::dropmenu&gt;
-        </code>
-    </pre>
+            </x-bladewind::dropmenu>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="14,30,46" :code="$dropmenuExample15"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">
@@ -800,14 +816,19 @@
         <tr><td><code class="inline">name.hide()</code></td><td>Close the menu.</td></tr>
         <tr><td><code class="inline">name.toggle()</code></td><td>Open or close the menu based on its current state.</td></tr>
     </x-bladewind::table>
-    <pre class="language-javascript"><code>profile_menu.show();
-profile_menu.hide();
-profile_menu.toggle();</code></pre>
+    @php
+        $dropmenuExample16 = <<<'HTML'
+            profile_menu.show();
+            profile_menu.hide();
+            profile_menu.toggle();
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$dropmenuExample16"></x-bladewind::code-block>
 
     <h3>Dropmenu with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::dropmenu
+    @php
+        $dropmenuExample17 = <<<'HTML'
+            <x-bladewind::dropmenu
                 trigger="pencil-square-icon"
                 name="profile-menu"
                 trigger_css="!bg-yellow-400"
@@ -818,22 +839,32 @@ profile_menu.toggle();</code></pre>
                 height="150"
                 hide_after_click="true"
                 position="left"
-                class="mt-0"&gt;
+                class="mt-0">
 
-                &lt;x-bladewind::dropmenu.item
+                <x-bladewind::dropmenu.item
                     icon="pencil-square"
                     icon_css="text-red-400"
                     divider="false"
                     padded="false"
                     header="false"
                     hover="false"
-                    class="p-2"&gt;
+                    class="p-2">
                 ...
-                &lt;x-bladewind::dropmenu.item&gt;
+                <x-bladewind::dropmenu.item>
 
-            &lt;/x-bladewind::dropmenu&gt;
-        </code>
-    </pre>
+            </x-bladewind::dropmenu>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$dropmenuExample17"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Dropmenu Inside Livewire</h2>
+    <p>
+        The menu keeps track of whether it is open or closed outside of the DOM that Livewire manages, so if a Livewire component
+        re-renders this markup for a reason that has nothing to do with the menu, the menu resets to closed. If you find that happening,
+        wrap the trigger and the menu in <code class="inline">wire:ignore</code> so Livewire leaves that part of the page alone.
+        The component also guards against a Livewire re-render creating a second copy of itself, so re-rendering it will not leave
+        behind duplicate click listeners on the page.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > dropmenu > index.blade.php</code>,
@@ -848,6 +879,7 @@ profile_menu.toggle();</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#scrollable">Scrollable items</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Dropmenu inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

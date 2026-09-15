@@ -10,11 +10,12 @@
     <p>
         There can be only one theme switcher on a page. The Bladwind docs uses the theme switcher in the top right corner of the website.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::theme-switcher  /&gt;
-        </code>
-    </pre>
+    @php
+        $themeUswitcherExample1 = <<<'HTML'
+            <x-bladewind::theme-switcher  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$themeUswitcherExample1"></x-bladewind::code-block>
     <p>
         There are a few customizations available. See the full list of attributes below. Also refer to our <a href="/customize#dark-mode">dark mode customization page</a> for more.
     </p>
@@ -88,9 +89,9 @@
     </x-bladewind::table>
     <p>&nbsp;</p>
     <h3 class="pb-2 ">Theme Switcher with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::theme-switcher
+    @php
+        $themeUswitcherExample2 = <<<'HTML'
+            <x-bladewind::theme-switcher
                 icon_right="false"
                 icon_dir="assets/icons"
                 icon_type="solid"
@@ -99,9 +100,10 @@
                 dark_text="Dark Mode"
                 dark_icon="sun-shades"
                 system_text="Auto Mode"
-                system_icon="day-night" /&gt;
-        </code>
-    </pre>
+                system_icon="day-night" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$themeUswitcherExample2"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > theme-switcher.blade.php</code>

@@ -6,156 +6,188 @@ url: /component/button
 
 # Button
 
-The button component renders as an HTML `<button>` tag by default. Primary and secondary colours are picked from what you define in the `@theme` block of your `app.css`. Buttons come in four types: primary, secondary, circular, and outline. All types support multiple sizes, colours, icons, and spinners.
+The button component renders clickable buttons with configurable type, size, colour, radius, icons, spinners, and states. The primary and secondary colours are picked from what's defined in your project's `app.css` `@theme` block; if not set, buttons default to the library's blue.
 
 ## Basic Usage
 
 ```blade
 <x-bladewind::button>Subscribe Now</x-bladewind::button>
+```
 
-{{-- preserve casing --}}
+By default the component uses a `<button>` tag. To render an `<a>` tag instead, set `tag="a"`.
+
+```blade
+<x-bladewind::button tag="a" href="/">Subscribe Now</x-bladewind::button>
+```
+
+Set `uppercasing="false"` to stop the button text being rendered all uppercase.
+
+```blade
 <x-bladewind::button uppercasing="false">Subscribe Now</x-bladewind::button>
-
-{{-- render as an <a> tag --}}
-<x-bladewind::button tag="a" href="/pricing">Subscribe Now</x-bladewind::button>
 ```
 
 ## Button Types
 
-### Primary
+BladewindUI buttons come in four types: primary, secondary, circular, and outline (outline applies to all three others).
+
+### Primary Buttons
+
+Depend on the primary colour defined in your project's Tailwind config.
 
 ```blade
 <x-bladewind::button>Primary Button</x-bladewind::button>
-<x-bladewind::button outline="true">Primary Outline</x-bladewind::button>
+<x-bladewind::button outline="true">Primary Button</x-bladewind::button>
 ```
 
-### Secondary
+### Secondary Buttons
+
+Depend on the secondary colour defined in your project's Tailwind config.
 
 ```blade
 <x-bladewind::button type="secondary">Secondary Button</x-bladewind::button>
-<x-bladewind::button type="secondary" outline="true">Secondary Outline</x-bladewind::button>
+<x-bladewind::button type="secondary" outline="true">Secondary Button</x-bladewind::button>
 ```
 
-### Circular
+### Circular Buttons
 
-Circular buttons accept icons only.
+The circular button variant accepts only icons.
 
 ```blade
 <x-bladewind::button.circle icon="bell-alert" />
 <x-bladewind::button.circle outline="true" icon="bell-alert" />
+```
 
-{{-- secondary circular (use color instead of type) --}}
+Circular buttons set `type="circular"` internally, so a secondary circular button isn't directly possible. As a workaround, set `color="secondary"`.
+
+```blade
 <x-bladewind::button.circle color="secondary" outline icon="bell-alert" />
 ```
 
-### Outline
+### Outline Buttons
 
-Set `outline="true"` on any button to strip the background and keep only the border.
+Set `outline="true"` to render outline-only buttons. The outline picks up the `color` attribute for primary buttons; secondary buttons use their one colour. All other attributes (like `radius`) are preserved — only the background colour is lost.
 
 ```blade
-<x-bladewind::button outline="true" color="cyan" radius="full">Cyan Outline</x-bladewind::button>
-<x-bladewind::button type="secondary" outline="true" radius="full">Secondary Outline</x-bladewind::button>
+<x-bladewind::button radius="full" outline="true" color="cyan">Cyan outline</x-bladewind::button>
+<x-bladewind::button radius="full" outline="true" type="secondary">Secondary outline</x-bladewind::button>
+```
 
-{{-- custom border width (default is 2) --}}
+By default outline buttons use a `border-2` width. Change it with `border_width` (unprefixed Tailwind border width).
+
+```blade
+<x-bladewind::button outline="true" border_width="2">Border 2</x-bladewind::button>
 <x-bladewind::button outline="true" border_width="4">Border 4</x-bladewind::button>
 <x-bladewind::button outline="true" border_width="8">Border 8</x-bladewind::button>
 ```
 
-## Sizes
+## Button States
 
-Available sizes: `tiny`, `small`, `regular` (default), `medium`, `big`. Sizes apply to both regular and circular buttons.
-
-```blade
-<x-bladewind::button size="tiny">Tiny</x-bladewind::button>
-<x-bladewind::button size="small">Small</x-bladewind::button>
-<x-bladewind::button>Regular (default)</x-bladewind::button>
-<x-bladewind::button size="medium">Medium</x-bladewind::button>
-<x-bladewind::button size="big">Big</x-bladewind::button>
-```
-
-## Radii
+### No Focus Rings
 
 ```blade
-<x-bladewind::button radius="none">None</x-bladewind::button>
-<x-bladewind::button radius="small">Small</x-bladewind::button>
-<x-bladewind::button radius="medium">Medium</x-bladewind::button>
-<x-bladewind::button radius="full">Full</x-bladewind::button>
+<x-bladewind::button show_focus_ring="false">No focus ring</x-bladewind::button>
 ```
 
-## Disabled
+### Different Focus Ring Widths
+
+```blade
+<x-bladewind::button>Default</x-bladewind::button>
+<x-bladewind::button ring_width="1">Ring 1</x-bladewind::button>
+<x-bladewind::button ring_width="2">Ring 2</x-bladewind::button>
+<x-bladewind::button ring_width="4">Ring 4</x-bladewind::button>
+<x-bladewind::button ring_width="8">Ring 8</x-bladewind::button>
+```
+
+### Disabled Button
 
 ```blade
 <x-bladewind::button disabled="true">Disabled</x-bladewind::button>
-<x-bladewind::button disabled="true" type="secondary">Disabled Secondary</x-bladewind::button>
-<x-bladewind::button disabled="true" outline>Disabled Outline</x-bladewind::button>
+<x-bladewind::button disabled="true" type="secondary">Disabled secondary</x-bladewind::button>
+<x-bladewind::button disabled="true" outline="true">Disabled outline</x-bladewind::button>
 ```
 
-## Focus Rings
+### Different Sizes
+
+Available sizes: `tiny`, `small`, `regular` (default), `medium`, `big`.
 
 ```blade
-{{-- hide focus ring --}}
-<x-bladewind::button show_focus_ring="false">No Focus Ring</x-bladewind::button>
-
-{{-- custom ring width --}}
-<x-bladewind::button ring_width="1">Ring 1</x-bladewind::button>
-<x-bladewind::button ring_width="4">Ring 4</x-bladewind::button>
+<x-bladewind::button size="tiny">tiny</x-bladewind::button>
+<x-bladewind::button size="small">small</x-bladewind::button>
+<x-bladewind::button>default</x-bladewind::button>
+<x-bladewind::button size="medium">medium</x-bladewind::button>
+<x-bladewind::button size="big">big</x-bladewind::button>
 ```
 
-## Spinners
+### Different Radii
 
-Set `has_spinner="true"` to include a spinner (hidden by default). Use `show_spinner="true"` to make it visible on load. To trigger the spinner on click, set a `name` and call `showButtonSpinner()` in `onclick`.
+The default is a full radius (very rounded). Change it with the `radius` attribute.
 
 ```blade
-{{-- spinner visible by default --}}
+<x-bladewind::button radius="none">none</x-bladewind::button>
+<x-bladewind::button radius="small">small</x-bladewind::button> {{-- this is the default --}}
+<x-bladewind::button radius="medium">medium</x-bladewind::button>
+<x-bladewind::button radius="full">full</x-bladewind::button>
+```
+
+## With Spinners
+
+Buttons can show a spinner (via the Spinner component) to indicate progress. Set `has_spinner="true"` to enable it; the spinner is hidden by default. Set `show_spinner="true"` to make it visible from the start.
+
+```blade
 <x-bladewind::button has_spinner="true" show_spinner="true">Saving...</x-bladewind::button>
+```
 
-{{-- spinner triggered on click --}}
+To trigger the spinner on click, set `name` and use the `showButtonSpinner()` helper in `onclick`.
+
+```blade
 <x-bladewind::button
     has_spinner="true"
     name="save-user"
     onclick="showButtonSpinner('.save-user')">
-    Save User
+    Click for my spinner
 </x-bladewind::button>
 ```
 
-## Icons
+## With Icons
 
-Set `icon` to any [Heroicons](https://heroicons.com) name. Icons default to the left; use `icon_right="true"` to move them right. Note: `icon_right` is ignored when `has_spinner="true"`.
+Set `icon` to any Heroicons icon name. Icons are positioned left by default; set `icon_right="true"` to position on the right. Note: if both `icon_right="true"` and `has_spinner="true"` are set, the icon is ignored because the spinner takes the right position.
 
 ```blade
-<x-bladewind::button icon="arrow-path">Refresh Page</x-bladewind::button>
-<x-bladewind::button icon="arrow-path" icon_right="true">Refresh Page</x-bladewind::button>
-
-<x-bladewind::button type="secondary" icon="arrow-small-right" icon_right="true">
-    Next Chapter
-</x-bladewind::button>
+<x-bladewind::button icon="arrow-path">Refresh page</x-bladewind::button>
+<x-bladewind::button icon="arrow-path" icon_right="true">Refresh page</x-bladewind::button>
 ```
 
 ## Form Submission
 
-By default the button renders as `<button type="button">` and will not submit forms. Set `can_submit="true"` to render as `<button type="submit">`.
+By default the button renders as `<button type="button">`, which does not submit forms. Set `can_submit="true"` to render `<button type="submit">`.
 
 ```blade
-<x-bladewind::button can_submit="true">Submit Form</x-bladewind::button>
+<form action="" method="get">
+    <x-bladewind::input placeholder="First name" name="first_name" required="true" />
+    <x-bladewind::input name="email" placeholder="Email" type="email" />
+    <x-bladewind::button can_submit="true" class="mx-auto block mt-2 w-full">click me to submit</x-bladewind::button>
+</form>
 ```
 
-## Custom Colours
+## Coloured Button
 
-Only primary buttons support custom colours. Useful when you need a colour that differs from your project's primary (e.g. red delete buttons).
+Only primary buttons can take on different colours. Set `color` to override the default primary colour.
 
 ```blade
-<x-bladewind::button color="red">Red Button</x-bladewind::button>
-<x-bladewind::button color="red" outline>Red Outline</x-bladewind::button>
+<x-bladewind::button color="red">Red button</x-bladewind::button>
+<x-bladewind::button color="red" outline="true">Red outline</x-bladewind::button>
+<x-bladewind::button.circle color="red" icon="bell-alert" />
+<x-bladewind::button.circle color="red" icon="bell-alert" outline="true" />
 ```
 
-Available colours: `primary` `blue` `red` `yellow` `green` `purple` `pink` `orange` `black` `cyan` `violet` `indigo` `fuchsia` `gray`
+The precompiled colours are `red`, `yellow`, `green`, `pink`, `purple`, `gray`, `black`, `orange`, `indigo`, `fuchsia`, `violet`, `cyan`, `blue`. The default `blue` colour is tied to `primary: colors.blue` in `tailwind.config.js`; define a different primary colour there and the default will pick it up.
 
 ## Button Events
 
-Any HTML button event attribute can be passed directly to the component.
+The button component translates to a regular HTML `<button>` tag, so any HTML button event attribute (`onclick`, `onblur`, `onmouseover`, `onmouseout`, etc) can be appended and will fire.
 
 ```blade
-<x-bladewind::button onclick="alert('you clicked me')">Click Me</x-bladewind::button>
+<x-bladewind::button onclick="alert('you clicked me')">I have an onclick</x-bladewind::button>
 ```
 
 ## Attributes
@@ -163,23 +195,23 @@ Any HTML button event attribute can be passed directly to the component.
 | Attribute | Default | Description |
 |---|---|---|
 | type | primary | `primary` \| `secondary` |
-| size | regular | `tiny` \| `small` \| `regular` \| `medium` \| `big` |
-| name | _(blank)_ | Added to the button's `class` for JS/CSS targeting |
-| color | primary | Button colour. See available colours above |
-| outline | false | Show as outline only (no background). `true` \| `false` |
-| border_width | 2 | Outline border width. `2` \| `4` \| `8` |
-| radius | full | `none` \| `small` \| `medium` \| `full` |
-| disabled | false | Disable the button. `true` \| `false` |
-| tag | button | HTML tag to use. `button` \| `a` |
-| can_submit | false | Render as `type="submit"`. `true` \| `false` |
-| has_spinner | false | Include a spinner. `true` \| `false` |
-| show_spinner | false | Show spinner on load. Only when `has_spinner="true"`. `true` \| `false` |
-| icon | _(blank)_ | Any Heroicons icon name |
-| icon_right | false | Position icon to the right. Ignored when `has_spinner="true"`. `true` \| `false` |
-| show_focus_ring | true | Show focus ring. `true` \| `false` |
-| ring_width | _(blank)_ | Focus ring width: `1` \| `2` \| `4` \| `8` |
-| uppercasing | true | Uppercase button text. `true` \| `false` |
-| button_text_css | _(blank)_ | TailwindCSS classes to override button text colour |
+| size | regular | Matches input field sizes for consistency. `tiny` \| `small` \| `regular` \| `medium` \| `big` |
+| name | *blank* | Added to the button's `class` attribute for convenience, accessible via JavaScript or CSS. |
+| has_spinner | false | Whether the button includes a spinner. Must be a string, not boolean. `true` \| `false` |
+| show_spinner | false | Only applies if `has_spinner="true"`. Sets the spinner's default visibility. Must be a string, not boolean. `true` \| `false` |
+| color | primary | Colour of the button. Defaults to the primary colour defined in `tailwind.config.js` (blue by default). `primary` \| `blue` \| `red` \| `yellow` \| `green` \| `purple` \| `pink` \| `orange` \| `black` \| `cyan` \| `violet` \| `indigo` \| `fuchsia` |
+| uppercasing | true | Whether button text is all uppercase. `true` \| `false` |
+| can_submit | false | Renders `<button type="submit">` instead of `<button type="button">`. `true` \| `false` |
+| disabled | false | Whether the button is disabled. `true` \| `false` |
+| show_focus_ring | true | Whether a ring is shown around the button on focus. `true` \| `false` |
+| icon | *blank* | Any Heroicons icon name. |
+| icon_right | false | Whether the icon is positioned right of the button text. Only applies if `icon` is set. `true` \| `false` |
+| tag | button | HTML tag used to create the button. `button` \| `a` |
+| radius | full | How rounded the button looks. `none` \| `small` \| `medium` \| `full` |
+| outline | false | Whether the button is outline-only, losing its background colour. `true` \| `false` |
+| border_width | 2 | Only used if `outline=true`. `2` \| `4` \| `8` |
+| ring_width | *blank* | Width of the focus ring. `1` \| `2` \| `4` \| `8` |
+| button_text_css | *blank* | Overrides the button text colour. Any precompiled or project-defined TailwindCSS style. |
 
 ## Full Example
 
@@ -191,6 +223,7 @@ Any HTML button event attribute can be passed directly to the component.
     has_spinner="true"
     show_spinner="false"
     disabled="false"
+    class="mt-0"
     tag="a"
     outline="true"
     border_width="2"
@@ -200,6 +233,6 @@ Any HTML button event attribute can be passed directly to the component.
     icon_right="false"
     button_text_css="font-bold text-black"
     can_submit="false">
-    Subscribe
+    ...
 </x-bladewind::button>
 ```

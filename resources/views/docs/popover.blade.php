@@ -11,13 +11,14 @@
     <x-bladewind::popover>
         <p>This is the popover content. You can put <strong>any markup</strong> here.</p>
     </x-bladewind::popover>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover&gt;
-                &lt;p&gt;This is the popover content. You can put &lt;strong&gt;any markup&lt;/strong&gt; here.&lt;/p&gt;
-            &lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+    @php
+        $popoverExample1 = <<<'HTML'
+            <x-bladewind::popover>
+                <p>This is the popover content. You can put <strong>any markup</strong> here.</p>
+            </x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample1"></x-bladewind::code-block>
 
     <h2 id="trigger">Trigger Icon</h2>
     <p>
@@ -36,13 +37,14 @@
             <p>This is triggered by a vertical ellipsis icon.</p>
         </x-bladewind::popover>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover trigger="question-mark-circle-icon"&gt;...&lt;/x-bladewind::popover&gt;
-            &lt;x-bladewind::popover trigger="bell-icon"&gt;...&lt;/x-bladewind::popover&gt;
-            &lt;x-bladewind::popover trigger="ellipsis-vertical-icon"&gt;...&lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+    @php
+        $popoverExample2 = <<<'HTML'
+            <x-bladewind::popover trigger="question-mark-circle-icon">...</x-bladewind::popover>
+            <x-bladewind::popover trigger="bell-icon">...</x-bladewind::popover>
+            <x-bladewind::popover trigger="ellipsis-vertical-icon">...</x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample2"></x-bladewind::code-block>
 
     <h2 id="custom-trigger">Custom Trigger Markup</h2>
     <p>
@@ -60,20 +62,21 @@
             <li><a href="#" class="text-red-500 hover:underline">Delete</a></li>
         </ul>
     </x-bladewind::popover>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover&gt;
-                &lt;x-slot:trigger&gt;
-                    &lt;x-bladewind::button size="small" type="secondary"&gt;Options&lt;/x-bladewind::button&gt;
-                &lt;/x-slot:trigger&gt;
-                &lt;ul class="space-y-2 text-sm"&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Edit record&lt;/a&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Duplicate&lt;/a&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Delete&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+    @php
+        $popoverExample3 = <<<'HTML'
+            <x-bladewind::popover>
+                <x-slot:trigger>
+                    <x-bladewind::button size="small" type="secondary">Options</x-bladewind::button>
+                </x-slot:trigger>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#">Edit record</a></li>
+                    <li><a href="#">Duplicate</a></li>
+                    <li><a href="#">Delete</a></li>
+                </ul>
+            </x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample3"></x-bladewind::code-block>
 
     <h2 id="title">Title</h2>
     <p>
@@ -88,17 +91,18 @@
             <li><a href="#" class="text-red-500 hover:underline">Sign out</a></li>
         </ul>
     </x-bladewind::popover>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover title="Account Actions"&gt;
-                &lt;ul class="space-y-2 text-sm"&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Edit profile&lt;/a&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Change password&lt;/a&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Sign out&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+    @php
+        $popoverExample4 = <<<'HTML'
+            <x-bladewind::popover title="Account Actions">
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#">Edit profile</a></li>
+                    <li><a href="#">Change password</a></li>
+                    <li><a href="#">Sign out</a></li>
+                </ul>
+            </x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample4"></x-bladewind::code-block>
 
     <h2 id="position">Position</h2>
     <p>
@@ -120,14 +124,15 @@
             <p class="text-sm">I open to the right of the trigger.</p>
         </x-bladewind::popover>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover position="top"&gt;...&lt;/x-bladewind::popover&gt;
-            &lt;x-bladewind::popover position="bottom"&gt;...&lt;/x-bladewind::popover&gt;
-            &lt;x-bladewind::popover position="left"&gt;...&lt;/x-bladewind::popover&gt;
-            &lt;x-bladewind::popover position="right"&gt;...&lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+    @php
+        $popoverExample5 = <<<'HTML'
+            <x-bladewind::popover position="top">...</x-bladewind::popover>
+            <x-bladewind::popover position="bottom">...</x-bladewind::popover>
+            <x-bladewind::popover position="left">...</x-bladewind::popover>
+            <x-bladewind::popover position="right">...</x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample5"></x-bladewind::code-block>
 
     <h2 id="trigger-on">Trigger Event</h2>
     <p>
@@ -138,13 +143,14 @@
     <x-bladewind::popover triggerOn="mouseover" title="Hover triggered">
         <p class="text-sm">This popover opened on mouseover.</p>
     </x-bladewind::popover>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover triggerOn="mouseover"&gt;
-                &lt;p&gt;This popover opened on mouseover.&lt;/p&gt;
-            &lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+    @php
+        $popoverExample6 = <<<'HTML'
+            <x-bladewind::popover triggerOn="mouseover">
+                <p>This popover opened on mouseover.</p>
+            </x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample6"></x-bladewind::code-block>
 
     <h2 id="width">Width</h2>
     <p>
@@ -155,13 +161,14 @@
     <x-bladewind::popover width="360" title="Wider popover">
         <p class="text-sm">This popover is 360px wide, giving more room for longer content.</p>
     </x-bladewind::popover>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover width="360" title="Wider popover"&gt;
-                &lt;p&gt;This popover is 360px wide...&lt;/p&gt;
-            &lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+    @php
+        $popoverExample7 = <<<'HTML'
+            <x-bladewind::popover width="360" title="Wider popover">
+                <p>This popover is 360px wide...</p>
+            </x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample7"></x-bladewind::code-block>
 
     <h2 id="scrolling">Popovers In Scrolling Containers</h2>
     <p>
@@ -261,28 +268,43 @@
         <tr><td><code class="inline">name.hide()</code></td><td>Close the popover.</td></tr>
         <tr><td><code class="inline">name.toggle()</code></td><td>Open or close the popover based on its current state.</td></tr>
     </x-bladewind::table>
-    <pre class="language-javascript"><code>user_menu.show();
-user_menu.hide();
-user_menu.toggle();</code></pre>
+    @php
+        $popoverExample8 = <<<'HTML'
+            user_menu.show();
+            user_menu.hide();
+            user_menu.toggle();
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$popoverExample8"></x-bladewind::code-block>
 
     <h3 class="pb-2">Popover with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::popover
+    @php
+        $popoverExample9 = <<<'HTML'
+            <x-bladewind::popover
                 name="user-menu"
                 trigger="ellipsis-vertical-icon"
                 trigger_on="click"
                 position="bottom"
                 title="User Actions"
                 width="300"
-                class="rounded-lg"&gt;
-                &lt;ul class="space-y-2 text-sm"&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/li&gt;
-                    &lt;li&gt;&lt;a href="#"&gt;Delete&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/x-bladewind::popover&gt;
-        </code>
-    </pre>
+                class="rounded-lg">
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="#">Delete</a></li>
+                </ul>
+            </x-bladewind::popover>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$popoverExample9"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Popover Inside Livewire</h2>
+    <p>
+        The popover keeps track of whether it is open or closed outside of the DOM that Livewire manages, so if a Livewire component
+        re-renders this markup for a reason that has nothing to do with the popover, the popover resets to closed. If you find that
+        happening, wrap the trigger and the popover in <code class="inline">wire:ignore</code> so Livewire leaves that part of the
+        page alone. The component also guards against a Livewire re-render creating a second copy of itself, so re-rendering it
+        will not leave behind duplicate click listeners on the page.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; popover &gt; index.blade.php</code>
@@ -299,6 +321,7 @@ user_menu.toggle();</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#scrolling">Popovers in scrolling containers</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Popover inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

@@ -6,7 +6,9 @@ url: /component/tag
 
 # Tag
 
-Tags, sometimes referred to as labels allow you to logically group items or indicate statuses of items. You can also use tags to list selections. They are very simple to use.
+Tags (also called labels) let you logically group items or indicate the status of an item, and can also be used to build a list of selections. There are two related components: `x-bladewind::tag` for a single tag, and `x-bladewind::tags` as a wrapping container when tags are selectable.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::tag label="pending" />
@@ -14,36 +16,42 @@ Tags, sometimes referred to as labels allow you to logically group items or indi
 
 ## Faint Coloured
 
-The BladewindUI tag component allows you to specify different colours. The tags by default are faint in colour with blue being the default colour. There are nine colour options to pick from.
+Tags are faint in colour by default, with blue as the default colour. There are nine colour options.
 
 ```blade
-<x-bladewind::tag label="pending" color="color-name" />
+<x-bladewind::tag label="primary" color="primary" />
+<x-bladewind::tag label="red" color="red" />
+<x-bladewind::tag label="yellow" color="yellow" />
+<x-bladewind::tag label="green" color="green" />
+<x-bladewind::tag label="blue" color="blue" />
+<x-bladewind::tag label="pink" color="pink" />
+<x-bladewind::tag label="cyan" color="cyan" />
+<x-bladewind::tag label="orange" color="orange" />
+<x-bladewind::tag label="gray" color="gray" />
+<x-bladewind::tag label="purple" color="purple" />
+<x-bladewind::tag label="violet" color="violet" />
+<x-bladewind::tag label="indigo" color="indigo" />
+<x-bladewind::tag label="fuchsia" color="fuchsia" />
 ```
-
-Available colours: `primary` `red` `yellow` `green` `blue` `pink` `cyan` `orange` `gray` `purple` `violet` `indigo` `fuchsia`
 
 ## Dark Coloured
 
-Dark colours in this case have nothing to do with dark mode. These are just a deeper shade of the tag colours. You can get darker shaded tags by setting `shade="dark"`.
+"Dark" here has nothing to do with dark mode — it's a deeper shade of the tag colour. Set `shade="dark"` for a darker shaded tag.
 
 ```blade
-<x-bladewind::tag label="pending" shade="dark" color="color-name" />
+<x-bladewind::tag label="pending" shade="dark" color="purple" />
 ```
 
 ## With Close Icons
 
-Tags can also have close icons. That will be useful if you use tags to display user selections and want a way to remove a user's selection from the list. By default tags do not show the close icon. To activate close icons, set `can_close="true"`. The default action when the close icon is clicked is to remove the tag that was clicked.
+Tags can show a close icon, useful for removing user selections from a list. By default the close icon is hidden; set `can_close="true"` to show it. Clicking the close icon removes the tag by default.
 
 ```blade
-<x-bladewind::tag label="pending"
-    can_close="true" />
-
-<x-bladewind::tag label="pending"
-    can_close="true"
-    color="pink" />
+<x-bladewind::tag label="pending" can_close="true" />
+<x-bladewind::tag label="pending" can_close="true" color="pink" />
 ```
 
-To run your own code when the close icon is clicked, provide a javascript function to the `onclick` attribute. You may need to use the `id` attribute to provide unique identifiers for your tags. By default each tag has a randomly generated `id` prefixed with `bw-` to prevent numeric only IDs from breaking. You can turn off the prefixing of IDs by setting `add_id_prefix="false"`.
+To run your own code when the close icon is clicked, provide a JavaScript function to the `onclick` attribute. You may need the `id` attribute to give tags unique identifiers. By default each tag gets a random ID prefixed with `bw-` to prevent numeric-only IDs from breaking; turn off the prefix with `add_id_prefix="false"`.
 
 ```blade
 <x-bladewind::tag
@@ -63,87 +71,74 @@ To run your own code when the close icon is clicked, provide a javascript functi
 
 ## Tiny Tags
 
-Sometimes you need to display tags as hints. For example in a menu bar you may want users to know which features are new by displaying a colourful but tiny _new_ tag next to each new menu item. Setting the `tiny="true"` attribute will serve such a purpose. Specifying this attribute on a `x-bladewind::tags` component will apply the size to all tags defined within the component. However, specifying the attribute on a `x-bladewind::tag` component will only apply it to that single tag.
+Set `tiny="true"` to display tags as small hints, useful for flagging new features next to menu items. Setting `tiny` on `x-bladewind::tags` applies it to all tags in the group; setting it on a single `x-bladewind::tag` applies it only to that tag.
 
 ```blade
 <x-bladewind::tag label="just added" tiny="true" color="pink" />
-```
-
-```blade
-<x-bladewind::tag label="new" tiny="true" color="purple"
-    shade="dark"
-    uppercasing="false"/>
+<x-bladewind::tag label="new" tiny="true" color="purple" shade="dark" uppercasing="false" />
 ```
 
 ## Rounded Tags
 
-There are cases where you have a rounded elements theme running through your app and will prefer to have rounded tags. To make tags rounded set `rounded="true"`.
+Set `rounded="true"` for fully rounded tags, useful if a rounded theme runs through your app.
 
 ```blade
-<x-bladewind::tag label="pending"
-    rounded="true" />
-
-<x-bladewind::tag label="pending"
-    can_close="true"
-    rounded="true"
-    color="pink" />
+<x-bladewind::tag label="pending" rounded="true" />
+<x-bladewind::tag label="pending" can_close="true" color="pink" rounded="true" />
 ```
 
 ## Outline Tags
 
-What if you prefer to have no background colours on your tags — just a border outline with your chosen colour. Simply set `outline="true"`. The outline border colour is also affected by the shade you set. So light shades have a lighter outline. Dark shades have a darker outline.
+Set `outline="true"` for a tag with no background colour, just a border outline in the chosen colour. The outline colour is also affected by `shade` — light shades give a lighter outline, dark shades a darker one.
 
 ```blade
 <x-bladewind::tag label="pending" outline="true" color="pink" />
-
-<x-bladewind::tag label="pending" can_close="true"
-    outline="true"
-    color="pink"
-    shade="dark" />
+<x-bladewind::tag label="pending" can_close="true" color="pink" outline="true" shade="dark" />
 ```
 
 ## Selectable Tags
 
-Selectable tags allow you to use tags in forms. You can think of them in this case as a different kind of checkboxes. Tags automatically become selectable when you specify the `name` and `value` attributes.
+Tags automatically become selectable when you specify the `name` and `value` attributes, letting you use them as a different kind of checkbox in forms. By default, selectable tags use the faint colour you specify, and show the darker shade on hover/selection. Selectable tags cannot be closed (`can_close="false"`).
 
-Hidden input fields are created for distinct tag names. Values of the selected tags are then written to the hidden input fields making them accessible when the form is submitted. For example: if we have 3 tags with the name **location**, this input field will be created `<input type="hidden" name="location" />`. When any location is selected, the value will be written into the hidden location input field. Multiple values are written as a comma separated list.
-
-Note the tags are wrapped in a parent `<x-bladewind::tags>...</x-bladewind::tags>` component. You can restrict how many tags can be selected from the list using the `max` attribute on the `tags` component. Where a `max` attribute is used, it is necessary to define the `error_message` and `error_heading` attributes. This is the message to be displayed if a user tries to select more than the maximum tags allowed.
+Hidden input fields are created for distinct tag names, and selected values are written into them as a comma separated list. For example, three tags named `location` create `<input type="hidden" name="location" />`, and selecting a value writes it there.
 
 ```blade
-<x-bladewind::tags
-    color="orange"
-    name="stack"
-    required="true"
-    max="3"
-    error_message="You can select only up to 3 tech stacks"
-    error_heading="Check selection!">
-
+<x-bladewind::tags color="orange" name="stack" required="true" max="3" error_message="You can select only up to 3 tech stacks" error_heading="Check selection!">
     <x-bladewind::tag label="laravel" value="laravel" />
     <x-bladewind::tag label="javascript" value="js" />
     <x-bladewind::tag label="node js" value="node js" />
     <x-bladewind::tag label="tailwindcss" value="tailwind" />
     <x-bladewind::tag label="c-sharp" value="cs" />
-
 </x-bladewind::tags>
 ```
 
-To have values pre-selected by default (e.g., in edit mode), use the `selected_value` attribute with a comma-separated list of values:
+The tags are wrapped in a parent `<x-bladewind::tags>...</x-bladewind::tags>` component. The `max` attribute restricts how many tags can be selected; when `max` is used, `error_message` and `error_heading` must also be defined — this is the message shown if a user selects more than the maximum allowed. `<x-bladewind::notification />` must be present on the page for error messages to display.
 
 ```blade
-<x-bladewind::tags
-    color="red"
-    name="fridays"
-    selected_value="hangout,club,sleep">
+<x-bladewind::tags color="green" name="host">
+    <x-bladewind::tag label="digital ocean" value="do" />
+    <x-bladewind::tag label="amazon web services" value="aws" />
+    <x-bladewind::tag label="microsoft azure" value="azure" />
+    <x-bladewind::tag label="google cloud" value="google" />
+</x-bladewind::tags>
 
+<x-bladewind::tags color="blue" name="gender" max="1" error_message="You can select just one gender" error_heading="Yoh!" rounded="true">
+    <x-bladewind::tag label="Male" value="male" />
+    <x-bladewind::tag label="female" value="female" />
+    <x-bladewind::tag label="other" value="other" />
+    <x-bladewind::tag label="don't ask" value="shoosh" />
+</x-bladewind::tags>
+
+<x-bladewind::tags color="red" name="fridays" selected_value="hangout,club,sleep">
     <x-bladewind::tag label="hangout with friends" value="hangout" />
     <x-bladewind::tag label="go clubbing" value="club" />
     <x-bladewind::tag label="watch movies" value="movies" />
     <x-bladewind::tag label="just chill" value="chill" />
     <x-bladewind::tag label="sleeeeep" value="sleep" />
-
 </x-bladewind::tags>
 ```
+
+Use `selected_value` as a comma separated list to pre-select tags, useful in edit mode.
 
 ## Attributes
 
@@ -153,37 +148,37 @@ Only used when defining selectable tags.
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | null | The name used when defining selectable tags. This name can be retrieved when the form is submitted. |
-| color | blue | There are nine colors to choose from. `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` |
-| max | null | How many tags can be selected. By default there is no limit. |
-| required | false | Determines if selectable tags are required when displayed in a form. `true` \| `false` |
-| selected_value | _empty string_ | In edit mode you will want selected tags to be highlighted by default. Set the values as a comma separated list. |
-| error_heading | Error | Heading to display in the notification when displaying an error message. |
-| error_message | _empty string_ | Message to display when `max` is set and user selection exceeds the max allowed. |
-| rounded | false | Determines if the tag is fully rounded or not. By default tags have a very subtle roundness. `true` \| `false` |
-| tiny | false | Determines if the size of all the tags in the group is tiny. There are just two sizes, tiny and regular. `true` \| `false` |
-| uppercasing | true | Determines if the text for all the tags in the group is uppercased. `true` \| `false` |
-| shade | faint | Determines if the tags should have a faint or darker color shade. `faint` \| `dark` |
-| outline | false | Determines if the tag is only outlined with `color` above. Outline tags have no background colour. `true` \| `false` |
-| class | space-x-2 space-y-2 | Any additional CSS you wish to add to the tags container. |
-| nonce | null | Used when implementing context security policies and require to pass a nonce to inline scripts. |
+| name | null | The name used when defining selectable tags. Retrievable when the form is submitted. |
+| color | blue | Nine colours to choose from. `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` |
+| max | null | How many tags can be selected. No limit by default. `any positive number` |
+| required | false | Whether selectable tags are required in a form. `true` \| `false` |
+| selected_value | *empty string* | Comma separated list of values to pre-select, useful in edit mode. |
+| error_heading | Error | Heading for the notification shown when displaying an error message. |
+| error_message | *empty string* | Message shown when `max` is set and the user selection exceeds it. |
+| rounded | false | Whether the tag is fully rounded (tags have subtle roundness by default). `true` \| `false` |
+| tiny | false | Whether all tags in the group are tiny. `true` \| `false` |
+| uppercasing | true | Whether tag text in the group is uppercased. `true` \| `false` |
+| shade | faint | Faint or darker colour shade. `faint` \| `dark` |
+| outline | false | Whether the tag is outlined only, with no background colour. `true` \| `false` |
+| class | space-x-2 space-y-2 | Additional CSS for the tags container. Overwrites the default, so include spacing classes if needed. |
+| nonce | null | Nonce for content security policies on inline scripts. Can be set globally via `config/bladewind.php` under `script`. |
 
 ### Tag Component
 
 | Attribute | Default | Description |
 |---|---|---|
-| label | _blank_ | The text to display on the tag. |
-| color | blue | There are nine colors to choose from. `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` |
-| shade | faint | Determines if the tags should have a faint or darker color shade. `faint` \| `dark` |
-| can_close | false | Determines if the tag should display a close icon or not. `true` \| `false` |
-| id | uniqid() | Unique id for the tag. By default tag IDs have a prefix of `bw-`. |
-| add_id_prefix | true | Determines if the `bw-` prefix should be added to tag IDs. `true` \| `false` |
-| rounded | false | Determines if the tag is fully rounded or not. `true` \| `false` |
-| outline | false | Determines if the tag is only outlined with `color` above. `true` \| `false` |
-| tiny | false | Determines if the tag size is tiny. `true` \| `false` |
-| uppercasing | true | Determines if the tag text is all uppercase. `true` \| `false` |
-| onclick | _blank_ | Javascript function to execute when the close icon is clicked. |
-| class | bw-tag | Any additional CSS you wish to add. |
+| label | *blank* | The text to display on the tag. |
+| color | blue | Nine colours to choose from. `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` |
+| shade | faint | Faint or darker colour shade. `faint` \| `dark` |
+| can_close | false | Whether the tag shows a close icon. Pass as a string, not boolean. `true` \| `false` |
+| id | uniqid() | Unique id for the tag, accessible via JavaScript. Prefixed with `bw-` by default. |
+| add_id_prefix | true | Whether the `bw-` prefix is added to tag IDs. `true` \| `false` |
+| rounded | false | Whether the tag is fully rounded. `true` \| `false` |
+| outline | false | Whether the tag is outlined only, with no background colour. `true` \| `false` |
+| tiny | false | Whether the tag size is tiny. `true` \| `false` |
+| uppercasing | true | Whether the tag text is uppercased. `true` \| `false` |
+| onclick | *blank* | JavaScript function to execute when the close icon is clicked. |
+| class | bw-tag | Additional CSS to apply. |
 
 ## Full Example
 
@@ -199,20 +194,21 @@ Only used when defining selectable tags.
     selected_value="laravel,js"
     error_message="You can select only up to 3 tech stacks"
     error_heading="Check selection!">
-
-    <x-bladewind::tag
-        label="accounting"
-        can_close="true"
-        color="pink"
-        class="a1002"
-        id="a1002"
-        rounded="true"
-        outline="true"
-        add_id_prefix="false"
-        shade="dark"
-        tiny="false"
-        uppercasing="false"
-        onclick="alert('you clicked on '+ dom_el('.a1002').innerText)" />
-
+    <x-bladewind::tag label="laravel" value="laravel" />
+    <x-bladewind::tag label="javascript" value="js" />
 </x-bladewind::tags>
+
+<x-bladewind::tag
+    label="accounting"
+    can_close="true"
+    color="pink"
+    class="a1002"
+    id="a1002"
+    rounded="true"
+    outline="true"
+    add_id_prefix="false"
+    shade="dark"
+    tiny="false"
+    uppercasing="false"
+    onclick="alert('you clicked on '+ dom_el('.a1002').innerText)" />
 ```

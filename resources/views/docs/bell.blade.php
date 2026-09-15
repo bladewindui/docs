@@ -12,11 +12,12 @@
         <x-bladewind::bell />
     </div>
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::bell /&gt;
-        </code>
-    </pre>
+    @php
+        $bellExample1 = <<<'HTML'
+            <x-bladewind::bell />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$bellExample1"></x-bladewind::code-block>
 
     <h3>No Dot Indicator</h3>
     <p>
@@ -27,11 +28,12 @@
         <x-bladewind::bell show_dot="false" />
     </div>
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::bell show_dot="false" /&gt;
-        </code>
-    </pre>
+    @php
+        $bellExample2 = <<<'HTML'
+            <x-bladewind::bell show_dot="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$bellExample2"></x-bladewind::code-block>
 
     <h3>Animated Dot Indicator</h3>
     <p>
@@ -42,11 +44,12 @@
         <x-bladewind::bell animate_dot="true" />
     </div>
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::bell animate_dot="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $bellExample3 = <<<'HTML'
+            <x-bladewind::bell animate_dot="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$bellExample3"></x-bladewind::code-block>
 
     <h3>Inverted Bell</h3>
     <p>
@@ -57,11 +60,12 @@
         <x-bladewind::bell invert="true" />
     </div>
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::bell invert="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $bellExample4 = <<<'HTML'
+            <x-bladewind::bell invert="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$bellExample4"></x-bladewind::code-block>
 
     <h2 id="sizes">Different Sizes</h2>
     <p>The bell component exists in two sizes. <code class="inline">small</code> and <code class="inline">big</code>. The default size is <code class="inline text-red-500">small</code>.</p>
@@ -71,17 +75,19 @@
         <x-bladewind::bell size="big" />
     </div>
 
-    <pre class="language-markup">
-        <code>
+    @php
+        $bellExample5 = <<<'HTML'
             // size="small" can be omitted since it is the default
-            &lt;x-bladewind::bell size="small" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::bell size="big" /&gt;
-        </code>
-    </pre>
+            <x-bladewind::bell size="small" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$bellExample5"></x-bladewind::code-block>
+    @php
+        $bellExample6 = <<<'HTML'
+            <x-bladewind::bell size="big" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$bellExample6"></x-bladewind::code-block>
 
     <h2 id="colors">Different Colours</h2>
     <p>
@@ -114,28 +120,29 @@
         <x-bladewind::bell color="fuchsia" />
     </div>
 
-    <pre class="language-markup line-numbers">
-        <code>
-        &lt;x-bladewind::bell color="primary" /&gt;
+    @php
+        $bellExample7 = <<<'HTML'
+            <x-bladewind::bell color="primary" />
 
-        &lt;x-bladewind::bell color="red" /&gt;
+            <x-bladewind::bell color="red" />
 
-        &lt;x-bladewind::bell color="yellow" /&gt;
+            <x-bladewind::bell color="yellow" />
 
-        &lt;x-bladewind::bell color="green" /&gt;
+            <x-bladewind::bell color="green" />
 
-        &lt;x-bladewind::bell color="pink" /&gt;
+            <x-bladewind::bell color="pink" />
 
-        &lt;x-bladewind::bell color="cyan" /&gt;
+            <x-bladewind::bell color="cyan" />
 
-        &lt;x-bladewind::bell color="black" /&gt;
+            <x-bladewind::bell color="black" />
 
-        &lt;x-bladewind::bell color="purple" /&gt;
+            <x-bladewind::bell color="purple" />
 
-        &lt;x-bladewind::bell color="orange" /&gt;
-
-        </code><a name="events"></a>
-    </pre>
+            <x-bladewind::bell color="orange" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$bellExample7"></x-bladewind::code-block>
+    <a name="events"></a>
 
     <h2 id="events">Events</h2>
     <p>
@@ -194,42 +201,42 @@
         </x-bladewind::dropmenu>
     </div>
 
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::dropmenu&gt;
-                &lt;x-slot name="trigger"&gt;
-                    &lt;x-bladewind::bell /&gt;
-                &lt;/x-slot&gt;
-                &lt;x-bladewind.dropmenu.item&gt;
-                    &lt;x-bladewind.listview transparent="true"&gt;
+    @php
+        $bellExample8 = <<<'HTML'
+            <x-bladewind::dropmenu>
+                <x-slot name="trigger">
+                    <x-bladewind::bell />
+                </x-slot>
+                <x-bladewind.dropmenu.item>
+                    <x-bladewind.listview transparent="true">
 
-                        &lt;x-bladewind.listview.item&gt;
-                            &lt;x-bladewind.avatar size="small" image="..." /&gt;
-                            &lt;div class="mx-1 pt-1"&gt;
-                                &lt;div class="text-sm"&gt;
-                                    &lt;span class="font-medium text-slate-900"&gt;
+                        <x-bladewind.listview.item>
+                            <x-bladewind.avatar size="small" image="..." />
+                            <div class="mx-1 pt-1">
+                                <div class="text-sm">
+                                    <span class="font-medium text-slate-900">
                                         Michael
-                                    &lt;/span&gt;
-                                    assigned &lt;a href="#"&gt;a task&lt;/a&gt; to you
-                                    &lt;div class="text-xs"&gt;3 hours ago&lt;/div&gt;
-                                &lt;/div&gt;
-                            &lt;/div&gt;
-                        &lt;/x-bladewind.listview.item&gt;
+                                    </span>
+                                    assigned <a href="#">a task</a> to you
+                                    <div class="text-xs">3 hours ago</div>
+                                </div>
+                            </div>
+                        </x-bladewind.listview.item>
 
-                        &lt;x-bladewind.listview.item&gt;
+                        <x-bladewind.listview.item>
                             ...
-                        &lt;/x-bladewind.listview.item&gt;
+                        </x-bladewind.listview.item>
 
-                        &lt;x-bladewind.listview.item&gt;
+                        <x-bladewind.listview.item>
                             ...
-                        &lt;/x-bladewind.listview.item&gt;
+                        </x-bladewind.listview.item>
 
-                    &lt;/x-bladewind.listview&gt;
-                &lt;/x-bladewind.dropmenu.item&gt;
-            &lt;/x-bladewind.dropmenu&gt;
-
-        </code>
-    </pre>
+                    </x-bladewind.listview>
+                </x-bladewind.dropmenu.item>
+            </x-bladewind.dropmenu>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$bellExample8"></x-bladewind::code-block>
 
     <h3>Onclick, Onmouseover, On-anything</h3>
     <p>
@@ -240,23 +247,25 @@
             <div class="py-4">mouseover</div>
             <x-bladewind::bell onmouseover="alert('the mouse was over me')" />
             <br /><br />
-            <pre class="language-markup line-numbers" data-line="3">
-                <code>
-                    &lt;x-bladewind::bell
-                        onmouseover="alert('..')" /&gt;
-                </code>
-            </pre>
+            @php
+        $bellExample9 = <<<'HTML'
+            <x-bladewind::bell
+                onmouseover="alert('..')" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$bellExample9"></x-bladewind::code-block>
         </div>
         <div class="text-center">
             <div class="py-4">click</div>
             <x-bladewind::bell onclick="alert('do something on click')" />
             <br /><br />
-            <pre class="language-markup line-numbers" data-line="3">
-                <code>
-                    &lt;x-bladewind::bell
-                        onclick="alert('...')" /&gt;
-                </code>
-            </pre>
+            @php
+        $bellExample10 = <<<'HTML'
+            <x-bladewind::bell
+                onclick="alert('...')" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$bellExample10"></x-bladewind::code-block>
         </div>
     </div>
 
@@ -299,16 +308,17 @@
     </x-bladewind::table>
 
     <h3>Bell with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::bell
+    @php
+        $bellExample11 = <<<'HTML'
+            <x-bladewind::bell
                 color="pink"
                 show_dot="false"
                 animate_dot="true"
                 invert="true"
-                size="big" /&gt;
-        </code>
-    </pre>
+                size="big" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$bellExample11"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">

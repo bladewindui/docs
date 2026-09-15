@@ -10,11 +10,12 @@
     <p class="mt-14">
         <x-bladewind::progress-bar percentage="36" />
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="36" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample1 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="36" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample1"></x-bladewind::code-block>
 
     <p>
         The progress bar percentage is not displayed by default. To display it, set the attribute <code class="inline text-red-500">show_percentage_label="true"</code>.
@@ -23,11 +24,12 @@
     <p class="mt-14">
         <x-bladewind::progress-bar percentage="36" show_percentage_label="true" />
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="36" show_percentage_label="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample2 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="36" show_percentage_label="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample2"></x-bladewind::code-block>
 
     <p>
         If you prefer to have the percentage out of the bar, set <code class="inline text-red-500">show_percentage_label_inline="false"</code>.
@@ -43,28 +45,30 @@
     <p class="mt-14">
         <x-bladewind::progress-bar percentage="53" show_percentage_label="true" show_percentage_label_inline="false" percentage_label_position="top center" />
     </p>
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::progress-bar
+    @php
+        $progressUbarExample3 = <<<'HTML'
+            <x-bladewind::progress-bar
                 percentage="53"
                 show_percentage_label_inline="false"
                 percentage_label_position="top center"
-                show_percentage_label="true" /&gt;
-        </code>
-    </pre>
+                show_percentage_label="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$progressUbarExample3"></x-bladewind::code-block>
     <p class="mt-14">
         <x-bladewind::progress-bar percentage="75" show_percentage_label="true" show_percentage_label_inline="false" percentage_label_position="top right" />
     </p>
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::progress-bar
+    @php
+        $progressUbarExample4 = <<<'HTML'
+            <x-bladewind::progress-bar
                 percentage="75"
                 show_percentage_label_inline="false"
                 percentage_label_position="top right"
-                show_percentage_label="true" /&gt;
-        </code>
-    </pre>
+                show_percentage_label="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$progressUbarExample4"></x-bladewind::code-block>
     <p>
         You may want to append a suffix or prepend a prefix to the percentage label to achieve things like <code class="inline">53% complete</code> or <code class="inline">Upload in progress: 53% complete</code>.
         Depending on your needs you can set <code class="inline text-red-500">percentage_prefix</code> and/or <code class="inline text-red-500">percentage_suffix</code>.
@@ -74,15 +78,16 @@
             show_percentage_label_inline="false" percentage_suffix="complete" />
     </p>
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::progress-bar
+    @php
+        $progressUbarExample5 = <<<'HTML'
+            <x-bladewind::progress-bar
                 percentage="75"
                 show_percentage_label_inline="false"
                 percentage_suffix="complete"
-                show_percentage_label="true" /&gt;
-        </code>
-    </pre>
+                show_percentage_label="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$progressUbarExample5"></x-bladewind::code-block>
 
     <h2 id="colours">Different Colours</h2>
     <p>
@@ -91,193 +96,219 @@
     </p>
     <h3 id="faint">Faint Colours</h3>
     <p><x-bladewind::progress-bar percentage="10" color="red" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="10" color="red" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample6 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="10" color="red" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample6"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="20" color="yellow" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="20" color="yellow"/&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample7 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="20" color="yellow"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample7"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="30" color="green" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="30" color="green" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample8 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="30" color="green" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample8"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="40" color="pink" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="40" color="pink" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample9 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="40" color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample9"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="50" color="cyan" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="50" color="cyan" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample10 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="50" color="cyan" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample10"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="60" color="gray" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="60" color="gray" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample11 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="60" color="gray" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample11"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="70" color="purple" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="70" color="purple" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample12 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="70" color="purple" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample12"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" color="orange" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" color="orange" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample13 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" color="orange" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample13"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" color="violet" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" color="violet" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample14 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" color="violet" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample14"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" color="fuchsia" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" color="fuchsia" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample15 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" color="fuchsia" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample15"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" color="indigo" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" color="indigo" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample16 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" color="indigo" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample16"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="90" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="90" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample17 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="90" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample17"></x-bladewind::code-block>
     <h3 id="dark">Dark Colours</h3>
     <p><x-bladewind::progress-bar percentage="50" color="red" shade="dark" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="50" shade="dark" color="red" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample18 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="50" shade="dark" color="red" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample18"></x-bladewind::code-block>
     </p>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="20" shade="dark" color="yellow" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="20" shade="dark" color="yellow" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample19 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="20" shade="dark" color="yellow" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample19"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="30" shade="dark" color="green" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="30" shade="dark" color="green" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample20 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="30" shade="dark" color="green" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample20"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="40" shade="dark" color="pink" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="40" shade="dark" color="pink" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample21 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="40" shade="dark" color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample21"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="50" shade="dark" color="cyan" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="50" shade="dark" color="cyan" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample22 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="50" shade="dark" color="cyan" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample22"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="60" shade="dark" color="gray" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="60" shade="dark" color="gray" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample23 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="60" shade="dark" color="gray" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample23"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="70" shade="dark" color="purple" /></p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-bar percentage="70" shade="dark" color="purple" /&gt;
-            </code>
-        </pre>
+        @php
+        $progressUbarExample24 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="70" shade="dark" color="purple" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample24"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" shade="dark" color="orange" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" shade="dark" color="orange" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample25 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" shade="dark" color="orange" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample25"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" shade="dark" color="violet" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" shade="dark" color="violet" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample26 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" shade="dark" color="violet" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample26"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" shade="dark" color="indigo" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" shade="dark" color="indigo" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample27 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" shade="dark" color="indigo" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample27"></x-bladewind::code-block>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="80" shade="dark" color="fuchsia" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="80" shade="dark" color="fuchsia" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample28 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="80" shade="dark" color="fuchsia" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample28"></x-bladewind::code-block>
     <div class="h-3"></div>
     <x-bladewind::progress-bar percentage="60" shade="dark" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="90" shade="dark" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample29 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="90" shade="dark" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample29"></x-bladewind::code-block>
     <h2 id="striped">Striped and Animated</h2>
     <div class="h-3"></div>
     <p><x-bladewind::progress-bar percentage="60" shade="dark" color="red" striped="true" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-bar percentage="60" shade="dark" color="red" striped="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUbarExample30 = <<<'HTML'
+            <x-bladewind::progress-bar percentage="60" shade="dark" color="red" striped="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUbarExample30"></x-bladewind::code-block>
     <div class="h-3"></div>
     <x-bladewind::progress-bar percentage="50" color="violet" shade="dark" animated="true" striped="true" />
-<pre class="language-markup line-numbers" data-line="5,6">
-<code>
-    &lt;x-bladewind::progress-bar
-        percentage="50"
-        shade="dark"
-        color="violet"
-        striped="true"
-        animated="true" /&gt;
-</code>
-</pre>
+@php
+        $progressUbarExample31 = <<<'HTML'
+            <x-bladewind::progress-bar
+                percentage="50"
+                shade="dark"
+                color="violet"
+                striped="true"
+                animated="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,6" :code="$progressUbarExample31"></x-bladewind::code-block>
     {{-- <p>
     <h2>Dynamic Progression </h2>
     </p>
@@ -360,22 +391,23 @@
     </x-bladewind::table>
 
     <h3>Progress Bar with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::progress-bar
-    percentage="50"
-    color="red"
-    show_percentage_label="false"
-    show_percentage_label_inline="true"
-    percentage_label_position="top-left"
-    shade="faint"
-    percentage_prefix="uploading content: "
-    percentage_suffix="completed"
-    striped="true"
-    animated="true"
-    class="m-0" /&gt;
-</code>
-</pre>
+@php
+        $progressUbarExample32 = <<<'HTML'
+            <x-bladewind::progress-bar
+                percentage="50"
+                color="red"
+                show_percentage_label="false"
+                show_percentage_label_inline="true"
+                percentage_label_position="top-left"
+                shade="faint"
+                percentage_prefix="uploading content: "
+                percentage_suffix="completed"
+                striped="true"
+                animated="true"
+                class="m-0" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$progressUbarExample32"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > progress-bar.blade.php</code>

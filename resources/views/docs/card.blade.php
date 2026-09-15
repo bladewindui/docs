@@ -20,22 +20,24 @@
     </p>
     <x-bladewind::card></x-bladewind::card>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card&gt;
+    @php
+        $cardExample1 = <<<'HTML'
+            <x-bladewind::card>
                 // the card content goes here
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample1"></x-bladewind::code-block>
     <x-bladewind::card title="most recent activity"></x-bladewind::card>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card title="recent activity"&gt;
+    @php
+        $cardExample2 = <<<'HTML'
+            <x-bladewind::card title="recent activity">
                 // the card content goes here
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample2"></x-bladewind::code-block>
 
     <h2 id="radii">Different Radii</h2>
     <p>
@@ -46,57 +48,62 @@
     <x-bladewind::card radius="none">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae sem sit amet velit efficitur faucibus. agna tincidunt sem, a fermentum neque arcu non est. Suspendisse sodales, nunc a hendrerit vestibulum, dui ipsum sagittis felis, vitae efficitur purus justo et mi. Pellentesque at arcu at ipsum semper fringilla. Maecenas at metus sit amet arcu ultricies rutrum. Proin dictum, magna vitae eleifend rhoncus, tellus urna elementum neque, sed dapibus lacus eros id ipsum.</p>
     </x-bladewind::card>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card radius="none"&gt;
+    @php
+        $cardExample3 = <<<'HTML'
+            <x-bladewind::card radius="none">
                 // lorem ipsum text
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample3"></x-bladewind::code-block>
 <br />
     <x-bladewind::card>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae sem sit amet velit efficitur faucibus. agna tincidunt sem, a fermentum neque arcu non est. Suspendisse sodales, nunc a hendrerit vestibulum, dui ipsum sagittis felis, vitae efficitur purus justo et mi. Pellentesque at arcu at ipsum semper fringilla. Maecenas at metus sit amet arcu ultricies rutrum. Proin dictum, magna vitae eleifend rhoncus, tellus urna elementum neque, sed dapibus lacus eros id ipsum.</p>
     </x-bladewind::card>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card radius="small"&gt;
+    @php
+        $cardExample4 = <<<'HTML'
+            <x-bladewind::card radius="small">
                 // lorem ipsum text
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample4"></x-bladewind::code-block>
 <br />
     <x-bladewind::card radius="medium">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae sem sit amet velit efficitur faucibus. agna tincidunt sem, a fermentum neque arcu non est. Suspendisse sodales, nunc a hendrerit vestibulum, dui ipsum sagittis felis, vitae efficitur purus justo et mi. Pellentesque at arcu at ipsum semper fringilla. Maecenas at metus sit amet arcu ultricies rutrum. Proin dictum, magna vitae eleifend rhoncus, tellus urna elementum neque, sed dapibus lacus eros id ipsum.</p>
     </x-bladewind::card>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card radius="medium"&gt;
+    @php
+        $cardExample5 = <<<'HTML'
+            <x-bladewind::card radius="medium">
                 // lorem ipsum text
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample5"></x-bladewind::code-block>
 <br />
     <x-bladewind::card radius="large">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae sem sit amet velit efficitur faucibus. agna tincidunt sem, a fermentum neque arcu non est. Suspendisse sodales, nunc a hendrerit vestibulum, dui ipsum sagittis felis, vitae efficitur purus justo et mi. Pellentesque at arcu at ipsum semper fringilla. Maecenas at metus sit amet arcu ultricies rutrum. Proin dictum, magna vitae eleifend rhoncus, tellus urna elementum neque, sed dapibus lacus eros id ipsum.</p>
     </x-bladewind::card>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card radius="large"&gt;
+    @php
+        $cardExample6 = <<<'HTML'
+            <x-bladewind::card radius="large">
                 // lorem ipsum text
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample6"></x-bladewind::code-block>
 <br />
     <x-bladewind::card radius="xl">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae sem sit amet velit efficitur faucibus. agna tincidunt sem, a fermentum neque arcu non est. Suspendisse sodales, nunc a hendrerit vestibulum, dui ipsum sagittis felis, vitae efficitur purus justo et mi. Pellentesque at arcu at ipsum semper fringilla. Maecenas at metus sit amet arcu ultricies rutrum. Proin dictum, magna vitae eleifend rhoncus, tellus urna elementum neque, sed dapibus lacus eros id ipsum.</p>
     </x-bladewind::card>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card radius="xl"&gt;
+    @php
+        $cardExample7 = <<<'HTML'
+            <x-bladewind::card radius="xl">
                 // lorem ipsum text
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample7"></x-bladewind::code-block>
 <br />
     <x-bladewind::alert show_close_icon="false">
         If you need to completely overwrite the radius of the card, you can specify any of the Tailwind classes used for roundness in the <code class="inline text-red-500">class</code> attribute.
@@ -144,27 +151,28 @@
         </x-bladewind::table>
     </x-bladewind::card>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::card title="invoice details"&gt;
+    @php
+        $cardExample8 = <<<'HTML'
+            <x-bladewind::card title="invoice details">
 
-                &lt;x-bladewind.table striped="true"&gt;
-                    &lt;x-slot name="header"&gt;
-                        &lt;th&gt;Item&lt;/th&gt;
-                        &lt;th width="10%" class="text-center"&gt;Quantity&lt;/th&gt;
-                        &lt;th width="20%" class="text-right"&gt;Price (USD)&lt;/th&gt;
-                    &lt;/x-slot&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Airpods Max (Black)&lt;/td&gt;
-                        &lt;td class="text-center"&gt;1&lt;/td&gt;
-                        &lt;td class="text-right"&gt;500.00&lt;/td&gt;
-                    &lt;/tr&gt;
+                <x-bladewind.table striped="true">
+                    <x-slot name="header">
+                        <th>Item</th>
+                        <th width="10%" class="text-center">Quantity</th>
+                        <th width="20%" class="text-right">Price (USD)</th>
+                    </x-slot>
+                    <tr>
+                        <td>Airpods Max (Black)</td>
+                        <td class="text-center">1</td>
+                        <td class="text-right">500.00</td>
+                    </tr>
                     ...
-                &lt;/x-bladewind.table&gt;
+                </x-bladewind.table>
 
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample8"></x-bladewind::code-block>
     <h3>Huge Navigation Items</h3>
     <p>
         Below is an example of a grid-based navigation that uses cards for its menu items. The hover effect is achieved by adding additional TailwindUI classes to the <code class="inline text-red-500">class</code> attribute of the card.
@@ -192,28 +200,29 @@
         </x-bladewind::card>
     </div>
 
-    <pre class="language-markup line-numbers" data-line="3,8,13">
-        <code>
-            &lt;div class="grid grid-cols-3 gap-5"&gt;
+    @php
+        $cardExample9 = <<<'HTML'
+            <div class="grid grid-cols-3 gap-5">
 
-                &lt;x-bladewind::card class="cursor-pointer hover:shadow-gray-300"&gt;
-                    &lt;svg ...&gt;...&lt;/svg&gt;
-                    &lt;span class="text-center ..."&gt;Projects&lt;/span&gt;
-                &lt;/x-bladewind::card&gt;
+                <x-bladewind::card class="cursor-pointer hover:shadow-gray-300">
+                    <svg ...>...</svg>
+                    <span class="text-center ...">Projects</span>
+                </x-bladewind::card>
 
-                &lt;x-bladewind::card class="cursor-pointer hover:shadow-gray-300"&gt;
-                    &lt;svg...&gt;...&lt;/svg&gt;
-                    &lt;span class="text-center ..."&gt;Tasks&lt;/span&gt;
-                &lt;/x-bladewind::card&gt;
+                <x-bladewind::card class="cursor-pointer hover:shadow-gray-300">
+                    <svg...>...</svg>
+                    <span class="text-center ...">Tasks</span>
+                </x-bladewind::card>
 
-                &lt;x-bladewind::card class="cursor-pointer hover:shadow-gray-300"&gt;
-                    &lt;svg...&gt;...&lt;/svg&gt;
-                    &lt;span class="text-center ..."&gt;Ideas&lt;/span&gt;
-                &lt;/x-bladewind::card&gt;
+                <x-bladewind::card class="cursor-pointer hover:shadow-gray-300">
+                    <svg...>...</svg>
+                    <span class="text-center ...">Ideas</span>
+                </x-bladewind::card>
 
-            &lt;/div&gt;
-        </code>
-    </pre>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,8,13" :code="$cardExample9"></x-bladewind::code-block>
     <h3>Contact List</h3>
     <p>
         Below is an example of a contact list. This does not use the BladewindUI <a href="#contact">contact card component</a>.
@@ -291,45 +300,46 @@
         </x-bladewind::card>
     </div>
 <br />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;div class="grid grid-cols-2 gap-3"&gt;
+    @php
+        $cardExample10 = <<<'HTML'
+            <div class="grid grid-cols-2 gap-3">
 
-                &lt;x-bladewind::card compact="true"&gt;
-                    &lt;div class="flex items-center"&gt;
-                        &lt;div&gt;
-                            &lt;x-bladewind.avatar image="/path/to/the/image/file" /&gt;
-                        &lt;/div&gt;
-                        &lt;div class="grow pl-2 pt-1"&gt;
-                            &lt;b&gt;Michael K. Ocansey&lt;/b&gt;
-                            &lt;div class="text-sm"&gt;Senior Developer&lt;/div&gt;
-                            &lt;div class="text-sm"&gt;Tech Team&lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;div&gt;
-                            &lt;a href=""&gt;
-                                &lt;svg&gt;
+                <x-bladewind::card compact="true">
+                    <div class="flex items-center">
+                        <div>
+                            <x-bladewind.avatar image="/path/to/the/image/file" />
+                        </div>
+                        <div class="grow pl-2 pt-1">
+                            <b>Michael K. Ocansey</b>
+                            <div class="text-sm">Senior Developer</div>
+                            <div class="text-sm">Tech Team</div>
+                        </div>
+                        <div>
+                            <a href="">
+                                <svg>
                                     ...
-                                &lt;/svg&gt;
-                            &lt;/a&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/x-bladewind::card&gt;
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </x-bladewind::card>
 
-                &lt;x-bladewind::card compact="true"&gt;
+                <x-bladewind::card compact="true">
                     ...
-                &lt;/x-bladewind::card&gt;
+                </x-bladewind::card>
 
-                &lt;x-bladewind::card compact="true"&gt;
+                <x-bladewind::card compact="true">
                     ...
-                &lt;/x-bladewind::card&gt;
+                </x-bladewind::card>
 
-                &lt;x-bladewind::card compact="true"&gt;
+                <x-bladewind::card compact="true">
                     ...
-                &lt;/x-bladewind::card&gt;
+                </x-bladewind::card>
 
-            &lt;/div&gt;
-        </code>
-    </pre>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample10"></x-bladewind::code-block>
 
     <h2 id="contact">Contact Card</h2>
     <p>
@@ -355,17 +365,19 @@
             birthday="01-May-2000" />
    </div>
 
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind.contact-card
-        name="Michael K. Ocansey"
-        mobile="+233.123.456.789"
-        image="/path/to/the/image/file"
-        position="Senior Copywriter"
-        email="mike@bladewindui.com"
-        birthday="01-May-2000" /&gt;
-</code>
-</pre>
+@php
+        $cardExample11 = <<<'HTML'
+            <x-bladewind.contact-card
+                name="Michael K. Ocansey"
+                mobile="+233.123.456.789"
+                image="/path/to/the/image/file"
+                position="Senior Copywriter"
+                email="mikeBWATSIGNPLACEHOLDERbladewindui.com"
+                birthday="01-May-2000" />
+            HTML;
+        $cardExample11 = str_replace('BWATSIGNPLACEHOLDER', '@', $cardExample11);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample11"></x-bladewind::code-block>
 <br />
 <p>
     Setting <code class="inline text-red-500">centered="true"</code> reformats the contact card and vertically aligns and centers the content.
@@ -431,40 +443,41 @@
         </x-bladewind::card>
    </div>
 
-    <pre class="language-markup line-numbers" data-line="3, 17">
-        <code>
-            &lt;x-bladewind::card&gt;
+    @php
+        $cardExample12 = <<<'HTML'
+            <x-bladewind::card>
 
-                &lt;x-slot:header&gt;
-                    &lt;div class="flex px-4 pt-2 pb-3"&gt;
-                        &lt;x-bladewind.avatar
+                <x-slot:header>
+                    <div class="flex px-4 pt-2 pb-3">
+                        <x-bladewind.avatar
                             size="small"
-                            image="/path/to/the/image/file" /&gt;
-                        &lt;div class="pl-2"&gt;
-                            &lt;span class="block..."&gt;mkocansey&lt;/span&gt;
-                            &lt;span class="block..."&gt;Greater Accra, Accra&lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/x-slot:header&gt;
+                            image="/path/to/the/image/file" />
+                        <div class="pl-2">
+                            <span class="block...">mkocansey</span>
+                            <span class="block...">Greater Accra, Accra</span>
+                        </div>
+                    </div>
+                </x-slot:header>
 
-                &lt;img src="/path/to/the/image/file" /&gt;
+                <img src="/path/to/the/image/file" />
 
-                &lt;x-slot:footer&gt;
-                    &lt;div class="flex justify-between p-4"&gt;
-                        &lt;div class="flex space-x-4"&gt;
-                            &lt;x-bladewind.icon name="heart" class="h-8 w-8..." /&gt;
-                            &lt;x-bladewind.icon name="chat-bubble-oval-left-ellipsis" class="h-8 w-8..." /&gt;
-                            &lt;x-bladewind.icon name="arrow-uturn-left" class="h-8 w-8..." /&gt;
-                        &lt;/div&gt;
-                        &lt;div&gt;
-                            &lt;svg&gt; ... &lt;/svg&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/x-slot:footer&gt;
+                <x-slot:footer>
+                    <div class="flex justify-between p-4">
+                        <div class="flex space-x-4">
+                            <x-bladewind.icon name="heart" class="h-8 w-8..." />
+                            <x-bladewind.icon name="chat-bubble-oval-left-ellipsis" class="h-8 w-8..." />
+                            <x-bladewind.icon name="arrow-uturn-left" class="h-8 w-8..." />
+                        </div>
+                        <div>
+                            <svg> ... </svg>
+                        </div>
+                    </div>
+                </x-slot:footer>
 
-            &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3, 17" :code="$cardExample12"></x-bladewind::code-block>
 
     <h2 id="padding">Padding And Radius</h2>
     <p>
@@ -472,18 +485,19 @@
         reaching for <code class="inline">!p-5</code> and friends when
         <code class="inline">compact</code> is too tight and the default is too loose.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::card padding="none"&gt;...&lt;/x-bladewind::card&gt;
-&lt;x-bladewind::card padding="tiny"&gt;...&lt;/x-bladewind::card&gt;      {{-- p-2 --}}
-&lt;x-bladewind::card padding="small"&gt;...&lt;/x-bladewind::card&gt;     {{-- p-4 --}}
-&lt;x-bladewind::card padding="regular"&gt;...&lt;/x-bladewind::card&gt;   {{-- p-6, the default --}}
-&lt;x-bladewind::card padding="medium"&gt;...&lt;/x-bladewind::card&gt;    {{-- p-8 --}}
-&lt;x-bladewind::card padding="big"&gt;...&lt;/x-bladewind::card&gt;       {{-- p-10 --}}
-&lt;x-bladewind::card padding="large"&gt;...&lt;/x-bladewind::card&gt;     {{-- p-12 --}}
-&lt;x-bladewind::card padding="p-5"&gt;...&lt;/x-bladewind::card&gt;       {{-- or a utility verbatim --}}
-        </code>
-    </pre>
+    @php
+        $cardExample13 = <<<'HTML'
+            <x-bladewind::card padding="none">...</x-bladewind::card>
+            <x-bladewind::card padding="tiny">...</x-bladewind::card>      {{-- p-2 --}}
+            <x-bladewind::card padding="small">...</x-bladewind::card>     {{-- p-4 --}}
+            <x-bladewind::card padding="regular">...</x-bladewind::card>   {{-- p-6, the default --}}
+            <x-bladewind::card padding="medium">...</x-bladewind::card>    {{-- p-8 --}}
+            <x-bladewind::card padding="big">...</x-bladewind::card>       {{-- p-10 --}}
+            <x-bladewind::card padding="large">...</x-bladewind::card>     {{-- p-12 --}}
+            <x-bladewind::card padding="p-5">...</x-bladewind::card>       {{-- or a utility verbatim --}}
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample13"></x-bladewind::code-block>
     <p>
         <code class="inline">compact</code> and <code class="inline">no_padding</code> still
         behave exactly as before; an explicit <code class="inline">padding</code> simply wins
@@ -571,26 +585,27 @@
     </x-bladewind::table>
 
     <h3 class="pb-2 ">Card with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::card
-        title="recent updates"
-        has_shadow="true"
-        has_hover="false"
-        compact="false"
-        no_padding="true"
-        radius="large"
-        url="/user"
-        class="!rounded-none"&gt;
+@php
+        $cardExample14 = <<<'HTML'
+            <x-bladewind::card
+                title="recent updates"
+                has_shadow="true"
+                has_hover="false"
+                compact="false"
+                no_padding="true"
+                radius="large"
+                url="/user"
+                class="!rounded-none">
 
-        &lt;x-slot:header&gt;...&lt;/x-slot:header&gt;
-        &lt;x-slot:footer&gt;...&lt;/x-slot:footer&gt;
+                <x-slot:header>...</x-slot:header>
+                <x-slot:footer>...</x-slot:footer>
 
-        ...
+                ...
 
-    &lt;/x-bladewind::card&gt;
-</code>
-</pre>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample14"></x-bladewind::code-block>
 
     <h3 class="pb-2 ">Contact Card Component Attributes</h3>
     <p>The table below shows a comprehensive list of all the attributes available for the Contact Card component.</p>
@@ -670,28 +685,30 @@
     </x-bladewind::table>
 
     <h3>Contact Card with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind.contact-card
-        name="Michael K. Ocansey"
-        mobile="+233.123.456.789"
-        image="/path/to/the/image/file"
-        position="Senior Copywriter"
-        email="mike@bladewindui.com"
-        department="Tech"
-        birthday="01-May-2000"
-        has_hover="true"
-        centered="true"
-        no_padding="true"
-        url="viewUserDetails(id)"
-        class="!rounded-none"&gt;
+@php
+        $cardExample15 = <<<'HTML'
+            <x-bladewind.contact-card
+                name="Michael K. Ocansey"
+                mobile="+233.123.456.789"
+                image="/path/to/the/image/file"
+                position="Senior Copywriter"
+                email="mikeBWATSIGNPLACEHOLDERbladewindui.com"
+                department="Tech"
+                birthday="01-May-2000"
+                has_hover="true"
+                centered="true"
+                no_padding="true"
+                url="viewUserDetails(id)"
+                class="!rounded-none">
 
-        // you can define additional content here
-        ...
+                // you can define additional content here
+                ...
 
-    &lt;/x-bladewind.contact-card&gt;
-</code>
-</pre>
+            </x-bladewind.contact-card>
+            HTML;
+        $cardExample15 = str_replace('BWATSIGNPLACEHOLDER', '@', $cardExample15);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$cardExample15"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for the card component is available in <code class="inline">resources > views > components > bladewind > card.blade.php</code>

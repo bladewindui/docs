@@ -42,42 +42,44 @@
         </x-bladewind::listview>
     </x-bladewind::card>
 
-    <pre class="language-markup line-numbers" data-line="3,5,19">
-        <code>
-&lt;x-bladewind::card no-padding="true"&gt;
-    &lt;x-bladewind::listview compact="true"&gt;
-        &lt;x-bladewind::listview.item&gt;
-            &lt;x-bladewind::avatar size="small" image="/assets/images/me.jpeg" /&gt;
-            &lt;div&gt;
-                &lt;div class="text-sm font-medium text-slate-900 dark:text-slate-200">Michael K. Ocansey&lt;/div&gt;
-                &lt;div class="text-sm text-slate-500 truncate">mike@bladewindui.com&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/x-bladewind::listview.item&gt;
-        &lt;x-bladewind::listview.item&gt;
-            &lt;x-bladewind::avatar size="small" image="AJ" bg_color="orange" /&gt;
-            &lt;div&gt;
-                &lt;div class="text-sm font-medium text-slate-900 dark:text-slate-200">Anonymous Jackson&lt;/div&gt;
-                &lt;div class="text-sm text-slate-500 truncate">fake@person.com&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/x-bladewind::listview.item&gt;
-        &lt;x-bladewind::listview.item&gt;
-            &lt;x-bladewind::avatar size="small" image="/assets/images/issah.jpg" /&gt;
-            &lt;div&gt;
-                &lt;div class="text-sm font-medium text-slate-900 dark:text-slate-200">Catherine Gerald&lt;/div&gt;
-                &lt;div class="text-sm text-slate-500 truncate">kate.gee@gmail.com&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/x-bladewind::listview.item&gt;
-        &lt;x-bladewind::listview.item&gt;
-            &lt;x-bladewind::avatar size="small" image="/assets/images/audrey.jpeg" /&gt;
-            &lt;div&gt;
-                &lt;div class="text-sm font-medium text-slate-900 dark:text-slate-200">Audrey Munyiva&lt;/div&gt;
-                &lt;div class="text-sm text-slate-500 truncate">audrey@munyiva.com&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/x-bladewind::listview.item&gt;
-    &lt;/x-bladewind::listview&gt;
-    &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+    @php
+        $listExample1 = <<<'HTML'
+            <x-bladewind::card no-padding="true">
+                <x-bladewind::listview compact="true">
+                    <x-bladewind::listview.item>
+                        <x-bladewind::avatar size="small" image="/assets/images/me.jpeg" />
+                        <div>
+                            <div class="text-sm font-medium text-slate-900 dark:text-slate-200">Michael K. Ocansey</div>
+                            <div class="text-sm text-slate-500 truncate">mikeBWATSIGNPLACEHOLDERbladewindui.com</div>
+                        </div>
+                    </x-bladewind::listview.item>
+                    <x-bladewind::listview.item>
+                        <x-bladewind::avatar size="small" image="AJ" bg_color="orange" />
+                        <div>
+                            <div class="text-sm font-medium text-slate-900 dark:text-slate-200">Anonymous Jackson</div>
+                            <div class="text-sm text-slate-500 truncate">fakeBWATSIGNPLACEHOLDERperson.com</div>
+                        </div>
+                    </x-bladewind::listview.item>
+                    <x-bladewind::listview.item>
+                        <x-bladewind::avatar size="small" image="/assets/images/issah.jpg" />
+                        <div>
+                            <div class="text-sm font-medium text-slate-900 dark:text-slate-200">Catherine Gerald</div>
+                            <div class="text-sm text-slate-500 truncate">kate.geeBWATSIGNPLACEHOLDERgmail.com</div>
+                        </div>
+                    </x-bladewind::listview.item>
+                    <x-bladewind::listview.item>
+                        <x-bladewind::avatar size="small" image="/assets/images/audrey.jpeg" />
+                        <div>
+                            <div class="text-sm font-medium text-slate-900 dark:text-slate-200">Audrey Munyiva</div>
+                            <div class="text-sm text-slate-500 truncate">audreyBWATSIGNPLACEHOLDERmunyiva.com</div>
+                        </div>
+                    </x-bladewind::listview.item>
+                </x-bladewind::listview>
+                </x-bladewind::card>
+            HTML;
+        $listExample1 = str_replace('BWATSIGNPLACEHOLDER', '@', $listExample1);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,5,19" :code="$listExample1"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The <code class="inline">&lt;x-bladewind::listview.item&gt;</code> component creates a flex container.
@@ -117,29 +119,32 @@
         </x-bladewind::listview.item>
     </x-bladewind::listview>
 
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-            &lt;x-bladewind::listview transparent="true"&gt;
+    @php
+        $listExample2 = <<<'HTML'
+            <x-bladewind::listview transparent="true">
 
-                &lt;x-bladewind::listview.item&gt;
+                <x-bladewind::listview.item>
 
-                    &lt;x-bladewind::avatar
+                    <x-bladewind::avatar
                         size="small"
-                        image="/path/to/the/image/file" /&gt;
-                    &lt;div class="ml-3"&gt;
-                        &lt;div class="text-sm font-medium text-slate-900"&gt;
+                        image="/path/to/the/image/file" />
+                    <div class="ml-3">
+                        <div class="text-sm font-medium text-slate-900">
                             Michael K. Ocansey
-                        &lt;/div&gt;
-                        &lt;div class="text-sm text-slate-500 truncate"&gt;
-                            kabutey@gmail.com
-                        &lt;/div&gt;
-                    &lt;/div&gt;
+                        </div>
+                        <div class="text-sm text-slate-500 truncate">
+                            kabuteyBWATSIGNPLACEHOLDERgmail.com
+                        </div>
+                    </div>
 
-                &lt;/x-bladewind::listview.item&gt;
+                </x-bladewind::listview.item>
                 ...
-            &lt;/x-bladewind::listview&gt;
-        </code><a name="attributes"></a>
-    </pre>
+            </x-bladewind::listview>
+            HTML;
+        $listExample2 = str_replace('BWATSIGNPLACEHOLDER', '@', $listExample2);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$listExample2"></x-bladewind::code-block>
+    <a name="attributes"></a>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the List View component.</p>
@@ -168,29 +173,31 @@
     </x-bladewind::table>
 
     <h3>List View with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::listview compact="true" transparent="true" class="bg-yellow-50"&gt;
+    @php
+        $listExample3 = <<<'HTML'
+            <x-bladewind::listview compact="true" transparent="true" class="bg-yellow-50">
 
-                &lt;x-bladewind::listview.item&gt;
+                <x-bladewind::listview.item>
 
-                    &lt;x-bladewind::avatar
+                    <x-bladewind::avatar
                         size="small"
-                        image="/path/to/the/image/file" /&gt;
-                    &lt;div class="ml-3"&gt;
-                        &lt;div class="text-sm font-medium text-slate-900"&gt;
+                        image="/path/to/the/image/file" />
+                    <div class="ml-3">
+                        <div class="text-sm font-medium text-slate-900">
                             Michael K. Ocansey
-                        &lt;/div&gt;
-                        &lt;div class="text-sm text-slate-500 truncate"&gt;
-                            kabutey@gmail.com
-                        &lt;/div&gt;
-                    &lt;/div&gt;
+                        </div>
+                        <div class="text-sm text-slate-500 truncate">
+                            kabuteyBWATSIGNPLACEHOLDERgmail.com
+                        </div>
+                    </div>
 
-                &lt;/x-bladewind::listview.item&gt;
+                </x-bladewind::listview.item>
                 ...
-            &lt;/x-bladewind::listview&gt;
-        </code>
-    </pre>
+            </x-bladewind::listview>
+            HTML;
+        $listExample3 = str_replace('BWATSIGNPLACEHOLDER', '@', $listExample3);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$listExample3"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source files for this component are available in <code class="inline">resources > views > components > bladewind > listview > index.blade.php</code> and

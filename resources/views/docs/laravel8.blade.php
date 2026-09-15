@@ -20,15 +20,16 @@
         <x-bladewind::button has_spinner="true" show_spinner="true">Saving ...</x-bladewind::button> &nbsp;&nbsp;
         <x-bladewind::button type="secondary" has_spinner="true" show_spinner="true">Saving ...</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="2,3">
-        <code>
-            &lt;x-bladewind.button
+    @php
+        $laravel8Example1 = <<<'HTML'
+            <x-bladewind.button
                 hasSpinner="true"
-                showSpinner="true"&gt;
+                showSpinner="true">
                 Saving...
-            &lt;/x-bladewind.button&gt;
-        </code>
-    </pre>
+            </x-bladewind.button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$laravel8Example1"></x-bladewind::code-block>
 
     <p>
         This principle is applicable for ALL component attributes that are more than one word. Single word attributes like

@@ -1,172 +1,237 @@
 ---
-title: Datepicker Component
-component: x-bladewind::datepicker
+title: Calendar Component
+component: x-bladewind::calendar
 url: /component/calendar
 ---
 
-# Datepicker
+# Calendar
 
-Display a calendar so user can select a date. The calendar component is locale friendly. Months and days are translated.
+Calendar shows events across a month, a week, or a day. It differs from the Datepicker, which is a small popup for picking a single date in a form. Use Calendar when you want to show a schedule, a set of events, or a range of days someone can look at and pick from directly.
 
-> **This component requires the AlpineJS library to work.** Ensure you include the script below if you don't have AlpineJS already in your project.
+The component requires a `name` (used internally and for JavaScript helper functions) and a `label` (announced to screen readers). Everything else, including the events list, is optional.
+
+## Basic Usage
 
 ```blade
-<script src="//unpkg.com/alpinejs" defer></script>
+<x-bladewind::calendar name="team-calendar" label="Team calendar" :events="$teamEvents" />
 ```
 
-```blade
-<x-bladewind::datepicker  />
+```php
+$teamEvents = [
+    ['date' => now()->startOfMonth()->addDays(4)->toDateString(), 'label' => 'Sprint planning', 'type' => 'info'],
+    ['date' => now()->startOfMonth()->addDays(11)->toDateString(), 'end' => now()->startOfMonth()->addDays(13)->toDateString(), 'label' => 'Team offsite', 'type' => 'success'],
+    ['date' => now()->format('Y-m-d').' 09:00', 'end' => now()->format('Y-m-d').' 10:00', 'label' => 'Standup', 'type' => 'info'],
+];
 ```
 
-By default the datepicker fills up the width of its parent container. You can however specify a width of your choice using a wrapper element with a width class.
+## Views
 
-You can also change the placeholder text from the default `Select a date`.
+The `view` attribute controls how much of the calendar is shown: `month` (default), `week`, or `day`. Three header buttons let visitors switch views if you don't fix one. The `date` attribute (format `Y-m-d`) tells Calendar which day to center on, defaulting to today.
+
+Week view and day view are a full hour-by-hour schedule, similar to Outlook or Google Calendar's week/day views, sharing the same grid — day view is simply narrowed to one column instead of seven.
+
+Set `highlight-today="true"` to tint today's date in month view, or today's whole column in week and day view.
 
 ```blade
-<div class="w-40">
-    <x-bladewind::datepicker placeholder="Invoice Date"  />
-</div>
+<x-bladewind::calendar name="highlight-today-demo" label="Highlighted calendar" view="week" highlight-today="true" :events="$teamEvents" />
 ```
 
-## Range Datepicker
+## Selection
 
-This range datepicker isn't your typical date range selection you will find on airline websites. This option simply saves you from manually embedding the datepicker two times. Specifying `type="range"` will create two separate datepicker boxes for start and end dates.
+The `selectable` attribute controls whether dates can be selected:
+
+- `none` — the default. Dates cannot be selected.
+- `single` — selects one date at a time; choosing another replaces the current selection.
+- `multiple` — selects multiple dates; clicking a selected date again removes it.
+
+Use `selected` to define dates selected initially — a single `Y-m-d` date, a comma-separated list, or an array.
+
+When selection is enabled, Calendar automatically creates hidden form fields using the `name` attribute (`[]` appended for multiple selections), so selected dates are submitted automatically with the surrounding form.
 
 ```blade
-<x-bladewind::datepicker type="range"  />
+<x-bladewind::calendar
+    name="availability"
+    label="Mark your availability"
+    selectable="multiple"
+    :selected="[now()->addDays(2)->toDateString(), now()->addDays(5)->toDateString()]" />
 ```
 
-The default placeholder texts for the range datepicker are **From** and **To**. These can however, be modified using the `date_from_label` and `date_to_label` attributes. These attributes only work if `type="range"`. Also, we introduced `stacked="true"` to stack the datepickers vertically.
+Calendar does not support picking a start and end date together as one continuous range — use Datepicker's `range` option for that. Calendar is for looking at a whole month or week and picking individual days out of it.
+
+## Events
+
+Give Calendar its events through the `events` attribute, an array of small arrays each describing one event.
+
+| Field | Description |
+|---|---|
+| `label` | Text shown for the event |
+| `type` | Controls its colour. `info` \| `success` \| `warning` \| `danger` |
+| `href` | Optional. Makes the event a clickable link to that address. |
+| `date` | The date the event occurs or is displayed on |
+| `end` | Date on which a multi-day event ends |
+| `description` | Optional. Turns the event's marker into a button that opens a details drawer instead of a plain link or text. |
+
+### Event Dates
+
+If `date` is just a day, e.g. `2026-08-14`, the event is all-day and shows as a small coloured marker on that day in month view. Setting `end` as a day too stretches the event across every day from `date` to `end` (e.g. a multi-day conference or leave).
+
+If `date` includes a time, e.g. `2026-08-14 15:00`, the event is timed, meant for meetings and appointments. If `end` is also set with a time on the same day, that defines the duration; otherwise Calendar assumes one hour. Timed events show in month view as a marker with the start time in front of the label (e.g. "3:00pm Kenya project review"), but only get positioned on a real hour-by-hour timeline in week or day view.
+
+Since a day cell in month view is small, only a limited number of markers show per day, controlled by `max-events-per-day` (default 3). Extra events are tucked behind a real, keyboard-reachable "+N more" button.
+
+### Event Details Drawer
+
+Give an event a `description` and its marker becomes a button. Clicking it opens a drawer showing the event's date/time, label, description, and (if `href` is set) a "View full details" link. This happens automatically for any event with a description, in month, week, and day view. The drawer stays inside the calendar's own box, doesn't dim the rest of the calendar, and can be dismissed with Escape or its close button.
 
 ```blade
-<x-bladewind::datepicker
-    type="range"
-    date_from_label="start date"
-    date_to_label="end date" />
+<x-bladewind::calendar
+    name="team-calendar"
+    :events="[
+        [
+            'date' => '2026-08-14 11:00',
+            'end' => '2026-08-14 11:30',
+            'label' => 'Design review',
+            'type' => 'info',
+            'href' => '/component/calendar',
+            'description' => 'Walk through the new event details drawer with the team.',
+        ],
+    ]" />
 ```
 
-### Show As a Required Field
+## Week and Day View
 
-An asterisk is appended to the placeholder text when `required="true"`.
+Switching to week view replaces the month grid with a detailed weekly schedule: seven day columns, hours running vertically from midnight to midnight. All-day and multi-day events appear in a dedicated row at the top, separate from timed events. Day view uses the same layout focused on a single, wider day column.
+
+Overlapping events are displayed side by side rather than hidden behind each other. Week and day view don't open at midnight — they automatically scroll to a practical morning hour.
 
 ```blade
-<x-bladewind::datepicker required="true"  />
+<x-bladewind::calendar name="week-demo" label="Week demo calendar" view="week" :events="$teamEvents" />
+
+<x-bladewind::calendar name="day-demo" label="Day demo calendar" view="day" :date="$weekAnchor->toDateString()" :events="$weekEvents" />
 ```
 
-### Validating The Range Picker
+## Restricting Dates
 
-The date range picker comes with optional date validation. This validation only checks to ensure the end date is not less than the start date. To enforce validation of the date range picker, set `validate="true"`. This is only applied if `type="range"`.
-
-When you activate validation, you will need to provide the message to be displayed when a user selects an end date that is less than the start date. This is provided as an option to make it translatable. Set `validation_message="your message here"`.
+`min-date` and `max-date` set the earliest and latest dates a visitor can navigate to or select — useful for a booking calendar that shouldn't allow past dates. `disabled-dates` turns off specific individual dates within that range, e.g. public holidays. Disabled dates are still shown and reachable with arrow keys, but cannot be selected.
 
 ```blade
-<x-bladewind::datepicker
-    type="range"
-    date_from_label="task starts"
-    date_to_label="task due"
-    validate="true"
-    validation_message="Seriously!, you know your task cannot end before you even got started"  />
+<x-bladewind::calendar name="booking" label="Booking calendar" selectable="single"
+    :min-date="now()->toDateString()" :max-date="now()->addDays(20)->toDateString()"
+    :disabled-dates="[now()->addDays(3)->toDateString(), now()->addDays(4)->toDateString()]" />
 ```
 
-By default, the error validation message is displayed in the BladewindUI notification component. You will need to ensure you have the `x-bladewind.notification` component on your page for the error message to be visible. If you prefer to display the error message inline, under the date fields, simply set `show_error_inline="true"`.
+By default, month view also shows grayed-out days from the previous and next month to keep every row full, controlled by `show-other-month-days` (default `true`). Set to `false` to leave those cells empty instead.
 
-## Date Formats
+## Fixed Height
 
-You can specify how you want dates selected in the datepicker to be displayed. There are four options to pick from. The default format is `format="yyyy-mm-dd"`. When using a range datepicker, the format you specify is applied to both datepickers.
+Calendar maintains a consistent height across month, week, and day views by default, reserving `40rem` (enough for a six-week month). When a view needs less space, the remainder is left empty rather than shrinking the calendar; when it needs more, the calendar scrolls internally.
 
 ```blade
-<x-bladewind::datepicker name="date1" type="range" format="dd-mm-yyyy" />
+<x-bladewind::calendar name="fixed-height-calendar" label="Fixed-height calendar" height="20rem" :events="$teamEvents" />
 ```
 
-```blade
-<x-bladewind::datepicker name="date2" format="mm-dd-yyyy" />
-```
+Set `height=""` (empty) to let Calendar grow and shrink naturally based on content. This height rule also applies per day cell — a busy day never pushes its row taller than neighboring days; its "+N more" button reveals a small scrolling list inside that cell instead.
 
-```blade
-<x-bladewind::datepicker name="date3" format="D d M, Y" type="range" />
-```
+## Navigation
 
-```blade
-<x-bladewind::datepicker name="date4" format="yyyy-mm-dd" />
-```
+The Previous, Next, and Today buttons in the header, plus Page Up/Page Down on the keyboard, move Calendar by a day (day view), week (week view), or month (month view). By default this happens instantly in the browser using the events already provided. Set `client-navigation="false"` to hand navigation off to your own server (useful for very large or constantly changing event sets) — with it off, navigating only fires the `before-navigate` and `navigate` events, and your app is responsible for showing the new period.
 
-## With Default Values
+## Keyboard Interaction
 
-There are times you will want the datepicker to load prepopulated with a default value. This is useful when in edit mode or when using filters and you want to show the user what dates they filtered by.
+Calendar's grid uses a single Tab stop with arrow-key navigation inside it, rather than tabbing through every day. In week and day view, the same keys move between day headers rather than day cells.
 
-```blade
-<x-bladewind::datepicker default_date="2021-12-03"  />
-```
+| Key | Action |
+|---|---|
+| Arrow keys | Move focus by one day, or seven days for up/down. Navigates past the visible edge automatically. |
+| Home / End | Jump to the first or last day of the current row. |
+| Page Up / Page Down | Go to the previous or next day (day view), week (week view), or month (month view). |
+| Shift + Page Up / Page Down | One level further: a week at a time in day view, a month in week view, a year in month view. |
+| Enter / Space | Select the focused day, if selection is enabled. |
 
-It is possible to have default dates for a range datepicker also.
+Every event marker, including timed events on the hour-by-hour grid, is a genuine link or button reachable via Tab.
 
-```blade
-<x-bladewind::datepicker
-    type="range"
-    default_date_from="2021-12-03"
-    default_date_to="2022-01-03"  />
-```
+## JavaScript Events
 
-## Min and Max Dates
+Calendar fires browser events your own JavaScript can listen for. Events starting with "before" are cancelable via `preventDefault()`. All event names start with `bladewind:calendar:`.
 
-Setting minimum and maximum dates restrict the datepicker to display dates only within these specified dates. The `min_date` attribute allows you to set the accepted minimum date. Any dates before this date will be disabled and grayed out. The `max_date` attribute allows you to set the accepted maximum date. Any dates after this date will be disabled and grayed out.
+| Event suffix | When it runs |
+|---|---|
+| `before-navigate`, `navigate` | Just before/after the visible day, week, or month changes. |
+| `before-view-change`, `view-change` | Just before/after switching between month, week, and day view. |
+| `before-select`, `select` | Just before/after the selected date(s) change. |
 
-```blade
-<x-bladewind::datepicker min_date="{{date('Y-m-d')}}" />
-```
+## JavaScript API
 
-```blade
-<x-bladewind::datepicker max_date="{{date('Y-m-t')}}" />
-```
+Each helper returns `true` on success (or if the requested state was already true), and `false` if the calendar wasn't found or a cancelable event's listener called `preventDefault()`.
 
-```blade
-<x-bladewind::datepicker min_date="{{date('Y-m-01')}}" max_date="{{date('Y-m-t')}}" />
+```js
+nextCalendarPeriod('team-calendar');
+previousCalendarPeriod('team-calendar');
+goToCalendarToday('team-calendar');
+goToCalendarMonth('team-calendar', 2026, 12);
+setCalendarView('team-calendar', 'week');
+selectCalendarDate('team-calendar', '2026-08-14');
+clearCalendarSelection('team-calendar');
+calendarSelectedDates('team-calendar'); // ['2026-08-14']
 ```
 
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | bw-datepicker | This name can be accessed when the input is submitted in the form. The name is also available as part of the css classes. |
-| type | single | `single` \| `range` |
-| default_date | _blank_ | In case you are editing a form, the value passed will be set on the value attribute of the datepicker input. |
-| default_date_from | _blank_ | Default date to set for the _From_ date when using the range datepicker. |
-| default_date_to | _blank_ | Default date to set for the _To_ date when using the range datepicker. |
-| min_date | _blank_ | Restrict the date to start from this. Any dates before this will be disabled and grayed out. |
-| max_date | _blank_ | Restrict the date to end at this. Any dates after this will be disabled and grayed out. |
-| date_from_label | From | Placeholder text to display for the `From` date. Applicable only to range datepickers. |
-| date_to_label | To | Placeholder text to display for the `To` date. Applicable only to range datepickers. |
-| format | yyyy-mm-dd | How date should be formatted. `yyyy-mm-dd` \| `dd-mm-yyyy` \| `mm-dd-yyyy` \| `D d M, Y` |
-| placeholder | Select a date | Placeholder text to display. |
-| required | false | Determines if the placeholder text should have an asterisk appended to it or not. `true` \| `false` |
-| onblur | _blank_ | Custom function to call when the datepicker loses focus. |
-| week_starts | sun | Choose between Sunday and Monday as the first day of the week. `sun` \| `mon` |
-| class | bw-datepicker | Any additional css classes can be added using this attribute. |
-| validate | false | Applied if `type="range"` to enforce if the start date should not be greater than the end date. `true` \| `false` |
-| validation_message | Your end date cannot be less than your start date | Applied if `type="range"`. Message to display if there is a validation error. |
-| show_error_inline | false | Applied if `type="range"` to specify how the error should be displayed. `true` \| `false` |
-| use_placeholder | true | Applied if `type="range"` to specify if the placeholder should be explicitly used instead of labels. `true` \| `false` |
-| stacked | true | Applied if `type="range"` to specify if the datepickers should be stacked vertically. `true` \| `false` |
-| size | medium | Sizing of the input to match button sizes. `tiny` \| `small` \| `regular` \| `big` |
+| name | Generated | Unique identifier used internally and, when selectable, as the posted form field name. |
+| label | Calendar | Accessible name announced by screen readers for the grid. |
+| view | month | `month` \| `week` \| `day` |
+| date | today | Anchor date (`Y-m-d`) for the initially shown month, week, or day. |
+| week-starts | sunday | `sunday` \| `monday` |
+| selectable | none | `none` \| `single` \| `multiple` |
+| selected | [] | Date(s) selected at the start: a `Y-m-d` string, comma-separated string, or array. |
+| min-date | null | Earliest date a visitor can navigate to or select. |
+| max-date | null | Latest date a visitor can navigate to or select. |
+| disabled-dates | [] | Specific dates to turn off regardless of the min/max range. |
+| events | [] | Array of event descriptors, each with `date`, `end`, `label`, `type`, and `href` fields. |
+| max-events-per-day | 3 | How many event markers a day shows in month view before the rest are tucked behind "+N more". |
+| show-other-month-days | true | Whether to fill the grid with dimmed, disabled days from neighboring months. |
+| show-week-numbers | false | Whether to show an ISO week number next to each row. |
+| highlight-today | false | Whether to tint today's date/column. |
+| height | 40rem | Fixed height for the grid, with its own scrollbar if needed. Pass an empty value to size naturally. |
+| client-navigation | true | Whether navigating rebuilds the grid in the browser automatically. Set `false` to hand it off to your own server. |
+| today-label | Today | Text label for the jump-to-today button. |
+| previous-label | Previous | Accessible label for the previous-period button. |
+| next-label | Next | Accessible label for the next-period button. |
 
 ## Full Example
 
 ```blade
-<x-bladewind::datepicker
-    name="invoice_date"
-    type="single"
-    required="false"
-    placeholder="Invoice Date"
-    date_from=""
-    date_to=""
-    default_date=""
-    has_label="true"
-    validate="false"
-    show_error_inline="true"
-    stacked="true"
-    use_placeholder="false"
-    validation_message="end date before start date! Really?"
-    onblur="copyDate('copy_from', 'copy_to')"
-    week_starts="mon"
+<x-bladewind::calendar
+    name="team-calendar"
+    label="Team calendar"
+    view="week"
+    date="2026-08-14"
+    week-starts="monday"
+    selectable="multiple"
+    :selected="['2026-08-10', '2026-08-14']"
+    min-date="2026-01-01"
+    max-date="2026-12-31"
+    :disabled-dates="['2026-12-25']"
+    :events="[
+        [
+            'date' => '2026-08-14 15:00',
+            'end' => '2026-08-14 16:00',
+            'label' => 'Sprint planning',
+            'type' => 'info',
+            'href' => '/events/sprint-planning',
+            'description' => 'Review the roadmap and assign owners for Q3.',
+        ],
+    ]"
+    max-events-per-day="3"
+    show-other-month-days="true"
+    show-week-numbers="false"
+    highlight-today="true"
+    height="40rem"
+    client-navigation="true"
+    today-label="Today"
+    previous-label="Previous"
+    next-label="Next"
     class="shadow-sm" />
 ```

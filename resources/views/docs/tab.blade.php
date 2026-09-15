@@ -37,51 +37,52 @@
 
     </x-bladewind::tab>
 
-    <pre class="language-markup line-numbers" data-line="3,17">
-        <code>
-            &lt;x-bladewind::tab name="free-pics"&gt;
+    @php
+        $tabExample1 = <<<'HTML'
+            <x-bladewind::tab name="free-pics">
 
-                &lt;x-slot:headings&gt;
-                    &lt;x-bladewind::tab.heading
-                        name="unsplash-1" label="Lissete Laverde" /&gt;
+                <x-slot:headings>
+                    <x-bladewind::tab.heading
+                        name="unsplash-1" label="Lissete Laverde" />
 
-                    &lt;x-bladewind::tab.heading
-                        name="unsplash-2" label="Marko Pavlichenko" /&gt;
+                    <x-bladewind::tab.heading
+                        name="unsplash-2" label="Marko Pavlichenko" />
 
-                    &lt;x-bladewind::tab.heading
-                        name="unsplash-3" active="true" label="Yoonbae Cho" /&gt;
+                    <x-bladewind::tab.heading
+                        name="unsplash-3" active="true" label="Yoonbae Cho" />
 
-                    &lt;x-bladewind::tab.heading
-                        name="unsplash-4" label="Sam Carter" /&gt;
-                &lt;/x-slot:headings&gt;
+                    <x-bladewind::tab.heading
+                        name="unsplash-4" label="Sam Carter" />
+                </x-slot:headings>
 
-                &lt;x-bladewind::tab.body&gt;
+                <x-bladewind::tab.body>
 
-                    &lt;x-bladewind::tab.content name="unsplash-1"&gt;
-                        &lt;img src="/path/to/the/image/file"
-                            alt="Picture by Lissete Laverde" /&gt;
-                    &lt;/x-bladewind::tab.content&gt;
+                    <x-bladewind::tab.content name="unsplash-1">
+                        <img src="/path/to/the/image/file"
+                            alt="Picture by Lissete Laverde" />
+                    </x-bladewind::tab.content>
 
-                    &lt;x-bladewind::tab.content name="unsplash-2"&gt;
-                        &lt;img src="/path/to/the/image/file"
-                            alt="Picture by Marko Pavlichenko" /&gt;
-                    &lt;/x-bladewind::tab.content&gt;
+                    <x-bladewind::tab.content name="unsplash-2">
+                        <img src="/path/to/the/image/file"
+                            alt="Picture by Marko Pavlichenko" />
+                    </x-bladewind::tab.content>
 
-                    &lt;x-bladewind::tab.content name="unsplash-3" active="true"&gt;
-                        &lt;img src="/path/to/the/image/file"
-                            alt="Picture by Yoonbae Cho" /&gt;
-                    &lt;/x-bladewind::tab.content&gt;
+                    <x-bladewind::tab.content name="unsplash-3" active="true">
+                        <img src="/path/to/the/image/file"
+                            alt="Picture by Yoonbae Cho" />
+                    </x-bladewind::tab.content>
 
-                    &lt;x-bladewind::tab.content name="unsplash-4"&gt;
-                        &lt;img src="/path/to/the/image/file"
-                            alt="Picture by Sam Carter" /&gt;
-                    &lt;/x-bladewind::tab.content&gt;
+                    <x-bladewind::tab.content name="unsplash-4">
+                        <img src="/path/to/the/image/file"
+                            alt="Picture by Sam Carter" />
+                    </x-bladewind::tab.content>
 
-                &lt;/x-bladewind::tab.body&gt;
+                </x-bladewind::tab.body>
 
-            &lt;/x-bladewind::tab&gt;
-        </code>
-    </pre>
+            </x-bladewind::tab>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,17" :code="$tabExample1"></x-bladewind::code-block>
 
     <p>
         Let us breakdown what is happening with the tab component. We first define a tab group that will hold all the tab headings
@@ -247,36 +248,37 @@
             </x-bladewind::tab.body>
         </x-bladewind::tab>
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tab name="red-tab" color="red"&gt;
-                &lt;x-slot name="headings"&gt;
+    @php
+        $tabExample2 = <<<'HTML'
+            <x-bladewind::tab name="red-tab" color="red">
+                <x-slot name="headings">
 
-                    &lt;x-bladewind::tab.heading
+                    <x-bladewind::tab.heading
                         name="red"
                         active="true"
-                        label="Active Red Tab" /&gt;
+                        label="Active Red Tab" />
 
-                    &lt;x-bladewind::tab.heading
+                    <x-bladewind::tab.heading
                         name="inactive-red"
-                        label="The Other Tab" /&gt;
+                        label="The Other Tab" />
 
-                &lt;/x-slot&gt;
+                </x-slot>
 
-                &lt;x-bladewind::tab.body&gt;
+                <x-bladewind::tab.body>
 
-                    &lt;x-bladewind::tab.content
+                    <x-bladewind::tab.content
                         name="red"
-                        active="true"&gt;&lt;/x-bladewind::tab.content&gt;
+                        active="true"></x-bladewind::tab.content>
 
-                    &lt;x-bladewind::tab.content
-                        name="inactive-red"&gt;&lt;/x-bladewind::tab.content&gt;
+                    <x-bladewind::tab.content
+                        name="inactive-red"></x-bladewind::tab.content>
 
-                &lt;/x-bladewind::tab.body&gt;
+                </x-bladewind::tab.body>
 
-            &lt;/x-bladewind::tab&gt;
-        </code>
-    </pre>
+            </x-bladewind::tab>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tabExample2"></x-bladewind::code-block>
 
 
     <h2 id="styles">Other Tab Styles</h2>
@@ -301,29 +303,30 @@
             </x-bladewind::tab.content>
         </x-bladewind::tab.body>
     </x-bladewind::tab>
-    <pre class="lang-markup line-numbers" data-line="3">
-        <code>
-                &lt;x-bladewind::tab
-                    name="sys-blue-tab"
-                    style="system"&gt;
+    @php
+        $tabExample3 = <<<'HTML'
+            <x-bladewind::tab
+                name="sys-blue-tab"
+                style="system">
 
-                    &lt;x-slot:headings&gt;
-                        &lt;x-bladewind::tab.heading
-                            name="sys-blue" active="true" label="Blue System Tab" /&gt;
-                        &lt;x-bladewind::tab.heading
-                            name="inactive-sys-blue" label="The Other Tab" /&gt;
-                    &lt;/x-slot:headings&gt;
+                <x-slot:headings>
+                    <x-bladewind::tab.heading
+                        name="sys-blue" active="true" label="Blue System Tab" />
+                    <x-bladewind::tab.heading
+                        name="inactive-sys-blue" label="The Other Tab" />
+                </x-slot:headings>
 
-                    &lt;x-bladewind::tab.body&gt;
-                        &lt;x-bladewind::tab.content
-                            name="sys-blue" active="true"&gt;...&lt;/x-bladewind::tab.content&gt;
-                        &lt;x-bladewind::tab.content
-                            name="inactive-sys-blue"&gt;...&lt;/x-bladewind::tab.content&gt;
-                    &lt;/x-bladewind::tab.body&gt;
+                <x-bladewind::tab.body>
+                    <x-bladewind::tab.content
+                        name="sys-blue" active="true">...</x-bladewind::tab.content>
+                    <x-bladewind::tab.content
+                        name="inactive-sys-blue">...</x-bladewind::tab.content>
+                </x-bladewind::tab.body>
 
-                &lt;/x-bladewind::tab&gt;
-        </code>
-    </pre>
+            </x-bladewind::tab>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$tabExample3"></x-bladewind::code-block>
     <br />
     <p>
         <x-bladewind::tab name="sys-yellow-tab" style="system" color="cyan">
@@ -377,29 +380,30 @@
             </x-bladewind::tab.body>
         </x-bladewind::tab>
     </p>
-    <pre class="lang-markup line-numbers" data-line="3">
-        <code>
-                &lt;x-bladewind::tab
-                    name="pills-blue-tab"
-                    style="pills"&gt;
+    @php
+        $tabExample4 = <<<'HTML'
+            <x-bladewind::tab
+                name="pills-blue-tab"
+                style="pills">
 
-                    &lt;x-slot:headings&gt;
-                        &lt;x-bladewind::tab.heading
-                            name="pills-blue" active="true" label="Blue System Tab" /&gt;
-                        &lt;x-bladewind::tab.heading
-                            name="inactive-pills-blue" label="The Other Tab" /&gt;
-                    &lt;/x-slot:headings&gt;
+                <x-slot:headings>
+                    <x-bladewind::tab.heading
+                        name="pills-blue" active="true" label="Blue System Tab" />
+                    <x-bladewind::tab.heading
+                        name="inactive-pills-blue" label="The Other Tab" />
+                </x-slot:headings>
 
-                    &lt;x-bladewind::tab.body&gt;
-                        &lt;x-bladewind::tab.content
-                            name="pills-blue" active="true"&gt;...&lt;/x-bladewind::tab.content&gt;
-                        &lt;x-bladewind::tab.content
-                            name="inactive-pills-blue"&gt;...&lt;/x-bladewind::tab.content&gt;
-                    &lt;/x-bladewind::tab.body&gt;
+                <x-bladewind::tab.body>
+                    <x-bladewind::tab.content
+                        name="pills-blue" active="true">...</x-bladewind::tab.content>
+                    <x-bladewind::tab.content
+                        name="inactive-pills-blue">...</x-bladewind::tab.content>
+                </x-bladewind::tab.body>
 
-                &lt;/x-bladewind::tab&gt;
-        </code>
-    </pre>
+            </x-bladewind::tab>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$tabExample4"></x-bladewind::code-block>
     <br />
     <p>
         <x-bladewind::tab name="pills-pink-tab" color="pink" style="pills">
@@ -448,40 +452,41 @@
             </x-bladewind::tab.body>
         </x-bladewind::tab>
     </p>
-    <pre class="lang-markup line-numbers" data-line="4,8,11,16">
-        <code>
-&lt;x-bladewind::tab name="tab-icon"&gt;
-    &lt;x-slot name="headings"&gt;
-        &lt;x-bladewind::tab.heading name="icon-blue" active="true"
-            icon="shopping-cart"
-            label="Shopping List" /&gt;
-        &lt;x-bladewind::tab.heading name="icon-inactive"
-            label="Previous Purchases"
-            icon="shopping-bag" /&gt;
-        &lt;x-bladewind::tab.heading name="icon-solid"
-            label="Solid Icon"
-            icon="shopping-bag"
-            icon_type="solid" /&gt;
-        &lt;x-bladewind::tab.heading name="icon-solid-css" label="Icon Css Applied"
-            icon="fire"
-            icon_type="solid"
-            icon_css="!rounded-full !bg-orange-500 text-white size-6 p-1" /&gt;
-    &lt;/x-slot&gt;
-    &lt;x-bladewind::tab.body&gt;
-        &lt;x-bladewind::tab.content name="icon-blue" active="true"&gt;
-            &lt;img src="/assets/images/lissete-laverde-z9Ropm8edsw-unsplash.jpg"
-                 alt="Picture by Lissete Laverde" /&gt;
-        &lt;/x-bladewind::tab.content&gt;
-        &lt;x-bladewind::tab.content name="icon-inactive"&gt;
-            &lt;img src="/assets/images/sam-carter-JU1SVl4smHM-unsplash.jpg" alt="Picture by Sam Carter" /&gt;
-        &lt;/x-bladewind::tab.content&gt;
-        &lt;x-bladewind::tab.content name="icon-solid"&gt;
-            &lt;img src="/assets/images/lissete-laverde-z9Ropm8edsw-unsplash.jpg" alt="Picture by Lissete Laverde" /&gt;
-        &lt;/x-bladewind::tab.content&gt;
-    &lt;/x-bladewind::tab.body&gt;
-&lt;/x-bladewind::tab&gt;
-        </code>
-    </pre>
+    @php
+        $tabExample5 = <<<'HTML'
+            <x-bladewind::tab name="tab-icon">
+                <x-slot name="headings">
+                    <x-bladewind::tab.heading name="icon-blue" active="true"
+                        icon="shopping-cart"
+                        label="Shopping List" />
+                    <x-bladewind::tab.heading name="icon-inactive"
+                        label="Previous Purchases"
+                        icon="shopping-bag" />
+                    <x-bladewind::tab.heading name="icon-solid"
+                        label="Solid Icon"
+                        icon="shopping-bag"
+                        icon_type="solid" />
+                    <x-bladewind::tab.heading name="icon-solid-css" label="Icon Css Applied"
+                        icon="fire"
+                        icon_type="solid"
+                        icon_css="!rounded-full !bg-orange-500 text-white size-6 p-1" />
+                </x-slot>
+                <x-bladewind::tab.body>
+                    <x-bladewind::tab.content name="icon-blue" active="true">
+                        <img src="/assets/images/lissete-laverde-z9Ropm8edsw-unsplash.jpg"
+                             alt="Picture by Lissete Laverde" />
+                    </x-bladewind::tab.content>
+                    <x-bladewind::tab.content name="icon-inactive">
+                        <img src="/assets/images/sam-carter-JU1SVl4smHM-unsplash.jpg" alt="Picture by Sam Carter" />
+                    </x-bladewind::tab.content>
+                    <x-bladewind::tab.content name="icon-solid">
+                        <img src="/assets/images/lissete-laverde-z9Ropm8edsw-unsplash.jpg" alt="Picture by Lissete Laverde" />
+                    </x-bladewind::tab.content>
+                </x-bladewind::tab.body>
+            </x-bladewind::tab>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,8,11,16" :code="$tabExample5"></x-bladewind::code-block>
     <br />
 
 
@@ -621,40 +626,41 @@
     </x-bladewind::table>
 
     <h3>Tab with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tab name="red-tab" color="red" style="system"&gt;
-                &lt;x-slot name="headings"&gt;
+    @php
+        $tabExample6 = <<<'HTML'
+            <x-bladewind::tab name="red-tab" color="red" style="system">
+                <x-slot name="headings">
 
-                    &lt;x-bladewind::tab.heading
+                    <x-bladewind::tab.heading
                         name="red"
                         active="true"
-                        label="Active Red Tab" /&gt;
+                        label="Active Red Tab" />
 
-                    &lt;x-bladewind::tab.heading
+                    <x-bladewind::tab.heading
                         name="inactive-red"
                         disabled="true"
                         active="false"
                         url="/profile/settings"
-                        label="The Other Tab" /&gt;
+                        label="The Other Tab" />
 
-                &lt;/x-slot&gt;
+                </x-slot>
 
-                &lt;x-bladewind::tab.body class="p-2"&gt;
+                <x-bladewind::tab.body class="p-2">
 
-                    &lt;x-bladewind::tab.content
+                    <x-bladewind::tab.content
                         name="red"
                         class="border border-gray-100"
-                        active="true"&gt;...&lt;/x-bladewind::tab.content&gt;
+                        active="true">...</x-bladewind::tab.content>
 
-                    &lt;x-bladewind::tab.content
-                        name="inactive-red"&gt;...&lt;/x-bladewind::tab.content&gt;
+                    <x-bladewind::tab.content
+                        name="inactive-red">...</x-bladewind::tab.content>
 
-                &lt;/x-bladewind::tab.body&gt;
+                </x-bladewind::tab.body>
 
-            &lt;/x-bladewind::tab&gt;
-        </code>
-    </pre>
+            </x-bladewind::tab>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tabExample6"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source files for this component are available in <code class="inline">resources > views > components > bladewind > tab > index.blade.php</code>,
@@ -663,6 +669,15 @@
         <code class="inline">resources > views > components > bladewind > tab > content.blade.php</code>
     </x-bladewind::alert>
 
+    <h2 id="livewire">Using Tab Group Inside Livewire</h2>
+    <p>
+        Which tab is active lives in the tab group's own DOM rather than in Livewire's component state. If a Livewire component
+        re-renders this markup for a reason that has nothing to do with the tabs, the active tab resets back to its initial value.
+        If your tab group lives inside a component that can re-render for other reasons, wrap the tab group in
+        <code class="inline">wire:ignore</code>. The bindings that drive the tabs are delegated and safe to re-run, so a re-render
+        will not leave behind duplicate listeners.
+    </p>
+
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#colours">Different colours</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#styles">Other tab styles</a></div>
@@ -670,6 +685,7 @@
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#pills">Pills</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#icons">With icons</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Tab Group inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

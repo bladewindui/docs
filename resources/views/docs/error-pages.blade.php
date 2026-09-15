@@ -9,7 +9,12 @@
         <a href="https://laravel.com/docs/9.x/errors#custom-http-error-pages" target="_blank">publish the Laravel error pages</a> to your working resources directory by running the command below from your terminal.
     </p>
     <p>
-        <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=laravel-errors</code></pre>
+        @php
+        $errorUpagesExample1 = <<<'HTML'
+            php artisan vendor:publish --tag=laravel-errors
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$errorUpagesExample1"></x-bladewind::code-block>
     </p>
     <p>
         You will get a message similar to <em><span class="text-green-600">Copied Directory</span> <span class="text-yellow-600">[/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views] <span class="text-green-600">To</span> [/resources/views/errors]</span></em>
@@ -21,44 +26,47 @@
         Let's take for example the default <code class="inline">resources/views/erros/404.blade.php</code>, the code in there looks like this:
     </p>
 
-    <pre class="language-js line-numbers">
-        <code>
-            &#64;extends('errors::minimal')
+    @php
+        $errorUpagesExample2 = <<<'HTML'
+            BWATSIGNPLACEHOLDERextends('errors::minimal')
 
-            &#64;section('title', __('Not Found'))
-            &#64;section('code', '404')
-            &#64;section('message', __('Not Found'))
-        </code>
-    </pre>
+            BWATSIGNPLACEHOLDERsection('title', __('Not Found'))
+            BWATSIGNPLACEHOLDERsection('code', '404')
+            BWATSIGNPLACEHOLDERsection('message', __('Not Found'))
+            HTML;
+        $errorUpagesExample2 = str_replace('BWATSIGNPLACEHOLDER', '@', $errorUpagesExample2);
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$errorUpagesExample2"></x-bladewind::code-block>
     <p>
         You can replace everything in the file with the BladewindUI error component. <a href="/404">Click here to view an example 404 page</a> using the BladewindUI error component. This just points to a url that has no matching route.
         The default 404 illustration used is from <a href="https://storyset.com/illustration/404-error-page-not-found-with-people-connecting-a-plug/bro" target="_blank">Storyset.com</a>
     </p>
 
-    <pre class="language-markup line-numbers" data-line="6, 12">
-        <code>
-            &lt;!--
+    @php
+        $errorUpagesExample3 = <<<'HTML'
+            <!--
             x-frameless is a layout file specific to the documentation that
             just gets rid of the left navigation. It is not available as a component
             -->
-            &lt;x-frameless title="404 | Page not found"&gt;
+            <x-frameless title="404 | Page not found">
 
-                &lt;x-bladewind::error
+                <x-bladewind::error
                     heading="Page not found"
                     description="The page you requested does not exist.
                         We have a caffeine-induced bot working overtime to find it for you"
                     button_text="Back to docs"
-                    button_url="/extra/error-pages"&gt;
+                    button_url="/extra/error-pages">
 
-                    &lt;x-slot name="image"&gt;
-                        &lt;img src="/assets/images/404.svg" alt="404 image" /&gt;
-                    &lt;/x-slot&gt;
+                    <x-slot name="image">
+                        <img src="/assets/images/404.svg" alt="404 image" />
+                    </x-slot>
 
-                &lt;/x-bladewind::error&gt;
+                </x-bladewind::error>
 
-            &lt;/x-frameless&gt;
-        </code>
-    </pre>
+            </x-frameless>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6, 12" :code="$errorUpagesExample3"></x-bladewind::code-block>
 
     <p>
         The image to be displayed on the error page has been setup as a slot so you can decide if you want to use
@@ -104,22 +112,23 @@
     </x-bladewind::table>
 
     <h3>Error with all attributes defined</h3>
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::error
+    @php
+        $errorUpagesExample4 = <<<'HTML'
+            <x-bladewind::error
                 heading="Page not found"
                 description="The page you requested does not exist.
                 We have a caffeine-induced bot working overtime to find it for you"
                 button_text="Back to docs"
-                button_url="/extra/error-pages"&gt;
+                button_url="/extra/error-pages">
 
-                &lt;x-slot name="image"&gt;
-                    &lt;img src="/assets/images/404.svg" alt="404 image" /&gt;
-                &lt;/x-slot&gt;
+                <x-slot name="image">
+                    <img src="/assets/images/404.svg" alt="404 image" />
+                </x-slot>
 
-            &lt;/x-bladewind::error&gt;
-        </code>
-    </pre>
+            </x-bladewind::error>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$errorUpagesExample4"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > error.blade.php</code>

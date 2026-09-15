@@ -64,61 +64,63 @@
         Let's break down what is happening by first looking at the buttons that triggered the modal.
     </p>
 
-    <pre class="language-markup line-numbers" data-line="2,8">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $processUindicatorExample1 = <<<'HTML'
+            <x-bladewind::button
                 onclick="deletePayment('pass')"
-                size="small"&gt;
+                size="small">
                 Delete Payment and Pass
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::button
+            <x-bladewind::button
                 onclick="deletePayment('fail')"
-                size="small"&gt;
+                size="small">
                 Delete Payment and Fail
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,8" :code="$processUindicatorExample1"></x-bladewind::code-block>
     <p>
         Next, let's look at the modal element and the two possible process outcomes
     </p>
-    <pre class="language-markup line-numbers" data-line="1,6,12,14,20,22">
-        <code>
-            &lt;x-bladewind::modal
+    @php
+        $processUindicatorExample2 = <<<'HTML'
+            <x-bladewind::modal
                 name="delete-paymentz"
-                show_action_buttons="false"&gt;
+                show_action_buttons="false">
 
                 // this shows that process is in progress
-                &lt;x-bladewind::processing
+                <x-bladewind::processing
                     name="processing-delete"
                     message="Deleting pending payment"
-                    hide="false" /&gt;
+                    hide="false" />
 
                 // this is shown when process completes with a pass
-                &lt;x-bladewind::process-complete
+                <x-bladewind::process-complete
                     name="delete-payment-yes"
                     process_completed_as="passed"
                     button_label="Done"
                     button_action="alert('i passed... closing modal now'); hideModal('delete-paymentz')"
-                    message="Pending payment was deleted successfully" /&gt;
+                    message="Pending payment was deleted successfully" />
 
                 // this is shown when process completes with a failure
-                &lt;x-bladewind::process-complete
+                <x-bladewind::process-complete
                     name="delete-payment-no"
                     process_completed_as="failed"
                     button_label="Done"
                     button_action="alert('i failed... closing modal now'); hideModal('delete-paymentz')"
-                    message="Pending payment could not be deleted" /&gt;
+                    message="Pending payment could not be deleted" />
 
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1,6,12,14,20,22" :code="$processUindicatorExample2"></x-bladewind::code-block>
     <p>
         Now let's take a look at the Javascript function both buttons are calling.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
-            &lt;script&gt;
+    @php
+        $processUindicatorExample3 = <<<'HTML'
+            <script>
                 deletePayment = (mode) => {
                     // it is preferred to hide all three elements
                     // and show only the element that needs to be shown
@@ -152,9 +154,10 @@
                     hide('.delete-payment-yes');
                     hide('.delete-payment-no');
                 }
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$processUindicatorExample3"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Process Indicator component.</p>
@@ -221,32 +224,33 @@
         </tr>
     </x-bladewind::table>
     <h3>Process Indicator with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::processing
+    @php
+        $processUindicatorExample4 = <<<'HTML'
+            <x-bladewind::processing
                 name="processing-delete"
                 message="Deleting pending payment"
-                hide="false" /&gt;
+                hide="false" />
 
             // this is shown when process completes with a pass
-            &lt;x-bladewind::process-complete
+            <x-bladewind::process-complete
                 name="delete-payment-yes"
                 process_completed_as="passed"
                 hide="false"
                 button_label="Done"
                 button_action="hideModal('delete-paymentz')"
-                message="Pending payment was deleted successfully" /&gt;
+                message="Pending payment was deleted successfully" />
 
             // this is shown when process completes with a failure
-            &lt;x-bladewind::process-complete
+            <x-bladewind::process-complete
                 name="delete-payment-no"
                 process_completed_as="failed"
                 hide="false"
                 button_label="Done"
                 button_action="hideModal('delete-paymentz')"
-                message="Pending payment could not be deleted" /&gt;
-        </code>
-    </pre>
+                message="Pending payment could not be deleted" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$processUindicatorExample4"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > processing.blade.php</code>

@@ -9,23 +9,25 @@
     </p>
     <x-bladewind::colorpicker />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::colorpicker  /&gt;
-        </code>
-    </pre>
+    @php
+        $colorpickerExample1 = <<<'HTML'
+            <x-bladewind::colorpicker  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$colorpickerExample1"></x-bladewind::code-block>
     <br />
     <p>
         Once you pass a comma separated string of colours, a custom colour picker is displayed instead. These must be HEX colours including the '#' sign.
         This is useful if you are building a theme based web app that allows users to select their preferred theme for example.
     </p>
     <x-bladewind::colorpicker colors="#fff999, #cccccc, #999222, #787623, #78fcc3, #333678, #878987, #098765" />
-<pre class="language-markup">
-<code>
-    &lt;x-bladewind::colorpicker
-     colors="#fff999, #cccccc, #999222, #787623, #78fcc3, #333678, #878987, #098765"/&gt;
-</code>
-</pre>
+@php
+        $colorpickerExample2 = <<<'HTML'
+            <x-bladewind::colorpicker
+             colors="#fff999, #cccccc, #999222, #787623, #78fcc3, #333678, #878987, #098765"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$colorpickerExample2"></x-bladewind::code-block>
     <br />
     <p>
         By default the colorpicker does not show the value of the selected colour. It only changes the colour of the box to what has been selected.
@@ -33,11 +35,12 @@
     </p>
     <x-bladewind::colorpicker show_value="true"  />
 
-    <pre class="language-markup">
-        <code>
-        &lt;x-bladewind::colorpicker show_value="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $colorpickerExample3 = <<<'HTML'
+            <x-bladewind::colorpicker show_value="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$colorpickerExample3"></x-bladewind::code-block>
 
     <p>
         The colorpicker comes in different sizes to match with input fields. In case the component is being used in a form with other fields.
@@ -49,26 +52,30 @@
         <x-bladewind::colorpicker size="medium"  />
         <x-bladewind::colorpicker size="big"  />
     </div>
-<pre class="language-markup">
-    <code>
-        &lt;x-bladewind::colorpicker size="small"  /&gt;
-    </code>
-</pre>
-<pre class="language-markup">
-    <code>
-        &lt;x-bladewind::colorpicker size="regular"  /&gt;
-    </code>
-</pre>
-<pre class="language-markup">
-    <code>
-        &lt;x-bladewind::colorpicker size="medium"  /&gt;
-    </code>
-</pre>
-<pre class="language-markup">
-    <code>
-        &lt;x-bladewind::colorpicker size="big"  /&gt;
-    </code>
-</pre>
+@php
+        $colorpickerExample4 = <<<'HTML'
+            <x-bladewind::colorpicker size="small"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$colorpickerExample4"></x-bladewind::code-block>
+@php
+        $colorpickerExample5 = <<<'HTML'
+            <x-bladewind::colorpicker size="regular"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$colorpickerExample5"></x-bladewind::code-block>
+@php
+        $colorpickerExample6 = <<<'HTML'
+            <x-bladewind::colorpicker size="medium"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$colorpickerExample6"></x-bladewind::code-block>
+@php
+        $colorpickerExample7 = <<<'HTML'
+            <x-bladewind::colorpicker size="big"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$colorpickerExample7"></x-bladewind::code-block>
     <p>
         In order to access selected colour values when a form is submitted, provide a <code class="text-red-400 inline">name</code> for your colorpicker.
         BladewindUI provides a random unique name when no name is provided.
@@ -120,23 +127,32 @@
     </x-bladewind::table>
 
     <h3>Colorpicker with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::colorpicker
-        name="theme"
-        size="medium"
-        show_value="true"
-        colors="#989098, #cccc44, #323232"
-        selected_value="#909090"
-        class="shadow-sm" /&gt;
-</code>
-    </pre>
+    @php
+        $colorpickerExample8 = <<<'HTML'
+            <x-bladewind::colorpicker
+                name="theme"
+                size="medium"
+                show_value="true"
+                colors="#989098, #cccc44, #323232"
+                selected_value="#909090"
+                class="shadow-sm" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$colorpickerExample8"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Colorpicker Inside Livewire</h2>
+    <p>
+        When a colour is picked, the value field dispatches a real, native <code class="inline">change</code> event, so Livewire's
+        <code class="inline">wire:model</code> picks it up without any extra work on your part. The bindings that drive the picker
+        are safe to re-run, so a Livewire re-render will not leave behind duplicate listeners.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > colorpicker.blade.php</code>
     </x-bladewind::alert>
 
     <x-slot:side_nav>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Colorpicker inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

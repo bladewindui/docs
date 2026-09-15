@@ -15,18 +15,20 @@
         <x-bladewind::button>Subscribe Now</x-bladewind::button>
         <x-bladewind::button uppercasing="false">Subscribe Now</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button&gt;Subscribe Now&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button uppercasing="false"&gt;
+    @php
+        $buttonExample1 = <<<'HTML'
+            <x-bladewind::button>Subscribe Now</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample1"></x-bladewind::code-block>
+    @php
+        $buttonExample2 = <<<'HTML'
+            <x-bladewind::button uppercasing="false">
                 Subscribe Now
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample2"></x-bladewind::code-block>
     <br />
     <p>
         By default the component uses the <code class="inline">&lt;button&gt;</code> tag to build the button. To use the <code class="inline">&lt;a&gt;</code> tag to build the button, you will need to specify
@@ -35,15 +37,16 @@
     <div class="text-center p-4">
         <x-bladewind::button tag="a" href="{{ route('home') }}">Subscribe Now</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;!--
-            // this button is created using the &lt;a&gt; tag
+    @php
+        $buttonExample3 = <<<'HTML'
+            <!--
+            // this button is created using the <a> tag
             // you can inspect element on the above button to check
             -->
-            &lt;x-bladewind::button tag="a"&gt;subscribe now&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            <x-bladewind::button tag="a">subscribe now</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample3"></x-bladewind::code-block>
 
     <h2 id="types">Button Types</h2>
     <p>
@@ -56,34 +59,38 @@
         <x-bladewind::button>Primary Button</x-bladewind::button>
         <x-bladewind::button outline="true">Primary Button</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button&gt;Primary Button&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button outline="true"&gt;Primary Button&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample4 = <<<'HTML'
+            <x-bladewind::button>Primary Button</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample4"></x-bladewind::code-block>
+    @php
+        $buttonExample5 = <<<'HTML'
+            <x-bladewind::button outline="true">Primary Button</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample5"></x-bladewind::code-block>
     <h3 id="secondary">Secondary Buttons</h3>
     <p>The secondary buttons depend on the secondary colour defined in your project's <code class="inline">tailwind.config.js</code>. <a href="/customize/colours">Please ensure</a> this is defined. </p>
     <div class="text-center space-y-4 space-x-4">
         <x-bladewind::button type="secondary">Secondary Button</x-bladewind::button>
         <x-bladewind::button type="secondary" outline="true">Secondary Button</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button type="secondary"&gt;Secondary Button&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button type="secondary" outline="true"&gt;
+    @php
+        $buttonExample6 = <<<'HTML'
+            <x-bladewind::button type="secondary">Secondary Button</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample6"></x-bladewind::code-block>
+    @php
+        $buttonExample7 = <<<'HTML'
+            <x-bladewind::button type="secondary" outline="true">
                 Secondary Button
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample7"></x-bladewind::code-block>
 
 
     <h3 id="circular">Circular Buttons</h3>
@@ -95,16 +102,18 @@
         <x-bladewind::button.circle icon="bell-alert" />
         <x-bladewind::button.circle outline="true" icon="bell-alert" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button.circle icon="bell-alert" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button.circle outline="true" icon="bell-alert" /&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample8 = <<<'HTML'
+            <x-bladewind::button.circle icon="bell-alert" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample8"></x-bladewind::code-block>
+    @php
+        $buttonExample9 = <<<'HTML'
+            <x-bladewind::button.circle outline="true" icon="bell-alert" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample9"></x-bladewind::code-block>
     <br />
     <p>
         Bladewind determines which button type (primary or secondary) to display based on the <code class="inline text-red-500">type</code> attribute. The circular buttons
@@ -115,11 +124,12 @@
     <div class="text-center">
         <x-bladewind::button.circle color="secondary" outline="true" icon="bell-alert" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button.circle color="secondary" outline icon="bell-alert" /&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample10 = <<<'HTML'
+            <x-bladewind::button.circle color="secondary" outline icon="bell-alert" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample10"></x-bladewind::code-block>
 
     <h3 id="outline">Outline Buttons</h3>
     <p>
@@ -132,16 +142,18 @@
         <x-bladewind::button radius="full" outline color="cyan">Cyan Outline</x-bladewind::button>
         <x-bladewind::button type="secondary" radius="full" outline>Secondary Outline</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button radius="full" outline="true" color="cyan">Cyan outline&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button radius="full" outline="true" type="secondary">Secondary outline&lt;/x-bladewind::button&gt;
-        </code>
-    </pre><br />
+    @php
+        $buttonExample11 = <<<'HTML'
+            <x-bladewind::button radius="full" outline="true" color="cyan">Cyan outline</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample11"></x-bladewind::code-block>
+    @php
+        $buttonExample12 = <<<'HTML'
+            <x-bladewind::button radius="full" outline="true" type="secondary">Secondary outline</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample12"></x-bladewind::code-block><br />
     <p>
         By default, outline buttons use the TailwindCSS <code class="inline">border-2</code> width. You can modify the border width
         and specify any of the other supported TailwindCSS border widths without the "border-" prefix by setting the
@@ -153,21 +165,24 @@
         <x-bladewind::button outline border_width="8">Border 8</x-bladewind::button>
     </div>
     <br />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button outline="true" border_width="2">Border 2&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button outline="true" border_width="4">Border 4&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button outline="true" border_width="8">Border 8&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample13 = <<<'HTML'
+            <x-bladewind::button outline="true" border_width="2">Border 2</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample13"></x-bladewind::code-block>
+    @php
+        $buttonExample14 = <<<'HTML'
+            <x-bladewind::button outline="true" border_width="4">Border 4</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample14"></x-bladewind::code-block>
+    @php
+        $buttonExample15 = <<<'HTML'
+            <x-bladewind::button outline="true" border_width="8">Border 8</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample15"></x-bladewind::code-block>
     <h2 id="states">Button States</h2>
     <p>
         BladewindUI buttons can exist in a couple of states. Probably states isn't the right term for these but let's stick with that for lack of a better term/
@@ -176,11 +191,12 @@
     <div class="text-center p-4">
         <x-bladewind::button show_focus_ring="false">No Focus Ring</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button show_focus_ring="false"&gt;no focus ring&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample16 = <<<'HTML'
+            <x-bladewind::button show_focus_ring="false">no focus ring</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample16"></x-bladewind::code-block>
 
     <h3 id="ring-sizes">Different Focus Ring Widths</h3>
     <div class="text-center p-4 space-x-4 space-y-4">
@@ -190,31 +206,36 @@
         <x-bladewind::button ring_width="4">Ring 4</x-bladewind::button>
         <x-bladewind::button ring_width="8">Ring 8</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button&gt;default&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button ring_width="1"&gt;ring 1&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button ring_width="2"&gt;ring 2&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button ring_width="4"&gt;ring 4&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button ring_width="8"&gt;ring 8&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample17 = <<<'HTML'
+            <x-bladewind::button>default</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample17"></x-bladewind::code-block>
+    @php
+        $buttonExample18 = <<<'HTML'
+            <x-bladewind::button ring_width="1">ring 1</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample18"></x-bladewind::code-block>
+    @php
+        $buttonExample19 = <<<'HTML'
+            <x-bladewind::button ring_width="2">ring 2</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample19"></x-bladewind::code-block>
+    @php
+        $buttonExample20 = <<<'HTML'
+            <x-bladewind::button ring_width="4">ring 4</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample20"></x-bladewind::code-block>
+    @php
+        $buttonExample21 = <<<'HTML'
+            <x-bladewind::button ring_width="8">ring 8</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample21"></x-bladewind::code-block>
 
     <h3 id="disabled">Disabled Button</h3>
     <div class="text-center space-x-4 space-y-4">
@@ -222,25 +243,28 @@
         <x-bladewind::button disabled="true" type="secondary">Disabled Secondary</x-bladewind::button>
         <x-bladewind::button disabled="true" outline>Disabled Outline</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button disabled="true"&gt;disabled&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $buttonExample22 = <<<'HTML'
+            <x-bladewind::button disabled="true">disabled</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample22"></x-bladewind::code-block>
+    @php
+        $buttonExample23 = <<<'HTML'
+            <x-bladewind::button
                 disabled="true"
-                type="secondary"&gt;
+                type="secondary">
                 disabled secondary
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button disabled outline&gt;disabled outline&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample23"></x-bladewind::code-block>
+    @php
+        $buttonExample24 = <<<'HTML'
+            <x-bladewind::button disabled outline>disabled outline</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample24"></x-bladewind::code-block>
 
     <h3 id="sizes">Different Sizes</h3>
     <p>
@@ -256,11 +280,12 @@
         <x-bladewind::button.circle size="tiny" icon="bell-alert" />
         <x-bladewind::button.circle size="tiny" outline icon="bell-alert" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button size="tiny"&gt;tiny&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample25 = <<<'HTML'
+            <x-bladewind::button size="tiny">tiny</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample25"></x-bladewind::code-block>
     <h4>Small</h4>
     <div class="text-center p-4 space-x-3 space-y-3">
         <x-bladewind::button size="small">small</x-bladewind::button>
@@ -269,11 +294,12 @@
         <x-bladewind::button.circle size="small" icon="bell-alert" />
         <x-bladewind::button.circle size="small" outline icon="bell-alert" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button size="small"&gt;small&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample26 = <<<'HTML'
+            <x-bladewind::button size="small">small</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample26"></x-bladewind::code-block>
     <h4>Regular / Default</h4>
     <div class="text-center p-4 space-x-3 space-y-3">
         <x-bladewind::button>default</x-bladewind::button>
@@ -282,16 +308,18 @@
         <x-bladewind::button.circle icon="bell-alert" />
         <x-bladewind::button.circle outline icon="bell-alert" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button size="regular"&gt;default&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button&gt;default&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample27 = <<<'HTML'
+            <x-bladewind::button size="regular">default</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample27"></x-bladewind::code-block>
+    @php
+        $buttonExample28 = <<<'HTML'
+            <x-bladewind::button>default</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample28"></x-bladewind::code-block>
     <h4>Medium</h4>
     <div class="text-center p-4 space-x-3 space-y-3">
         <x-bladewind::button size="medium">medium</x-bladewind::button>
@@ -300,16 +328,18 @@
         <x-bladewind::button.circle size="medium" icon="bell-alert" />
         <x-bladewind::button.circle size="medium" outline icon="bell-alert" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button size="medium"&gt;medium&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button.circle size="medium"&gt;medium&lt;/x-bladewind::button.circle&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample29 = <<<'HTML'
+            <x-bladewind::button size="medium">medium</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample29"></x-bladewind::code-block>
+    @php
+        $buttonExample30 = <<<'HTML'
+            <x-bladewind::button.circle size="medium">medium</x-bladewind::button.circle>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample30"></x-bladewind::code-block>
     <h4>Big</h4>
     <div class="text-center p-4 space-x-3 space-y-3">
         <x-bladewind::button size="big">big</x-bladewind::button>
@@ -318,11 +348,13 @@
         <x-bladewind::button.circle size="big" icon="bell-alert" />
         <x-bladewind::button.circle size="big" outline icon="bell-alert" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button size="big"&gt;big&lt;/x-bladewind::button&gt;
-        </code><a name="secondary"></a>
-    </pre>
+    @php
+        $buttonExample31 = <<<'HTML'
+            <x-bladewind::button size="big">big</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample31"></x-bladewind::code-block>
+    <a name="secondary"></a>
 
     <h3 id="radii">Different Radii</h3>
     <p>
@@ -335,54 +367,62 @@
         <x-bladewind::button radius="medium">Medium</x-bladewind::button>
         <x-bladewind::button radius="full">Full</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button radius="none">none&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;!-- this is the default so radius="small" can be omitted -->
-            &lt;x-bladewind::button radius="small">small&lt;/x-bladewind::button&gt;
-            &lt;x-bladewind::button>small&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button radius="medium">medium&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button radius="full">full&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample32 = <<<'HTML'
+            <x-bladewind::button radius="none">none</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample32"></x-bladewind::code-block>
+    @php
+        $buttonExample33 = <<<'HTML'
+            <!-- this is the default so radius="small" can be omitted -->
+            <x-bladewind::button radius="small">small</x-bladewind::button>
+            <x-bladewind::button>small</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample33"></x-bladewind::code-block>
+    @php
+        $buttonExample34 = <<<'HTML'
+            <x-bladewind::button radius="medium">medium</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample34"></x-bladewind::code-block>
+    @php
+        $buttonExample35 = <<<'HTML'
+            <x-bladewind::button radius="full">full</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample35"></x-bladewind::code-block>
     <div class="text-center p-4 space-x-3 space-y-3">
         <x-bladewind::button type="secondary" radius="none">None</x-bladewind::button>
         <x-bladewind::button type="secondary" radius="small">Small</x-bladewind::button>
         <x-bladewind::button type="secondary" radius="medium">Medium</x-bladewind::button>
         <x-bladewind::button type="secondary" radius="full">Full</x-bladewind::button>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button type="secondary" radius="none">none&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button type="secondary" radius="small">small&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button type="secondary" radius="medium">medium&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button type="secondary" radius="full">full&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample36 = <<<'HTML'
+            <x-bladewind::button type="secondary" radius="none">none</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample36"></x-bladewind::code-block>
+    @php
+        $buttonExample37 = <<<'HTML'
+            <x-bladewind::button type="secondary" radius="small">small</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample37"></x-bladewind::code-block>
+    @php
+        $buttonExample38 = <<<'HTML'
+            <x-bladewind::button type="secondary" radius="medium">medium</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample38"></x-bladewind::code-block>
+    @php
+        $buttonExample39 = <<<'HTML'
+            <x-bladewind::button type="secondary" radius="full">full</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample39"></x-bladewind::code-block>
     <h2 id="spinning">With Spinners</h2>
     <p>Buttons can have spinners. This is useful when indicating progress of a form submission or progress of any other action.
     The button spinners use the BladewindUI <a href="/component/spinner">Spinner</a> component.</p>
@@ -395,15 +435,16 @@
         <x-bladewind::button type="secondary" has_spinner="true" show_spinner="true">Saving ...</x-bladewind::button>
         <x-bladewind::button outline has_spinner="true" show_spinner="true">Saving ...</x-bladewind::button>
     </div>
-    <pre class="language-markup line-numbers" data-line="2,3">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $buttonExample40 = <<<'HTML'
+            <x-bladewind::button
                 has_spinner="true"
-                show_spinner="true"&gt;
+                show_spinner="true">
                 Saving...
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$buttonExample40"></x-bladewind::code-block>
     <p>
         It is possible to trigger the spinning effect when the button is clicked. This can be achieved using the helper functions bundled with BladewindUI.
         In this case you will need to set the <code class="inline text-red-500">name</code> and <code class="inline text-red-500">onclick</code> attributes of the button.
@@ -412,16 +453,17 @@
         <x-bladewind::button has_spinner="true" name="save-user" onclick="showButtonSpinner('.save-user')">Click for my spinner</x-bladewind::button> &nbsp;&nbsp;
     </div>
 
-    <pre class="language-markup line-numbers" data-line="2-4">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $buttonExample41 = <<<'HTML'
+            <x-bladewind::button
                 has_spinner="true"
                 name="save-user"
-                onclick="showButtonSpinner('.save-user')"&gt;
+                onclick="showButtonSpinner('.save-user')">
                 Click for my spinner
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2-4" :code="$buttonExample41"></x-bladewind::code-block>
     <h2 id="icons">With Icons</h2>
     <p>Buttons can have <a href="/component/icon">icons</a>.
     To add an icon simply specify the icon name in the <code class="inline text-red-500">icon</code> attribute. Refer to our <a href="/component/icon">Icon</a> component page for details on icon names.
@@ -434,34 +476,37 @@
         <x-bladewind::button icon="arrow-path">Refresh page</x-bladewind::button>
         <x-bladewind::button icon="arrow-path" icon_right="true">Refresh page</x-bladewind::button>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button icon="arrow-path"&gt;
+    @php
+        $buttonExample42 = <<<'HTML'
+            <x-bladewind::button icon="arrow-path">
                 Refresh Page
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button icon="arrow-path" icon_right="true"&gt;
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample42"></x-bladewind::code-block>
+    @php
+        $buttonExample43 = <<<'HTML'
+            <x-bladewind::button icon="arrow-path" icon_right="true">
                 Refresh Page
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample43"></x-bladewind::code-block>
     <br />
     <div class="text-center space-x-4">
         <x-bladewind::button type="secondary" icon="arrow-small-right" icon_right="true">Next Chapter</x-bladewind::button>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $buttonExample44 = <<<'HTML'
+            <x-bladewind::button
                 type="secondary"
                 icon="arrow-small-right"
-                icon_right="true""&gt;
+                icon_right="true"">
                 Next Chapter
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample44"></x-bladewind::code-block>
 
     <h2 id="submittable">Form Submission</h2>
     <p>
@@ -484,13 +529,14 @@
         </x-bladewind::card>
     </p>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $buttonExample45 = <<<'HTML'
+            <x-bladewind::button
                 can_submit="true"
-                class="mx-auto block"&gt;click me to submit&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+                class="mx-auto block">click me to submit</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$buttonExample45"></x-bladewind::code-block>
 
     <h2 id="coloured">Coloured Button</h2>
     <p>
@@ -499,11 +545,12 @@
         Set the <code class="inline text-red-500">color</code> attribute to your preferred colour.
     </p>
 
-    <pre class="language-markup" >
-        <code>
-            &lt;x-bladewind::button color="red"&gt;red button&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $buttonExample46 = <<<'HTML'
+            <x-bladewind::button color="red">red button</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$buttonExample46"></x-bladewind::code-block>
     <br/>
     <div class="grid grid-cols-3 gap-6">
         <x-bladewind::button color="red">Red button</x-bladewind::button>
@@ -625,16 +672,17 @@
         <a href="/customize/colours">There is more on this here.</a>
     </p>
     <p>
-        <pre class="language-js line-numbers" data-line="5">
-            <code>
-                // your project's tailwind.config.js
-                ...
-                extend: {
-                    colors: {
-                        primary: colors.indigo,
-                ...
-            </code>
-        </pre>
+        @php
+        $buttonExample47 = <<<'HTML'
+            // your project's tailwind.config.js
+            ...
+            extend: {
+                colors: {
+                    primary: colors.indigo,
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="5" :code="$buttonExample47"></x-bladewind::code-block>
     </p>
 
     <h2 id="events">Button Events</h2>
@@ -646,14 +694,15 @@
         <x-bladewind::button onclick="alert('you clicked me')">I have an onclick</x-bladewind::button>
     </div>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::button
-                onclick="alert('you clicked me')"&gt;
+    @php
+        $buttonExample48 = <<<'HTML'
+            <x-bladewind::button
+                onclick="alert('you clicked me')">
                 click me to submit
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$buttonExample48"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Button component.</p>
@@ -763,9 +812,9 @@
     </x-bladewind::table>
 
     <h3>Button with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $buttonExample49 = <<<'HTML'
+            <x-bladewind::button
                 type="secondary"
                 size="big"
                 name="btn-subscribe"
@@ -781,11 +830,12 @@
                 icon="lock-closed"
                 icon_right="false"
                 button_text_css="font-bold text-black"
-                can_submit="false"&gt;
+                can_submit="false">
                 ...
-            &lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$buttonExample49"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source files for this component are available in <code class="inline">resources > views > components > bladewind > button > [index.blade.php, circle.blade.php]</code>

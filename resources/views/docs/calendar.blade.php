@@ -34,8 +34,8 @@
     <x-bladewind::calendar name="team-calendar" label="Team calendar" :events="$teamEvents" />
     <br />
 
-    <pre class="language-php line-numbers">
-        <code>
+    @php
+        $calendarExample1 = <<<'HTML'
             // this data powers the calendar above
             $teamEvents = [
                 ['date' => now()->startOfMonth()->addDays(4)->toDateString(), 'label' => 'Sprint planning', 'type' => 'info'],
@@ -48,10 +48,16 @@
                 ['date' => now()->format('Y-m-d').' 09:30', 'end' => now()->format('Y-m-d').' 10:30', 'label' => 'Design sync', 'type' => 'success'],
                 ['date' => now()->format('Y-m-d').' 14:00', 'end' => now()->format('Y-m-d').' 15:30', 'label' => 'Kenya project review', 'type' => 'warning'],
             ];
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$calendarExample1"></x-bladewind::code-block>
 
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar name="team-cal" label="Team calendar" :events="$teamEvents" /&gt;</code></pre>
+    @php
+        $calendarExample2 = <<<'HTML'
+            <x-bladewind::calendar name="team-cal" label="Team calendar" :events="$teamEvents" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample2"></x-bladewind::code-block>
 
     <h2 id="views">Views</h2>
     <p>The <code class="inline text-red-500">view</code> attribute controls how much of the calendar Calendar shows at once.
@@ -79,15 +85,16 @@
     Try selecting a few dates below to see how it works.
 </p>
     <x-bladewind::calendar name="availability" label="Mark your availability" selectable="multiple" :selected="[now()->addDays(2)->toDateString(), now()->addDays(5)->toDateString()]" />
-    <pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::calendar
-        name="availability"
-        selectable="multiple"
-        label="Mark your availability"
-        :selected="[now()->addDays(2)->toDateString(), now()->addDays(5)->toDateString()]" /&gt;
-</code>
-    </pre>
+    @php
+        $calendarExample3 = <<<'HTML'
+            <x-bladewind::calendar
+                name="availability"
+                selectable="multiple"
+                label="Mark your availability"
+                :selected="[now()->addDays(2)->toDateString(), now()->addDays(5)->toDateString()]" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample3"></x-bladewind::code-block>
     <br />
     <x-bladewind::alert show_close_icon="false">Calendar does not have a mode for picking a start date and an end date together as one range. If you need that, Datepicker's <code class="inline">range</code> option already does it well, and it is built for exactly that job: a date range typed into a form field. Calendar is meant for looking at a whole month or week and picking individual days out of it, not for choosing a single continuous range.</x-bladewind::alert>
 
@@ -141,18 +148,23 @@
     @endphp
     <x-bladewind::calendar name="event-details-demo" label="Event details demo calendar" :events="$meetingEvents" />
     <br />
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar
-    name="team-calendar"
-    :events="[
-        [
-            'date' => '2026-08-14 11:00',
-            'end' => '2026-08-14 11:30',
-            'label' => 'Design review',
-            'type' => 'info',
-            'href' => '/component/calendar',
-            'description' => "Walk through the new event details drawer with the team.\nBring the latest screenshots.",
-        ],
-    ]" /&gt;</code></pre>
+    @php
+        $calendarExample4 = <<<'HTML'
+            <x-bladewind::calendar
+                name="team-calendar"
+                :events="[
+                    [
+                        'date' => '2026-08-14 11:00',
+                        'end' => '2026-08-14 11:30',
+                        'label' => 'Design review',
+                        'type' => 'info',
+                        'href' => '/component/calendar',
+                        'description' => "Walk through the new event details drawer with the team.\nBring the latest screenshots.",
+                    ],
+                ]" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample4"></x-bladewind::code-block>
 
     <h2 id="week-view">Week and Day View</h2>
     <p>Switching the calendar to week view replaces the month grid with a detailed weekly schedule. Each of the seven days has its own column, while the hours run vertically from midnight to midnight. All-day and multi-day events appear in a dedicated row at the top, keeping them separate from events scheduled for specific times.</p>
@@ -170,17 +182,32 @@
     @endphp
     <x-bladewind::calendar name="week-demo" label="Week demo calendar" view="week" :events="$teamEvents" />
 
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar
-    name="week-demo" label="Week demo calendar" view="week" :events="$teamEvents" /&gt;</code></pre>
+    @php
+        $calendarExample5 = <<<'HTML'
+            <x-bladewind::calendar
+                name="week-demo" label="Week demo calendar" view="week" :events="$teamEvents" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample5"></x-bladewind::code-block>
     <br />
     <p>Week and day views do not open at midnight. Since most events happen during the day, the calendar automatically scrolls to a practical morning hour, bringing the most relevant part of the schedule into view immediately.</p>
     <p>The example below shows the same meetings in day view. Overlapping events are displayed side by side, just as they are in week view. Both views use the same underlying layout, with day view simply displaying one wider column instead of seven.</p>
 
     <x-bladewind::calendar name="day-demo" label="Day demo calendar" view="day" :date="$weekAnchor->copy()->addDays(1)->toDateString()" :events="$weekEvents" />
-    <pre class="language-php line-numbers"><code>$weekAnchor = now()->startOfWeek();</code></pre>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar
-    name="day-demo" label="Day demo calendar" view="day" :events="$teamEvents"
-    :date="$weekAnchor->copy()->addDays(1)->toDateString()" /&gt;</code></pre>
+    @php
+        $calendarExample6 = <<<'HTML'
+            $weekAnchor = now()->startOfWeek();
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$calendarExample6"></x-bladewind::code-block>
+    @php
+        $calendarExample7 = <<<'HTML'
+            <x-bladewind::calendar
+                name="day-demo" label="Day demo calendar" view="day" :events="$teamEvents"
+                :date="$weekAnchor->copy()->addDays(1)->toDateString()" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample7"></x-bladewind::code-block>
     <br />
 
     <h2 id="restricting-dates">Restricting Dates</h2>
@@ -188,11 +215,16 @@
     <x-bladewind::calendar name="booking" label="Booking calendar" selectable="single"
         :min-date="now()->toDateString()" :max-date="now()->addDays(20)->toDateString()"
         :disabled-dates="[now()->addDays(3)->toDateString(), now()->addDays(4)->toDateString()]" />
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar name="booking" label="Booking calendar"
-    selectable="single"
-    :min-date="now()->toDateString()"
-    :max-date="now()->addDays(20)->toDateString()"
-    :disabled-dates="[now()->addDays(3)->toDateString(), now()->addDays(4)->toDateString()]" /&gt;</code></pre>
+    @php
+        $calendarExample8 = <<<'HTML'
+            <x-bladewind::calendar name="booking" label="Booking calendar"
+                selectable="single"
+                :min-date="now()->toDateString()"
+                :max-date="now()->addDays(20)->toDateString()"
+                :disabled-dates="[now()->addDays(3)->toDateString(), now()->addDays(4)->toDateString()]" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample8"></x-bladewind::code-block>
     <br />
     <p>By default, month view also shows a few grayed out days from the previous and next month so every row of the grid stays full. This is controlled by <code class="inline">show-other-month-days</code>, which is <code class="inline">true</code> unless you turn it off. Setting it to <code class="inline">false</code> leaves those cells empty instead of showing the neighboring month's dates.</p>
 
@@ -261,47 +293,57 @@
 
     <h2 id="javascript-api">JavaScript API</h2>
     <p>Every helper function listed here returns true once it succeeds, or if the state it was asked for was already true. It returns false if the calendar it was pointed at could not be found, or if a cancelable event you are listening for called <code class="inline">preventDefault()</code> and stopped the change from happening.</p>
-    <pre class="language-javascript"><code>nextCalendarPeriod('team-calendar');
-previousCalendarPeriod('team-calendar');
-goToCalendarToday('team-calendar');
-goToCalendarMonth('team-calendar', 2026, 12);
-setCalendarView('team-calendar', 'week');
-selectCalendarDate('team-calendar', '2026-08-14');
-clearCalendarSelection('team-calendar');
-calendarSelectedDates('team-calendar'); // ['2026-08-14']</code></pre>
+    @php
+        $calendarExample9 = <<<'HTML'
+            nextCalendarPeriod('team-calendar');
+            previousCalendarPeriod('team-calendar');
+            goToCalendarToday('team-calendar');
+            goToCalendarMonth('team-calendar', 2026, 12);
+            setCalendarView('team-calendar', 'week');
+            selectCalendarDate('team-calendar', '2026-08-14');
+            clearCalendarSelection('team-calendar');
+            calendarSelectedDates('team-calendar'); // ['2026-08-14']
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$calendarExample9"></x-bladewind::code-block>
 
     <h3>Calendar with all attributes defined</h3>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::calendar
-    name="team-calendar"
-    label="Team calendar"
-    view="week"
-    date="2026-08-14"
-    week-starts="monday"
-    selectable="multiple"
-    :selected="['2026-08-10', '2026-08-14']"
-    min-date="2026-01-01"
-    max-date="2026-12-31"
-    :disabled-dates="['2026-12-25']"
-    :events="[
-        [
-            'date' => '2026-08-14 15:00',
-            'end' => '2026-08-14 16:00',
-            'label' => 'Sprint planning',
-            'type' => 'info',
-            'href' => '/events/sprint-planning',
-            'description' => 'Review the roadmap and assign owners for Q3.',
-        ],
-    ]"
-    max-events-per-day="3"
-    show-other-month-days="true"
-    show-week-numbers="false"
-    highlight-today="true"
-    height="40rem"
-    client-navigation="true"
-    today-label="Today"
-    previous-label="Previous"
-    next-label="Next"
-    class="shadow-sm" /&gt;</code></pre>
+    @php
+        $calendarExample10 = <<<'HTML'
+            <x-bladewind::calendar
+                name="team-calendar"
+                label="Team calendar"
+                view="week"
+                date="2026-08-14"
+                week-starts="monday"
+                selectable="multiple"
+                :selected="['2026-08-10', '2026-08-14']"
+                min-date="2026-01-01"
+                max-date="2026-12-31"
+                :disabled-dates="['2026-12-25']"
+                :events="[
+                    [
+                        'date' => '2026-08-14 15:00',
+                        'end' => '2026-08-14 16:00',
+                        'label' => 'Sprint planning',
+                        'type' => 'info',
+                        'href' => '/events/sprint-planning',
+                        'description' => 'Review the roadmap and assign owners for Q3.',
+                    ],
+                ]"
+                max-events-per-day="3"
+                show-other-month-days="true"
+                show-week-numbers="false"
+                highlight-today="true"
+                height="40rem"
+                client-navigation="true"
+                today-label="Today"
+                previous-label="Previous"
+                next-label="Next"
+                class="shadow-sm" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample10"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; calendar.blade.php</code></x-bladewind::alert>
 

@@ -7,18 +7,20 @@
 
             <x-bladewind::timepicker/>
 
-    <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker  /&gt;
-                </code>
-            </pre>
+    @php
+        $timepickerExample1 = <<<'HTML'
+            <x-bladewind::timepicker  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample1"></x-bladewind::code-block>
             <br />
             <x-bladewind::timepicker style="inline"  />
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker style="inline"  /&gt;
-                </code>
-            </pre>
+            @php
+        $timepickerExample2 = <<<'HTML'
+            <x-bladewind::timepicker style="inline"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample2"></x-bladewind::code-block>
 
             <h3>Time Formats</h3>
             <p>
@@ -28,40 +30,45 @@
             </p>
 
             <x-bladewind::timepicker format="24" />
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker format="24"  /&gt;
-                </code>
-            </pre>
+            @php
+        $timepickerExample3 = <<<'HTML'
+            <x-bladewind::timepicker format="24"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample3"></x-bladewind::code-block>
             <br />
             <x-bladewind::timepicker style="inline" format="24" />
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker style="inline" format="24"  /&gt;
-                </code>
-            </pre>
+            @php
+        $timepickerExample4 = <<<'HTML'
+            <x-bladewind::timepicker style="inline" format="24"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample4"></x-bladewind::code-block>
             <h3>Required Fields</h3>
             <p>An asterisk is appended to the placeholder text when <code class="inline text-red-500">required="true"</code>.</p>
 
             <x-bladewind::timepicker required="true"  /> &nbsp;&nbsp;&nbsp;
             <x-bladewind::timepicker label="HH:MM" required="true"  />
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker required="true"  /&gt;
-                </code>
-            </pre>
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker label="HH:MM" required="true"  /&gt;
-                </code>
-            </pre>
+            @php
+        $timepickerExample5 = <<<'HTML'
+            <x-bladewind::timepicker required="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample5"></x-bladewind::code-block>
+            @php
+        $timepickerExample6 = <<<'HTML'
+            <x-bladewind::timepicker label="HH:MM" required="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample6"></x-bladewind::code-block>
     <br />
             <x-bladewind::timepicker style="inline" required="true"  />
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker style="inline" required="true"  /&gt;
-                </code>
-            </pre>
+            @php
+        $timepickerExample7 = <<<'HTML'
+            <x-bladewind::timepicker style="inline" required="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample7"></x-bladewind::code-block>
 
             <h3>Default Values</h3>
             <p>
@@ -71,39 +78,44 @@
             </p>
             <x-bladewind::timepicker selected_value="3:25PM"  />
             <x-bladewind::timepicker selected_value="03:25" format="24" />
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker selected_value="3:25PM"  /&gt;
-                </code>
-            </pre>
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker selected_value="03:25" format="24" /&gt;
-                </code>
-            </pre>
+            @php
+        $timepickerExample8 = <<<'HTML'
+            <x-bladewind::timepicker selected_value="3:25PM"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample8"></x-bladewind::code-block>
+            @php
+        $timepickerExample9 = <<<'HTML'
+            <x-bladewind::timepicker selected_value="03:25" format="24" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample9"></x-bladewind::code-block>
             <br />
             <x-bladewind::timepicker style="inline" selected_value="3:25PM"  />
             <x-bladewind::timepicker style="inline" format="24" selected_value="03:25"  />
             <x-bladewind::timepicker required="true" style="inline" format="24" selected_value="03:25"  />
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker style="inline" selected_value="3:25PM"  /&gt;
-                </code>
-            </pre>
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::timepicker style="inline" format="24" selected_value="03:25"  /&gt;
-                </code>
-            </pre>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::timepicker
-    required="true"
-    style="inline"
-    format="24"
-    selected_value="03:25"  /&gt;
-</code>
-</pre>
+            @php
+        $timepickerExample10 = <<<'HTML'
+            <x-bladewind::timepicker style="inline" selected_value="3:25PM"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample10"></x-bladewind::code-block>
+            @php
+        $timepickerExample11 = <<<'HTML'
+            <x-bladewind::timepicker style="inline" format="24" selected_value="03:25"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample11"></x-bladewind::code-block>
+@php
+        $timepickerExample12 = <<<'HTML'
+            <x-bladewind::timepicker
+                required="true"
+                style="inline"
+                format="24"
+                selected_value="03:25"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample12"></x-bladewind::code-block>
 
         <h3>Form Values</h3>
     <p>
@@ -115,15 +127,16 @@
     <p>
         When your form is submitted, you will be able to retrieve the time as shown below.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
+    @php
+        $timepickerExample13 = <<<'HTML'
             // if format="12" (default)
             $request->event_time; // outputs 1:25PM
 
             // if format="24"
             $request->event_time; // outputs 01:25
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$timepickerExample13"></x-bladewind::code-block>
 
             <p>&nbsp;</p>
             <h2>Full List Of Attributes</h2>
@@ -193,21 +206,22 @@
             </x-bladewind::table>
             <p>&nbsp;</p>
             <h3 class="pb-2 ">Timepicker with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind.timepicker
-    name="start_time"
-    format="24"
-    required="false"
-    hour_label="hh"
-    minute_label="mm"
-    format_label="AM/PM"
-    placeholder="Start Time"
-    label="Start Time"
-    style="inline"
-    selected_value="12:35AM" /&gt;
-</code>
-</pre>
+@php
+        $timepickerExample14 = <<<'HTML'
+            <x-bladewind.timepicker
+                name="start_time"
+                format="24"
+                required="false"
+                hour_label="hh"
+                minute_label="mm"
+                format_label="AM/PM"
+                placeholder="Start Time"
+                label="Start Time"
+                style="inline"
+                selected_value="12:35AM" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timepickerExample14"></x-bladewind::code-block>
 
     <p>&nbsp;</p>
     <x-bladewind::alert show_close_icon="false">
@@ -216,9 +230,16 @@
     <x-bladewind::alert show_close_icon="false">
         The source language (translation) files for this component are available in <code class="inline">lang/[lang]/timepicker.php</code>
     </x-bladewind::alert><br />
+    <h2 id="livewire">Using Timepicker Inside Livewire</h2>
+    <p>
+        When a time is set or cleared, the value field dispatches a real, native <code class="inline">change</code> event, so
+        Livewire's <code class="inline">wire:model</code> picks it up without any extra work on your part. The bindings that drive
+        the timepicker are safe to re-run, so a Livewire re-render will not leave behind duplicate listeners.
+    </p>
     <p>&nbsp;</p>
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Timepicker inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot name="scripts">
         <script>

@@ -47,27 +47,29 @@
         </x-bladewind::table>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-             &lt;x-bladewind::table&gt;
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
-                    &lt;th&gt;Department&lt;/th&gt;
-                    &lt;th&gt;Email&lt;/th&gt;
-                &lt;/x-slot&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;Alfred Rowe&lt;/td&gt;
-                    &lt;td&gt;Outsourcing&lt;/td&gt;
-                    &lt;td&gt;alfred@therowe.com&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;Michael K. Ocansey&lt;/td&gt;
-                    &lt;td&gt;Tech&lt;/td&gt;
-                    &lt;td&gt;kabutey@gmail.com&lt;/td&gt;
-                &lt;/tr&gt;
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+    @php
+        $tableExample1 = <<<'HTML'
+             <x-bladewind::table>
+                <x-slot name="header">
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                </x-slot>
+                <tr>
+                    <td>Alfred Rowe</td>
+                    <td>Outsourcing</td>
+                    <td>alfredBWATSIGNPLACEHOLDERtherowe.com</td>
+                </tr>
+                <tr>
+                    <td>Michael K. Ocansey</td>
+                    <td>Tech</td>
+                    <td>kabuteyBWATSIGNPLACEHOLDERgmail.com</td>
+                </tr>
+            </x-bladewind::table>
+            HTML;
+        $tableExample1 = str_replace('BWATSIGNPLACEHOLDER', '@', $tableExample1);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample1"></x-bladewind::code-block>
     <p>
         By default the table component does not display a border around the table. You can enable this by setting.
         <code class="inline text-red-500">has_border="true"</code>
@@ -110,14 +112,15 @@
         </x-bladewind::table>
     </p>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-             &lt;x-bladewind::table
-                has_border="true"&gt;
+    @php
+        $tableExample2 = <<<'HTML'
+             <x-bladewind::table
+                has_border="true">
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample2"></x-bladewind::code-block>
 
     <h2 id="nogaps">No Gaps</h2>
     <p>By default the BladewindUI table  rows are displayed with wide gaps to place more emphasis on each row and it’s content. Each row also has a default hover effect that highlights the left and right borders of the row. These can both be turned off. </p>
@@ -159,18 +162,19 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-             &lt;x-bladewind::table
-                divider="thin"&gt;
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+    @php
+        $tableExample3 = <<<'HTML'
+             <x-bladewind::table
+                divider="thin">
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample3"></x-bladewind::code-block>
 
     <h2 id="nodivider">No Divider</h2>
     <p>It is also possible to completely turn off the divider lines.</p>
@@ -212,18 +216,19 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-             &lt;x-bladewind::table
-                divided="false"&gt;
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+    @php
+        $tableExample4 = <<<'HTML'
+             <x-bladewind::table
+                divided="false">
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample4"></x-bladewind::code-block>
 
     <h2 id="nohover">No Hover Effect</h2>
     <p>To remove the beautiful green side border effect when users hover on each row, set the hover attribute to false, like this, <code class="inline text-red-500">has_hover="false"</code>. </p>
@@ -263,20 +268,21 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-                &lt;x-bladewind::table
+    @php
+        $tableExample5 = <<<'HTML'
+                <x-bladewind::table
                     has_hover="false"
-                    divider="thin"&gt;
+                    divider="thin">
 
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample5"></x-bladewind::code-block>
     <h2 id="compact">Compact</h2>
     <p>If the table feels too airy and spaced, there is a <code class="inline text-red-500">compact="true"</code> attribute to tighten things up.</p>
     <x-bladewind::table compact="true" divider="thin">
@@ -315,20 +321,21 @@
         </tr>
     </x-bladewind::table>
 <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-                &lt;x-bladewind::table
+    @php
+        $tableExample6 = <<<'HTML'
+                <x-bladewind::table
                     compact="true"
-                    divider="thin"&gt;
+                    divider="thin">
 
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample6"></x-bladewind::code-block>
 
     <h2 id="striped">Striped Table</h2>
     <p>Design experts argue that it is sometimes easier for users to visually scan tabular data if the table has striped rows. We are not challenging the experts. We’ve however made it possible for you to make your BladewindUI tables have striped rows. Set <code class="inline text-red-500">striped="true"</code> on the table component  to get a striped table. </p>
@@ -376,20 +383,21 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::table
+    @php
+        $tableExample7 = <<<'HTML'
+            <x-bladewind::table
                 striped="true"
-                divider="thin"&gt;
+                divider="thin">
 
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample7"></x-bladewind::code-block>
 
     <h2 id="celled">Celled Table</h2>
     <p>If you want your tables looking like an excel spreadsheet with each cell having all round borders, set <code class="inline text-red-500">celled="true"</code>. </p>
@@ -432,18 +440,19 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-            &lt;x-bladewind::table celled="true"&gt;
+    @php
+        $tableExample8 = <<<'HTML'
+            <x-bladewind::table celled="true">
 
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$tableExample8"></x-bladewind::code-block>
 
     <h2 id="totals">Cells for Totals</h2>
     <p>Accountants have this interesting habit of double underlining their totals. If that’s something that interests you, apply the class <code class="inline">double-underline</code> to the <code class="inline">td</code> that holds the total value you want double underlined. </p>
@@ -472,24 +481,25 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-markup line-numbers" data-line="10">
-        <code>
-            &lt;x-bladewind::table striped="true" divider="thin"&gt;
+    @php
+        $tableExample9 = <<<'HTML'
+            <x-bladewind::table striped="true" divider="thin">
 
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-                &lt;tr&gt;
-                    &lt;td colspan="2" class="text-right"&gt;&lt;/td&gt;
-                    &lt;td class="double-underline text-right"&gt;
+                <tr>
+                    <td colspan="2" class="text-right"></td>
+                    <td class="double-underline text-right">
                         7,300.00
-                    &lt;/td&gt;
-                &lt;/tr&gt;
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+                    </td>
+                </tr>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="10" :code="$tableExample9"></x-bladewind::code-block>
 
     <h2 id="shadow">Table With Drop Shadow</h2>
     <p>You can add a subtle shadow effect to your BladewindUI tables by setting <code class="inline text-red-500">has_shadow="true"</code></p>
@@ -518,21 +528,22 @@
         </tr>
     </x-bladewind::table>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::table
+    @php
+        $tableExample10 = <<<'HTML'
+            <x-bladewind::table
                 has_shadow="true"
                 striped="true"
-                divider="thin"&gt;
+                divider="thin">
 
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Name&lt;/th&gt;
+                <x-slot name="header">
+                    <th>Name</th>
                     ...
-                &lt;/x-slot&gt;
+                </x-slot>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample10"></x-bladewind::code-block>
 
     <h2 id="selectable">Selectable Rows</h2>
     <p>There are cases you may want to show users which rows they have selected. You can achieve that by setting <code class="inline text-red-500">selectable="true"</code> on the table.
@@ -572,23 +583,24 @@
         </tr>
     </x-bladewind::table>
     <br />
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-            &lt;x-bladewind::table selectable="true" divider="thin"&gt;
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Item&lt;/th&gt;
-                    &lt;th&gt;Quantity&lt;/th&gt;
-                    &lt;th&gt;Unit Price (GHS)&lt;/th&gt;
-                &lt;/x-slot&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;Office furniture&lt;/td&gt;
-                    &lt;td class="text-center"&gt;2&lt;/td&gt;
-                    &lt;td class="text-right"&gt;4,300.00&lt;/td&gt;
-                &lt;/tr&gt;
+    @php
+        $tableExample11 = <<<'HTML'
+            <x-bladewind::table selectable="true" divider="thin">
+                <x-slot name="header">
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Unit Price (GHS)</th>
+                </x-slot>
+                <tr>
+                    <td>Office furniture</td>
+                    <td class="text-center">2</td>
+                    <td class="text-right">4,300.00</td>
+                </tr>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$tableExample11"></x-bladewind::code-block>
 <h3 id="checkable">Checkable</h3>
     <p>
         We can take the selectable tables one step further by introducing checkboxes for every row. This is achieved by setting <code class="inline text-red-500">checkable="true"</code> on the table.
@@ -629,23 +641,24 @@
             </tr>
         </x-bladewind::table>
         <br />
-        <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::table selectable="true" checkable="true" divider="thin"&gt;
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Item&lt;/th&gt;
-                    &lt;th&gt;Quantity&lt;/th&gt;
-                    &lt;th&gt;Unit Price (GHS)&lt;/th&gt;
-                &lt;/x-slot&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;Office furniture&lt;/td&gt;
-                    &lt;td class="text-center"&gt;2&lt;/td&gt;
-                    &lt;td class="text-right"&gt;4,300.00&lt;/td&gt;
-                &lt;/tr&gt;
+        @php
+        $tableExample12 = <<<'HTML'
+            <x-bladewind::table selectable="true" checkable="true" divider="thin">
+                <x-slot name="header">
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Unit Price (GHS)</th>
+                </x-slot>
+                <tr>
+                    <td>Office furniture</td>
+                    <td class="text-center">2</td>
+                    <td class="text-right">4,300.00</td>
+                </tr>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample12"></x-bladewind::code-block>
     <p>
         Having selectable table rows definitely means you will want to do something with the selected values.
         <strong>You will need to append unique IDs</strong> (<code class="inline text-red-500">data-id="your-uuid-value"</code>)
@@ -656,29 +669,30 @@
         comma separated list of table row IDs that are selected.
     </p>
     <br />
-    <pre class="language-markup line-numbers" data-line="2,8,13">
-        <code>
-            &lt;x-bladewind::table selectable="true" checkable="true" divider="thin"
-                name="office_supplies"&gt;
-                &lt;x-slot name="header"&gt;
-                    &lt;th&gt;Item&lt;/th&gt;
-                    &lt;th&gt;Quantity&lt;/th&gt;
-                    &lt;th&gt;Unit Price (GHS)&lt;/th&gt;
-                &lt;/x-slot&gt;
-                &lt;tr data-id="1"&gt;
-                    &lt;td&gt;Office furniture&lt;/td&gt;
-                    &lt;td class="text-center"&gt;2&lt;/td&gt;
-                    &lt;td class="text-right"&gt;4,300.00&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr data-id="2"&gt;
-                    &lt;td&gt;HP Laser Jet Printer&lt;/td&gt;
-                    &lt;td class="text-center"&gt;2&lt;/td&gt;
-                    &lt;td class="text-right"&gt;4,300.00&lt;/td&gt;
-                &lt;/tr&gt;
+    @php
+        $tableExample13 = <<<'HTML'
+            <x-bladewind::table selectable="true" checkable="true" divider="thin"
+                name="office_supplies">
+                <x-slot name="header">
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Unit Price (GHS)</th>
+                </x-slot>
+                <tr data-id="1">
+                    <td>Office furniture</td>
+                    <td class="text-center">2</td>
+                    <td class="text-right">4,300.00</td>
+                </tr>
+                <tr data-id="2">
+                    <td>HP Laser Jet Printer</td>
+                    <td class="text-center">2</td>
+                    <td class="text-right">4,300.00</td>
+                </tr>
                 ...
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,8,13" :code="$tableExample13"></x-bladewind::code-block>
     <br />
     <p>
         We now have a hidden input  injected on the page right after the table.
@@ -725,65 +739,67 @@
         </x-bladewind::table>
     </x-bladewind::card>
 
-    <pre class="language-html line-numbers" data-line="14,21">
-        <code>
-    &lt;x-bladewind::card reduce_padding="true"&gt;
-        &lt;!-- the delete button -->
-        &lt;div class="office-supplies-actions p-3 bg-gray-100/50 rounded-lg hidden"&gt;
-            &lt;x-bladewind::button size="tiny"
-                type="secondary" outline="true"
-                icon="trash" color="red"
-                onclick="deleteRows()"&gt;
-                Delete
-            &lt;/x-bladewind::button&gt;
-        &lt;/div&gt;
+    @php
+        $tableExample14 = <<<'HTML'
+            <x-bladewind::card reduce_padding="true">
+                <!-- the delete button -->
+                <div class="office-supplies-actions p-3 bg-gray-100/50 rounded-lg hidden">
+                    <x-bladewind::button size="tiny"
+                        type="secondary" outline="true"
+                        icon="trash" color="red"
+                        onclick="deleteRows()">
+                        Delete
+                    </x-bladewind::button>
+                </div>
 
-        &lt;x-bladewind::table selectable="true" divider="thin"
-            checkable="true"
-            name="office_supplies"&gt;
-            &lt;x-slot:header&gt;
-                &lt;th&gt;Item&lt;/th&gt;
-                &lt;th class="!text-center"&gt;Quantity&lt;/th&gt;
-                &lt;th class="!text-right"&gt;Unit Price (GHS)&lt;/th&gt;
-            &lt;/x-slot:header&gt;
-            &lt;tr data-id="12"&gt;
-                &lt;td&gt;Office furniture&lt;/td&gt;
-                &lt;td class="text-center"&gt;2&lt;/td&gt;
-                &lt;td class="text-right"&gt;4,300.00&lt;/td&gt;
-            &lt;/tr&gt;
-            ...
-        &lt;/x-bladewind::table&gt;
-    &lt;/x-bladewind::card&gt;
-        </code>
-    </pre>
+                <x-bladewind::table selectable="true" divider="thin"
+                    checkable="true"
+                    name="office_supplies">
+                    <x-slot:header>
+                        <th>Item</th>
+                        <th class="!text-center">Quantity</th>
+                        <th class="!text-right">Unit Price (GHS)</th>
+                    </x-slot:header>
+                    <tr data-id="12">
+                        <td>Office furniture</td>
+                        <td class="text-center">2</td>
+                        <td class="text-right">4,300.00</td>
+                    </tr>
+                    ...
+                </x-bladewind::table>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="14,21" :code="$tableExample14"></x-bladewind::code-block>
     <p>
         The above code will draw the table and let Bladewind do its checkboxing magic. You will however, need to write the code
         for working with the values of the selected table rows. The <code class="inline font-bold">deleteRows()</code> Javascript function below is what handles deleting of the
         rows selected by the user from the example above. <code class="inline font-bold">deleteRow()</code> is not a BladewindUI helper function.
     </p>
 
-        <pre class="language-js line-numbers" data-line="14,21">
-        <code>
-    // domEl(), domEls() and hide() are BladewindUI helper functions
-    deleteRows = () => {
-        // Our table is named 'office_supplies' so input.office_supplies is
-        // the hidden field Bladewind will write IDs of all selected rows to
-        const selectedRows = domEl('input.office_supplies').value.split(',');
+        @php
+        $tableExample15 = <<<'HTML'
+            // domEl(), domEls() and hide() are BladewindUI helper functions
+            deleteRows = () => {
+                // Our table is named 'office_supplies' so input.office_supplies is
+                // the hidden field Bladewind will write IDs of all selected rows to
+                const selectedRows = domEl('input.office_supplies').value.split(',');
 
-        // next we loop over all the rows of our 'office_supplies' table and
-        // hide any row that's having the value of its 'data-id' attribute
-        // in the selected rows array
-        const tableRows = domEls('table.office_supplies tr');
-        tableRows.forEach(row => {
-            if(selectedRows.indexOf(row.getAttribute('data-id')) !== -1) {
-                hide(row, true);
-                hide('.office-supplies-actions');
-                domEl('input.office_supplies').value = '';
+                // next we loop over all the rows of our 'office_supplies' table and
+                // hide any row that's having the value of its 'data-id' attribute
+                // in the selected rows array
+                const tableRows = domEls('table.office_supplies tr');
+                tableRows.forEach(row => {
+                    if(selectedRows.indexOf(row.getAttribute('data-id')) !== -1) {
+                        hide(row, true);
+                        hide('.office-supplies-actions');
+                        domEl('input.office_supplies').value = '';
+                    }
+                });
             }
-        });
-    }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="14,21" :code="$tableExample15"></x-bladewind::code-block>
 
 <p>
     <x-bladewind::alert show_close_icon="false">
@@ -791,15 +807,16 @@
         Set the <code class="inline text-red-500">selected_value</code> attribute on the table. This accepts a comma separated list of IDs.
     </x-bladewind::alert>
 </p>
-<pre class="language-html line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::table selectable="true" divider="thin"
-    checkable="true"
-    selected_value="2,4,19,23"
-    name="office_supplies"&gt;
-    ...
-</code>
-</pre>
+@php
+        $tableExample16 = <<<'HTML'
+            <x-bladewind::table selectable="true" divider="thin"
+                checkable="true"
+                selected_value="2,4,19,23"
+                name="office_supplies">
+                ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$tableExample16"></x-bladewind::code-block>
     <h2 id="dynamic">Display a Table From Dynamic Data</h2>
     <p>
         There is no point manually building a table tediously when you have an array that contains everything you want to display as a table.
@@ -809,8 +826,8 @@
     <p>
         Let us consider the array below and its resultant table.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $tableExample17 = <<<'HTML'
             $staff = [
                 [   'id' => 1,
                     'first_name' => 'Michael',
@@ -833,13 +850,15 @@
                     'marital_status' => 0
                 ],
             ];
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::table :data="$staff" /&gt;
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$tableExample17"></x-bladewind::code-block>
+    @php
+        $tableExample18 = <<<'HTML'
+            <x-bladewind::table :data="$staff" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample18"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">
@@ -847,11 +866,12 @@
         </x-bladewind::alert>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::table data="&#123;&#123; json_encode($staff) }}" /&gt;
-        </code>
-    </pre>
+    @php
+        $tableExample19 = <<<'HTML'
+            <x-bladewind::table data="{{ json_encode($staff) }}" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample19"></x-bladewind::code-block>
 
     @php
         $staff = [
@@ -914,13 +934,14 @@
         </x-bladewind::alert>
     </p>
     <x-bladewind::table :data="$staff" exclude_columns="id, marital_status" />
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="id, marital_status"
-        :data="$staff" /&gt;
-</code>
-</pre>
+@php
+        $tableExample20 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="id, marital_status"
+                :data="$staff" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$tableExample20"></x-bladewind::code-block>
     <h3 id="action-icons">Displaying Action Icons</h3>
     <p>
         Using the table component with dynamic data allows you to specify some extra cool attributes.
@@ -931,46 +952,48 @@
         <x-bladewind::alert type="warning" show_close_icon="false">
             This approach of using pipes as separators will be deprecated in v4.0.0. use the array approach instead
         </x-bladewind::alert>
-<pre class="language-js line-numbers">
-<code>
-    // this approach of using pipes (|) will be deprecated in v4.0.0
-    // use the array approach instead
-    $action_icons = [
-        "icon:chat | tip:send message | color:green | click:sendMessage('{first_name}')",
-        "icon:pencil | click:redirect('/user/{id}')",
-        "icon:trash | color:red | click:deleteUser({id}, '{first_name}')",
-    ];
-</code>
-</pre>
+@php
+        $tableExample21 = <<<'HTML'
+            // this approach of using pipes (|) will be deprecated in v4.0.0
+            // use the array approach instead
+            $action_icons = [
+                "icon:chat | tip:send message | color:green | click:sendMessage('{first_name}')",
+                "icon:pencil | click:redirect('/user/{id}')",
+                "icon:trash | color:red | click:deleteUser({id}, '{first_name}')",
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$tableExample21"></x-bladewind::code-block>
     <br />
     <x-bladewind::alert type="info" show_close_icon="false">
         Use the array approach instead
     </x-bladewind::alert>
-<pre class="language-js line-numbers">
-<code>
-    // define the action icons array
+@php
+        $tableExample22 = <<<'HTML'
+                // define the action icons array
 
-    $action_icons = [
-    [
-        'icon'  => 'chat-bubble-bottom-center-text',
-        'tip'   => 'send message',
-        'color' => 'green',
-        'icon_type' => 'solid', // default is outline
-        'button_outline' => false,
-        'click' => "sendMessage('{first_name}')",
-    ],
-    [
-        'icon'  => 'pencil-square',
-        'click' => "redirect('/user/{id}')",
-    ],
-    [
-        'icon'  => 'trash',
-        'color' => 'red',
-        'click' => "deleteUser({id}, '{first_name}')",
-    ],
-];
-</code>
-</pre>
+                $action_icons = [
+                [
+                    'icon'  => 'chat-bubble-bottom-center-text',
+                    'tip'   => 'send message',
+                    'color' => 'green',
+                    'icon_type' => 'solid', // default is outline
+                    'button_outline' => false,
+                    'click' => "sendMessage('{first_name}')",
+                ],
+                [
+                    'icon'  => 'pencil-square',
+                    'click' => "redirect('/user/{id}')",
+                ],
+                [
+                    'icon'  => 'trash',
+                    'color' => 'red',
+                    'click' => "deleteUser({id}, '{first_name}')",
+                ],
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$tableExample22"></x-bladewind::code-block>
     <script>
         sendMessage = (first_name) => {
             showModal('send-message');
@@ -993,15 +1016,16 @@
         This action cannot be reversed.
     </x-bladewind::modal>
 
-<pre class="language-markup line-numbers" data-line="2,4">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="id, marital_status"
-        divider="thin"
-        :action_icons="$action_icons"
-        :data="$staff" /&gt;
-</code>
-</pre>
+@php
+        $tableExample23 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="id, marital_status"
+                divider="thin"
+                :action_icons="$action_icons"
+                :data="$staff" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,4" :code="$tableExample23"></x-bladewind::code-block>
     <p>
         <x-bladewind::table :data="$staff" divider="thin" :action_icons="$action_icons"  exclude_columns="id, marital_status" />
     </p>
@@ -1052,45 +1076,47 @@
         Below are the modals and Javascript functions being called when the icons are clicked. Mind you, the Javascript functions
         below are just for the documentation. THey need to be your own functions that you will call when the action icons are clicked.
     </p>
-    <pre class="line-numbers language-markup">
-        <code>
-            &lt;!-- send message modal -->
-            &lt;x-bladewind.modal name="send-message" title=""&gt;
-                &lt;div class="mb-6"&gt;
+    @php
+        $tableExample24 = <<<'HTML'
+            <!-- send message modal -->
+            <x-bladewind.modal name="send-message" title="">
+                <div class="mb-6">
                     The message will be delivered to their company
                     inbox if they are not currently online
-                &lt;/div&gt;
-                &lt;x-bladewind.textarea
-                    placeholder="Type message here..." rows="5" /&gt;
-            &lt;/x-bladewind.modal&gt;
+                </div>
+                <x-bladewind.textarea
+                    placeholder="Type message here..." rows="5" />
+            </x-bladewind.modal>
 
-            &lt;!-- delete user modal -->
-            &lt;x-bladewind.modal
+            <!-- delete user modal -->
+            <x-bladewind.modal
                     name="delete-user"
-                    type="error" title="Confirm User Deletion"&gt;
-                Are you really sure you want to delete &lt;b class="title"&gt;&lt;/b&gt;?
+                    type="error" title="Confirm User Deletion">
+                Are you really sure you want to delete <b class="title"></b>?
                 This action cannot be reversed.
-            &lt;/x-bladewind.modal&gt;
-        </code>
-    </pre>
+            </x-bladewind.modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample24"></x-bladewind::code-block>
 
-    <pre class="language-js line-numbers">
-        <code>
-        sendMessage = (first_name, last_name) => {
-            showModal('send-message');
-            domEl('.bw-send-message .modal-title').innerText = `Send Message to ${first_name} ${last_name}`;
-        }
+    @php
+        $tableExample25 = <<<'HTML'
+            sendMessage = (first_name, last_name) => {
+                showModal('send-message');
+                domEl('.bw-send-message .modal-title').innerText = `Send Message to ${first_name} ${last_name}`;
+            }
 
-        deleteUser = (id, first_name, last_name) => {
-            showModal('delete-user');
-            domEl('.bw-delete-user .title').innerText = `${first_name} ${last_name}`;
-        }
+            deleteUser = (id, first_name, last_name) => {
+                showModal('delete-user');
+                domEl('.bw-delete-user .title').innerText = `${first_name} ${last_name}`;
+            }
 
-        redirect = (url) => {
-            window.open(url);
-        }
-        </code>
-    </pre>
+            redirect = (url) => {
+                window.open(url);
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$tableExample25"></x-bladewind::code-block>
 
         <h2 id="onclick">Passing Custom Functions onClick</h2>
         <p>
@@ -1116,19 +1142,21 @@
                 }
             </script>
         </p>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::table :data="$staff"
-        onclick="goToProfile('/user/profile', '{first_name'}, '{last_name}')" /&gt;
-</code>
-    </pre>
-        <pre class="language-js line-numbers">
-        <code>
+@php
+        $tableExample26 = <<<'HTML'
+            <x-bladewind::table :data="$staff"
+                onclick="goToProfile('/user/profile', '{first_name'}, '{last_name}')" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample26"></x-bladewind::code-block>
+        @php
+        $tableExample27 = <<<'HTML'
             goToProfile = (url, firstname, lastname) => {
                 alert(`You clicked on ${firstname} ${lastname}. Redirecting to ${url}`);
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$tableExample27"></x-bladewind::code-block>
 
     <h3 id="nodata">No Data Returned</h3>
     <p>
@@ -1145,13 +1173,14 @@
         <x-bladewind::table :data="$no_staff" no_data_message="The staff directory is empty" />
     </p>
 
-<pre class="language-html line-numbers" data-line="2,5">
-<code>
-&lt;x-bladewind::table
-    no_data_message="The staff directory is empty"
-    :data="$staff"  /&gt;
-</code>
-</pre>
+@php
+        $tableExample28 = <<<'HTML'
+            <x-bladewind::table
+                no_data_message="The staff directory is empty"
+                :data="$staff"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,5" :code="$tableExample28"></x-bladewind::code-block>
 <br />
     <p>
         The dynamic table builds its column headings from the array keys defined in <code class="inline text-red-500">data</code>.
@@ -1163,25 +1192,27 @@
         <x-bladewind::table has_border="true" :data="$no_staff" :column_aliases="$column_aliases" no_data_message="The staff directory is empty" />
     </p>
 
-<pre class="language-php line-numbers">
-<code>
-    $column_aliases = [
-        'id' => 'ref #',
-        'first_name' => 'first name',
-        'last_name' => 'last name',
-        'marital_status' => 'married?'
-    ];
-</code>
-</pre>
-<pre class="language-html line-numbers" data-line="2,4">
-<code>
-&lt;x-bladewind::table
-    has_border="true"
-    no_data_message="The staff directory is empty"
-    :column_aliases="$column_aliases"
-    :data="$staff"  /&gt;
-</code>
-</pre>
+@php
+        $tableExample29 = <<<'HTML'
+            $column_aliases = [
+                'id' => 'ref #',
+                'first_name' => 'first name',
+                'last_name' => 'last name',
+                'marital_status' => 'married?'
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$tableExample29"></x-bladewind::code-block>
+@php
+        $tableExample30 = <<<'HTML'
+            <x-bladewind::table
+                has_border="true"
+                no_data_message="The staff directory is empty"
+                :column_aliases="$column_aliases"
+                :data="$staff"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,4" :code="$tableExample30"></x-bladewind::code-block>
         <br />
 <p>
     Finally, it is possible to display the <strong>no data message</strong> using the <a href="/component/empty-state">Empty State</a> component.
@@ -1200,17 +1231,18 @@
             message_as_empty_state="true"
             button_label="add staff member"/>
     </p>
-<pre class="language-html line-numbers" data-line="6">
-<code>
-&lt;x-bladewind::table
-    :data="$no_staff"
-    has_border="true"
-    :column_aliases="$column_aliases"
-    no_data_message="The staff directory is empty"
-    message_as_empty_state="true"
-    button_label="add staff member" /&gt;
-</code>
-</pre>
+@php
+        $tableExample31 = <<<'HTML'
+            <x-bladewind::table
+                :data="$no_staff"
+                has_border="true"
+                :column_aliases="$column_aliases"
+                no_data_message="The staff directory is empty"
+                message_as_empty_state="true"
+                button_label="add staff member" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$tableExample31"></x-bladewind::code-block>
     <p>
         <x-bladewind::alert show_close_icon="false">
             Check out the <a href="/component/empty-state">Empty State</a> component for information on how to use its attributes.
@@ -1228,17 +1260,18 @@
         :data="$staff" divider="thin" :action_icons="$action_icons"
         exclude_columns="id, marital_status" include_columns="first_name, last_name, department" />
 <br />
-<pre class="language-html line-numbers" data-line="2,5">
-<code>
-    &lt;x-bladewind::table
-        searchable="true"
-        :data="$staff"
-        divider="thin"
-        search_placeholder="Find staff members by name..."
-        :action_icons="$action_icons"
-        exclude_columns="id, marital_status" /&gt;
-</code>
-</pre>
+@php
+        $tableExample32 = <<<'HTML'
+            <x-bladewind::table
+                searchable="true"
+                :data="$staff"
+                divider="thin"
+                search_placeholder="Find staff members by name..."
+                :action_icons="$action_icons"
+                exclude_columns="id, marital_status" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,5" :code="$tableExample32"></x-bladewind::code-block>
 <br />
 <p>
     The search bar is designed to fill the entire width of the table. There are instances where you may want to place other UI elements next to the search, like, a date range component or filter component.
@@ -1260,33 +1293,35 @@
                         exclude_columns="id, marital_status" include_columns="first_name, last_name, department" />
 </p>
         <br />
-<pre class="language-html line-numbers" data-line="2,5">
-<code>
-    &lt;x-bladewind::table
-        searchable="true"
-        :data="$staff"
-        divider="thin"
-        search_container="put-search-here"
-        search_placeholder="Find staff members by name..."
-        :action_icons="$action_icons"
-        exclude_columns="id, marital_status" /&gt;
-</code>
-</pre>
+@php
+        $tableExample33 = <<<'HTML'
+            <x-bladewind::table
+                searchable="true"
+                :data="$staff"
+                divider="thin"
+                search_container="put-search-here"
+                search_placeholder="Find staff members by name..."
+                :action_icons="$action_icons"
+                exclude_columns="id, marital_status" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,5" :code="$tableExample33"></x-bladewind::code-block>
         <br />
-<pre class="language-html line-numbers" data-line="2,3">
-<code>
-&lt;div class="flex space-x-4 items-center bg-gray-100 px-3 -py-4 rounded-lg"&gt;
-    &lt;div class="put-search-here p-0.5 border
-    border-gray-300 bg-white rounded-md grow">&lt;/div&gt;
-    &lt;div class="pt-3.5"&gt;
-        &lt;x-bladewind::datepicker range="true" add-clearing="false" /&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;x-bladewind::button secondary="true">Filter&lt;/x-bladewind::button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code>
-</pre>
+@php
+        $tableExample34 = <<<'HTML'
+            <div class="flex space-x-4 items-center bg-gray-100 px-3 -py-4 rounded-lg">
+                <div class="put-search-here p-0.5 border
+                border-gray-300 bg-white rounded-md grow"></div>
+                <div class="pt-3.5">
+                    <x-bladewind::datepicker range="true" add-clearing="false" />
+                </div>
+                <div>
+                    <x-bladewind::button secondary="true">Filter</x-bladewind::button>
+                </div>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$tableExample34"></x-bladewind::code-block>
         <br />
     <h3 id="column-aliases">Aliasing Column Names</h3>
     <p>
@@ -1295,24 +1330,26 @@
         This attributes accepts a json encoded array.
     </p>
 
-<pre class="language-js line-numbers">
-<code>
-    $column_aliases = [
-        'id' => 'ref #',
-        'marital_status' => 'married?'
-    ];
-</code>
-</pre>
-<pre class="language-markup line-numbers" data-line="5">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="id"
-        divider="thin"
-        :action_icons="$action_icons"
-        :column_aliases="$column_aliases"
-        :data="$staff" /&gt;
-</code>
-</pre>
+@php
+        $tableExample35 = <<<'HTML'
+            $column_aliases = [
+                'id' => 'ref #',
+                'marital_status' => 'married?'
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$tableExample35"></x-bladewind::code-block>
+@php
+        $tableExample36 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="id"
+                divider="thin"
+                :action_icons="$action_icons"
+                :column_aliases="$column_aliases"
+                :data="$staff" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$tableExample36"></x-bladewind::code-block>
     <x-bladewind::table
         :data="$staff" divider="thin" :column_aliases="$column_aliases" selectable="true" checkable="true" />
 
@@ -1342,29 +1379,32 @@
         From the employee example above, we will set our grouping on the <code class="inline">department</code> key which happens to be to repeated for our employees. <code class="inline text-red-500">groupby="department"</code>.
     </p>
 
-<pre class="language-js line-numbers">
-<code>
-    $staff = [
-        [
-            'id' => 1,
-            'first_name' => 'Michael',
-            'last_name' => 'Ocansey',
-            'department' => 'Engineering',
-            'email' => 'mike@email.com'
-        ],
-    ]
-    ...
-</code>
-</pre>
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="last_name"
-        divider="thin"
-        groupby="department"
-        :data="$staff" /&gt;
-</code>
-</pre>
+@php
+        $tableExample37 = <<<'HTML'
+            $staff = [
+                [
+                    'id' => 1,
+                    'first_name' => 'Michael',
+                    'last_name' => 'Ocansey',
+                    'department' => 'Engineering',
+                    'email' => 'mikeBWATSIGNPLACEHOLDERemail.com'
+                ],
+            ]
+            ...
+            HTML;
+        $tableExample37 = str_replace('BWATSIGNPLACEHOLDER', '@', $tableExample37);
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$tableExample37"></x-bladewind::code-block>
+@php
+        $tableExample38 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="last_name"
+                divider="thin"
+                groupby="department"
+                :data="$staff" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$tableExample38"></x-bladewind::code-block>
     <x-bladewind::table
         :data="$staff" divider="thin" :column_aliases="$column_aliases" groupby="department" exclude_columns="last_name" />
 
@@ -1379,31 +1419,33 @@
         can be clicked on to sort the table. Each sortable column has a filter icon next to the column heading.
     </p>
     <x-bladewind::table :data="$users" exclude_columns="member_id,email" :sortable="true" :limit="5" />
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="member_id, email"
-        sortable="true"
-        limit="5"
-        :data="$users" /&gt;
-</code>
-</pre>
+@php
+        $tableExample39 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="member_id, email"
+                sortable="true"
+                limit="5"
+                :data="$users" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$tableExample39"></x-bladewind::code-block>
     <p>
         From the above table you can see every column in the table has a filter icon next to the column heading indicating that the column is sortable.
         There are cases you will want to sort your table using only very specific columns. This can be achieved by setting the <code class="inline text-red-500">sortable_columns</code> attribute to a comma separated list of
         columns you want to make sortable.
     </p>
     <x-bladewind::table :data="$users" exclude_columns="member_id,email" :sortable="true" :limit="5" sortable_columns="first_name, last_name" />
-<pre class="language-markup line-numbers" data-line="3,5">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="member_id, email"
-        sortable="true"
-        limit="5"
-        sortable_columns="first_name, last_name"
-        :data="$users" /&gt;
-</code>
-</pre>
+@php
+        $tableExample40 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="member_id, email"
+                sortable="true"
+                limit="5"
+                sortable_columns="first_name, last_name"
+                :data="$users" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,5" :code="$tableExample40"></x-bladewind::code-block>
     <h2 id="pagination">Pagination</h2>
     <p>
         Pagination is useful for displaying a long list of data in sizable chunks that make it easy to look over the data.
@@ -1416,16 +1458,17 @@
         To turn on row numbers set <code class="inline text-red-500">show_row_numbers="true"</code>.
     </p>
     <x-bladewind::table :data="$users" exclude_columns="member_id,email" :paginated="true" :page_size="5" :show_row_numbers="true" />
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="member_id, email"
-        paginated="true"
-        page_size="5"
-        show_row_numbers="true"
-        :data="$users" /&gt;
-</code>
-</pre>
+@php
+        $tableExample41 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="member_id, email"
+                paginated="true"
+                page_size="5"
+                show_row_numbers="true"
+                :data="$users" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$tableExample41"></x-bladewind::code-block>
 <x-bladewind::alert show_close_icon="false">When using <code class="inline text-red-500">show_row_numbers="true"</code> and <code class="inline text-red-500">sortable="true"</code>,
     it is important to note that the row numbering is not reordered to match the sorted data. Row numbers 1, 2, 3, 4 might end up as 4, 1, 2, 3</x-bladewind::alert>
     <br />
@@ -1437,17 +1480,18 @@
     set to 1 if the value provided is greater than the <code class="inline">total_pages</code>.
 </p>
 <x-bladewind::table :data="$users" exclude_columns="member_id,email" :paginated="true" :page_size="5" :show_row_numbers="true" default_page="15" />
-<pre class="language-markup line-numbers" data-line="3,6">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="member_id, email"
-        paginated="true"
-        page_size="5"
-        show_row_numbers="true"
-        default_page="15"
-        :data="$users" /&gt;
-</code>
-</pre>
+@php
+        $tableExample42 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="member_id, email"
+                paginated="true"
+                page_size="5"
+                show_row_numbers="true"
+                default_page="15"
+                :data="$users" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,6" :code="$tableExample42"></x-bladewind::code-block>
     <h2 id="custom-layout">Custom Table Layouts</h2>
     <p>
         Pagination is automagically applied to a BladewindUI table that accepts dynamic data. By default the table layout is flat. Every key in the array/data is created as a column.
@@ -1486,65 +1530,68 @@
         @endforeach
     </tbody>
 </x-bladewind::table>
-<pre class="language-markup line-numbers" data-line="2,4,6,22">
-<code>
-&lt;x-bladewind::table
-    layout="custom"
-    :paginated="true"
-    :page_size="$page_size = 5"
-    :data="$users"
-    :default_page="$default_page = 6"&gt;
+@php
+        $tableExample43 = <<<'HTML'
+            <x-bladewind::table
+                layout="custom"
+                :paginated="true"
+                :page_size="$page_size = 5"
+                :data="$users"
+                :default_page="$default_page = 6">
 
-    &lt;x-slot:header&gt;
-        &lt;th&gt;Member ID&lt;/th&gt;
-        &lt;th&gt;User Details&lt;/th&gt;
-        &lt;th&gt;Contact Details&lt;/th&gt;
-    &lt;/x-slot:header&gt;
+                <x-slot:header>
+                    <th>Member ID</th>
+                    <th>User Details</th>
+                    <th>Contact Details</th>
+                </x-slot:header>
 
-    &lt;tbody&gt;
-    @verbatim
-        @foreach($users as $user)
-            @php
-                // set avatar url
-                $image = ($loop->even) ? 'male.png' : 'female.png';
-            @endphp
-            &lt;tr {{pagination_row($loop->iteration, $page_size, $default_page)}} &gt;
-                &lt;td class="!w-1 !pr-0"&gt;&lt;div class="pt-3"&gt;{{$user['member_id']}}&lt;/div&gt; &lt;/td&gt;
-                &lt;td&gt;
-                    &lt;div class="flex space-x-3"&gt;
-                        &lt;div&gt;&lt;x-bladewind::avatar image="/assets/images/{{$image}}" size="small" /&gt;&lt;/div&gt;
-                        &lt;div&gt;
-                            &lt;div class="text-base font-semibold"&gt;{{$user['first_name']}} {{$user['last_name']}}&lt;/div&gt;
-                            &lt;div&gt;{{$user['company_name']}}&lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/td&gt;
-                &lt;td&gt;
-                    &lt;div&gt;{{$user['mobile']}}&lt;/div&gt;
-                    &lt;div&gt;&lt;a href="#"&gt;{{$user['email']}}&lt;/a&gt;&lt;/div&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-        @endforeach
-    @endverbatim
-    &lt;/tbody&gt;
-&lt;/x-bladewind::table&gt;
-</code>
-</pre>
+                <tbody>
+                BWATSIGNPLACEHOLDERverbatim
+                    BWATSIGNPLACEHOLDERforeach($users as $user)
+                        BWATSIGNPLACEHOLDERphp
+                            // set avatar url
+                            $image = ($loop->even) ? 'male.png' : 'female.png';
+                        BWATSIGNPLACEHOLDERendphp
+                        <tr {{pagination_row($loop->iteration, $page_size, $default_page)}} >
+                            <td class="!w-1 !pr-0"><div class="pt-3">{{$user['member_id']}}</div> </td>
+                            <td>
+                                <div class="flex space-x-3">
+                                    <div><x-bladewind::avatar image="/assets/images/{{$image}}" size="small" /></div>
+                                    <div>
+                                        <div class="text-base font-semibold">{{$user['first_name']}} {{$user['last_name']}}</div>
+                                        <div>{{$user['company_name']}}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>{{$user['mobile']}}</div>
+                                <div><a href="#">{{$user['email']}}</a></div>
+                            </td>
+                        </tr>
+                    BWATSIGNPLACEHOLDERendforeach
+                BWATSIGNPLACEHOLDERendverbatim
+                </tbody>
+            </x-bladewind::table>
+            HTML;
+        $tableExample43 = str_replace('BWATSIGNPLACEHOLDER', '@', $tableExample43);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,4,6,22" :code="$tableExample43"></x-bladewind::code-block>
 <p>
     Let's breakdown the example above. Pay attention to lines 2, 4, 6 and 22. Let's talk about line 22 first.
     The pagination widget relies  on a couple of attributes defined on the data rows to work properly. A typical data row in a
     pagination table looks like this:
 </p>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;tr data-id="12" data-page="1" class="hidden"&gt; ... &lt;/tr&gt;
-    ...
-    &lt;tr data-id="34" data-page="6"&gt; ... &lt;/tr&gt;
-    &lt;tr data-id="35" data-page="6"&gt; ... &lt;/tr&gt;
-    ...
-    &lt;tr data-id="272" data-page="9" class="hidden"&gt; ... &lt;/tr&gt;
-</code>
-</pre>
+@php
+        $tableExample44 = <<<'HTML'
+            <tr data-id="12" data-page="1" class="hidden"> ... </tr>
+            ...
+            <tr data-id="34" data-page="6"> ... </tr>
+            <tr data-id="35" data-page="6"> ... </tr>
+            ...
+            <tr data-id="272" data-page="9" class="hidden"> ... </tr>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample44"></x-bladewind::code-block>
 <p>
     As we loop to generate the table rows, any row that has its <code class="inline text-red-500">data-page</code> attribute not corresponding to the <code class="inline text-red-500">default_page</code> is set to <code class="inline text-red-500">class="hidden"</code>.
     So from our example above, we set <code class="inline text-red-500">default_page="6"</code>, any row that is not on page 6 will need to be hidden. Generating these attributes required for pagination can be a headache so a helper function is provided.
@@ -1557,23 +1604,25 @@
     Note how on line 4 we defined <code class="inline text-red-500">:page_size="$page_size = 5"</code>. This simply makes the variable <code class="inline">$page_size</code> available for us to use later when calling
     <code class="inline">pagination_row($row_number, <b>$page_size</b>, $default_page)</code>. This is simply to avoid repetition and nothing more. We could have alternatively decided to do what's below.
 </p>
-        <pre class="language-markup line-numbers" data-line="3,4,8">
-<code>
-&lt;x-bladewind::table
-    ...
-    page_size="5"
-    default_page="6"&gt;
-    ...
-    @verbatim
-        @foreach($users as $user)
-            &lt;tr {{pagination_row($loop->iteration, 5, 6)}} &gt;
-            ...
-        @endforeach
-    @endverbatim
-    &lt;/tbody&gt;
-&lt;/x-bladewind::table&gt;
-</code>
-</pre><br />
+        @php
+        $tableExample45 = <<<'HTML'
+            <x-bladewind::table
+                ...
+                page_size="5"
+                default_page="6">
+                ...
+                BWATSIGNPLACEHOLDERverbatim
+                    BWATSIGNPLACEHOLDERforeach($users as $user)
+                        <tr {{pagination_row($loop->iteration, 5, 6)}} >
+                        ...
+                    BWATSIGNPLACEHOLDERendforeach
+                BWATSIGNPLACEHOLDERendverbatim
+                </tbody>
+            </x-bladewind::table>
+            HTML;
+        $tableExample45 = str_replace('BWATSIGNPLACEHOLDER', '@', $tableExample45);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,4,8" :code="$tableExample45"></x-bladewind::code-block><br />
 <p>
     From the example above, if we later change <code class="inline text-red-500">page_size="20"</code>, we will need to also update <code class="inline">pagination_row($loop->iteration, 20, 6)</code>.
 </p>
@@ -1585,17 +1634,19 @@
     server-rendered Laravel app paginates. Hand the component a paginator and it switches to
     server mode, rendering real links.
 </p>
-<pre class="language-php line-numbers">
-    <code>
-// in your controller
-$orders = Order::latest()-&gt;paginate(request('per_page', 15));
-    </code>
-</pre>
-<pre class="language-markup line-numbers">
-    <code>
-&lt;x-bladewind::pagination :paginator="$orders" :per_page_options="[15, 30, 50]" /&gt;
-    </code>
-</pre>
+@php
+        $tableExample46 = <<<'HTML'
+            // in your controller
+            $orders = Order::latest()->paginate(request('per_page', 15));
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$tableExample46"></x-bladewind::code-block>
+@php
+        $tableExample47 = <<<'HTML'
+            <x-bladewind::pagination :paginator="$orders" :per_page_options="[15, 30, 50]" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample47"></x-bladewind::code-block>
 <p>
     You get three controls, because prev and next alone give the reader no sense of where they
     are: a &ldquo;showing x to y of z&rdquo; summary, an optional per-page selector, and
@@ -1661,19 +1712,20 @@ $orders = Order::latest()-&gt;paginate(request('per_page', 15));
 </p>
 <h3>Arrows</h3>
 <x-bladewind::table :data="$users" exclude_columns="member_id,email" :paginated="true" :sortable="true" :page_size="5" :show_row_numbers="true" default_page="15" show_total_pages="true" total_label="Records :a - :b" />
-<pre class="language-markup line-numbers" data-line="3,5,7,9">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="member_id, email"
-        paginated="true"
-        page_size="5"
-        total_label="Records :a - :b"
-        show_row_numbers="true"
-        pagination_style="arrows"
-        :data="$users"
-        show_total_pages="true"/&gt;
-</code>
-</pre>
+@php
+        $tableExample48 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="member_id, email"
+                paginated="true"
+                page_size="5"
+                total_label="Records :a - :b"
+                show_row_numbers="true"
+                pagination_style="arrows"
+                :data="$users"
+                show_total_pages="true"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,5,7,9" :code="$tableExample48"></x-bladewind::code-block>
 
 <h3>Dropdown</h3>
 <p>
@@ -1686,19 +1738,20 @@ $orders = Order::latest()-&gt;paginate(request('per_page', 15));
     Set <code class="inline text-red-500">pagination_style="numbers"</code> on the table component.
 </p>
 <x-bladewind::table :data="$users" exclude_columns="member_id,email" :paginated="true" :page_size="5" :show_row_numbers="true" default_page="15" show_total_pages="true" total_label="Records :a - :b" pagination_style="numbers" />
-<pre class="language-markup line-numbers" data-line="7">
-<code>
-    &lt;x-bladewind::table
-        exclude_columns="member_id, email"
-        paginated="true"
-        page_size="5"
-        total_label="Records :a - :b"
-        show_row_numbers="true"
-        pagination_style="numbers"
-        :data="$users"
-        show_total_pages="true"/&gt;
-</code>
-</pre>
+@php
+        $tableExample49 = <<<'HTML'
+            <x-bladewind::table
+                exclude_columns="member_id, email"
+                paginated="true"
+                page_size="5"
+                total_label="Records :a - :b"
+                show_row_numbers="true"
+                pagination_style="numbers"
+                :data="$users"
+                show_total_pages="true"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="7" :code="$tableExample49"></x-bladewind::code-block>
 
 
 
@@ -1719,16 +1772,17 @@ $orders = Order::latest()-&gt;paginate(request('per_page', 15));
         <code class="inline">:columns</code> there is nothing to exclude, since a column
         appears only because you listed it. Drop a column by removing it from the array.
     </x-bladewind::alert>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::table :columns="[
-        ['key' =&gt; 'when',   'label' =&gt; 'When',   'width' =&gt; '160px'],
-        ['key' =&gt; 'amount', 'label' =&gt; 'Amount', 'align' =&gt; 'right', 'sortable' =&gt; true],
-    ]" :rows="$rows"&gt;
-    &lt;x-slot:empty&gt;No transactions yet&lt;/x-slot:empty&gt;
-&lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+    @php
+        $tableExample50 = <<<'HTML'
+            <x-bladewind::table :columns="[
+                    ['key' => 'when',   'label' => 'When',   'width' => '160px'],
+                    ['key' => 'amount', 'label' => 'Amount', 'align' => 'right', 'sortable' => true],
+                ]" :rows="$rows">
+                <x-slot:empty>No transactions yet</x-slot:empty>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample50"></x-bladewind::code-block>
 
     <h3 id="column-keys">Column Keys</h3>
     <x-bladewind::table striped="true">
@@ -1747,32 +1801,34 @@ $orders = Order::latest()-&gt;paginate(request('per_page', 15));
 
     <h3 id="column-shorthands">Shorthands</h3>
     <p>Most columns need none of those options, so two shorter forms are accepted.</p>
-    <pre class="language-markup line-numbers">
-        <code>
-{{-- keys only; labels are derived --}}
-&lt;x-bladewind::table :columns="['when', 'amount']" :rows="$rows" /&gt;
+    @php
+        $tableExample51 = <<<'HTML'
+            {{-- keys only; labels are derived --}}
+            <x-bladewind::table :columns="['when', 'amount']" :rows="$rows" />
 
-{{-- key =&gt; label --}}
-&lt;x-bladewind::table :columns="['when' =&gt; 'Date placed', 'amount' =&gt; 'Total']" :rows="$rows" /&gt;
-        </code>
-    </pre>
+            {{-- key => label --}}
+            <x-bladewind::table :columns="['when' => 'Date placed', 'amount' => 'Total']" :rows="$rows" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample51"></x-bladewind::code-block>
 
     <h3 id="column-format">Formatting A Column</h3>
     <p>
         <code class="inline">format</code> receives the whole row as well as the value, so a
         column can render something the row does not literally contain.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-$columns = [
-    ['key' =&gt; 'amount', 'align' =&gt; 'right',
-     'format' =&gt; fn ($value) =&gt; 'GHS ' . number_format($value, 2)],
+    @php
+        $tableExample52 = <<<'HTML'
+            $columns = [
+                ['key' => 'amount', 'align' => 'right',
+                 'format' => fn ($value) => 'GHS ' . number_format($value, 2)],
 
-    ['key' =&gt; 'first_name', 'label' =&gt; 'Name',
-     'format' =&gt; fn ($value, $row) =&gt; $value . ' ' . $row['last_name']],
-];
-        </code>
-    </pre>
+                ['key' => 'first_name', 'label' => 'Name',
+                 'format' => fn ($value, $row) => $value . ' ' . $row['last_name']],
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$tableExample52"></x-bladewind::code-block>
     <p>A key missing from a row renders an empty cell rather than failing.</p>
 
     <h3 id="empty-slot">The Empty Slot</h3>
@@ -2045,9 +2101,9 @@ $columns = [
     </x-bladewind::table>
 
     <h3>Table with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::table
+    @php
+        $tableExample53 = <<<'HTML'
+            <x-bladewind::table
                 striped="true"
                 divided="true"
                 divider="thin"
@@ -2082,19 +2138,20 @@ $columns = [
                 limit="40"
                 layout="custom"
                 total_label="Showing :a to :b of :c records",
-                has_hover="true"&gt;
+                has_hover="true">
 
-                &lt;x-slot name="header"&gt;
+                <x-slot name="header">
                     ...
-                &lt/x-slot&gt;
+                </x-slot>
 
-                &lt;tr&gt;
+                <tr>
                 ...
-                &lt;/tr&gt;
+                </tr>
 
-            &lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+            </x-bladewind::table>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tableExample53"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > table.blade.php</code> and <code class="inline">public > vendor > bladewind > js > table.js</code>

@@ -8,20 +8,22 @@
     </p>
     <x-bladewind::filepicker required="true" />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::filepicker /&gt;
-        </code>
-    </pre>
+    @php
+        $filepickerExample1 = <<<'HTML'
+            <x-bladewind::filepicker />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$filepickerExample1"></x-bladewind::code-block>
     <p>
         By default the Filepicker component provides a random name when no name attribute is specified. If you intend to disable automatic file uploads or will need to
         grab the base64 version of your files, set the <code class="text-red-500 inline">name</code> attribute.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::filepicker name="certs" /&gt;
-        </code>
-    </pre>
+    @php
+        $filepickerExample2 = <<<'HTML'
+            <x-bladewind::filepicker name="certs" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$filepickerExample2"></x-bladewind::code-block>
     <h2 id="placeholder">Changing the Placeholder</h2>
     <p>The filepicker loads with a placeholder that is broken into two lines. The first line reads, <code class="inline">Browse or drag and drop files</code>.
     The second line reads, <code class="inline">IMAGE, VIDEO, AUDIO, PDF up to 5mb</code>.
@@ -35,13 +37,14 @@
         placeholder_line1="Upload proof of payment"
         placeholder_line2="Only PDF files are allowed"  />
 
-<pre class="language-markup line-numbers" data-line="2,3">
-<code>
-&lt;x-bladewind::filepicker
-    placeholder_line1="Upload proof of payment"
-    placeholder_line2="Only PDF files are allowed"  /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample3 = <<<'HTML'
+            <x-bladewind::filepicker
+                placeholder_line1="Upload proof of payment"
+                placeholder_line2="Only PDF files are allowed"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$filepickerExample3"></x-bladewind::code-block>
 <p>
     In the example above, we typed out everything for placeholder lines 1 and 2. As mentioned earlier, the default <code class="inline text-red-500">placeholder_line2</code> contains the values specified for
     <code class="text-red-500 inline">accepted_file_types</code> and <code class="text-red-500 inline">max_file_size</code>. The component replaces image/* with the text images, video/* with the text videos, audio/*
@@ -52,13 +55,14 @@
         placeholder_line1="Drag and drop proof of payment here"
         placeholder_line2="Files allowed: %s up to %s"  />
 
-    <pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::filepicker
-    placeholder_line1="Drag and drop proof of payment here"
-    placeholder_line2="Files allowed: %s up to %s"  /&gt;
-</code>
-</pre>
+    @php
+        $filepickerExample4 = <<<'HTML'
+            <x-bladewind::filepicker
+                placeholder_line1="Drag and drop proof of payment here"
+                placeholder_line2="Files allowed: %s up to %s"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$filepickerExample4"></x-bladewind::code-block>
 
     <h3>Option 2</h3>
     <p>
@@ -82,30 +86,32 @@
         </div>
     </div>
     <p><x-bladewind::filepicker name="invoices" /></p>
-<pre class="language-markup line-numbers" data-line="1">
-<code>
-&lt;!-- remember to add the hidden CSS class -->
-&lt;div class="placeholder-invoices space-y-2 flex hidden align-middle py-3"&gt;
-    &lt;div&gt;
-        &lt;x-bladewind::icon
-            name="receipt-percent"
-            class="!size-14 rounded-full p-3 bg-purple-400 text-purple-100"/&gt;
-    &lt;/div&gt;
-    &lt;div class="text-left pl-2.5 pt-1.5"&gt;
-        &lt;div&gt;Drag & Drop Invoices&lt;/div&gt;
-        &lt;div class="!text-xs tracking-wider opacity-70"&gt;
-            &lt;u&gt;PDFs&lt;/u&gt; only. Max of &lt;u&gt;10mb&lt;/u&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code>
-</pre>
+@php
+        $filepickerExample5 = <<<'HTML'
+            <!-- remember to add the hidden CSS class -->
+            <div class="placeholder-invoices space-y-2 flex hidden align-middle py-3">
+                <div>
+                    <x-bladewind::icon
+                        name="receipt-percent"
+                        class="!size-14 rounded-full p-3 bg-purple-400 text-purple-100"/>
+                </div>
+                <div class="text-left pl-2.5 pt-1.5">
+                    <div>Drag & Drop Invoices</div>
+                    <div class="!text-xs tracking-wider opacity-70">
+                        <u>PDFs</u> only. Max of <u>10mb</u>
+                    </div>
+                </div>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$filepickerExample5"></x-bladewind::code-block>
 
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::filepicker name="invoices" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample6 = <<<'HTML'
+            <x-bladewind::filepicker name="invoices" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$filepickerExample6"></x-bladewind::code-block>
 
     <h2 id="draggable">Allow Drag and Drop Only</h2>
     <p>
@@ -114,13 +120,14 @@
     </p>
     <x-bladewind::filepicker placeholder_line1="Drag and drop files" can_browse="false"  />
 
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker
-    can_browse="false"
-    placeholder_line1="Drag and drop files" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample7 = <<<'HTML'
+            <x-bladewind::filepicker
+                can_browse="false"
+                placeholder_line1="Drag and drop files" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample7"></x-bladewind::code-block>
 
     <h2 id="browseable">Allow Browsing of Files Only</h2>
     <p>
@@ -129,13 +136,14 @@
     </p>
     <x-bladewind::filepicker placeholder_line1="Click here to select your file" can_drop="false"  />
 
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker
-    can_drop"false"
-    placeholder_line1="Drag and drop files" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample8 = <<<'HTML'
+            <x-bladewind::filepicker
+                can_drop"false"
+                placeholder_line1="Drag and drop files" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample8"></x-bladewind::code-block>
 
     <h2 id="disable">Disable the Filepicker</h2>
     <p>
@@ -143,11 +151,12 @@
     </p>
     <x-bladewind::filepicker disabled="true"  />
 
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker disabled"true" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample9 = <<<'HTML'
+            <x-bladewind::filepicker disabled"true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample9"></x-bladewind::code-block>
 
     <h2 id="file-sizes">Enforce File Sizes</h2>
     <p>
@@ -158,11 +167,12 @@
     </p>
     <x-bladewind::filepicker max_file_size="15kb"  />
 
-    <pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker max_file_size="15kb"/&gt;
-</code>
-</pre>
+    @php
+        $filepickerExample10 = <<<'HTML'
+            <x-bladewind::filepicker max_file_size="15kb"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample10"></x-bladewind::code-block>
     <p>
         In cases where you allow users to upload multiple files, you can set <code class="inline text-red-500">max_total_file_size</code> to restrict
         the total size your users are allowed to upload without necessarily bothering about the size of individual files.
@@ -192,12 +202,13 @@
     </p>
     <x-bladewind::filepicker accepted-file-types="application/pdf, .doc, .docx"  />
 
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker
-    accepted_file_types="application/pdf, .doc, .docx"/&gt;
-</code>
-</pre>
+@php
+        $filepickerExample11 = <<<'HTML'
+            <x-bladewind::filepicker
+                accepted_file_types="application/pdf, .doc, .docx"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample11"></x-bladewind::code-block>
 
     <h2 id="multiple">Select Multiple Files</h2>
     <p>
@@ -209,11 +220,12 @@
     </p>
     <x-bladewind::filepicker max_files="5"  />
 
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker max_files="5" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample12 = <<<'HTML'
+            <x-bladewind::filepicker max_files="5" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample12"></x-bladewind::code-block>
 
     <h2>Image Manipulation</h2>
     <p>
@@ -228,19 +240,21 @@
     </p>
     <x-bladewind::filepicker max_files="3" show_image_preview="false"  />
 
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::filepicker max_files="3"
-    show_image_preview="false" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample13 = <<<'HTML'
+            <x-bladewind::filepicker max_files="3"
+                show_image_preview="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$filepickerExample13"></x-bladewind::code-block>
 
 <x-bladewind::filepicker max_files="3"  />
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker max_files="3" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample14 = <<<'HTML'
+            <x-bladewind::filepicker max_files="3" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample14"></x-bladewind::code-block>
 
     <h3 id="image-crop">Image Cropping</h3>
     <p>
@@ -249,11 +263,12 @@
     </p>
     <x-bladewind::filepicker can_crop="true"  />
 
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::filepicker can_crop="true" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample15 = <<<'HTML'
+            <x-bladewind::filepicker can_crop="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$filepickerExample15"></x-bladewind::code-block>
 <br />
     <p>
         When cropping is enabled it is important to set the aspect ratio.
@@ -264,11 +279,12 @@
     </p>
     <p><x-bladewind::filepicker can_crop="true" crop_aspect_ratio="4:3" /></p>
 
-<pre class="language-markup">
-<code>
-&lt;x-bladewind::filepicker can_crop="true" crop_aspect_ratio="4:3" /&gt;
-</code>
-</pre>
+@php
+        $filepickerExample16 = <<<'HTML'
+            <x-bladewind::filepicker can_crop="true" crop_aspect_ratio="4:3" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$filepickerExample16"></x-bladewind::code-block>
     <p>
         <x-bladewind::alert show_close_icon="false">
             Clicking on the 'Cancel' button from the Cropper popup window does not cancel the file selection.
@@ -319,38 +335,41 @@ The default behaviour is to manually upload files.</p>
             max_file_size="1mb"
             :upload_headers="$headers" />
     </p>
-    <pre class="language-php line-numbers">
-<code>
-$headers = [
-    "Authorization" => "Bearer 67e518a8205b20.18576843",
-]
-</code>
-</pre>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::filepicker
-    name="auto_upload"
-    max_file_size="1mb"
-    auto_upload="true"
-    upload_route="/upload"
-    :upload_headers="$headers"
-    delete_route="/upload-delete" /&gt;
-</code>
-</pre>
+    @php
+        $filepickerExample17 = <<<'HTML'
+            $headers = [
+                "Authorization" => "Bearer 67e518a8205b20.18576843",
+            ]
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample17"></x-bladewind::code-block>
+@php
+        $filepickerExample18 = <<<'HTML'
+            <x-bladewind::filepicker
+                name="auto_upload"
+                max_file_size="1mb"
+                auto_upload="true"
+                upload_route="/upload"
+                :upload_headers="$headers"
+                delete_route="/upload-delete" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$filepickerExample18"></x-bladewind::code-block>
 <p>
     When a file is selected, it will automatically be uploaded to the route specified. The routes and controller below handle this example upload.
 </p>
-<pre class="language-php line-numbers">
-<code>
-// web.php
-Route::post('/upload', [FileUploadController::class, 'upload']);
-Route::post('/upload-delete', [FileUploadController::class, 'delete']);
+@php
+        $filepickerExample19 = <<<'HTML'
+            // web.php
+            Route::post('/upload', [FileUploadController::class, 'upload']);
+            Route::post('/upload-delete', [FileUploadController::class, 'delete']);
 
-// if you set delete_method="DELETE" and delete_route="/upload" on the component
-// your route will then look like the line below
-Route::delete('/upload', [FileUploadController::class, 'delete']);
-</code>
-</pre>
+            // if you set delete_method="DELETE" and delete_route="/upload" on the component
+            // your route will then look like the line below
+            Route::delete('/upload', [FileUploadController::class, 'delete']);
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample19"></x-bladewind::code-block>
     <p>
         This is a very barebones implementation of file uploading in Laravel to give you a sense of what's happening in the controller.
     </p>
@@ -359,45 +378,46 @@ Route::delete('/upload', [FileUploadController::class, 'delete']);
         <code class="inline">{ "path" : "path/to/the/file-name-dot-extension" }</code> example: <br />
         <code class="inline">{ "path" : "uploads\/cqzbVgA5ydeQBvNkuBP4cZCGcpBTl3tt9dtufnKK.jpg" }</code>
     </x-bladewind::alert>
-<pre class="language-php line-numbers">
-<code>
-// FileUploadController.php
-namespace App\Http\Controllers;
+@php
+        $filepickerExample20 = <<<'HTML'
+            // FileUploadController.php
+            namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+            use Illuminate\Http\Request;
+            use Illuminate\Support\Facades\Storage;
 
-class FileUploadController extends Controller
-{
-    public function upload(Request $request)
-    {
-        $request->validate([
-            'auto_upload' => 'required|mimes:jpg|max:1024',
-        ]);
+            class FileUploadController extends Controller
+            {
+                public function upload(Request $request)
+                {
+                    $request->validate([
+                        'auto_upload' => 'required|mimes:jpg|max:1024',
+                    ]);
 
-        $path = $request->file('auto_upload')->store('uploads', 'public');
+                    $path = $request->file('auto_upload')->store('uploads', 'public');
 
-        return response()->json(['path' => $path]);
-    }
+                    return response()->json(['path' => $path]);
+                }
 
-    public function delete(Request $request)
-    {
-        // path: will always contain the path to the file being deleted
-        $filePath = $request->input('path');
+                public function delete(Request $request)
+                {
+                    // path: will always contain the path to the file being deleted
+                    $filePath = $request->input('path');
 
-        if (!$filePath) {
-            return response()->json(['error' => 'No file path provided'], 400);
-        }
+                    if (!$filePath) {
+                        return response()->json(['error' => 'No file path provided'], 400);
+                    }
 
-        if (Storage::disk('public')->exists($filePath)) {
-            Storage::disk('public')->delete($filePath);
-            return response()->json(['message' => 'File deleted']);
-        }
-        return response()->json(['error' => 'File not found'], 404);
-    }
-}
-</code>
-</pre>
+                    if (Storage::disk('public')->exists($filePath)) {
+                        Storage::disk('public')->delete($filePath);
+                        return response()->json(['message' => 'File deleted']);
+                    }
+                    return response()->json(['error' => 'File not found'], 404);
+                }
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample20"></x-bladewind::code-block>
 
 <h3 id="upload-manual">Manually Upload Selected Files</h3>
 <p>
@@ -417,54 +437,58 @@ class FileUploadController extends Controller
         <x-bladewind::button can_submit="true">Upload Files</x-bladewind::button>
     </form>
 <br />
-<pre class="language-markup line-numbers">
-<code>
-&lt;form method="POST" action="/manual-upload" enctype="multipart/form-data"&gt;
-    @@csrf
-&lt;x-bladewind::filepicker
-        name="manual_upload[]"
-        max_file_size="1mb"
-        max_files="3" /&gt;
-    &lt;x-bladewind::button can_submit="true"&gt;
-        Upload Files
-    &lt;/x-bladewind::button&gt;
-&lt;/form&gt;
-</code>
-</pre>
+@php
+        $filepickerExample21 = <<<'HTML'
+            <form method="POST" action="/manual-upload" enctype="multipart/form-data">
+                BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERcsrf
+            <x-bladewind::filepicker
+                    name="manual_upload[]"
+                    max_file_size="1mb"
+                    max_files="3" />
+                <x-bladewind::button can_submit="true">
+                    Upload Files
+                </x-bladewind::button>
+            </form>
+            HTML;
+        $filepickerExample21 = str_replace('BWATSIGNPLACEHOLDER', '@', $filepickerExample21);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$filepickerExample21"></x-bladewind::code-block>
 
-<pre class="language-php line-numbers">
-<code>
-// web.php
-Route::post('/manual-upload', [FileUploadController::class, 'manual_upload']);
-</code>
-</pre>
+@php
+        $filepickerExample22 = <<<'HTML'
+            // web.php
+            Route::post('/manual-upload', [FileUploadController::class, 'manual_upload']);
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample22"></x-bladewind::code-block>
 
-<pre class="language-php line-numbers">
-<code>
-// FileUploadController.php
-namespace App\Http\Controllers;
+@php
+        $filepickerExample23 = <<<'HTML'
+            // FileUploadController.php
+            namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+            use Illuminate\Http\Request;
+            use Illuminate\Support\Facades\Storage;
 
-class FileUploadController extends Controller
-{
-    ...
-    public function manual_upload(Request $request)
-    {
-        $request->validate([
-            'files.*' => 'mimes:jpg|max:1024',
-        ]);
+            class FileUploadController extends Controller
+            {
+                ...
+                public function manual_upload(Request $request)
+                {
+                    $request->validate([
+                        'files.*' => 'mimes:jpg|max:1024',
+                    ]);
 
-        $uploadedFiles = [];
-        foreach ($request->file('manual_upload') as $file) {
-            $path = $file->store('uploads', 'public');
-            $uploadedFiles[] = $path;
-        }
-        dd($uploadedFiles);}
-}
-</code>
-</pre>
+                    $uploadedFiles = [];
+                    foreach ($request->file('manual_upload') as $file) {
+                        $path = $file->store('uploads', 'public');
+                        $uploadedFiles[] = $path;
+                    }
+                    dd($uploadedFiles);}
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample23"></x-bladewind::code-block>
 <h3 id="base64">Encode Files as base64</h3>
 <p>
     The component allows for files to be retrieved in base64 format. This works for uploading single files or multiple files.
@@ -498,48 +522,52 @@ class FileUploadController extends Controller
         <x-bladewind::button can_submit="true">Upload Files</x-bladewind::button>
     </form>
 <br />
-<pre class="language-markup line-numbers" data-line="4,6">
-<code>
-&lt;form method="POST" action="/base64-upload" enctype="multipart/form-data"&gt;
-    @@csrf
-&lt;x-bladewind::filepicker
-        name="attachments"
-        max_file_size="1mb"
-        base64="true"
-        max_files="3" /&gt;
-    &lt;x-bladewind::button can_submit="true"&gt;
-        Upload Files
-    &lt;/x-bladewind::button&gt;
-&lt;/form&gt;
-</code>
-</pre>
+@php
+        $filepickerExample24 = <<<'HTML'
+            <form method="POST" action="/base64-upload" enctype="multipart/form-data">
+                BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERcsrf
+            <x-bladewind::filepicker
+                    name="attachments"
+                    max_file_size="1mb"
+                    base64="true"
+                    max_files="3" />
+                <x-bladewind::button can_submit="true">
+                    Upload Files
+                </x-bladewind::button>
+            </form>
+            HTML;
+        $filepickerExample24 = str_replace('BWATSIGNPLACEHOLDER', '@', $filepickerExample24);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,6" :code="$filepickerExample24"></x-bladewind::code-block>
 
-<pre class="language-php line-numbers">
-<code>
-// web.php
-Route::post('/base64-upload', [FileUploadController::class, 'base64_upload']);
-</code>
-</pre>
+@php
+        $filepickerExample25 = <<<'HTML'
+            // web.php
+            Route::post('/base64-upload', [FileUploadController::class, 'base64_upload']);
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample25"></x-bladewind::code-block>
 
-<pre class="language-php line-numbers">
-<code>
-// FileUploadController.php
-namespace App\Http\Controllers;
+@php
+        $filepickerExample26 = <<<'HTML'
+            // FileUploadController.php
+            namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+            use Illuminate\Http\Request;
 
-class FileUploadController extends Controller
-{
-    ...
-    public function base64_upload(Request $request)
-    {
-        $base64Files = $request->input('attachments_b64');
-        foreach ($base64Files as $file) {
-            dump($file);
-        }
-    }
-</code>
-</pre>
+            class FileUploadController extends Controller
+            {
+                ...
+                public function base64_upload(Request $request)
+                {
+                    $base64Files = $request->input('attachments_b64');
+                    foreach ($base64Files as $file) {
+                        dump($file);
+                    }
+                }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample26"></x-bladewind::code-block>
 <br />
 <x-bladewind::alert show_close_icon="false" type="info">
     Both the selected files and their encoded base64 versions are available when the form is submitted. You can either use both or just focus on the base64 versions.
@@ -557,27 +585,29 @@ $existingFiles = [
     [ 'source' => asset('assets/images/lissete-laverde-z9Ropm8edsw-unsplash.jpg') ],
 ];
 @endphp
-<pre class="language-php line-numbers">
-<code>
-$existingFiles = [
-    [ 'source' => asset('images/yoonbae-cho-Fes4eLW4mg0-unsplash.jpg') ],
-    [ 'source' => asset('images/sam-carter-JU1SVl4smHM-unsplash.jpg') ],
-    [ 'source' => asset('images/lissete-laverde-z9Ropm8edsw-unsplash.jpg') ],
-];
-</code>
-</pre>
+@php
+        $filepickerExample27 = <<<'HTML'
+            $existingFiles = [
+                [ 'source' => asset('images/yoonbae-cho-Fes4eLW4mg0-unsplash.jpg') ],
+                [ 'source' => asset('images/sam-carter-JU1SVl4smHM-unsplash.jpg') ],
+                [ 'source' => asset('images/lissete-laverde-z9Ropm8edsw-unsplash.jpg') ],
+            ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample27"></x-bladewind::code-block>
   <br />
     <x-bladewind::filepicker name="edit" max_file_size="2mb" max_files="2" :selected_value="$existingFiles" />
 <br />
-    <pre class="language-php line-numbers">
-<code>
-&lt;x-bladewind::filepicker
-    name="edit"
-    max_file_size="2mb"
-    max_files="2"
-    :selected_value="$existingFiles" /&gt;
-</code>
-</pre>
+    @php
+        $filepickerExample28 = <<<'HTML'
+            <x-bladewind::filepicker
+                name="edit"
+                max_file_size="2mb"
+                max_files="2"
+                :selected_value="$existingFiles" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample28"></x-bladewind::code-block>
 <p>
 <x-bladewind::alert show_close_icon="false">
     Note from the above example that even though the <b>$existingFiles</b> array has 3 elements (files), the Filepicker displays only 2 files. This is
@@ -593,13 +623,14 @@ $existingFiles = [
         can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
         and an error block on every single field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::filepicker
-    name="avatar"
-    show_validation_error="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $filepickerExample29 = <<<'HTML'
+            <x-bladewind::filepicker
+                name="avatar"
+                show_validation_error="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$filepickerExample29"></x-bladewind::code-block>
     <p>
         <code class="inline">fill_from_old</code> repopulates the field from
         <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
@@ -621,16 +652,17 @@ $existingFiles = [
         Rather than setting the attributes field by field, set them once in your
         <code class="inline">config/bladewind.php</code> and every form component follows.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-// config/bladewind.php
-'forms' =&gt; [
-    'fill_from_old' =&gt; true,
-    'show_validation_error' =&gt; true,
-    'error_bag' =&gt; null,
-],
-        </code>
-    </pre>
+    @php
+        $filepickerExample30 = <<<'HTML'
+            // config/bladewind.php
+            'forms' => [
+                'fill_from_old' => true,
+                'show_validation_error' => true,
+                'error_bag' => null,
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$filepickerExample30"></x-bladewind::code-block>
     <p>
         An attribute on a single field always wins over the config, so you can opt one field out
         with <code class="inline">show_validation_error="false"</code>.
@@ -832,42 +864,43 @@ $existingFiles = [
     </x-bladewind::table>
 
     <h3>Filepicker with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::filepicker
-    name="profile_pic"
-    required="false"
-    placeholder_line1="Choose a profile picture"
-    placeholder_line2="Only jpg files allowed"
-    accepted_file_types=".jpg, .png"
-    selected_value=""
-    disabled="false"
-    base64="false"
-    base64_output="string"
-    can_crop="false"
-    can_drop="false"
-    can_browse="true"
-    validate_file_size="true"
-    show_credits="true"
-    auto_upload="true"
-    max_files="2"
-    max_file_size="1mb"
-    max_total_file_size="2mb"
-    add_new_files_to="bottom"
-    show_image_preview="true"
-    can_resize_image="true"
-    image_resize_width="1024"
-    image_resize_height=""
-    can_crop="false"
-    crop_aspect_ratio="free"
-    upload_route="/dp/upload"
-    upload_method="PATCH"
-    :upload_headers="$headers"
-    delete_route="/dp/delete"
-    delete_method="DELETE"
-    :delete_headers="$headers" /&gt;
-</code>
-    </pre>
+    @php
+        $filepickerExample31 = <<<'HTML'
+            <x-bladewind::filepicker
+                name="profile_pic"
+                required="false"
+                placeholder_line1="Choose a profile picture"
+                placeholder_line2="Only jpg files allowed"
+                accepted_file_types=".jpg, .png"
+                selected_value=""
+                disabled="false"
+                base64="false"
+                base64_output="string"
+                can_crop="false"
+                can_drop="false"
+                can_browse="true"
+                validate_file_size="true"
+                show_credits="true"
+                auto_upload="true"
+                max_files="2"
+                max_file_size="1mb"
+                max_total_file_size="2mb"
+                add_new_files_to="bottom"
+                show_image_preview="true"
+                can_resize_image="true"
+                image_resize_width="1024"
+                image_resize_height=""
+                can_crop="false"
+                crop_aspect_ratio="free"
+                upload_route="/dp/upload"
+                upload_method="PATCH"
+                :upload_headers="$headers"
+                delete_route="/dp/delete"
+                delete_method="DELETE"
+                :delete_headers="$headers" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$filepickerExample31"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > filepicker.blade.php</code>
@@ -876,6 +909,17 @@ $existingFiles = [
         <x-bladewind::alert type="info" show_close_icon="false">
             To prevent erratic behaviour when using multiple Filepickers on the same page, you should give each Filepicker a unique name. You can do this by setting the <code class="inline">name</code> attribute on the filepicker.
         </x-bladewind::alert>
+    </p>
+
+    <h2 id="livewire">Using Filepicker Inside Livewire</h2>
+    <p>
+        The component guards against a Livewire re-render building a second FilePond instance, and a second Cropper.js instance when
+        cropping is enabled, around the same field. Before this guard existed, every re-render left the previous instance and its DOM
+        behind. When base64 mode is used, the hidden field it creates for each file dispatches a real, native
+        <code class="inline">change</code> event, so Livewire's <code class="inline">wire:model</code> picks it up. FilePond manages
+        its own DOM inside the field while a file is being added, cropped, or uploaded, so if the filepicker sits inside a Livewire
+        component that can re-render for reasons unrelated to the picker while that is happening, wrap the picker in
+        <code class="inline">wire:ignore</code> to keep Livewire from interfering.
     </p>
 
     <x-slot:side_nav>
@@ -897,6 +941,7 @@ $existingFiles = [
         <div class="flex items-center"><div class="dot"></div><a href="#edit-mode">Edit mode</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Filepicker inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

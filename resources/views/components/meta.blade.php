@@ -21,7 +21,6 @@
         <link rel="apple-touch-icon" href="{{ asset('assets/images/icon.png') }}" />
         <link rel="icon" href="{{ asset('assets/images/icon.png') }}" />
         <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css')}}?<?php echo uniqid() ?>" rel="stylesheet" />
-        <script src="{{ asset('assets/js/prism.js') }}"></script>
         <link href="{{ asset('assets/css/carbon-ads.css') }}?<?php echo uniqid() ?>" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

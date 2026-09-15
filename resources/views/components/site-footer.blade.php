@@ -16,6 +16,7 @@
             <a href="/mcp" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">MCP server</a>
             <a href="/contribute" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">Contribute</a>
             <a href="https://github.com/bladewindui/ui" target="_blank" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">GitHub</a>
+            <a href="https://github.com/sponsors/bladewindui" target="_blank" class="transition hover:text-slate-950 dark:hover:text-white {{ $onWhite ? '' : 'hover:!text-white' }}">Sponsor</a>
         </div>
     </div>
 </footer>

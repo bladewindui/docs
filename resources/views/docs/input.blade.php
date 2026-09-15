@@ -9,19 +9,21 @@
     </p>
     <p><x-bladewind::input name="fnaln" placeholder="Full name" /></p>
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input  /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample1 = <<<'HTML'
+            <x-bladewind::input  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample1"></x-bladewind::code-block>
     <h2 id="password">Password Input</h2>
     <p>This behaves just like the regular HTML password input. Nothing fancy. Any values entered into this field are masked.</p>
     <p><x-bladewind::input type="password" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input type="password"  /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample2 = <<<'HTML'
+            <x-bladewind::input type="password"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample2"></x-bladewind::code-block>
     <h3 id="reveal-password">Reveal Passwords</h3>
     <p>
         The component allows you to specify if the user should be able to view the password they entered by clicking on an eye. This can be achieved by setting
@@ -30,20 +32,22 @@
         The eye icon will be displayed ONLY if the input <code class="inline text-red-500">type="password"</code>. It will be ignored in all other cases.
     </p>
     <p><x-bladewind::input type="password" name="passwed" viewable="true" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input type="password" viewable="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample3 = <<<'HTML'
+            <x-bladewind::input type="password" viewable="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample3"></x-bladewind::code-block>
     <h2 id="numeric">Numeric Input</h2>
     <p>This accepts only numeric values. Useful when entering phone numbers, age or amounts.
     By default the decimal point is not allowed as it is technically not a number. In cases where you need decimals, use the attribute <code class="inline text-red-500">with_dots="true"</code></p>
     <p><x-bladewind::input numeric="true" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input numeric="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample4 = <<<'HTML'
+            <x-bladewind::input numeric="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample4"></x-bladewind::code-block>
     <h3 id="min-max">Minimum & Maximum Values</h3>
     <p>
         You may want users to enter a minimum or maximum number when using the numeric input. For example, let's say employees cannot request more than 5 days off per leave request.
@@ -54,27 +58,29 @@
         <div><x-bladewind::input placeholder="Maximum is 12" name="input-max" numeric="true" max="12" error_message="Maximum value must be 12" /></div>
     </div>
     <br />
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::input
-        placeholder="Minimum is 3"
-        name="input-min"
-        numeric="true"
-        min="3"
-        error_message="Minimum value must be 3"
-        show_error_inline="true" /&gt;
-</code>
-</pre>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::input
-        placeholder="Maximum is 12"
-        name="input-max"
-        numeric="true"
-        max="12"
-        error_message="Maximum value must be 12" /&gt;
-</code>
-</pre>
+@php
+        $inputExample5 = <<<'HTML'
+            <x-bladewind::input
+                placeholder="Minimum is 3"
+                name="input-min"
+                numeric="true"
+                min="3"
+                error_message="Minimum value must be 3"
+                show_error_inline="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample5"></x-bladewind::code-block>
+@php
+        $inputExample6 = <<<'HTML'
+            <x-bladewind::input
+                placeholder="Maximum is 12"
+                name="input-max"
+                numeric="true"
+                max="12"
+                error_message="Maximum value must be 12" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample6"></x-bladewind::code-block>
 
     <h2 id="masking">Input Masking</h2>
     <p>
@@ -115,29 +121,33 @@
         </div>
     </div>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input name="phone" mask="(999) 999-9999" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample7 = <<<'HTML'
+            <x-bladewind::input name="phone" mask="(999) 999-9999" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample7"></x-bladewind::code-block>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input name="dob" mask="99/99/9999" placeholder="MM/DD/YYYY" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample8 = <<<'HTML'
+            <x-bladewind::input name="dob" mask="99/99/9999" placeholder="MM/DD/YYYY" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample8"></x-bladewind::code-block>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input name="postcode" mask="a9a 9a9" placeholder="A9A 9A9" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample9 = <<<'HTML'
+            <x-bladewind::input name="postcode" mask="a9a 9a9" placeholder="A9A 9A9" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample9"></x-bladewind::code-block>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input name="key" mask="****-****-****-****" placeholder="XXXX-XXXX-XXXX-XXXX" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample10 = <<<'HTML'
+            <x-bladewind::input name="key" mask="****-****-****-****" placeholder="XXXX-XXXX-XXXX-XXXX" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample10"></x-bladewind::code-block>
 
     <h3 id="dynamic-mask">Dynamic Masks</h3>
     <p>
@@ -152,11 +162,12 @@
         Visa / Mastercard / Discover format (4-4-4-4) — no JavaScript required on your part.
     </p>
     <x-bladewind::input name="mask-card" dynamicMask="creditCard" placeholder="0000 0000 0000 0000" />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input name="card" dynamicMask="creditCard" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample11 = <<<'HTML'
+            <x-bladewind::input name="card" dynamicMask="creditCard" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample11"></x-bladewind::code-block>
 
     <h4 class="font-semibold pt-4">Custom dynamic masks</h4>
     <p>
@@ -165,21 +176,23 @@
         from <code class="inline">99999</code> to the ZIP+4 format <code class="inline">99999-9999</code> once more than five digits are entered.
     </p>
     <x-bladewind::input name="mask-zip" dynamicMask="zipCode" placeholder="ZIP or ZIP+4" />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input name="zip" dynamicMask="zipCode" /&gt;
-        </code>
-    </pre>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $inputExample12 = <<<'HTML'
+            <x-bladewind::input name="zip" dynamicMask="zipCode" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample12"></x-bladewind::code-block>
+    @php
+        $inputExample13 = <<<'HTML'
             function zipCode(input) {
                 const digits = input.replace(/\D/g, '');
-                return digits.length &lt;= 5
+                return digits.length <= 5
                     ? '99999'           // ZIP
                     : '99999-9999';     // ZIP+4
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$inputExample13"></x-bladewind::code-block>
     <x-bladewind::alert type="info" show_close_icon="false">
         A global function with the same name as a built-in (e.g. your own <code class="inline">creditCard</code>) takes precedence,
         so you can override the built-ins when you need to.
@@ -196,18 +209,19 @@
         <div><x-bladewind::input name="mask-money" money="true" placeholder="1,234.56" /></div>
         <div><x-bladewind::input name="mask-money-eu" money="true" moneyThousandsSeparator="." moneyDecimalSeparator="," placeholder="1.234,56" /></div>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input name="price" money="true" /&gt;
+    @php
+        $inputExample14 = <<<'HTML'
+            <x-bladewind::input name="price" money="true" />
 
-            &lt;x-bladewind::input
+            <x-bladewind::input
                 name="price_eu"
                 money="true"
                 moneyThousandsSeparator="."
                 moneyDecimalSeparator=","
-                moneyPrecision="2" /&gt;
-        </code>
-    </pre>
+                moneyPrecision="2" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample14"></x-bladewind::code-block>
     <x-bladewind::alert type="info" show_close_icon="false">
         Masking forces the field to <code class="inline">type="text"</code> so formatted values (separators and letters)
         are preserved, so you don't need to set <code class="inline">numeric="true"</code> on a masked field.
@@ -219,18 +233,20 @@
         This is a nice way to build compact looking forms without having form labels in the way. If you prefer to create and style your own form labels, simply ignore the <code class="inline text-red-500">label</code> attribute and use the <code class="inline text-red-500">placeholder</code> attribute instead.
     </p>
     <p><x-bladewind::input label="Full name" /></p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input label="Full name"  /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample15 = <<<'HTML'
+            <x-bladewind::input label="Full name"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample15"></x-bladewind::code-block>
     <h3>Placeholder Text</h3>
     <p><x-bladewind::input placeholder="Full name" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input placeholder="Full name"  /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample16 = <<<'HTML'
+            <x-bladewind::input placeholder="Full name"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample16"></x-bladewind::code-block>
     <h3>What Happens When Both Placeholder and Label are Set</h3>
     <p>
         The <code class="inline">label</code> attribute actually replaces <code class="inline">placeholder</code>. In most common cases input labels are displayed above
@@ -238,36 +254,39 @@
         Having a placeholder text that is longer than your label text results in some parts of the placeholder text sticking out under the label. If you want the placeholder to still be shown even when there is a label, set <code class="inline text-red-500">show_placeholder_always="true"</code>
     </p>
     <p><x-bladewind::input name="mobile" label="Mobile" placeholder="000.0000.000" show_placeholder_always="true"  /></p>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::input
-        name="mobile" label="Mobile" placeholder="000.0000.000" /&gt;
-</code>
-</pre>
+@php
+        $inputExample17 = <<<'HTML'
+            <x-bladewind::input
+                name="mobile" label="Mobile" placeholder="000.0000.000" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample17"></x-bladewind::code-block>
     <p>
         From the example above you will notice the placeholder is sticking out under the label. This is because the placeholder text is longer than the label.
         This is why Bladewind hides the placeholder when the label is set. One way to fix this is by appending non breaking spaces to your label till the placeholder text is covered.
         This is an ugly solution.
     </p>
     <p><x-bladewind::input name="mobile2" label="Mobile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" placeholder="000.0000.000" show_placeholder_always="true" /></p>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::input name="mobile"
-        label="Mobile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-        placeholder="000.0000.000"
-        show_placeholder_always="true" /&gt;
-</code>
-</pre>
+@php
+        $inputExample18 = <<<'HTML'
+            <x-bladewind::input name="mobile"
+                label="Mobile             "
+                placeholder="000.0000.000"
+                show_placeholder_always="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample18"></x-bladewind::code-block>
     <h2 id="required">Required Fields</h2>
     <p>
         This either adds a red asterisk sign to the placeholder text or a red star to the label of the input field.
     </p>
     <p><x-bladewind::input label="Full name" required="true" /></p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input required="true" label="Full name"  /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample19 = <<<'HTML'
+            <x-bladewind::input required="true" label="Full name"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample19"></x-bladewind::code-block>
     <h2 id="events-validations">Events</h2>
     <p>
         You can append any of the available HTML event attributes (<em>onclick, onblur, onfocus, onmouseover, onmouseout, onkeyup, onkeydown</em> etc) to the component, just like you would to a regular <code class="inline">&lt;input ...</code> tag.
@@ -276,16 +295,17 @@
     <p><x-bladewind::input name="events" label="Full name" required="true"
         onfocus="changeCss('.events', '!border-2,!border-red-400')"
         onblur="changeCss('.events', '!border-2,!border-red-400', 'remove')" /></p>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::input
-        name="events"
-        label="Full name"
-        required="true"
-        onfocus="changeCss('.events', '!border-2,!border-red-400')"
-        onblur="changeCss('.events', '!border-2,!border-red-400', 'remove')"  /&gt;
-</code>
-</pre>
+@php
+        $inputExample20 = <<<'HTML'
+            <x-bladewind::input
+                name="events"
+                label="Full name"
+                required="true"
+                onfocus="changeCss('.events', '!border-2,!border-red-400')"
+                onblur="changeCss('.events', '!border-2,!border-red-400', 'remove')"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample20"></x-bladewind::code-block>
     <h3>Validating Required Fields</h3>
     <p>
         Bladewind comes with a very handy Javascript helper function (<code class="inline text-red-500">validateForm(element)</code>) for validating input and textarea fields that have the attribute <code class="inline text-red-500">required='true"</code> set.
@@ -314,66 +334,67 @@
     <p>
         Let's take a look at the code for the form and then proceed to break it down.
     </p>
-<pre class="language-markup line-numbers" data-line="1,5,16,22,33,35, 36">
-<code>
-    &lt;x-bladewind.notification /&gt;
+@php
+        $inputExample21 = <<<'HTML'
+            <x-bladewind.notification />
 
-    &lt;x-bladewind.card&gt;
+            <x-bladewind.card>
 
-        &lt;form method="get" class="signup-form"&gt;
+                <form method="get" class="signup-form">
 
-            &lt;h1 class="my-2 text-2xl font-light text-blue-900/80"&gt;
-                Create Account&lt;/h1&gt;
-            &lt;p class="mt-3 mb-6 text-blue-900/80 text-sm"&gt;
-                This is a sign up form example to demonstrate
-                how to validate forms using Bladewind.
-            &lt;/p&gt;
+                    <h1 class="my-2 text-2xl font-light text-blue-900/80">
+                        Create Account</h1>
+                    <p class="mt-3 mb-6 text-blue-900/80 text-sm">
+                        This is a sign up form example to demonstrate
+                        how to validate forms using Bladewind.
+                    </p>
 
-            &lt;x-bladewind::input
-                name="fname"
-                required="true"
-                label="Full Name"
-                error_message="You will need to enter your full name" /&gt;
+                    <x-bladewind::input
+                        name="fname"
+                        required="true"
+                        label="Full Name"
+                        error_message="You will need to enter your full name" />
 
-            &lt;div class="flex gap-4"&gt;
+                    <div class="flex gap-4">
 
-                &lt;x-bladewind::input
-                    name="email"
-                    required="true"
-                    label="Email" /&gt;
+                        <x-bladewind::input
+                            name="email"
+                            required="true"
+                            label="Email" />
 
-                &lt;x-bladewind::input
-                    name="mobile"
-                    label="Mobile"
-                    numeric="true" /&gt;
+                        <x-bladewind::input
+                            name="mobile"
+                            label="Mobile"
+                            numeric="true" />
 
-            &lt;/div&gt;
+                    </div>
 
-            &lt;x-bladewind.textarea
-                required="true"
-                name="bio"
-                error_message="Yoh! write something nice about yourself"
-                show_error_inline="true"
-                label="Describe yourself"&gt;&lt;/x-bladewind.textarea&gt;
+                    <x-bladewind.textarea
+                        required="true"
+                        name="bio"
+                        error_message="Yoh! write something nice about yourself"
+                        show_error_inline="true"
+                        label="Describe yourself"></x-bladewind.textarea>
 
-            &lt;div class="text-center"&gt;
+                    <div class="text-center">
 
-                &lt;x-bladewind.button
-                    name="btn-save"
-                    has_spinner="true"
-                    type="primary"
-                    can_submit="true"
-                    class="mt-3"&gt;
-                    Sign Up Today
-                &lt;/x-bladewind.button&gt;
+                        <x-bladewind.button
+                            name="btn-save"
+                            has_spinner="true"
+                            type="primary"
+                            can_submit="true"
+                            class="mt-3">
+                            Sign Up Today
+                        </x-bladewind.button>
 
-            &lt;/div&gt;
+                    </div>
 
-        &lt;/form&gt;
+                </form>
 
-    &lt;/x-bladewind.card&gt;
-</code>
-</pre>
+            </x-bladewind.card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1,5,16,22,33,35, 36" :code="$inputExample21"></x-bladewind::code-block>
     <p>
         Error messages can either be displayed inline or using the <a href="/component/notification">Bladewind notification</a> component.
         You will notice we included the Notification component on line 1. On line 5 we have a form with a class of <code class="inline">signup-form</code>.
@@ -390,8 +411,8 @@
         error message beneath the field the attribute was set on.
     </p>
     <p>Below is the javascript that triggers the validation of the form. <code class="inline">domEl</code>, <code class="inline">unhide</code> and <code class="inline">validateForm</code> are helper functions in the package.</p>
-    <pre class="language-js line-numbers" data-line="">
-        <code>
+    @php
+        $inputExample22 = <<<'HTML'
             /**
             domEl(), validateForm(), hide() and unhide()
             are helper functions available in BladewindUI
@@ -407,8 +428,9 @@
                     unhide('.btn-save .bw-spinner') : // do this is validated
                     hide('.btn-save .bw-spinner'); // do this if not validated
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$inputExample22"></x-bladewind::code-block>
 
     <h2 id="javascript">Manipulating Inputs Using Javascript</h2>
     <p>
@@ -458,41 +480,43 @@
         Let's take a look at the code for the form and then proceed to look at the Javascript that's triggered.
         Pay attention to lines 4 and 12.
     </p>
-    <pre class="language-markup line-numbers" data-line="4,12">
-        <code>
+    @php
+        $inputExample23 = <<<'HTML'
             ...
-            &lt;div class="flex gap-4"&gt;
-                &lt;x-bladewind::input name="full_name" required="true"  label="Full name" /&gt;
-                &lt;x-bladewind::input name="age_camp" label="How old are you?"
-                    required="true" numeric="true" with_dots="true" /&gt;
-            &lt;/div&gt;
-            &lt;b class="guardian-info py-2 block hidden"&gt;Who is your guardian?&lt;/b&gt;
-            &lt;div class="guardian flex gap-4 hidden"&gt;
-                &lt;x-bladewind::input name="guardian_name_camp" required="true" label="Guardian's Name" /&gt;
-                &lt;x-bladewind::input name="guardian_email_camp"
+            <div class="flex gap-4">
+                <x-bladewind::input name="full_name" required="true"  label="Full name" />
+                <x-bladewind::input name="age_camp" label="How old are you?"
+                    required="true" numeric="true" with_dots="true" />
+            </div>
+            <b class="guardian-info py-2 block hidden">Who is your guardian?</b>
+            <div class="guardian flex gap-4 hidden">
+                <x-bladewind::input name="guardian_name_camp" required="true" label="Guardian's Name" />
+                <x-bladewind::input name="guardian_email_camp"
                     label="Guardian's email"
-                    onkeyup="showAddress(this.value)" /&gt;
-            &lt;/div&gt;
-            &lt;x-bladewind::input name="guardian_address" placeholder="Guardian's address" class="hidden" /&gt;
+                    onkeyup="showAddress(this.value)" />
+            </div>
+            <x-bladewind::input name="guardian_address" placeholder="Guardian's address" class="hidden" />
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,12" :code="$inputExample23"></x-bladewind::code-block>
     <p>
         From the above form, we want to perform an action when the value of the <code class="inline">age_camp</code> input field changes.
         The resultant HTML code generated for the input field is below.
     </p>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-    &lt;input
-        class="bw-input peer required age_camp placeholder-transparent dark:placeholder-transparent"
-        type="text"
-        id="age_camp"
-        name="age_camp"
-        value=""
-        autocomplete="off"
-        placeholder="How old are you?" /&gt;
-</code>
-</pre>
+@php
+        $inputExample24 = <<<'HTML'
+            <input
+                class="bw-input peer required age_camp placeholder-transparent dark:placeholder-transparent"
+                type="text"
+                id="age_camp"
+                name="age_camp"
+                value=""
+                autocomplete="off"
+                placeholder="How old are you?" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$inputExample24"></x-bladewind::code-block>
     <p>
         The name we provided to the Input component has been used as part of the <code class="inline">class</code> names of the component.
         This makes it easy for us to access the component in Javascript. Below is the script that performs the hiding and unhiding of the DIVs based on the value of the age input.
@@ -501,24 +525,25 @@
     <p>
         Entering a value in the guardian email field also unhides an address field. This however uses an <code class="inline">onkeyup</code> event defined on the input field itself.
     </p>
-    <pre class="language-js line-numbers" data-line="2">
-        <code>
-        // domEl, unhide and hide are helper functions in BladewindUI
-        domEl('.age_camp').addEventListener('keyup', (el) => {
-            if(el.target.value !== ''  && el.target.value < 18 ){
-                unhide('.guardian-info');
-                unhide('.guardian');
-            } else {
-                hide('.guardian-info');
-                hide('.guardian');
-            }
-        })
+    @php
+        $inputExample25 = <<<'HTML'
+            // domEl, unhide and hide are helper functions in BladewindUI
+            domEl('.age_camp').addEventListener('keyup', (el) => {
+                if(el.target.value !== ''  && el.target.value < 18 ){
+                    unhide('.guardian-info');
+                    unhide('.guardian');
+                } else {
+                    hide('.guardian-info');
+                    hide('.guardian');
+                }
+            })
 
-        showAddress = (value) => {
-            if(value !== '') unhide('.guardian_address');
-        }
-        </code>
-    </pre>
+            showAddress = (value) => {
+                if(value !== '') unhide('.guardian_address');
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="2" :code="$inputExample25"></x-bladewind::code-block>
     <p>
         <x-bladewind::alert show_close_icon="false">
             To manipulate BladewindUI input elements using Javascript, simply target them using the name defined either in the class or id attributes.
@@ -532,53 +557,60 @@
     <h3 id="prefixes">Prefixes</h3>
     <p class="!mb-4">You can use prefixes even when your input has a label.</p>
     <x-bladewind::input name="site" label="website address" prefix="https://" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input name="site" label="website address" prefix="https://" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample26 = <<<'HTML'
+            <x-bladewind::input name="site" label="website address" prefix="https://" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample26"></x-bladewind::code-block>
     <p class="!mb-3 !pt-8">You can drop the label and use a placeholder instead.</p>
     <x-bladewind::input name="site2" placeholder="website address" prefix="https://" />
     <x-bladewind::input name="usd" placeholder="0.00" prefix="USD" numeric />
     <x-bladewind::input name="twitter" placeholder="Twitter handle" prefix="@" />
     <x-bladewind::input name="gh" placeholder="username" prefix="https://github.com/" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input name="site2" placeholder="website address" prefix="https://" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input name="usd" placeholder="0.00" prefix="USD" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input name="twitter" placeholder="Twitter handle" prefix="@" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input name="gh" placeholder="username" prefix="https://github.com/" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample27 = <<<'HTML'
+            <x-bladewind::input name="site2" placeholder="website address" prefix="https://" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample27"></x-bladewind::code-block>
+    @php
+        $inputExample28 = <<<'HTML'
+            <x-bladewind::input name="usd" placeholder="0.00" prefix="USD" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample28"></x-bladewind::code-block>
+    @php
+        $inputExample29 = <<<'HTML'
+            <x-bladewind::input name="twitter" placeholder="Twitter handle" prefix="@" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample29"></x-bladewind::code-block>
+    @php
+        $inputExample30 = <<<'HTML'
+            <x-bladewind::input name="gh" placeholder="username" prefix="https://github.com/" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample30"></x-bladewind::code-block>
     <h3 id="suffixes">Suffixes</h3>
     <p class="!mb-4">Suffixes get appended to the end of the input field</p>
     <x-bladewind::input name="space" placeholder="workspace-name" suffix=".slack.com" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::input name="space" placeholder="workspace-name" suffix=".slack.com" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample31 = <<<'HTML'
+            <x-bladewind::input name="space" placeholder="workspace-name" suffix=".slack.com" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample31"></x-bladewind::code-block>
     <x-bladewind::input name="tnc" placeholder="Your bio. Keep it brief and nice" suffix='<a href="#">See some good examples</a>' />
-<pre class="language-markup">
-<code>
-    &lt;x-bladewind::input
-        name="tnc"
-        placeholder="Your bio. Keep it brief and nice"
-        suffix='&lt;a href="#"&gt;See some good examples&lt;/a&gt;' /&gt;
-</code>
-</pre>
+@php
+        $inputExample32 = <<<'HTML'
+            <x-bladewind::input
+                name="tnc"
+                placeholder="Your bio. Keep it brief and nice"
+                suffix='<a href="#">See some good examples</a>' />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample32"></x-bladewind::code-block>
 
 <h3 id="transparency">Prefix and Suffix Transparency</h3>
     <p>
@@ -586,40 +618,43 @@
         You can specify both a prefix and suffix on your input fields.
     </p>
     <x-bladewind::input name="usdbg" placeholder="0.00" prefix="USD" numeric transparent_prefix="false" />
-<pre class="language-markup line-numbers" data-line="5">
-<code>
-    &lt;x-bladewind::input
-        name="usdbg"
-        placeholder="0.00"
-        prefix="USD"
-        transparent_prefix="false"
-        numeric /&gt;
-</code>
-</pre>
+@php
+        $inputExample33 = <<<'HTML'
+            <x-bladewind::input
+                name="usdbg"
+                placeholder="0.00"
+                prefix="USD"
+                transparent_prefix="false"
+                numeric />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$inputExample33"></x-bladewind::code-block>
     <br/>
     <x-bladewind::input name="spacex" placeholder="workspace-name" suffix=".slack.com" transparent_suffix="false" />
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-    &lt;x-bladewind::input
-        name="spacex"
-        placeholder="workspace-name"
-        transparent_suffix="false"
-        suffix=".slack.com" /&gt;
-</code>
-</pre>
+@php
+        $inputExample34 = <<<'HTML'
+            <x-bladewind::input
+                name="spacex"
+                placeholder="workspace-name"
+                transparent_suffix="false"
+                suffix=".slack.com" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$inputExample34"></x-bladewind::code-block>
     <br/>
     <x-bladewind::input name="spacexx" placeholder="workspace-name" prefix="https://" suffix=".slack.com" transparent_prefix="false" transparent_suffix="false" />
-<pre class="language-markup line-numbers" data-line="3,4,6,7">
-<code>
-    &lt;x-bladewind::input
-        name="spacexx"
-        prefix="https://"
-        transparent_prefix="false"
-        placeholder="workspace-name"
-        suffix=".slack.com"
-        transparent_suffix="false" /&gt;
-</code>
-</pre>
+@php
+        $inputExample35 = <<<'HTML'
+            <x-bladewind::input
+                name="spacexx"
+                prefix="https://"
+                transparent_prefix="false"
+                placeholder="workspace-name"
+                suffix=".slack.com"
+                transparent_suffix="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,4,6,7" :code="$inputExample35"></x-bladewind::code-block>
     <h2 id="icons">Inputs With Icons</h2>
     <p>
         The BladewindUI input field can have an icon for those moments where you want a simple icon to describe the field.
@@ -642,44 +677,46 @@
         <x-bladewind::button class="w-full">Sign Up</x-bladewind::button>
     </x-bladewind::centered-content>
 <br /><br />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind.centered-content size="small"&gt;
+    @php
+        $inputExample36 = <<<'HTML'
+            <x-bladewind.centered-content size="small">
 
-                &lt;x-bladewind::input
+                <x-bladewind::input
                     name="fullname"
                     placeholder="John T. Doe"
                     prefix="user"
-                    prefix_is_icon="true" /&gt;
+                    prefix_is_icon="true" />
 
-                &lt;x-bladewind::input
+                <x-bladewind::input
                     name="emailic"
-                    placeholder="me@bladewindui.com"
+                    placeholder="meBWATSIGNPLACEHOLDERbladewindui.com"
                     prefix="envelope"
-                    prefix_is_icon="true" /&gt;
+                    prefix_is_icon="true" />
 
-                &lt;div class="flex gap-4"&gt;
-                    &lt;x-bladewind::input
+                <div class="flex gap-4">
+                    <x-bladewind::input
                         name="fon"
                         placeholder="0000.000.00"
                         prefix="phone"
-                        prefix_is_icon="true" /&gt;
+                        prefix_is_icon="true" />
 
-                    &lt;x-bladewind::input
+                    <x-bladewind::input
                         name="passw" type="password"
                         placeholder="Password"
                         prefix="key"
                         prefix_is_icon="true"
                         prefix_icon_css="text-orange-500"
-                        viewable="true" /&gt;
+                        viewable="true" />
 
-                &lt;/div&gt;
+                </div>
 
-                &lt;x-bladewind.button class="w-full"&gt;Sign Up&lt;/x-bladewind.button&gt;
+                <x-bladewind.button class="w-full">Sign Up</x-bladewind.button>
 
-            &lt;/x-bladewind.centered-content&gt;
-        </code>
-    </pre>
+            </x-bladewind.centered-content>
+            HTML;
+        $inputExample36 = str_replace('BWATSIGNPLACEHOLDER', '@', $inputExample36);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample36"></x-bladewind::code-block>
     <br />
     <p>
         As explained on the BladewindUI <a href="/component/icon">Icon component</a> page, it is possible to use SVG tags and custom SVG files as the input icons.
@@ -688,36 +725,38 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
 </svg>' prefix_is_icon="true" />
 
-<pre class="language-markup line-numbers">
-<code class="!whitespace-pre-wrap">
-&lt;x-bladewind::input
-    name="www"
-    placeholder="website address"
-    prefix_is_icon="true"
-    prefix='&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none"
-    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-    class="w-6 h-6"&gt;
-&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /&gt;
-&lt;/svg&gt;' /&gt;
-</code>
-</pre>
+@php
+        $inputExample37 = <<<'HTML'
+            <x-bladewind::input
+                name="www"
+                placeholder="website address"
+                prefix_is_icon="true"
+                prefix='<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>' />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample37"></x-bladewind::code-block>
     <br />
     <x-bladewind::input name="www2" placeholder="website address" transparent_prefix="false" prefix='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
 </svg>' prefix_is_icon="true" />
 
-<pre class="language-markup line-numbers">
-<code class="!whitespace-pre-wrap">
-&lt;x-bladewind::input
-    name="www"
-    placeholder="website address"
-    prefix_is_icon="true"
-    transparent_prefix="false"
-    prefix='&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"&gt;
-&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /&gt;
-&lt;/svg&gt;' /&gt;
-</code>
-</pre>
+@php
+        $inputExample38 = <<<'HTML'
+            <x-bladewind::input
+                name="www"
+                placeholder="website address"
+                prefix_is_icon="true"
+                transparent_prefix="false"
+                prefix='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>' />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample38"></x-bladewind::code-block>
 <h2 id="clearable">Clearable Inputs</h2>
     <p>
         Clearable fields display an x icon when a field has a value entered. Clicking on the x icon deletes the text in the input field. Quite handy and saves users from clicking the backspace several times in say, a search field.
@@ -752,18 +791,30 @@
     </div>
     <p>
     </p>
-    <pre class="language-markup">
-    <code class="!whitespace-pre-wrap">&lt;x-bladewind::input label="I am small" size="small" /&gt;</code>
-    </pre>
-    <pre class="language-markup">
-    <code class="!whitespace-pre-wrap">&lt;x-bladewind::input label="I am regular" /&gt;</code>
-    </pre>
-    <pre class="language-markup">
-    <code class="!whitespace-pre-wrap">&lt;x-bladewind::input label="I am medium" size="medium" /&gt;</code>
-    </pre>
-    <pre class="language-markup">
-    <code class="!whitespace-pre-wrap">&lt;x-bladewind::input label="I am big" size="big" /&gt;</code>
-    </pre>
+    @php
+        $inputExample39 = <<<'HTML'
+            <x-bladewind::input label="I am small" size="small" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample39"></x-bladewind::code-block>
+    @php
+        $inputExample40 = <<<'HTML'
+            <x-bladewind::input label="I am regular" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample40"></x-bladewind::code-block>
+    @php
+        $inputExample41 = <<<'HTML'
+            <x-bladewind::input label="I am medium" size="medium" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample41"></x-bladewind::code-block>
+    @php
+        $inputExample42 = <<<'HTML'
+            <x-bladewind::input label="I am big" size="big" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$inputExample42"></x-bladewind::code-block>
 
     <h2 id="form-state">Laravel Form State</h2>
     <p>
@@ -772,15 +823,16 @@
         can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
         and an error block on every single field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::input
-    name="email"
-    label="Email address"
-    fill_from_old="true"
-    show_validation_error="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $inputExample43 = <<<'HTML'
+            <x-bladewind::input
+                name="email"
+                label="Email address"
+                fill_from_old="true"
+                show_validation_error="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample43"></x-bladewind::code-block>
     <p>
         <code class="inline">fill_from_old</code> repopulates the field from
         <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
@@ -797,16 +849,17 @@
         Rather than setting the attributes field by field, set them once in your
         <code class="inline">config/bladewind.php</code> and every form component follows.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-// config/bladewind.php
-'forms' =&gt; [
-    'fill_from_old' =&gt; true,
-    'show_validation_error' =&gt; true,
-    'error_bag' =&gt; null,
-],
-        </code>
-    </pre>
+    @php
+        $inputExample44 = <<<'HTML'
+            // config/bladewind.php
+            'forms' => [
+                'fill_from_old' => true,
+                'show_validation_error' => true,
+                'error_bag' => null,
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$inputExample44"></x-bladewind::code-block>
     <p>
         An attribute on a single field always wins over the config, so you can opt one field out
         with <code class="inline">show_validation_error="false"</code>.
@@ -1075,9 +1128,9 @@
         </tr>
     </x-bladewind::table>
     <h3>Input with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::input
+    @php
+        $inputExample45 = <<<'HTML'
+            <x-bladewind::input
                 name="pin"
                 label="Enter PIN"
                 placeholder=""
@@ -1097,16 +1150,18 @@
                 prefix_is_icon="false"
                 prefix_icon_type="solid"
                 prefix_icon_css=""
-                suffix="@gmail.com"
+                suffix="BWATSIGNPLACEHOLDERgmail.com"
                 transparent_suffix="false"
                 suffix_is_icon="false"
                 suffix_icon_type="solid"
                 suffix_icon_css=""
                 viewable="false"
                 clearable="false"
-            /&gt;
-        </code>
-    </pre>
+            />
+            HTML;
+        $inputExample45 = str_replace('BWATSIGNPLACEHOLDER', '@', $inputExample45);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputExample45"></x-bladewind::code-block>
 
     <p>&nbsp;</p>
     <x-bladewind::alert show_close_icon="false">

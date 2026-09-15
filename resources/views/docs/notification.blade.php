@@ -8,22 +8,24 @@
     <p>To use this component simply include it anywhere on your page. If you intend to use this throughout your app it will be best to include the component in say your header page.</p>
     <x-bladewind::notification />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::notification /&gt;
-        </code>
-    </pre>
+    @php
+        $notificationExample1 = <<<'HTML'
+            <x-bladewind::notification />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$notificationExample1"></x-bladewind::code-block>
     <p>
         Now you can trigger a notification using the javascript helper function. The function accepts four parameters listed below.
     </p>
 
-    <pre class="language-javascript">
-        <code>
-            &lt;script&gt;
+    @php
+        $notificationExample2 = <<<'HTML'
+            <script>
                 showNotification(title, message, type, dismiss_in);
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$notificationExample2"></x-bladewind::code-block>
 
     <x-bladewind::table>
         <x-slot name="header">
@@ -56,13 +58,14 @@
         </tr>
     </x-bladewind::table>
 
-    <pre class="language-javascript line-numbers">
-        <code>
-            &lt;script&gt;
+    @php
+        $notificationExample3 = <<<'HTML'
+            <script>
                 showNotification('Delete Successful', 'Your file was deleted successfully');
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$notificationExample3"></x-bladewind::code-block>
 <br />
 <br />
     <p>
@@ -84,40 +87,41 @@
                 `Samuel just accepted your invitation to join BladewindUI Inc. <a href='#'>Say Hello</a>`, 'info')">info</x-bladewind::button>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind.button
+    @php
+        $notificationExample4 = <<<'HTML'
+            <x-bladewind.button
                 onclick="showNotification(
                     'Download Successful',
-                    'Your download completed successfully')"&gt;
+                    'Your download completed successfully')">
                 success
-            &lt;/x-bladewind.button&gt; &nbsp;
+            </x-bladewind.button>  
 
-            &lt;x-bladewind.button
+            <x-bladewind.button
                 onclick="showNotification(
                     'Delete Failed',
                     'Your message could not be deleted. Try again',
-                    'error')"&gt;
+                    'error')">
                 error
-            &lt;/x-bladewind.button&gt; &nbsp;
+            </x-bladewind.button>  
 
-            &lt;x-bladewind.button
+            <x-bladewind.button
                 onclick="showNotification(
                     'Low Disk Space',
-                    `You have used 20gb of your 25gb storage space. &lt;a href='#'&gt;Upgrade soon&lt;/a&gt;`,
-                    'warning')"&gt;
+                    `You have used 20gb of your 25gb storage space. <a href='#'>Upgrade soon</a>`,
+                    'warning')">
                 warning
-            &lt;/x-bladewind.button&gt; &nbsp;
+            </x-bladewind.button>  
 
-            &lt;x-bladewind.button
+            <x-bladewind.button
                 onclick="showNotification(
                     'Invitation Accepted',
-                    `Samuel just accepted your invitation to join BladewindUI Inc. &lt;a href='#'&gt;Say Hello&lt;/a&gt;`,
-                    'info')"&gt;
+                    `Samuel just accepted your invitation to join BladewindUI Inc. <a href='#'>Say Hello</a>`,
+                    'info')">
                 info
-            &lt;/x-bladewind.button&gt;
-        </code>
-    </pre>
+            </x-bladewind.button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$notificationExample4"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">
@@ -140,20 +144,21 @@
                 'Your message could not be deleted. Try again', 'error', 15, 'regular', 'same_one')">Same Notification</x-bladewind::button> &nbsp;
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind.button
+    @php
+        $notificationExample5 = <<<'HTML'
+            <x-bladewind.button
                 onclick="showNotification(
                     'Delete Failed',
                     'Your message could not be deleted. Try again',
                     'error',
                     15,
                     'regular',
-                    'same_one')"&gt;
+                    'same_one')">
                 Same Notification
-            &lt;/x-bladewind.button&gt; &nbsp;
-        </code>
-    </pre>
+            </x-bladewind.button>  
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$notificationExample5"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Notification component.</p>
@@ -181,11 +186,12 @@
     </x-bladewind::table>
 
     <h3>Notification with all attributes defined</h3>
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::notification position="top-right" /&gt;
-        </code>
-    </pre>
+    @php
+        $notificationExample6 = <<<'HTML'
+            <x-bladewind::notification position="top-right" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$notificationExample6"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > notification.blade.php</code>

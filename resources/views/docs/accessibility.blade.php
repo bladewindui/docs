@@ -174,11 +174,12 @@
         The common dropmenu trigger is a bare icon, which reaches a screen reader as nothing at
         all. Give it a name with <code class="inline text-red-500">trigger_label</code>.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::dropmenu trigger_label="Row actions"&gt;...&lt;/x-bladewind::dropmenu&gt;
-        </code>
-    </pre>
+    @php
+        $dropmenuLabelExample = <<<'HTML'
+            <x-bladewind::dropmenu trigger_label="Row actions">...</x-bladewind::dropmenu>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$dropmenuLabelExample"></x-bladewind::code-block>
 
     <h3 id="icon-buttons">Icon-only buttons</h3>
     <p>
@@ -187,13 +188,14 @@
         already set on these. An explicit <code class="inline">aria-label</code> always wins if
         you would rather be exact.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button.circle title="Delete user" /&gt;
+    @php
+        $iconButtonExample = <<<'HTML'
+            <x-bladewind::button.circle title="Delete user" />
 
-            &lt;x-bladewind::button.circle aria-label="Delete user" /&gt;
-        </code>
-    </pre>
+            <x-bladewind::button.circle aria-label="Delete user" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$iconButtonExample"></x-bladewind::code-block>
     <x-bladewind::alert type="warning" show_close_icon="false">
         A button with neither a title nor an <code class="inline">aria-label</code> and no
         visible text ships as an unlabelled control. Nothing can be derived from an icon name.
@@ -206,11 +208,12 @@
         string, which is better than nothing but says nothing about what the slider adjusts.
         Set it where you have more than one on a page.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::slider aria_label="Maximum price" /&gt;
-        </code>
-    </pre>
+    @php
+        $sliderLabelExample = <<<'HTML'
+            <x-bladewind::slider aria_label="Maximum price" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sliderLabelExample"></x-bladewind::code-block>
 
     <h2 id="scripts">Keyboard Support Needs The JavaScript</h2>
     <p>

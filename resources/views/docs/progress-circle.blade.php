@@ -14,11 +14,12 @@
     <p class="mt-14 text-center">
         <x-bladewind::progress-circle percentage="45" />
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::progress-circle percentage="45" /&gt;
-        </code>
-    </pre>
+    @php
+        $progressUcircleExample1 = <<<'HTML'
+            <x-bladewind::progress-circle percentage="45" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUcircleExample1"></x-bladewind::code-block>
 
     <p>
        By default the progress circle label is not displayed. That can be changed by setting <code class="inline text-red-500">show_label="true"</code>.
@@ -28,17 +29,21 @@
         <x-bladewind::progress-circle percentage="58" show_label="true" />
         <x-bladewind::progress-circle percentage="58" show_label="true" show_percent="true" />
     </p>
-    <pre class="language-markup">
-        <code>&lt;x-bladewind::progress-circle percentage="58" show_label="true" /&gt;</code>
-    </pre>
-    <pre class="language-markup line-numbers" data-line="3,4">
-        <code>
-            &lt;x-bladewind::progress-circle
+    @php
+        $progressUcircleExample2 = <<<'HTML'
+            <x-bladewind::progress-circle percentage="58" show_label="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUcircleExample2"></x-bladewind::code-block>
+    @php
+        $progressUcircleExample3 = <<<'HTML'
+            <x-bladewind::progress-circle
                 percentage="58"
                 show_label="true"
-                show_percent="true" /&gt;
-        </code>
-    </pre>
+                show_percent="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,4" :code="$progressUcircleExample3"></x-bladewind::code-block>
 
     <h2 id="colours">Different Colours</h2>
     <p>
@@ -61,12 +66,13 @@
         <div class="text-center"><x-bladewind::progress-circle percentage="65" color="fuchsia" /> <br />Fuchsia</div>
     </div>
     <p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::progress-circle percentage="10" color="red" /&gt;
-                ...
-            </code>
-        </pre>
+        @php
+        $progressUcircleExample4 = <<<'HTML'
+            <x-bladewind::progress-circle percentage="10" color="red" />
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$progressUcircleExample4"></x-bladewind::code-block>
     </p>
 
     <h3 id="dark">Dark Colours</h3>
@@ -85,16 +91,17 @@
         <div class="text-center"><x-bladewind::progress-circle percentage="65" shade="dark" color="fuchsia" /> <br />Fuchsia</div>
     </div>
     <p>
-        <pre class="language-markup line-numbers" data-line="3">
-            <code>
-                &lt;x-bladewind::progress-circle
-                    percentage="10"
-                    shade="dark"
-                    color="red" /&gt;
+        @php
+        $progressUcircleExample5 = <<<'HTML'
+            <x-bladewind::progress-circle
+                percentage="10"
+                shade="dark"
+                color="red" />
 
-                ...
-            </code>
-        </pre>
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$progressUcircleExample5"></x-bladewind::code-block>
     </p>
     <h2 id="sizes">Different Sizes</h2>
     <p>
@@ -110,15 +117,16 @@
         <div class="text-center"><x-bladewind::progress-circle percentage="73" size="large" /> <br />Large</div>
     </div>
     <p>
-        <pre class="language-markup line-numbers" data-line="2">
-            <code>
-                &lt;x-bladewind::progress-circle
-                    size="tiny"
-                    percentage="10" /&gt;
+        @php
+        $progressUcircleExample6 = <<<'HTML'
+            <x-bladewind::progress-circle
+                size="tiny"
+                percentage="10" />
 
-                ...
-            </code>
-        </pre>
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$progressUcircleExample6"></x-bladewind::code-block>
     </p>
 <h2 id="custom-size">Custom Sizes</h2>
     <p>
@@ -162,13 +170,14 @@
         <x-bladewind::progress-circle percentage="73" size="400" />
     </p>
     <p>
-    <pre class="language-markup line-numbers" data-line="2">
-            <code>
-                &lt;x-bladewind::progress-circle
-                    size="400"
-                    percentage="89" /&gt;
-            </code>
-        </pre>
+    @php
+        $progressUcircleExample7 = <<<'HTML'
+            <x-bladewind::progress-circle
+                size="400"
+                percentage="89" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$progressUcircleExample7"></x-bladewind::code-block>
     </p>
     <p>
         You will notice from the example above the circle width is quite thin for a circle that big. To increase the width of the circle set
@@ -179,14 +188,15 @@
         <x-bladewind::progress-circle percentage="73" size="400" circle_width="50" />
     </p>
     <p>
-    <pre class="language-markup line-numbers" data-line="2,3">
-            <code>
-                &lt;x-bladewind::progress-circle
-                    size="400"
-                    circle_width="50"
-                    percentage="89" /&gt;
-            </code>
-        </pre>
+    @php
+        $progressUcircleExample8 = <<<'HTML'
+            <x-bladewind::progress-circle
+                size="400"
+                circle_width="50"
+                percentage="89" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$progressUcircleExample8"></x-bladewind::code-block>
     </p>
     <p>
         Things get a bit quirky when you need to display labels in custom circles. Again, because the circle size is unknown,
@@ -199,20 +209,21 @@
             size="400" circle_width="50" show_label="true" show_percent="true" />
     </p>
     <p>
-    <pre class="language-markup line-numbers" data-line="5,6,7">
-            <code>
-                &lt;x-bladewind::progress-circle
-                    percentage="73"
-                    size="400"
-                    circle_width="50"
-                    text_size="50"
-                    align="100"
-                    valign="0"
-                    show_label="true"
-                    show_percent="true"
-                /&gt;
-            </code>
-        </pre>
+    @php
+        $progressUcircleExample9 = <<<'HTML'
+            <x-bladewind::progress-circle
+                percentage="73"
+                size="400"
+                circle_width="50"
+                text_size="50"
+                align="100"
+                valign="0"
+                show_label="true"
+                show_percent="true"
+            />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,6,7" :code="$progressUcircleExample9"></x-bladewind::code-block>
     </p>
     <p>
         See the table below for the definitions of the attributes used above.
@@ -287,22 +298,23 @@
     </x-bladewind::table>
 
     <h3>Progress Circle with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::progress-circle
-        percentage = "50"
-        color = "red",
-        show_label = "false",
-        show_percent = "false",
-        animate = "true",
-        size="medium"
-        circle_width="50"
-        text_size="50"
-        align="100"
-        valign="0"
-        shade = "faint" /&gt;
-</code>
-</pre>
+@php
+        $progressUcircleExample10 = <<<'HTML'
+            <x-bladewind::progress-circle
+                percentage = "50"
+                color = "red",
+                show_label = "false",
+                show_percent = "false",
+                animate = "true",
+                size="medium"
+                circle_width="50"
+                text_size="50"
+                align="100"
+                valign="0"
+                shade = "faint" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$progressUcircleExample10"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > progress-circle.blade.php</code>

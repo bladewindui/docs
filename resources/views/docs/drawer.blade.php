@@ -52,27 +52,33 @@
         </dl>
     </x-bladewind::drawer>
 
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::drawer name="customer-details" position="right" size="medium" show-close-button="false"&gt;
-    &lt;div class="relative rounded-2xl bg-white p-6 text-center shadow dark:bg-dark-800"&gt;
-        &lt;button type="button" onclick="hideDrawer('customer-details')" class="absolute right-4 top-4 text-gray-400"&gt;
-            &lt;x-bladewind::icon name="x-mark" /&gt;
-        &lt;/button&gt;
+    @php
+        $drawerExample1 = <<<'HTML'
+            <x-bladewind::drawer name="customer-details" position="right" size="medium" show-close-button="false">
+                <div class="relative rounded-2xl bg-white p-6 text-center shadow dark:bg-dark-800">
+                    <button type="button" onclick="hideDrawer('customer-details')" class="absolute right-4 top-4 text-gray-400">
+                        <x-bladewind::icon name="x-mark" />
+                    </button>
 
-        &lt;div class="relative mx-auto w-fit"&gt;
-            &lt;x-bladewind::avatar image="/path/to/image" size="big" /&gt;
-            &lt;span class="absolute bottom-0 right-0 rounded-full bg-green-500 text-white ring-2 ring-white"&gt;
-                &lt;x-bladewind::icon name="check" /&gt;
-            &lt;/span&gt;
-        &lt;/div&gt;
+                    <div class="relative mx-auto w-fit">
+                        <x-bladewind::avatar image="/path/to/image" size="big" />
+                        <span class="absolute bottom-0 right-0 rounded-full bg-green-500 text-white ring-2 ring-white">
+                            <x-bladewind::icon name="check" />
+                        </span>
+                    </div>
 
-        &lt;p class="font-bold"&gt;Victoria Ferguson&lt;/p&gt;
-        &lt;p class="text-gray-400"&gt;victoria@ferguson.eu&lt;/p&gt;
+                    <p class="font-bold">Victoria Ferguson</p>
+                    <p class="text-gray-400">victoriaBWATSIGNPLACEHOLDERferguson.eu</p>
 
-        &lt;!-- role / team, then mail / chat / phone action buttons --&gt;
-    &lt;/div&gt;
+                    <!-- role / team, then mail / chat / phone action buttons -->
+                </div>
 
-    &lt;!-- address details list --&gt;
-&lt;/x-bladewind::drawer&gt;</code></pre>
+                <!-- address details list -->
+            </x-bladewind::drawer>
+            HTML;
+        $drawerExample1 = str_replace('BWATSIGNPLACEHOLDER', '@', $drawerExample1);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$drawerExample1"></x-bladewind::code-block>
 
     <h2 id="positions">Positions</h2>
     <p>Use <code class="inline">left</code>, <code class="inline">right</code>, <code class="inline">top</code>, or <code class="inline">bottom</code>. These are physical viewport edges, so left and right remain predictable in RTL pages.</p>
@@ -84,10 +90,15 @@
             </x-bladewind::drawer>
         @endforeach
     </div>
-    <pre class="language-markup"><code>&lt;x-bladewind::drawer name="filters" position="left" title="Filters"&gt;...&lt;/x-bladewind::drawer&gt;
-&lt;x-bladewind::drawer name="details" position="right" title="Details"&gt;...&lt;/x-bladewind::drawer&gt;
-&lt;x-bladewind::drawer name="notice" position="top" title="Notice"&gt;...&lt;/x-bladewind::drawer&gt;
-&lt;x-bladewind::drawer name="actions" position="bottom" title="Actions"&gt;...&lt;/x-bladewind::drawer&gt;</code></pre>
+    @php
+        $drawerExample2 = <<<'HTML'
+            <x-bladewind::drawer name="filters" position="left" title="Filters">...</x-bladewind::drawer>
+            <x-bladewind::drawer name="details" position="right" title="Details">...</x-bladewind::drawer>
+            <x-bladewind::drawer name="notice" position="top" title="Notice">...</x-bladewind::drawer>
+            <x-bladewind::drawer name="actions" position="bottom" title="Actions">...</x-bladewind::drawer>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$drawerExample2"></x-bladewind::code-block>
 
     <h2 id="sizes">Sizes</h2>
     <p>Sizes are adapted to the drawer direction. Left and right drawers change width. Top and bottom drawers change height. Available values are <code class="inline">tiny</code>, <code class="inline">small</code>, <code class="inline">medium</code>, <code class="inline">big</code>, <code class="inline">large</code>, <code class="inline">xl</code>, and <code class="inline">omg</code>.</p>
@@ -97,7 +108,12 @@
             <x-bladewind::drawer name="size-{{ $drawerSize }}" title="{{ ucfirst($drawerSize) }} drawer" :size="$drawerSize">The panel uses the {{ $drawerSize }} size.</x-bladewind::drawer>
         @endforeach
     </div>
-    <pre class="language-markup"><code>&lt;x-bladewind::drawer name="profile" size="large" title="Profile"&gt;...&lt;/x-bladewind::drawer&gt;</code></pre>
+    @php
+        $drawerExample3 = <<<'HTML'
+            <x-bladewind::drawer name="profile" size="large" title="Profile">...</x-bladewind::drawer>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$drawerExample3"></x-bladewind::code-block>
 
     <h2 id="modal-behaviour">Modal and Non-modal Behaviour</h2>
     <p>A drawer is modal by default. It has a backdrop, traps focus, and prevents background scrolling. Set <code class="inline">modal="false"</code> for supporting content that should leave the page interactive.</p>
@@ -107,7 +123,12 @@
     </div>
     <x-bladewind::drawer name="modal-example" title="Modal drawer">The page behind this drawer is blocked until it closes.</x-bladewind::drawer>
     <x-bladewind::drawer name="nonmodal-example" title="Non-modal drawer" modal="false">You can still interact with the page behind this drawer.</x-bladewind::drawer>
-    <pre class="language-markup"><code>&lt;x-bladewind::drawer name="help" title="Help" modal="false"&gt;...&lt;/x-bladewind::drawer&gt;</code></pre>
+    @php
+        $drawerExample4 = <<<'HTML'
+            <x-bladewind::drawer name="help" title="Help" modal="false">...</x-bladewind::drawer>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$drawerExample4"></x-bladewind::code-block>
 
     <h2 id="header-footer">Header and Footer Slots</h2>
     <p>Use the named header and footer slots to customize those regions while keeping the drawer layout and scrolling behavior.</p>
@@ -117,11 +138,16 @@
         <x-bladewind::input label="Full name" value="Ama Mensah" />
         <x-slot:footer><div class="flex justify-end gap-3"><x-bladewind::button type="secondary" onclick="hideDrawer('edit-customer')">Cancel</x-bladewind::button><x-bladewind::button>Save</x-bladewind::button></div></x-slot:footer>
     </x-bladewind::drawer>
-    <pre class="language-markup"><code>&lt;x-bladewind::drawer name="edit-customer"&gt;
-    &lt;x-slot:header&gt;Custom header&lt;/x-slot:header&gt;
-    Form content
-    &lt;x-slot:footer&gt;Custom footer&lt;/x-slot:footer&gt;
-&lt;/x-bladewind::drawer&gt;</code></pre>
+    @php
+        $drawerExample5 = <<<'HTML'
+            <x-bladewind::drawer name="edit-customer">
+                <x-slot:header>Custom header</x-slot:header>
+                Form content
+                <x-slot:footer>Custom footer</x-slot:footer>
+            </x-bladewind::drawer>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$drawerExample5"></x-bladewind::code-block>
 
     <h2 id="icons-close">Icons and Close Controls</h2>
     <p>Set <code class="inline">icon</code>, <code class="inline">icon-type</code>, and <code class="inline">icon-dir</code> using the Icon component contract. Set <code class="inline">show-close-button="false"</code> when another clear close action is present.</p>
@@ -130,24 +156,39 @@
         <p class="!mt-0">This drawer uses a solid Heroicon and a footer close action.</p>
         <x-slot:footer><x-bladewind::button onclick="hideDrawer('icon-drawer')">Done</x-bladewind::button></x-slot:footer>
     </x-bladewind::drawer>
-    <pre class="language-markup"><code>&lt;x-bladewind::drawer name="security" title="Security settings"
-    icon="shield-check" icon-type="solid" show-close-button="false"&gt;...&lt;/x-bladewind::drawer&gt;</code></pre>
+    @php
+        $drawerExample6 = <<<'HTML'
+            <x-bladewind::drawer name="security" title="Security settings"
+                icon="shield-check" icon-type="solid" show-close-button="false">...</x-bladewind::drawer>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$drawerExample6"></x-bladewind::code-block>
 
     <h2 id="dismissal">Backdrop and Escape Options</h2>
     <p>Backdrop clicks and the Escape key close a modal drawer by default. Disable either behavior for a workflow that requires an explicit decision. Always provide a visible close action.</p>
-    <pre class="language-markup"><code>&lt;x-bladewind::drawer name="approval" title="Approve request"
-    backdrop-can-close="false" escape-can-close="false"&gt;
-    ...
-    &lt;x-slot:footer&gt;
-        &lt;x-bladewind::button onclick="hideDrawer('approval')"&gt;Cancel&lt;/x-bladewind::button&gt;
-    &lt;/x-slot:footer&gt;
-&lt;/x-bladewind::drawer&gt;</code></pre>
+    @php
+        $drawerExample7 = <<<'HTML'
+            <x-bladewind::drawer name="approval" title="Approve request"
+                backdrop-can-close="false" escape-can-close="false">
+                ...
+                <x-slot:footer>
+                    <x-bladewind::button onclick="hideDrawer('approval')">Cancel</x-bladewind::button>
+                </x-slot:footer>
+            </x-bladewind::drawer>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$drawerExample7"></x-bladewind::code-block>
 
     <h2 id="programmatic-api">Programmatic Show, Hide, and Toggle</h2>
     <p>The three public helpers accept the drawer name and return <code class="inline">false</code> when no matching state change can be made.</p>
-    <pre class="language-javascript"><code>showDrawer('customer-details');
-hideDrawer('customer-details');
-toggleDrawer('customer-details');</code></pre>
+    @php
+        $drawerExample8 = <<<'HTML'
+            showDrawer('customer-details');
+            hideDrawer('customer-details');
+            toggleDrawer('customer-details');
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$drawerExample8"></x-bladewind::code-block>
     <p>The drawer also emits <code class="inline">bladewind:drawer-opened</code> and <code class="inline">bladewind:drawer-closed</code> events. Each event bubbles and includes the drawer name in <code class="inline">event.detail.name</code>.</p>
 
     <h2 id="scrolling">Long and Scrollable Content</h2>
@@ -208,24 +249,37 @@ toggleDrawer('customer-details');</code></pre>
     </x-bladewind::table>
 
     <h3>Drawer with all attributes defined</h3>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::drawer
-    name="customer-profile"
-    title="Customer profile"
-    description="Review the customer record before saving changes."
-    position="right"
-    size="large"
-    modal="true"
-    open="false"
-    show-close-button="true"
-    close-label="Close customer profile"
-    backdrop-can-close="false"
-    escape-can-close="false"
-    icon="user-circle"
-    icon-type="solid"
-    icon-dir=""
-    class="customer-profile-drawer"&gt;
-    Customer profile content
-&lt;/x-bladewind::drawer&gt;</code></pre>
+    @php
+        $drawerExample9 = <<<'HTML'
+            <x-bladewind::drawer
+                name="customer-profile"
+                title="Customer profile"
+                description="Review the customer record before saving changes."
+                position="right"
+                size="large"
+                modal="true"
+                open="false"
+                show-close-button="true"
+                close-label="Close customer profile"
+                backdrop-can-close="false"
+                escape-can-close="false"
+                icon="user-circle"
+                icon-type="solid"
+                icon-dir=""
+                class="customer-profile-drawer">
+                Customer profile content
+            </x-bladewind::drawer>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$drawerExample9"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Drawer Inside Livewire</h2>
+    <p>
+        Whether the drawer is open or closed lives in the drawer's own DOM rather than in Livewire's component state. If a Livewire
+        component re-renders this markup for a reason that has nothing to do with the drawer, it silently closes. This matters most
+        for a drawer that can stay open for a while, such as a filter panel or a form, inside a component that can also re-render
+        for other reasons. In that situation, wrap the drawer in <code class="inline">wire:ignore</code> so Livewire leaves it alone.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; drawer.blade.php</code>
@@ -245,6 +299,7 @@ toggleDrawer('customer-details');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#props">Full list of attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Drawer inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-drawer');</script></x-slot:scripts>
 </x-app>

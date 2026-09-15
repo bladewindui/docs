@@ -12,23 +12,24 @@
         <x-bladewind::timeline content="Account is being reviewed" />
         <x-bladewind::timeline content="Account activated" />
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::timeline
+    @php
+        $timelineExample1 = <<<'HTML'
+            <x-bladewind::timeline
                 date="10 days ago"
-                content="You signed up"/&gt;
-            &lt;x-bladewind::timeline
+                content="You signed up"/>
+            <x-bladewind::timeline
                 date="8 days ago"
-                content="Customer rep assigned"/&gt;
-            &lt;x-bladewind::timeline
+                content="Customer rep assigned"/>
+            <x-bladewind::timeline
                 date="8 days ago"
-                content="Customer rep called"/&gt;
-            &lt;x-bladewind::timeline
-                content="Account is being reviewed"/&gt;
-            &lt;x-bladewind::timeline
-                content="Account activated"/&gt;
-        </code>
-    </pre>
+                content="Customer rep called"/>
+            <x-bladewind::timeline
+                content="Account is being reviewed"/>
+            <x-bladewind::timeline
+                content="Account activated"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$timelineExample1"></x-bladewind::code-block>
     <h3>Bigger Anchors</h3>
     <p>
         By default each timeline anchors itself on small transparent circles. We can set the anchors to use bigger circles instead, by setting <code class="inline text-red-500">anchor="big"</code>.
@@ -41,15 +42,16 @@
     <x-bladewind::timeline date="8 days ago" content="Customer rep called" anchor="big" />
     <x-bladewind::timeline content="Account is being reviewed" anchor="big" />
     <x-bladewind::timeline content="Account activated" anchor="big" />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::timeline
+    @php
+        $timelineExample2 = <<<'HTML'
+            <x-bladewind::timeline
                 anchor="big"
                 date="10 days ago"
-                content="You signed up"/&gt;
+                content="You signed up"/>
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$timelineExample2"></x-bladewind::code-block>
     <h3>Completed</h3>
     <p>
         Setting the attribute <code class="inline text-red-500">completed="true"</code> will mark a timeline event as completed.
@@ -63,15 +65,16 @@
     <x-bladewind::timeline date="8 days ago" content="Customer rep called" completed="true" />
     <x-bladewind::timeline content="Account is being reviewed"  />
     <x-bladewind::timeline content="Account activated"  />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::timeline
+    @php
+        $timelineExample3 = <<<'HTML'
+            <x-bladewind::timeline
                 completed="true"
                 date="10 days ago"
-                content="You signed up"/&gt;
+                content="You signed up"/>
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$timelineExample3"></x-bladewind::code-block>
 
     <h4>Completed when anchor="big"</h4>
     <x-bladewind::timeline date="10 days ago" content="You signed up" anchor="big" completed="true" />
@@ -80,16 +83,17 @@
     <x-bladewind::timeline content="Account is being reviewed" anchor="big" />
     <x-bladewind::timeline content="Account activated" anchor="big" />
 
-    <pre class="language-markup line-numbers" data-line="2,3">
-        <code>
-            &lt;x-bladewind::timeline
+    @php
+        $timelineExample4 = <<<'HTML'
+            <x-bladewind::timeline
                 completed="true"
                 anchor="big"
                 date="10 days ago"
-                content="You signed up"/&gt;
+                content="You signed up"/>
             ...
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$timelineExample4"></x-bladewind::code-block>
 
     <h2 id="stacked">Stacked Timelines</h2>
     <p>
@@ -113,35 +117,37 @@
         <x-bladewind::timeline date="Yesterday" content="Data recovery completed with 2 errors" />
     </x-bladewind::timelines>
 
-<pre class="language-markup line-numbers" data-line="1">
-    <code>
-            &lt;x-bladewind::timelines stacked="true"&gt;
+@php
+        $timelineExample5 = <<<'HTML'
+            <x-bladewind::timelines stacked="true">
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="just now"
-                    content="database server restarted" /&gt;
+                    content="database server restarted" />
 
-                &lt;x-bladewind::timeline date="30 minutes ago"&gt;
-                    &lt;x-slot:content&gt;
-                        &lt;a&gt;2 endpoints&lt;/a&gt; are failing on bladewindui-data EC2
+                <x-bladewind::timeline date="30 minutes ago">
+                    <x-slot:content>
+                        <a>2 endpoints</a> are failing on bladewindui-data EC2
                         bucket. You may want to login and check the logs
-                    &lt;/x-slot:content&gt;
-                &lt;/x-bladewind::timeline&gt;
+                    </x-slot:content>
+                </x-bladewind::timeline>
 
-                &lt;x-bladewind::timeline date="1 hour ago"&gt;
-                    &lt;x-slot:content&gt;
+                <x-bladewind::timeline date="1 hour ago">
+                    <x-slot:content>
                         There have been 200 failed log in attempts from
-                        &lt;a&gt;mike@bladewindui.com&lt;/a&gt;. Possibly a DDos attack
+                        <a>mikeBWATSIGNPLACEHOLDERbladewindui.com</a>. Possibly a DDos attack
                         attempt. Secure the server.
-                    &lt;/x-slot:content&gt;
-                &lt;/x-bladewind::timeline&gt;
+                    </x-slot:content>
+                </x-bladewind::timeline>
 
-                &lt;x-bladewind::timeline date="Yesterday"
-                    content="Data recovery completed with 2 errors" /&gt;
+                <x-bladewind::timeline date="Yesterday"
+                    content="Data recovery completed with 2 errors" />
 
-            &lt;/x-bladewind::timelines&gt;
-    </code>
-</pre>
+            </x-bladewind::timelines>
+            HTML;
+        $timelineExample5 = str_replace('BWATSIGNPLACEHOLDER', '@', $timelineExample5);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$timelineExample5"></x-bladewind::code-block>
 <p>
     Notice we introduced a <code class="inline">x-bladewind::timelines</code> component in the above example. This is completely optional but saves us from
     writing <code class="inline text-red-500">stacked="true"</code> on each tag component. The alternative is to have
@@ -164,21 +170,22 @@
     <x-bladewind::timeline date="Yesterday" content="Data recovery completed with 2 errors" />
 </x-bladewind::timelines>
 <br />
-<pre class="language-markup line-numbers" data-line="2">
-    <code>
-            &lt;x-bladewind::timelines
+@php
+        $timelineExample6 = <<<'HTML'
+            <x-bladewind::timelines
                 completed="true"
-                stacked="true"&gt;
+                stacked="true">
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="just now"
-                    content="database server restarted" /&gt;
+                    content="database server restarted" />
 
                 ...
 
-            &lt;/x-bladewind::timelines&gt;
-    </code>
-</pre>
+            </x-bladewind::timelines>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$timelineExample6"></x-bladewind::code-block>
 
 <h3>Stacked and completed with anchor="big"</h3>
     <br />
@@ -198,27 +205,28 @@
     <x-bladewind::timeline date="Yesterday" content="Data recovery completed with 2 errors" completed="false" />
 </x-bladewind::timelines>
 <br />
-<pre class="language-markup line-numbers" data-line="2">
-    <code>
-            &lt;x-bladewind::timelines
+@php
+        $timelineExample7 = <<<'HTML'
+            <x-bladewind::timelines
                 completed="true"
                 anchor="big"
-                stacked="true"&gt;
+                stacked="true">
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="just now"
-                    content="database server restarted" /&gt;
+                    content="database server restarted" />
 
                 ...
 
-            &lt;x-bladewind::timeline
+            <x-bladewind::timeline
                 date="Yesterday"
                 content="Data recovery completed with 2 errors"
-                completed="false" /&gt;
+                completed="false" />
 
-            &lt;/x-bladewind::timelines&gt;
-    </code>
-</pre>
+            </x-bladewind::timelines>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$timelineExample7"></x-bladewind::code-block>
 
     <h2 id="icons">Anchor Icons and Avatars</h2>
     <h3>Anchor Icons</h3>
@@ -244,38 +252,39 @@
         <x-bladewind::timeline content="Account is being reviewed" icon="key" completed="false" />
         <x-bladewind::timeline content="Account activated" icon="map-pin" completed="false" />
     </x-bladewind::timelines>
-    <pre class="language-markup line-numbers" data-line="5,9,13,17,21">
-        <code>
-            &lt;x-bladewind::timelines anchor="big" completed="true"&gt;
+    @php
+        $timelineExample8 = <<<'HTML'
+            <x-bladewind::timelines anchor="big" completed="true">
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="10 days ago"
                     content="You signed up"
-                    icon="bell-alert" /&gt;
+                    icon="bell-alert" />
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="8 days ago"
                     content="Customer rep assigned"
-                    icon="bolt" /&gt;
+                    icon="bolt" />
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="8 days ago"
                     content="Customer rep called"
-                    icon="chat-bubble-bottom-center-text" /&gt;
+                    icon="chat-bubble-bottom-center-text" />
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     content="Account is being reviewed"
                     icon="key"
-                    completed="false" /&gt;
+                    completed="false" />
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     content="Account activated"
                     icon="map-pin"
-                    completed="false" /&gt;
+                    completed="false" />
 
-            &lt;/x-bladewind::timelines&gt;
-        </code>
-    </pre>
+            </x-bladewind::timelines>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,9,13,17,21" :code="$timelineExample8"></x-bladewind::code-block>
     <h3>Anchor Avatars</h3>
     <p>
         Thanks to the BladewindUI <a href="/component/avatar">Avatar component</a>, using avatars as Timeline anchors is easy.
@@ -289,23 +298,24 @@
         <x-bladewind::timeline content="Account is being reviewed" avatar="/assets/images/issah.jpg" />
         <x-bladewind::timeline content="Account activated" avatar="/assets/images/rowe.jpeg" />
     </x-bladewind::timelines>
-    <pre class="language-markup line-numbers" data-line="6,11">
-        <code>
-            &lt;x-bladewind::timelines&gt;
+    @php
+        $timelineExample9 = <<<'HTML'
+            <x-bladewind::timelines>
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="10 days ago"
                     content="You signed up"
-                    avatar="/assets/images/pic1.jpg" /&gt;
+                    avatar="/assets/images/pic1.jpg" />
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="8 days ago"
                     content="Customer rep assigned"
-                    avatar="/assets/images/pic2.jpg" /&gt;
+                    avatar="/assets/images/pic2.jpg" />
             ...
-            &lt;/x-bladewind::timelines&gt;
-        </code>
-    </pre>
+            </x-bladewind::timelines>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6,11" :code="$timelineExample9"></x-bladewind::code-block>
 
     <h2 id="positioning">Positioning and Aligning Timelines</h2>
     <p>
@@ -334,20 +344,21 @@
         <x-bladewind::timeline content="Account activated" avatar="/assets/images/rowe.jpeg" />
     </x-bladewind::timelines>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::timelines
+    @php
+        $timelineExample10 = <<<'HTML'
+            <x-bladewind::timelines
                 position="left"
-                anchor="big"&gt;
+                anchor="big">
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="10 days ago"
                     content="You signed up"
-                    avatar="/assets/images/pic1.jpg" /&gt;
+                    avatar="/assets/images/pic1.jpg" />
             ...
-            &lt;/x-bladewind::timelines&gt;
-        </code>
-    </pre>
+            </x-bladewind::timelines>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$timelineExample10"></x-bladewind::code-block>
 <h3>Left Positioning for Stacked Timelines</h3>
     <p>Note how the timeline fills the entire width of the page. If you do not want this, you can place the timeline group in a parent element that has a fixed width.</p>
     <x-bladewind::timelines color="pink"  stacked="true" position="left">
@@ -365,25 +376,26 @@
         <x-bladewind::timeline date="Yesterday" content="Data recovery completed with 2 errors" completed="false" />
     </x-bladewind::timelines>
     <br />
-    <pre class="language-markup line-numbers" data-line="2,3">
-        <code>
-            &lt;x-bladewind::timelines
+    @php
+        $timelineExample11 = <<<'HTML'
+            <x-bladewind::timelines
                 position="left"
                 stacked="true"
-                color="pink"&gt;
+                color="pink">
 
-                &lt;x-bladewind::timeline
-                    date="30 minutes ago"&gt;
-                     &lt;x-slot:content&gt;
-                        &lt;a&gt;2 endpoints&lt;/a&gt; are failing on
+                <x-bladewind::timeline
+                    date="30 minutes ago">
+                     <x-slot:content>
+                        <a>2 endpoints</a> are failing on
                         bladewindui-data EC2 bucket.
                         You may want to login and check the logs
-                    &lt;/x-slot:content&gt;
-                &lt;x-bladewind::timeline/&gt;
+                    </x-slot:content>
+                <x-bladewind::timeline/>
             ...
-            &lt;/x-bladewind::timelines&gt;
-        </code>
-    </pre>
+            </x-bladewind::timelines>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$timelineExample11"></x-bladewind::code-block>
     <h3>Left Alignment</h3>
     <p>
         Alignments only work for stacked timelines and only for the <code>x-bladewind::timeline</code> component.
@@ -411,44 +423,46 @@
         <x-bladewind::timeline date="Yesterday" content="Data recovery completed with 2 errors" />
     </x-bladewind::timelines>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::timelines
+    @php
+        $timelineExample12 = <<<'HTML'
+            <x-bladewind::timelines
                 position="right"
-                anchor="big"&gt;
+                anchor="big">
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                         date="just now"
                         content="database server restarted"
-                        align_left="true" /&gt;
+                        align_left="true" />
 
-                &lt;x-bladewind::timeline d
-                    ate="30 minutes ago"&gt;
-                    &lt;x-slot:content&gt;
-                        &lt;a&gt;2 endpoints&lt;/a&gt; are failing on
+                <x-bladewind::timeline d
+                    ate="30 minutes ago">
+                    <x-slot:content>
+                        <a>2 endpoints</a> are failing on
                         bladewindui-data EC2 bucket. You may want to login
                         and check the logs
-                    &lt;/x-slot:content&gt;
-                &lt;/x-bladewind::timeline&gt;
+                    </x-slot:content>
+                </x-bladewind::timeline>
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="1 hour ago"
-                    align_left="true"&gt;
-                    &lt;x-slot:content&gt;
+                    align_left="true">
+                    <x-slot:content>
                         There have been 200 failed log in attempts from
-                        &lt;a&gt;mike@bladewindui.com&lt;/a&gt;.
+                        <a>mikeBWATSIGNPLACEHOLDERbladewindui.com</a>.
                         Possibly a DDos attack attempt.
                         Secure the server.
-                    &lt;/x-slot:content&gt;
-                &lt;/x-bladewind::timeline&gt;
+                    </x-slot:content>
+                </x-bladewind::timeline>
 
-                &lt;x-bladewind::timeline
+                <x-bladewind::timeline
                     date="Yesterday"
-                    content="Data recovery completed with 2 errors" /&gt;
+                    content="Data recovery completed with 2 errors" />
 
-            &lt;/x-bladewind::timelines&gt;
-        </code>
-    </pre>
+            </x-bladewind::timelines>
+            HTML;
+        $timelineExample12 = str_replace('BWATSIGNPLACEHOLDER', '@', $timelineExample12);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$timelineExample12"></x-bladewind::code-block>
 
     <h2 id="notail">No Trailing Line</h2>
     <p>
@@ -463,17 +477,18 @@
     <x-bladewind::timeline content="Account is being reviewed"  />
     <x-bladewind::timeline content="Account activated" last="true"  />
 
-    <pre class="language-markup line-numbers" data-line="7">
-        <code>
-        &lt;x-bladewind::timeline
-                date="10 days ago"
-                content="You signed up" /&gt;
-        ...
-        &lt;x-bladewind::timeline
-            content="Account activated"
-            last="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $timelineExample13 = <<<'HTML'
+            <x-bladewind::timeline
+                    date="10 days ago"
+                    content="You signed up" />
+            ...
+            <x-bladewind::timeline
+                content="Account activated"
+                last="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="7" :code="$timelineExample13"></x-bladewind::code-block>
 
     <h2 id="colours">Different Colours</h2>
     <p>
@@ -486,33 +501,34 @@
     <x-bladewind::timeline content="Account is being reviewed"  color="purple" />
     <x-bladewind::timeline content="Account activated" color="gray" />
 
-    <pre class="language-markup line-numbers" data-line="4,10,15,20">
-        <code>
-            &lt;x-bladewind::timeline
+    @php
+        $timelineExample14 = <<<'HTML'
+            <x-bladewind::timeline
                 date="10 days ago"
                 content="You signed up"
                 color="pink"
-                completed="true" /&gt;
+                completed="true" />
 
-            &lt;x-bladewind::timeline
+            <x-bladewind::timeline
                 date="8 days ago"
                 content="Customer rep assigned"
-                color="orange" /&gt;
+                color="orange" />
 
-            &lt;x-bladewind::timeline
+            <x-bladewind::timeline
                 date="8 days ago"
                 content="Customer rep called"
-                color="green" /&gt;
+                color="green" />
 
-            &lt;x-bladewind::timeline
+            <x-bladewind::timeline
                 content="Account is being reviewed"
-                color="purple" /&gt;
+                color="purple" />
 
-            &lt;x-bladewind::timeline
+            <x-bladewind::timeline
                 content="Account activated"
-                color="gray" /&gt;
-        </code>
-    </pre>
+                color="gray" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,10,15,20" :code="$timelineExample14"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Button component.</p>
@@ -656,9 +672,9 @@
     </x-bladewind::table>
 
     <h3>Timeline with all attributes defined</h3>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::timelines
+    @php
+        $timelineExample15 = <<<'HTML'
+            <x-bladewind::timelines
                 stacked="true"
                 anchor="big"
                 anchor_css="pl-9"
@@ -667,12 +683,13 @@
                 icon_css="pl-9"
                 date_css="tracking-wider"
                 position="left"
-                completed="true" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::timeline
+                completed="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$timelineExample15"></x-bladewind::code-block>
+    @php
+        $timelineExample16 = <<<'HTML'
+            <x-bladewind::timeline
                 stacked="true"
                 anchor="big"
                 anchor_css="pl-9"
@@ -685,9 +702,10 @@
                 avatar="/assets/images/me.jpg"
                 avatar_css="rounded-0"
                 content="I am a timeline"
-                completed="true" /&gt;
-        </code>
-    </pre>
+                completed="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$timelineExample16"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > timelines.blade.php</code>,

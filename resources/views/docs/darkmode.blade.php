@@ -9,24 +9,26 @@
     <p>
 
     </p>
-    <pre class="language-js line-numbers">
-    <code>
-    // your-project/vendor/bladewindui/ui/tailwind.css
-    @theme {
-        ...
-        --color-dark-100: #f0f1f2;
-        --color-dark-200: #d2d4d7;
-        --color-dark-300: #a7aaad;
-        --color-dark-400: #6c7075;
-        --color-dark-500: #4a4e53;
-        --color-dark-600: #33373c;
-        --color-dark-700: #262a2f;
-        --color-dark-800: #1C1F24;
-        --color-dark-900: #101114;
-        --color-dark-950: #0a0b0d;
-    }
-    </code>
-    </pre>
+    @php
+        $darkmodeExample1 = <<<'HTML'
+            // your-project/vendor/bladewindui/ui/tailwind.css
+            BWATSIGNPLACEHOLDERtheme {
+                ...
+                --color-dark-100: #f0f1f2;
+                --color-dark-200: #d2d4d7;
+                --color-dark-300: #a7aaad;
+                --color-dark-400: #6c7075;
+                --color-dark-500: #4a4e53;
+                --color-dark-600: #33373c;
+                --color-dark-700: #262a2f;
+                --color-dark-800: #1C1F24;
+                --color-dark-900: #101114;
+                --color-dark-950: #0a0b0d;
+            }
+            HTML;
+        $darkmodeExample1 = str_replace('BWATSIGNPLACEHOLDER', '@', $darkmodeExample1);
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$darkmodeExample1"></x-bladewind::code-block>
     <br />
 
     <p>
@@ -35,26 +37,28 @@
 <p>
     To change the colour used for dark mode, simply define overwriting values in your project's <code class="inline">app.css</code>.
 </p>
-    <pre class="language-js line-numbers" data-line="5">
-    <code>
-        // your-project/resources/css/app.css
-        @theme {
-            ...
-            /* dark colour scale */
-            --color-dark-100: #f0f1f2;
-            --color-dark-200: #d2d4d7;
-            --color-dark-300: #a7aaad;
-            --color-dark-400: #6c7075;
-            --color-dark-500: #4a4e53;
-            --color-dark-600: #33373c;
-            --color-dark-700: #262a2f;
-            --color-dark-800: #1C1F24;
-            --color-dark-900: #101114;
-            --color-dark-950: #0a0b0d;
-            ...
-        }
-    </code>
-    </pre>
+    @php
+        $darkmodeExample2 = <<<'HTML'
+            // your-project/resources/css/app.css
+            BWATSIGNPLACEHOLDERtheme {
+                ...
+                /* dark colour scale */
+                --color-dark-100: #f0f1f2;
+                --color-dark-200: #d2d4d7;
+                --color-dark-300: #a7aaad;
+                --color-dark-400: #6c7075;
+                --color-dark-500: #4a4e53;
+                --color-dark-600: #33373c;
+                --color-dark-700: #262a2f;
+                --color-dark-800: #1C1F24;
+                --color-dark-900: #101114;
+                --color-dark-950: #0a0b0d;
+                ...
+            }
+            HTML;
+        $darkmodeExample2 = str_replace('BWATSIGNPLACEHOLDER', '@', $darkmodeExample2);
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="5" :code="$darkmodeExample2"></x-bladewind::code-block>
     <br />
 
     <h2 id="selector">Base Colour and DarkMode Selector</h2>

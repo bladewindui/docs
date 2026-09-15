@@ -39,16 +39,17 @@
         The monorepo root is named <code class="inline">bladewindui/ui</code> and declares <code class="inline">type: library</code>
         so that downstream projects can depend on it directly via a Composer <strong>path repository</strong> during local development:
     </p>
-    <pre class="language-js line-numbers">
-<code>
-"repositories": {
-    "bladewindui/ui": {
-        "type": "path",
-        "url": "/path/to/bladewindui"
-    }
-}
-</code>
-    </pre>
+    @php
+        $releasingExample1 = <<<'HTML'
+            "repositories": {
+                "bladewindui/ui": {
+                    "type": "path",
+                    "url": "/path/to/bladewindui"
+                }
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$releasingExample1"></x-bladewind::code-block>
     <p>
         The <code class="inline">replace</code> block tells Composer that installing the root package also satisfies every
         sub-package requirement (e.g. <code class="inline">bladewindui/button ^5.0</code>), so no network calls are made
@@ -123,18 +124,25 @@
         next <code class="inline">composer update</code> — no code changes needed. When convenient, update your own
         <code class="inline">composer.json</code>:
     </p>
-    <pre class="language-diff line-numbers">
-<code>-        "mkocansey/bladewind": "^4.3"
-+        "bladewindui/bladewindui": "^4.4"</code>
-    </pre>
+    @php
+        $releasingExample2 = <<<'HTML'
+            -        "mkocansey/bladewind": "^4.3"
+            +        "bladewindui/bladewindui": "^4.4"
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="diff" line_numbers="true" :code="$releasingExample2"></x-bladewind::code-block>
     <p>
         <strong>The one thing that can silently break:</strong> a hardcoded vendor path. If your app scans BladeWind's own
         templates for Tailwind utilities:
     </p>
-    <pre class="language-diff line-numbers">
-<code>-@source '../../vendor/mkocansey/bladewind/packages';
-+@source '../../vendor/bladewindui/bladewindui/packages';</code>
-    </pre>
+    @php
+        $releasingExample3 = <<<'HTML'
+            -BWATSIGNPLACEHOLDERsource '../../vendor/mkocansey/bladewind/packages';
+            +BWATSIGNPLACEHOLDERsource '../../vendor/bladewindui/bladewindui/packages';
+            HTML;
+        $releasingExample3 = str_replace('BWATSIGNPLACEHOLDER', '@', $releasingExample3);
+    @endphp
+    <x-bladewind::code-block language="diff" line_numbers="true" :code="$releasingExample3"></x-bladewind::code-block>
     <p>
         Missing this doesn't error — the build just stops generating those utility classes and styles quietly disappear. Same
         risk for deploy scripts, IDE helper config, and static analysis paths reaching into
@@ -154,81 +162,82 @@
         There are <strong>55 split repos</strong> in total, one per <code class="inline">packages/*</code> directory, plus the
         full-install meta package which is <strong>not</strong> split (see above):
     </p>
-    <pre class="language-bash line-numbers">
-<code>
-# Foundation
-bladewindui/core
-bladewindui/icon
-bladewindui/script
-bladewindui/spinner
-bladewindui/button
-bladewindui/alert
-bladewindui/bell
-bladewindui/notification
-bladewindui/modal
-bladewindui/drawer
-bladewindui/table
-bladewindui/data-grid
+    @php
+        $releasingExample4 = <<<'HTML'
+            # Foundation
+            bladewindui/core
+            bladewindui/icon
+            bladewindui/script
+            bladewindui/spinner
+            bladewindui/button
+            bladewindui/alert
+            bladewindui/bell
+            bladewindui/notification
+            bladewindui/modal
+            bladewindui/drawer
+            bladewindui/table
+            bladewindui/data-grid
 
-# Forms leaf packages
-bladewindui/input
-bladewindui/textarea
-bladewindui/select
-bladewindui/checkbox
-bladewindui/radio
-bladewindui/toggle
-bladewindui/datepicker
-bladewindui/timepicker
-bladewindui/colorpicker
-bladewindui/filepicker
-bladewindui/slider
-bladewindui/checkcards
-bladewindui/number
-bladewindui/code
+            # Forms leaf packages
+            bladewindui/input
+            bladewindui/textarea
+            bladewindui/select
+            bladewindui/checkbox
+            bladewindui/radio
+            bladewindui/toggle
+            bladewindui/datepicker
+            bladewindui/timepicker
+            bladewindui/colorpicker
+            bladewindui/filepicker
+            bladewindui/slider
+            bladewindui/checkcards
+            bladewindui/number
+            bladewindui/code
 
-# Forms aggregate (metapackage)
-bladewindui/forms
+            # Forms aggregate (metapackage)
+            bladewindui/forms
 
-# Content leaf packages
-bladewindui/card
-bladewindui/contact-card
-bladewindui/avatar
-bladewindui/accordion
-bladewindui/tag
-bladewindui/timeline
-bladewindui/statistic
-bladewindui/rating
-bladewindui/horizontal-line-graph
-bladewindui/empty-state
-bladewindui/centered-content
-bladewindui/chart
-bladewindui/progress
-bladewindui/listview
-bladewindui/tooltip
-bladewindui/popover
-bladewindui/sortable
-bladewindui/calendar
+            # Content leaf packages
+            bladewindui/card
+            bladewindui/contact-card
+            bladewindui/avatar
+            bladewindui/accordion
+            bladewindui/tag
+            bladewindui/timeline
+            bladewindui/statistic
+            bladewindui/rating
+            bladewindui/horizontal-line-graph
+            bladewindui/empty-state
+            bladewindui/centered-content
+            bladewindui/chart
+            bladewindui/progress
+            bladewindui/listview
+            bladewindui/tooltip
+            bladewindui/popover
+            bladewindui/sortable
+            bladewindui/calendar
 
-# Content aggregate (metapackage)
-bladewindui/content
+            # Content aggregate (metapackage)
+            bladewindui/content
 
-# Navigation leaf packages
-bladewindui/breadcrumbs
-bladewindui/sidebar
-bladewindui/command-palette
-bladewindui/stepper
-bladewindui/tab
-bladewindui/dropmenu
-bladewindui/pagination
-bladewindui/theme-switcher
+            # Navigation leaf packages
+            bladewindui/breadcrumbs
+            bladewindui/sidebar
+            bladewindui/command-palette
+            bladewindui/stepper
+            bladewindui/tab
+            bladewindui/dropmenu
+            bladewindui/pagination
+            bladewindui/theme-switcher
 
-# Navigation aggregate (metapackage)
-bladewindui/navigation
+            # Navigation aggregate (metapackage)
+            bladewindui/navigation
 
-# Full-install meta package, NOT split, sourced directly from this monorepo
-bladewindui/ui                ← maps to packages/meta/
-</code>
-    </pre>
+            # Full-install meta package, NOT split, sourced directly from this monorepo
+            bladewindui/ui                ← maps to packages/meta/
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" line_numbers="true" :code="$releasingExample4"></x-bladewind::code-block>
 
     <h3 id="actions-secret">2. Add the GitHub Actions secret</h3>
     <p>
@@ -290,31 +299,32 @@ bladewindui/ui                ← maps to packages/meta/
     </x-bladewind::alert>
 
     <h2 id="release-flow">Day-to-day Release Flow</h2>
-    <pre class="language-bash line-numbers">
-<code>
-# 1. Make sure you're on main and everything is committed
-git checkout main &amp;&amp; git pull
+    @php
+        $releasingExample5 = <<<'HTML'
+            # 1. Make sure you're on main and everything is committed
+            git checkout main && git pull
 
-# 2. Install monorepo-builder (first time only)
-composer install
+            # 2. Install monorepo-builder (first time only)
+            composer install
 
-# 3. Validate all package composer.json files are consistent
-vendor/bin/monorepo-builder validate
+            # 3. Validate all package composer.json files are consistent
+            vendor/bin/monorepo-builder validate
 
-# 4. Release. This command does everything:
-#    a) bumps all inter-package version constraints to the new version
-#    b) commits the change
-#    c) tags the monorepo commit as vX.Y.Z
-#    d) pushes the tag to GitHub
-#    → GitHub Actions split-packages.yml fires automatically
-#    → each packages/* directory is pushed to its read-only repo
-#    → the same tag is applied to each split repo
-#    → Packagist picks up the new release via webhook
-vendor/bin/monorepo-builder release v5.0.0
+            # 4. Release. This command does everything:
+            #    a) bumps all inter-package version constraints to the new version
+            #    b) commits the change
+            #    c) tags the monorepo commit as vX.Y.Z
+            #    d) pushes the tag to GitHub
+            #    → GitHub Actions split-packages.yml fires automatically
+            #    → each packages/* directory is pushed to its read-only repo
+            #    → the same tag is applied to each split repo
+            #    → Packagist picks up the new release via webhook
+            vendor/bin/monorepo-builder release v5.0.0
 
-# 5. Done. Monitor the Actions tab to confirm all 55 splits succeeded.
-</code>
-    </pre>
+            # 5. Done. Monitor the Actions tab to confirm all 55 splits succeeded.
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" line_numbers="true" :code="$releasingExample5"></x-bladewind::code-block>
     <x-bladewind::alert show_close_icon="false">
         If <code class="inline">development</code> has moved ahead of <code class="inline">main</code> since the last
         release, merge <code class="inline">development</code> into <code class="inline">main</code> first. A leaf package
@@ -338,26 +348,33 @@ vendor/bin/monorepo-builder release v5.0.0
     <p>
         Every component is a <strong>standalone leaf package</strong> that users can install individually:
     </p>
-    <pre class="language-bash line-numbers">
-<code>
-composer require bladewindui/accordion   # just accordion
-composer require bladewindui/table       # just table (pulls exact deps)
-</code>
-    </pre>
+    @php
+        $releasingExample6 = <<<'HTML'
+            composer require bladewindui/accordion   # just accordion
+            composer require bladewindui/table       # just table (pulls exact deps)
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" line_numbers="true" :code="$releasingExample6"></x-bladewind::code-block>
     <p>
         Three <strong>aggregate metapackages</strong> bundle related components for convenience:
     </p>
-    <pre class="language-bash line-numbers">
-<code>
-composer require bladewindui/forms       # all form components
-composer require bladewindui/content     # all content components
-composer require bladewindui/navigation  # all navigation components
-</code>
-    </pre>
+    @php
+        $releasingExample7 = <<<'HTML'
+            composer require bladewindui/forms       # all form components
+            composer require bladewindui/content     # all content components
+            composer require bladewindui/navigation  # all navigation components
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" line_numbers="true" :code="$releasingExample7"></x-bladewind::code-block>
     <p>
         The full install meta-package pulls everything:
     </p>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/ui                  # the whole library</code></pre>
+    @php
+        $releasingExample8 = <<<'HTML'
+            composer require bladewindui/ui                  # the whole library
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$releasingExample8"></x-bladewind::code-block>
     <p>
         Aggregate packages are <code class="inline">type: metapackage</code>. They contain no code, only a <code class="inline">require</code> list.
     </p>
@@ -383,11 +400,12 @@ composer require bladewindui/navigation  # all navigation components
         </li>
         <li>
             Add a matrix entry to <code class="inline">.github/workflows/split-packages.yml</code>:
-            <pre class="language-yaml line-numbers">
-<code>
-- { local_path: 'packages/&lt;name&gt;', split_repository: '&lt;name&gt;' }
-</code>
-            </pre>
+            @php
+        $releasingExample9 = <<<'HTML'
+            - { local_path: 'packages/<name>', split_repository: '<name>' }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="yaml" line_numbers="true" :code="$releasingExample9"></x-bladewind::code-block>
         </li>
         <li>If the component belongs to a group (forms, content, navigation), add it to the relevant <code class="inline">packages/&lt;group&gt;/composer.json</code> <code class="inline">require</code>.</li>
         <li>Add it to <code class="inline">packages/meta/composer.json</code> <code class="inline">require</code> (or it will be pulled in transitively through the group).</li>
@@ -402,43 +420,44 @@ composer require bladewindui/navigation  # all navigation components
         Use this exact pattern. The <code class="inline">is_dir()</code> guards prevent errors when a package has no CSS or no
         <code class="inline">public/</code> directory:
     </p>
-    <pre class="language-php line-numbers">
-<code>
-&lt;?php
+    @php
+        $releasingExample10 = <<<'HTML'
+            <?php
 
-namespace Mkocansey\Bladewind\&lt;Name&gt;;
+            namespace Mkocansey\Bladewind\<Name>;
 
-use Illuminate\Support\ServiceProvider;
+            use Illuminate\Support\ServiceProvider;
 
-class Bladewind&lt;Name&gt;ServiceProvider extends ServiceProvider
-{
-    public function register(): void
-    {
-        $this-&gt;mergeConfigFrom(__DIR__.'/../config/bladewind.php', 'bladewind');
-    }
+            class Bladewind<Name>ServiceProvider extends ServiceProvider
+            {
+                public function register(): void
+                {
+                    $this->mergeConfigFrom(__DIR__.'/../config/bladewind.php', 'bladewind');
+                }
 
-    public function boot(): void
-    {
-        $this-&gt;loadViewsFrom(__DIR__.'/../resources/views', 'bladewind');
+                public function boot(): void
+                {
+                    $this->loadViewsFrom(__DIR__.'/../resources/views', 'bladewind');
 
-        $this-&gt;publishes([
-            __DIR__.'/../resources/views/components/' =&gt; resource_path('views/components/bladewind'),
-        ], 'bladewind-components');
+                    $this->publishes([
+                        __DIR__.'/../resources/views/components/' => resource_path('views/components/bladewind'),
+                    ], 'bladewind-components');
 
-        $bladewindPublicPaths = [];
-        if (is_dir(__DIR__.'/../resources/assets/css')) {
-            $bladewindPublicPaths[__DIR__.'/../resources/assets/css/'] = public_path('vendor/bladewind/css');
-        }
-        if (is_dir(__DIR__.'/../public')) {
-            $bladewindPublicPaths[__DIR__.'/../public/'] = public_path('vendor/bladewind');
-        }
-        if (!empty($bladewindPublicPaths)) {
-            $this-&gt;publishes($bladewindPublicPaths, 'bladewind-public');
-        }
-    }
-}
-</code>
-    </pre>
+                    $bladewindPublicPaths = [];
+                    if (is_dir(__DIR__.'/../resources/assets/css')) {
+                        $bladewindPublicPaths[__DIR__.'/../resources/assets/css/'] = public_path('vendor/bladewind/css');
+                    }
+                    if (is_dir(__DIR__.'/../public')) {
+                        $bladewindPublicPaths[__DIR__.'/../public/'] = public_path('vendor/bladewind');
+                    }
+                    if (!empty($bladewindPublicPaths)) {
+                        $this->publishes($bladewindPublicPaths, 'bladewind-public');
+                    }
+                }
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$releasingExample10"></x-bladewind::code-block>
 
     <p>&nbsp;</p>
     <p>&nbsp;</p>

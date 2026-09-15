@@ -51,19 +51,20 @@
         with the full path to <code class="inline">npx</code> on your machine
         (run <code class="inline">which npx</code> in your terminal to find it):
     </p>
-    <pre class="language-js line-numbers">
-<code>
-{
-  "mcpServers": {
-    "bladewindui": {
-      "command": "/usr/local/bin/npx",
-      // "command": "npx", use this on Windows or if npx is in your PATH
-      "args": ["-y", "mcp-remote", "https://bladewindui.com/mcp/server"]
-    }
-  }
-}
-</code>
-    </pre>
+    @php
+        $mcpExample1 = <<<'HTML'
+            {
+              "mcpServers": {
+                "bladewindui": {
+                  "command": "/usr/local/bin/npx",
+                  // "command": "npx", use this on Windows or if npx is in your PATH
+                  "args": ["-y", "mcp-remote", "https://bladewindui.com/mcp/server"]
+                }
+              }
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$mcpExample1"></x-bladewind::code-block>
     <p>
         Save the file and restart Claude Desktop fully (quit and reopen — do not just close the window).
         Once connected, a hammer icon will appear at the bottom of a new chat showing the available tools.
@@ -76,18 +77,19 @@
         Open <strong>Cursor Settings → MCP</strong> and click <strong>Add new global MCP server</strong>,
         or edit <code class="inline">~/.cursor/mcp.json</code> directly:
     </p>
-    <pre class="language-js line-numbers">
-<code>
-{
-  "mcpServers": {
-    "bladewindui": {
-      "type": "http",
-      "url": "https://bladewindui.com/mcp/server"
-    }
-  }
-}
-</code>
-    </pre>
+    @php
+        $mcpExample2 = <<<'HTML'
+            {
+              "mcpServers": {
+                "bladewindui": {
+                  "type": "http",
+                  "url": "https://bladewindui.com/mcp/server"
+                }
+              }
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$mcpExample2"></x-bladewind::code-block>
     <p>
         For a project-scoped setup — useful when you want every developer on a team to get BladewindUI context automatically —
         create <code class="inline">.cursor/mcp.json</code> at the root of your Laravel project and commit it to version control.
@@ -98,18 +100,19 @@
     <p>
         Open <strong>User Settings (JSON)</strong> via <kbd>Cmd/Ctrl + Shift + P</kbd> → <em>Preferences: Open User Settings (JSON)</em> and add:
     </p>
-    <pre class="language-js line-numbers">
-<code>
-{
-  "github.copilot.chat.mcpServers": {
-    "bladewindui": {
-      "type": "http",
-      "url": "https://bladewindui.com/mcp/server"
-    }
-  }
-}
-</code>
-    </pre>
+    @php
+        $mcpExample3 = <<<'HTML'
+            {
+              "github.copilot.chat.mcpServers": {
+                "bladewindui": {
+                  "type": "http",
+                  "url": "https://bladewindui.com/mcp/server"
+                }
+              }
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$mcpExample3"></x-bladewind::code-block>
 
     <h2 id="tools">Available Tools</h2>
     <p>Once connected, the AI can call three tools against the BladewindUI MCP server:</p>

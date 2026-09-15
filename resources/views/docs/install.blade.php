@@ -23,25 +23,60 @@
     <p>
         Pull in every component at once. This is the easiest way to get started and is ideal for new projects or if you want to explore the full library.
     </p>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/ui</code></pre>
+    @php
+        $installExample1 = <<<'HTML'
+            composer require bladewindui/ui
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample1"></x-bladewind::code-block>
 
     <h3 id="install-group">Install a component group</h3>
     <p>
         Components are organised into three groups. Install a group when you only need a logical subset of BladewindUI.
         See the <a href="#groups">component groups</a> section below for exactly which components each group contains.
     </p>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/forms</code></pre>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/content</code></pre>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/navigation</code></pre>
+    @php
+        $installExample2 = <<<'HTML'
+            composer require bladewindui/forms
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample2"></x-bladewind::code-block>
+    @php
+        $installExample3 = <<<'HTML'
+            composer require bladewindui/content
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample3"></x-bladewind::code-block>
+    @php
+        $installExample4 = <<<'HTML'
+            composer require bladewindui/navigation
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample4"></x-bladewind::code-block>
 
     <h3 id="install-single">Install a single component</h3>
     <p>
         The library also allows users to pick only the components they need.
         This is ideal for existing projects where you want to introduce BladewindUI gradually, or if you only need one or two components.
     </p>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/table</code></pre>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/accordion</code></pre>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/datepicker</code></pre>
+    @php
+        $installExample5 = <<<'HTML'
+            composer require bladewindui/table
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample5"></x-bladewind::code-block>
+    @php
+        $installExample6 = <<<'HTML'
+            composer require bladewindui/accordion
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample6"></x-bladewind::code-block>
+    @php
+        $installExample7 = <<<'HTML'
+            composer require bladewindui/datepicker
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample7"></x-bladewind::code-block>
     <p>
         All shared dependencies, such as the Icon, Spinner, and core helper utilities, are automatically installed by Composer when you require any BladewindUI package. You do not need to install or configure these dependencies yourself; Composer’s dependency resolution ensures everything required is available and up to date.
     </p>
@@ -50,8 +85,18 @@
     <p>
         After installing, publish the compiled CSS, JavaScript, and language files to your project's <code class="inline">public</code> directory.
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-public --force</code></pre>
-{{--    <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-lang --force</code></pre>--}}
+    @php
+        $installExample8 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-public --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample8"></x-bladewind::code-block>
+{{--    @php
+        $installExample9 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-lang --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample9"></x-bladewind::code-block>--}}
 
     <x-bladewind::alert show_close_icon="false" type="warning">
         Always republish assets when you update to a new version of BladewindUI. CSS and JS are updated regularly. See <a href="#update">Updating BladewindUI</a> below.
@@ -62,11 +107,12 @@
         Add the stylesheet to the <code class="inline">&lt;head&gt;</code> of your layout file.
         Your own CSS should come <em>after</em> the BladewindUI stylesheet so your customisations take effect.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;link href="&#123;&#123; asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" /&gt;
-        </code>
-    </pre>
+    @php
+        $installExample10 = <<<'HTML'
+            <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$installExample10"></x-bladewind::code-block>
 
     <h3 id="no-preflight">If your app already has its own Tailwind build</h3>
     <p>
@@ -76,11 +122,12 @@
         that already compiles its own Tailwind: the document gets reset twice, in an order
         nobody controls. Use the Preflight-free variant instead.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;link href="&#123;&#123; asset('vendor/bladewind/css/bladewind-ui-no-preflight.min.css') }}" rel="stylesheet" /&gt;
-        </code>
-    </pre>
+    @php
+        $installExample11 = <<<'HTML'
+            <link href="{{ asset('vendor/bladewind/css/bladewind-ui-no-preflight.min.css') }}" rel="stylesheet" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$installExample11"></x-bladewind::code-block>
     <p>
         The component rules in the two files are identical, because both are built from one
         shared source, so they cannot drift. The variant only drops the global reset. Tailwind's
@@ -95,20 +142,24 @@
         Add the JavaScript anywhere before the closing <code class="inline">&lt;/body&gt;</code> tag.
         The <code class="inline">@@bladewindScripts</code> directive emits the tags for you.
     </p>
-    <pre class="language-markup">
-        <code>
-            @@bladewindScripts
-        </code>
-    </pre>
+    @php
+        $installExample12 = <<<'HTML'
+            BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERbladewindScripts
+            HTML;
+        $installExample12 = str_replace('BWATSIGNPLACEHOLDER', '@', $installExample12);
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$installExample12"></x-bladewind::code-block>
     <p>
         That gives you <code class="inline">helpers.js</code>, which every component assumes.
         Components with their own JavaScript take their name as an argument:
     </p>
-    <pre class="language-markup">
-        <code>
-            @@bladewindScripts('select', 'dropmenu', 'datepicker')
-        </code>
-    </pre>
+    @php
+        $installExample13 = <<<'HTML'
+            BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERbladewindScripts('select', 'dropmenu', 'datepicker')
+            HTML;
+        $installExample13 = str_replace('BWATSIGNPLACEHOLDER', '@', $installExample13);
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$installExample13"></x-bladewind::code-block>
     <p>
         Recognised names are <code class="inline">select</code>,
         <code class="inline">dropmenu</code>, <code class="inline">datepicker</code>,
@@ -127,11 +178,12 @@
     <p>
         Writing the tags by hand still works, if you prefer:
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;script src="&#123;&#123; asset('vendor/bladewind/js/helpers.js') }}"&gt;&lt;/script&gt;
-        </code>
-    </pre>
+    @php
+        $installExample14 = <<<'HTML'
+            <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$installExample14"></x-bladewind::code-block>
     <p>
         Helper functions such as <code class="inline">showModal()</code> and
         <code class="inline">hideModal()</code> are available on
@@ -143,11 +195,12 @@
     <p class="text-center">
         <x-bladewind::button>Save User</x-bladewind::button>
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::button&gt;Save User&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $installExample15 = <<<'HTML'
+            <x-bladewind::button>Save User</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$installExample15"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">
@@ -166,15 +219,16 @@
     <p>
         Set your nonce once and every script tag the library emits carries it:
     </p>
-    <pre class="lang-php">
-    <code>
-        // config/bladewind.php
+    @php
+        $installExample16 = <<<'HTML'
+                // config/bladewind.php
 
-    'script' =&gt; [
-        'nonce' =&gt; fn () =&gt; request()-&gt;attributes-&gt;get('csp-nonce'),
-    ],
-    </code>
-    </pre>
+            'script' => [
+                'nonce' => fn () => request()->attributes->get('csp-nonce'),
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" :code="$installExample16"></x-bladewind::code-block>
     <p>
         Individual components also take a <code class="inline">nonce</code> attribute if you
         would rather pass it per component.
@@ -194,13 +248,19 @@
         <code class="inline">vendor</code> directory. To use the dot syntax instead, publish the component views to your own
         <code class="inline">resources/views/components/bladewind</code> directory:
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-components --force</code></pre>
+    @php
+        $installExample17 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-components --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample17"></x-bladewind::code-block>
     <p>You can then call components using the dot syntax:</p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind.button&gt;Save User&lt;/x-bladewind.button&gt;
-        </code>
-    </pre>
+    @php
+        $installExample18 = <<<'HTML'
+            <x-bladewind.button>Save User</x-bladewind.button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$installExample18"></x-bladewind::code-block>
     <x-bladewind::alert show_close_icon="false">
         If you use the dot syntax, republish the component views after every BladewindUI update.
     </x-bladewind::alert>
@@ -296,7 +356,12 @@
     </x-bladewind::table>
 
     <h3 id="group-forms">Forms Group: <code class="inline">bladewindui/forms</code></h3>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/forms</code></pre>
+    @php
+        $installExample19 = <<<'HTML'
+            composer require bladewindui/forms
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample19"></x-bladewind::code-block>
     <x-bladewind::table>
         <x-slot name="header">
             <th>Component</th>
@@ -376,7 +441,12 @@
     </x-bladewind::table>
 
     <h3 id="group-content">Content Group: <code class="inline">bladewindui/content</code></h3>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/content</code></pre>
+    @php
+        $installExample20 = <<<'HTML'
+            composer require bladewindui/content
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample20"></x-bladewind::code-block>
     <x-bladewind::table>
         <x-slot name="header">
             <th>Component</th>
@@ -456,7 +526,12 @@
     </x-bladewind::table>
 
     <h3 id="group-navigation">Navigation Group: <code class="inline">bladewindui/navigation</code></h3>
-    <pre class="lang-bash command-line"><code>composer require bladewindui/navigation</code></pre>
+    @php
+        $installExample21 = <<<'HTML'
+            composer require bladewindui/navigation
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample21"></x-bladewind::code-block>
     <x-bladewind::table>
         <x-slot name="header">
             <th>Component</th>
@@ -517,7 +592,12 @@
         Every attribute in every component has a project-level default you can override once and have it apply everywhere.
         Publish the config file (available when using the full <code class="inline">bladewindui/ui</code> package):
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-config</code></pre>
+    @php
+        $installExample22 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-config
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample22"></x-bladewind::code-block>
     <p>
         This creates <code class="inline">config/bladewind.php</code> in your project. Edit any value there and all component
         instances will follow suit. No need to set the attribute on every tag.
@@ -528,32 +608,49 @@
     <p>
         Run <code class="inline">composer update</code> to pull in the latest version.
     </p>
-    <pre class="lang-bash command-line"><code>composer update</code></pre>
+    @php
+        $installExample23 = <<<'HTML'
+            composer update
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample23"></x-bladewind::code-block>
     <p>
         Then republish the public assets to pick up any CSS or JavaScript changes:
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-public --force</code></pre>
+    @php
+        $installExample24 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-public --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample24"></x-bladewind::code-block>
     <p>
         If you are using the dot syntax, also republish the component views:
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-components --force</code></pre>
+    @php
+        $installExample25 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-components --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$installExample25"></x-bladewind::code-block>
 
     <p>
         To automate both publish steps after every <code class="inline">composer update</code>, add the following to your
         <code class="inline">composer.json</code> under <code class="inline">scripts</code>:
     </p>
-    <pre class="lang-js line-numbers" data-line="5,6">
-        <code>
-        "scripts": {
-            "post-update-cmd": [
-                "@php artisan vendor:publish --tag=laravel-assets --ansi",
-                "@php artisan vendor:publish --tag=bladewind-public --force",
-                // add this line only if you also publish component views
-                "@php artisan vendor:publish --tag=bladewind-components --force"
-            ]
-        }
-        </code>
-    </pre>
+    @php
+        $installExample26 = <<<'HTML'
+            "scripts": {
+                "post-update-cmd": [
+                    "BWATSIGNPLACEHOLDERphp artisan vendor:publish --tag=laravel-assets --ansi",
+                    "BWATSIGNPLACEHOLDERphp artisan vendor:publish --tag=bladewind-public --force",
+                    // add this line only if you also publish component views
+                    "BWATSIGNPLACEHOLDERphp artisan vendor:publish --tag=bladewind-components --force"
+                ]
+            }
+            HTML;
+        $installExample26 = str_replace('BWATSIGNPLACEHOLDER', '@', $installExample26);
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="5,6" :code="$installExample26"></x-bladewind::code-block>
     <x-bladewind::alert show_close_icon="false" type="warning">
         Any changes you have made to published BladewindUI component view files will be overwritten when you republish the components.
     </x-bladewind::alert>

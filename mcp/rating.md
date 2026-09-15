@@ -6,19 +6,23 @@ url: /component/rating
 
 # Rating
 
-Displays a five star rating system. The number of stars highlighted match the rating passed. There are nine star colors to choose from but the default is `orange`. Where there are multiple ratings on the same page, it is recommended to name each rating component. You can either display ratings as stars, hearts or thumbsup.
+Displays a five-star rating system where the number of highlighted icons matches the rating passed. Ratings can render as stars, hearts, or thumbs-up icons. When multiple ratings appear on the same page, name each component uniquely.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::rating name="star-rating" />
 ```
 
+## Rating Types
+
+Besides the default star type, ratings can display as hearts or thumbs-up icons.
+
 ```blade
 <x-bladewind::rating
     type="heart"
     name="heart-rating" />
-```
 
-```blade
 <x-bladewind::rating
     type="thumbsup"
     name="thumb-rating" />
@@ -26,7 +30,7 @@ Displays a five star rating system. The number of stars highlighted match the ra
 
 ## Different Colors
 
-The BladewindUI rating component allows you to specify different colours. There are twelve colour options to pick from.
+The rating component supports twelve colors. The default is `orange`.
 
 ```blade
 <x-bladewind::rating rating="1" color="red" name="red-rating" />
@@ -45,7 +49,7 @@ The BladewindUI rating component allows you to specify different colours. There 
 
 ## Different Sizes
 
-The BladewindUI rating component comes not just in colors but also sizes. There are three sizes available. The default size is `small`.
+Ratings come in three sizes. The default is `small`.
 
 ```blade
 <x-bladewind::rating rating="2" name="small-rating" />
@@ -65,13 +69,13 @@ The BladewindUI rating component comes not just in colors but also sizes. There 
 
 ## Click Actions
 
-A hidden input field is created in the background with every rating component that is created. The input field uses the `name` attribute set for the rating component to uniquely identify and update the hidden input. Assuming you named your rating component `small-rating`, the following hidden input will be created. The name is prefixed with `rating-value-` so the resulting name will be `rating-value-small-rating`.
+Every rating component creates a hidden input field in the background, uniquely identified by the `name` attribute prefixed with `rating-value-`. For a component named `small-rating`, the hidden input is rendered as:
 
 ```blade
 <input type="hidden" class="rating-value-small-rating" value="2" />
 ```
 
-You can access this element via Javascript using the custom function you pass to the `onclick` attribute.
+Access this value from JavaScript by passing a function name to `onclick`:
 
 ```blade
 <x-bladewind::rating
@@ -80,7 +84,7 @@ You can access this element via Javascript using the custom function you pass to
     onclick="saveRating('small-rating')" />
 ```
 
-```blade
+```js
 <script>
     saveRating = function(element) {
 
@@ -103,11 +107,15 @@ You can access this element via Javascript using the custom function you pass to
 
 ## Disabled Click Actions
 
-In designs we are not always asking users to rate. There are times the user has already rated, and we need to display the ratings as readonly. In such cases the hover and click actions need to be disabled so the user won't modify the value of the rating. This can be achieved by setting `clickable="false"`.
+When a rating should be read-only (for example, showing a rating the user already submitted), disable hover and click actions by setting `clickable="false"`.
 
 ```blade
 <x-bladewind::rating rating="4" clickable="false" />
 ```
+
+## Using Rating Inside Livewire
+
+When a star is picked, the rating's value field dispatches a real, native `change` event, so Livewire's `wire:model` picks it up without extra work. The click and keyboard bindings that drive the stars are safe to re-run, so a Livewire re-render won't leave behind duplicate listeners.
 
 ## Attributes
 
@@ -116,11 +124,11 @@ In designs we are not always asking users to rate. There are times the user has 
 | name | rating | The name to uniquely identify the component by. |
 | color | orange | There are twelve colors to choose from. `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` \| `violet` \| `indigo` \| `fuchsia` |
 | type | star | Determines the type of icon to display ratings as. `star` \| `heart` \| `thumbsup` |
-| size | small | Determines the size of the stars. `small` \| `medium` \| `big` |
-| rating | 0 | Determines the default rating for the component. Any number between 0 and 5. The number of stars highlighted will depend on the number passed. |
-| onclick | _blank_ | Javascript function to execute when stars are clicked. |
+| size | small | Determines the size of the icons. `small` \| `medium` \| `big` |
+| rating | 0 | Determines the default rating for the component. Any number between 0 and 5. Any number above 0 highlights that many icons. |
+| onclick | *blank* | JavaScript function to execute when the rating is clicked. |
 | clickable | true | Enable or disable click actions. `true` \| `false` |
-| nonce | null | Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your `nonce` value in the `config/bladewind.php` file under the "script" key. |
+| nonce | null | Used when implementing content security policies that require a nonce for inline scripts. For convenience, set your `nonce` value in `config/bladewind.php` under the `script` key; it will be used everywhere a nonce is required. |
 
 ## Full Example
 

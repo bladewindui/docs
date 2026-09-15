@@ -23,7 +23,6 @@
         corners and borders for you.
     </p>
 
-    <h2 id="basic">Basic Usage</h2>
     <p>
         Place each control inside <code class="inline">x-bladewind::input-group</code>. The
         controls will fill the available width. Add <code class="inline">shrink-control</code>
@@ -36,14 +35,15 @@
         </x-bladewind::input-group>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::input-group&gt;
-    &lt;x-bladewind::input name="search" placeholder="Search orders" /&gt;
-    &lt;x-bladewind::button class="shrink-control"&gt;Search&lt;/x-bladewind::button&gt;
-&lt;/x-bladewind::input-group&gt;
-        </code>
-    </pre>
+    @php
+        $inputUgroupExample1 = <<<'HTML'
+            <x-bladewind::input-group>
+                <x-bladewind::input name="search" placeholder="Search orders" />
+                <x-bladewind::button class="shrink-control">Search</x-bladewind::button>
+            </x-bladewind::input-group>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputUgroupExample1"></x-bladewind::code-block>
 
     <p>
         In this example, the input grows and the Search button keeps its normal width.
@@ -63,20 +63,21 @@
         </x-bladewind::input-group>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::input-group&gt;
-    &lt;x-bladewind::select
-        name="currency"
-        :data="$currencies"
-        class="shrink-control" /&gt;
-    &lt;x-bladewind::input
-        name="amount"
-        numeric="true"
-        placeholder="Amount" /&gt;
-&lt;/x-bladewind::input-group&gt;
-        </code>
-    </pre>
+    @php
+        $inputUgroupExample2 = <<<'HTML'
+            <x-bladewind::input-group>
+                <x-bladewind::select
+                    name="currency"
+                    :data="$currencies"
+                    class="shrink-control" />
+                <x-bladewind::input
+                    name="amount"
+                    numeric="true"
+                    placeholder="Amount" />
+            </x-bladewind::input-group>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputUgroupExample2"></x-bladewind::code-block>
 
     <h2 id="three-controls">Using Three Controls</h2>
     <p>
@@ -92,21 +93,22 @@
         </x-bladewind::input-group>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::input-group&gt;
-    &lt;x-bladewind::select
-        name="currency"
-        :data="$currencies"
-        class="shrink-control" /&gt;
-    &lt;x-bladewind::input
-        name="amount"
-        numeric="true"
-        placeholder="Amount" /&gt;
-    &lt;x-bladewind::button class="shrink-control"&gt;Pay&lt;/x-bladewind::button&gt;
-&lt;/x-bladewind::input-group&gt;
-        </code>
-    </pre>
+    @php
+        $inputUgroupExample3 = <<<'HTML'
+            <x-bladewind::input-group>
+                <x-bladewind::select
+                    name="currency"
+                    :data="$currencies"
+                    class="shrink-control" />
+                <x-bladewind::input
+                    name="amount"
+                    numeric="true"
+                    placeholder="Amount" />
+                <x-bladewind::button class="shrink-control">Pay</x-bladewind::button>
+            </x-bladewind::input-group>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputUgroupExample3"></x-bladewind::code-block>
 
     <h2 id="email-input">Email Input And Button</h2>
     <p>
@@ -122,22 +124,24 @@
         </x-bladewind::input-group>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;form method="POST" action="/subscribe"&gt;
-    @@csrf
-    &lt;x-bladewind::input-group&gt;
-        &lt;x-bladewind::input
-            name="email"
-            type="email"
-            placeholder="Email address" /&gt;
-        &lt;x-bladewind::button
-            can_submit="true"
-            class="shrink-control"&gt;Subscribe&lt;/x-bladewind::button&gt;
-    &lt;/x-bladewind::input-group&gt;
-&lt;/form&gt;
-        </code>
-    </pre>
+    @php
+        $inputUgroupExample4 = <<<'HTML'
+            <form method="POST" action="/subscribe">
+                BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERcsrf
+                <x-bladewind::input-group>
+                    <x-bladewind::input
+                        name="email"
+                        type="email"
+                        placeholder="Email address" />
+                    <x-bladewind::button
+                        can_submit="true"
+                        class="shrink-control">Subscribe</x-bladewind::button>
+                </x-bladewind::input-group>
+            </form>
+            HTML;
+        $inputUgroupExample4 = str_replace('BWATSIGNPLACEHOLDER', '@', $inputUgroupExample4);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputUgroupExample4"></x-bladewind::code-block>
 
     <h2 id="phone-input">Phone Number With Country Code</h2>
     <p>
@@ -153,20 +157,21 @@
         </x-bladewind::input-group>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::input-group&gt;
-    &lt;x-bladewind::select
-        name="country_code"
-        :data="$countryCodes"
-        class="shrink-control" /&gt;
-    &lt;x-bladewind::input
-        name="phone"
-        type="tel"
-        placeholder="Phone number" /&gt;
-&lt;/x-bladewind::input-group&gt;
-        </code>
-    </pre>
+    @php
+        $inputUgroupExample5 = <<<'HTML'
+            <x-bladewind::input-group>
+                <x-bladewind::select
+                    name="country_code"
+                    :data="$countryCodes"
+                    class="shrink-control" />
+                <x-bladewind::input
+                    name="phone"
+                    type="tel"
+                    placeholder="Phone number" />
+            </x-bladewind::input-group>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputUgroupExample5"></x-bladewind::code-block>
 
     <h2 id="textarea-button">Textarea And Button</h2>
     <p>
@@ -181,17 +186,18 @@
         </x-bladewind::input-group>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::input-group&gt;
-    &lt;x-bladewind::textarea
-        name="message"
-        placeholder="Write a short message"
-        rows="2" /&gt;
-    &lt;x-bladewind::button class="shrink-control"&gt;Send&lt;/x-bladewind::button&gt;
-&lt;/x-bladewind::input-group&gt;
-        </code>
-    </pre>
+    @php
+        $inputUgroupExample6 = <<<'HTML'
+            <x-bladewind::input-group>
+                <x-bladewind::textarea
+                    name="message"
+                    placeholder="Write a short message"
+                    rows="2" />
+                <x-bladewind::button class="shrink-control">Send</x-bladewind::button>
+            </x-bladewind::input-group>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputUgroupExample6"></x-bladewind::code-block>
 
     <h2 id="attached">Attached And Gapped</h2>
     <p>
@@ -207,14 +213,15 @@
         </x-bladewind::input-group>
     </p>
 
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::input-group attached="false"&gt;
-    &lt;x-bladewind::input name="search" placeholder="Search orders" /&gt;
-    &lt;x-bladewind::button class="shrink-control"&gt;Search&lt;/x-bladewind::button&gt;
-&lt;/x-bladewind::input-group&gt;
-        </code>
-    </pre>
+    @php
+        $inputUgroupExample7 = <<<'HTML'
+            <x-bladewind::input-group attached="false">
+                <x-bladewind::input name="search" placeholder="Search orders" />
+                <x-bladewind::button class="shrink-control">Search</x-bladewind::button>
+            </x-bladewind::input-group>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$inputUgroupExample7"></x-bladewind::code-block>
 
     <h2 id="supported-controls">Supported Controls</h2>
     <p>
@@ -271,7 +278,6 @@
     </x-bladewind::alert>
 
     <x-slot:side_nav>
-        <div class="flex items-center"><div class="dot"></div><a href="#basic">Basic usage</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#select-input">Select and input</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#three-controls">Using three controls</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#email-input">Email input and button</a></div>

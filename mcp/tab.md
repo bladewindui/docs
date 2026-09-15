@@ -6,18 +6,16 @@ url: /component/tab
 
 # Tab
 
-Organize and display data in tabs. The BladewindUI tab component is broken down into two parts: the tab headings and the tab content. To prevent erratic behaviour of tabs it is very important to provide a value for the `name` attribute. In fact, the tabs won't be rendered without you specifying a name.
+Organize and display data in tabs. The tab component is split into tab headings and tab content. A `name` is required on the tab group — tabs won't render without one.
 
-Let us breakdown what is happening with the tab component. We first define a tab group that will hold all the tab headings and tab content. It is very important to give this tab group a name: `<x-bladewind::tab name="staff-loans">`.
+## Basic Usage
 
-Next, we need to define the tab headings we will click on to access the tab content. The tab headings are wrapped in a `slot` named `headings`: `<x-slot:headings>`. The next step is to add the individual tab headings using `<x-bladewind::tab.heading />`. The individual tab headings also need to be named uniquely. The tab heading you want selected by default should have `active="true"`. This necessarily does not need to be the first tab.
-
-The final bit that ties the tab component all together is `<x-bladewind::tab.body>`. This is the parent component that holds all the content for each corresponding tab heading. Content for each tab heading needs to be defined in the `<x-bladewind::tab.content>` tag that has the **_same name_** as its corresponding tab heading. The tab content that needs to be visible by default also needs to have `active="true"` set.
+Define a tab group with a `headings` slot containing one or more `x-bladewind::tab.heading` components, and a `x-bladewind::tab.body` containing matching `x-bladewind::tab.content` components. Each heading and its content share the same `name`. The heading you want selected by default (not necessarily the first) needs `active="true"`, and its matching content also needs `active="true"`.
 
 ```blade
 <x-bladewind::tab name="free-pics">
 
-    <x-slot:headings>
+    <x-slot name="headings">
         <x-bladewind::tab.heading
             name="unsplash-1" label="Lissete Laverde" />
 
@@ -29,7 +27,7 @@ The final bit that ties the tab component all together is `<x-bladewind::tab.bod
 
         <x-bladewind::tab.heading
             name="unsplash-4" label="Sam Carter" />
-    </x-slot:headings>
+    </x-slot>
 
     <x-bladewind::tab.body>
 
@@ -60,21 +58,41 @@ The final bit that ties the tab component all together is `<x-bladewind::tab.bod
 
 ## Different Colours
 
-The tab component by default displays the active tab heading and its underline bar as blue. There are nine colours in total to pick from. To set your preferred colour set the `color` attribute on the `<x-bladewind::tab>` component.
+The active tab heading and its underline default to blue. There are twelve colours to pick from via the `color` attribute on `<x-bladewind::tab>`.
 
 ```blade
 <x-bladewind::tab name="red-tab" color="red">
-    ...
+    <x-slot name="headings">
+        <x-bladewind::tab.heading
+            name="red"
+            active="true"
+            label="Active Red Tab" />
+
+        <x-bladewind::tab.heading
+            name="inactive-red"
+            label="The Other Tab" />
+
+    </x-slot>
+
+    <x-bladewind::tab.body>
+
+        <x-bladewind::tab.content
+            name="red"
+            active="true"></x-bladewind::tab.content>
+
+        <x-bladewind::tab.content
+            name="inactive-red"></x-bladewind::tab.content>
+
+    </x-bladewind::tab.body>
+
 </x-bladewind::tab>
 ```
 
-Available colours: `primary` `red` `yellow` `green` `blue` `pink` `cyan` `purple` `gray` `orange` `violet` `indigo` `fuchsia`
+Available colours: `primary`, `red`, `yellow`, `green`, `blue`, `pink`, `cyan`, `purple`, `gray`, `orange`, `violet`, `indigo`, `fuchsia`.
 
 ## Other Tab Styles
 
-The tab components exist in three different styles. You can specify a preferred style by setting the `style` attribute. The available styles are _simple_, _system_ and _pills_. The default tab style is _simple_.
-
-### System Tab Style
+Three tab styles are available via the `style` attribute: `simple` (default), `system`, and `pills`.
 
 ```blade
 <x-bladewind::tab
@@ -97,8 +115,6 @@ The tab components exist in three different styles. You can specify a preferred 
 
 </x-bladewind::tab>
 ```
-
-### Pills Tab Style
 
 ```blade
 <x-bladewind::tab
@@ -124,7 +140,7 @@ The tab components exist in three different styles. You can specify a preferred 
 
 ## With Icons
 
-You can display icon prefixes in tab headings. This uses the BladewindUI [Icon component](/component/icon) so all Heroicons are supported. You can change how the icon looks by setting the `icon_css` attribute. The Heroicons outline icons are used by default. To use the solid icons instead, set `icon_type="solid"`. The `icon_dir` attribute allows you to specify which directory to pick your custom icons from.
+Display icon prefixes in tab headings using the BladewindUI [Icon component](/component/icon) — all Heroicons are supported. Style the icon with `icon_css`. Outline icons are used by default; set `icon_type="solid"` for solid icons. Use `icon_dir` to load custom icons from your own directory.
 
 ```blade
 <x-bladewind::tab name="tab-icon">
@@ -146,18 +162,22 @@ You can display icon prefixes in tab headings. This uses the BladewindUI [Icon c
     </x-slot>
     <x-bladewind::tab.body>
         <x-bladewind::tab.content name="icon-blue" active="true">
-            <img src="/assets/images/lissete-laverde-z9Ropm8edsw-unsplash.jpg"
+            <img src="/path/to/the/image/file"
                  alt="Picture by Lissete Laverde" />
         </x-bladewind::tab.content>
         <x-bladewind::tab.content name="icon-inactive">
-            <img src="/assets/images/sam-carter-JU1SVl4smHM-unsplash.jpg" alt="Picture by Sam Carter" />
+            <img src="/path/to/the/image/file" alt="Picture by Sam Carter" />
         </x-bladewind::tab.content>
         <x-bladewind::tab.content name="icon-solid">
-            <img src="/assets/images/lissete-laverde-z9Ropm8edsw-unsplash.jpg" alt="Picture by Lissete Laverde" />
+            <img src="/path/to/the/image/file" alt="Picture by Lissete Laverde" />
         </x-bladewind::tab.content>
     </x-bladewind::tab.body>
 </x-bladewind::tab>
 ```
+
+## Using Tab Group Inside Livewire
+
+Which tab is active lives in the tab group's own DOM rather than in Livewire's component state. If a Livewire component re-renders this markup for a reason unrelated to the tabs, the active tab resets to its initial value — wrap the tab group in `wire:ignore` if it sits inside such a component. The bindings that drive the tabs are delegated and safe to re-run, so a re-render will not leave behind duplicate listeners.
 
 ## Attributes
 
@@ -165,38 +185,38 @@ You can display icon prefixes in tab headings. This uses the BladewindUI [Icon c
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | _blank_ | Unique name to identify the tab component by in case there are multiple tab groups on the same page. |
+| name | *blank* | Unique name to identify the tab component, in case there are multiple tab groups on the same page. |
 | style | simple | Choose a tab style. `simple` \| `system` \| `pills` |
-| headings | _blank_ | This is a slot that accepts one or more `<x-bladewind::tab.heading>` components. |
-| color | blue | There are nine colors to choose from. `primary` \| `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` \| `violet` \| `indigo` \| `fuchsia` |
+| headings | *blank* | Slot that accepts one or more `<x-bladewind::tab.heading>` components. |
+| color | blue | There are twelve colours to choose from. `primary` \| `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` \| `violet` \| `indigo` \| `fuchsia` |
 
 ### Tab Heading Component Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
 | name | tab | Unique name to identify the tab heading. |
-| label | tab | Text to display as the tab heading. This is what the user clicks on to switch tabs. |
-| active | false | Specifies if the tab should be selected by default. `true` \| `false` |
-| disabled | false | Specifies if the tab should be disabled by default. Disabled tabs are faded out and do nothing when clicked on. `true` \| `false` |
-| url | default | By default tabs switch to their respective content. If you prefer your tab headings to load other urls when clicked on, set this attribute. This url is called using `location.href`. |
-| icon | null | Specify the icon prefix to display with the tab heading. |
-| icon_css | _blank_ | Additional CSS to modify the look of the icon. |
-| icon_dir | _blank_ | If you have your own custom icons you wish to use instead of Heroicons, specify the directory to load the icons from. |
-| icon_type | outline | Choose if you prefer outline or solid icons. `solid` \| `outline` |
+| label | tab | Text displayed as the tab heading; what the user clicks to switch tabs. |
+| active | false | Whether the tab should be selected by default. `true` \| `false` |
+| disabled | false | Whether the tab is disabled by default. Disabled tabs are faded out and do nothing when clicked. `true` \| `false` |
+| url | default | By default tabs switch to their matching content. Set this to have the heading load a URL instead (called via `location.href`). |
+| icon | null | Icon prefix to display with the tab heading. See the [Icon component](/component/icon) for available icons. |
+| icon_css | *blank* | Additional CSS to modify the look of the icon. |
+| icon_dir | *blank* | Directory to load custom icons from, instead of Heroicons. See the `dir` attribute in the [Icon component](/component/icon). |
+| icon_type | outline | Choose outline or solid icons. `solid` \| `outline` |
 
 ### Tab Body Component Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| class | _blank_ | Any additional Tailwind CSS classes to apply to the tab body container. This is the container all tab contents sit in. |
+| class | *blank* | Additional Tailwind CSS classes applied to the tab body container that holds all tab contents. |
 
 ### Tab Content Component Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | tab | This name must be the same as name given to this content's tab heading. |
-| active | false | Specifies if the tab should be selected by default. If this content's corresponding tab heading is active, this must also be set to active. `true` \| `false` |
-| class | _blank_ | Any additional Tailwind CSS classes to apply to the tab content container. Applies to a specific tab content. |
+| name | tab | Must match the name given to this content's tab heading. |
+| active | false | Whether this content is selected by default; must match its heading's `active` state. `true` \| `false` |
+| class | *blank* | Additional Tailwind CSS classes applied to this specific tab content container. |
 
 ## Full Example
 

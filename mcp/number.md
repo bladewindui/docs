@@ -6,20 +6,19 @@ url: /component/number
 
 # Number
 
-Display a number input that allows incrementing and decrementing values via up/down buttons. Extends the BladewindUI [Input](/component/input) component using prefix/suffix icons and `numeric="true"`.
+Displays a numeric stepper that lets users increment and decrease a number in a user-friendly way. It extends the BladewindUI [Input](/component/input) component by adding prefix/suffix increment icons and setting `numeric="true"`, so several Input attributes are also available here.
 
 ## Basic Usage
 
 ```blade
 <x-bladewind::number />
 
-{{-- increment/decrement by 10 --}}
 <x-bladewind::number step="10" />
 ```
 
-## Sizes
+## Different Sizes
 
-Available sizes: `small`, `regular`, `medium` (default), `big`. Sizes match the Input component sizes.
+All Input component sizes are available; the up and down arrows adjust to match.
 
 ```blade
 <x-bladewind::number size="small" />
@@ -30,7 +29,7 @@ Available sizes: `small`, `regular`, `medium` (default), `big`. Sizes match the 
 
 ## Button Transparency
 
-By default the increment/decrement buttons are transparent. Set `transparent_icons="false"` to give them a solid background.
+The up and down buttons are transparent by default. Set `transparent_icons="false"` for them to look like proper buttons (sets the Input component's `transparent_prefix="false"` and `transparent_suffix="false"` internally).
 
 ```blade
 <x-bladewind::number transparent_icons="false" />
@@ -39,49 +38,51 @@ By default the increment/decrement buttons are transparent. Set `transparent_ico
 
 ## Labels
 
-Setting a `label` on a number with a default value (`selected_value`) moves the label to the top border of the field. Setting `selected_value=""` displays the label as a placeholder.
+The component initializes with `selected_value="0"` by default. Setting `label` moves the label text to the top border of the field.
 
 ```blade
-{{-- label at top border --}}
 <x-bladewind::number label="quantity" />
+```
 
-{{-- label as placeholder --}}
+Traditional placeholders don't work in the number component. To avoid an initial value, set `selected_value=""` alongside `label`, and the label is displayed as a placeholder.
+
+```blade
 <x-bladewind::number selected_value="" label="quantity" />
 ```
 
 ## Minimum and Maximum Limits
 
+Set `min` and `max` to constrain the range. The component enforces these limits both on click and on manual typing: clicking increment at the max keeps the value unchanged, and typing a value beyond the limit resets it to the limit.
+
 ```blade
 <x-bladewind::number min="18" max="60" label="Your age" />
 ```
 
-The component enforces limits — clicking past `max` does nothing, and manually typing out-of-range values resets them to the limit.
-
 ## Form Values
 
-The `name` attribute is submitted with the form. A random name is used if none is specified.
+The `name` given to the component is what's available when the form is submitted. A random name is generated if none is specified.
 
 ```php
-$request->age; // if name="age"
+$request->age;
 ```
 
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | random | Name submitted with the form |
-| label | _(blank)_ | Label displayed in or above the component |
-| selected_value | null | Default value (edit mode) |
-| min | 0 | Minimum allowed value |
-| max | 100 | Maximum allowed value |
-| step | 1 | Increment/decrement amount |
-| size | medium | `small` \| `regular` \| `medium` \| `big` |
-| transparent_icons | true | Transparent increment/decrement buttons. `true` \| `false` |
-| icon_type | outline | Arrow icon style. `outline` \| `solid` |
-| with_dots | true | Allow decimal values. `true` \| `false` |
-| required | false | Append asterisk to label. `true` \| `false` |
-| class | _(blank)_ | Additional CSS classes for the input field |
-| nonce | null | Nonce value for Content Security Policy |
+| name | 'input-'.uniqid() | Name accessible when the form is submitted. |
+| with_dots | true | Whether decimal values are allowed. `true` \| `false` |
+| selected_value | null | Default value, useful in edit mode. |
+| label | blank | Label displayed in or above the component. |
+| min | 0 | Minimum value allowed. |
+| max | 100 | Maximum value allowed. |
+| transparent_icons | true | Whether the up/down icons are transparent or have a background color. `true` \| `false` |
+| icon_type | outline | Style of the up/down arrow icons. `outline` \| `solid` |
+| size | medium | Size of the component. `small` \| `regular` \| `medium` \| `big` |
+| required | false | Whether an asterisk is appended to the field. `true` \| `false` |
+| step | 1 | Amount the value increases or decreases per click. |
+| class | blank | Extra CSS classes for the input field, e.g. to adjust width. |
+| nonce | null | Nonce for content security policies on inline scripts. Can be set globally via `config/bladewind.php` under `script`. |
 
 ## Full Example
 

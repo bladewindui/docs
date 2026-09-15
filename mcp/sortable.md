@@ -6,7 +6,9 @@ url: /component/sortable
 
 # Sortable
 
-Display a drag-and-drop sortable list, powered by [SortableJS](https://sortablejs.github.io/Sortable/). Wrap a set of `x-bladewind::sortable.item` elements with `x-bladewind::sortable` to let users drag and reorder them with the mouse or touch.
+A drag-and-drop sortable list, powered by [SortableJS](https://sortablejs.github.io/Sortable/). Wrap a set of `<x-bladewind::sortable.item>` elements with `<x-bladewind::sortable>` to let users drag and reorder them with mouse or touch.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::sortable>
@@ -18,18 +20,19 @@ Display a drag-and-drop sortable list, powered by [SortableJS](https://sortablej
 
 ## Drag Handle
 
-By default the entire item surface is draggable. If your list items contain interactive elements (links, buttons, inputs), set `hasHandle="true"` to restrict dragging to a dedicated handle icon instead. Customise the icon with `handleIcon` — any Heroicon name.
+By default the entire item surface is draggable. If items contain interactive elements (links, buttons, inputs), set `hasHandle="true"` to restrict dragging to a dedicated handle icon. Customise the icon with `handleIcon` (any Heroicon name).
 
 ```blade
-<x-bladewind::sortable hasHandle="true" handleIcon="bars-3">
+<x-bladewind::sortable hasHandle="true">
     <x-bladewind::sortable.item>Tomatoes</x-bladewind::sortable.item>
     <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+    <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
 </x-bladewind::sortable>
 ```
 
 ## Sharing Items Between Lists
 
-Set `type="shared"` and give two or more lists the same `group` name to let users drag items from one list into another. Lists with `type="simple"` (the default) are isolated — items can only be reordered within the same list.
+Set `type="shared"` and give two or more lists the same `group` name to let users drag items between lists. Lists with `type="simple"` (the default) are isolated — items reorder only within the same list.
 
 ```blade
 <x-bladewind::sortable type="shared" group="fruits">
@@ -42,19 +45,22 @@ Set `type="shared"` and give two or more lists the same `group` name to let user
 </x-bladewind::sortable>
 ```
 
-Set `clone="true"` on a shared list if you want dragging an item into another list to leave a copy behind instead of moving it.
+Set `clone="true"` on a shared list to leave a copy behind when dragging an item into another list, instead of moving it.
 
 ## Multi-select Drag
 
-Set `multidrag="true"` to let users Ctrl/Cmd + click to select several items and drag them together as a group. `multidrag` and `swap` cannot be combined — `multidrag` wins if both are set.
+Set `multidrag="true"` to let users Ctrl/Cmd+click to select several items and drag them together as a group.
 
 ```blade
 <x-bladewind::sortable multidrag="true">
     <x-bladewind::sortable.item>Tomatoes</x-bladewind::sortable.item>
     <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
     <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
+    <x-bladewind::sortable.item>Peppers</x-bladewind::sortable.item>
 </x-bladewind::sortable>
 ```
+
+`multidrag` and `swap` cannot be combined — if both are set, `multidrag` takes priority.
 
 ## Swap Mode
 
@@ -64,31 +70,33 @@ Set `swap="true"` to swap the dropped item with the item it lands on, instead of
 <x-bladewind::sortable swap="true">
     <x-bladewind::sortable.item>Tomatoes</x-bladewind::sortable.item>
     <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+    <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
 </x-bladewind::sortable>
 ```
 
 ## Locking Individual Items
 
-Add a CSS class to the items you want to lock, then pass that class name to the `filter` attribute on the parent list (space or comma separated for multiple classes).
+Add a CSS class to items that should stay put, then pass that class name to the `filter` attribute on the parent list (space or comma separated for multiple classes).
 
 ```blade
 <x-bladewind::sortable filter="locked">
     <x-bladewind::sortable.item class="locked">Tomatoes (locked)</x-bladewind::sortable.item>
     <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+    <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
 </x-bladewind::sortable>
 ```
 
 ## Disabling Sorting
 
-Set `sortable="false"` to disable reordering entirely within a list while still allowing the list to participate as a shared drop target.
+Set `sortable="false"` to disable reordering entirely within a list, while still letting it act as a shared drop target, or to render a static list using the same markup as a regular sortable list.
 
 ## Submitting & Saving the Order
 
-Reordering happens in the browser, so to persist the new order you must capture it. Give each `x-bladewind::sortable.item` a `value` (rendered as `data-id`, typically your model id), then use one of the two approaches below.
+Reordering happens in the browser, so persisting the new order requires capturing it. Give each `<x-bladewind::sortable.item>` a `value` (rendered as `data-id`, typically your model id), then use one of the approaches below.
 
-### Submitting with a form
+### Submitting With a Form
 
-Add `inputName` to the list. The component renders a hidden `<input>` with that name and keeps it in sync with the current order as a JSON array of each item's `value`. It submits with the rest of your form like any other field.
+Add `inputName` to the list. The component renders a hidden `<input>` with that name, kept in sync with the current order as a JSON array of each item's `value`. It submits with the rest of your form.
 
 ```blade
 <form method="post" action="/tasks/reorder">
@@ -112,9 +120,9 @@ foreach ($order as $position => $id) {
 }
 ```
 
-### Saving with AJAX
+### Saving With AJAX
 
-To save without submitting a form, point `onSorted` at a JavaScript function. It is called after every reorder with the current order array and the original event.
+Point `onSorted` at a JavaScript function. It is called after every reorder with the current order array and the original event.
 
 ```blade
 <x-bladewind::sortable onSorted="saveOrder">
@@ -124,7 +132,7 @@ To save without submitting a form, point `onSorted` at a JavaScript function. It
 </x-bladewind::sortable>
 ```
 
-```javascript
+```js
 function saveOrder(order, event) {
     fetch('/tasks/reorder', {
         method: 'POST',
@@ -137,32 +145,41 @@ function saveOrder(order, event) {
 }
 ```
 
-Each list is also exposed as a JavaScript variable named after its `name`, so you can call SortableJS methods directly — for example `ingredients.toArray()` returns the current order at any time. Note that `toArray()` only reports items that have a `value`, so give every item you intend to persist a `value`.
+Each list is also exposed as a JavaScript variable named after its `name`, so you can call SortableJS methods directly, e.g. `ingredients.toArray()` returns the current order at any time. Note that `toArray()` only reports items that have a `value`, so give every item you intend to persist a `value`.
+
+## Using Sortable Inside Livewire
+
+The component guards against a Livewire re-render creating a second copy of the drag-and-drop instance for the same list. When `input-name` is set, the hidden field storing the current order dispatches a real, native `change` event on every reorder, so Livewire's `wire:model` picks it up. The order itself is runtime state kept in the DOM rather than in Livewire's component state — if the list sits inside a component that can re-render for unrelated reasons, wrap it in `wire:ignore`, otherwise a reorder in progress can be reset partway through.
 
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | _auto-generated_ | Unique name for the list, used as the CSS hook and JS variable name. A random name is generated if none is provided. |
-| type | `simple` | `simple` lists only sort within themselves. `shared` lists can exchange items with other lists in the same `group`. |
-| group | `null` | Group name used by `shared` lists. Lists sharing the same group name can exchange items. Ignored for `simple` lists. |
-| clone | `false` | Leave a copy behind when dragging an item into another (shared) list instead of moving it. `true` \| `false` |
-| sortable | `true` | Enable or disable sorting of items within the list. `true` \| `false` |
-| hasHandle | `false` | Drag items by a dedicated handle instead of the whole item surface. `true` \| `false` |
-| handleIcon | `bars-3` | Heroicon name used for the drag handle when `hasHandle` is `true`. |
-| filter | `null` | Space or comma separated class names whose items cannot be dragged, e.g. `filter="locked pinned"`. |
-| multidrag | `false` | Select (Ctrl/Cmd + click) and drag multiple items at once. `true` \| `false` |
-| swap | `false` | Swap items on drop instead of shifting them. Not combinable with `multidrag` — `multidrag` wins if both are set. `true` \| `false` |
-| animation | `150` | Reorder animation duration in milliseconds. Set to `0` to disable the animation. |
-| inputName | `null` | Renders a hidden `<input>` with this name, kept in sync with the order as a JSON array of each item's `value`. Submit it with your form. |
-| onSorted | `null` | Name of a JavaScript function called after every reorder as `(order, event)`. Useful for saving via AJAX. |
-| class | _blank_ | Any additional CSS classes to apply to the list (`<ul>`) element. |
-| nonce | `null` | CSP nonce value applied to the inline script tags. You can set a global default in `config/bladewind.php` under the `script.nonce` key. |
-| modular | `false` | Appends `type="module"` to the inline script tags. `true` \| `false` |
+| name | *auto-generated* | Unique name for the list, used as the CSS hook and JS variable name. A random name is generated if none is provided. |
+| type | simple | `simple` lists only sort within themselves. `shared` lists can exchange items with other lists in the same `group`. |
+| group | null | Group name used by `shared` lists. Lists sharing the same group name can exchange items. Ignored for `simple` lists. |
+| clone | false | Leave a copy behind when dragging an item into another (shared) list instead of moving it. `true` \| `false` |
+| sortable | true | Enable or disable sorting of items within the list. `true` \| `false` |
+| hasHandle | false | Drag items by a dedicated handle instead of the whole item surface. `true` \| `false` |
+| handleIcon | bars-3 | Heroicon name used for the drag handle when `hasHandle` is `true`. |
+| filter | null | Space or comma separated class names whose items cannot be dragged, e.g. `filter="locked pinned"`. |
+| multidrag | false | Select (Ctrl/Cmd + click) and drag multiple items at once. `true` \| `false` |
+| swap | false | Swap items on drop instead of shifting them. Not combinable with `multidrag` — `multidrag` wins if both are set. `true` \| `false` |
+| animation | 150 | Reorder animation duration in milliseconds. Set to `0` to disable the animation. |
+| inputName | null | Renders a hidden `<input>` with this name, kept in sync with the order as a JSON array of each item's `value`. Submit it with your form. |
+| onSorted | null | Name of a JavaScript function called after every reorder as `(order, event)`. Useful for saving via AJAX. |
+| class | *blank* | Additional CSS classes applied to the list (`<ul>`) element. |
+| nonce | null | CSP nonce value applied to the inline script tags. Set a global default in `config/bladewind.php` under `script.nonce`. |
+| modular | false | Appends `type="module"` to the inline script tags. `true` \| `false` |
 
 ### Sortable Item Attributes
 
-`x-bladewind::sortable.item` accepts a `value` attribute and a `class` attribute. The `value` (rendered as `data-id`) is the identifier reported when capturing the list order — see [Submitting & Saving the Order](#submitting--saving-the-order). The `class` attribute is for any additional CSS you wish to apply to the item (`<li>`) element. The handle icon shown inside an item is inherited from the parent `x-bladewind::sortable`'s `hasHandle` and `handleIcon` attributes — you don't set those on the item itself.
+| Attribute | Default | Description |
+|---|---|---|
+| value | *blank* | Rendered as `data-id`; the identifier reported when capturing the list order. |
+| class | *blank* | Additional CSS classes applied to the item (`<li>`) element. |
+
+The handle icon shown inside an item is inherited from the parent `<x-bladewind::sortable>`'s `hasHandle` and `handleIcon` attributes — you don't set those on the item itself.
 
 ## Full Example
 

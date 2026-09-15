@@ -6,9 +6,9 @@ url: /component/popover
 
 # Popover
 
-Display a floating content panel that opens on click or hover. Unlike a tooltip, a popover can contain rich markup — links, lists, images, or custom HTML — not just a line of text. The trigger defaults to an information-circle icon; you can swap it for any other icon or for fully custom markup.
+Displays a floating content panel that opens on click or hover. Unlike a [tooltip](/component/tooltip), a popover can contain rich markup — links, lists, images, or custom HTML — not just a line of text. The trigger defaults to an information-circle icon, but it can be swapped for any other icon or fully custom markup.
 
-## Default Popover
+## Basic Usage
 
 ```blade
 <x-bladewind::popover>
@@ -36,7 +36,7 @@ The default trigger icon is `information-circle` (Heroicons). Pass any Heroicons
 
 ## Custom Trigger Markup
 
-When an icon is not enough, pass any HTML as the trigger via `<x-slot:trigger>`. This lets you use a button, a badge, an avatar, or any other element as the popover trigger.
+When an icon isn't enough, pass any HTML as the trigger via `<x-slot:trigger>`. This allows a button, badge, avatar, or any other element to serve as the popover trigger.
 
 ```blade
 <x-bladewind::popover>
@@ -53,7 +53,7 @@ When an icon is not enough, pass any HTML as the trigger via `<x-slot:trigger>`.
 
 ## Title
 
-An optional heading can be shown above the popover content by setting the `title` attribute. The title is separated from the content by a subtle border.
+Set `title` to show an optional heading above the popover content, separated from it by a subtle border.
 
 ```blade
 <x-bladewind::popover title="Account Actions">
@@ -67,28 +67,28 @@ An optional heading can be shown above the popover content by setting the `title
 
 ## Position
 
-The popover panel can appear above, below, to the left, or to the right of its trigger. The default is `bottom`.
+The panel can appear above, below, to the left, or to the right of its trigger. Default is `bottom`.
 
 ```blade
-<x-bladewind::popover position="top">...</x-bladewind::popover>
-<x-bladewind::popover position="bottom">...</x-bladewind::popover>
-<x-bladewind::popover position="left">...</x-bladewind::popover>
-<x-bladewind::popover position="right">...</x-bladewind::popover>
+<x-bladewind::popover position="top" title="Top">...</x-bladewind::popover>
+<x-bladewind::popover position="bottom" title="Bottom">...</x-bladewind::popover>
+<x-bladewind::popover position="left" title="Left">...</x-bladewind::popover>
+<x-bladewind::popover position="right" title="Right">...</x-bladewind::popover>
 ```
 
 ## Trigger Event
 
-By default the popover opens on `click`. Set `trigger_on="mouseover"` to open the panel when the user hovers over the trigger element instead.
+The popover opens on `click` by default. Set `trigger_on="mouseover"` to open it on hover instead.
 
 ```blade
-<x-bladewind::popover trigger_on="mouseover">
+<x-bladewind::popover triggerOn="mouseover" title="Hover triggered">
     <p>This popover opened on mouseover.</p>
 </x-bladewind::popover>
 ```
 
 ## Width
 
-The popover panel defaults to `280` pixels wide. Adjust the `width` attribute to suit your content.
+The panel defaults to `280` pixels wide. Adjust `width` to suit content, e.g. wider panels for rich content like user cards.
 
 ```blade
 <x-bladewind::popover width="360" title="Wider popover">
@@ -96,29 +96,46 @@ The popover panel defaults to `280` pixels wide. Adjust the `width` attribute to
 </x-bladewind::popover>
 ```
 
+## Popovers In Scrolling Containers
+
+The panel is positioned against its trigger rather than laid out inside it, so it isn't cut off by whatever the trigger sits in. This matters most for tables: a wide table needing a horizontally scrolling wrapper used to clip vertically as well, swallowing any popover opened from inside it. No extra configuration is required — the panel keeps the requested `position`, flips vertically when the viewport can't hold it on the requested side, and follows its trigger when an inner scrolling container (not just the page) is scrolled.
+
+The panel is repositioned, not moved elsewhere in the page. It stays inside the popover component, so CSS selecting it through an ancestor still matches.
+
 ## JavaScript API
 
-The popover is driven by the `BladewindPopover` class. Each instance exposes `show()`, `hide()`, and `toggle()` methods.
+Each popover creates a `BladewindPopover` instance assigned to a variable named after the component's `name`, callable directly from your own scripts or inline handlers. If setting `name` yourself, use only letters, numbers, and underscores since hyphens are invalid in a JavaScript identifier; the auto-generated default already follows this rule.
+
+| Method | Description |
+|---|---|
+| `name.show()` | Open the popover and position it against its trigger. |
+| `name.hide()` | Close the popover. |
+| `name.toggle()` | Open or close the popover based on its current state. |
 
 ```js
-// Show a named popover programmatically
-new BladewindPopover('my-popover').show();
+user_menu.show();
+user_menu.hide();
+user_menu.toggle();
 ```
+
+## Using Popover Inside Livewire
+
+The popover tracks whether it's open or closed outside of the DOM that Livewire manages, so a Livewire re-render unrelated to the popover resets it to closed. If this happens, wrap the trigger and the popover in `wire:ignore` so Livewire leaves that part of the page alone. The component also guards against a Livewire re-render creating a second copy of itself, so re-rendering won't leave duplicate click listeners behind.
 
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | auto-generated | Unique name used to identify the popover instance. A random name is generated if none is provided. |
-| trigger | `information-circle-icon` | Icon to use as the trigger. Must be a Heroicons name suffixed with `-icon` (e.g. `bell-icon`). Ignored when `<x-slot:trigger>` is provided. |
-| trigger_css | blank | Additional CSS classes to apply to the trigger wrapper element. |
-| trigger_on | `click` | The DOM event that opens the popover. `click` \| `mouseover` |
-| position | `bottom` | Where the panel appears relative to the trigger. `top` \| `bottom` \| `left` \| `right` |
+| name | auto-generated | Unique name identifying the popover instance. A random name is generated if none is provided. |
+| trigger | information-circle-icon | Icon to use as the trigger. Must be a Heroicons name suffixed with `-icon` (e.g. `bell-icon`). Ignored when `<x-slot:trigger>` is provided. |
+| trigger_css | blank | Additional CSS classes for the trigger wrapper element. |
+| trigger_on | click | DOM event that opens the popover. `click` \| `mouseover` |
+| position | bottom | Where the panel appears relative to the trigger. `top` \| `bottom` \| `left` \| `right` |
 | title | blank | Optional heading displayed above the popover content, separated by a border. |
-| width | `280` | Width of the popover panel in pixels. Must be a numeric value. |
-| class | blank | Any additional CSS classes to apply to the popover panel container. |
-| nonce | null | CSP nonce value applied to the inline script tags. You can set a global default in `config/bladewind.php` under the `script.nonce` key. |
-| modular | `false` | Appends `type="module"` to the inline script tags. `true` \| `false` |
+| width | 280 | Width of the popover panel in pixels. Numeric value. |
+| class | blank | Additional CSS classes for the popover panel container. |
+| nonce | null | CSP nonce applied to inline script tags. Can be set globally in `config/bladewind.php` under `script.nonce`. |
+| modular | false | Appends `type="module"` to the inline script tags. `true` \| `false` |
 
 ## Full Example
 

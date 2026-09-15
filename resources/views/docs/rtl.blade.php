@@ -7,20 +7,22 @@
         and their equivalent display in rtl mode. This page has already set the rtl directive.
     </p>
     <h3>Buttons With Icons</h3>
-    <pre class="language-markup">
-        <code>
-            &lt;<b>x-bladewind</b>::button&gt;Save User&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $rtlExample1 = <<<'HTML'
+            <<b>x-bladewind</b>::button>Save User</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$rtlExample1"></x-bladewind::code-block>
     <p>
         Once you publish the BladewindUI components, the files get moved to the <code class="inline">resources > views > components > <span class="text-red-400">bladewind</span></code> directory.
         You can then use the dot, instead of the colon syntax to access a component.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;<b>x-bladewind</b>.button&gt;Save User&lt;/x-bladewind.button&gt;
-        </code>
-    </pre>
+    @php
+        $rtlExample2 = <<<'HTML'
+            <<b>x-bladewind</b>.button>Save User</x-bladewind.button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$rtlExample2"></x-bladewind::code-block>
     <h2 id="noprefix">Getting rid of the <b class="font-bold">bladewind</b> prefix </h2>
     <p>
         It is possible to use any of the BladewindUI components without the bladewind prefix. This <code class="inline text-red-400">&lt;x-bladewind.button&gt;Save User&lt;/x-bladewind.button&gt;</code> becomes <code class="inline text-red-400">&lt;x-button&gt;Save User&lt;/x-button&gt;</code>.
@@ -38,48 +40,55 @@
     <p>
         BladewindUI defines its dark mode colours, primary and secondary <a href="/component/button">button</a> colours, colours for the <a href="/component/alert">alert</a> and <a href="/component/notification">notification</a> components in its <code class="inline">tailwind.config.js</code> file.
     </p>
-    <pre class="language-js line-numbers">
-    <code>
-        // your-project/vendor/bladewindui/ui/tailwind.config.js
-  theme: {
-    extend: {
-      colors: {
-        primary: colors.blue,
-        secondary: colors.slate,
-        dark: colors.slate,
-        success: colors.emerald,
-        error: colors.red,
-        warning: colors.amber,
-        info: colors.blue
-      }
-},
-    </code>
-    </pre>
+    @php
+        $rtlExample3 = <<<'HTML'
+                    // your-project/vendor/bladewindui/ui/tailwind.config.js
+              theme: {
+                extend: {
+                  colors: {
+                    primary: colors.blue,
+                    secondary: colors.slate,
+                    dark: colors.slate,
+                    success: colors.emerald,
+                    error: colors.red,
+                    warning: colors.amber,
+                    info: colors.blue
+                  }
+            },
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$rtlExample3"></x-bladewind::code-block>
 <p>
     To change the colours used above, simply define overwriting values in your project's <code class="inline">tailwind.config.js</code>.
 </p>
-    <pre class="language-js line-numbers" data-line="5">
-    <code>
-        // your-project/tailwind.config.js
-  theme: {
-    extend: {
-      colors: {
-        primary: colors.indigo,
-        secondary: colors.zinc,
-        dark: colors.gray,
-        success: colors.green,
-        error: colors.rose,
-        warning: colors.orange,
-        info: colors.blue
-      }
-},
-    </code>
-    </pre>
+    @php
+        $rtlExample4 = <<<'HTML'
+                    // your-project/tailwind.config.js
+              theme: {
+                extend: {
+                  colors: {
+                    primary: colors.indigo,
+                    secondary: colors.zinc,
+                    dark: colors.gray,
+                    success: colors.green,
+                    error: colors.rose,
+                    warning: colors.orange,
+                    info: colors.blue
+                  }
+            },
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="5" :code="$rtlExample4"></x-bladewind::code-block>
     <p>Following the changes above, now all your primary buttons will use the <b>indigo</b> colour palette instead of blue. Dark mode will use the gray palette instead of slate.</p>
 
     <h3>If you are feeling geeky</h3>
     <p>The changes to the Tailwind config should be enough to get you your right colours. If however, for some reason you are in your geeky elements and prefer to access all the uncompiled BladewindUI CSS files, you can run the command below.</p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-assets --force</code></pre>
+    @php
+        $rtlExample5 = <<<'HTML'
+            php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-assets --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$rtlExample5"></x-bladewind::code-block>
     <p>
         You should now have in your <code class="inline">public</code> directory, a <code class="inline">vendor > bladewind > <span class=" text-red-400">assets</span></code> folder containing all the uncompiled tailwind css files.
         You can modify these files to suit your theme specification.
@@ -97,7 +106,12 @@
     <p>
         Updates that touch the css and js files require the library's assets to be republished. Run the command below to republish the library's css and js files.
     </p>
-     <pre class="lang-bash command-line"><code>php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-public --force</code></pre>
+     @php
+        $rtlExample6 = <<<'HTML'
+            php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-public --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$rtlExample6"></x-bladewind::code-block>
      <p>
          <x-bladewind::alert type="info" show_close_icon="false">
              To prevent any changes you made earlier from being overwritten by updates, we advise you to make all changes that overwrite Bladewind css classes in your project's css file instead of editing the Bladewind css file directly. Your project's css file should always be included <b>after</b> the Bladewind css file.
@@ -110,7 +124,12 @@
             vendor > bladewindui > ui > lang
         </code>. Currently, the available languages are English, French, Italian, Arabic, German, Chinese and Indonesian. You can add more languages as you see fit or even modify the existing translations. If you want to do this for just your project you will first need to publish the language files by running the command below from the root of your project.
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-lang --force</code></pre><br />
+    @php
+        $rtlExample7 = <<<'HTML'
+            php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-lang --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$rtlExample7"></x-bladewind::code-block><br />
     <p>
         The language files will now be available in your project's <code class="inline">lang > vendor > bladewind</code> directory. You can now add more languages or edit the language files that were published.
     </p>

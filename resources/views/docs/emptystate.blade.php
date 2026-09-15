@@ -14,15 +14,16 @@
         onclick="alert('you clicked me')">
     </x-bladewind::empty-state>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::empty-state
+    @php
+        $emptystateExample1 = <<<'HTML'
+            <x-bladewind::empty-state
                 message="Awesome! You have no documents to approve."
                 button_label="Go to Dashboard"
-                onclick="alert('you clicked me')"&gt;
-            &lt;/x-bladewind::empty-state&gt;
-        </code>
-    </pre>
+                onclick="alert('you clicked me')">
+            </x-bladewind::empty-state>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$emptystateExample1"></x-bladewind::code-block>
     <p>
         The above example uses the default empty state image that comes bundled with BladewindUI. This image is available at <code class="inline">public > vendor > bladewind > images > empty-state.svg</code>.
         The default image is used if you leave out the <code class="inline text-red-500">image</code> attribute of the Empty State component. You can use your own images by setting the
@@ -33,16 +34,17 @@
         image="/assets/images/no-code.svg"
         button_label="Create Gist"
         onclick="alert('you clicked me')"></x-bladewind::empty-state>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::empty-state
+    @php
+        $emptystateExample2 = <<<'HTML'
+            <x-bladewind::empty-state
                 message="You have not saved any gists to your GitHub account"
                 image="/assets/images/no-code.svg"
                 button_label="Create Gist"
-                onclick="alert('you clicked me')"&gt;
-            &lt;/x-bladewind::empty-state&gt;
-        </code>
-    </pre>
+                onclick="alert('you clicked me')">
+            </x-bladewind::empty-state>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$emptystateExample2"></x-bladewind::code-block>
     <p>
         There are times you will want your empty state to have a heading to let the user know immediately what is happening, without having to read the full message.
         To achieve this set the <code class="inline text-red-500">heading</code> attribute of the Empty State component.
@@ -54,17 +56,18 @@
         heading="Create Gists Now"
         onclick="alert('you clicked me')">
     </x-bladewind::empty-state>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::empty-state
+    @php
+        $emptystateExample3 = <<<'HTML'
+            <x-bladewind::empty-state
                 message="You have not saved any gists to your GitHub account"
                 heading="Create Gists Already"
                 image="/assets/images/no-code.svg"
                 button_label="Create Gist"
-                onclick="alert('you clicked me')"&gt;
-            &lt;/x-bladewind::empty-state&gt;
-        </code>
-    </pre>
+                onclick="alert('you clicked me')">
+            </x-bladewind::empty-state>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$emptystateExample3"></x-bladewind::code-block>
 
     <p>
         The examples above use the attributes of the empty state component to build the empty state content. It is also possible to ignore all attributes and dump your content right in to the empty state component.
@@ -79,22 +82,23 @@
             Add biometric info
         </x-bladewind::button>
     </x-bladewind::empty-state>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::empty-state
-                show_image="false"&gt;
+    @php
+        $emptystateExample4 = <<<'HTML'
+            <x-bladewind::empty-state
+                show_image="false">
 
-                &lt;svg&gt;
+                <svg>
                     ...
-                &lt;/svg&gt;
-                &lt;p class="pt-2"&gt;You have no biometric data available&lt;/p&gt;
-                &lt;x-bladewind.button color="red" size="small"&gt;
+                </svg>
+                <p class="pt-2">You have no biometric data available</p>
+                <x-bladewind.button color="red" size="small">
                     Add biometric info
-                &lt;/x-bladewind.button&gt;
+                </x-bladewind.button>
 
-            &lt;/x-bladewind::empty-state&gt;
-        </code>
-    </pre>
+            </x-bladewind::empty-state>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$emptystateExample4"></x-bladewind::code-block>
 
     <p>
         You can also have empty states with no call to action buttons. For example, a "Recent Activities" section that fills up when users perform activities throughout the app. An empty state for a case like that will necessarily need no action to be performed.
@@ -108,20 +112,21 @@
         </x-bladewind::empty-state>
     </x-bladewind::card>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind.card title="Recent Activities" css="w-3/4 mx-auto"&gt;
-                &lt;br /&gt;
+    @php
+        $emptystateExample5 = <<<'HTML'
+            <x-bladewind.card title="Recent Activities" css="w-3/4 mx-auto">
+                <br />
 
-                &lt;x-bladewind::empty-state
+                <x-bladewind::empty-state
                     image="/assets/images/no-activity.svg"
                     message="Your recent activities list will take shape as
-                            &lt;br/&gt; soon as your organization has some activity"&gt;
-                &lt;/x-bladewind::empty-state&gt;
+                            <br/> soon as your organization has some activity">
+                </x-bladewind::empty-state>
 
-            &lt;/x-bladewind.card&gt;
-        </code>
-    </pre>
+            </x-bladewind.card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$emptystateExample5"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Empty State component.</p>
@@ -189,9 +194,9 @@
     </x-bladewind::table>
 
     <h3>Empty State with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::empty-state
+    @php
+        $emptystateExample6 = <<<'HTML'
+            <x-bladewind::empty-state
                 message="Hey!! You cleaned up your inbox nicely"
                 button_label="Compose a message"
                 onclick="goToRoute('new-message')"
@@ -200,10 +205,11 @@
                 heading="Nothing to see here"
                 size="xl"
                 image_css="!h-32"
-                class="shadow-sm"&gt;
-            &lt;/x-bladewind::empty-state&gt;
-        </code>
-    </pre>
+                class="shadow-sm">
+            </x-bladewind::empty-state>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$emptystateExample6"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > empty-state.blade.php</code>

@@ -9,13 +9,14 @@
     <p>
         <x-bladewind::horizontal-line-graph label="Women Farmers: " percentage="55.8" />
     </p>
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample1 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
-                percentage="55.8" /&gt;
-        </code>
-    </pre>
+                percentage="55.8" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample1"></x-bladewind::code-block>
 
     <p>
         That’s the basic syntax for displaying a horizontal line graph but let’s look at more practical examples of how to use this component in your applications.
@@ -32,53 +33,54 @@
             <x-bladewind::horizontal-line-graph label="Under 40: " percentage="24" color="gray" />
         </x-bladewind::card>
     </div>
-    <pre class="language-markup line-numbers" data-line="5,10,16,25,30,36">
-        <code>
-            &lt;div class="grid grid-cols-2 gap-6"&gt;
+    @php
+        $horizontalUlineUgraphExample2 = <<<'HTML'
+            <div class="grid grid-cols-2 gap-6">
 
-                &lt;x-bladewind.card title="Mobile Money Penetration"&gt;
+                <x-bladewind.card title="Mobile Money Penetration">
 
-                    &lt;x-bladewind::horizontal-line-graph
+                    <x-bladewind::horizontal-line-graph
                         label="MTN: "
                         percentage="55"
-                        color="yellow" /&gt;
+                        color="yellow" />
 
-                    &lt;x-bladewind::horizontal-line-graph
+                    <x-bladewind::horizontal-line-graph
                         label="Vodafone: "
                         percentage="30"
                         color="red"
-                        class="py-3" /&gt;
+                        class="py-3" />
 
-                    &lt;x-bladewind::horizontal-line-graph
+                    <x-bladewind::horizontal-line-graph
                         label="AirtelTigo: "
                         percentage="15"
-                        color="blue" /&gt;
+                        color="blue" />
 
-                &lt;/x-bladewind.card&gt;
+                </x-bladewind.card>
 
-                &lt;x-bladewind.card title="Farmer age ratio"&gt;
+                <x-bladewind.card title="Farmer age ratio">
 
-                    &lt;x-bladewind::horizontal-line-graph
+                    <x-bladewind::horizontal-line-graph
                         label="Above 60: "
                         percentage="33"
-                        color="cyan" /&gt;
+                        color="cyan" />
 
-                    &lt;x-bladewind::horizontal-line-graph
+                    <x-bladewind::horizontal-line-graph
                         label="Between 40 - 60: "
                         percentage="43"
                         color="purple"
-                        class="py-3" /&gt;
+                        class="py-3" />
 
-                    &lt;x-bladewind::horizontal-line-graph
+                    <x-bladewind::horizontal-line-graph
                         label="Under 40: "
                         percentage="24"
-                        color="gray" /&gt;
+                        color="gray" />
 
-                &lt;/x-bladewind.card&gt;
+                </x-bladewind.card>
 
-            &lt;/div>
-        </code>
-    </pre>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,10,16,25,30,36" :code="$horizontalUlineUgraphExample2"></x-bladewind::code-block>
 
     <h2 id="colours">Different Colours</h2>
     <p>
@@ -92,69 +94,74 @@
         percentage="10"
         color="red" />
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample3 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage="10"
-                color="red" /&gt;
-        </code>
-    </pre>
+                color="red" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample3"></x-bladewind::code-block>
 
     <x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="20"
         color="yellow" />
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample4 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage="20"
-                color="yellow"/&gt;
-        </code>
-    </pre>
+                color="yellow"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample4"></x-bladewind::code-block>
 
     <x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="30"
         color="green" />
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample5 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage="30"
-                color="green" /&gt;
-        </code>
-    </pre>
+                color="green" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample5"></x-bladewind::code-block>
 
     <x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="40"
         color="pink" />
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample6 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage="40"
-                color="pink" /&gt;
-        </code>
-    </pre>
+                color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample6"></x-bladewind::code-block>
 
     <x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="50"
         color="cyan" />
 
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="50"
-                    color="cyan" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample7 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="50"
+                color="cyan" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample7"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -162,14 +169,15 @@
         percentage="60"
         color="gray" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="60"
-                    color="gray" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample8 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="60"
+                color="gray" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample8"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -177,14 +185,15 @@
         percentage="70"
         color="purple" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="70"
-                    color="purple" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample9 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="70"
+                color="purple" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample9"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -192,56 +201,60 @@
         percentage="80"
         color="orange" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="80"
-                    color="orange" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample10 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="80"
+                color="orange" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample10"></x-bladewind::code-block>
     </p>
     <p><x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="80"
         color="violet" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="80"
-                    color="violet" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample11 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="80"
+                color="violet" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample11"></x-bladewind::code-block>
     </p>
     <p><x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="80"
         color="indigo" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="80"
-                    color="indigo" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample12 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="80"
+                color="indigo" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample12"></x-bladewind::code-block>
     </p>
     <p><x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="80"
         color="fuchsia" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="80"
-                    color="fuchsia" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample13 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="80"
+                color="fuchsia" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample13"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -249,13 +262,14 @@
         percentage="90"
         /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="90" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample14 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="90" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample14"></x-bladewind::code-block>
     </p>
 
     <p>
@@ -266,14 +280,15 @@
         percentage="10"
         color="red" shade="dark" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="10"
-                    shade="dark" color="red" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample15 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="10"
+                shade="dark" color="red" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample15"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -281,14 +296,15 @@
         percentage="20"
         shade="dark" color="yellow" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="20"
-                    shade="dark" color="yellow" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample16 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="20"
+                shade="dark" color="yellow" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample16"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -296,14 +312,15 @@
         percentage="30"
         shade="dark" color="green" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="30"
-                    shade="dark" color="green" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample17 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="30"
+                shade="dark" color="green" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample17"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -311,14 +328,15 @@
         percentage="40"
         shade="dark" color="pink" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="40"
-                    shade="dark" color="pink" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample18 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="40"
+                shade="dark" color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample18"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -326,14 +344,15 @@
         percentage="40"
         shade="dark" color="fuchsia" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="40"
-                    shade="dark" color="fuchsia" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample19 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="40"
+                shade="dark" color="fuchsia" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample19"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -341,14 +360,15 @@
         percentage="40"
         shade="dark" color="indigo" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="40"
-                    shade="dark" color="indigo" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample20 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="40"
+                shade="dark" color="indigo" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample20"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -356,14 +376,15 @@
         percentage="40"
         shade="dark" color="violet" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="40"
-                    shade="dark" color="violet" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample21 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="40"
+                shade="dark" color="violet" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample21"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -371,14 +392,15 @@
         percentage="50"
         shade="dark" color="cyan" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="50"
-                    shade="dark" color="cyan" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample22 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="50"
+                shade="dark" color="cyan" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample22"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -386,14 +408,15 @@
         percentage="60"
         shade="dark" color="gray" /></p>
     <p>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;x-bladewind::horizontal-line-graph
-                    label="Women Farmers: "
-                    percentage="60"
-                    shade="dark" color="gray" /&gt;
-            </code>
-        </pre>
+        @php
+        $horizontalUlineUgraphExample23 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
+                label="Women Farmers: "
+                percentage="60"
+                shade="dark" color="gray" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample23"></x-bladewind::code-block>
     </p>
 
     <p><x-bladewind::horizontal-line-graph
@@ -401,42 +424,45 @@
         percentage="70"
         shade="dark" color="purple" /></p>
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample24 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage="70"
-                shade="dark" color="purple" /&gt;
-        </code>
-    </pre>
+                shade="dark" color="purple" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample24"></x-bladewind::code-block>
 
     <p><x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="80"
         shade="dark" color="orange" /></p>
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample25 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage="80"
-                shade="dark" color="orange" /&gt;
-        </code>
-    </pre>
+                shade="dark" color="orange" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample25"></x-bladewind::code-block>
 
     <p><x-bladewind::horizontal-line-graph
         label="Women Farmers: "
         percentage="90"
         shade="dark" /></p>
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample26 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage="90"
-                shade="dark" /&gt;
-        </code>
-    </pre>
+                shade="dark" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$horizontalUlineUgraphExample26"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Horizontal Line Graph component.</p>
@@ -484,17 +510,18 @@
     </x-bladewind::table>
 
     <h3>Horizontal Line Graph with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::horizontal-line-graph
+    @php
+        $horizontalUlineUgraphExample27 = <<<'HTML'
+            <x-bladewind::horizontal-line-graph
                 label="Women Farmers: "
                 percentage = "50"
                 color = "red",
                 shade = "faint",
                 percentage_label_opacity = "75",
-                class="py-4" /&gt;
-        </code>
-    </pre>
+                class="py-4" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$horizontalUlineUgraphExample27"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > horizontal-line-graph.blade.php</code>

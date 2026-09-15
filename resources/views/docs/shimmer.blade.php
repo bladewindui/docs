@@ -6,28 +6,31 @@
         Shimmers or loading placeholders are a great visual cue to tell users that content is loading.
     </p>
     <x-bladewind::shimmer />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::shimmer /&gt;
-        </code>
-    </pre>
+    @php
+        $shimmerExample1 = <<<'HTML'
+            <x-bladewind::shimmer />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$shimmerExample1"></x-bladewind::code-block>
     <br />
     <x-bladewind::shimmer mode="alternate" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::shimmer animation="alternate" /&gt;
-        </code>
-    </pre>
+    @php
+        $shimmerExample2 = <<<'HTML'
+            <x-bladewind::shimmer animation="alternate" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$shimmerExample2"></x-bladewind::code-block>
     <p>
         Shimmers can be used in various ways. For example, you can use them to show a loading state for a list of items, card content, or even a form.
         You can use the <code class="inline text-red-500">circle</code> attribute to create a circular shimmer.
     </p>
     <x-bladewind::shimmer circle="true" />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::shimmer circle="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $shimmerExample3 = <<<'HTML'
+            <x-bladewind::shimmer circle="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$shimmerExample3"></x-bladewind::code-block>
     <p>
         Since it is impossible to know all the possible layouts users will want to shimmer, the Bladewind Shimmer has been designed to be very simple. You specify your own <code class="inline text-red-500">width</code> and <code class="inline text-red-500">height</code> and stack up as many shimmers as can create the loading layout you want to depict.
         In the example below, we have created a shimmer that is depicting two loading contact cards. One vertical, the other horizontal.
@@ -59,38 +62,40 @@
         </x-bladewind::card>
     </div>
 
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::card class="sm:w-1/3"&gt;
-        &lt;x-bladewind::shimmer :circle="true" align="center" /&gt;
-        &lt;x-bladewind::shimmer height="h-5" /&gt;
-        &lt;x-bladewind::shimmer /&gt;
-        &lt;x-bladewind::shimmer /&gt;
-        &lt;x-bladewind::shimmer /&gt;
-    &lt;/x-bladewind::card&gt;
-</code>
-</pre>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::card class="sm:w-2/3"&gt;
-        &lt;div class="flex gap-4"&gt;
-            &lt;div>&lt;x-bladewind::shimmer :circle="true" class="size-40" />&lt;/div&gt;
-            &lt;div class="grow"&gt;
-                &lt;x-bladewind::shimmer height="h-5" /&gt;
-                &lt;x-bladewind::shimmer class="w-[90%]" /&gt;
-                &lt;x-bladewind::shimmer class="w-[80%]" /&gt;
-                &lt;x-bladewind::shimmer /&gt;
-                &lt;x-bladewind::shimmer class="w-[80%]" /&gt;
-                &lt;x-bladewind::shimmer class="w-[85%]" /&gt;
-                &lt;x-bladewind::shimmer class="w-[90%]" /&gt;
-                &lt;x-bladewind::shimmer class="w-[80%]" /&gt;
-                &lt;x-bladewind::shimmer /&gt;
-                &lt;x-bladewind::shimmer /&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/x-bladewind::card&gt;
-</code>
-</pre>
+@php
+        $shimmerExample4 = <<<'HTML'
+            <x-bladewind::card class="sm:w-1/3">
+                <x-bladewind::shimmer :circle="true" align="center" />
+                <x-bladewind::shimmer height="h-5" />
+                <x-bladewind::shimmer />
+                <x-bladewind::shimmer />
+                <x-bladewind::shimmer />
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$shimmerExample4"></x-bladewind::code-block>
+@php
+        $shimmerExample5 = <<<'HTML'
+            <x-bladewind::card class="sm:w-2/3">
+                <div class="flex gap-4">
+                    <div><x-bladewind::shimmer :circle="true" class="size-40" /></div>
+                    <div class="grow">
+                        <x-bladewind::shimmer height="h-5" />
+                        <x-bladewind::shimmer class="w-[90%]" />
+                        <x-bladewind::shimmer class="w-[80%]" />
+                        <x-bladewind::shimmer />
+                        <x-bladewind::shimmer class="w-[80%]" />
+                        <x-bladewind::shimmer class="w-[85%]" />
+                        <x-bladewind::shimmer class="w-[90%]" />
+                        <x-bladewind::shimmer class="w-[80%]" />
+                        <x-bladewind::shimmer />
+                        <x-bladewind::shimmer />
+                    </div>
+                </div>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$shimmerExample5"></x-bladewind::code-block>
     <p>
         If the shimmer is at its full width (w-full), you can use the <code class="inline text-red-500">align</code> attribute
         to position the shimmer to the <code class="inline">center</code> or <code class="inline">right</code> of its parent container.
@@ -128,38 +133,40 @@
         </x-bladewind::card>
     </div>
 
-    <pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::card class="sm:w-1/3"&gt;
-        &lt;x-bladewind::shimmer animation="alternate" :circle="true" align="center" /&gt;
-        &lt;x-bladewind::shimmer animation="alternate" height="h-5" /&gt;
-        &lt;x-bladewind::shimmer animation="alternate" /&gt;
-        &lt;x-bladewind::shimmer animation="alternate" /&gt;
-        &lt;x-bladewind::shimmer animation="alternate" /&gt;
-    &lt;/x-bladewind::card&gt;
-</code>
-</pre>
-    <pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::card class="sm:w-2/3"&gt;
-        &lt;div class="flex gap-4"&gt;
-            &lt;div>&lt;x-bladewind::shimmer animation="alternate" :circle="true" class="size-40" />&lt;/div&gt;
-            &lt;div class="grow"&gt;
-                &lt;x-bladewind::shimmer animation="alternate" height="h-5" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" class="w-[90%]" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" class="w-[80%]" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" class="w-[80%]" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" class="w-[85%]" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" class="w-[90%]" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" class="w-[80%]" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" /&gt;
-                &lt;x-bladewind::shimmer animation="alternate" /&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/x-bladewind::card&gt;
-</code>
-</pre>
+    @php
+        $shimmerExample6 = <<<'HTML'
+            <x-bladewind::card class="sm:w-1/3">
+                <x-bladewind::shimmer animation="alternate" :circle="true" align="center" />
+                <x-bladewind::shimmer animation="alternate" height="h-5" />
+                <x-bladewind::shimmer animation="alternate" />
+                <x-bladewind::shimmer animation="alternate" />
+                <x-bladewind::shimmer animation="alternate" />
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$shimmerExample6"></x-bladewind::code-block>
+    @php
+        $shimmerExample7 = <<<'HTML'
+            <x-bladewind::card class="sm:w-2/3">
+                <div class="flex gap-4">
+                    <div><x-bladewind::shimmer animation="alternate" :circle="true" class="size-40" /></div>
+                    <div class="grow">
+                        <x-bladewind::shimmer animation="alternate" height="h-5" />
+                        <x-bladewind::shimmer animation="alternate" class="w-[90%]" />
+                        <x-bladewind::shimmer animation="alternate" class="w-[80%]" />
+                        <x-bladewind::shimmer animation="alternate" />
+                        <x-bladewind::shimmer animation="alternate" class="w-[80%]" />
+                        <x-bladewind::shimmer animation="alternate" class="w-[85%]" />
+                        <x-bladewind::shimmer animation="alternate" class="w-[90%]" />
+                        <x-bladewind::shimmer animation="alternate" class="w-[80%]" />
+                        <x-bladewind::shimmer animation="alternate" />
+                        <x-bladewind::shimmer animation="alternate" />
+                    </div>
+                </div>
+            </x-bladewind::card>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$shimmerExample7"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Shimmer component.</p>
@@ -203,17 +210,18 @@
     </x-bladewind::table>
 
     <h3>Shimmer with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::shimmer
+    @php
+        $shimmerExample8 = <<<'HTML'
+            <x-bladewind::shimmer
                 animation="alternate"
                 circle="true"
                 duration="3s"
                 width="w-90"
                 height="h-90"
-                align="right" /&gt;
-        </code>
-    </pre>
+                align="right" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$shimmerExample8"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > shimmer.blade.php</code>

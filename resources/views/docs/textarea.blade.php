@@ -8,39 +8,43 @@
         Example, <code class="inline text-red-500">rows="5"</code>.
     </p>
     <p><x-bladewind::textarea name="comment" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::textarea  /&gt;
-        </code>
-    </pre>
+    @php
+        $textareaExample1 = <<<'HTML'
+            <x-bladewind::textarea  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$textareaExample1"></x-bladewind::code-block>
     <h3>Add Placeholder Text</h3>
     <p><x-bladewind::textarea placeholder="Comment" name="test"  /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::textarea placeholder="Comment"  /&gt;
-        </code>
-    </pre>
+    @php
+        $textareaExample2 = <<<'HTML'
+            <x-bladewind::textarea placeholder="Comment"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$textareaExample2"></x-bladewind::code-block>
     <h3>With Labels</h3>
     <p>
         You can display the BladewindUI textarea with labels. Labels present themselves as placeholders but jump to the top border of the textarea when that field has focus.
         This is a nice way to build compact looking forms without having form labels in the way. If you prefer to create and style your own form labels, simply ignore the <code class="inline text-red-500">label</code> attribute and use the <code class="inline text-red-500">placeholder</code> attribute instead.
     </p>
     <p><x-bladewind::textarea label="Comment" /></p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::textarea label="Comment"  /&gt;
-        </code>
-    </pre>
+    @php
+        $textareaExample3 = <<<'HTML'
+            <x-bladewind::textarea label="Comment"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$textareaExample3"></x-bladewind::code-block>
     <h3>Required Fields</h3>
     <p>
         This either adds a red asterisk sign to the placeholder text or a red star to the label of the textarea field.
     </p>
     <p><x-bladewind::textarea label="Comment" required="true" /></p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::textarea required="true" label="Comment"  /&gt;
-        </code>
-    </pre>
+    @php
+        $textareaExample4 = <<<'HTML'
+            <x-bladewind::textarea required="true" label="Comment"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$textareaExample4"></x-bladewind::code-block>
     <p>
         See component/textarea documentation on <a href="https://bladewindui.com/component/textbox#validate">Validating Required Fields</a>.
     </p>
@@ -54,17 +58,18 @@
         onfocus="changeCss('.events', '!border-2,!border-red-400')"
         onblur="changeCss('.events', '!border-2,!border-red-400', 'remove')"></x-bladewind::textarea>
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::textarea
+    @php
+        $textareaExample5 = <<<'HTML'
+            <x-bladewind::textarea
                 name="events"
                 label="Comment"
                 required="true"
                 onfocus="changeCss('.events', '!border-2,!border-red-400')"
-                onblur="changeCss('.events', '!border-2,!border-red-400', 'remove')"&gt;
-            &lt;/x-bladewind::textarea&gt;
-        </code>
-    </pre>
+                onblur="changeCss('.events', '!border-2,!border-red-400', 'remove')">
+            </x-bladewind::textarea>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$textareaExample5"></x-bladewind::code-block>
     <h2 id="toolbar">Simple Toolbar</h2>
     <p>
         The textarea can display simple toolbar by setting <code class="inline text-red-500">toolbar="true"</code>.
@@ -72,12 +77,13 @@
     </p>
     <p><x-bladewind::textarea placeholder="Comment" toolbar="true" /></p>
 
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::textarea
-        placeholder="Comment" toolbar="true"&gt;&lt;/x-bladewind::textarea&gt;
-</code>
-</pre>
+@php
+        $textareaExample6 = <<<'HTML'
+            <x-bladewind::textarea
+                placeholder="Comment" toolbar="true"></x-bladewind::textarea>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$textareaExample6"></x-bladewind::code-block>
     <p>
         The formatting options listed on the toolbar are
         <code class="inline">bold</code>,
@@ -100,13 +106,14 @@
         <x-bladewind::textarea
             placeholder="Comment"
             toolbar="true" except="align, indent, color, background" /></p>
-    <pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::textarea
-        except="align, indent, color, background"
-        placeholder="Comment" toolbar="true"&gt;&lt;/x-bladewind::textarea&gt;
-</code>
-</pre>
+    @php
+        $textareaExample7 = <<<'HTML'
+            <x-bladewind::textarea
+                except="align, indent, color, background"
+                placeholder="Comment" toolbar="true"></x-bladewind::textarea>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$textareaExample7"></x-bladewind::code-block>
 
     <h2 id="form-state">Laravel Form State</h2>
     <p>
@@ -115,15 +122,16 @@
         can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
         and an error block on every single field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::textarea
-    name="bio"
-    label="Short bio"
-    fill_from_old="true"
-    show_validation_error="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $textareaExample8 = <<<'HTML'
+            <x-bladewind::textarea
+                name="bio"
+                label="Short bio"
+                fill_from_old="true"
+                show_validation_error="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$textareaExample8"></x-bladewind::code-block>
     <p>
         <code class="inline">fill_from_old</code> repopulates the field from
         <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
@@ -140,16 +148,17 @@
         Rather than setting the attributes field by field, set them once in your
         <code class="inline">config/bladewind.php</code> and every form component follows.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-// config/bladewind.php
-'forms' =&gt; [
-    'fill_from_old' =&gt; true,
-    'show_validation_error' =&gt; true,
-    'error_bag' =&gt; null,
-],
-        </code>
-    </pre>
+    @php
+        $textareaExample9 = <<<'HTML'
+            // config/bladewind.php
+            'forms' => [
+                'fill_from_old' => true,
+                'show_validation_error' => true,
+                'error_bag' => null,
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$textareaExample9"></x-bladewind::code-block>
     <p>
         An attribute on a single field always wins over the config, so you can opt one field out
         with <code class="inline">show_validation_error="false"</code>.
@@ -263,23 +272,24 @@
     </x-bladewind::table>
     <p>&nbsp;</p>
     <h3 class="pb-2 ">Textarea with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::textarea
-    name="message"
-    label="Enter message"
-    placeholder=""
-    add_clearing="false"
-    required="true"
-    toolbar="true"
-    except="align, bold, italic"
-    show_error_inline="false"
-    error_heading="Error"
-    error_message="A comment is required"
-    rows="5"
-    selected_value="" /&gt;&lt;/x-bladewind::textarea&gt;
-</code>
-</pre>
+@php
+        $textareaExample10 = <<<'HTML'
+            <x-bladewind::textarea
+                name="message"
+                label="Enter message"
+                placeholder=""
+                add_clearing="false"
+                required="true"
+                toolbar="true"
+                except="align, bold, italic"
+                show_error_inline="false"
+                error_heading="Error"
+                error_message="A comment is required"
+                rows="5"
+                selected_value="" /></x-bladewind::textarea>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$textareaExample10"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > textarea.blade.php</code>

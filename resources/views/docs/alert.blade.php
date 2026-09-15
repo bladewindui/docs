@@ -15,132 +15,143 @@
     <h2 id="faint">Faint Coloured Alerts</h2>
     <h3 class="!mt-4">Info</h3>
     <x-bladewind::alert class="mb-3">Your subscription is expiring in 19 days. <a href="#">Renew now</a></x-bladewind::alert>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::alert&gt;
+    @php
+        $alertExample1 = <<<'HTML'
+            <x-bladewind::alert>
                 Your subscription is expiring in 19 days.
-                &lt;a href="#"&gt;Renew now&lt;/a&gt;
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+                <a href="#">Renew now</a>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$alertExample1"></x-bladewind::code-block>
     <h3>Error</h3>
     <x-bladewind::alert type="error" class="mb-3">You do not have permission to upload files</x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::alert
-                type="error"&gt;
+    @php
+        $alertExample2 = <<<'HTML'
+            <x-bladewind::alert
+                type="error">
                 You do not have permission to upload files
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$alertExample2"></x-bladewind::code-block>
     <h3>Warning</h3>
     <x-bladewind::alert type="warning" class="mb-3">Well, this is your first warning. Do that again and I'll wipe your hard disk</x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::alert
-                type="warning"&gt;
+    @php
+        $alertExample3 = <<<'HTML'
+            <x-bladewind::alert
+                type="warning">
                 Well, this is your first warning. Do that again and I'll wipe your hard disk
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$alertExample3"></x-bladewind::code-block>
 
     <h3>Success</h3>
     <x-bladewind::alert type="success" class="mb-3">Files were successfully uploaded</x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::alert
-                type="success"&gt;
+    @php
+        $alertExample4 = <<<'HTML'
+            <x-bladewind::alert
+                type="success">
                 Files were successfully uploaded
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$alertExample4"></x-bladewind::code-block>
 
     <h2 id="dark">Dark Coloured Alerts</h2>
     <p>You can set the <code class="inline text-red-500">shade="dark"</code> attribute on the alert component to get darker colours.</p>
     <h3>Info</h3>
     <x-bladewind::alert shade="dark">Your subscription is expiring in 19 days. <a href="#" class="!text-white/70">Renew now</a></x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::alert
-                shade="dark"&gt;
+    @php
+        $alertExample5 = <<<'HTML'
+            <x-bladewind::alert
+                shade="dark">
                 Your subscription is expiring in 19 days.
-                &lt;a href="#" class="!text-white/70"&gt;Renew now&lt;/a&gt;
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+                <a href="#" class="!text-white/70">Renew now</a>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$alertExample5"></x-bladewind::code-block>
 
     <h3>Error</h3>
     <x-bladewind::alert type="error" shade="dark">You do not have permission to upload files</x-bladewind::alert>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::alert type="error" shade="dark"&gt;
+    @php
+        $alertExample6 = <<<'HTML'
+            <x-bladewind::alert type="error" shade="dark">
                 You do not have permission to upload files
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$alertExample6"></x-bladewind::code-block>
 
 
     <h3>Warning</h3>
     <x-bladewind::alert type="warning" shade="dark">Well, this is your first warning. Do that again and I'll wipe your hard disk</x-bladewind::alert>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::alert type="warning" shade="dark"&gt;
+    @php
+        $alertExample7 = <<<'HTML'
+            <x-bladewind::alert type="warning" shade="dark">
                 Well, this is your first warning. Do that again and I'll wipe your hard disk
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$alertExample7"></x-bladewind::code-block>
 
     <h3>Success</h3>
     <x-bladewind::alert type="success" shade="dark">Files were successfully uploaded</x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert type="success" shade="dark"&gt;
+    @php
+        $alertExample8 = <<<'HTML'
+            <x-bladewind::alert type="success" shade="dark">
                 Files were successfully uploaded
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample8"></x-bladewind::code-block>
 
     <h2 id="iconless">Without Icons</h2>
     <p>By default the alert component shows a close icon and another icon that matches the type of alert being displayed. Both icons can be turned off separately.</p>
     <h3>Info</h3>
     <x-bladewind::alert shade="dark" show_icon="false" show_close_icon="false">Your subscription is expiring in 19 days. <a href="#" class="!text-white/70">Renew now</a></x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-line="3,4">
-        <code>
-            &lt;x-bladewind::alert
+    @php
+        $alertExample9 = <<<'HTML'
+            <x-bladewind::alert
                 shade="dark"
                 show_icon="false"
-                show_close_icon="false"&gt;
+                show_close_icon="false">
                 Your subscription is expiring in 19 days.
-                &lt;a href="#" class="!text-white/70"&gt;Renew now&lt;/a&gt;
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+                <a href="#" class="!text-white/70">Renew now</a>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,4" :code="$alertExample9"></x-bladewind::code-block>
     <h3>Error</h3>
     <x-bladewind::alert type="error" shade="dark" show_close_icon="false">You do not have permission to upload files</x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::alert
+    @php
+        $alertExample10 = <<<'HTML'
+            <x-bladewind::alert
                 type="error"
                 shade="dark"
-                show_close_icon="false"&gt;
+                show_close_icon="false">
                 You do not have permission to upload files
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$alertExample10"></x-bladewind::code-block>
 
     <h3>Warning</h3>
     <x-bladewind::alert type="warning" shade="dark" show_icon="false">Well, this is your first warning. Do that again and I'll wipe your hard disk</x-bladewind::alert>
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::alert
+    @php
+        $alertExample11 = <<<'HTML'
+            <x-bladewind::alert
                 type="warning"
                 shade="dark"
-                show_icon="false"&gt;
+                show_icon="false">
                 Well, this is your first warning.
                 Do that again and I'll wipe your hard disk
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$alertExample11"></x-bladewind::code-block>
     <h2 id="colours">More Colours</h2>
     <p>
         Like most BladewindUI components, the Alert component can be displayed in any of the <a href="/customize/colours">colours</a> defined in our <a href="/customize/colours">palette</a>. All colours work for both the
@@ -149,156 +160,174 @@
     <h3>Pink</h3>
     <x-bladewind::alert color="pink" >I am a pink alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="pink" shade="dark">I am a pink alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="pink"&gt;
+    @php
+        $alertExample12 = <<<'HTML'
+            <x-bladewind::alert color="pink">
                 I am a pink alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="pink" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample12"></x-bladewind::code-block>
+    @php
+        $alertExample13 = <<<'HTML'
+            <x-bladewind::alert color="pink" shade="dark">
                 I am a pink alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample13"></x-bladewind::code-block>
     <h3>Cyan</h3>
     <x-bladewind::alert color="cyan" >I am a cyan alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="cyan" shade="dark">I am a cyan alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="cyan"&gt;
+    @php
+        $alertExample14 = <<<'HTML'
+            <x-bladewind::alert color="cyan">
                 I am a cyan alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="cyan" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample14"></x-bladewind::code-block>
+    @php
+        $alertExample15 = <<<'HTML'
+            <x-bladewind::alert color="cyan" shade="dark">
                 I am a cyan alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample15"></x-bladewind::code-block>
     <h3>Purple</h3>
     <x-bladewind::alert color="purple" >I am a purple alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="purple" shade="dark">I am a purple alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="purple"&gt;
+    @php
+        $alertExample16 = <<<'HTML'
+            <x-bladewind::alert color="purple">
                 I am a purple alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="purple" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample16"></x-bladewind::code-block>
+    @php
+        $alertExample17 = <<<'HTML'
+            <x-bladewind::alert color="purple" shade="dark">
                 I am a purple alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample17"></x-bladewind::code-block>
     <h3>Gray</h3>
     <x-bladewind::alert color="gray" >I am a gray alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="gray" shade="dark">I am a gray alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="gray"&gt;
+    @php
+        $alertExample18 = <<<'HTML'
+            <x-bladewind::alert color="gray">
                 I am a gray alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="gray" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample18"></x-bladewind::code-block>
+    @php
+        $alertExample19 = <<<'HTML'
+            <x-bladewind::alert color="gray" shade="dark">
                 I am a gray alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample19"></x-bladewind::code-block>
     <h3>Violet</h3>
     <x-bladewind::alert color="violet" >I am a violet alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="violet" shade="dark">I am a violet alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="violet"&gt;
+    @php
+        $alertExample20 = <<<'HTML'
+            <x-bladewind::alert color="violet">
                 I am a violet alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="violet" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample20"></x-bladewind::code-block>
+    @php
+        $alertExample21 = <<<'HTML'
+            <x-bladewind::alert color="violet" shade="dark">
                 I am a violet alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample21"></x-bladewind::code-block>
     <h3>Indigo</h3>
     <x-bladewind::alert color="indigo" >I am a indigo alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="indigo" shade="dark">I am a indigo alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="indigo"&gt;
+    @php
+        $alertExample22 = <<<'HTML'
+            <x-bladewind::alert color="indigo">
                 I am a indigo alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="indigo" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample22"></x-bladewind::code-block>
+    @php
+        $alertExample23 = <<<'HTML'
+            <x-bladewind::alert color="indigo" shade="dark">
                 I am a indigo alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample23"></x-bladewind::code-block>
     <h3>Fuchsia</h3>
     <x-bladewind::alert color="fuchsia" >I am a fuchsia alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="fuchsia" shade="dark">I am a fuchsia alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="fuchsia"&gt;
+    @php
+        $alertExample24 = <<<'HTML'
+            <x-bladewind::alert color="fuchsia">
                 I am a fuchsia alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="fuchsia" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample24"></x-bladewind::code-block>
+    @php
+        $alertExample25 = <<<'HTML'
+            <x-bladewind::alert color="fuchsia" shade="dark">
                 I am a fuchsia alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample25"></x-bladewind::code-block>
     <h3>Orange</h3>
     <x-bladewind::alert color="orange" >I am a orange alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="orange" shade="dark">I am a orange alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="orange"&gt;
+    @php
+        $alertExample26 = <<<'HTML'
+            <x-bladewind::alert color="orange">
                 I am a orange alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="orange" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample26"></x-bladewind::code-block>
+    @php
+        $alertExample27 = <<<'HTML'
+            <x-bladewind::alert color="orange" shade="dark">
                 I am a orange alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample27"></x-bladewind::code-block>
     <h3>Transparent</h3>
     <x-bladewind::alert color="transparent" >I am a transparent alert. How do I look?</x-bladewind::alert>
     <p><x-bladewind::alert color="transparent" shade="dark">I am a transparent alert. Dark version. How do I look?</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="transparent"&gt;
+    @php
+        $alertExample28 = <<<'HTML'
+            <x-bladewind::alert color="transparent">
                 I am a transparent alert. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="transparent" shade="dark"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample28"></x-bladewind::code-block>
+    @php
+        $alertExample29 = <<<'HTML'
+            <x-bladewind::alert color="transparent" shade="dark">
                 I am a transparent alert. Dark version. How do I look?
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample29"></x-bladewind::code-block>
 
     <h2 id="icons">Other Icons & Avatars</h2>
     <h3>Icons</h3>
@@ -309,21 +338,23 @@
 
     <x-bladewind::alert color="indigo" icon="bell-alert">No more alarm snoozing. Wake up!</x-bladewind::alert>
     <p><x-bladewind::alert color="indigo" shade="dark" icon="currency-dollar">Your BladewindUI subscription is expiring soon. Pay up!</x-bladewind::alert></p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="indigo" icon="bell-alert"&gt;
+    @php
+        $alertExample30 = <<<'HTML'
+            <x-bladewind::alert color="indigo" icon="bell-alert">
                 No more alarm snoozing. Wake up
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="indigo" shade="dark"
-                icon="currency-dollar"&gt;
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample30"></x-bladewind::code-block>
+    @php
+        $alertExample31 = <<<'HTML'
+            <x-bladewind::alert color="indigo" shade="dark"
+                icon="currency-dollar">
                 Your BladewindUI subscription is expiring soon. Pay up!
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample31"></x-bladewind::code-block>
     <p>
         If the default icon size does not suit your needs, you can modify the css of the icon by setting
         the <code class="inline text-red-500">icon_avatar_css</code> attribute to your preferred TailwindCSS classes.
@@ -335,17 +366,18 @@
             avoid losing your information.
         </x-bladewind::alert>
     </p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="cyan" shade="dark"
+    @php
+        $alertExample32 = <<<'HTML'
+            <x-bladewind::alert color="cyan" shade="dark"
                 icon="currency-dollar"
-                 icon_avatar_css="!h-16 !w-16 opacity-60"&gt;
-                &lt;div&gt;&lt;strong&gt;Subscription overdue&lt;/strong&gt;&lt;/div&gt;
+                 icon_avatar_css="!h-16 !w-16 opacity-60">
+                <div><strong>Subscription overdue</strong></div>
                 Your BladewindUI subscription is overdue by 3 months. Please pay
                 before the 30th of this month to avoid losing your information.
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample32"></x-bladewind::code-block>
     <h3>Avatars</h3>
     <p>
         It is possible to use avatars instead of icons to spice the alerts up a bit. The avatar is displayed using the BladewindUI <a href="/component/avatar">Avatar</a> component.
@@ -355,14 +387,15 @@
             Jane has been added to your friends list
         </x-bladewind::alert>
     </p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="violet" shade="dark"
-                avatar="/assets/images/issah.jpg"&gt;
+    @php
+        $alertExample33 = <<<'HTML'
+            <x-bladewind::alert color="violet" shade="dark"
+                avatar="/assets/images/issah.jpg">
                 Jane has been added to your friends list
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample33"></x-bladewind::code-block>
     <p>
         The default avatar size used in the alert is <code class="inline">tiny</code>. Other sizes are available <a href="/component/avatar">here</a> and can be changed by
         setting the <code class="inline text-red-500">size</code> attribute of the component. This attribute will only take effect when using an avatar.
@@ -375,22 +408,23 @@
             <div class="text-sm opacity-70">2 days ago</div>
         </x-bladewind::alert>
     </p>
-    <pre class="language-markup line-numbers" data-lines="1">
-        <code>
-            &lt;x-bladewind::alert color="cyan"
+    @php
+        $alertExample34 = <<<'HTML'
+            <x-bladewind::alert color="cyan"
                 shade="dark"
                 avatar="/images/...jpg"
                 size="big"
-                show_ring="true"&gt;
+                show_ring="true">
 
-                &lt;div&gt;&lt;strong&gt;New friend request&lt;/strong&gt;&lt;/div&gt;
+                <div><strong>New friend request</strong></div>
                 Jane C. Doe wants to connect as a friend in
                 your professional network.
-                &lt;div class="text-sm opacity-70"&gt;2 days ago&lt;/div&gt;
+                <div class="text-sm opacity-70">2 days ago</div>
 
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$alertExample34"></x-bladewind::code-block>
     <p>
     <div class="text-center">
         <x-bladewind::dropmenu trigger="bell-alert-icon" trigger_css="bg-cyan-500 rounded-full text-white p-2 !h-10 !w-10" hide_after_click="false">
@@ -503,9 +537,9 @@
     </x-bladewind::table>
 
     <h3>Alert with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::alert
+    @php
+        $alertExample35 = <<<'HTML'
+            <x-bladewind::alert
                 type="warning"
                 shade="dark"
                 show_close_icon="false"
@@ -516,11 +550,12 @@
                 show_ring="true"
                 avatar="/assets/images/me.jpg"
                 size="small"
-                class="rounded-lg shadow-sm"&gt;
+                class="rounded-lg shadow-sm">
                 Stay safe. Wash your hands for 20 seconds
-            &lt;/x-bladewind::alert&gt;
-        </code>
-    </pre>
+            </x-bladewind::alert>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$alertExample35"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > alert.blade.php</code>

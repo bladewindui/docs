@@ -5,11 +5,12 @@
 
     <p>Tags, sometimes referred to as labels allow you to logically group items or indicate statuses of items.  You can also use tags to list selections. They are very simple to use.</p>
     <p><x-bladewind::tag label="pending" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::tag label="pending"  /&gt;
-        </code>
-    </pre>
+    @php
+        $tagExample1 = <<<'HTML'
+            <x-bladewind::tag label="pending"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$tagExample1"></x-bladewind::code-block>
     <h2 id="faint">Faint Coloured</h2>
 
     <p>The BladewindUI tag component allows you to specify different colours. The tags by default are faint in colour with blue being the default colour.
@@ -29,16 +30,18 @@
         <x-bladewind::tag label="indigo" color="indigo" /> &nbsp;
         <x-bladewind::tag label="fuchsia" color="fuchsia" /> &nbsp;
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tag label="pending" color="color-name" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-          &lt;x-bladewind::tag label="pending" color="pink" /&gt;
-        </code>
-    </pre>
+    @php
+        $tagExample2 = <<<'HTML'
+            <x-bladewind::tag label="pending" color="color-name" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tagExample2"></x-bladewind::code-block>
+    @php
+        $tagExample3 = <<<'HTML'
+            <x-bladewind::tag label="pending" color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tagExample3"></x-bladewind::code-block>
 
     <h2 id="dark">Dark Coloured</h2>
     <p>Dark colours in this case have nothing to do with dark mode. These are just a deeper shade of the tag colours. You can get darker shaded tags by setting <code class="inline text-red-500">shade="dark"</code> </p>
@@ -57,16 +60,18 @@
         <x-bladewind::tag label="indigo" shade="dark" color="indigo" /> &nbsp;
         <x-bladewind::tag label="fuchsia" shade="dark" color="fuchsia" /> &nbsp;
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tag label="pending" shade="dark" color="color-name" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tag label="pending" shade="dark" color="purple" /&gt;
-        </code>
-    </pre>
+    @php
+        $tagExample4 = <<<'HTML'
+            <x-bladewind::tag label="pending" shade="dark" color="color-name" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tagExample4"></x-bladewind::code-block>
+    @php
+        $tagExample5 = <<<'HTML'
+            <x-bladewind::tag label="pending" shade="dark" color="purple" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tagExample5"></x-bladewind::code-block>
 
     <h2 id="closable">With Close Icons</h2>
     <p>
@@ -74,16 +79,17 @@
     To activate close icons, set <code class="inline text-red-500">can_close="true"</code>. The default action when the close icon is clicked is to remove the tag that was clicked.
     </p>
     <p><x-bladewind::tag label="pending" can_close="true" />  &nbsp;  <x-bladewind::tag label="pending" can_close="true" color="pink" /></p>
-    <pre class="language-markup line-numbers" data-line="2,5">
-        <code>
-            &lt;x-bladewind::tag label="pending"
-                can_close="true" /&gt;
+    @php
+        $tagExample6 = <<<'HTML'
+            <x-bladewind::tag label="pending"
+                can_close="true" />
 
-            &lt;x-bladewind::tag label="pending"
+            <x-bladewind::tag label="pending"
                 can_close="true"
-                color="pink" /&gt;
-        </code>
-    </pre>
+                color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,5" :code="$tagExample6"></x-bladewind::code-block>
 
     <p>
     The default action when the close icon is clicked is to remove the tag that was clicked.
@@ -97,23 +103,24 @@
         <x-bladewind::tag label="accounting" can_close="true" color="pink" class="a1002"  onclick="alert('you clicked on '+ dom_el('.a1002').innerText)" />
     </p>
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::tag
+    @php
+        $tagExample7 = <<<'HTML'
+            <x-bladewind::tag
                 label="marketing"
                 can_close="true"
                 add_id_prefix="false"
                 id="a1001"
-                onclick="alert('you clicked on '+ dom_el('#a1001').innerText)" /&gt;
+                onclick="alert('you clicked on '+ dom_el('#a1001').innerText)" />
 
-            &lt;x-bladewind::tag
+            <x-bladewind::tag
                 label="accounting"
                 can_close="true"
                 color="pink"
                 class="a1002"
-                onclick="alert('you clicked on '+ dom_el('.a1002').innerText)" /&gt;
-        </code>
-    </pre>
+                onclick="alert('you clicked on '+ dom_el('.a1002').innerText)" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$tagExample7"></x-bladewind::code-block>
     <h2 id="tiny">Tiny Tags</h2>
     <p>
         Sometimes you need to display tags as hints. For example in a menu bar you may want users to know which features are new by displaying a colourful but tiny <em>new</em> tag next to each new menu item.
@@ -123,17 +130,20 @@
     <p><x-bladewind::tag label="just added" tiny="true" color="pink" />  &nbsp;
         <x-bladewind::tag label="new" tiny="true" color="purple" shade="dark" uppercasing="false" />
     </p>
-    <pre class="language-markup line-numbers" data-line="4,6">
-        <code>
-            &lt;x-bladewind::tag label="just added" tiny="true" color="pink" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-line="4,6">
-        <code>&lt;x-bladewind::tag label="new" tiny="true" color="purple"
-            shade="dark"
-            uppercasing="false"/&gt;
-        </code>
-    </pre>
+    @php
+        $tagExample8 = <<<'HTML'
+            <x-bladewind::tag label="just added" tiny="true" color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,6" :code="$tagExample8"></x-bladewind::code-block>
+    @php
+        $tagExample9 = <<<'HTML'
+            <x-bladewind::tag label="new" tiny="true" color="purple"
+                        shade="dark"
+                        uppercasing="false"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,6" :code="$tagExample9"></x-bladewind::code-block>
 
     <h2 id="rounded">Rounded Tags</h2>
     <p>
@@ -141,33 +151,35 @@
         Yes you can!. To make tags rounded set <code class="inline text-red-500">rounded="true"</code>.
     </p>
     <p><x-bladewind::tag label="pending" rounded="true" />  &nbsp;  <x-bladewind::tag label="pending" can_close="true" color="pink" rounded="true" /></p>
-    <pre class="language-markup line-numbers" data-line="2,5">
-        <code>
-            &lt;x-bladewind::tag label="pending"
-                rounded="true" /&gt;
+    @php
+        $tagExample10 = <<<'HTML'
+            <x-bladewind::tag label="pending"
+                rounded="true" />
 
-            &lt;x-bladewind::tag label="pending"
+            <x-bladewind::tag label="pending"
                 can_close="true"
                 rounded="true"
-                color="pink" /&gt;
-        </code>
-    </pre>
+                color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,5" :code="$tagExample10"></x-bladewind::code-block>
     <h2 id="outline">Outline Tags</h2>
     <p>
         What if you prefer to have no background colours on your tags. Just a border outline with your chosen colour. Simply set <code class="inline text-red-500">outline="true"</code>.
         The outline border colour is also affected by the shade you set. So light shades have a lighter outline. Dark shades have a darker outline.
     </p>
     <p><x-bladewind::tag label="pending" outline="true" color="pink" />  &nbsp;  <x-bladewind::tag label="pending" can_close="true" color="pink" outline="true" shade="dark" /></p>
-    <pre class="language-markup line-numbers" data-line="4,6">
-        <code>
-            &lt;x-bladewind::tag label="pending" outline="true" color="pink" /&gt;
+    @php
+        $tagExample11 = <<<'HTML'
+            <x-bladewind::tag label="pending" outline="true" color="pink" />
 
-            &lt;x-bladewind::tag label="pending" can_close="true"
+            <x-bladewind::tag label="pending" can_close="true"
                 outline="true"
                 color="pink"
-                shade="dark" /&gt;
-        </code>
-    </pre>
+                shade="dark" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4,6" :code="$tagExample11"></x-bladewind::code-block>
     <h2 id="selectable">Selectable Tags</h2>
     <p>
         Selectable tags allow you to use tags in forms. You can think of them in this case as a different kind of checkboxes.
@@ -199,25 +211,26 @@
             <x-bladewind::tag label="c-sharp" value="cs" />
         </x-bladewind::tags>
     </div>
-    <pre class="language-markup line-numbers" data-line="1,3,5">
-        <code>
-            &lt;x-bladewind::tags
+    @php
+        $tagExample12 = <<<'HTML'
+            <x-bladewind::tags
                 color="orange"
                 name="stack"
                 required="true"
                 max="3"
                 error_message="You can select only up to 3 tech stacks"
-                error_heading="Check selection!"&gt;
+                error_heading="Check selection!">
 
-                &lt;x-bladewind::tag label="laravel" value="laravel" /&gt;
-                &lt;x-bladewind::tag label="javascript" value="js" /&gt;
-                &lt;x-bladewind::tag label="node js" value="node js" /&gt;
-                &lt;x-bladewind::tag label="tailwindcss" value="tailwind" /&gt;
-                &lt;x-bladewind::tag label="c-sharp" value="cs" /&gt;
+                <x-bladewind::tag label="laravel" value="laravel" />
+                <x-bladewind::tag label="javascript" value="js" />
+                <x-bladewind::tag label="node js" value="node js" />
+                <x-bladewind::tag label="tailwindcss" value="tailwind" />
+                <x-bladewind::tag label="c-sharp" value="cs" />
 
-            &lt;/x-bladewind::tags&gt;
-        </code>
-    </pre>
+            </x-bladewind::tags>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1,3,5" :code="$tagExample12"></x-bladewind::code-block>
     <br />
     <p>
         Note the tags are wrapped in a parent <code class="inline">&lt;x-bladewind::tags&gt;...&lt;/x-bladewind::tags&gt;</code> component.
@@ -241,16 +254,17 @@
             <x-bladewind::tag label="google cloud" value="google" />
         </x-bladewind::tags>
     </div>
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-            &lt;x-bladewind::tags color="green" name="host"&gt;
-                &lt;x-bladewind::tag label="digital ocean" value="do" /&gt;
-                &lt;x-bladewind::tag label="amazon web services" value="aws" /&gt;
-                &lt;x-bladewind::tag label="microsoft azure" value="azure" /&gt;
-                &lt;x-bladewind::tag label="google cloud" value="google" /&gt;
-            &lt;/x-bladewind::tags&gt;
-        </code>
-    </pre>
+    @php
+        $tagExample13 = <<<'HTML'
+            <x-bladewind::tags color="green" name="host">
+                <x-bladewind::tag label="digital ocean" value="do" />
+                <x-bladewind::tag label="amazon web services" value="aws" />
+                <x-bladewind::tag label="microsoft azure" value="azure" />
+                <x-bladewind::tag label="google cloud" value="google" />
+            </x-bladewind::tags>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$tagExample13"></x-bladewind::code-block>
     <br /> <b>What are your interests?</b>
     <div class="pb-8">
         <x-bladewind::tags color="gray" name="interests">
@@ -260,16 +274,17 @@
             <x-bladewind::tag label="software engineering" value="software" />
         </x-bladewind::tags>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tags color="gray" name="interests"&gt;
-                &lt;x-bladewind::tag label="artificial intelligence" value="AI" /&gt;
-                &lt;x-bladewind::tag label="blockchain" value="blockchain" /&gt;
-                &lt;x-bladewind::tag label="cryptocurrency" value="crypto" /&gt;
-                &lt;x-bladewind::tag label="software engineering" value="software" /&gt;
-            &lt;/x-bladewind::tags&gt;
-        </code>
-    </pre>
+    @php
+        $tagExample14 = <<<'HTML'
+            <x-bladewind::tags color="gray" name="interests">
+                <x-bladewind::tag label="artificial intelligence" value="AI" />
+                <x-bladewind::tag label="blockchain" value="blockchain" />
+                <x-bladewind::tag label="cryptocurrency" value="crypto" />
+                <x-bladewind::tag label="software engineering" value="software" />
+            </x-bladewind::tags>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tagExample14"></x-bladewind::code-block>
     <br />
     <b>What is your gender?</b>
     <div class="pb-8">
@@ -280,25 +295,26 @@
             <x-bladewind::tag label="don't ask"  value="shoosh" />
         </x-bladewind::tags>
     </div>
-    <pre class="language-markup line-numbers" data-line="1,5">
-        <code>
-            &lt;x-bladewind::tags
+    @php
+        $tagExample15 = <<<'HTML'
+            <x-bladewind::tags
                 color="blue"
                 name="gender"
                 max="1"
                 rounded="true"
                 class="space-x-2"
                 error_message="You can select just one gender"
-                error_heading="Yoh!"&gt;
+                error_heading="Yoh!">
 
-                &lt;x-bladewind::tag label="Male" value="male" /&gt;
-                &lt;x-bladewind::tag label="female" value="female" /&gt;
-                &lt;x-bladewind::tag label="other" value="other" /&gt;
-                &lt;x-bladewind::tag label="don't ask" value="shoosh" /&gt;
+                <x-bladewind::tag label="Male" value="male" />
+                <x-bladewind::tag label="female" value="female" />
+                <x-bladewind::tag label="other" value="other" />
+                <x-bladewind::tag label="don't ask" value="shoosh" />
 
-            &lt;/x-bladewind::tags&gt;
-        </code>
-    </pre>
+            </x-bladewind::tags>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1,5" :code="$tagExample15"></x-bladewind::code-block>
     <br />
     <b>What do you do on friday evenings?</b>
     <p>
@@ -313,23 +329,24 @@
             <x-bladewind::tag label="sleeeeep" value="sleep" />
         </x-bladewind::tags>
     </div>
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;x-bladewind::tags
+    @php
+        $tagExample16 = <<<'HTML'
+            <x-bladewind::tags
                 color="red"
                 name="fridays"
                 class="space-x-2"
-                selected_value="hangout,club,sleep"&gt;
+                selected_value="hangout,club,sleep">
 
-                &lt;x-bladewind::tag label="hangout with friends" value="hangout" /&gt;
-                &lt;x-bladewind::tag label="go clubbing" value="club" /&gt;
-                &lt;x-bladewind::tag label="watch movies" value="movies" /&gt;
-                &lt;x-bladewind::tag label="just chill" value="chill" /&gt;
-                &lt;x-bladewind::tag label="sleeeeep" value="sleep" /&gt;
+                <x-bladewind::tag label="hangout with friends" value="hangout" />
+                <x-bladewind::tag label="go clubbing" value="club" />
+                <x-bladewind::tag label="watch movies" value="movies" />
+                <x-bladewind::tag label="just chill" value="chill" />
+                <x-bladewind::tag label="sleeeeep" value="sleep" />
 
-            &lt;/x-bladewind::tags&gt;
-        </code>
-    </pre>
+            </x-bladewind::tags>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$tagExample16"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Tag component.</p>
@@ -492,9 +509,9 @@
     </x-bladewind::table>
 
     <h3 class="pb-2 ">Tags with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tags
+    @php
+        $tagExample17 = <<<'HTML'
+            <x-bladewind::tags
                 name="stack"
                 color="orange"
                 required="true"
@@ -504,13 +521,14 @@
                 uppercasing="false"
                 selected_value="laravel,js"
                 error_message="You can select only up to 3 tech stacks"
-                error_heading="Check selection!"&gt;
-        </code>
-    </pre>
+                error_heading="Check selection!">
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tagExample17"></x-bladewind::code-block>
     <h3 class="pb-2 ">Tag with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tag
+    @php
+        $tagExample18 = <<<'HTML'
+            <x-bladewind::tag
                 label="accounting"
                 can_close="true"
                 color="pink"
@@ -522,9 +540,10 @@
                 shade="dark"
                 tiny="false"
                 uppercasing="false"
-                onclick="alert('you clicked on '+ dom_el('.a1002').innerText)" /&gt;
-        </code>
-    </pre>
+                onclick="alert('you clicked on '+ dom_el('.a1002').innerText)" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tagExample18"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source files for this component are available in <code class="inline">resources > views > components > bladewind > tags.blade.php</code>,

@@ -26,33 +26,34 @@
         </x-bladewind::modal>
     </p>
 
-    <pre class="language-markup line-numbers" data-line="2,3,8,13,19">
-        <code>
-            &lt;x-bladewind::button
+    @php
+        $modalExample1 = <<<'HTML'
+            <x-bladewind::button
                 show_close_icon="true"
-                onclick="showModal('tnc-agreement')"&gt;
+                onclick="showModal('tnc-agreement')">
                 Basic modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::button
-                onclick="showModal('tnc-agreement-titled')"&gt;
+            <x-bladewind::button
+                onclick="showModal('tnc-agreement-titled')">
                 Basic modal with a title
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
-                name="tnc-agreement"&gt;
+            <x-bladewind::modal
+                name="tnc-agreement">
                 Please agree to the terms and conditions of
                 the agreement before proceeding.
-            &lt;/x-bladewind::modal&gt;
+            </x-bladewind::modal>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 name="tnc-agreement-titled"
-                title="Agree or Disagree"&gt;
+                title="Agree or Disagree">
                 Please agree to the terms and conditions of
                 the agreement before proceeding.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3,8,13,19" :code="$modalExample1"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">
@@ -78,21 +79,22 @@
     <p>
         <x-bladewind::button onclick="showModal('info')">Info Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('info')"&gt;
+    @php
+        $modalExample2 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('info')">
                 Info Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 type="info"
                 title="General Info"
-                name="info"&gt;
+                name="info">
                 We really think you should buy some Bitcoin
                 despite it's ups and dowms. What sayeth thou?
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample2"></x-bladewind::code-block>
     <h3 id="error">Error Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">type="error"</code> on the modal component. The default icon changes to a red exclamation mark.
@@ -100,20 +102,21 @@
     <p>
         <x-bladewind::button onclick="showModal('error')">Error Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('error')"&gt;
+    @php
+        $modalExample3 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('error')">
                 Error Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 type="error"
                 title="Delete Not Allowed"
-                name="error"&gt;
+                name="error">
                 You do not have permissions to delete this user.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample3"></x-bladewind::code-block>
     <h3 id="warning">Warning Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">type="warning"</code> on the modal component. The default icon changes to a yellow bell icon.
@@ -121,21 +124,22 @@
     <p>
         <x-bladewind::button onclick="showModal('warning')">Warning Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('warning')"&gt;
+    @php
+        $modalExample4 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('warning')">
                 Warning Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 type="warning"
                 title="First warning"
-                name="warning"&gt;
+                name="warning">
                 Hmmm...This is your first warning.
                 Two more warnings and you are off this platform.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample4"></x-bladewind::code-block>
     <h3 id="success">Success Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">type="success"</code> on the modal component. The default icon changes to a green thumbs up icon.
@@ -144,20 +148,21 @@
         <x-bladewind::button onclick="showModal('success')">Success Modal</x-bladewind::button>
     </p>
 
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('success')"&gt;
-                Success Modal
-            &lt;/x-bladewind::button&gt;
+    @php
+        $modalExample5 = <<<'HTML'
+             <x-bladewind::button onclick="showModal('success')">
+                 Success Modal
+             </x-bladewind::button>
 
-           &lt;x-bladewind::modal
-                type="success"
-                title="User Deleted"
-                name="success"&gt;
-                Yayy.. User deleted successfully
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            <x-bladewind::modal
+                 type="success"
+                 title="User Deleted"
+                 name="success">
+                 Yayy.. User deleted successfully
+             </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample5"></x-bladewind::code-block>
     <h3 id="stretched">Stretched Action Buttons</h3>
     <p>
         Some users prefer to have their action buttons span the entire width of the modal. To achieve this simply set <code class="inline text-red-500">stretched_action_buttons="true"</code> on the modal component.
@@ -166,21 +171,22 @@
         <x-bladewind::button onclick="showModal('stretched')">Stretched Buttons Modal</x-bladewind::button>
     </p>
 
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('stretched')"&gt;
-                Success Modal
-            &lt;/x-bladewind::button&gt;
+    @php
+        $modalExample6 = <<<'HTML'
+             <x-bladewind::button onclick="showModal('stretched')">
+                 Success Modal
+             </x-bladewind::button>
 
-           &lt;x-bladewind::modal
-                title="Stretched Buttons"
-                stretched_action_buttons="true"
-                name="stretched"&gt;
-                The action buttons in this modal have been stretched.
-                This means each button gets its own line. Cool right?
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            <x-bladewind::modal
+                 title="Stretched Buttons"
+                 stretched_action_buttons="true"
+                 name="stretched">
+                 The action buttons in this modal have been stretched.
+                 This means each button gets its own line. Cool right?
+             </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample6"></x-bladewind::code-block>
 
     <h2 id="blur-intensity">Backdrop Blur Intensity</h2>
     <p>
@@ -197,21 +203,22 @@
         <x-bladewind::button onclick="showModal('omgblur')">omg blur</x-bladewind::button>
     </div>
 
-    <pre class="language-markup line-numbers" data-line="7">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('noblur')"&gt;
-                No Blur
-            &lt;/x-bladewind::button&gt;
+    @php
+        $modalExample7 = <<<'HTML'
+             <x-bladewind::button onclick="showModal('noblur')">
+                 No Blur
+             </x-bladewind::button>
 
-           &lt;x-bladewind::modal
-                title="See Through Me"
-                blur_size="none"
-                name="noblur"&gt;
-                The backdrop of this modal is not blurred.
-                You can see all the content behind the backdrop.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            <x-bladewind::modal
+                 title="See Through Me"
+                 blur_size="none"
+                 name="noblur">
+                 The backdrop of this modal is not blurred.
+                 You can see all the content behind the backdrop.
+             </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="7" :code="$modalExample7"></x-bladewind::code-block>
 
     <x-bladewind::modal type="info" title="General Info" name="info">
         There will be eclipse of the moon every couple of years. Just keep looking up, you might see one in action.
@@ -287,22 +294,23 @@
     <p>
         <x-bladewind::button onclick="showModal('iconic')">Custom Icon Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6,7">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('iconic')"&gt;
+    @php
+        $modalExample8 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('iconic')">
                 Custom Icon Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 icon="folder-arrow-down"
                 icon_css="bg-gray-500 text-white p-2.5 rounded-full"
                 title="Large File Size"
-                name="info"&gt;
+                name="info">
                 The file you are trying to download is very big.
                 Do you still want to continue with the download?
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6,7" :code="$modalExample8"></x-bladewind::code-block>
     <p>
         You may want to use a custom icon but with one of the predefined states. For example, you may want to display a success modal but you don't like the default <strong>check-circle</strong> icon used.
         It is possible to use a custom icon with any of the predefined states. Simply set both the <code class="inline text-red-500">type</code> and <code class="inline text-red-500">icon</code> attributes.
@@ -314,23 +322,24 @@
         <div><x-bladewind::button onclick="showModal('iconic-success')">Success</x-bladewind::button></div>
     </div>
     <br />
-    <pre class="lang-markup line-numbers" data-line="8,10">
-        <code>
-            &lt;x-bladewind::button
-                onclick="showModal('iconic-info')"&gt;
+    @php
+        $modalExample9 = <<<'HTML'
+            <x-bladewind::button
+                onclick="showModal('iconic-info')">
                 Info
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 title="Large File Size"
                 type="warning"
                 name="iconic-warning"
-                icon="folder-arrow-down"&gt;
+                icon="folder-arrow-down">
                 The file you are trying to download is very big.
                 Do you still want to continue with the download?
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="8,10" :code="$modalExample9"></x-bladewind::code-block>
     <h2 id="sizes">Different Sizes</h2>
     <p>
         <x-bladewind::alert show_close_icon="false">On mobile the modal has just one size</x-bladewind::alert>
@@ -347,20 +356,21 @@
     <p>
         <x-bladewind::button onclick="showModal('tiny-modal')">Tiny Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('tiny-modal')"&gt;
+    @php
+        $modalExample10 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('tiny-modal')">
                 Tiny Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 size="tiny"
                 title="Tiny Modal"
-                name="tiny-modal"&gt;
+                name="tiny-modal">
                 I am the tiniest in the modal family. Don't hate.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample10"></x-bladewind::code-block>
     <h3 id="small">Small Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">size="small"</code> on the modal component.
@@ -368,20 +378,21 @@
     <p>
         <x-bladewind::button onclick="showModal('small-modal')">Small Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('small-modal')"&gt;
+    @php
+        $modalExample11 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('small-modal')">
                 Small Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 size="small"
                 title="Small Modal"
-                name="small-modal"&gt;
+                name="small-modal">
                 I am the smallest in the modal family. Don't hate.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample11"></x-bladewind::code-block>
     <h3 id="medium">Medium Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">size="medium"</code> on the modal component.
@@ -390,21 +401,22 @@
     <p>
         <x-bladewind::button onclick="showModal('medium-modal')">Medium Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="7">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('medium-modal')"&gt;
+    @php
+        $modalExample12 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('medium-modal')">
                 Medium Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 title="Medium Modal"
                 size="modal"
-                name="medium-modal"&gt;
+                name="medium-modal">
                 I am the medium sized modal.
                 Also the default if you do not set a size.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="7" :code="$modalExample12"></x-bladewind::code-block>
     <h3 id="medium">Big Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">size="big"</code> on the modal component.
@@ -413,21 +425,22 @@
     <p>
         <x-bladewind::button onclick="showModal('big-modal')">Big Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="7">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('big-modal')"&gt;
+    @php
+        $modalExample13 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('big-modal')">
                 Big Modal
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 title="Big Modal"
                 size="modal"
-                name="big-modal"&gt;
+                name="big-modal">
                 I am the medium sized modal.
                 Also the default if you do not set a size.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="7" :code="$modalExample13"></x-bladewind::code-block>
     <h3 id="large">Large Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">size="large"</code> on the modal component.
@@ -435,21 +448,22 @@
     <p>
         <x-bladewind::button onclick="showModal('large-modal')">Large Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('large-modal')"&gt;
-                Large Modal
-            &lt;/x-bladewind::button&gt;
+    @php
+        $modalExample14 = <<<'HTML'
+             <x-bladewind::button onclick="showModal('large-modal')">
+                 Large Modal
+             </x-bladewind::button>
 
-           &lt;x-bladewind::modal
-                size="large"
-                title="Large Modal"
-                name="large-modal"&gt;
-                I am the large modal. If I am not large enough to contain
-                your needs, check out my xl brother.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            <x-bladewind::modal
+                 size="large"
+                 title="Large Modal"
+                 name="large-modal">
+                 I am the large modal. If I am not large enough to contain
+                 your needs, check out my xl brother.
+             </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample14"></x-bladewind::code-block>
     <h3 id="xl">XL Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">size="xl"</code> on the modal component.
@@ -457,21 +471,22 @@
     <p>
         <x-bladewind::button onclick="showModal('xl-modal')">xl Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('xl-modal')"&gt;
-                Xl Modal
-            &lt;/x-bladewind::button&gt;
+    @php
+        $modalExample15 = <<<'HTML'
+             <x-bladewind::button onclick="showModal('xl-modal')">
+                 Xl Modal
+             </x-bladewind::button>
 
-           &lt;x-bladewind::modal
-                size="xl"
-                title="XL Modal"
-                name="xl-modal"&gt;
-                I am the extra large modal. How do you like my size now.
-                You could fill me up with some much needed content.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            <x-bladewind::modal
+                 size="xl"
+                 title="XL Modal"
+                 name="xl-modal">
+                 I am the extra large modal. How do you like my size now.
+                 You could fill me up with some much needed content.
+             </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample15"></x-bladewind::code-block>
     <h3 id="omg">OMG Modal a.k.a Full Width Modal</h3>
     <p>
         This requires that you set <code class="inline text-red-500">size="omg"</code> on the modal component.
@@ -479,23 +494,24 @@
     <p>
         <x-bladewind::button onclick="showModal('omg-modal')">omg Modal</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('omg-modal')"&gt;
-                OMG Modal
-            &lt;/x-bladewind::button&gt;
+    @php
+        $modalExample16 = <<<'HTML'
+             <x-bladewind::button onclick="showModal('omg-modal')">
+                 OMG Modal
+             </x-bladewind::button>
 
-           &lt;x-bladewind::modal
-                size="omg"
-                title="Full Width Modal"
-                name="omg-modal"&gt;
-                I am the full width modal. My nickname is OMG.
-                I take up the entire screen. I do not know why
-                you will need a modal like this but well, like they say,
-                it is better to have and not use that need and not have.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            <x-bladewind::modal
+                 size="omg"
+                 title="Full Width Modal"
+                 name="omg-modal">
+                 I am the full width modal. My nickname is OMG.
+                 I take up the entire screen. I do not know why
+                 you will need a modal like this but well, like they say,
+                 it is better to have and not use that need and not have.
+             </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample16"></x-bladewind::code-block>
     <h3>Modal Size Table</h3>
     <x-bladewind::table>
         <x-slot:header>
@@ -569,39 +585,41 @@
     <p>
         <x-bladewind::button onclick="showModal('no-cancel')">No cancel button</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="8">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('no-cancel')"&gt;
+    @php
+        $modalExample17 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('no-cancel')">
                 No cancel button
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 title="No Cancel Button"
                 name="no-cancel"
-                cancel_button_label=""&gt;
+                cancel_button_label="">
                 I have no cancel button. Just okay and that is fine.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="8" :code="$modalExample17"></x-bladewind::code-block>
     <h3 id="no-okay">No Okay Button</h3>
     <p>
         <x-bladewind::button onclick="showModal('no-okay')" class="mt-2 sm:mt-0">No okay button</x-bladewind::button>
     </p>
-    <pre class="language-markup line-numbers" data-line="8">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('no-okay')"&gt;
+    @php
+        $modalExample18 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('no-okay')">
                 No okay button
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 title="No Okay Button"
                 name="no-okay"
-                ok_button_label=""&gt;
+                ok_button_label="">
                 I have no okay button.
                 Just cancel this thing and let's all go home.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="8" :code="$modalExample18"></x-bladewind::code-block>
 
     <h3 id="no-buttons">Hiding Both Action Buttons</h3>
     <p>
@@ -617,20 +635,21 @@
         I have no action buttons. Only the backdrop can close me now.
     </x-bladewind::modal>
 
-    <pre class="language-markup line-numbers" data-line="6">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('no-action-buttons')"&gt;
+    @php
+        $modalExample19 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('no-action-buttons')">
                 No action buttons
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 title="No Action Buttons"
                 name="no-action-buttons"
-                show_action_buttons="false"&gt;
+                show_action_buttons="false">
                 I have no action buttons. Only the backdrop can close me now.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6" :code="$modalExample19"></x-bladewind::code-block>
     <h3 id="btn-actions">Action Button Actions</h3>
     <p>
         By default both action buttons close the modal. It is possible to change these default actions. To achieve this you will need to
@@ -653,13 +672,13 @@
         cancel_button_label="don't delete">
         Are you sure you want to delete this user? This action cannot be undone.
     </x-bladewind::modal>
-    <pre class="language-markup line-numbers" data-line="9-11">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('custom-actions')"&gt;
+    @php
+        $modalExample20 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('custom-actions')">
                 CLick me for custom actions
-            &lt;/x-bladewind::button&gt;
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 size="big"
                 type="warning"
                 title="Confirm User Deletion"
@@ -668,11 +687,12 @@
                 close_after_action="false"
                 name="custom-actions"
                 ok_button_label="Yes, delete"
-                cancel_button_label="don't delete"&gt;
+                cancel_button_label="don't delete">
                 Are you sure you want to delete this user? This action cannot be undone.
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="9-11" :code="$modalExample20"></x-bladewind::code-block>
 
     <p>
         You will notice from the custom actions example above that we introduced the attribute <code class="inline text-red-500">close_after_action="false"</code>.
@@ -725,33 +745,34 @@
 
     </x-bladewind::modal>
 
-    <pre class="language-markup line-numbers" data-line="7">
-        <code>
-            &lt;x-bladewind::button onclick="showModal('lock-screen')"&gt;
-                &lt;svg&gt;...&lt;/svg&gt; lock the screen
-            &lt;/x-bladewind::button&gt;
+    @php
+        $modalExample21 = <<<'HTML'
+            <x-bladewind::button onclick="showModal('lock-screen')">
+                <svg>...</svg> lock the screen
+            </x-bladewind::button>
 
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 show_action_buttons="false"
                 backdrop_can_close="false"
-                name="lock-screen"&gt;
+                name="lock-screen">
 
-                    &lt;div class="flex mx-auto justify-center my-2"&gt;
-                        &lt;x-bladewind.avatar class="" image="/path/to/the/image/file" /&gt;
-                    &lt;/div&gt;
-                    &lt;div class="my-4"&gt;
+                    <div class="flex mx-auto justify-center my-2">
+                        <x-bladewind.avatar class="" image="/path/to/the/image/file" />
+                    </div>
+                    <div class="my-4">
                         You will need to unlock the screen to continue using this application.
-                    &lt;/div&gt;
+                    </div>
 
-                    &lt;x-bladewind.input
+                    <x-bladewind.input
                         placeholder="Enter your password to unlock"
-                        type="password" /&gt;
+                        type="password" />
 
-                    &lt;x-bladewind::button class="w-full"&gt;Check password&lt;/x-bladewind::button&gt;
+                    <x-bladewind::button class="w-full">Check password</x-bladewind::button>
 
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="7" :code="$modalExample21"></x-bladewind::code-block>
 
     <h2 id="forms">Submitting Form Using Action Button</h2>
     <p>
@@ -789,39 +810,41 @@
         }
     </script>
 
-    <pre class="language-markup line-numbers" data-line="5">
-        <code>
+    @php
+        $modalExample22 = <<<'HTML'
             // the modal and its form
-            &lt;x-bladewind::modal
+            <x-bladewind::modal
                 backdrop_can_close="false"
                 name="form-mode"
                 ok_button_action="saveProfile()"
                 ok_button_label="Update"
                 close_after_action="false"
-                &gt;
+                >
 
-                &lt;form method="post" action="" class="profile-form"&gt;
-                    @@csrf
-                    &lt;b class="mt-0"&gt;Edit Your Profile&lt;/b&gt;
-                    &lt;div class="grid grid-cols-2 gap-4 mt-6"&gt;
-                        &lt;x-bladewind::input required="true" name="first_name"
-                            error_message="Please enter your first name" label="First name" /&gt;
+                <form method="post" action="" class="profile-form">
+                    BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERcsrf
+                    <b class="mt-0">Edit Your Profile</b>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <x-bladewind::input required="true" name="first_name"
+                            error_message="Please enter your first name" label="First name" />
 
-                        &lt;x-bladewind::input required="true" name="last_name"
-                             error_message="Please enter your last name" label="Last name" /&gt;
-                    &lt;/div&gt;
-                    &lt;x-bladewind::input required="true" name="email"
-                         error_message="Please enter your email" label="Email address" /&gt;
+                        <x-bladewind::input required="true" name="last_name"
+                             error_message="Please enter your last name" label="Last name" />
+                    </div>
+                    <x-bladewind::input required="true" name="email"
+                         error_message="Please enter your email" label="Email address" />
 
-                    &lt;x-bladewind::input numeric="true" name="mobile" label="Mobile" /&gt;
-                &lt;/form&gt;
+                    <x-bladewind::input numeric="true" name="mobile" label="Mobile" />
+                </form>
 
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+        $modalExample22 = str_replace('BWATSIGNPLACEHOLDER', '@', $modalExample22);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$modalExample22"></x-bladewind::code-block>
 
-    <pre class="language-js line-numbers" data-line="3">
-        <code>
+    @php
+        $modalExample23 = <<<'HTML'
             // the script called by the Update button
             saveProfile = () => {
                 if(validateForm('.profile-form')){
@@ -830,8 +853,9 @@
                     return false;
                 }
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="3" :code="$modalExample23"></x-bladewind::code-block>
     <p>
         The "Update" button from the modal above calls a <code class="inline">saveProfile()</code> Javascript function when it is clicked on
         <code class="inline text-red-500">ok_button_action="saveProfile()"</code>. In the Javascript function, we validate the profile form
@@ -897,75 +921,78 @@
         }
     </script>
 
-    <pre class="language-markup line-numbers" data-line="6,8,23,27,31">
-        <code>
-        // the modal and its form.
-        // take note of the processing and process-complete components
+    @php
+        $modalExample24 = <<<'HTML'
+            // the modal and its form.
+            // take note of the processing and process-complete components
 
-        &lt;x-bladewind::modal
-            backdrop_can_close="false"
-            name="form-mode-ajax"
+            <x-bladewind::modal
+                backdrop_can_close="false"
+                name="form-mode-ajax"
 
-            ok_button_action="saveProfileAjax()"
-            ok_button_label="Update"
-            close_after_action="false"&gt;
+                ok_button_action="saveProfileAjax()"
+                ok_button_label="Update"
+                close_after_action="false">
 
-            &lt;form method="get" action="" class="profile-form-ajax"&gt;
-                @@csrf
-                &lt;b&gt;Edit Your Profile&lt;/b&gt;
-                &lt;div class="grid grid-cols-2 gap-4 mt-6"&gt;
-                    &lt;x-bladewind::input required="true" name="first_name2"
-                        label="First name" error_message="Please enter your first name" /&gt;
-                    &lt;x-bladewind::input required="true" name="last_name2"
-                        label="Last name" error_message="Please enter your last name" /&gt;
-                &lt;/div&gt;
-                &lt;x-bladewind::input required="true" name="email2"
-                        label="Email address" error_message="Please enter your email" /&gt;
-                &lt;x-bladewind::input numeric="true" name="mobile2" label="Mobile" /&gt;
-            &lt;/form&gt;
+                <form method="get" action="" class="profile-form-ajax">
+                    BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERcsrf
+                    <b>Edit Your Profile</b>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <x-bladewind::input required="true" name="first_name2"
+                            label="First name" error_message="Please enter your first name" />
+                        <x-bladewind::input required="true" name="last_name2"
+                            label="Last name" error_message="Please enter your last name" />
+                    </div>
+                    <x-bladewind::input required="true" name="email2"
+                            label="Email address" error_message="Please enter your email" />
+                    <x-bladewind::input numeric="true" name="mobile2" label="Mobile" />
+                </form>
 
-            &lt;x-bladewind::processing
-                name="profile-updating"
-                message="Updating your profile." /&gt;
+                <x-bladewind::processing
+                    name="profile-updating"
+                    message="Updating your profile." />
 
-            &lt;x-bladewind::process-complete
-                name="profile-update-yes"
-                process_completed_as="passed"
-                button_label="Done"
-                button_action="hideModal('form-mode-ajax')"
-                message="Profile updated successfully." /&gt;
+                <x-bladewind::process-complete
+                    name="profile-update-yes"
+                    process_completed_as="passed"
+                    button_label="Done"
+                    button_action="hideModal('form-mode-ajax')"
+                    message="Profile updated successfully." />
 
-        &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+        $modalExample24 = str_replace('BWATSIGNPLACEHOLDER', '@', $modalExample24);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="6,8,23,27,31" :code="$modalExample24"></x-bladewind::code-block>
 
-    <pre class="language-js line-numbers" data-line="3">
-        <code>
-        // the script called by the Update button
-        saveProfileAjax = () => {
-            if(validateForm('.profile-form-ajax')){
-                // show process indicator while you make your ajax call
-                unhide('.profile-updating');
-                hide('.profile-form-ajax');
-                hideModalActionButtons('form-mode-ajax');
-                // make the call
-                makeAjaxCall(serialize('.profile-form-ajax'));
-            } else {
-                return false;
+    @php
+        $modalExample25 = <<<'HTML'
+            // the script called by the Update button
+            saveProfileAjax = () => {
+                if(validateForm('.profile-form-ajax')){
+                    // show process indicator while you make your ajax call
+                    unhide('.profile-updating');
+                    hide('.profile-form-ajax');
+                    hideModalActionButtons('form-mode-ajax');
+                    // make the call
+                    makeAjaxCall(serialize('.profile-form-ajax'));
+                } else {
+                    return false;
+                }
             }
-        }
 
-        makeAjaxCall = (formData) => {
-            // this is a dummy function but your real function
-            // will make a call and post all the data
-            setTimeout(() => {
-                // do these when your ajax call is done saving your data
-                hide('.profile-updating');
-                unhide('.profile-update-yes')
-            }, 5000);
-        }
-        </code>
-    </pre>
+            makeAjaxCall = (formData) => {
+                // this is a dummy function but your real function
+                // will make a call and post all the data
+                setTimeout(() => {
+                    // do these when your ajax call is done saving your data
+                    hide('.profile-updating');
+                    unhide('.profile-update-yes')
+                }, 5000);
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="3" :code="$modalExample25"></x-bladewind::code-block>
     <p>
         The example above follows the same principle as the first, except we submit the form via Ajax.
         When the Update button is clicked the <code class="inline">saveProfileAjax()</code> function is called.
@@ -1015,47 +1042,50 @@
         }
     </script>
 
-    <pre class="line-numbers language-markup" data-line="5,9">
-        <code>
-        // the modal and its form.
-        &lt;x-bladewind::modal
-            backdrop_can_close="false"
-            name="form-mode-simple"
-            ok_button_label=""
-            &gt;
+    @php
+        $modalExample26 = <<<'HTML'
+            // the modal and its form.
+            <x-bladewind::modal
+                backdrop_can_close="false"
+                name="form-mode-simple"
+                ok_button_label=""
+                >
 
-            &lt;form method="get" action="" class="profile-form-simple"
-                  onsubmit="return saveProfileSimple()"&gt;
-                @@csrf
-                &lt;b&gt;Edit Your Profile&lt;/b&gt;
-                &lt;div class="grid grid-cols-2 gap-4 mt-6"&gt;
-                    &lt;x-bladewind::input required="true" name="first_name3"
-                        label="First name" error_message="Please enter your first name" /&gt;
-                    &lt;x-bladewind::input required="true" name="last_name3"
-                        label="Last name" error_message="Please enter your last name" /&gt;
-                &lt;/div&gt;
-                &lt;x-bladewind::input required="true" name="email3"
-                        label="Email address" error_message="Please enter your email" /&gt;
-                &lt;x-bladewind::input numeric="true" name="mobile3"
-                        label="Mobile" /&gt;
-                &lt;x-bladewind::button can_submit="true" class="w-full mt-2"&gt;
-                    Update Profile
-                &lt;/x-bladewind::button&gt;
-            &lt;/form&gt;
-        &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
-    <pre class="line-numbers language-js" data-line="4">
-        <code>
-        // the script called by the Update button
-        saveProfileSimple = () => {
-            if(validateForm('.profile-form-simple')){
-                return domEl('.profile-form-simple').submit();
+                <form method="get" action="" class="profile-form-simple"
+                      onsubmit="return saveProfileSimple()">
+                    BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERcsrf
+                    <b>Edit Your Profile</b>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <x-bladewind::input required="true" name="first_name3"
+                            label="First name" error_message="Please enter your first name" />
+                        <x-bladewind::input required="true" name="last_name3"
+                            label="Last name" error_message="Please enter your last name" />
+                    </div>
+                    <x-bladewind::input required="true" name="email3"
+                            label="Email address" error_message="Please enter your email" />
+                    <x-bladewind::input numeric="true" name="mobile3"
+                            label="Mobile" />
+                    <x-bladewind::button can_submit="true" class="w-full mt-2">
+                        Update Profile
+                    </x-bladewind::button>
+                </form>
+            </x-bladewind::modal>
+            HTML;
+        $modalExample26 = str_replace('BWATSIGNPLACEHOLDER', '@', $modalExample26);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,9" :code="$modalExample26"></x-bladewind::code-block>
+    @php
+        $modalExample27 = <<<'HTML'
+            // the script called by the Update button
+            saveProfileSimple = () => {
+                if(validateForm('.profile-form-simple')){
+                    return domEl('.profile-form-simple').submit();
+                }
+                return false;
             }
-            return false;
-        }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="4" :code="$modalExample27"></x-bladewind::code-block>
 
     <p>
         The example above sets <code class="text-red-500 inline">ok_button_label=""</code> to hide the Okay button.
@@ -1107,38 +1137,41 @@
         Hey :auth_user, to delete <b>:name</b>, first delete all the pictures they have uploaded
     </x-bladewind::modal>
 
-    <pre class="line-numbers language-markup" data-line="5,9">
-        <code>
-        &lt;x-bladewind::modal
-            name="placeholder-example"
-            title="Confirm"
-            type="error"&gt;
-            Hey :auth_user, to delete &lt;b&gt;:name&lt;/b&gt;,
-            first delete all the pictures they have uploaded
-        &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
-    <pre class="line-numbers language-markup" data-line="12,13">
-        <code>
-&lt;x-bladewind::table&gt;
-    ...
-    &lt;tr&gt;
-        &lt;td>Alfred Rowe&lt;/td&gt;
-        &lt;td>Outsourcing&lt;/td&gt;
-        &lt;td>alfred@therowe.com&lt;/td&gt;
-        &lt;td>
-            &lt;x-bladewind::button
-            size="tiny"
-            color="red"
-            onclick="showModal('placeholder-example', {
-                auth_user: 'mike',
-                name: 'Alfred Rowe'
-            })">Delete&lt;/x-bladewind::button>&lt;/td&gt;
-    &lt;/tr&gt;
-    ...
-&lt;/x-bladewind::table&gt;
-        </code>
-    </pre>
+    @php
+        $modalExample28 = <<<'HTML'
+            <x-bladewind::modal
+                name="placeholder-example"
+                title="Confirm"
+                type="error">
+                Hey :auth_user, to delete <b>:name</b>,
+                first delete all the pictures they have uploaded
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5,9" :code="$modalExample28"></x-bladewind::code-block>
+    @php
+        $modalExample29 = <<<'HTML'
+            <x-bladewind::table>
+                ...
+                <tr>
+                    <td>Alfred Rowe</td>
+                    <td>Outsourcing</td>
+                    <td>alfredBWATSIGNPLACEHOLDERtherowe.com</td>
+                    <td>
+                        <x-bladewind::button
+                        size="tiny"
+                        color="red"
+                        onclick="showModal('placeholder-example', {
+                            auth_user: 'mike',
+                            name: 'Alfred Rowe'
+                        })">Delete</x-bladewind::button></td>
+                </tr>
+                ...
+            </x-bladewind::table>
+            HTML;
+        $modalExample29 = str_replace('BWATSIGNPLACEHOLDER', '@', $modalExample29);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="12,13" :code="$modalExample29"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Modal component.</p>
@@ -1249,9 +1282,9 @@
     </x-bladewind::table>
 
     <h3>Modal with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::modal
+    @php
+        $modalExample30 = <<<'HTML'
+            <x-bladewind::modal
                 type="warning"
                 title="Modal with all features"
                 name="full-modal"
@@ -1266,11 +1299,12 @@
                 blur_size="xxl"
 
                 size="medium"
-                class="shadow-sm"&gt;
+                class="shadow-sm">
                 ...
-            &lt;/x-bladewind::modal&gt;
-        </code>
-    </pre>
+            </x-bladewind::modal>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$modalExample30"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source files for this component are available in <code class="inline">resources > views > components > bladewind > modal.blade.php</code> and

@@ -6,9 +6,11 @@ url: /component/slider
 
 # Slider
 
-Select values from a slider. This provides a convenient way for users to select numeric values instead of clicking increment and decrement arrows or manually entering values.
+Select numeric values from a slider, a more convenient alternative to increment/decrement arrows or manual entry.
 
-It is important to give your Slider a name if you intend to get the selected value when a form is submitted or via ajax. If you have multiple sliders on the same page, each slider needs to have a unique name. BladewindUI will use random names if you don't specify any.
+Give your slider a name if you intend to read its selected value on form submission or via ajax. If you have multiple sliders on the same page, each needs a unique name — BladewindUI uses random names if you don't specify any.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::slider />
@@ -16,7 +18,7 @@ It is important to give your Slider a name if you intend to get the selected val
 
 ## Different Colours
 
-The Slider component supports multiple colours. The default colour is your project's primary colour defined in your TailwindCSS config file. To use a different colour, set the `color` attribute. The `selected` attribute is useful in edit mode to specify the slider number the user already selected. It can also be used to set the default value for the slider.
+The slider supports the standard set of BladewindUI colours. The default is your project's primary colour from the TailwindCSS config. Set `color` to change it. The `selected` attribute sets the slider's default (or previously selected) value — useful in edit mode.
 
 ```blade
 <x-bladewind::slider selected="50" color="cyan" />
@@ -26,7 +28,7 @@ The Slider component supports multiple colours. The default colour is your proje
 
 ## Step
 
-By default the slider increments by 1 when you slide. You can define the numeric interval between slides by setting the `step` attribute. This must be a positive number greater than 1.
+By default the slider increments by 1. Set `step` to a positive number greater than 1 to change the increment.
 
 ```blade
 <x-bladewind::slider selected="10" step="5" />
@@ -34,7 +36,7 @@ By default the slider increments by 1 when you slide. You can define the numeric
 
 ## Min and Max Values
 
-By default the slider is set to a minimum of 0 and maximum of 100. This behaviour can be changed by setting the `min` and `max` attributes. These must be positive numbers.
+By default the slider ranges from 0 to 100. Change this with the `min` and `max` attributes (positive numbers) — for example, to restrict selection to an age range.
 
 ```blade
 <x-bladewind::slider min="18" max="35" />
@@ -42,17 +44,17 @@ By default the slider is set to a minimum of 0 and maximum of 100. This behaviou
 
 ## Range Selection
 
-There are cases where you need to let users select a minimum and maximum value. Setting the slider attribute `range="true"` displays two markers on the slider for users to select two values.
-
-> Note: The range selection slider is currently buggy.
+Set `range="true"` to display two markers, letting users select a minimum and maximum value (for example, restricting content to ages 4 to 9).
 
 ```blade
 <x-bladewind::slider range="true" selected="20" max_selected="60" />
 ```
 
+Note: the range selection mode currently has known bugs.
+
 ## Form Submission
 
-The `name` you specify for the slider is what will be passed when your form is submitted. Assuming you named your slider `age`, below is the HTML input field that will be generated.
+The `name` you give the slider is used when the form is submitted. For a slider named `age`, the generated hidden input looks like:
 
 ```blade
 <input type="hidden"
@@ -62,8 +64,9 @@ The `name` you specify for the slider is what will be passed when your form is s
        value="50" />
 ```
 
+When using a range slider with two values selected, the value is comma-separated:
+
 ```blade
-<!-- when using a range slider and two values are selected -->
 <input type="hidden"
        name="age"
        id="age"
@@ -71,21 +74,26 @@ The `name` you specify for the slider is what will be passed when your form is s
        value="10,50" />
 ```
 
+## Using Slider Inside Livewire
+
+As the slider is dragged, the hidden value field dispatches a real, native `change` event, so Livewire's `wire:model` picks it up without extra work. The slider's handlers are assigned as a single property rather than added as separate listeners, so a Livewire re-render replaces that assignment instead of stacking duplicates.
+
 ## Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | bw_uniqid() | Unique name for the slider. You can get the slider value from this when a form with a slider is submitted. |
+| name | bw_*uniqid()* | Unique name for the slider. Used to read its value when a form is submitted. |
 | color | primary | There are twelve colours to choose from. `primary` \| `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` \| `violet` \| `indigo` \| `fuchsia` |
-| show_values | true | Should the selected values label be displayed. `true` \| `false` |
-| range | false | Should the slider show two markers instead of one. `true` \| `false` |
-| min | 0 | Minimum value the slider should start from. Needs to be a positive number greater or equal to zero. |
-| max | 100 | Maximum value the slider should end at. Needs to be a positive number greater than zero. |
-| step | 1 | By what number should the slider values be incremented or decreased. Needs to be a positive number greater than zero. |
-| selected | 0 | Used in edit mode to set the slider to the number user selected previously. Also used to set the default value for the slider. The `max` value is used when a `selected` value is greater than the `max` value. |
-| max_selected | _blank_ | Applies only if `range="true"`. Sets the slider value for the second marker. Also used to set the default value for the second marker. |
-| class | bw-slider-container | Any additional css you wish to add. |
-| nonce | null | Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your `nonce` value in the `config/bladewind.php` file under the "script" key. |
+| show_values | true | Whether the selected value label should be displayed. `true` \| `false` |
+| range | false | Whether the slider shows two markers instead of one. `true` \| `false` |
+| min | 0 | Minimum value the slider starts from. A positive number greater than or equal to zero. |
+| max | 100 | Maximum value the slider ends at. A positive number greater than zero. |
+| step | 1 | Increment/decrement amount. A positive number greater than zero. |
+| selected | 0 | Sets the slider to a previously selected value (edit mode), or its default value. Clamped to `max` if greater than `max`. |
+| max_selected | *blank* | Only applies when `range="true"`. Sets (and defaults) the value for the second marker. |
+| class | bw-slider-container | Additional CSS classes to add. |
+| nonce | null | Used when implementing content security policies that require a nonce for inline scripts. For convenience, set your `nonce` value in `config/bladewind.php` under the `script` key; it will be used everywhere a nonce is required. |
+| aria_label | Value | Accessible name for the range input. A slider with no name is announced as an anonymous control. |
 
 ## Full Example
 

@@ -8,8 +8,8 @@
     </p>
     <h2 id="addtostorage">addToStorage</h2>
     <p>Adds a key/value pair to either localStorage or sessionStorage. The documentation website uses this to set the dark/light mode settings of the user.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample1 = <<<'HTML'
             /* -----------------------------------------------------------
                 key:            label of key to store
                 val:            value to store for key
@@ -20,15 +20,15 @@
 
             // example
             addToStorage('theme', 'dark');
-
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample1"></x-bladewind::code-block>
 
     <h2 id="animatecss">animateCss</h2>
     <p>Animates any element in the DOM. Works with any of the <a href="https://animate.style/" target="_blank">animation classes</a> from animate.css by Daniel Eden.
     The animation class names should be used without the <code class="inline">animate__</code> prefix.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample2 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:     css class that identifies the element to animate
                 animation:   animation class to be applied to element
@@ -37,14 +37,14 @@
 
             // example
             animateCss('.navigation','slideInRight');
-
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample2"></x-bladewind::code-block>
 
     <h2 id="changecss">changeCss</h2>
     <p>Add to or remove CSS classes from a single element in the DOM.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample3 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    css class that identifies the element to change
                 css:        comma separated list of css class names to apply
@@ -59,16 +59,17 @@
 
             // example 2: remove list of css from an element
             changeCss('.nav a.active', 'selected, active', 'remove');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample3"></x-bladewind::code-block>
 
     <h2 id="changecssfordomarray">changeCssForDomArray</h2>
     <p>
         Very similar to <code class="inline">changeCss</code> but this adds or removes CSS classes from an array of CSS elements in the DOM.
         This targets elements with the same class name or tag name.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample4 = <<<'HTML'
             /* ---------------------------------------------------------------
                 elements:   css class that identifies the element to change
                 css:        comma separated list of css class names to apply
@@ -81,8 +82,9 @@
 
             // example 2: remove list of css classes
             changeCssForDomArray('.nav a', 'selected, active', 'remove');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample4"></x-bladewind::code-block>
 
     <h2 id="comparedates">compareDates</h2>
     <p>
@@ -90,8 +92,8 @@
         Used by the range datepicker to ensure an end date is not less than a start date.
         Returns boolean.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample5 = <<<'HTML'
             /* ---------------------------------------------------------------
                 date1_field:   name of input field that has the start date
                 date2_field:   name of input field that has the end date
@@ -109,13 +111,14 @@
             // from above
             // 1. the start date datepicker field has the name task_begins
             // 2. the end date datepicker field has the name task_ends
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample5"></x-bladewind::code-block>
 
     <h2 id="domel">domEl</h2>
     <p>Shortcut for writing Javascript's <code class="inline">document.querySelector</code>. This function has an alias <code class="inline">dom_el</code> that does exactly the same thing.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample6 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:   css class that identifies the element to target
             -----------------------------------------------------------------*/
@@ -124,16 +127,17 @@
             // examples
             domEl('input.fname').getAttribute('disabled');
             let data = new FormData(dom_el(form));
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample6"></x-bladewind::code-block>
 
     <h2 id="domels">domEls</h2>
     <p>Shortcut for writing Javascript's <code class="inline">document.querySelectorAll</code>. This function has an alias <code class="inline">dom_els</code> that does exactly the same thing.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample7 = <<<'HTML'
             /* ---------------------------------------------------------------
                 elements:   css class that identifies the elements to target
-                scope:      scope within which to search for &lt;elements&gt;
+                scope:      scope within which to search for <elements>
             -----------------------------------------------------------------*/
             domEls(elements, scope = null);
 
@@ -146,13 +150,14 @@
             domEls('input.required', 'form.signup').forEach((el) => {
                 console.log(el.value);
             });
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample7"></x-bladewind::code-block>
 
     <h2 id="getfromstorage">getFromStorage</h2>
     <p>Retrieve a value from the enduser's localStorage or sessionStorage based on key that is passed.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample8 = <<<'HTML'
             /* ---------------------------------------------------------------
                 key:            key to get value for
                 storageType:    storage to fetch the value from
@@ -161,13 +166,14 @@
 
             // example
             getFromStorage('theme');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample8"></x-bladewind::code-block>
 
     <h2 id="hide">hide</h2>
     <p>Hide an element from/in the DOM .</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample9 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    css class that identifies the element to hide
                 elementIsDomObject: is the element a dom Object
@@ -177,12 +183,13 @@
             // example
             hide('.top-bar');
             hide(domEl('.top-bar'), true);
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample9"></x-bladewind::code-block>
     <h2 id="hidebuttonspinner">hideButtonSpinner</h2>
     <p>Hide the spinner associated with a button.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample10 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    name of the button
             -----------------------------------------------------------------*/
@@ -190,13 +197,14 @@
 
             // example
             hideButtonSpinner('.save-user');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample10"></x-bladewind::code-block>
 
     <h2 id="hidemodal">hideModal</h2>
     <p>Specifically hides a BladewindUI <a href="/component/modal">Modal</a> component.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample11 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    css class that identifies the modal to hide
             -----------------------------------------------------------------*/
@@ -204,14 +212,15 @@
 
             // example
             hideModal('.make-payment');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample11"></x-bladewind::code-block>
 
     <h2 id="hidemodalbuttons">hideModalActionButtons</h2>
     <p>Hides the action buttons on a BladewindUI <a href="/component/modal">Modal</a> component.
         The action buttons are the Ok and Cancel buttons. See the <a href="/component/modal#forms">example here</a> for how this is used.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample12 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    css class that identifies the modal to hide
             -----------------------------------------------------------------*/
@@ -220,28 +229,30 @@
             // example
             // this will hide the Cancel and Ok buttons on the make-payment modal
             hideModalActionButtons('make-payment');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample12"></x-bladewind::code-block>
 
     <h2 id="isnumberkey">isNumberKey</h2>
     <p>Used by the Bladewind <a href="/component/textbox">Textbox</a> component to restrict user input to only numeric values. You can however use this helper function in your own non-Bladewind textboxes.
     For example to enter verification codes.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample13 = <<<'HTML'
             /* ---------------------------------------------------------------
                 evt:    javascript keypress events
             -----------------------------------------------------------------*/
             isNumberKey(evt);
 
             // example
-            &lt;input type="text" onkeypress="return isNumberKey(event)" /&gt;
-        </code>
-    </pre>
+            <input type="text" onkeypress="return isNumberKey(event)" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample13"></x-bladewind::code-block>
 
     <h2 id="removefromstorage">removeFromStorage</h2>
     <p>Remove a key from the enduser's localStorage or sessionStorage.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample14 = <<<'HTML'
             /* ---------------------------------------------------------------
                 key:            key to remove
                 storageType:    which storage to remove the  key from
@@ -250,29 +261,31 @@
 
             // example
             removeFromStorage('theme');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample14"></x-bladewind::code-block>
     <h2 id="serialize">serialize</h2>
     <p>Prepares form data as key/value pairs to send via Ajax posts or requests..</p>
 
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample15 = <<<'HTML'
             /* ---------------------------------------------------------------
                 form:  css class that identifies the form to serialize
             -----------------------------------------------------------------*/
             serialize(form);
 
             // example
-            &lt;form class="signup-form"&gt;...&lt;/form&gt;
+            <form class="signup-form">...</form>
 
             serialize('.signup-form');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample15"></x-bladewind::code-block>
 
     <h2 id="showbuttonspinner">showButtonSpinner</h2>
     <p>Unhide a spinner associated with a <a href="/component/modal">Button</a> component with <code class="inline">has_spinner="true"</code>.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample16 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    name of the button
             -----------------------------------------------------------------*/
@@ -280,13 +293,14 @@
 
             // example
             showButtonSpinner('.save-user');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample16"></x-bladewind::code-block>
 
     <h2 id="showmodal">showModal</h2>
     <p>Specifically unhides a Bladewind <a href="/component/modal">Modal</a> component.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample17 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    css class that identifies the modal to unhide
             -----------------------------------------------------------------*/
@@ -294,13 +308,14 @@
 
             // example
             showModal('.make-payment');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample17"></x-bladewind::code-block>
 
     <h2 id="showmodalbuttons">showModalActionButtons</h2>
     <p>Unhides the action buttons on a BladewindUI <a href="/component/modal">Modal</a> component. The action buttons are the Ok and Cancel buttons.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample18 = <<<'HTML'
             /* --------------------------------------------------------------------
                 element:    css class that identifies the modal to show buttons for
             --------------------------------------------------------------------*/
@@ -309,14 +324,15 @@
             // example
             // this will show the Cancel and Ok buttons on the make-payment modal
             showModalActionButtons('make-payment');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample18"></x-bladewind::code-block>
     <h2 id="stringcontains">stringContains</h2>
     <p>Checks to see if a string contains the specified keyword. Returns true if string contains the keyword and
     false if string does not contain the keyword.</p>
 
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample19 = <<<'HTML'
             /* ---------------------------------------------------------------
                 str:        main string to check keyword against
                 keyword:    keyword to check if it's contained in str
@@ -325,13 +341,14 @@
 
             // example
             stringContains(location.href, '/admin');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample19"></x-bladewind::code-block>
 
     <h2 id="unhide">unhide</h2>
     <p>Unhides any DOM element.</p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample20 = <<<'HTML'
             /* ---------------------------------------------------------------
                 element:    css class that identifies the element to unhide
                 elementIsDomObject: is the element a dom Object
@@ -341,8 +358,9 @@
             // example
             unhide('.top-bar');
             unhide(domEl('.top-bar'), true);
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample20"></x-bladewind::code-block>
 
     <h2 id="validateform">validateForm</h2>
     <p>
@@ -352,20 +370,20 @@
         At the moment, this function only works on text-based input fields and the textarea field. See the <a href="/component/textbox#validate">Validating Input Fields</a> section of the Textbox component documentation.
         You can either pass a string targeting the class of the HTML form or pass an HTMLFormElement.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $helpersExample21 = <<<'HTML'
             /* ---------------------------------------------------------------
                 form:    css class of the form or HTMLFormElement to validate
             -----------------------------------------------------------------*/
             validateForm(form);
 
             // example
-            &lt;form class="signup-form"&gt;
-                &lt;x-bladewind.input required="true" name="fullname" label="Name" /&gt;
-                &lt;x-bladewind.input required="true" name="email" label="Email" /&gt;
-                &lt;x-bladewind.input required="true" name="mobile"
-                    label="Mobile" numeric="true" /&gt;
-            &lt;/form&gt;
+            <form class="signup-form">
+                <x-bladewind.input required="true" name="fullname" label="Name" />
+                <x-bladewind.input required="true" name="email" label="Email" />
+                <x-bladewind.input required="true" name="mobile"
+                    label="Mobile" numeric="true" />
+            </form>
 
             // ---- this option uses the css class name of the form ------------
             domEl('.signup-form').addEventListener('submit', function (e){
@@ -393,8 +411,9 @@
                     }
                 });
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$helpersExample21"></x-bladewind::code-block>
     <p>&nbsp;</p>
 
     <x-slot:side_nav>

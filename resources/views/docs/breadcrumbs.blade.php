@@ -21,11 +21,16 @@
             <x-bladewind::breadcrumbs.item current>Breadcrumbs</x-bladewind::breadcrumbs.item>
         </x-bladewind::breadcrumbs>
     </div>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::breadcrumbs aria-label="Breadcrumb"&gt;
-    &lt;x-bladewind::breadcrumbs.item href="/" icon="home"&gt;Home&lt;/x-bladewind::breadcrumbs.item&gt;
-    &lt;x-bladewind::breadcrumbs.item href="/components"&gt;Components&lt;/x-bladewind::breadcrumbs.item&gt;
-    &lt;x-bladewind::breadcrumbs.item current&gt;Breadcrumbs&lt;/x-bladewind::breadcrumbs.item&gt;
-&lt;/x-bladewind::breadcrumbs&gt;</code></pre>
+    @php
+        $breadcrumbsExample1 = <<<'HTML'
+            <x-bladewind::breadcrumbs aria-label="Breadcrumb">
+                <x-bladewind::breadcrumbs.item href="/" icon="home">Home</x-bladewind::breadcrumbs.item>
+                <x-bladewind::breadcrumbs.item href="/components">Components</x-bladewind::breadcrumbs.item>
+                <x-bladewind::breadcrumbs.item current>Breadcrumbs</x-bladewind::breadcrumbs.item>
+            </x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$breadcrumbsExample1"></x-bladewind::code-block>
 
     <h2 id="links-current">Linked And Current Items</h2>
     <p>
@@ -42,11 +47,16 @@
             <x-bladewind::breadcrumbs.item href="#" current>Customer details</x-bladewind::breadcrumbs.item>
         </x-bladewind::breadcrumbs>
     </div>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::breadcrumbs aria-label="Customer path"&gt;
-    &lt;x-bladewind::breadcrumbs.item href="/"&gt;Home&lt;/x-bladewind::breadcrumbs.item&gt;
-    &lt;x-bladewind::breadcrumbs.item href="/customers"&gt;Customers&lt;/x-bladewind::breadcrumbs.item&gt;
-    &lt;x-bladewind::breadcrumbs.item href="/customers/42" current&gt;Customer details&lt;/x-bladewind::breadcrumbs.item&gt;
-&lt;/x-bladewind::breadcrumbs&gt;</code></pre>
+    @php
+        $breadcrumbsExample2 = <<<'HTML'
+            <x-bladewind::breadcrumbs aria-label="Customer path">
+                <x-bladewind::breadcrumbs.item href="/">Home</x-bladewind::breadcrumbs.item>
+                <x-bladewind::breadcrumbs.item href="/customers">Customers</x-bladewind::breadcrumbs.item>
+                <x-bladewind::breadcrumbs.item href="/customers/42" current>Customer details</x-bladewind::breadcrumbs.item>
+            </x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$breadcrumbsExample2"></x-bladewind::code-block>
 
     <h2 id="icons">Icons</h2>
     <p>
@@ -65,11 +75,16 @@
             <x-bladewind::breadcrumbs.item current icon="user-circle" icon-type="solid">Profile</x-bladewind::breadcrumbs.item>
         </x-bladewind::breadcrumbs>
     </div>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::breadcrumbs&gt;
-    &lt;x-bladewind::breadcrumbs.item href="/" icon="home"&gt;Home&lt;/x-bladewind::breadcrumbs.item&gt;
-    &lt;x-bladewind::breadcrumbs.item href="/settings" icon="cog-6-tooth"&gt;Settings&lt;/x-bladewind::breadcrumbs.item&gt;
-    &lt;x-bladewind::breadcrumbs.item current icon="user-circle" icon-type="solid"&gt;Profile&lt;/x-bladewind::breadcrumbs.item&gt;
-&lt;/x-bladewind::breadcrumbs&gt;</code></pre>
+    @php
+        $breadcrumbsExample3 = <<<'HTML'
+            <x-bladewind::breadcrumbs>
+                <x-bladewind::breadcrumbs.item href="/" icon="home">Home</x-bladewind::breadcrumbs.item>
+                <x-bladewind::breadcrumbs.item href="/settings" icon="cog-6-tooth">Settings</x-bladewind::breadcrumbs.item>
+                <x-bladewind::breadcrumbs.item current icon="user-circle" icon-type="solid">Profile</x-bladewind::breadcrumbs.item>
+            </x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$breadcrumbsExample3"></x-bladewind::code-block>
 
     <h2 id="separators">Separator Options</h2>
     <p>
@@ -84,13 +99,14 @@
             <x-bladewind::breadcrumbs.item current>Breadcrumbs</x-bladewind::breadcrumbs.item>
         </x-bladewind::breadcrumbs>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::breadcrumbs separator="slash"&gt;
+    @php
+        $breadcrumbsExample4 = <<<'HTML'
+            <x-bladewind::breadcrumbs separator="slash">
                 ...
-            &lt;/x-bladewind::breadcrumbs&gt;
-        </code>
-    </pre>
+            </x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$breadcrumbsExample4"></x-bladewind::code-block>
     <br />
     <div class="space-y-6 rounded-xl border border-slate-200 p-5 dark:border-slate-700 mt-4">
         <x-bladewind::breadcrumbs separator=">>>" aria-label="slash separator">
@@ -99,13 +115,14 @@
             <x-bladewind::breadcrumbs.item current>Breadcrumbs</x-bladewind::breadcrumbs.item>
         </x-bladewind::breadcrumbs>
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::breadcrumbs separator=">>>"&gt;
+    @php
+        $breadcrumbsExample5 = <<<'HTML'
+            <x-bladewind::breadcrumbs separator=">>>">
                 ...
-            &lt;/x-bladewind::breadcrumbs&gt;
-        </code>
-    </pre>
+            </x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$breadcrumbsExample5"></x-bladewind::code-block>
 
     <h2 id="sizes">Sizes</h2>
     <p>
@@ -123,7 +140,12 @@
             </x-bladewind::breadcrumbs>
         @endforeach
     </div>
-    <pre class="language-markup"><code>&lt;x-bladewind::breadcrumbs size="medium"&gt;...&lt;/x-bladewind::breadcrumbs&gt;</code></pre>
+    @php
+        $breadcrumbsExample6 = <<<'HTML'
+            <x-bladewind::breadcrumbs size="medium">...</x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$breadcrumbsExample6"></x-bladewind::code-block>
 
     <h2 id="long-trails">Long And Collapsed Trails</h2>
     <p>
@@ -143,7 +165,12 @@
             <x-bladewind::breadcrumbs.item current>Shipment details</x-bladewind::breadcrumbs.item>
         </x-bladewind::breadcrumbs>
     </div>
-    <pre class="language-markup"><code>&lt;x-bladewind::breadcrumbs collapse="false"&gt;...&lt;/x-bladewind::breadcrumbs&gt;</code></pre>
+    @php
+        $breadcrumbsExample7 = <<<'HTML'
+            <x-bladewind::breadcrumbs collapse="false">...</x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$breadcrumbsExample7"></x-bladewind::code-block>
 
     <h2 id="dark-rtl">Dark Mode And RTL</h2>
     <p>Colours automatically match whichever theme, light or dark, your page is currently using, so there is no need to style this component separately for dark mode. The same goes for right to left languages such as Arabic or Hebrew. The trail will follow whatever reading direction the surrounding page has already set. If you need one breadcrumb trail to run right to left on its own, separately from the rest of the page, you can also set <code class="inline">dir="rtl"</code> directly on that breadcrumb, and the little chevron separators will flip direction to match automatically.</p>
@@ -154,7 +181,12 @@
             <x-bladewind::breadcrumbs.item current>مسار التنقل</x-bladewind::breadcrumbs.item>
         </x-bladewind::breadcrumbs>
     </div>
-    <pre class="language-markup"><code>&lt;x-bladewind::breadcrumbs dir="rtl" aria-label="مسار الصفحة"&gt;...&lt;/x-bladewind::breadcrumbs&gt;</code></pre>
+    @php
+        $breadcrumbsExample8 = <<<'HTML'
+            <x-bladewind::breadcrumbs dir="rtl" aria-label="مسار الصفحة">...</x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$breadcrumbsExample8"></x-bladewind::code-block>
 
     <h2 id="accessibility">Accessibility</h2>
     <ul>
@@ -192,25 +224,35 @@
     </x-bladewind::table>
 
     <h3>Breadcrumbs with all attributes defined</h3>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::breadcrumbs
-    separator="slash"
-    size="medium"
-    collapse="false"
-    aria-label="Order path"
-    class="rounded-lg"&gt;
-    ...
-&lt;/x-bladewind::breadcrumbs&gt;</code></pre>
+    @php
+        $breadcrumbsExample9 = <<<'HTML'
+            <x-bladewind::breadcrumbs
+                separator="slash"
+                size="medium"
+                collapse="false"
+                aria-label="Order path"
+                class="rounded-lg">
+                ...
+            </x-bladewind::breadcrumbs>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$breadcrumbsExample9"></x-bladewind::code-block>
 
     <h3>Breadcrumbs Item with all attributes defined</h3>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::breadcrumbs.item
-    href="/settings"
-    current="true"
-    icon="cog-6-tooth"
-    icon-type="solid"
-    icon-dir="icons/custom"
-    class="font-semibold"&gt;
-    Settings
-&lt;/x-bladewind::breadcrumbs.item&gt;</code></pre>
+    @php
+        $breadcrumbsExample10 = <<<'HTML'
+            <x-bladewind::breadcrumbs.item
+                href="/settings"
+                current="true"
+                icon="cog-6-tooth"
+                icon-type="solid"
+                icon-dir="icons/custom"
+                class="font-semibold">
+                Settings
+            </x-bladewind::breadcrumbs.item>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$breadcrumbsExample10"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source files for this component are available in <code class="inline">resources > views > components > bladewind > breadcrumbs > [index.blade.php, item.blade.php]</code>

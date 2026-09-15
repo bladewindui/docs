@@ -38,15 +38,20 @@
         </div>
     </x-bladewind::card>
 
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::sidebar name="workspace-navigation" label="Workspace navigation" active="orders" collapsible="true" mobile="drawer"&gt;
-    &lt;x-slot:header&gt;Acme Workspace&lt;/x-slot:header&gt;
-    &lt;x-bladewind::sidebar.group name="workspace" label="Workspace" icon="squares-2x2" expanded="true"&gt;
-        &lt;x-bladewind::sidebar.item name="overview" label="Overview" href="/dashboard" icon="home" /&gt;
-        &lt;x-bladewind::sidebar.item name="orders" label="Orders" href="/orders" icon="shopping-bag" description="Review fulfilment" badge="12" /&gt;
-        &lt;x-bladewind::sidebar.item name="customers" label="Customers" href="/customers" icon="users" /&gt;
-    &lt;/x-bladewind::sidebar.group&gt;
-    &lt;x-slot:footer&gt;&lt;x-bladewind::avatar image="/images/avatar.png" name="Ama Mensah" /&gt;&lt;/x-slot:footer&gt;
-&lt;/x-bladewind::sidebar&gt;</code></pre>
+    @php
+        $sidebarExample1 = <<<'HTML'
+            <x-bladewind::sidebar name="workspace-navigation" label="Workspace navigation" active="orders" collapsible="true" mobile="drawer">
+                <x-slot:header>Acme Workspace</x-slot:header>
+                <x-bladewind::sidebar.group name="workspace" label="Workspace" icon="squares-2x2" expanded="true">
+                    <x-bladewind::sidebar.item name="overview" label="Overview" href="/dashboard" icon="home" />
+                    <x-bladewind::sidebar.item name="orders" label="Orders" href="/orders" icon="shopping-bag" description="Review fulfilment" badge="12" />
+                    <x-bladewind::sidebar.item name="customers" label="Customers" href="/customers" icon="users" />
+                </x-bladewind::sidebar.group>
+                <x-slot:footer><x-bladewind::avatar image="/images/avatar.png" name="Ama Mensah" /></x-slot:footer>
+            </x-bladewind::sidebar>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sidebarExample1"></x-bladewind::code-block>
 
     <h2 id="desktop">Desktop Expanded and Collapsed States</h2>
     <p>Set <code class="inline">collapsible="true"</code> to allow compact icon-only presentation. The optional collapse control is shown by default for a collapsible Sidebar. Labels remain available through accessible names and native tooltips. Nested destinations stay in the navigation tree and group state is preserved.</p>
@@ -81,14 +86,24 @@
 
     <h2 id="multiple">Multiple Independent Sidebars</h2>
     <p>Every helper resolves one named instance. Groups with the same name can safely exist in separate Sidebars because state and persistence are scoped to the Sidebar root.</p>
-    <pre class="language-javascript"><code>collapseSidebar('project-navigation');
-expandSidebarGroup('account-navigation', 'settings');</code></pre>
+    @php
+        $sidebarExample2 = <<<'HTML'
+            collapseSidebar('project-navigation');
+            expandSidebarGroup('account-navigation', 'settings');
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$sidebarExample2"></x-bladewind::code-block>
 
     <h2 id="persistence">Persistent State</h2>
     <p>Persistence is opt-in. Set <code class="inline">persist="true"</code> for desktop collapse state and <code class="inline">persist-groups="true"</code> for expanded groups. The default key is <code class="inline">bladewind:sidebar:{name}</code>. Supply <code class="inline">storage-key</code> when an application needs a different namespace. Invalid or unavailable browser storage is ignored safely.</p>
-    <pre class="language-markup"><code>&lt;x-bladewind::sidebar name="admin-navigation" persist="true" persist-groups="true" storage-key="acme:admin-sidebar"&gt;
-    ...
-&lt;/x-bladewind::sidebar&gt;</code></pre>
+    @php
+        $sidebarExample3 = <<<'HTML'
+            <x-bladewind::sidebar name="admin-navigation" persist="true" persist-groups="true" storage-key="acme:admin-sidebar">
+                ...
+            </x-bladewind::sidebar>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$sidebarExample3"></x-bladewind::code-block>
 
     <h2 id="large-trees">Long Labels and Large Navigation Sets</h2>
     <p>Long labels wrap inside the available width. Full-height and content-height Sidebars cap themselves at the viewport and keep scrolling inside the navigation region. The header and footer remain sticky while a large tree scrolls.</p>
@@ -124,44 +139,64 @@ expandSidebarGroup('account-navigation', 'settings');</code></pre>
 
     <h2 id="javascript-api">JavaScript API</h2>
     <p>Helpers return true on success or when the requested state already applies. They return false for missing, disabled, unsupported, or canceled targets.</p>
-    <pre class="language-javascript"><code>openSidebar('workspace-navigation');
-closeSidebar('workspace-navigation');
-toggleSidebar('workspace-navigation');
-collapseSidebar('workspace-navigation');
-expandSidebar('workspace-navigation');
-toggleSidebarGroup('workspace-navigation', 'settings');
-expandSidebarGroup('workspace-navigation', 'settings');
-collapseSidebarGroup('workspace-navigation', 'settings');
-resetSidebar('workspace-navigation');</code></pre>
+    @php
+        $sidebarExample4 = <<<'HTML'
+            openSidebar('workspace-navigation');
+            closeSidebar('workspace-navigation');
+            toggleSidebar('workspace-navigation');
+            collapseSidebar('workspace-navigation');
+            expandSidebar('workspace-navigation');
+            toggleSidebarGroup('workspace-navigation', 'settings');
+            expandSidebarGroup('workspace-navigation', 'settings');
+            collapseSidebarGroup('workspace-navigation', 'settings');
+            resetSidebar('workspace-navigation');
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$sidebarExample4"></x-bladewind::code-block>
 
     <h3>Sidebar with all attributes defined</h3>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::sidebar
-    name="account-navigation"
-    label="Account navigation"
-    active="billing"
-    placement="start"
-    mobile="drawer"
-    mobile-size="small"
-    collapsible="true"
-    collapsed="false"
-    show-collapse-control="true"
-    close-on-navigate="true"
-    persist="true"
-    persist-groups="true"
-    storage-key="acme:account-navigation"
-    height="full"
-    multiple-active="false"
-    collapse-label="Collapse account navigation"
-    expand-label="Expand account navigation"
-    close-label="Close account navigation"
-    class="account-sidebar"
-    data-region="account"&gt;
-    &lt;x-slot:header&gt;Acme Account&lt;/x-slot:header&gt;
-    &lt;x-bladewind::sidebar.group name="settings" label="Settings" icon="cog-6-tooth" icon-type="outline" icon-dir="" expanded="true" disabled="false"&gt;
-        &lt;x-bladewind::sidebar.item name="billing" label="Billing" href="/billing" icon="credit-card" icon-type="outline" icon-dir="" description="Plans and invoices" badge="2" badge-label="2 unpaid invoices" active="false" disabled="false" external="false" target="_self" class="billing-link" data-area="finance" /&gt;
-    &lt;/x-bladewind::sidebar.group&gt;
-    &lt;x-slot:footer&gt;Account footer&lt;/x-slot:footer&gt;
-&lt;/x-bladewind::sidebar&gt;</code></pre>
+    @php
+        $sidebarExample5 = <<<'HTML'
+            <x-bladewind::sidebar
+                name="account-navigation"
+                label="Account navigation"
+                active="billing"
+                placement="start"
+                mobile="drawer"
+                mobile-size="small"
+                collapsible="true"
+                collapsed="false"
+                show-collapse-control="true"
+                close-on-navigate="true"
+                persist="true"
+                persist-groups="true"
+                storage-key="acme:account-navigation"
+                height="full"
+                multiple-active="false"
+                collapse-label="Collapse account navigation"
+                expand-label="Expand account navigation"
+                close-label="Close account navigation"
+                class="account-sidebar"
+                data-region="account">
+                <x-slot:header>Acme Account</x-slot:header>
+                <x-bladewind::sidebar.group name="settings" label="Settings" icon="cog-6-tooth" icon-type="outline" icon-dir="" expanded="true" disabled="false">
+                    <x-bladewind::sidebar.item name="billing" label="Billing" href="/billing" icon="credit-card" icon-type="outline" icon-dir="" description="Plans and invoices" badge="2" badge-label="2 unpaid invoices" active="false" disabled="false" external="false" target="_self" class="billing-link" data-area="finance" />
+                </x-bladewind::sidebar.group>
+                <x-slot:footer>Account footer</x-slot:footer>
+            </x-bladewind::sidebar>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sidebarExample5"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Sidebar Inside Livewire</h2>
+    <p>
+        Which groups are expanded or collapsed, and on mobile whether the sidebar itself is open, live in the sidebar's own DOM
+        rather than in Livewire's component state. The persistence options described above re-read that state from storage when the
+        sidebar first initialises, but a Livewire re-render that touches this markup mid-interaction, for a reason that has nothing
+        to do with the sidebar, can still reset it. If your sidebar lives inside a component that can re-render for other reasons,
+        wrap the sidebar in <code class="inline">wire:ignore</code>. The bindings that drive the sidebar are delegated and safe to
+        re-run, so a re-render will not leave behind duplicate listeners.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; sidebar</code></x-bladewind::alert>
 
@@ -181,6 +216,7 @@ resetSidebar('workspace-navigation');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full List of Attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Sidebar inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-sidebar');</script></x-slot:scripts>
 </x-app>

@@ -9,16 +9,18 @@
             <div class="mb-2"></div>
             <x-bladewind::number step="10" />
 
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::number  /&gt;
-                </code>
-            </pre>
-            <pre class="language-markup line-numbers">
-                <code>
-                    &lt;x-bladewind::number step="10"  /&gt;
-                </code>
-            </pre>
+            @php
+        $numberExample1 = <<<'HTML'
+            <x-bladewind::number  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample1"></x-bladewind::code-block>
+            @php
+        $numberExample2 = <<<'HTML'
+            <x-bladewind::number step="10"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample2"></x-bladewind::code-block>
     <br />
             <p>
                 The Number component simply extends the BladewindUI <a href="/component/input">Input</a> component by making use of prefix and suffix icons as well as setting <code class="inline text-red-500">numeric="true"</code>.
@@ -35,26 +37,30 @@
         <div><x-bladewind::number size="medium" /></div>
         <div><x-bladewind::number size="big" /></div>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number size="small" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number size="regular" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number size="medium" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number size="big" /&gt;
-        </code>
-    </pre>
+    @php
+        $numberExample3 = <<<'HTML'
+            <x-bladewind::number size="small" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample3"></x-bladewind::code-block>
+    @php
+        $numberExample4 = <<<'HTML'
+            <x-bladewind::number size="regular" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample4"></x-bladewind::code-block>
+    @php
+        $numberExample5 = <<<'HTML'
+            <x-bladewind::number size="medium" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample5"></x-bladewind::code-block>
+    @php
+        $numberExample6 = <<<'HTML'
+            <x-bladewind::number size="big" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample6"></x-bladewind::code-block>
 
     <h2 id="button-bg">Button Transparency</h2>
     <p>
@@ -67,16 +73,18 @@
     <x-bladewind::number transparent_icons="false" />
     <div></div>
     <x-bladewind::number transparent_icons="false" size="big" />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number transparent_icons="false" /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number transparent_icons="false" size="big" /&gt;
-        </code>
-    </pre>
+    @php
+        $numberExample7 = <<<'HTML'
+            <x-bladewind::number transparent_icons="false" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample7"></x-bladewind::code-block>
+    @php
+        $numberExample8 = <<<'HTML'
+            <x-bladewind::number transparent_icons="false" size="big" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample8"></x-bladewind::code-block>
     <h2 id="place-labels">Labels</h2>
     <p>
         It will make sense for users to know what it is you want them to increment or decrease. A field with no label will be quite
@@ -84,11 +92,12 @@
         Setting a label in this case will move the label text to the top border of the input field.
     </p>
     <x-bladewind::number label="quantity" />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number label="quantity"  /&gt;
-        </code>
-    </pre>
+    @php
+        $numberExample9 = <<<'HTML'
+            <x-bladewind::number label="quantity"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample9"></x-bladewind::code-block>
     <br />
     <p>
         If you don't need to initialize your number component with a default value, you can set
@@ -99,11 +108,12 @@
         <x-bladewind::alert type="info" show_close_icon="false">Traditional placeholders don't work in the number component.</x-bladewind::alert>
     </p>
     <x-bladewind::number selected_value="" label="quantity" />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number selected_value="" label="quantity"  /&gt;
-        </code>
-    </pre>
+    @php
+        $numberExample10 = <<<'HTML'
+            <x-bladewind::number selected_value="" label="quantity"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample10"></x-bladewind::code-block>
     <h2 id="min-max">Minimum and Maximum Limits</h2>
     <p>
         Clicking on the up arrow will keep increasing the numbers until you get tired of clicking. You will typically not want that to
@@ -117,11 +127,12 @@
         when a minimum value is set.
     </p>
     <x-bladewind::number min="18" max="60" label="Your age" />
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::number min="18" max="60" label="Your age"  /&gt;
-        </code>
-    </pre>
+    @php
+        $numberExample11 = <<<'HTML'
+            <x-bladewind::number min="18" max="60" label="Your age"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample11"></x-bladewind::code-block>
 
     <h2 id="forms">Form Values</h2>
     <p>
@@ -132,11 +143,12 @@
     <p>
         When your form is submitted, you will be able to retrieve the time as shown below.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
+    @php
+        $numberExample12 = <<<'HTML'
             $request->age;
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$numberExample12"></x-bladewind::code-block>
 
             <p>&nbsp;</p>
             <h2>Full List Of Attributes</h2>
@@ -216,22 +228,23 @@
             </x-bladewind::table>
             <p>&nbsp;</p>
             <h3 class="pb-2 ">Number with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::number
-    name="age"
-    icon_type="outline"
-    required="false"
-    label="Age"
-    size="big"
-    transparent_icons="true"
-    min="18"
-    max="65"
-    step="10"
-    with_dots="false"
-    selected_value="12" /&gt;
-</code>
-</pre>
+@php
+        $numberExample13 = <<<'HTML'
+            <x-bladewind::number
+                name="age"
+                icon_type="outline"
+                required="false"
+                label="Age"
+                size="big"
+                transparent_icons="true"
+                min="18"
+                max="65"
+                step="10"
+                with_dots="false"
+                selected_value="12" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$numberExample13"></x-bladewind::code-block>
 
     <p>&nbsp;</p>
     <x-bladewind::alert show_close_icon="false">

@@ -9,24 +9,26 @@
             <x-bladewind::statistic number="34,500,100" label="Total payments" />
             <div></div>
         </div>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::statistic number="34,500,100" label="Total payments" /&gt;
-            </code>
-        </pre>
+        @php
+        $statisticExample1 = <<<'HTML'
+            <x-bladewind::statistic number="34,500,100" label="Total payments" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$statisticExample1"></x-bladewind::code-block>
         <p>By default the label is placed above the number. If you prefer to display it below the number set <code class="inline text-red-500">label_position="bottom"</code>.</p>
         <div class="grid grid-cols-2">
             <x-bladewind::statistic number="34,500,100" label="Total payments" label_position="bottom" />
             <div></div>
         </div>
-        <pre class="language-markup line-numbers" data-line="2">
-            <code>
-                &lt;x-bladewind::statistic
-                    label_position="bottom"
-                    number="34,500,100"
-                    label="Total payments" /&gt;
-            </code>
-        </pre>
+        @php
+        $statisticExample2 = <<<'HTML'
+            <x-bladewind::statistic
+                label_position="bottom"
+                number="34,500,100"
+                label="Total payments" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$statisticExample2"></x-bladewind::code-block>
 
         <h2 id="icons">With Icons</h2>
         <p>
@@ -49,37 +51,39 @@
                 </x-slot>
             </x-bladewind::statistic>
         </div>
-        <pre class="language-markup line-numbers" data-line="5">
-            <code>
-                &lt;x-bladewind::statistic
-                    number="34,500,100"
-                    label="Total payments"&gt;
+        @php
+        $statisticExample3 = <<<'HTML'
+            <x-bladewind::statistic
+                number="34,500,100"
+                label="Total payments">
 
-                    &lt;x-slot name="icon"&gt;
-                        &lt;svg class="h-16 w-16 p-2 text-white rounded-full bg-blue-500"...&gt;
-                        ...
-                        &lt;/svg&gt;
-                    &lt;/x-slot&gt;
+                <x-slot name="icon">
+                    <svg class="h-16 w-16 p-2 text-white rounded-full bg-blue-500"...>
+                    ...
+                    </svg>
+                </x-slot>
 
-                &lt;/x-bladewind::statistic&gt;
-            </code>
-        </pre>
-        <pre class="language-markup line-numbers" data-line="2,6">
-            <code>
-                &lt;x-bladewind::statistic
-                    icon_position="right"
-                    number="34,500,100"
-                    label="Total payments"&gt;
+            </x-bladewind::statistic>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$statisticExample3"></x-bladewind::code-block>
+        @php
+        $statisticExample4 = <<<'HTML'
+            <x-bladewind::statistic
+                icon_position="right"
+                number="34,500,100"
+                label="Total payments">
 
-                    &lt;x-slot name="icon"&gt;
-                        &lt;svg class="h-16 w-16 p-2 text-white rounded-full bg-orange-500"...&gt;
-                        ...
-                        &lt;/svg&gt;
-                    &lt;/x-slot&gt;
+                <x-slot name="icon">
+                    <svg class="h-16 w-16 p-2 text-white rounded-full bg-orange-500"...>
+                    ...
+                    </svg>
+                </x-slot>
 
-                &lt;/x-bladewind::statistic&gt;
-            </code>
-        </pre>
+            </x-bladewind::statistic>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,6" :code="$statisticExample4"></x-bladewind::code-block>
 
         <h2 id="currency">With Currency</h2>
         <p>
@@ -95,14 +99,15 @@
             <x-bladewind::statistic currency="GHS" number="34,500,100" label="Total payments" />
             <x-bladewind::statistic number="34,500,100" label="Total payments (GHS)" icon_position="right" />
         </div>
-        <pre class="language-markup line-numbers" data-line="2">
-            <code>
-                &lt;x-bladewind::statistic
-                    currency="GHS"
-                    number="34,500,100"
-                    label="Total payments" /&gt;
-            </code>
-        </pre>
+        @php
+        $statisticExample5 = <<<'HTML'
+            <x-bladewind::statistic
+                currency="GHS"
+                number="34,500,100"
+                label="Total payments" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$statisticExample5"></x-bladewind::code-block>
         <h2 id="spinner">With Spinners</h2>
         <p>
             In some cases you may not have access to your statistic numbers when the page loads. This usually is the case if you get your values from an API.
@@ -113,60 +118,63 @@
             <x-bladewind::statistic label="Total payments" show_spinner="true" />
             <x-bladewind::statistic number="34,500,100" label="Total payments (GHS)" show_spinner="true" />
         </div>
-        <pre class="language-markup line-numbers" data-line="2">
-            <code>
-                &lt;x-bladewind::statistic
-                    show_spinner="true"
-                    label="Total payments" /&gt;
-            </code>
-        </pre>
+        @php
+        $statisticExample6 = <<<'HTML'
+            <x-bladewind::statistic
+                show_spinner="true"
+                label="Total payments" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$statisticExample6"></x-bladewind::code-block>
     <p>
         You will need to programmatically get rid of the spinner once you have received your number and updated your number field.
         To be able to access various elements that make up the statistic, it is important to give the statistic a name. This can be done using the <code class="inline text-red-500">class</code>
         attribute. Assuming we named our statistic component <code class="inline text-red-500">total-payments</code>, the code below will be the resulting HTML for the component.
     </p>
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-            &lt;div class="bw-statistic total-payments ..."&gt;
-                &lt;div class="flex space-x-4"&gt;
-                    &lt;div class="grow-0 icon"&gt;
+    @php
+        $statisticExample7 = <<<'HTML'
+            <div class="bw-statistic total-payments ...">
+                <div class="flex space-x-4">
+                    <div class="grow-0 icon">
                         // icon is displayed here
-                    &lt;/div&gt;
-                    &lt;div class="grow number"&gt;
-                        &lt;div class="uppercase ... label"&gt;
+                    </div>
+                    <div class="grow number">
+                        <div class="uppercase ... label">
                         // label is displayed here
-                        &lt;/div&gt;
-                        &lt;div class="text-3xl ..."&gt;
-                            &lt;svg class="bw-spinner"&gt;.
+                        </div>
+                        <div class="text-3xl ...">
+                            <svg class="bw-spinner">.
                                 // spinner is displayed here
-                            &lt;/svg&gt;
-                            &lt;span class="text-gray-300 text-2xl"&gt;
+                            </svg>
+                            <span class="text-gray-300 text-2xl">
                                 // currency is displayed here
-                            &lt;/span&gt;
-                            &lt;span class="figure tracking-wider"&gt;
+                            </span>
+                            <span class="figure tracking-wider">
                                 // number is displayed here
-                            &lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$statisticExample7"></x-bladewind::code-block>
     <p>
         From the above html code, to hide the spinner your javascript will be similar to
     </p>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;script&gt;
+    @php
+        $statisticExample8 = <<<'HTML'
+            <script>
                 loadTotalPayment = () => {
                     ...
                     // do all your magic then call this helper function
                     // to hide the spinner
                     hide('.total-payments .bw-spinner');
                 }
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$statisticExample8"></x-bladewind::code-block>
 
     <h2 id="kpi">Trends, Tones And Progress</h2>
     <p>
@@ -175,16 +183,17 @@
         component rather than in your markup, so the same figure reads the same way on every
         page.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::statistic
-    label="Revenue"
-    number="12,400"
-    currency="GHS"
-    direction="up"
-    note="up 12% on last month" /&gt;
-        </code>
-    </pre>
+    @php
+        $statisticExample9 = <<<'HTML'
+            <x-bladewind::statistic
+                label="Revenue"
+                number="12,400"
+                currency="GHS"
+                direction="up"
+                note="up 12% on last month" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$statisticExample9"></x-bladewind::code-block>
     <p>
         <code class="inline">direction</code> draws a trend arrow beside the figure and colours
         it: <code class="inline">up</code> is good, <code class="inline">down</code> is bad,
@@ -198,16 +207,17 @@
         time. Set <code class="inline">invert_direction</code> and a downward arrow turns green
         instead of red.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::statistic
-    label="Arrears"
-    number="1,204"
-    direction="down"
-    invert_direction="true"
-    note="down 8% this week" /&gt;
-        </code>
-    </pre>
+    @php
+        $statisticExample10 = <<<'HTML'
+            <x-bladewind::statistic
+                label="Arrears"
+                number="1,204"
+                direction="down"
+                invert_direction="true"
+                note="down 8% this week" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$statisticExample10"></x-bladewind::code-block>
 
     <h3 id="tones">Tones</h3>
     <p>
@@ -230,17 +240,18 @@
         place of the note, tinted with the same tone. Out-of-range values are clamped and a
         non-numeric one is ignored.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::statistic
-    label="Collections"
-    number="72%"
-    hint="Invoices settled within 30 days"
-    tone="positive"
-    progress="72"
-    progress_label="of monthly target" /&gt;
-        </code>
-    </pre>
+    @php
+        $statisticExample11 = <<<'HTML'
+            <x-bladewind::statistic
+                label="Collections"
+                number="72%"
+                hint="Invoices settled within 30 days"
+                tone="positive"
+                progress="72"
+                progress_label="of monthly target" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$statisticExample11"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Statistic component.</p>
@@ -355,9 +366,9 @@
         </tr>
     </x-bladewind::table>
     <h3 class="pb-2 ">Statistic with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::statistic
+    @php
+        $statisticExample12 = <<<'HTML'
+            <x-bladewind::statistic
                 label="Total payments"
                 label_position="bottom"
                 number="34,500,100"
@@ -367,15 +378,16 @@
                 has_shadow="false"
                 has_border="false"
                 show_spinner="true"
-                class="m-0"&gt;
+                class="m-0">
 
-                &lt;x-slot name="icon"&gt;
-                    &lt;svg&gt;...&lt;/svg&gt;
-                &lt;/x-slot&gt;
+                <x-slot name="icon">
+                    <svg>...</svg>
+                </x-slot>
 
-            &lt;/x-bladewind::statistic&gt;
-        </code>
-    </pre>
+            </x-bladewind::statistic>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$statisticExample12"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > statistic.blade.php</code>

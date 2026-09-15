@@ -6,25 +6,25 @@ url: /component/shimmer
 
 # Shimmer
 
-Shimmers or loading placeholders are a great visual cue to tell users that content is loading.
+Shimmers (loading placeholders) give users a visual cue that content is loading. The component is intentionally simple: you specify a width and height and stack as many shimmers as needed to build the loading layout you want.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::shimmer />
 ```
 
-```blade
-<x-bladewind::shimmer animation="alternate" />
-```
+## Circular Shimmers
 
-Shimmers can be used in various ways. For example, you can use them to show a loading state for a list of items, card content, or even a form. You can use the `circle` attribute to create a circular shimmer.
+Use the `circle` attribute to create a circular shimmer, useful for avatars or icons.
 
 ```blade
 <x-bladewind::shimmer circle="true" />
 ```
 
-Since it is impossible to know all the possible layouts users will want to shimmer, the Bladewind Shimmer has been designed to be very simple. You specify your own `width` and `height` and stack up as many shimmers as needed to create the loading layout you want to depict.
+## Building Layouts
 
-In the example below, we have created a shimmer that is depicting two loading contact cards. One vertical, the other horizontal.
+Combine shimmers of different widths and heights to depict loading content such as contact cards.
 
 ```blade
 <x-bladewind::card class="sm:w-1/3">
@@ -34,9 +34,7 @@ In the example below, we have created a shimmer that is depicting two loading co
     <x-bladewind::shimmer />
     <x-bladewind::shimmer />
 </x-bladewind::card>
-```
 
-```blade
 <x-bladewind::card class="sm:w-2/3">
     <div class="flex gap-4">
         <div><x-bladewind::shimmer :circle="true" class="size-40" /></div>
@@ -45,51 +43,19 @@ In the example below, we have created a shimmer that is depicting two loading co
             <x-bladewind::shimmer class="w-[90%]" />
             <x-bladewind::shimmer class="w-[80%]" />
             <x-bladewind::shimmer />
-            <x-bladewind::shimmer class="w-[80%]" />
-            <x-bladewind::shimmer class="w-[85%]" />
-            <x-bladewind::shimmer class="w-[90%]" />
-            <x-bladewind::shimmer class="w-[80%]" />
-            <x-bladewind::shimmer />
-            <x-bladewind::shimmer />
         </div>
     </div>
 </x-bladewind::card>
 ```
 
-If the shimmer is at its full width (`w-full`), you can use the `align` attribute to position the shimmer to the `center` or `right` of its parent container. The shimmer by default is set to `w-full` and aligned to the `left` if width is not `w-full`.
+If a shimmer is at full width (`w-full`), use the `align` attribute to position it `center` or `right` within its parent. By default the shimmer is `w-full` and aligned `left` when width is not `w-full`.
 
-### Alternating Animation
+## Alternating Animation
 
-By default the animation moves from left to right. You can change this by setting the `animation` attribute to `alternate`. This will cause the shimmer to animate from left to right and then right to left, creating a back and forth effect.
-
-```blade
-<x-bladewind::card class="sm:w-1/3">
-    <x-bladewind::shimmer animation="alternate" :circle="true" align="center" />
-    <x-bladewind::shimmer animation="alternate" height="h-5" />
-    <x-bladewind::shimmer animation="alternate" />
-    <x-bladewind::shimmer animation="alternate" />
-    <x-bladewind::shimmer animation="alternate" />
-</x-bladewind::card>
-```
+By default the shimmer animates left to right. Set `animation="alternate"` to make it animate back and forth (left to right, then right to left).
 
 ```blade
-<x-bladewind::card class="sm:w-2/3">
-    <div class="flex gap-4">
-        <div><x-bladewind::shimmer animation="alternate" :circle="true" class="size-40" /></div>
-        <div class="grow">
-            <x-bladewind::shimmer animation="alternate" height="h-5" />
-            <x-bladewind::shimmer animation="alternate" class="w-[90%]" />
-            <x-bladewind::shimmer animation="alternate" class="w-[80%]" />
-            <x-bladewind::shimmer animation="alternate" />
-            <x-bladewind::shimmer animation="alternate" class="w-[80%]" />
-            <x-bladewind::shimmer animation="alternate" class="w-[85%]" />
-            <x-bladewind::shimmer animation="alternate" class="w-[90%]" />
-            <x-bladewind::shimmer animation="alternate" class="w-[80%]" />
-            <x-bladewind::shimmer animation="alternate" />
-            <x-bladewind::shimmer animation="alternate" />
-        </div>
-    </div>
-</x-bladewind::card>
+<x-bladewind::shimmer animation="alternate" />
 ```
 
 ## Attributes
@@ -97,11 +63,12 @@ By default the animation moves from left to right. You can change this by settin
 | Attribute | Default | Description |
 |---|---|---|
 | circle | false | Display the shimmer as a circle. `true` \| `false` |
-| duration | 1.5s | How long it takes for the animation to complete. The bigger the value the slower the animation. Must include 's' for seconds. |
-| width | w-full | How wide the shimmer goes. Must be a valid TailwindCSS width. Examples: `w-90`, `w-[100px]`, `w-[80%]` |
-| height | h-2.5 | Height of the shimmer. Must be a valid TailwindCSS height. Examples: `h-10`, `h-[10px]`, `h-[2%]` |
-| class | _blank_ | Any additional css classes can be added using this attribute. |
+| duration | 1.5s | How long the animation takes to complete (its speed) — larger values are slower. Must include `s` for seconds. |
+| width | w-full | How wide the shimmer is. Must be a valid Tailwind CSS width, e.g. `w-90`, `w-[100px]`, `w-[80%]`. |
+| height | h-2.5 | Height of the shimmer. Must be a valid Tailwind CSS height, e.g. `h-10`, `h-[10px]`, `h-[2%]`. |
+| class | *blank* | Additional CSS classes to add. |
 | animation | normal | Direction of the animation. `normal` \| `alternate` |
+| align | left | Alignment of the shimmer within its parent when not full width. `left` \| `center` \| `right` |
 
 ## Full Example
 

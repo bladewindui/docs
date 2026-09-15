@@ -13,15 +13,16 @@
         <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
         <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
     </x-bladewind::sortable>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable&gt;
-                &lt;x-bladewind::sortable.item&gt;Tomatoes&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Onions&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Garlic&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
+    @php
+        $sortableExample1 = <<<'HTML'
+            <x-bladewind::sortable>
+                <x-bladewind::sortable.item>Tomatoes</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample1"></x-bladewind::code-block>
 
     <h2 id="drag-handle">Drag Handle</h2>
     <p>
@@ -35,15 +36,16 @@
         <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
         <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
     </x-bladewind::sortable>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable hasHandle="true"&gt;
-                &lt;x-bladewind::sortable.item&gt;Tomatoes&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Onions&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Garlic&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
+    @php
+        $sortableExample2 = <<<'HTML'
+            <x-bladewind::sortable hasHandle="true">
+                <x-bladewind::sortable.item>Tomatoes</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample2"></x-bladewind::code-block>
     <p>
         Use <code class="inline text-red-500">handleIcon="ellipsis-vertical"</code> (or any other Heroicon name) to change the handle icon.
     </p>
@@ -64,18 +66,19 @@
             <x-bladewind::sortable.item>Banana</x-bladewind::sortable.item>
         </x-bladewind::sortable>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable type="shared" group="fruits"&gt;
-                &lt;x-bladewind::sortable.item&gt;Apple&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Mango&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
+    @php
+        $sortableExample3 = <<<'HTML'
+            <x-bladewind::sortable type="shared" group="fruits">
+                <x-bladewind::sortable.item>Apple</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Mango</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
 
-            &lt;x-bladewind::sortable type="shared" group="fruits"&gt;
-                &lt;x-bladewind::sortable.item&gt;Banana&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
+            <x-bladewind::sortable type="shared" group="fruits">
+                <x-bladewind::sortable.item>Banana</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample3"></x-bladewind::code-block>
     <p>
         Set <code class="inline text-red-500">clone="true"</code> on a shared list if you want dragging an item into another list to leave
         a copy behind instead of moving it.
@@ -93,16 +96,17 @@
         <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
         <x-bladewind::sortable.item>Peppers</x-bladewind::sortable.item>
     </x-bladewind::sortable>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable multidrag="true"&gt;
-                &lt;x-bladewind::sortable.item&gt;Tomatoes&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Onions&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Garlic&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Peppers&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
+    @php
+        $sortableExample4 = <<<'HTML'
+            <x-bladewind::sortable multidrag="true">
+                <x-bladewind::sortable.item>Tomatoes</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Peppers</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample4"></x-bladewind::code-block>
     <x-bladewind::alert type="info" show_close_icon="false">
         <code class="inline">multidrag</code> and <code class="inline">swap</code> cannot be combined — if both are set, <code class="inline">multidrag</code> takes priority.
     </x-bladewind::alert>
@@ -118,15 +122,16 @@
         <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
         <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
     </x-bladewind::sortable>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable swap="true"&gt;
-                &lt;x-bladewind::sortable.item&gt;Tomatoes&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Onions&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Garlic&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
+    @php
+        $sortableExample5 = <<<'HTML'
+            <x-bladewind::sortable swap="true">
+                <x-bladewind::sortable.item>Tomatoes</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample5"></x-bladewind::code-block>
 
     <h2 id="filter">Locking Individual Items</h2>
     <p>
@@ -139,15 +144,16 @@
         <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
         <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
     </x-bladewind::sortable>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable filter="locked"&gt;
-                &lt;x-bladewind::sortable.item class="locked"&gt;Tomatoes (locked)&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Onions&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item&gt;Garlic&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
+    @php
+        $sortableExample6 = <<<'HTML'
+            <x-bladewind::sortable filter="locked">
+                <x-bladewind::sortable.item class="locked">Tomatoes (locked)</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Onions</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item>Garlic</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample6"></x-bladewind::code-block>
 
     <h2 id="disable-sort">Disabling Sorting</h2>
     <p>
@@ -168,46 +174,51 @@
         <code class="inline">&lt;input&gt;</code> with that name and keeps it in sync with the current order as a JSON array of each item's
         <code class="inline">value</code>. It submits with the rest of your form like any other field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;form method="post" action="/tasks/reorder"&gt;
-                @@csrf
-                &lt;x-bladewind::sortable inputName="task_order" hasHandle="true"&gt;
-                    @@foreach($tasks as $task)
-                        &lt;x-bladewind::sortable.item value="@{{ $task->id }}"&gt;@{{ $task->title }}&lt;/x-bladewind::sortable.item&gt;
-                    @@endforeach
-                &lt;/x-bladewind::sortable&gt;
-                &lt;x-bladewind::button can_submit="true" label="Save order" /&gt;
-            &lt;/form&gt;
-        </code>
-    </pre>
+    @php
+        $sortableExample7 = <<<'HTML'
+            <form method="post" action="/tasks/reorder">
+                BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERcsrf
+                <x-bladewind::sortable inputName="task_order" hasHandle="true">
+                    BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERforeach($tasks as $task)
+                        <x-bladewind::sortable.item value="@{{ $task->id }}">@{{ $task->title }}</x-bladewind::sortable.item>
+                    BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERendforeach
+                </x-bladewind::sortable>
+                <x-bladewind::button can_submit="true" label="Save order" />
+            </form>
+            HTML;
+        $sortableExample7 = str_replace('BWATSIGNPLACEHOLDER', '@', $sortableExample7);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample7"></x-bladewind::code-block>
     <p>On the server the field arrives as a JSON array of ids in their new order:</p>
-    <pre class="language-php line-numbers">
-        <code>
+    @php
+        $sortableExample8 = <<<'HTML'
             $order = json_decode($request->input('task_order')); // ["30", "10", "20"]
 
-            foreach ($order as $position =&gt; $id) {
-                Task::where('id', $id)-&gt;update(['position' =&gt; $position]);
+            foreach ($order as $position => $id) {
+                Task::where('id', $id)->update(['position' => $position]);
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$sortableExample8"></x-bladewind::code-block>
 
     <h3 class="pb-2">Saving with AJAX</h3>
     <p>
         To save without submitting a form, point the <code class="inline text-red-500">onSorted</code> attribute at a JavaScript function.
         It is called after every reorder with the current order array and the original event.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable onSorted="saveOrder"&gt;
-                @@foreach($tasks as $task)
-                    &lt;x-bladewind::sortable.item value="@{{ $task->id }}"&gt;@{{ $task->title }}&lt;/x-bladewind::sortable.item&gt;
-                @@endforeach
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $sortableExample9 = <<<'HTML'
+            <x-bladewind::sortable onSorted="saveOrder">
+                BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERforeach($tasks as $task)
+                    <x-bladewind::sortable.item value="@{{ $task->id }}">@{{ $task->title }}</x-bladewind::sortable.item>
+                BWATSIGNPLACEHOLDERBWATSIGNPLACEHOLDERendforeach
+            </x-bladewind::sortable>
+            HTML;
+        $sortableExample9 = str_replace('BWATSIGNPLACEHOLDER', '@', $sortableExample9);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample9"></x-bladewind::code-block>
+    @php
+        $sortableExample10 = <<<'HTML'
             function saveOrder(order, event) {
                 fetch('/tasks/reorder', {
                     method: 'POST',
@@ -218,8 +229,9 @@
                     body: JSON.stringify({ task_order: order })
                 });
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$sortableExample10"></x-bladewind::code-block>
     <x-bladewind::alert type="info" show_close_icon="false">
         Each list is also exposed as a JavaScript variable named after its <code class="inline">name</code>, so you can call SortableJS
         methods directly — for example <code class="inline">ingredients.toArray()</code> returns the current order at any time.
@@ -342,9 +354,9 @@
     </p>
 
     <h3 class="pb-2">Sortable with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::sortable
+    @php
+        $sortableExample11 = <<<'HTML'
+            <x-bladewind::sortable
                 name="ingredients"
                 type="shared"
                 group="kitchen"
@@ -357,12 +369,23 @@
                 swap="false"
                 animation="200"
                 inputName="ingredient_order"
-                onSorted="saveOrder"&gt;
-                &lt;x-bladewind::sortable.item value="1"&gt;Tomatoes&lt;/x-bladewind::sortable.item&gt;
-                &lt;x-bladewind::sortable.item value="2" class="locked"&gt;Onions&lt;/x-bladewind::sortable.item&gt;
-            &lt;/x-bladewind::sortable&gt;
-        </code>
-    </pre>
+                onSorted="saveOrder">
+                <x-bladewind::sortable.item value="1">Tomatoes</x-bladewind::sortable.item>
+                <x-bladewind::sortable.item value="2" class="locked">Onions</x-bladewind::sortable.item>
+            </x-bladewind::sortable>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$sortableExample11"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Sortable Inside Livewire</h2>
+    <p>
+        The component guards against a Livewire re-render creating a second copy of the drag and drop instance for the same list.
+        When <code class="inline">input-name</code> is set, the hidden field that stores the current order now dispatches a real,
+        native <code class="inline">change</code> event on every reorder, so Livewire's <code class="inline">wire:model</code> picks
+        it up. The order itself is runtime state kept in the DOM rather than in Livewire's component state, so if the list sits
+        inside a component that can re-render for reasons unrelated to the list, wrap the list in
+        <code class="inline">wire:ignore</code>. Otherwise a reorder in progress can be reset partway through.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; sortable &gt; index.blade.php</code>
@@ -378,6 +401,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#disable-sort">Disabling sorting</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#save-order">Submitting &amp; saving the order</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Sortable inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

@@ -6,7 +6,9 @@ url: /component/dropmenu
 
 # Dropmenu
 
-Useful for displaying menu items in a dropdown. This is very different from the [Select component](/component/select). The Select component can pass values as a form element. The Dropmenu does not pass values around and is mostly useful for accessing quick actions.
+Displays menu items in a dropdown for quick actions. Unlike the Select component, the Dropmenu does not pass values around as a form element.
+
+## Basic Usage
 
 ```blade
 <x-bladewind::dropmenu>
@@ -16,7 +18,7 @@ Useful for displaying menu items in a dropdown. This is very different from the 
 </x-bladewind::dropmenu>
 ```
 
-By default the Dropmenu is triggered using the `horizontal ellipsis` icon found on [Heroicons](https://heroicons.com/). You can trigger the menu using any other icon from Heroicons or using any other element. To use an icon as the trigger, the trick is to append the word **-icon** to the end of the name of the icon defined on Heroicons.
+By default the Dropmenu is triggered by the horizontal ellipsis icon from Heroicons. To trigger it with any other Heroicon, append `-icon` to the icon's name and set it as `trigger`.
 
 ```blade
 <x-bladewind::dropmenu trigger="musical-note-icon">
@@ -39,11 +41,10 @@ By default the Dropmenu is triggered using the `horizontal ellipsis` icon found 
 
 ### trigger_css
 
-It is also possible to modify the trigger css. This css applies to any item you specify as the trigger but most useful if you specify an icon as the trigger. This is achieved by defining TailwindCSS classes for the `trigger_css` attribute.
+Apply TailwindCSS classes to the trigger element, most useful when the trigger is an icon.
 
 ```blade
-<x-bladewind::dropmenu trigger="musical-note-icon"
-     trigger_css="bg-pink-600 text-white p-2 rounded-full !h-10 !w-10">
+<x-bladewind::dropmenu trigger="musical-note-icon" trigger_css="bg-pink-600 text-white p-2 rounded-full !h-10 !w-10">
     <x-bladewind::dropmenu.item>Add to playlist</x-bladewind::dropmenu.item>
     <x-bladewind::dropmenu.item>Play again</x-bladewind::dropmenu.item>
 </x-bladewind::dropmenu>
@@ -51,20 +52,18 @@ It is also possible to modify the trigger css. This css applies to any item you 
 
 ### trigger_on
 
-By default the Dropmenu is displayed when you click on the trigger. It is possible to change this behaviour by defining the `trigger_on` attribute. There are only two available options: `click` and `mouseover`.
+By default the menu opens on click. Set `trigger_on="mouseover"` to open on hover instead. Available values: `click`, `mouseover`.
 
 ```blade
-<x-bladewind::dropmenu trigger="musical-note-icon"
-    trigger_css="bg-green-600 text-white p-2 rounded-full !h-10 !w-10"
-    trigger_on="mouseover">
+<x-bladewind::dropmenu trigger="musical-note-icon" trigger_css="bg-green-600 text-white p-2 rounded-full !h-10 !w-10" trigger_on="mouseover">
     <x-bladewind::dropmenu.item>Add to playlist</x-bladewind::dropmenu.item>
     <x-bladewind::dropmenu.item>Play again</x-bladewind::dropmenu.item>
 </x-bladewind::dropmenu>
 ```
 
-### Non Icon Triggers
+### Non-Icon Triggers
 
-To trigger the Dropmenu using any HTML element other than an icon, you will need to define the trigger as a slot.
+Define the trigger as a slot to use any HTML element instead of an icon.
 
 ```blade
 <x-bladewind::dropmenu>
@@ -97,13 +96,10 @@ To trigger the Dropmenu using any HTML element other than an icon, you will need
 
 ## Dropmenu Item Actions
 
-The Dropmenu items are the actual line items within your Dropmenu. Each item can contain any piece of HTML code so you completely have control over what action is assigned to each menu item. BladewindUI does not interfere. For convenience, you can specify an `onclick` attribute.
-
-Dropmenu Items can contain HTML so their content is all up to you.
+Each dropmenu item can contain any HTML, giving you full control over its action. Use the `onclick` attribute for convenience.
 
 ```blade
-<x-bladewind::dropmenu trigger="light-bulb-icon"
-    trigger_css="bg-yellow-400 text-yellow-800 p-2 rounded-full !h-10 !w-10">
+<x-bladewind::dropmenu trigger="light-bulb-icon" trigger_css="bg-yellow-400 text-yellow-800 p-2 rounded-full !h-10 !w-10">
     <x-bladewind::dropmenu.item>
         <a href="/library" target="_blank">Go to Library</a>
     </x-bladewind::dropmenu.item>
@@ -117,7 +113,7 @@ Dropmenu Items can contain HTML so their content is all up to you.
 
 ### Headers
 
-It is possible to define a header for your Dropmenu component. There can be several headers in a Dropmenu. The header is still a `x-bladewind::dropmenu.item` component so can contain any HTML. The only difference between this and other items is there is no hover effect, the cursor displayed is the default pointer and there is a divider separating the header from the next menu item. To define a Dropmenu item as a header, set `header="true"`.
+Set `header="true"` on a `dropmenu.item` to render it as a header — no hover effect, default pointer cursor, and a divider separating it from the next item. Multiple headers are allowed.
 
 ```blade
 <x-bladewind::dropmenu.item header="true">
@@ -127,7 +123,7 @@ It is possible to define a header for your Dropmenu component. There can be seve
 
 ### Icons
 
-Even though it is possible to define your own icon as part of the Dropmenu item's content, there is a shortcut that allows you to define any of the icons available on [Heroicons](https://heroicons.com). This makes use of the BladewindUI [Icon component](/component/icon). This is useful only if you have menu items that fit on one line and you want to prefix each line with an icon. To define a Dropmenu item with an icon, set the `icon` attribute with any icon name from Heroicons. Unlike the icon used in the `trigger` attribute of the Dropmenu component, items do not require the **-icon** at the end of the icon name.
+Set `icon` on a `dropmenu.item` to prefix it with a Heroicon (via the Icon component), without the `-icon` suffix needed by the trigger.
 
 ```blade
 <x-bladewind::dropmenu.item icon="square-pencil">
@@ -135,25 +131,23 @@ Even though it is possible to define your own icon as part of the Dropmenu item'
 </x-bladewind::dropmenu.item>
 ```
 
-By default, icons are positioned on the left of the menu item content. To switch the icon position to the right of the menu item content, set `icon_right="true"`. Setting the attribute on the `x-bladewind::dropmenu` component will shift all menu items in the menu to the right. Alternatively, you can set the attribute on one or more menu items within the Dropmenu component.
+Icons are positioned on the left by default. Set `icon_right="true"` on the Dropmenu component to shift all item icons to the right, or on individual items to shift just those.
 
 ```blade
 <x-bladewind::dropmenu icon_right="true">
-    <x-bladewind::dropmenu.item>
-    ...
-    </x-bladewind::dropmenu.item>
+    <x-bladewind::dropmenu.item>...</x-bladewind::dropmenu.item>
 </x-bladewind::dropmenu>
 ```
 
 ### Dividers
 
-You may want to logically divide your Dropmenu into sections. You can either do that with headers or dividers. A divider is simply a non-clickable line separating menu items. To define a Dropmenu item as a divider, set `divider="true"`. Any text added to the menu item will be ignored.
+Set `divider="true"` on an item to render a non-clickable divider line (any text content is ignored).
 
 ```blade
 <x-bladewind::dropmenu.item divider="true" />
 ```
 
-By default Dropmenu Items are not divided. You can tell each menu item apart on mouseover. If you prefer to have your menu items separated by a thin gray line you can set `divided="true"` on the Dropmenu component itself (not on the menu items).
+Set `divided="true"` on the Dropmenu component itself to separate every item with a thin gray line (by default, items are only distinguishable on mouseover).
 
 ```blade
 <x-bladewind::dropmenu divided="true">
@@ -161,31 +155,88 @@ By default Dropmenu Items are not divided. You can tell each menu item apart on 
 </x-bladewind::dropmenu>
 ```
 
+### Full Example: Headers, Icons and Dividers
+
+```blade
+<x-bladewind::dropmenu>
+    <x-slot:trigger>
+        <div class="flex space-x-2 items-center rounded-md">
+            <div class="grow">
+                <x-bladewind::avatar image="/assets/images/issah.jpg" />
+            </div>
+            <div>
+                <x-bladewind::icon name="chevron-down" class="!h-4 !w-4" />
+            </div>
+        </div>
+    </x-slot:trigger>
+
+    <x-bladewind::dropmenu.item header="true">
+        <div class="grow">
+            <div><strong>Jane A. Doe</strong></div>
+            <div class="text-sm">@jane-the-coder</div>
+            <div class="text-sm">jane@bladewindui.com</div>
+        </div>
+    </x-bladewind::dropmenu.item>
+
+    <x-bladewind::dropmenu.item icon="pencil-square">
+        Edit Profile
+    </x-bladewind::dropmenu.item>
+    <x-bladewind::dropmenu.item icon="trash" icon_css="!text-red-300">
+        <span class="text-red-500">Delete Profile</span>
+    </x-bladewind::dropmenu.item>
+
+    <x-bladewind::dropmenu.item divider />
+
+    <x-bladewind::dropmenu.item icon="computer-desktop">Your Repositories</x-bladewind::dropmenu.item>
+    <x-bladewind::dropmenu.item icon="briefcase">Your Projects</x-bladewind::dropmenu.item>
+    <x-bladewind::dropmenu.item icon="building-office">Your Organizations</x-bladewind::dropmenu.item>
+    <x-bladewind::dropmenu.item icon="star">Your Stars</x-bladewind::dropmenu.item>
+
+    <x-bladewind::dropmenu.item divider />
+
+    <x-bladewind::dropmenu.item hover="false">
+        <x-bladewind::button color="indigo" radius="small" size="small" class="w-full">Sign Out</x-bladewind::button>
+    </x-bladewind::dropmenu.item>
+</x-bladewind::dropmenu>
+```
+
 ## Menu Position
 
-The Dropmenu component for now supports two menu positions: left and right. This is achieved by setting the `position` attribute on the Dropmenu component. The default position is `right` so you can ignore this attribute if you intend to use the component as is.
+Set `position` to `left` or `right` (default `right`) to control where menu items appear relative to the trigger.
 
 ```blade
 <x-bladewind::dropmenu position="left">
-...
-</x-bladewind::dropmenu>
-
-<x-bladewind::dropmenu position="right">
-...
+    ...
 </x-bladewind::dropmenu>
 ```
 
 ## Scrollable Menu Items
 
-You could have a long list of menu items in your Dropmenu. If you don't want all items showing, you can set `scrollable="true"` on the Dropmenu component. This will reduce the menu items container to a default height of `200px` and scroll every menu item outside this view area. If the default height does not meet your needs, you can define your own height by setting the `height` attribute. This takes any positive integer without the "px".
+Set `scrollable="true"` to cap the menu items container at a default height of `200px` and scroll the rest. Override the height with the `height` attribute (a positive integer, no "px").
 
 ```blade
-<x-bladewind::dropmenu scrollable="true">
-...
+<x-bladewind::dropmenu scrollable>
+    ...
 </x-bladewind::dropmenu>
 ```
 
-If you have multiple Dropmenus on your page and experience issues with only the first Dropmenu showing and subsequent ones not showing, set `modular="true"` on the very first Dropmenu component on your page.
+If you have multiple Dropmenus on one page and only the first shows, set `modular="true"` on the first Dropmenu component on the page.
+
+## JavaScript API
+
+Each dropmenu creates a `BladewindDropmenu` instance assigned to a variable named after its `name` attribute, callable from your own scripts or inline handlers. If you set `name` yourself, use only letters, numbers, and underscores (hyphens are invalid in JS identifiers) — the auto-generated default already follows this rule.
+
+| Method | Description |
+|---|---|
+| `name.show()` | Open the menu and position it against its trigger. |
+| `name.hide()` | Close the menu. |
+| `name.toggle()` | Open or close the menu based on its current state. |
+
+```js
+profile_menu.show();
+profile_menu.hide();
+profile_menu.toggle();
+```
 
 ## Attributes
 
@@ -193,34 +244,39 @@ If you have multiple Dropmenus on your page and experience issues with only the 
 
 | Attribute | Default | Description |
 |---|---|---|
-| `name` | `uniqid('bw-dropmenu-')` | Optional unique name for the component. Usually useful if you wish to target a menu from CSS to define overwriting styles. |
-| `trigger` | `ellipsis-horizontal-icon` | The element to trigger the menu. Usually what a user will click on to show the menu. |
-| `trigger_css` | blank | Additional css to apply to the trigger. |
-| `trigger_on` | `click` | Which event should trigger the menu. `click` `mouseover` |
-| `divided` | `false` | Should menu items have lines dividing them. `true` `false` |
-| `scrollable` | `false` | Should menu items scroll after 200px. `true` `false` |
-| `height` | `200` | Default height for menu items container. When `scrollable=true`, menu items container will be restricted to this height. Accepts a positive integer. |
-| `hide_after_click` | `true` | Should the menu be hidden after clicking on any of the menu items. `true` `false` |
-| `icon_right` | `false` | Align the icon to the right of the menu item. Applies to all items in the menu. `true` `false` |
-| `class` | blank | Additional css for the menu items container. |
-| `position` | `right` | How should the menu items be positioned relative to the trigger. `right` `left` |
-| `padded` | `false` | Should the container for the menu items be padded. `true` `false` |
-| `modular` | `false` | Determines if script tags used within the component should have `type="module"`. Useful sometimes when working with Vite js. `true` `false` |
-| `nonce` | `null` | Used when implementing context security policies and require to pass a nonce to inline scripts. For convenience, you can set your `nonce` value in the `config/bladewind.php` file under the "script" key. |
+| name | uniqid('bw-dropmenu-') | Optional unique name, useful to target a menu from CSS. |
+| trigger | ellipsis-horizontal-icon | The element that triggers the menu. |
+| trigger_css | *blank* | Additional CSS applied to the trigger. |
+| trigger_on | click | Event that triggers the menu. `click` \| `mouseover` |
+| divided | false | Divide menu items with lines. `true` \| `false` |
+| scrollable | false | Scroll menu items after 200px. `true` \| `false` |
+| height | 200 | Height for the menu items container when `scrollable=true`. Positive integer. |
+| hide_after_click | true | Hide the menu after clicking a menu item. `true` \| `false` |
+| icon_right | false | Align icons to the right of every menu item. `true` \| `false` |
+| class | *blank* | Additional CSS for the menu items container. |
+| position | right | Position of menu items relative to the trigger. `right` \| `left` |
+| padded | false | Pad the menu items container. `true` \| `false` |
+| modular | false | Whether script tags in the component use `type="module"`. Useful with Vite. `true` \| `false` |
+| nonce | null | Nonce value for content security policies applied to inline scripts. Can also be set globally via `config/bladewind.php` under the "script" key. |
+| trigger_label | *blank* | Accessible name for the trigger, exposed as `aria-label`. Worth setting when the trigger is icon-only, since it otherwise reaches a screen reader unnamed. |
 
 ### Dropmenu Item Component Attributes
 
 | Attribute | Default | Description |
 |---|---|---|
-| `icon` | blank | Any Heroicon icon to display as prefix to the menu item. |
-| `dir` | blank | Directory to load the icon from. See the [Icon](/component/icon#custom-dir) component for usage. |
-| `icon_css` | blank | Additional css to apply to the icon. |
-| `icon_right` | `false` | Align the icon to the right of the menu item. Applies to the menu item the attribute is declared on. `true` `false` |
-| `divider` | `false` | Is this menu item a divider. `true` `false` |
-| `header` | `false` | Is this menu item a header. `true` `false` |
-| `hover` | `true` | Should this menu item change its background colour on mouseover. `true` `false` |
-| `padded` | `false` | Should the menu item be padded. `true` `false` |
-| `class` | blank | Additional css to add to the menu item. |
+| icon | *blank* | Any Heroicon icon to prefix the menu item. |
+| dir | *blank* | Directory to load the icon from. See the Icon component. |
+| icon_css | *blank* | Additional CSS applied to the icon. |
+| icon_right | false | Align the icon to the right, for this item only. `true` \| `false` |
+| divider | false | Render this item as a divider. `true` \| `false` |
+| header | false | Render this item as a header. `true` \| `false` |
+| hover | true | Change background colour on mouseover. `true` \| `false` |
+| padded | false | Pad the menu item. `true` \| `false` |
+| class | *blank* | Additional CSS for the menu item. |
+
+## Using Dropmenu Inside Livewire
+
+The menu tracks its open/closed state outside of the DOM that Livewire manages, so an unrelated re-render resets it to closed — wrap the trigger and menu in `wire:ignore` if this happens. The component also guards against a Livewire re-render creating a second copy of itself, so re-rendering won't leave behind duplicate click listeners.
 
 ## Full Example
 
@@ -246,8 +302,7 @@ If you have multiple Dropmenus on your page and experience issues with only the 
         header="false"
         hover="false"
         class="p-2">
-    ...
+        ...
     </x-bladewind::dropmenu.item>
-
 </x-bladewind::dropmenu>
 ```

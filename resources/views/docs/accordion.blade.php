@@ -14,7 +14,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
+                <x-bladewind::code-block language="bash" code="composer require bladewindui/ui"></x-bladewind::code-block>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -27,27 +27,28 @@
         </x-bladewind::accordion.item>
     </x-bladewind::accordion>
 <br />
-<pre class="language-markup line-numbers" data-line="1,7">
-<code>
-&lt;x-bladewind::accordion&gt;
-    &lt;x-bladewind::accordion.item title="What is BladewindUI?"&gt;
-        &lt;p&gt;
-            BladewindUI is a collection...
-        &lt;/p&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-    &lt;x-bladewind::accordion.item title="How can I install the latest version of the library?"&gt;
-        &lt;div&gt;
-            At the root of your Laravel...
-        &lt;/div&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-    &lt;x-bladewind::accordion.item title="How can I customize the library for my theme?"&gt;
-        &lt;div&gt;
-            BladewindUI has been designed ...
-        &lt;/div&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-&lt;/x-bladewind::accordion&gt;
-</code>
-</pre>
+@php
+    $accordionBasicExample = <<<'HTML'
+        <x-bladewind::accordion>
+            <x-bladewind::accordion.item title="What is BladewindUI?">
+                <p>
+                    BladewindUI is a collection...
+                </p>
+            </x-bladewind::accordion.item>
+            <x-bladewind::accordion.item title="How can I install the latest version of the library?">
+                <div>
+                    At the root of your Laravel...
+                </div>
+            </x-bladewind::accordion.item>
+            <x-bladewind::accordion.item title="How can I customize the library for my theme?">
+                <div>
+                    BladewindUI has been designed ...
+                </div>
+            </x-bladewind::accordion.item>
+        </x-bladewind::accordion>
+        HTML;
+@endphp
+<x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1,7" :code="$accordionBasicExample"></x-bladewind::code-block>
 <br />
 <p>
     If the title of your accordion item is not a simple string you can define your content in a title slot.
@@ -71,7 +72,7 @@
     <x-bladewind::accordion.item title="How can I install the latest version of the library?">
         <div>
             At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-            <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
+            <x-bladewind::code-block language="bash" code="composer require bladewindui/ui"></x-bladewind::code-block>
             Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
         </div>
     </x-bladewind::accordion.item>
@@ -85,27 +86,28 @@
 </x-bladewind::accordion>
 <br />
 
-    <pre class="language-markup line-numbers" data-line="1,3">
-<code>
-&lt;x-bladewind::accordion&gt;
-    &lt;x-bladewind::accordion.item&gt;
-        &lt;x-slot:title&gt;
-            &lt;div class="inline-flex"&gt;
-                &lt;div>&lt;img src="/assets/images/icon.png" class="size-10..." alt="logo"/>&lt;/div&gt;
-                &lt;div class="ml-2"&gt;
-                    &lt;div>What is BladewindUI library?&lt;/div&gt;
-                    &lt;div class="text-sm ...">version 2.8.0&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/x-slot:title&gt;
-        &lt;p&gt;
-            BladewindUI is a collection...
-        &lt;/p&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-    ...
-&lt;/x-bladewind::accordion&gt;
-</code>
-</pre>
+    @php
+        $accordionTitleSlotExample = <<<'HTML'
+            <x-bladewind::accordion>
+                <x-bladewind::accordion.item>
+                    <x-slot:title>
+                        <div class="inline-flex">
+                            <div><img src="/assets/images/icon.png" class="size-10..." alt="logo"/></div>
+                            <div class="ml-2">
+                                <div>What is BladewindUI library?</div>
+                                <div class="text-sm ...">version 2.8.0</div>
+                            </div>
+                        </div>
+                    </x-slot:title>
+                    <p>
+                        BladewindUI is a collection...
+                    </p>
+                </x-bladewind::accordion.item>
+                ...
+            </x-bladewind::accordion>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1,3" :code="$accordionTitleSlotExample"></x-bladewind::code-block>
     <h2 id="multiple">Open Multiple Accordion Items</h2>
 <p>By default only one accordion can stay open at any point in time. You can disable this feature by setting <code class="inline text-red-500">can_open_multiple="true"</code>. Now any closed accordion that is clicked will be opened. Likewise, any accordion that is open will closed when clicked.</p>
 
@@ -118,7 +120,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
+                <x-bladewind::code-block language="bash" code="composer require bladewindui/ui"></x-bladewind::code-block>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -131,28 +133,29 @@
         </x-bladewind::accordion.item>
     </x-bladewind::accordion>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::accordion
-    can_open_multiple="true"&gt;
-    &lt;x-bladewind::accordion.item title="What is BladewindUI?"&gt;
-        &lt;p&gt;
-            BladewindUI is a collection...
-        &lt;/p&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-    &lt;x-bladewind::accordion.item title="How can I install the latest version of the library?"&gt;
-        &lt;div&gt;
-            At the root of your Laravel...
-        &lt;/div&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-    &lt;x-bladewind::accordion.item title="How can I customize the library for my theme?"&gt;
-        &lt;div&gt;
-            BladewindUI has been designed ...
-        &lt;/div&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-&lt;/x-bladewind::accordion&gt;
-</code>
-</pre>
+    @php
+        $accordionMultipleExample = <<<'HTML'
+            <x-bladewind::accordion
+                can_open_multiple="true">
+                <x-bladewind::accordion.item title="What is BladewindUI?">
+                    <p>
+                        BladewindUI is a collection...
+                    </p>
+                </x-bladewind::accordion.item>
+                <x-bladewind::accordion.item title="How can I install the latest version of the library?">
+                    <div>
+                        At the root of your Laravel...
+                    </div>
+                </x-bladewind::accordion.item>
+                <x-bladewind::accordion.item title="How can I customize the library for my theme?">
+                    <div>
+                        BladewindUI has been designed ...
+                    </div>
+                </x-bladewind::accordion.item>
+            </x-bladewind::accordion>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$accordionMultipleExample"></x-bladewind::code-block>
 
 <h2 id="standalone">Ungrouped Accordions</h2>
 <p>
@@ -168,7 +171,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
+                <x-bladewind::code-block language="bash" code="composer require bladewindui/ui"></x-bladewind::code-block>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -181,28 +184,29 @@
         </x-bladewind::accordion.item>
     </x-bladewind::accordion>
     <br />
-    <pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::accordion
-    grouped="false"&gt;
-    &lt;x-bladewind::accordion.item title="What is BladewindUI?"&gt;
-        &lt;p&gt;
-            BladewindUI is a collection...
-        &lt;/p&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-    &lt;x-bladewind::accordion.item title="How can I install the latest version of the library?"&gt;
-        &lt;div&gt;
-            At the root of your Laravel...
-        &lt;/div&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-    &lt;x-bladewind::accordion.item title="How can I customize the library for my theme?"&gt;
-        &lt;div&gt;
-            BladewindUI has been designed ...
-        &lt;/div&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-&lt;/x-bladewind::accordion&gt;
-</code>
-</pre>
+    @php
+        $accordionStandaloneExample = <<<'HTML'
+            <x-bladewind::accordion
+                grouped="false">
+                <x-bladewind::accordion.item title="What is BladewindUI?">
+                    <p>
+                        BladewindUI is a collection...
+                    </p>
+                </x-bladewind::accordion.item>
+                <x-bladewind::accordion.item title="How can I install the latest version of the library?">
+                    <div>
+                        At the root of your Laravel...
+                    </div>
+                </x-bladewind::accordion.item>
+                <x-bladewind::accordion.item title="How can I customize the library for my theme?">
+                    <div>
+                        BladewindUI has been designed ...
+                    </div>
+                </x-bladewind::accordion.item>
+            </x-bladewind::accordion>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$accordionStandaloneExample"></x-bladewind::code-block>
 <h2 id="colors">Colourful Accordions</h2>
 <p>
     You can define the background colour of the accordion by setting the <code class="inline text-red-500">color</code> attribute. This is only enforced if <code class="inline text-red-500">grouped="false"</code>
@@ -216,7 +220,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
+                <x-bladewind::code-block language="bash" code="composer require bladewindui/ui"></x-bladewind::code-block>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -229,20 +233,21 @@
         </x-bladewind::accordion.item>
     </x-bladewind::accordion>
     <br />
-    <pre class="language-markup line-numbers" data-line="2,3">
-<code>
-&lt;x-bladewind::accordion
-    grouped="false"
-    color="yellow"&gt;
-    &lt;x-bladewind::accordion.item title="What is BladewindUI?"&gt;
-        &lt;p&gt;
-            BladewindUI is a collection...
-        &lt;/p&gt;
-    &lt;/x-bladewind::accordion.item&gt;
-...
-&lt;/x-bladewind::accordion&gt;
-</code>
-</pre>
+    @php
+        $accordionColorYellowExample = <<<'HTML'
+            <x-bladewind::accordion
+                grouped="false"
+                color="yellow">
+                <x-bladewind::accordion.item title="What is BladewindUI?">
+                    <p>
+                        BladewindUI is a collection...
+                    </p>
+                </x-bladewind::accordion.item>
+                ...
+            </x-bladewind::accordion>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$accordionColorYellowExample"></x-bladewind::code-block>
     <br />
     <x-bladewind::accordion grouped="false" color="pink">
         <x-bladewind::accordion.item title="What is BladewindUI?">
@@ -253,7 +258,7 @@
         <x-bladewind::accordion.item title="How can I install the latest version of the library?">
             <div>
                 At the root of your Laravel project, type the following composer command in your terminal to pull in the package.
-                <pre class="language-php line-numbers"><code>composer require bladewindui/ui</code></pre>
+                <x-bladewind::code-block language="bash" code="composer require bladewindui/ui"></x-bladewind::code-block>
                 Next you need to publish the package's public assets by running the command below, still at the root of your Laravel project. This will create a vendor/bladewind directory in your public directory.
             </div>
         </x-bladewind::accordion.item>
@@ -267,15 +272,16 @@
     </x-bladewind::accordion>
 
 
-    <pre class="language-markup line-numbers" data-line="2,3">
-<code>
-&lt;x-bladewind::accordion
-    grouped="false"
-    color="pink"&gt;
-...
-&lt;/x-bladewind::accordion&gt;
-</code>
-</pre>
+    @php
+        $accordionColorPinkExample = <<<'HTML'
+            <x-bladewind::accordion
+                grouped="false"
+                color="pink">
+            ...
+            </x-bladewind::accordion>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$accordionColorPinkExample"></x-bladewind::code-block>
     <br />
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Accordion component.</p>
@@ -369,29 +375,31 @@
     </x-bladewind::table>
 
     <h3>Accordion with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::accordion
+    @php
+        $accordionAllAttrsExample = <<<'HTML'
+            <x-bladewind::accordion
                 grouped="false"
                 can_open_multiple="false"
                 color="pink"
-                class="rounded-lg shadow-sm"&gt;
+                class="rounded-lg shadow-sm">
             ...
-            &lt;/x-bladewind::accordion&gt;
-        </code>
-    </pre>
+            </x-bladewind::accordion>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$accordionAllAttrsExample"></x-bladewind::code-block>
     <h3>Accordion Item with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::accordion.item
+    @php
+        $accordionItemAllAttrsExample = <<<'HTML'
+            <x-bladewind::accordion.item
                 color="blue"
                 open="false"
                 title="What is BladewindUI?"
-                class="shadow"&gt;
+                class="shadow">
             ...
-            &lt;/x-bladewind::accordion.item&gt;
-        </code>
-    </pre>
+            </x-bladewind::accordion.item>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$accordionItemAllAttrsExample"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > accordion > [index.blade.php, item.blade.php]</code>

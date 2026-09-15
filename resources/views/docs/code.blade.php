@@ -9,18 +9,20 @@
     </p>
     <br/>
     <p><x-bladewind::code /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample1 = <<<'HTML'
+            <x-bladewind::code  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample1"></x-bladewind::code-block>
     <br/>
     <p><x-bladewind::code size="big" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code size="big"  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample2 = <<<'HTML'
+            <x-bladewind::code size="big"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample2"></x-bladewind::code-block>
     <br/>
     <p>The verification code component allows you to specify how many boxes you want to display by specifying the
         <code class="inline text-red-500">total_digits</code> attribute. There is no restriction on the maximum
@@ -28,11 +30,12 @@
     </p>
     <br/>
     <p><x-bladewind::code total_digits="5"  /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code total_digits="5"  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample3 = <<<'HTML'
+            <x-bladewind::code total_digits="5"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample3"></x-bladewind::code-block>
     <br />
     <p>
         If you don't want the code being entered to be visible, set the
@@ -41,11 +44,12 @@
     </p>
     <br/>
     <p><x-bladewind::code hide-input="true"  /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code hide-input="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample4 = <<<'HTML'
+            <x-bladewind::code hide-input="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample4"></x-bladewind::code-block>
     <br />
     <p>
         <x-bladewind::alert show_close_icon="false">
@@ -62,38 +66,42 @@
     </p>
     <br/>
     <p><x-bladewind::code total_digits="7" has-separator="true"  /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code total_digits="7" has-separator="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample5 = <<<'HTML'
+            <x-bladewind::code total_digits="7" has-separator="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample5"></x-bladewind::code-block>
     <br />
     <p>
         <code class="inline text-red-500">has-separator</code> and <code class="inline text-red-500">hide-input</code> can be combined with each other and with any other attribute.
     </p>
     <br/>
     <p><x-bladewind::code total_digits="7" has-separator="true" hide-input="true"  /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code total_digits="7" has-separator="true" hide-input="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample6 = <<<'HTML'
+            <x-bladewind::code total_digits="7" has-separator="true" hide-input="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample6"></x-bladewind::code-block>
 
     <h2 id="code">Access the Verification Code</h2>
     <p>
         What happens after the user enters their verification code? The component creates a hidden input field with the name that was passed as the <code class="inline text-red-500">name</code> attribute.
     </p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::code name="pin_code"  /&gt;
-            </code>
-        </pre>
+        @php
+        $codeExample7 = <<<'HTML'
+            <x-bladewind::code name="pin_code"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample7"></x-bladewind::code-block>
     <p>The above will create the input fields for the verification codes and create the hidden input below</p>
-        <pre class="language-markup">
-            <code>
-                &lt;input type="hidden" name="pin_code" class="pin_code ..." id="pin_code"  /&gt;
-            </code>
-        </pre>
+        @php
+        $codeExample8 = <<<'HTML'
+            <input type="hidden" name="pin_code" class="pin_code ..." id="pin_code"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample8"></x-bladewind::code-block>
     <p>
         You can access the value of <code class="inline">pin_code</code> either via Javascript or via PHP if you intend to post it in a form to your backend.
         The <code class="inline text-red-500">onverify</code> attribute allows you to specify a function that should be called when the user has entered a value into the last verification code field.
@@ -101,17 +109,18 @@
         <code class="inline text-red-500">onverify="verifyPin"</code>. The component passes the code entered by the user to your function, as well as the name of the component, so, your function declaration needs to expect one or two parameters.
         Still using the <em>verifyPin</em> example, your function declaration will be:
     </p>
-        <pre class="language-js">
-            <code>
-                // NOTE: this is not a Bladewind helper function
-                // it should be a function in your project
+        @php
+        $codeExample9 = <<<'HTML'
+            // NOTE: this is not a Bladewind helper function
+            // it should be a function in your project
 
-                verifyPin = (code, name) => {
+            verifyPin = (code, name) => {
 
-                    // do something here with the code
-                }
-            </code>
-        </pre>
+                // do something here with the code
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$codeExample9"></x-bladewind::code-block>
     <p>
         Let's consider a practical example. Enter any code in the fields below and get notified of the code you entered.
     </p><br />
@@ -123,17 +132,18 @@
             }
         </script>
     </p>
-        <pre class="language-markup line-numbers">
-            <code>
-                &lt;x-bladewind::code onverify="checkPin" /&gt;
+        @php
+        $codeExample10 = <<<'HTML'
+            <x-bladewind::code onverify="checkPin" />
 
-                &lt;script&gt;
-                    checkPin = (code) => {
-                        alert(`You entered: ${code}`);
-                    }
-                &lt;/script&gt;
-            </code>
-        </pre>
+            <script>
+                checkPin = (code) => {
+                    alert(`You entered: ${code}`);
+                }
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$codeExample10"></x-bladewind::code-block>
 
     <h2 id="clearpin">Clear PIN/Code</h2>
     <p>
@@ -153,23 +163,25 @@
             }
         </script>
     </p>
-        <pre class="language-markup">
-            <code>
-                &lt;x-bladewind::code name="clear_me" onverify="checkPinAndClear" /&gt;
-            </code>
-        </pre>
-        <pre class="language-markup line-numbers" data-line="4">
-            <code>
-                &lt;script&gt;
-                    checkPinAndClear = (code) => {
-                        if(code !== 2024) {
-                            clearPin('clear_me');
-                            showNotification('Wrong Code', 'Please enter your code again', 'error');
-                        }
+        @php
+        $codeExample11 = <<<'HTML'
+            <x-bladewind::code name="clear_me" onverify="checkPinAndClear" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample11"></x-bladewind::code-block>
+        @php
+        $codeExample12 = <<<'HTML'
+            <script>
+                checkPinAndClear = (code) => {
+                    if(code !== 2024) {
+                        clearPin('clear_me');
+                        showNotification('Wrong Code', 'Please enter your code again', 'error');
                     }
-                &lt;/script&gt;
-            </code>
-        </pre>
+                }
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$codeExample12"></x-bladewind::code-block>
 
     <h2 id="errors">Displaying Errors</h2>
     <p>
@@ -180,14 +192,15 @@
     <p>
         <x-bladewind::code name="pcode" error_message="Yoh! check your code" onverify="checkPinShowError" />
     </p>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::code
-        name="pcode"
-        error_message="Yoh! check your code"
-        onverify="checkPinShowError" /&gt;
-</code>
-</pre>
+@php
+        $codeExample13 = <<<'HTML'
+            <x-bladewind::code
+                name="pcode"
+                error_message="Yoh! check your code"
+                onverify="checkPinShowError" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$codeExample13"></x-bladewind::code-block>
     <script>
         checkPinShowError = (code) => {
             if( code !== '2022') {
@@ -198,18 +211,19 @@
         }
     </script>
 
-    <pre class="language-markup line-numbers" data-line="4">
-        <code>
-            &lt;script&gt;
+    @php
+        $codeExample14 = <<<'HTML'
+            <script>
                 checkPinShowError = (code) => {
                     if( code !== 2024) {
                         clearPin('pcode');
                         showPinError('pcode');
                     }
                 }
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$codeExample14"></x-bladewind::code-block>
 <br />
     <p>
         The error message is displayed by invoking the Javascript helper function <code class="inline">showPinError(name)</code>.
@@ -217,18 +231,19 @@
         <code class="inline">hidePinError(name)</code> Javascript helper function. The second parameter to this function is what controls
         the automatic hiding of the error message. If you do not want to automatically close the error message, set the parameter to false.
     </p>
-    <pre class="language-markup line-numbers" data-line="5">
-        <code>
-            &lt;script&gt;
+    @php
+        $codeExample15 = <<<'HTML'
+            <script>
                 checkPinShowError = (code) => {
                     ...
                     // the error message will not hide after 10 seconds
                     showPinError('pcode', false);
                     ...
                 }
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$codeExample15"></x-bladewind::code-block>
     <p>
         <x-bladewind::alert show_close_icon="false">
             From the <a href="#clearpin">Clear PIN</a> example, the error message was displayed in a notification instead of using the inline error. This is also an option.
@@ -243,41 +258,44 @@
     <p>
         <x-bladewind::code name="spin_me" onverify="validatePin" />
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::code name="spin_me" onverify="validatePin"  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample16 = <<<'HTML'
+            <x-bladewind::code name="spin_me" onverify="validatePin"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$codeExample16"></x-bladewind::code-block>
         <script>
            validatePin = (code, name) => {
                 showSpinner(name);
             }
         </script>
 
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;script&gt;
+    @php
+        $codeExample17 = <<<'HTML'
+            <script>
                 validatePin = (code, name) => {
                     showSpinner(name);
                     ajaxCall('/verify/pin', `code=${code}`, ...
                 }
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$codeExample17"></x-bladewind::code-block>
     <br />
     <p>
         Since Bladewind does not know how long your Ajax call might take or when your process is complete, it cannot automatically hide the spinner for you. You can do that
         by calling <code class="inline">hideSpinner(name)</code>, where <code class="inline">name</code> is the name of your verification code field.
     </p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;script&gt;
+    @php
+        $codeExample18 = <<<'HTML'
+            <script>
                 ...
                 hideSpinner('spin_me');
                 ...
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$codeExample18"></x-bladewind::code-block>
 
     <h2 id="success">Show Success Icon</h2>
     <p>
@@ -287,11 +305,12 @@
     <p>
         <x-bladewind::code name="spin_me_yes" onverify="spinAndSucceed" />
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code name="spin_me_yes" onverify="spinAndSucceed"  /&gt;
-        </code>
-    </pre>
+    @php
+        $codeExample19 = <<<'HTML'
+            <x-bladewind::code name="spin_me_yes" onverify="spinAndSucceed"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample19"></x-bladewind::code-block>
     <script>
         spinAndSucceed = (code, name) => {
            showSpinner(name);
@@ -300,16 +319,17 @@
            }, 5000);
         }
     </script>
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-    &lt;script&gt;
-        spinAndSucceed = (code, name) => {
-            showSpinner(name);
-            setTimeout( () => { showPinSuccess(name); }, 5000);
-        }
-    &lt;/script&gt;
-</code>
-</pre>
+@php
+        $codeExample20 = <<<'HTML'
+            <script>
+                spinAndSucceed = (code, name) => {
+                    showSpinner(name);
+                    setTimeout( () => { showPinSuccess(name); }, 5000);
+                }
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$codeExample20"></x-bladewind::code-block>
     <h2 id="timer">Countdown To Resend Code</h2>
     <p>
         This can be useful for two scenarios. The user never received the code you sent so they will need to request another.
@@ -330,27 +350,29 @@
     <p>
         <x-bladewind::code name="time_me" timer="30" />
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code name="time_me" timer="30"  /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup line-numbers" data-line="3,8">
-        <code>
-            &lt;!-- the DIV that contains the content to display when timer is done -->
+    @php
+        $codeExample21 = <<<'HTML'
+            <x-bladewind::code name="time_me" timer="30"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample21"></x-bladewind::code-block>
+    @php
+        $codeExample22 = <<<'HTML'
+            <!-- the DIV that contains the content to display when timer is done -->
 
-            &lt;div class="bw-code-timer-done hidden"&gt;
-                &lt;x-bladewind.button
+            <div class="bw-code-timer-done hidden">
+                <x-bladewind.button
                     name="send-code"
                     size="tiny"
                     type="secondary"
                     has_spinner="true"
-                    onclick="sendNewCode()"&gt;
+                    onclick="sendNewCode()">
                     send me another code
-                &lt;/x-bladewind.button&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+                </x-bladewind.button>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,8" :code="$codeExample22"></x-bladewind::code-block>
     <script>
         sendNewCode = () => {
            showButtonSpinner('.bw-time_me-pin-timer .done .send-code');
@@ -362,22 +384,23 @@
            }, 5000);
         }
     </script>
-<pre class="language-markup line-numbers" data-line="5">
-<code>
-    &lt;script&gt;
-        sendNewCode = () => {
-           showButtonSpinner('.bw-time_me-timer .done .send-code');
-           setTimeout( () => {
-               showNotification('Code Sent','Please check your email or SMS for a new verification code');
-                hideButtonSpinner('.bw-time_me-pin-timer .done .send-code');
-                hide('.bw-time_me-pin-timer .done .send-code')
-                setFocus('time_me');
-                clearTimeout();
-           }, 5000);
-        }
-    &lt;/script&gt;
-</code>
-</pre>
+@php
+        $codeExample23 = <<<'HTML'
+            <script>
+                sendNewCode = () => {
+                   showButtonSpinner('.bw-time_me-timer .done .send-code');
+                   setTimeout( () => {
+                       showNotification('Code Sent','Please check your email or SMS for a new verification code');
+                        hideButtonSpinner('.bw-time_me-pin-timer .done .send-code');
+                        hide('.bw-time_me-pin-timer .done .send-code')
+                        setFocus('time_me');
+                        clearTimeout();
+                   }, 5000);
+                }
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$codeExample23"></x-bladewind::code-block>
     <p>
         Once the countdown is done, the content of your <code class="inline">bw-code-timer-done</code> DIV is copied into a DIV that can be accessed using the class <code class="inline">.bw-[name-of-code-field]-pin-timer .done</code>.
         From our above example, our resend code content will be copied into a DIV accessible with <code class="inline">.bw-time_me-pin-timer .done</code>. That is how come our <code class="inline">showButtonSpinner()</code>
@@ -403,24 +426,26 @@
             if(attempts >= 2) showTimer(name, 15);
         }
     </script>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::code name="trigger_me" onverify="triggerTimerManually"  /&gt;
-        </code>
-    </pre>
-    <pre class="language-js line-numbers" data-line="8">
-<code>
-let attempts = 0;
-triggerTimerManually = (code, name) => {
-    if(parseInt(code) !== 2024) {
-        attempts++
-        showPinError(name);
-        clearPin(name);
-    }
-    if(attempts >= 2) showTimer(name, 15);
-}
-</code>
-</pre>
+    @php
+        $codeExample24 = <<<'HTML'
+            <x-bladewind::code name="trigger_me" onverify="triggerTimerManually"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$codeExample24"></x-bladewind::code-block>
+    @php
+        $codeExample25 = <<<'HTML'
+            let attempts = 0;
+            triggerTimerManually = (code, name) => {
+                if(parseInt(code) !== 2024) {
+                    attempts++
+                    showPinError(name);
+                    clearPin(name);
+                }
+                if(attempts >= 2) showTimer(name, 15);
+            }
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="8" :code="$codeExample25"></x-bladewind::code-block>
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Spinner component.</p>
     @include('docs/announcement')
@@ -488,19 +513,20 @@ triggerTimerManually = (code, name) => {
         </tr>
     </x-bladewind::table>
     <h3>Verification Code with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::code
-        name="pin-code"
-        total_digits="5"
-        onverify="verifyPin"
-        has_spinner="false"
-        hide_input="false"
-        has_separator="false"
-        timer="15"
-        error_message="please enter the correct code"  /&gt;
-</code>
-</pre>
+@php
+        $codeExample26 = <<<'HTML'
+            <x-bladewind::code
+                name="pin-code"
+                total_digits="5"
+                onverify="verifyPin"
+                has_spinner="false"
+                hide_input="false"
+                has_separator="false"
+                timer="15"
+                error_message="please enter the correct code"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$codeExample26"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > code.blade.php</code>

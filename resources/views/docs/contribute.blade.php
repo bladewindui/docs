@@ -41,57 +41,75 @@
     <h2 class="testing">Testing Locally</h2>
     <p>It is much easier to test whatever you are working on locally to ensure everything is working as intended. To this end, you will need to include a local version of BladewindUI in a project you can test locally.</p>
     <p>You will need to make the following modifications to your project's <code class="inline">composer.json</code> file. This is the project you are testing the BladewindUI changes in.</p>
-    <pre class="language-js">
-        <code>
-        // your-project/composer.json
-        ...
-        "require": {
+    @php
+        $contributeExample1 = <<<'HTML'
+            // your-project/composer.json
             ...
-            /*
-            issue-184 is the name of the Bladewind branch
-            you either checked out or created
-            dev- is just a prefix required by composer
-            if you checked out the development branch,
-            you will type "dev-development"
-            */
-            "bladewindui/ui": "dev-issue-184",
-            ...
-        },
-        "repositories": {
-            "bladewindui/ui": {
-                "type": "path",
-                "url": "/path/to/bladewindui/folder/on/your/computer"
-                // on my computer, the value for url is
-                //  "/Users/mkocansey/projects/kursor/bladewindui"
+            "require": {
+                ...
+                /*
+                issue-184 is the name of the Bladewind branch
+                you either checked out or created
+                dev- is just a prefix required by composer
+                if you checked out the development branch,
+                you will type "dev-development"
+                */
+                "bladewindui/ui": "dev-issue-184",
+                ...
+            },
+            "repositories": {
+                "bladewindui/ui": {
+                    "type": "path",
+                    "url": "/path/to/bladewindui/folder/on/your/computer"
+                    // on my computer, the value for url is
+                    //  "/Users/mkocansey/projects/kursor/bladewindui"
+                }
             }
-        }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$contributeExample1"></x-bladewind::code-block>
     <p>
         Now you will need to run <code class="inline">composer update</code> at the root of your project.
     </p>
-    <pre class="lang-bash command-line"><code>composer update</code></pre>
+    @php
+        $contributeExample2 = <<<'HTML'
+            composer update
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$contributeExample2"></x-bladewind::code-block>
     <p>
         Your project should be using your local version of BladewindUI now. To test the components directly from the <code class="inline">vendor/bladewindui</code> directory, use the colon notation for invoking components.
     </p>
-    <pre class="lang-markup"><code>
-    &lt;x-bladewind::bell /&gt;
-    &lt;x-bladewind::notification /&gt;
-    </code></pre>
+    @php
+        $contributeExample3 = <<<'HTML'
+            <x-bladewind::bell />
+            <x-bladewind::notification />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$contributeExample3"></x-bladewind::code-block>
     <p>
         If you are making CSS or Javascript changes, you will need to be compiling the TailwindCSS classes as you code. I use mix for this but you can stick with however you already compile assets.
     </p>
-    <pre class="lang-bash command-line"><code>
-# this should be run at the root
-# of your local version of bladewind
-npx mix watch</code></pre>
+    @php
+        $contributeExample4 = <<<'HTML'
+            # this should be run at the root
+            # of your local version of bladewind
+            npx mix watch
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$contributeExample4"></x-bladewind::code-block>
     <p>
         <x-bladewind::alert show_close_icon="false">
             If for some reason the changes you make are not taking effect in your test project, you will need to run the command below to copy over the assets from bladewind into your project.
             Run this at the root of your project (not the bladewind  project).
         </x-bladewind::alert>
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-public --force</code></pre>
+    @php
+        $contributeExample5 = <<<'HTML'
+            php artisan vendor:publish --provider="Mkocansey\Bladewind\BladewindServiceProvider" --tag=bladewind-public --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$contributeExample5"></x-bladewind::code-block>
 
     <h2 class="document">Documenting New Attributes or Components</h2>
     <p>This is an optional step. As much as possible I will document any changes that come in the PRs. If you however, introduce new attributes or components and want to take a stab at documenting them, you will need to clone the
@@ -103,35 +121,37 @@ npx mix watch</code></pre>
     <p>
         All props should be at top of the page and variables should be of the right type.
     </p>
-    <pre class="language-js">
-        <code>
-        props([
-        'size'       => 'small',
-        'show_dot'   => true,       // correct
-        'show_dot'   => 'true',     // wrong
-        ...
-        </code>
-    </pre>
+    @php
+        $contributeExample6 = <<<'HTML'
+            props([
+            'size'       => 'small',
+            'show_dot'   => true,       // correct
+            'show_dot'   => 'true',     // wrong
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$contributeExample6"></x-bladewind::code-block>
 
     <h3>Attribute Names</h3>
     <p>
         As much as possible, try to use single words for attribute names where possible. Where you need to use more than one word, the attribute names should read like spoken English.
         Especially if the attribute values will be boolean. Below are a couple of examples.
     </p>
-    <pre class="language-js">
-        <code>
-        props([
-        'show_dot'   => true,
-        'has_shadow' => true,
-        'accepted_file_types' => '',
-        'is_numeric' => true,   // this can just be 'numeric' => true,
-        'show_close_icon' => true,
+    @php
+        $contributeExample7 = <<<'HTML'
+            props([
+            'show_dot'   => true,
+            'has_shadow' => true,
+            'accepted_file_types' => '',
+            'is_numeric' => true,   // this can just be 'numeric' => true,
+            'show_close_icon' => true,
 
-        // the above attribute can be replaced with the one word
-        'closable' => true,
-        ...
-        </code>
-    </pre>
+            // the above attribute can be replaced with the one word
+            'closable' => true,
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$contributeExample7"></x-bladewind::code-block>
 
 <h2 id="conduct">Code of Conduct</h2>
 <p>BladewindUI derives its code of conduct from <a href="https://www.ruby-lang.org/en/conduct/">The Ruby Community Conduct Guideline</a> and we advise contributors to be respectful of these.</p>

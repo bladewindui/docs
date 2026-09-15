@@ -13,11 +13,12 @@
     <div class="text-center">
         <x-bladewind::avatar image="/assets/images/issah.jpg" class="mb-3" />
     </div>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-        </code>
-    </pre>
+    @php
+        $avatarExample1 = <<<'HTML'
+            <x-bladewind::avatar image="/path/to/the/image/file" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$avatarExample1"></x-bladewind::code-block>
     <h2 id="sizes">Different Sizes</h2>
     <p>You can specify a size for the avatar. See the full <a href="#attributes">list of attributes</a> for the available sizes. The default size is <code class="inline text-red-500">regular</code></p>
     <div class="text-center space-x-4">
@@ -30,37 +31,38 @@
         <x-bladewind::avatar image="/assets/images/issah.jpg" size="omg" />
     </div>
     <br />
-    <pre class="language-markup line-numbers" data-line="3,7,11,19,23,27">
-        <code>
-        &lt;x-bladewind::avatar
-            image="/path/to/the/image/file"
-            size="tiny" /&gt;
+    @php
+        $avatarExample2 = <<<'HTML'
+            <x-bladewind::avatar
+                image="/path/to/the/image/file"
+                size="tiny" />
 
-        &lt;x-bladewind::avatar
-            image="/path/to/the/image/file"
-            size="small" /&gt;
+            <x-bladewind::avatar
+                image="/path/to/the/image/file"
+                size="small" />
 
-        &lt;x-bladewind::avatar
-            image="/path/to/the/image/file"
-            size="medium" /&gt;
+            <x-bladewind::avatar
+                image="/path/to/the/image/file"
+                size="medium" />
 
-            // this is the default
-            &lt;x-bladewind::avatar
-            image="/path/to/the/image/file" /&gt;
+                // this is the default
+                <x-bladewind::avatar
+                image="/path/to/the/image/file" />
 
-        &lt;x-bladewind::avatar
-            image="/path/to/the/image/file"
-            size="big" /&gt;
+            <x-bladewind::avatar
+                image="/path/to/the/image/file"
+                size="big" />
 
-        &lt;x-bladewind::avatar
-            image="/path/to/the/image/file"
-            size="huge" /&gt;
+            <x-bladewind::avatar
+                image="/path/to/the/image/file"
+                size="huge" />
 
-        &lt;x-bladewind::avatar
-            image="/path/to/the/image/file"
-            size="omg" /&gt;
-        </code>
-    </pre>
+            <x-bladewind::avatar
+                image="/path/to/the/image/file"
+                size="omg" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,7,11,19,23,27" :code="$avatarExample2"></x-bladewind::code-block>
 
     <h2 id="stack">Stacked Avatars</h2>
     <p>
@@ -77,17 +79,18 @@
         </x-bladewind::avatars>
     </div>
     <br />
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-        &lt;x-bladewind::avatars stacked="true"&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-        &lt;/x-bladewind::avatars&gt;
-        </code>
-    </pre>
+    @php
+        $avatarExample3 = <<<'HTML'
+            <x-bladewind::avatars stacked="true">
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+            </x-bladewind::avatars>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$avatarExample3"></x-bladewind::code-block>
     <h3 id="plus">Plus More</h3>
     <p>
         There are cases where you have several avatars but only want to display a specific number and indicate how many more there are to display.
@@ -105,19 +108,20 @@
             <x-bladewind::avatar image="/assets/images/issah.jpg" />
         </x-bladewind::avatars>
     </div>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-        &lt;x-bladewind::avatars
-            plus="95"
-            plus_action="alert('show more avatars')"&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-            &lt;x-bladewind::avatar image="/path/to/the/image/file" /&gt;
-        &lt;/x-bladewind::avatars&gt;
-        </code>
-    </pre>
+    @php
+        $avatarExample4 = <<<'HTML'
+            <x-bladewind::avatars
+                plus="95"
+                plus_action="alert('show more avatars')">
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+                <x-bladewind::avatar image="/path/to/the/image/file" />
+            </x-bladewind::avatars>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$avatarExample4"></x-bladewind::code-block>
     <h2 id="indicator">Dot Indicator</h2>
     <p>
         Avatars can be displayed with a status indicator. These statuses could be online, offline, invisible. To show a dot indicator on an avatar simply set <code class="inline text-red-500">dotted="true"</code>.
@@ -126,13 +130,14 @@
         <x-bladewind::avatar dotted="true" image="/assets/images/rowe.jpeg" />
     </div>
     <br />
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::avatar
-    dotted="true"
-    image="/path/to/the/image/file" /&gt;
-</code>
-</pre>
+@php
+        $avatarExample5 = <<<'HTML'
+            <x-bladewind::avatar
+                dotted="true"
+                image="/path/to/the/image/file" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$avatarExample5"></x-bladewind::code-block>
     <p>
         By default the dot indicator is displayed at the base of the avatar. To change the position to the top of the avatar, set the <code class="inline text-red-500">dot_position="top"</code> attribute.
     </p>
@@ -140,14 +145,15 @@
     <x-bladewind::avatar dotted="true" dot_position="top" image="/assets/images/doc.png" />
     </div>
     <br />
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::avatar
-    dotted="true"
-    dot_position="top"
-    image="/path/to/the/image/file" /&gt;
-</code>
-</pre>
+@php
+        $avatarExample6 = <<<'HTML'
+            <x-bladewind::avatar
+                dotted="true"
+                dot_position="top"
+                image="/path/to/the/image/file" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$avatarExample6"></x-bladewind::code-block>
     <p>
         The dot is available in different colours if you wish to use an indicator that matches your theme. This also allows you to set different colours for different statuses.
         Set the <code class="inline text-red-500">dot_color</code> attribute to any of the nine colours compiled into BladewindUI. See the <a href="#attributes">attributes</a> table below for all colours.
@@ -160,15 +166,16 @@
         </x-bladewind::avatars>
     </div>
     <br />
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::avatars dotted="true"&gt;
-    &lt;x-bladewind::avatar dot_color="primary" image="..." /&gt;
-    &lt;x-bladewind::avatar dot_color="gray" image="..." /&gt;
-    &lt;x-bladewind::avatar dot_color="red" image="..." /&gt;
-&lt;/x-bladewind::avatars&gt;
-</code>
-</pre>
+@php
+        $avatarExample7 = <<<'HTML'
+            <x-bladewind::avatars dotted="true">
+                <x-bladewind::avatar dot_color="primary" image="..." />
+                <x-bladewind::avatar dot_color="gray" image="..." />
+                <x-bladewind::avatar dot_color="red" image="..." />
+            </x-bladewind::avatars>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$avatarExample7"></x-bladewind::code-block>
 
     <h2 id="labels">Labels</h2>
     <p>
@@ -181,21 +188,24 @@
         <x-bladewind::avatar image="PP" />
     </div>
     <br />
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::avatar dotted="true" label="MO" /&gt;
-</code>
-</pre>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::avatar label="MK" /&gt;
-</code>
-</pre>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::avatar image="PP" /&gt;
-</code>
-</pre>
+@php
+        $avatarExample8 = <<<'HTML'
+            <x-bladewind::avatar dotted="true" label="MO" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$avatarExample8"></x-bladewind::code-block>
+@php
+        $avatarExample9 = <<<'HTML'
+            <x-bladewind::avatar label="MK" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$avatarExample9"></x-bladewind::code-block>
+@php
+        $avatarExample10 = <<<'HTML'
+            <x-bladewind::avatar image="PP" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$avatarExample10"></x-bladewind::code-block>
 <br />
 <br />
 <div class="text-center">
@@ -206,15 +216,16 @@
     </x-bladewind::avatars>
 </div>
 <br />
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::avatars stacked="true" dotted="true" plus="34"&gt;
-    &lt;x-bladewind::avatar label="SF" /&gt;
-    &lt;x-bladewind::avatar label="ZH" /&gt;
-    &lt;x-bladewind::avatar label="RB" /&gt;
-&lt;/x-bladewind::avatars&gt;
-</code>
-</pre>
+@php
+        $avatarExample11 = <<<'HTML'
+            <x-bladewind::avatars stacked="true" dotted="true" plus="34">
+                <x-bladewind::avatar label="SF" />
+                <x-bladewind::avatar label="ZH" />
+                <x-bladewind::avatar label="RB" />
+            </x-bladewind::avatars>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$avatarExample11"></x-bladewind::code-block>
 <br />
 <br />
 <div class="text-center">
@@ -224,15 +235,16 @@
         <x-bladewind::avatar label="RB" bg_color="purple" dot_color="purple" />
     </x-bladewind::avatars>
 </div>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::avatars dotted="true" class="space-x-4"&gt;
-    &lt;x-bladewind::avatar label="SF" bg_color="orange" dot_color="orange" /&gt;
-    &lt;x-bladewind::avatar label="ZH" bg_color="blue" dot_color="blue" /&gt;
-    &lt;x-bladewind::avatar label="RB" bg_color="purple" dot_color="purple" /&gt;
-&lt;/x-bladewind::avatars&gt;
-</code>
-</pre>
+@php
+        $avatarExample12 = <<<'HTML'
+            <x-bladewind::avatars dotted="true" class="space-x-4">
+                <x-bladewind::avatar label="SF" bg_color="orange" dot_color="orange" />
+                <x-bladewind::avatar label="ZH" bg_color="blue" dot_color="blue" />
+                <x-bladewind::avatar label="RB" bg_color="purple" dot_color="purple" />
+            </x-bladewind::avatars>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$avatarExample12"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Avatar component.</p>
@@ -305,20 +317,21 @@
     </x-bladewind::table>
     <p>&nbsp;</p>
     <h3 class="pb-2 ">Avatars with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::avatars
-    size="big"
-    show_ring="false"
-    dotted="true"
-    dot_color="red"
-    dot_position="top"
-    plus="33"
-    plus_action="showMorePictures()"
-    stacked="true"
-    class="ring-blue-200 ring-offset-2" /&gt;
-</code>
-</pre>
+@php
+        $avatarExample13 = <<<'HTML'
+            <x-bladewind::avatars
+                size="big"
+                show_ring="false"
+                dotted="true"
+                dot_color="red"
+                dot_position="top"
+                plus="33"
+                plus_action="showMorePictures()"
+                stacked="true"
+                class="ring-blue-200 ring-offset-2" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$avatarExample13"></x-bladewind::code-block>
 
     <p>&nbsp;</p>
     <h3 class="pb-2 ">Avatar Component Attributes</h3>
@@ -386,21 +399,22 @@
     </x-bladewind::table>
     <p>&nbsp;</p>
     <h3 class="pb-2 ">Avatar with all attributes defined</h3>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::avatar
-        image="/path/to/the/image/file"
-        alt="company logo"
-        size="big"
-        stacked="true"
-        dotted="true"
-        bg_color="cyan"
-        show_ring="false",
-        dot_color="red",
-        dot_position="top"
-        class="ring-blue-200 ring-offset-2" /&gt;
-</code>
-</pre>
+@php
+        $avatarExample14 = <<<'HTML'
+            <x-bladewind::avatar
+                image="/path/to/the/image/file"
+                alt="company logo"
+                size="big"
+                stacked="true"
+                dotted="true"
+                bg_color="cyan"
+                show_ring="false",
+                dot_color="red",
+                dot_position="top"
+                class="ring-blue-200 ring-offset-2" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$avatarExample14"></x-bladewind::code-block>
 
     <p>&nbsp;</p>
     <p>

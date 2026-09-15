@@ -58,26 +58,25 @@
         @endphp
     </p>
 
-    <h2 id="basic">Basic Usage</h2>
-
     <p>
         The <code class="inline text-red-500">data</code> attribute is what really drives the BladewindUI select component.
         This attribute expects an <code class="inline text-red-500">array</code> to be passed to it. Let's look at the basic structure of such an array using a list of five countries.
         We will build on this array structure as we go further in this documentation.
     </p>
 
-    <pre class="language-js line-numbers">
-        <code>
-        &lt;?php
-            $countries = [
-                [ 'label' => 'Benin',         'value' => 'bj' ],
-                [ 'label' => 'Burkina Faso',  'value' => 'bf' ],
-                [ 'label' => 'Ghana',         'value' => 'gh' ],
-                [ 'label' => 'Nigeria',       'value' => 'ng' ],
-                [ 'label' => 'Kenya',         'value' => 'ke' ]
-            ];
-        </code>
-    </pre>
+    @php
+        $selectExample1 = <<<'HTML'
+            <?php
+                $countries = [
+                    [ 'label' => 'Benin',         'value' => 'bj' ],
+                    [ 'label' => 'Burkina Faso',  'value' => 'bf' ],
+                    [ 'label' => 'Ghana',         'value' => 'gh' ],
+                    [ 'label' => 'Nigeria',       'value' => 'ng' ],
+                    [ 'label' => 'Kenya',         'value' => 'ke' ]
+                ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample1"></x-bladewind::code-block>
 
     <p>
         This structure is all you need to render a BladewindUI select.
@@ -86,13 +85,14 @@
     <p class="flex space-x-1">
         <x-bladewind::select name="country" :data="$countries" data="{{ json_encode($countries) }}" />
     </p>
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::select
-    name="country"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample2 = <<<'HTML'
+            <x-bladewind::select
+                name="country"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample2"></x-bladewind::code-block>
 
     <p>
         <x-bladewind::alert show_close_icon="false">
@@ -100,26 +100,28 @@
         </x-bladewind::alert>
     </p>
 
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::select
-        name="country"
-        data="&#123;&#123; json_encode($countries) }}" /&gt;
-</code>
-</pre>
+@php
+        $selectExample3 = <<<'HTML'
+            <x-bladewind::select
+                name="country"
+                data="{{ json_encode($countries) }}" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample3"></x-bladewind::code-block>
 
     <h3 id="placeholder">Change Placeholder Text</h3>
     <p>
         <x-bladewind::select name="country2" placeholder="What is your nationality" :data="$countries" />
     </p>
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::select
-        name="country2"
-        placeholder="What is your nationality"
-        :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample4 = <<<'HTML'
+            <x-bladewind::select
+                name="country2"
+                placeholder="What is your nationality"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample4"></x-bladewind::code-block>
     <h3 id="use-labels">Use labels instead of placeholders</h3>
     <p>
         Placeholders in the Select component behave just like placeholders in input fields.
@@ -129,65 +131,70 @@
         When both a placeholder and label are defined, the label takes precedence.
     </p>
     <p><x-bladewind::select name="labels" :data="$countries" data="{{ json_encode($countries) }}" label="Where are you from?" required="true" /></p>
-<pre class="language-html line-numbers">
-<code>
-&lt;x-bladewind::select name="labels" required="true" :data="$countries"
-    label="Where are you from?"/&gt;
-</code>
-</pre>
+@php
+        $selectExample5 = <<<'HTML'
+            <x-bladewind::select name="labels" required="true" :data="$countries"
+                label="Where are you from?"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample5"></x-bladewind::code-block>
     <p><x-bladewind::select name="clear_labels" :data="$countries" data="{{ json_encode($countries) }}" clearable="true" label="Where are you from?" /></p>
-<pre class="language-html line-numbers">
-<code>
-&lt;x-bladewind::select name="clear_labels" label="Where are you from?"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample6 = <<<'HTML'
+            <x-bladewind::select name="clear_labels" label="Where are you from?"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample6"></x-bladewind::code-block>
     <h3 id="keys">Setting the value and label keys</h3>
     <p>
         It is not feasible to always rewrite your arrays to use the <code class="inline">value</code> and <code class="inline">label</code> keys expected by the component. There is a solution.
         Assuming we changed our array to the structure below.
     </p>
 
-    <pre class="language-js line-numbers">
-        <code>
-        &lt;?php
-            $countries = [
-                [ 'country' => 'Benin',         'code' => 'bj' ],
-                [ 'country' => 'Burkina Faso',  'code' => 'bf' ],
-                [ 'country' => 'Ghana',         'code' => 'gh' ],
-                [ 'country' => 'Nigeria',       'code' => 'ng' ],
-                [ 'country' => 'Kenya',         'code' => 'ke' ]
-            ];
-        </code>
-    </pre>
+    @php
+        $selectExample7 = <<<'HTML'
+            <?php
+                $countries = [
+                    [ 'country' => 'Benin',         'code' => 'bj' ],
+                    [ 'country' => 'Burkina Faso',  'code' => 'bf' ],
+                    [ 'country' => 'Ghana',         'code' => 'gh' ],
+                    [ 'country' => 'Nigeria',       'code' => 'ng' ],
+                    [ 'country' => 'Kenya',         'code' => 'ke' ]
+                ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample7"></x-bladewind::code-block>
 
     <p>
         We changed our array keys from <code class="inline">label</code> and <code class="inline">value</code> to <code class="inline">country</code> and <code class="inline">code</code>. To render the select now, you just need to set the <code class="inline text-red-500">label_key</code> and <code class="inline text-red-500">value_key</code> attributes.
         Using our array above we will end up with <code class="inline text-red-500">label_key="country"</code> and <code class="inline text-red-500">value_key="code"</code>.
     </p>
 
-<pre class="language-markup line-numbers" data-line="3,4">
-<code>
-    &lt;x-bladewind::select
-        name="country_mixed"
-        label_key="country"
-        value_key="code"
-        :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample8 = <<<'HTML'
+            <x-bladewind::select
+                name="country_mixed"
+                label_key="country"
+                value_key="code"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,4" :code="$selectExample8"></x-bladewind::code-block>
     <p>
         <x-bladewind::select name="country_mixed" label_key="country" value_key="code" data="{{json_encode($countries_mixed_keys)}}" />
     </p>
     <p>
         Just for some perspective, what we are trying to mimic here is the html implementation of a <code class="inline text-red-500">select</code> form element.
     </p>
-<pre class="language-markup line-numbers">
-<code>
-    &lt;select name="country"...&gt;
-        &lt;option value="gh"&gt;Ghana&lt;/option&gt;
-    &lt;/select&gt;
-</code>
-</pre>
+@php
+        $selectExample9 = <<<'HTML'
+            <select name="country"...>
+                <option value="gh">Ghana</option>
+            </select>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample9"></x-bladewind::code-block>
 
     <h3 id="default">Selecting a Value By Default</h3>
     <p>
@@ -196,15 +203,16 @@
     <p>
         <x-bladewind::select name="country-select" placeholder="What is your nationality" data="{{json_encode($countries)}}" selected_value="gh" />
     </p>
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::select
-        name="country-select"
-        selected_value="gh"
-        placeholder="What is your nationality"
-        :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample10 = <<<'HTML'
+            <x-bladewind::select
+                name="country-select"
+                selected_value="gh"
+                placeholder="What is your nationality"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample10"></x-bladewind::code-block>
     <h3 id="required">Required Field</h3>
     <p>
         Setting a select as required appends a red asterisk to the placeholder text.
@@ -213,15 +221,16 @@
         <x-bladewind::select name="country-select2" placeholder="What is your nationality" required="true" data="{{json_encode($countries)}}" />
         <x-bladewind::button type="secondary" onclick="validateForm('.required-select')">Validate Field</x-bladewind::button>
     </div>
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-    &lt;x-bladewind::select
-        name="country-select2"
-        required="true"
-        placeholder="What is your nationality"
-        :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample11 = <<<'HTML'
+            <x-bladewind::select
+                name="country-select2"
+                required="true"
+                placeholder="What is your nationality"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample11"></x-bladewind::code-block>
     <h3 id="disabled">Disabled Select</h3>
     <p>
         A disabled select has a 50% opacity and a cursor indicating the field cannot be accessed.
@@ -229,15 +238,16 @@
     <p>
         <x-bladewind::select name="country-dis" placeholder="What is your nationality" disabled="true" data="{{json_encode($countries)}}" />
     </p>
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::select
-    name="country-dis"
-    disabled="true"
-    placeholder="What is your nationality"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample12 = <<<'HTML'
+            <x-bladewind::select
+                name="country-dis"
+                disabled="true"
+                placeholder="What is your nationality"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample12"></x-bladewind::code-block>
     <h3 id="readonly">Readonly Select</h3>
     <p>
         A readonly select is quite visible but cannot be opened to view the list of items.
@@ -245,15 +255,16 @@
     <p>
         <x-bladewind::select name="country-ro" placeholder="What is your nationality" readonly="true" data="{{json_encode($countries)}}" selected-value="gh" />
     </p>
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::select
-    name="country-ro"
-    readonly="true"
-    placeholder="What is your nationality"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample13 = <<<'HTML'
+            <x-bladewind::select
+                name="country-ro"
+                readonly="true"
+                placeholder="What is your nationality"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample13"></x-bladewind::code-block>
     <link href="{{ asset('vendor/bladewind/css/flags.css') }}" rel="stylesheet" />
     <h2 id="descriptions">With Descriptions</h2>
     <p>
@@ -268,17 +279,18 @@
     <p>
         <x-bladewind::select name="country_desc" data="{{json_encode($countries)}}" flag_key="value" description_key="description" />
     </p>
-<pre class="language-markup line-numbers" data-line="5">
-<code>
-&lt;x-bladewind::select
-    name="country"
-    label_key="country"
-    value_key="code"
-    flag_key="code"
-    description_key="description"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample14 = <<<'HTML'
+            <x-bladewind::select
+                name="country"
+                label_key="country"
+                value_key="code"
+                flag_key="code"
+                description_key="description"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$selectExample14"></x-bladewind::code-block>
 
     <h2 id="flags">With Country Flags</h2>
     <p>
@@ -293,16 +305,17 @@
     <p>
         <x-bladewind::select name="country3" data="{{json_encode($countries)}}" flag_key="value" />
     </p>
-<pre class="language-markup line-numbers" data-line="5">
-<code>
-&lt;x-bladewind::select
-    name="country"
-    label_key="country"
-    value_key="code"
-    flag_key="code"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample15 = <<<'HTML'
+            <x-bladewind::select
+                name="country"
+                label_key="country"
+                value_key="code"
+                flag_key="code"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$selectExample15"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         For flags to work you will need to include the following stylesheet. It is deliberately not compiled into the core BladewindUI css because not everyone needs flags.
@@ -317,39 +330,40 @@
     <p>
         Let us create a new array of employees with the needed information.
     </p>
-    <pre class="language-js line-numbers" data-line="7,12,17,22,27">
-        <code>
-        &lt;?php
-            $staff =
-            [
+    @php
+        $selectExample16 = <<<'HTML'
+            <?php
+                $staff =
                 [
-                    'id' => '1001',
-                    'name' => 'Adam Nsiah',
-                    'picture' => '/path/to/the/image/file'
-                ],
-                [
-                    'id' => '1005',
-                    'name' => 'Alfred Rowe',
-                    'picture' => '/path/to/the/image/file'
-                ],
-                [
-                    'id' => '1002',
-                    'name' => 'Abdul Razak Ibrahim',
-                    'picture' => '/path/to/the/image/file'
-                ],
-                [
-                    'id' => '1003',
-                    'name' => 'Michael K. Ocansey',
-                    'picture' => '/path/to/the/image/file'
-                ],
-                [
-                    'id' => '1004',
-                    'name' => 'Michael Sarpong',
-                    'picture' => '/path/to/the/image/file'
-                ],
-            ]
-        </code>
-    </pre>
+                    [
+                        'id' => '1001',
+                        'name' => 'Adam Nsiah',
+                        'picture' => '/path/to/the/image/file'
+                    ],
+                    [
+                        'id' => '1005',
+                        'name' => 'Alfred Rowe',
+                        'picture' => '/path/to/the/image/file'
+                    ],
+                    [
+                        'id' => '1002',
+                        'name' => 'Abdul Razak Ibrahim',
+                        'picture' => '/path/to/the/image/file'
+                    ],
+                    [
+                        'id' => '1003',
+                        'name' => 'Michael K. Ocansey',
+                        'picture' => '/path/to/the/image/file'
+                    ],
+                    [
+                        'id' => '1004',
+                        'name' => 'Michael Sarpong',
+                        'picture' => '/path/to/the/image/file'
+                    ],
+                ]
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" highlight_lines="7,12,17,22,27" :code="$selectExample16"></x-bladewind::code-block>
     <br />
     <p>
         <x-bladewind::select
@@ -360,17 +374,18 @@
             placeholder="Assign task to"
             image_key="picture" />
     </p>
-<pre class="language-markup line-numbers" data-line="5">
-<code>
-&lt;x-bladewind::select
-    name="staff"
-    placeholder="Assign task to"
-    label_key="name"
-    value_key="id"
-    image_key="picture"
-    :data="$staff" /&gt;
-</code>
-</pre>
+@php
+        $selectExample17 = <<<'HTML'
+            <x-bladewind::select
+                name="staff"
+                placeholder="Assign task to"
+                label_key="name"
+                value_key="id"
+                image_key="picture"
+                :data="$staff" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="5" :code="$selectExample17"></x-bladewind::code-block>
 
     <h2 id="searchable">Searchable Select</h2>
     <p>
@@ -394,38 +409,40 @@
             [ 'label' => 'Togo', 'value' => 'tg', 'url' => 'https://en.wikipedia.org/wiki/Togo' ],
         ];
     @endphp
-    <pre class="language-js line-numbers">
-        <code>
-        &lt;?php
-            $countries = [
-                [ 'country' => 'Benin',         'code' => 'bj' ],
-                [ 'country' => 'Burkina Faso',  'code' => 'bf' ],
-                [ 'country' => 'Cameroon',      'code' => 'cm' ],
-                [ 'country' => 'Congo',         'code' => 'cd' ],
-                [ 'country' => 'Gambia',        'code' => 'gm' ],
-                [ 'country' => 'Ghana',         'code' => 'gh' ],
-                [ 'country' => 'Ivory Coast',   'code' => 'ci' ],
-                [ 'country' => 'Nigeria',       'code' => 'ng' ],
-                [ 'country' => 'Kenya',         'code' => 'ke' ]
-                [ 'country' => 'Togo',          'code' => 'tg' ],
-            ];
-        </code>
-    </pre>
+    @php
+        $selectExample18 = <<<'HTML'
+            <?php
+                $countries = [
+                    [ 'country' => 'Benin',         'code' => 'bj' ],
+                    [ 'country' => 'Burkina Faso',  'code' => 'bf' ],
+                    [ 'country' => 'Cameroon',      'code' => 'cm' ],
+                    [ 'country' => 'Congo',         'code' => 'cd' ],
+                    [ 'country' => 'Gambia',        'code' => 'gm' ],
+                    [ 'country' => 'Ghana',         'code' => 'gh' ],
+                    [ 'country' => 'Ivory Coast',   'code' => 'ci' ],
+                    [ 'country' => 'Nigeria',       'code' => 'ng' ],
+                    [ 'country' => 'Kenya',         'code' => 'ke' ]
+                    [ 'country' => 'Togo',          'code' => 'tg' ],
+                ];
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample18"></x-bladewind::code-block>
 <br />
     <p>
         <x-bladewind::select name="country4" searchable="true" data="{{json_encode($countries)}}" flag_key="value" />
     </p>
-<pre class="language-markup line-numbers" data-line="3">
-<code>
-&lt;x-bladewind::select
-     name="country4"
-     searchable="true"
-     label_key="country"
-     value_key="code"
-     flag_key="code"
-     :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample19 = <<<'HTML'
+            <x-bladewind::select
+                 name="country4"
+                 searchable="true"
+                 label_key="country"
+                 value_key="code"
+                 flag_key="code"
+                 :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample19"></x-bladewind::code-block>
 
     <h2 id="empty">Empty Select</h2>
     <p>
@@ -436,19 +453,21 @@
     @php
         $users = [];
     @endphp
-    <pre class="language-php line-numbers">
-        <code>
-        &lt;?php $users = []; ?&gt;
-        </code>
-    </pre>
+    @php
+        $selectExample20 = <<<'HTML'
+            <?php $users = []; ?>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$selectExample20"></x-bladewind::code-block>
     <p>
         <x-bladewind::select name="empty_users" searchable="true" :data="$users" />
     </p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::select name="empty_users" searchable="true" :data="$users" /&gt;
-        </code>
-    </pre>
+    @php
+        $selectExample21 = <<<'HTML'
+            <x-bladewind::select name="empty_users" searchable="true" :data="$users" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample21"></x-bladewind::code-block>
     <h3>Display as Empty State</h3>
     <p>
         As seen from the example above, the empty message is displayed as a single line in a select item. It is possible to
@@ -494,39 +513,43 @@
         <x-bladewind::input numeric="true" name="mobile" label="Mobile" />
     </x-bladewind::modal>
 
-<pre class="language-markup line-numbers" data-line="2,3">
-<code>
-&lt;x-bladewind::empty-state
-    name="no_docs"
-    for_select="true"
-    message="Awesome! You have no documents to approve."&gt;
-&lt;/x-bladewind::empty-state&gt;
-</code>
-</pre>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::select searchable="true" :data="$users"
-    empty_state_from="no_docs" /&gt;
-</code>
-</pre>
+@php
+        $selectExample22 = <<<'HTML'
+            <x-bladewind::empty-state
+                name="no_docs"
+                for_select="true"
+                message="Awesome! You have no documents to approve.">
+            </x-bladewind::empty-state>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$selectExample22"></x-bladewind::code-block>
+@php
+        $selectExample23 = <<<'HTML'
+            <x-bladewind::select searchable="true" :data="$users"
+                empty_state_from="no_docs" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$selectExample23"></x-bladewind::code-block>
     <br />
-<pre class="language-markup line-numbers" data-line="2,3">
-<code>
-&lt;x-bladewind::empty-state
-    name="no_users"
-    for_select="true"
-    message="There are currently no users in your workspace. We need to fix that"
-    button_label="Add User"
-    image="/assets/images/user.png"
-    onclick="showModal('new-user')"&gt;&lt;/x-bladewind::empty-state&gt;
-</code>
-</pre>
-<pre class="language-markup line-numbers" data-line="2">
-<code>
-&lt;x-bladewind::select searchable="true" :data="$users"
-    empty_state_from="no_users" /&gt;
-</code>
-</pre>
+@php
+        $selectExample24 = <<<'HTML'
+            <x-bladewind::empty-state
+                name="no_users"
+                for_select="true"
+                message="There are currently no users in your workspace. We need to fix that"
+                button_label="Add User"
+                image="/assets/images/user.png"
+                onclick="showModal('new-user')"></x-bladewind::empty-state>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,3" :code="$selectExample24"></x-bladewind::code-block>
+@php
+        $selectExample25 = <<<'HTML'
+            <x-bladewind::select searchable="true" :data="$users"
+                empty_state_from="no_users" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$selectExample25"></x-bladewind::code-block>
     <h2 id="multiple">Select Multiple Items</h2>
     <p>
         There are instances where you need to select more than one item from the select component. This is possible by setting the attribute
@@ -541,20 +564,21 @@
     <p>
         <x-bladewind::select name="country-multi" multiple="true" searchable="true" :data="$countries" flag_key="value" max-selectable="3" label="Select a country" />
     </p>
-<pre class="language-markup line-numbers" data-line="7">
-<code>
-&lt;x-bladewind::select
-    name="country-multi"
-    searchable="true"
-    label_key="country"
-    value_key="code"
-    flag_key="code"
-    multiple="true"
-    label="Select a country"
-    max_selectable="3"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample26 = <<<'HTML'
+            <x-bladewind::select
+                name="country-multi"
+                searchable="true"
+                label_key="country"
+                value_key="code"
+                flag_key="code"
+                multiple="true"
+                label="Select a country"
+                max_selectable="3"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="7" :code="$selectExample26"></x-bladewind::code-block>
     <p>
         If you try to select more than 3 items from the select component above, you will not be able to.
         This is achieved by setting the
@@ -569,19 +593,20 @@
     <p>
         <x-bladewind::select name="country-multi2" multiple="true" searchable="true" data="{{json_encode($countries)}}" flag_key="value" selected_value="gh, gm, ci, bf" />
     </p>
-<pre class="language-markup line-numbers" data-line="4">
-<code>
-&lt;x-bladewind::select
-    name="country-multi2"
-    searchable="true"
-    selected_value="gh, gm, ci, bf"
-    label_key="country"
-    value_key="code"
-    flag_key="code"
-    multiple="true"
-    :data="$countries" /&gt;
-</code>
-</pre>
+@php
+        $selectExample27 = <<<'HTML'
+            <x-bladewind::select
+                name="country-multi2"
+                searchable="true"
+                selected_value="gh, gm, ci, bf"
+                label_key="country"
+                value_key="code"
+                flag_key="code"
+                multiple="true"
+                :data="$countries" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="4" :code="$selectExample27"></x-bladewind::code-block>
 
     <h2 id="non-dynamic">Manually Building a Select</h2>
     <p>
@@ -592,15 +617,16 @@
     <p>
         Let us consider the example below. The important trade-off here is to set <code class="inline text-red-500">data="manual"</code>.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-           &lt;x-bladewind::select name="gender" placeholder="Select Gender" data="manual"&gt;
-                &lt;x-bladewind::select.item label="Male" value="male" /&gt;
-                &lt;x-bladewind::select.item label="Female" value="female" /&gt;
-                &lt;x-bladewind::select.item label="Prefer not to say" value="other" /&gt;
-           &lt;/x-bladewind::select&gt;
-        </code>
-    </pre>
+    @php
+        $selectExample28 = <<<'HTML'
+            <x-bladewind::select name="gender" placeholder="Select Gender" data="manual">
+                 <x-bladewind::select.item label="Male" value="male" />
+                 <x-bladewind::select.item label="Female" value="female" />
+                 <x-bladewind::select.item label="Prefer not to say" value="other" />
+            </x-bladewind::select>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample28"></x-bladewind::code-block>
     <p>
         <x-bladewind::select name="gender" placeholder="Select Gender" data="manual">
             <x-bladewind::select.item label="Male" value="male" />
@@ -611,24 +637,25 @@
     <p>
         The manual Select can inherit all the cool features of an array-based Select. Can be searchable or even multiple selection.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-           &lt;x-bladewind::select
-                name="tags"
-                placeholder="Tags for this music"
-                multiple="true"
-                searchable="true" data="manual"&gt;
+    @php
+        $selectExample29 = <<<'HTML'
+            <x-bladewind::select
+                 name="tags"
+                 placeholder="Tags for this music"
+                 multiple="true"
+                 searchable="true" data="manual">
 
-                &lt;x-bladewind::select.item label="Pop" value="pop" image="/path/to/image" /&gt;
-                &lt;x-bladewind::select.item label="Hip" value="hip" flag="gh" /&gt;
-                &lt;x-bladewind::select.item label="Trendy" value="trendy" flag="ng" /&gt;
-                &lt;x-bladewind::select.item label="GenZ" value="genz" image="/path/to/image" /&gt;
-                &lt;x-bladewind::select.item label="Trance" value="trance" /&gt;
-                &lt;x-bladewind::select.item label="For Coder's" value="devs" /&gt;
+                 <x-bladewind::select.item label="Pop" value="pop" image="/path/to/image" />
+                 <x-bladewind::select.item label="Hip" value="hip" flag="gh" />
+                 <x-bladewind::select.item label="Trendy" value="trendy" flag="ng" />
+                 <x-bladewind::select.item label="GenZ" value="genz" image="/path/to/image" />
+                 <x-bladewind::select.item label="Trance" value="trance" />
+                 <x-bladewind::select.item label="For Coder's" value="devs" />
 
-           &lt;/x-bladewind::select&gt;
-        </code>
-    </pre>
+            </x-bladewind::select>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample29"></x-bladewind::code-block>
     <p>
         <x-bladewind::select name="tags" placeholder="Tags for this music" multiple="true" searchable="true" data="manual">
             <x-bladewind::select.item label="Pop" value="pop" image="{{ asset('assets/images/edwin.jpeg') }}" />
@@ -649,25 +676,27 @@
     Every BladewindUI select component you display creates as part of the select html the following hidden form field
     <code class="inline text-red-500">&lt;input type="hidden" name="the-select-name-you-provided" /&gt;</code>. When you select an item from the select, the hidden input field is updated with the value of what you selected. The value will be whatever you specified as your <code class="inline">value_key</code>. When you submit a form that has any BladewindUI select, you can access the value of the select by specifying the name you used on the select. Consider the example below.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;form ...&gt;
+    @php
+        $selectExample30 = <<<'HTML'
+            <form ...>
             ...
-            &lt;x-bladewind::select name="country" ... /&gt;
-            &lt;/form&gt;
-        </code>
-    </pre>
+            <x-bladewind::select name="country" ... />
+            </form>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample30"></x-bladewind::code-block>
     <p>
     After submitting the form the value of the country select can be accessed using any of the following ways permitted in Laravel.
     </p>
 
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $selectExample31 = <<<'HTML'
             $request->get('country');
             $request->input('country');
             $request->country;
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample31"></x-bladewind::code-block>
     <br />
     <x-bladewind::alert type="info" show_close_icon="false">
         The <b>multiple select</b> generates a comma separated list of values.
@@ -707,36 +736,36 @@
         <x-bladewind::input name="mobile" numeric="true" prefix="+xxx" suffix="device-phone-mobile" suffix_is_icon="true" transparent_prefix="false" placeholder="Mobile" />
     </div>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;div class="grid grid-cols-2 gap-4"&gt;
+    @php
+        $selectExample32 = <<<'HTML'
+            <div class="grid grid-cols-2 gap-4">
 
-                &lt;x-bladewind::select
+                <x-bladewind::select
                     name="cusfxns"
                     placeholder="Your country"
                     data="manual"
-                    onselect="prependDialingCode"&gt;
+                    onselect="prependDialingCode">
 
-                    &lt;x-bladewind::select.item label="Burkina Faso" value="bf" /&gt;
-                    &lt;x-bladewind::select.item label="Ghana" value="gh" /&gt;
-                    &lt;x-bladewind::select.item label="Nigeria" value="ng" /&gt;
+                    <x-bladewind::select.item label="Burkina Faso" value="bf" />
+                    <x-bladewind::select.item label="Ghana" value="gh" />
+                    <x-bladewind::select.item label="Nigeria" value="ng" />
 
-                &lt;/x-bladewind::select&gt;
+                </x-bladewind::select>
 
-                &lt;x-bladewind::input
+                <x-bladewind::input
                     name="mobile"
                     numeric="true"
                     prefix="+xxx"
                     suffix="device-phone-mobile"
                     suffix_is_icon="true"
                     transparent_prefix="false"
-                    placeholder="Mobile" /&gt;
-            &lt;/div&gt;
-
-        </code>
-    </pre>
-    <pre class="language-js line-numbers">
-        <code>
+                    placeholder="Mobile" />
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample32"></x-bladewind::code-block>
+    @php
+        $selectExample33 = <<<'HTML'
             // javascript
             const dialing_codes = {
                 'gh' : '+233',
@@ -747,8 +776,9 @@
             prependDialingCode = (value) => {
                 domEl('.mobile-prefix').innerText = eval(`dialing_codes.${value}`);
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample33"></x-bladewind::code-block>
     <p>
         The input field above has <code class="text-red-500 inline">name="mobile"</code> and also has a <code class="text-red-500 inline">prefix="+xxx"</code>.
         Bladewind names all prefixes after their input element so, the prefix field in the mobile input will have <code class="inline">class="mobile-prefix"</code>. Even though
@@ -761,18 +791,20 @@
         There are those moments when you need to interact with a Select component from JavaScript. The Bladewind Select component exposes 3 methods that help you to do just that.
         When you create a Select component and provide a name, BladewindUI initializes the component in JavaScript using the name you provided.
     </p>
-    <pre class="language-markup">
-        <code>
+    @php
+        $selectExample34 = <<<'HTML'
             // the following component declaration
-            &lt;x-bladewind::select name="country-multiple" placeholder="Select a country" /&gt;
-        </code>
-    </pre>
-    <pre class="language-js">
-        <code>
+            <x-bladewind::select name="country-multiple" placeholder="Select a country" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$selectExample34"></x-bladewind::code-block>
+    @php
+        $selectExample35 = <<<'HTML'
             // will be initialized in JavaScript as
             const bw_country_multiple = new BladewindSelect('country_multiple', 'Select a country');
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$selectExample35"></x-bladewind::code-block>
     <p>
         Note how the name passed to the component has been prefixed with <code class="inline text-red-500">bw_</code>
         and all dashes <code class="inline">'-'</code> replaced with underscores <code class="inline">'_'</code>. This variable is now accessible to you in JavaScript and represents the Select component.
@@ -865,44 +897,45 @@
         <x-bladewind::button size="small" type="secondary" onclick="bw_multiple_from_js.enable()">Enable</x-bladewind::button>
     </div>
 <br />
-    <pre class="language-markup line-numbers" data-line="9,14,19,24,29">
-        <code>
-            &lt;x-bladewind::select name="from-js" placeholder="Your country" data="manual"&gt;
-                &lt;x-bladewind::select.item label="Burkina Faso" value="bf" /&gt;
-                &lt;x-bladewind::select.item label="Ghana" value="gh" /&gt;
-                &lt;x-bladewind::select.item label="Nigeria" value="ng" /&gt;
-            &lt;/x-bladewind::select&gt;
+    @php
+        $selectExample36 = <<<'HTML'
+            <x-bladewind::select name="from-js" placeholder="Your country" data="manual">
+                <x-bladewind::select.item label="Burkina Faso" value="bf" />
+                <x-bladewind::select.item label="Ghana" value="gh" />
+                <x-bladewind::select.item label="Nigeria" value="ng" />
+            </x-bladewind::select>
 
-            &lt;div class="space-x-4 text-center"&gt;
+            <div class="space-x-4 text-center">
 
-                &lt;x-bladewind.button size="small" type="secondary"
-                    onclick="bw_from_js.selectByValue('gh')"&gt;
+                <x-bladewind.button size="small" type="secondary"
+                    onclick="bw_from_js.selectByValue('gh')">
                     Select Ghana
-                &lt;/x-bladewind.button&gt;
+                </x-bladewind.button>
 
-                &lt;x-bladewind.button size="small" type="secondary"
-                    onclick="bw_from_js.selectByValue('ng')"&gt;
+                <x-bladewind.button size="small" type="secondary"
+                    onclick="bw_from_js.selectByValue('ng')">
                     Select Nigeria
-                &lt;/x-bladewind.button&gt;
+                </x-bladewind.button>
 
-                &lt;x-bladewind.button size="small" type="secondary"
-                    onclick="bw_from_js.disable()"&gt;
+                <x-bladewind.button size="small" type="secondary"
+                    onclick="bw_from_js.disable()">
                     Disable
-                &lt;/x-bladewind.button&gt;
+                </x-bladewind.button>
 
-                &lt;x-bladewind.button size="small" type="secondary"
-                    onclick="bw_from_js.reset()"&gt;
+                <x-bladewind.button size="small" type="secondary"
+                    onclick="bw_from_js.reset()">
                     Reset
-                &lt;/x-bladewind.button&gt;
+                </x-bladewind.button>
 
-                &lt;x-bladewind.button size="small" type="secondary"
-                    onclick="bw_from_js.enable()"&gt;
+                <x-bladewind.button size="small" type="secondary"
+                    onclick="bw_from_js.enable()">
                     Enable
-                &lt;/x-bladewind.button&gt;
+                </x-bladewind.button>
 
-            &lt;/div&gt;
-        </code>
-    </pre>
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="9,14,19,24,29" :code="$selectExample36"></x-bladewind::code-block>
 
     <h2 id="filtering">Filtering</h2>
     <h3 id="table">Dynamically filter a table based on selected values</h3>
@@ -963,12 +996,12 @@
         Let's break down the code for the example above. First we build the array of employees. This example uses an
         array. You may have your data coming directly from the database or other.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $selectExample37 = <<<'HTML'
             $employees = [
                 [
                     'name' => 'Michael Ocansey',
-                    'email' => 'mike@demo.com',
+                    'email' => 'mikeBWATSIGNPLACEHOLDERdemo.com',
                     'position' => 'CTO',
                     'department' => 'tech',
                     'dp' => 'me.jpeg',
@@ -976,58 +1009,63 @@
                 ],
                 ...
             ];
-        </code>
-    </pre>
+            HTML;
+        $selectExample37 = str_replace('BWATSIGNPLACEHOLDER', '@', $selectExample37);
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample37"></x-bladewind::code-block>
     <p>
         Next, we build our multiple Select component with <a href="#non-dynamic">non-dynamic</a> data.
         Note line 3 where we pass the name of the function responsible for filtering the data to the <code class="inline text-red-500">onselect</code> attribute.
     </p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::select
+    @php
+        $selectExample38 = <<<'HTML'
+            <x-bladewind::select
                 name="department"
                 onselect="filterEmployees"
                 placeholder="filter by department"
                 data="manual"
-                multiple="true"&gt;
-                &lt;x-bladewind::select.item label="Field Workers" value="field" /&gt;
-                &lt;x-bladewind::select.item label="Finance" value="finance" /&gt;
-                &lt;x-bladewind::select.item label="Tech" value="tech" /&gt;
-                &lt;x-bladewind::select.item label="Marketing" value="marketing" /&gt;
-                &lt;x-bladewind::select.item label="Operations" value="operations" /&gt;
-            &lt;/x-bladewind::select&gt;
-        </code>
-    </pre>
+                multiple="true">
+                <x-bladewind::select.item label="Field Workers" value="field" />
+                <x-bladewind::select.item label="Finance" value="finance" />
+                <x-bladewind::select.item label="Tech" value="tech" />
+                <x-bladewind::select.item label="Marketing" value="marketing" />
+                <x-bladewind::select.item label="Operations" value="operations" />
+            </x-bladewind::select>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$selectExample38"></x-bladewind::code-block>
     <p>
         We then build the employee records from our array. This example uses the <a href="/component/card#contact">contact card</a> component, but you could use
         the  <a href="/component/table">table component</a> to achieve the same results. How the data is displayed is completely up to you.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;div class="grid grid-cols-2 gap-4"&gt;
-                &commat;foreach($employees as $employee)
-                    &commat;php
+    @php
+        $selectExample39 = <<<'HTML'
+            <div class="grid grid-cols-2 gap-4">
+                BWATSIGNPLACEHOLDERforeach($employees as $employee)
+                    BWATSIGNPLACEHOLDERphp
                         $dp =  ($employee['dp']!=='') ? "/assets/images/".$employee['dp'] : '';
                         $position = ucfirst($employee['department']) . ' > ' . $employee['position'];
-                    &commat;endphp
-                    &lt;x-bladewind::contact-card
+                    BWATSIGNPLACEHOLDERendphp
+                    <x-bladewind::contact-card
                         :name="$employee['name']"
                         :position="$position"
                         :email="$employee['email']"
                         :mobile="$employee['mobile']"
-                        :image="$dp" /&gt;
-                &commat;endforeach
-            &lt;/div&gt;
-        </code>
-    </pre>
+                        :image="$dp" />
+                BWATSIGNPLACEHOLDERendforeach
+            </div>
+            HTML;
+        $selectExample39 = str_replace('BWATSIGNPLACEHOLDER', '@', $selectExample39);
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample39"></x-bladewind::code-block>
     <p>
         Finally, the Javascript for filtering the cards. Every BladewindUI  <a href="/component/card#contact">contact card</a> component has the class <code class="inline">bw-contact-card</code>.
         Our Javascript targets this class to access all employee cards. When a department is selected, we search through each card
         and hide any cards that do not contain the selected department(s) in their innerText. Because multiple departments can be selected,
         we need to dynamically build our regular expression for finding the selected departments in the cards.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $selectExample40 = <<<'HTML'
              filterEmployees = (value, label, all_values) => {
                 // get all employee cards available in the DOM
                 let employee_cards = domEls('.bw-contact-card');
@@ -1042,8 +1080,9 @@
                     (! el.innerText.match(regex) ) ? hide(el, true) : unhide(el, true);
                 });
             }
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample40"></x-bladewind::code-block>
 
     <h3 id="another-select">Filter a Select component based on the value of another Select component</h3>
     <p>
@@ -1093,8 +1132,8 @@
     <p>
         Let us take a look at the code. We start by defining the array that will populate the continents select component.
     </p>
-    <pre class="language-js line-numbers">
-        <code>
+    @php
+        $selectExample41 = <<<'HTML'
             // this array populates the country dropdown.
             // all countries in this array are displayed when no continent is selected
             $countries = [
@@ -1111,26 +1150,28 @@
                 [ 'name' => 'Norway', 'value' => 'nw', 'continent_code' => 'eu' ],
                 [ 'name' => 'Poland', 'value' => 'pl', 'continent_code' => 'eu' ],
             ];
-        </code>
-    </pre>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$selectExample41"></x-bladewind::code-block>
 
     <p>
         Next is the continents select component. This time we used a manual select instead of generating this from an array because it is just a list of 4 continents.
         Take note however, of the <code class="inline text-red-500">filter="continent-country"</code> attribute. <code class="inline">continent-country</code> is the name of the select component we want to filter.
     </p>
-    <pre class="language-markup line-numbers" data-line="3,5">
-        <code>
-            &lt;!--- the continents select component. --->
-            &lt;x-bladewind::select name="continent" placeholder="Select Continent"
+    @php
+        $selectExample42 = <<<'HTML'
+            <!--- the continents select component. --->
+            <x-bladewind::select name="continent" placeholder="Select Continent"
                 filter="continent-country"
-                data="manual"&gt;
-                &lt;x-bladewind::select.item label=Africa" value="af" /&gt;
-                &lt;x-bladewind::select.item label="Asia" value="as" /&gt;
-                &lt;x-bladewind::select.item label="Europe" value="eu" /&gt;
-                &lt;x-bladewind::select.item label="North America" value="na" /&gt;
-            &lt;/x-bladewind::select&gt;
-        </code>
-    </pre>
+                data="manual">
+                <x-bladewind::select.item label=Africa" value="af" />
+                <x-bladewind::select.item label="Asia" value="as" />
+                <x-bladewind::select.item label="Europe" value="eu" />
+                <x-bladewind::select.item label="North America" value="na" />
+            </x-bladewind::select>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,5" :code="$selectExample42"></x-bladewind::code-block>
     <p>
         Next we introduced <code class="inline text-red-500">filter_by="continent_code"</code> when creating our <code class="inline">continent-country</code> select component.
         When this attribute is defined, all BladewindUI does is to add a <code class="inline">data-filter-value</code> attribute to the HTML generated for the Select component's items.
@@ -1142,10 +1183,10 @@
         For example the line for Africa has a value of <code class="inline">af</code>. Selecting this will filter the countries select component and keep all items whose <code class="inline">continent_code</code> match <code class="inline">af</code>.
     </p>
 
-    <pre class="language-markup line-numbers" data-line="3,7">
-        <code>
-            &lt;!--- the countries select component. --->
-            &lt;x-bladewind::select
+    @php
+        $selectExample43 = <<<'HTML'
+            <!--- the countries select component. --->
+            <x-bladewind::select
                 name="continent-country"
                 placeholder="Select Country"
                 searchable="true"
@@ -1153,9 +1194,10 @@
                 filter_by="continent_code"
                 empty-placeholder="no countries available"
                 label_key="name"
-                value_key="name"&gt;
-        </code>
-    </pre>
+                value_key="name">
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,7" :code="$selectExample43"></x-bladewind::code-block>
 
     <h3 id="another-value">Filter a Select component based on some value</h3>
     <p>
@@ -1186,29 +1228,30 @@
         In this example, clicking on a tag filters the list of countries. This is achieved by calling the <code class="inline text-red-500">filter()</code> method on the target select component. Each tag calls a
         <code class="inline">filterCountries()</code> Javascript function, passing the value of the continent as the parameter. Africa for example passes the parameter <code class="inline">af</code> as <code class="inline">filterCountries('af')</code>.
     </p>
-    <pre class="language-markup line-numbers" data-line="3,12">
-        <code>
-            &lt;div class="bg-slate-100 sm:grid sm:grid-cols-2 gap-6 flex items-center"&gt;
-                &lt;div class="space-x-2"&gt;
-                    &lt;a href="javascript:filterCountries('af')"&gt;
-                        &lt;x-bladewind::tag label="africa" color="purple" class="cursor-pointer" /&gt;
-                    &lt;/a&gt;
-                    &lt;a href="javascript:filterCountries('as')"&gt;
-                        &lt;x-bladewind::tag label="asia" color="purple" class="cursor-pointer" /&gt;
-                    &lt;/a&gt;
+    @php
+        $selectExample44 = <<<'HTML'
+            <div class="bg-slate-100 sm:grid sm:grid-cols-2 gap-6 flex items-center">
+                <div class="space-x-2">
+                    <a href="javascript:filterCountries('af')">
+                        <x-bladewind::tag label="africa" color="purple" class="cursor-pointer" />
+                    </a>
+                    <a href="javascript:filterCountries('as')">
+                        <x-bladewind::tag label="asia" color="purple" class="cursor-pointer" />
+                    </a>
                     ...
-                &lt;/div&gt;
-                &lt;x-bladewind::select
+                </div>
+                <x-bladewind::select
                     name="continent-country2"
                     placeholder="Select Country"
                     searchable="true"
                     data="json_encode($countries)"
                     label_key="name"
                     value_key="value"
-                    filter_by="continent_code" /&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+                    filter_by="continent_code" />
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3,12" :code="$selectExample44"></x-bladewind::code-block>
     <p>
         Below is the script called by the tags. Note line 3 where we call the <code class="inline">filter()</code> function on the <code class="inline">continent-country2</code> select component.
         We need to prefix the component name with <code class="inline">bw_</code> and also change all dashes in the component name to underscores. <code class="inline">continent-country2</code> becomes <code class="inline">continent_country2</code>.
@@ -1217,16 +1260,17 @@
     <p>
         Also note how in this case we called the <code class="inline">filter()</code> on the same component that we are targeting. This is because we are not triggering the filtering from another select component.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;script&gt;
+    @php
+        $selectExample45 = <<<'HTML'
+            <script>
                 filterCountries = (continent) => {
                     // this is where we actually tell the component to filter
                     bw_continent_country2.filter('continent_country2', continent);
                 }
-            &lt;/script&gt;
-        </code>
-    </pre>
+            </script>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample45"></x-bladewind::code-block>
 
     <h2 id="native">Native Select</h2>
     <p>
@@ -1241,16 +1285,17 @@
             <option value="idk">I'd rather not say</option>
         </select>
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;select name="age" class="bw-raw-select"&gt;
-                &lt;option value=""&gt;Are you above 18?&lt;/option&gt;
-                &lt;option value="yes"&gt;Yep! I am&lt;/option&gt;
-                &lt;option value="no"&gt;Nope but tell no one&lt;/option&gt;
-                &lt;option value="idk"&gt;I'd rather not say&lt;/option&gt;
-            &lt;/select&gt;
-        </code>
-    </pre>
+    @php
+        $selectExample46 = <<<'HTML'
+            <select name="age" class="bw-raw-select">
+                <option value="">Are you above 18?</option>
+                <option value="yes">Yep! I am</option>
+                <option value="no">Nope but tell no one</option>
+                <option value="idk">I'd rather not say</option>
+            </select>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample46"></x-bladewind::code-block>
     <h2 id="form-state">Laravel Form State</h2>
     <p>
         When validation fails, Laravel redirects back with the submitted values flashed to the
@@ -1258,16 +1303,17 @@
         can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
         and an error block on every single field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::select
-    name="country"
-    label="Country"
-    :data="$countries"
-    fill_from_old="true"
-    show_validation_error="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $selectExample47 = <<<'HTML'
+            <x-bladewind::select
+                name="country"
+                label="Country"
+                :data="$countries"
+                fill_from_old="true"
+                show_validation_error="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample47"></x-bladewind::code-block>
     <p>
         <code class="inline">fill_from_old</code> repopulates the field from
         <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
@@ -1289,16 +1335,17 @@
         Rather than setting the attributes field by field, set them once in your
         <code class="inline">config/bladewind.php</code> and every form component follows.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-// config/bladewind.php
-'forms' =&gt; [
-    'fill_from_old' =&gt; true,
-    'show_validation_error' =&gt; true,
-    'error_bag' =&gt; null,
-],
-        </code>
-    </pre>
+    @php
+        $selectExample48 = <<<'HTML'
+            // config/bladewind.php
+            'forms' => [
+                'fill_from_old' => true,
+                'show_validation_error' => true,
+                'error_bag' => null,
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$selectExample48"></x-bladewind::code-block>
     <p>
         An attribute on a single field always wins over the config, so you can opt one field out
         with <code class="inline">show_validation_error="false"</code>.
@@ -1582,14 +1629,14 @@
     </x-bladewind::table>
 
     <h3>Select with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::select
+    @php
+        $selectExample49 = <<<'HTML'
+            <x-bladewind::select
                 name="country"
                 placeholder="What is your nationality"
                 label="What is your nationality"
                 onselect="confirmSelection"
-                data="&#123;&#123; json_encode($countries)}} "
+                data="{{ json_encode($countries)}} "
                 value_key="code"
                 label_key="country"
                 flag_key="code"
@@ -1609,9 +1656,22 @@
                 empty_state_show_image="false"
                 filter="countries"
                 filter_by="continent_id"
-            /&gt;
-        </code>
-    </pre>
+            />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$selectExample49"></x-bladewind::code-block>
+
+<h2 id="livewire">Using Select Inside Livewire</h2>
+<p>
+    The selected value is written to a hidden field that dispatches a real, native <code class="inline">change</code> event, the same
+    kind of event a plain HTML select would dispatch. This means Livewire's <code class="inline">wire:model</code> picks up a
+    selection without any extra work on your part. The part that does need attention is the dropdown's own open and closed state,
+    along with its search filter if the select is searchable. Both of those live outside the DOM that Livewire manages, so if a
+    Livewire component re-renders this markup for a reason that has nothing to do with the select, they reset. If that happens in
+    your application, wrap the select in <code class="inline">wire:ignore</code> so Livewire leaves it alone. The component also
+    guards against a Livewire re-render creating a second copy of itself, so re-rendering it will not leave behind duplicate click
+    listeners on the page.
+</p>
 
 <x-bladewind::alert show_close_icon="false">
     The source file for this component is available in <code class="inline">resources > views > components > bladewind > select > index.blade.php</code> and
@@ -1622,7 +1682,6 @@
 </x-bladewind::alert>
 
 <x-slot:side_nav>
-    <div class="flex items-center"><div class="dot"></div><a href="#basic">Basic usage</a></div>
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#placeholder">Change placeholder text</a></div>
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#use-labels">Using labels</a></div>
     <div class="flex items-center pl-5"><div class="dot"></div><a href="#keys">Setting keys to display</a></div>
@@ -1650,6 +1709,7 @@
     <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#scrolling">Selects in scrolling containers</a></div>
     <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+    <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Select inside Livewire</a></div>
 </x-slot:side_nav>
 <x-slot name="scripts">
     <script>

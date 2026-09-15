@@ -11,17 +11,18 @@
         </x-bladewind::card>
     </x-bladewind::centered-content>
 
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-            &lt;x-bladewind::centered-content size="tiny"&gt;
+    @php
+        $centeredUcontentExample1 = <<<'HTML'
+            <x-bladewind::centered-content size="tiny">
 
-                &lt;x-bladewind::card&gt;
+                <x-bladewind::card>
                     this content is centered in this column
-                &lt;/x-bladewind::card&gt;
+                </x-bladewind::card>
 
-            &lt;/x-bladewind::centered-content&gt;
-        </code>
-    </pre>
+            </x-bladewind::centered-content>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$centeredUcontentExample1"></x-bladewind::code-block>
 
     <p>
         There are different sizes for the centered content component which are too wide for this documentation space. Try them out in your layouts to see how they look.
@@ -32,17 +33,18 @@
         </x-bladewind::card>
     </x-bladewind::centered-content>
 
-    <pre class="language-markup line-numbers" data-line="1">
-        <code>
-            &lt;x-bladewind::centered-content size="small"&gt;
+    @php
+        $centeredUcontentExample2 = <<<'HTML'
+            <x-bladewind::centered-content size="small">
 
-                &lt;x-bladewind::card&gt;
+                <x-bladewind::card>
                     this content is centered in this column
-                &lt;/x-bladewind::card&gt;
+                </x-bladewind::card>
 
-            &lt;/x-bladewind::centered-content&gt;
-        </code>
-    </pre>
+            </x-bladewind::centered-content>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="1" :code="$centeredUcontentExample2"></x-bladewind::code-block>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Centered Content component.</p>
@@ -60,12 +62,13 @@
         </tr>
     </x-bladewind::table>
     <h3>Centered Content with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::centered-content
-                size="medium"/&gt;
-        </code>
-    </pre>
+    @php
+        $centeredUcontentExample3 = <<<'HTML'
+            <x-bladewind::centered-content
+                size="medium"/>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$centeredUcontentExample3"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > centered-content.blade.php</code>

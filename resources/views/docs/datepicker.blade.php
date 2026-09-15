@@ -9,11 +9,12 @@
 
     <x-bladewind::datepicker />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::datepicker  /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample1 = <<<'HTML'
+            <x-bladewind::datepicker  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$datepickerExample1"></x-bladewind::code-block>
     <br />
     <p>
         By default the datepicker fills up the width of its parent container. You can however specify a width of your choice using the datepicker's <code class="inline">css</code> attribute.
@@ -23,13 +24,14 @@
         <x-bladewind::datepicker placeholder="Invoice Date" has_label="true"  />
     </div>
 
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;div class="w-40"&gt;
-                &lt;x-bladewind::datepicker placeholder="Invoice Date"  /&gt;
-            &lt;/div&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample2 = <<<'HTML'
+            <div class="w-40">
+                <x-bladewind::datepicker placeholder="Invoice Date"  />
+            </div>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$datepickerExample2"></x-bladewind::code-block>
 
     <h2 id="range">Range Calendar</h2>
     <p>
@@ -39,21 +41,23 @@
     </p>
     <x-bladewind::datepicker range="true"  />
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::datepicker range="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample3 = <<<'HTML'
+            <x-bladewind::datepicker range="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample3"></x-bladewind::code-block>
 
     <h3 id="required">Show As a Required Field</h3>
     <p>An asterisk is appended to the placeholder text when <code class="inline text-red-500">required="true"</code>.</p>
     <x-bladewind::datepicker required="true"  />
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::datepicker required="true"  /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample4 = <<<'HTML'
+            <x-bladewind::datepicker required="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample4"></x-bladewind::code-block>
 
     <h2 id="formats">Date Formats</h2>
     <p>
@@ -61,31 +65,35 @@
         The default format is <code class="inline text-red-500">format="yyyy-mm-dd"</code>. When using a range datepicker, the format you specify is applied to both datepickers.
     </p>
     <x-bladewind::datepicker name="date1" type="range" format="dd-mm-yyyy"  />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::datepicker name="date1" type="range" format="dd-mm-yyyy" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample5 = <<<'HTML'
+            <x-bladewind::datepicker name="date1" type="range" format="dd-mm-yyyy" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$datepickerExample5"></x-bladewind::code-block>
     <x-bladewind::datepicker name="date2" format="mm-dd-yyyy"  />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::datepicker name="date2" format="mm-dd-yyyy" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample6 = <<<'HTML'
+            <x-bladewind::datepicker name="date2" format="mm-dd-yyyy" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$datepickerExample6"></x-bladewind::code-block>
 
     <x-bladewind::datepicker name="date3" format="D d M, Y" type="range"  />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::datepicker name="date3" format="D d M, Y" type="range" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample7 = <<<'HTML'
+            <x-bladewind::datepicker name="date3" format="D d M, Y" type="range" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$datepickerExample7"></x-bladewind::code-block>
 
     <x-bladewind::datepicker name="date4" format="yyyy-mm-dd"  />
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::datepicker name="date4" format="yyyy-mm-dd" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample8 = <<<'HTML'
+            <x-bladewind::datepicker name="date4" format="yyyy-mm-dd" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$datepickerExample8"></x-bladewind::code-block>
 
 
     <h2 id="defaults">With Default Values</h2>
@@ -94,22 +102,24 @@
     </p>
     <x-bladewind::datepicker class="!w-44" selected_value="2021-12-03"  />
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::datepicker selected_value="2021-12-03"  /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample9 = <<<'HTML'
+            <x-bladewind::datepicker selected_value="2021-12-03"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample9"></x-bladewind::code-block>
 
     <p>
         It is possible to have default dates for a range datepicker also.
     </p>
     <x-bladewind::datepicker range="true" selected_value="2025-02-03 - 2025-02-23"  />
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::datepicker range="true" selected_value="2021-12-03 - 2022-01-03"  /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample10 = <<<'HTML'
+            <x-bladewind::datepicker range="true" selected_value="2021-12-03 - 2022-01-03"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample10"></x-bladewind::code-block>
 
     <h2 id="minmax">Min and Max Dates</h2>
     <p>
@@ -120,28 +130,31 @@
     </p>
     <div class="flex"><x-bladewind::datepicker min_date="{{date('Y-m-d')}}"  /></div>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::datepicker min_date="{{date('Y-m-d')}}" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample11 = <<<'HTML'
+            <x-bladewind::datepicker min_date="{{date('Y-m-d')}}" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample11"></x-bladewind::code-block>
     <br />
     <div class="flex"><x-bladewind::datepicker max_date="{{date('Y-m-t')}}"  /></div>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::datepicker max_date="{{date('Y-m-t')}}" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample12 = <<<'HTML'
+            <x-bladewind::datepicker max_date="{{date('Y-m-t')}}" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample12"></x-bladewind::code-block>
 
     <br />
     <div class="flex"><x-bladewind::datepicker min_date="{{date('Y-m-01')}}" max_date="{{date('Y-m-t')}}"  /></div>
 
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::datepicker min_date="{{date('Y-m-01')}}" max_date="{{date('Y-m-t')}}" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample13 = <<<'HTML'
+            <x-bladewind::datepicker min_date="{{date('Y-m-01')}}" max_date="{{date('Y-m-t')}}" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample13"></x-bladewind::code-block>
     <h2 id="form-state">Laravel Form State</h2>
     <p>
         When validation fails, Laravel redirects back with the submitted values flashed to the
@@ -149,15 +162,16 @@
         can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
         and an error block on every single field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::datepicker
-    name="starts_on"
-    label="Start date"
-    fill_from_old="true"
-    show_validation_error="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $datepickerExample14 = <<<'HTML'
+            <x-bladewind::datepicker
+                name="starts_on"
+                label="Start date"
+                fill_from_old="true"
+                show_validation_error="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample14"></x-bladewind::code-block>
     <p>
         <code class="inline">fill_from_old</code> repopulates the field from
         <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
@@ -174,16 +188,17 @@
         Rather than setting the attributes field by field, set them once in your
         <code class="inline">config/bladewind.php</code> and every form component follows.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-// config/bladewind.php
-'forms' =&gt; [
-    'fill_from_old' =&gt; true,
-    'show_validation_error' =&gt; true,
-    'error_bag' =&gt; null,
-],
-        </code>
-    </pre>
+    @php
+        $datepickerExample15 = <<<'HTML'
+            // config/bladewind.php
+            'forms' => [
+                'fill_from_old' => true,
+                'show_validation_error' => true,
+                'error_bag' => null,
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$datepickerExample15"></x-bladewind::code-block>
     <p>
         An attribute on a single field always wins over the config, so you can opt one field out
         with <code class="inline">show_validation_error="false"</code>.
@@ -302,22 +317,23 @@
     </x-bladewind::table>
 
     <h3>Calendar with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-<code>
-    &lt;x-bladewind::datepicker
-        name="invoice_date"
-        range="true"
-        required="false"
-        placeholder="Invoice Date"
-        selected_value=""
-        format="dd/mm/yyyy"
-        min_date="01/11/2025"
-        max_date="01/12/2025"
-        week_starts="monday"
-        size="big"
-        class="shadow-sm" /&gt;
-</code>
-    </pre>
+    @php
+        $datepickerExample16 = <<<'HTML'
+            <x-bladewind::datepicker
+                name="invoice_date"
+                range="true"
+                required="false"
+                placeholder="Invoice Date"
+                selected_value=""
+                format="dd/mm/yyyy"
+                min_date="01/11/2025"
+                max_date="01/12/2025"
+                week_starts="monday"
+                size="big"
+                class="shadow-sm" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$datepickerExample16"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > datepicker.blade.php</code>
@@ -331,6 +347,17 @@
 
     <a href="/customize#datepicker-translations">Read the notes</a> on how to modify the Calendar translations
 
+    <h2 id="livewire">Using Datepicker Inside Livewire</h2>
+    <p>
+        When a date is picked, the field dispatches a real, native <code class="inline">change</code> event, so Livewire's
+        <code class="inline">wire:model</code> picks up the selection without any extra work on your part. The calendar popup keeps
+        track of whether it is open or closed outside of the DOM that Livewire manages, so if a Livewire component re-renders this
+        markup for a reason that has nothing to do with the datepicker, the popup resets to closed. If you find that happening,
+        wrap the field in <code class="inline">wire:ignore</code> so Livewire leaves that part of the page alone. The component also
+        guards against a Livewire re-render building a second calendar popup, which used to happen on every re-render and left
+        orphaned popups behind on the page.
+    </p>
+
     <x-slot:side_nav>
         <div class="flex items-center"><div class="dot"></div><a href="#range">Range datepicker</a></div>
         <div class="flex items-center pl-5"><div class="dot"></div><a href="#required">Show as required</a></div>
@@ -339,6 +366,7 @@
         <div class="flex items-center"><div class="dot"></div><a href="#minmax">Min and max dates</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#form-state">Laravel form state</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Datepicker inside Livewire</a></div>
     </x-slot:side_nav>
 
     <x-slot name="scripts">

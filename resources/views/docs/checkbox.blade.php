@@ -8,53 +8,54 @@
 
     <x-bladewind::checkbox  />
 
-<pre class="language-markup">
-<code>
-    &lt;x-bladewind::checkbox  /&gt;
-</code>
-</pre>
+@php
+        $checkboxExample1 = <<<'HTML'
+            <x-bladewind::checkbox  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$checkboxExample1"></x-bladewind::code-block>
     <br />
 
     <x-bladewind::checkbox label="I agree to the terms and conditions"  />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::checkbox label="I agree to the terms and conditions"  /&gt;
-        </code>
-    </pre>
+    @php
+        $checkboxExample2 = <<<'HTML'
+            <x-bladewind::checkbox label="I agree to the terms and conditions"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$checkboxExample2"></x-bladewind::code-block>
 
     <br />
     <x-bladewind::checkbox label="I agree to the &nbsp;<a href='/terms'>terms and conditions</a>"  />
 
-<pre class="language-markup line-numbers">
-<code>
-&lt;x-bladewind::checkbox
-    label="I agree to the &lt;a href='/terms'&gt;terms and conditions&lt;/a&gt;"  /&gt;
-</code>
-</pre>
+@php
+        $checkboxExample3 = <<<'HTML'
+            <x-bladewind::checkbox
+                label="I agree to the <a href='/terms'>terms and conditions</a>"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkboxExample3"></x-bladewind::code-block>
 <br />
     <x-bladewind::checkbox label="I am checked by default" checked="true"  />
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            <code>
-            &lt;x-bladewind::checkbox
+    @php
+        $checkboxExample4 = <<<'HTML'
+            <x-bladewind::checkbox
                 label="I am checked by default"
-                checked="true"  /&gt;
-        </code>
-        </code>
-    </pre>
+                checked="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$checkboxExample4"></x-bladewind::code-block>
 <br />
     <x-bladewind::checkbox label="I am disabled" disabled="true"  /> &nbsp;&nbsp;
     <x-bladewind::checkbox label="I am checked and disabled" disabled="true" checked="true"  />
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            <code>
-            &lt;x-bladewind::checkbox
+    @php
+        $checkboxExample5 = <<<'HTML'
+            <x-bladewind::checkbox
                 label="I am disabled"
-                disabled="true"  /&gt;
-        </code>
-        </code>
-    </pre>
+                disabled="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$checkboxExample5"></x-bladewind::code-block>
 
     <h2 id="coloured">Coloured Checkboxes</h2>
     <p>
@@ -79,54 +80,55 @@
             <x-bladewind::checkbox color="fuchsia" checked="true" label="I am a fuchsia checkbox" />
     </div>
 
-    <pre class="language-markup line-numbers" data-line="2,7,12,17,22,27,32,37,42">
-        <code>
-            &lt;x-bladewind::checkbox
+    @php
+        $checkboxExample6 = <<<'HTML'
+            <x-bladewind::checkbox
                 color="red"
                 checked="true"
-                label="I am a red checkbox" /&gt;
+                label="I am a red checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="yellow"
                 checked="true"
-                label="I am a yellow checkbox" /&gt;
+                label="I am a yellow checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="green"
                 checked="true"
-                label="I am a green checkbox" /&gt;
+                label="I am a green checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="pink"
                 checked="true"
-                label="I am a pink checkbox" /&gt;
+                label="I am a pink checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="cyan"
                 checked="true"
-                label="I am a cyan checkbox" /&gt;
+                label="I am a cyan checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="black"
                 checked="true"
-                label="I am a black checkbox" /&gt;
+                label="I am a black checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="purple"
                 checked="true"
-                label="I am a purple checkbox" /&gt;
+                label="I am a purple checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="orange"
                 checked="true"
-                label="I am a orange checkbox" /&gt;
+                label="I am a orange checkbox" />
 
-            &lt;x-bladewind::checkbox
+            <x-bladewind::checkbox
                 color="blue"
                 checked="true"
-                label="I am a blue checkbox" /&gt;
-        </code>
-    </pre>
+                label="I am a blue checkbox" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2,7,12,17,22,27,32,37,42" :code="$checkboxExample6"></x-bladewind::code-block>
     <h3>Checkboxes and forms</h3>
     <p>
         When using checkboxes with forms, it is always good practice to give the checkbox a name and value.
@@ -135,14 +137,15 @@
     </p>
 
     <x-bladewind::checkbox name="notify_me" value="1" label="Send me weekly newsletters" />
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::checkbox
-            name="notify_me"
-            value="1"
-            label="Send me weekly newsletters" /&gt;
-        </code>
-    </pre>
+    @php
+        $checkboxExample7 = <<<'HTML'
+            <x-bladewind::checkbox
+                        name="notify_me"
+                        value="1"
+                        label="Send me weekly newsletters" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkboxExample7"></x-bladewind::code-block>
 
     <h2 id="form-state">Laravel Form State</h2>
     <p>
@@ -151,16 +154,17 @@
         can read both for you, so you no longer write <code class="inline">@{{ old('...') }}</code>
         and an error block on every single field.
     </p>
-    <pre class="language-markup line-numbers">
-        <code>
-&lt;x-bladewind::checkbox
-    name="terms"
-    value="yes"
-    label="I agree to the terms"
-    fill_from_old="true"
-    show_validation_error="true" /&gt;
-        </code>
-    </pre>
+    @php
+        $checkboxExample8 = <<<'HTML'
+            <x-bladewind::checkbox
+                name="terms"
+                value="yes"
+                label="I agree to the terms"
+                fill_from_old="true"
+                show_validation_error="true" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkboxExample8"></x-bladewind::code-block>
     <p>
         <code class="inline">fill_from_old</code> repopulates the field from
         <code class="inline">old()</code>. <code class="inline">show_validation_error</code> gives
@@ -185,16 +189,17 @@
         Rather than setting the attributes field by field, set them once in your
         <code class="inline">config/bladewind.php</code> and every form component follows.
     </p>
-    <pre class="language-php line-numbers">
-        <code>
-// config/bladewind.php
-'forms' =&gt; [
-    'fill_from_old' =&gt; true,
-    'show_validation_error' =&gt; true,
-    'error_bag' =&gt; null,
-],
-        </code>
-    </pre>
+    @php
+        $checkboxExample9 = <<<'HTML'
+            // config/bladewind.php
+            'forms' => [
+                'fill_from_old' => true,
+                'show_validation_error' => true,
+                'error_bag' => null,
+            ],
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" line_numbers="true" :code="$checkboxExample9"></x-bladewind::code-block>
     <p>
         An attribute on a single field always wins over the config, so you can opt one field out
         with <code class="inline">show_validation_error="false"</code>.
@@ -288,9 +293,9 @@
     </x-bladewind::table>
 
     <h3>Checkbox with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::checkbox
+    @php
+        $checkboxExample10 = <<<'HTML'
+            <x-bladewind::checkbox
                 label="I agree to the terms and conditions"
                 checked="false"
                 disabled="false"
@@ -298,9 +303,10 @@
                 value="yes"
                 color="pink"
                 label_css="font-bold"
-                class="shadow-sm" /&gt;
-        </code>
-    </pre>
+                class="shadow-sm" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$checkboxExample10"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > checkbox.blade.php</code>

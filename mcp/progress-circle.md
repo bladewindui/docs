@@ -6,28 +6,27 @@ url: /component/progress-circle
 
 # Progress Circle
 
-Display progress in a circular form based on a specified percentage. There is a subtle animation that can be turned off by setting `animate="false"`.
+Displays progress in circular form based on a specified percentage, with a subtle animation that can be disabled via `animate="false"`. This component borrows code from Nikitahl's svg-circle-progress-generator.
 
-This component borrows code from [Nikitahl](https://github.com/nikitahl) available [here](https://github.com/nikitahl/svg-circle-progress-generator).
+## Basic Usage
 
 ```blade
 <x-bladewind::progress-circle percentage="45" />
 ```
 
-By default the progress circle label is not displayed. That can be changed by setting `show_label="true"`. The label (the percentage value) is then displayed but without the percentage sign. To display the percentage sign set the attribute `show_percent="true"`.
+## Labels
+
+The percentage label isn't displayed by default. Set `show_label="true"` to show the value without a percentage sign, and `show_percent="true"` to add the sign.
 
 ```blade
 <x-bladewind::progress-circle percentage="58" show_label="true" />
 
-<x-bladewind::progress-circle
-    percentage="58"
-    show_label="true"
-    show_percent="true" />
+<x-bladewind::progress-circle percentage="58" show_label="true" show_percent="true" />
 ```
 
 ## Different Colours
 
-You can display a progress circle in nine different colours by setting the `color` attribute to the preferred colour. Like most BladewindUI components that have colour options, there are two shades, `faint` and `dark`. The default shade is `faint` and the default colour is `blue`.
+Set `color` for one of twelve colors, with two shades, `faint` (default) and `dark`, via `shade`. The default color is `blue`.
 
 ### Faint Colours
 
@@ -65,19 +64,19 @@ You can display a progress circle in nine different colours by setting the `colo
 
 ## Different Sizes
 
-The progress circle comes in five prebuilt sizes with `medium` being the default size. To change the size of the circle set the `size` attribute. The available sizes are `tiny`, `small`, `medium`, `big`, `large`.
+Five prebuilt sizes are available via `size`, with `medium` as the default: `tiny`, `small`, `medium`, `big`, `large`.
 
 ```blade
-<x-bladewind::progress-circle
-    size="tiny"
-    percentage="10" />
+<x-bladewind::progress-circle percentage="73" size="tiny" />
+<x-bladewind::progress-circle percentage="73" size="small" />
+<x-bladewind::progress-circle percentage="73" size="medium" />
+<x-bladewind::progress-circle percentage="73" size="big" />
+<x-bladewind::progress-circle percentage="73" size="large" />
 ```
 
 ## Custom Sizes
 
-It is quite difficult to determine the perfect circle size that'll fit designs we don't even know about. For this reason Bladewind allows you to specify a custom size for this component if the prebuilt sizes don't suit your needs. Set the `size` attribute to any number above 50.
-
-The prebuilt sizes and their corresponding pixel values are:
+Set `size` to any number above 50 for a custom size. Reference for the prebuilt sizes' underlying pixel values:
 
 | Size | Value |
 |---|---|
@@ -93,7 +92,7 @@ The prebuilt sizes and their corresponding pixel values are:
     percentage="89" />
 ```
 
-You will notice from the example above the circle width is quite thin for a circle that big. To increase the width of the circle set the `circle_width` attribute to a reasonable value. The default value for custom circles is `10`.
+For a large custom circle, increase the ring thickness with `circle_width` (default `10` for custom circles).
 
 ```blade
 <x-bladewind::progress-circle
@@ -102,7 +101,7 @@ You will notice from the example above the circle width is quite thin for a circ
     percentage="89" />
 ```
 
-Things get a bit quirky when you need to display labels in custom circles. Because the circle size is unknown, it is a bit tricky to properly centre the label in the circle. There are additional attributes to help position the label properly in the circle.
+Centering a label inside a custom-size circle needs extra positioning attributes: `text_size`, `align`, and `valign`.
 
 ```blade
 <x-bladewind::progress-circle
@@ -121,17 +120,17 @@ Things get a bit quirky when you need to display labels in custom circles. Becau
 
 | Attribute | Default | Description |
 |---|---|---|
-| percentage | 0 | Any value between 0 and 100. |
-| color | blue | There are twelve colors to choose from. `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` \| `violet` \| `indigo` \| `fuchsia` |
-| size | medium | The available sizes are: `tiny` \| `small` \| `medium` \| `big` \| `large` \| `custom` |
-| show_label | false | Should the percentage label be displayed. `true` \| `false` |
-| show_percent | false | Should the percentage sign be displayed. `true` \| `false` |
-| animate | true | Should the progress circle be animated when loaded. `true` \| `false` |
-| shade | faint | Works with `color` to determine how faint or dark the progress circle colours are. `faint` \| `dark` |
-| text_size | 30 | Controls how big the text should be. You can think of this as font size. Value can be any positive number. |
-| align | 40 | Controls the position of the text horizontally. You will need to keep tweaking this value until the text sits in a position you desire. |
-| valign | 0 | Controls the position of the text vertically. 0 keeps the text in the centre of the circle. Negative values will position the text towards the top of the circle. |
-| circle_width | 30 | Controls the thickness of the circle. Value can be any positive number. |
+| percentage | 0 | Value between 0 and 100. |
+| color | blue | `red` \| `yellow` \| `green` \| `blue` \| `pink` \| `cyan` \| `purple` \| `gray` \| `orange` \| `violet` \| `indigo` \| `fuchsia` |
+| size | medium | `tiny` \| `small` \| `medium` \| `big` \| `large` \| `custom` (or any number above 50 for a custom size) |
+| show_label | false | Whether the percentage label is displayed. `true` \| `false` |
+| show_percent | false | Whether the percentage sign is displayed. `true` \| `false` |
+| animate | true | Whether the circle animates on load. `true` \| `false` |
+| shade | faint | Works with `color` to determine faintness or darkness. `faint` \| `dark` |
+| text_size | 30 | Font size of the label. Any positive number. |
+| align | 40 | Horizontal position of the label text. Tweak until it sits correctly. |
+| valign | 0 | Vertical position of the label text. `0` centers it; negative values move it toward the top. |
+| circle_width | 30 | Thickness of the circle ring. Any positive number. |
 
 ## Full Example
 

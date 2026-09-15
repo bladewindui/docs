@@ -20,20 +20,25 @@
             </x-bladewind::card></x-bladewind::stepper.content>
         </x-bladewind::stepper>
     </x-bladewind::card>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::stepper name="account-setup" current="profile" aria-label="Account setup progress"&gt;
-    &lt;x-bladewind::stepper.item name="account" label="Account" state="complete" /&gt;
-    &lt;x-bladewind::stepper.item name="profile" label="Profile" description="Personal details" /&gt;
-    &lt;x-bladewind::stepper.item name="security" label="Security" /&gt;
-    &lt;x-bladewind::stepper.content name="account" has-border="false"&gt;
-        &lt;x-bladewind::card has-shadow="false"&gt;Account details&lt;/x-bladewind::card&gt;
-    &lt;/x-bladewind::stepper.content&gt;
-    &lt;x-bladewind::stepper.content name="profile" has-border="false"&gt;
-        &lt;x-bladewind::card has-shadow="false"&gt;Profile form&lt;/x-bladewind::card&gt;
-    &lt;/x-bladewind::stepper.content&gt;
-    &lt;x-bladewind::stepper.content name="security" has-border="false"&gt;
-        &lt;x-bladewind::card has-shadow="false"&gt;Security options&lt;/x-bladewind::card&gt;
-    &lt;/x-bladewind::stepper.content&gt;
-&lt;/x-bladewind::stepper&gt;</code></pre>
+    @php
+        $stepperExample1 = <<<'HTML'
+            <x-bladewind::stepper name="account-setup" current="profile" aria-label="Account setup progress">
+                <x-bladewind::stepper.item name="account" label="Account" state="complete" />
+                <x-bladewind::stepper.item name="profile" label="Profile" description="Personal details" />
+                <x-bladewind::stepper.item name="security" label="Security" />
+                <x-bladewind::stepper.content name="account" has-border="false">
+                    <x-bladewind::card has-shadow="false">Account details</x-bladewind::card>
+                </x-bladewind::stepper.content>
+                <x-bladewind::stepper.content name="profile" has-border="false">
+                    <x-bladewind::card has-shadow="false">Profile form</x-bladewind::card>
+                </x-bladewind::stepper.content>
+                <x-bladewind::stepper.content name="security" has-border="false">
+                    <x-bladewind::card has-shadow="false">Security options</x-bladewind::card>
+                </x-bladewind::stepper.content>
+            </x-bladewind::stepper>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$stepperExample1"></x-bladewind::code-block>
 
     <h2 id="styles">Visual Styles</h2>
     <p>Use the <code class="inline">style</code> attribute to change how the sequence is presented without changing its content, state, events, or keyboard behavior. The available values are <code class="inline">circles</code>, <code class="inline">chevrons</code>, <code class="inline">bars</code>, and <code class="inline">line</code>. Circles is the default and works with both orientations.</p>
@@ -205,11 +210,16 @@
 
     <h2 id="indicator-only">Indicator-only Usage</h2>
     <p>Content panels are recommended for complete wizard interfaces and are used by every working example on this page. You may still omit them when Stepper only communicates the status of a process that is rendered elsewhere. The indicators, states, events, and keyboard behavior continue to work.</p>
-    <pre class="language-markup"><code>&lt;x-bladewind::stepper name="delivery" current="dispatch"&gt;
-    &lt;x-bladewind::stepper.item name="paid" label="Paid" state="complete" /&gt;
-    &lt;x-bladewind::stepper.item name="dispatch" label="Dispatch" /&gt;
-    &lt;x-bladewind::stepper.item name="delivered" label="Delivered" /&gt;
-&lt;/x-bladewind::stepper&gt;</code></pre>
+    @php
+        $stepperExample2 = <<<'HTML'
+            <x-bladewind::stepper name="delivery" current="dispatch">
+                <x-bladewind::stepper.item name="paid" label="Paid" state="complete" />
+                <x-bladewind::stepper.item name="dispatch" label="Dispatch" />
+                <x-bladewind::stepper.item name="delivered" label="Delivered" />
+            </x-bladewind::stepper>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$stepperExample2"></x-bladewind::code-block>
 
     <h2 id="content-panels">Content Panels</h2>
     <p>A <code class="inline">stepper.content</code> name connects a panel to the item with the same name. Place one panel beside every item when building a wizard. Only the current panel is visible and keyboard reachable; the others are hidden and inert until selected.</p>
@@ -222,26 +232,41 @@
         <x-bladewind::stepper.content name="notifications" has-border="false" class="!bg-transparent !p-0"><x-bladewind::card has-shadow="false"><div class="space-y-3"><h4 class="font-semibold">Notification preferences</h4><p>Choose which product and account updates should reach you.</p><ul class="list-disc space-y-1 pl-5 text-sm"><li>Security and sign-in notices</li><li>Product announcements</li><li>Monthly account summary</li></ul></div></x-bladewind::card></x-bladewind::stepper.content>
         <x-bladewind::stepper.content name="summary" has-border="false" class="!bg-transparent !p-0"><x-bladewind::card has-shadow="false"><div class="space-y-3"><h4 class="font-semibold">Preference summary</h4><p>Review the selected contact channels and notification categories.</p><p class="text-sm text-slate-500">Return to either completed stage to make a correction before saving.</p></div></x-bladewind::card></x-bladewind::stepper.content>
     </x-bladewind::stepper>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::stepper.content name="profile" has-border="false"&gt;
-    &lt;x-bladewind::card has-shadow="false"&gt;
-        &lt;x-bladewind::input label="Display name" /&gt;
-        &lt;x-bladewind::textarea label="Biography" /&gt;
-    &lt;/x-bladewind::card&gt;
-&lt;/x-bladewind::stepper.content&gt;</code></pre>
+    @php
+        $stepperExample3 = <<<'HTML'
+            <x-bladewind::stepper.content name="profile" has-border="false">
+                <x-bladewind::card has-shadow="false">
+                    <x-bladewind::input label="Display name" />
+                    <x-bladewind::textarea label="Biography" />
+                </x-bladewind::card>
+            </x-bladewind::stepper.content>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$stepperExample3"></x-bladewind::code-block>
 
     <h2 id="navigation-helpers">Previous, Next, Direct Navigation, and Reset</h2>
     <p>Use the public helpers from buttons, form handlers, or other application code. All helpers return <code class="inline">true</code> on success and <code class="inline">false</code> when the stepper, step, or requested movement is unavailable. A successful move updates the indicator, panel, ARIA relationships, state, and focus together.</p>
-    <pre class="language-javascript"><code>previousStepperStep('account-setup');
-nextStepperStep('account-setup');
-showStepperStep('account-setup', 'security');
-resetStepper('account-setup');</code></pre>
+    @php
+        $stepperExample4 = <<<'HTML'
+            previousStepperStep('account-setup');
+            nextStepperStep('account-setup');
+            showStepperStep('account-setup', 'security');
+            resetStepper('account-setup');
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" :code="$stepperExample4"></x-bladewind::code-block>
 
     <h2 id="validation">Validation Event</h2>
     <p>Listen for the cancelable <code class="inline">bladewind:stepper:before-change</code> event and call <code class="inline">preventDefault()</code> when the current panel is invalid. The Stepper owns navigation state but does not impose form rules, so validation remains application-owned.</p>
-    <pre class="language-javascript line-numbers"><code>document.querySelector('[data-name="account-setup"]')
-    .addEventListener('bladewind:stepper:before-change', (event) =&gt; {
-        if (!profileFormIsValid()) event.preventDefault();
-    });</code></pre>
+    @php
+        $stepperExample5 = <<<'HTML'
+            document.querySelector('[data-name="account-setup"]')
+                .addEventListener('bladewind:stepper:before-change', (event) => {
+                    if (!profileFormIsValid()) event.preventDefault();
+                });
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="javascript" line_numbers="true" :code="$stepperExample5"></x-bladewind::code-block>
 
     <h2 id="multiple">Multiple Steppers</h2>
     <p>Each helper resolves one named root. State, panels, focus, and events do not leak between instances. Use a unique root name for every Stepper, even when the step names inside them are identical.</p>
@@ -355,36 +380,50 @@ resetStepper('account-setup');</code></pre>
     <p>Navigation event details contain <code class="inline">stepperName</code>, <code class="inline">previousStep</code>, <code class="inline">nextStep</code>, and <code class="inline">direction</code>.</p>
 
     <h3>Stepper with all attributes defined</h3>
-    <pre class="language-markup line-numbers"><code>&lt;x-bladewind::stepper
-    name="account-setup"
-    current="profile"
-    orientation="horizontal"
-    style="circles"
-    linear="true"
-    clickable="true"
-    show-numbers="true"
-    completed-icon="check"
-    error-icon="exclamation-triangle"
-    aria-label="Account setup progress"
-    class="account-stepper"&gt;
-    &lt;x-bladewind::stepper.item
-        name="profile"
-        label="Profile"
-        description="Personal details"
-        state="current"
-        disabled="false"
-        clickable="true"
-        number="2"
-        icon="user"
-        icon-type="solid"
-        icon-dir=""
-        class="profile-step" /&gt;
-    &lt;x-bladewind::stepper.content name="profile" has-border="false" class="profile-panel"&gt;
-        &lt;x-bladewind::card has-shadow="false"&gt;
-            &lt;x-bladewind::input label="Display name" /&gt;
-        &lt;/x-bladewind::card&gt;
-    &lt;/x-bladewind::stepper.content&gt;
-&lt;/x-bladewind::stepper&gt;</code></pre>
+    @php
+        $stepperExample6 = <<<'HTML'
+            <x-bladewind::stepper
+                name="account-setup"
+                current="profile"
+                orientation="horizontal"
+                style="circles"
+                linear="true"
+                clickable="true"
+                show-numbers="true"
+                completed-icon="check"
+                error-icon="exclamation-triangle"
+                aria-label="Account setup progress"
+                class="account-stepper">
+                <x-bladewind::stepper.item
+                    name="profile"
+                    label="Profile"
+                    description="Personal details"
+                    state="current"
+                    disabled="false"
+                    clickable="true"
+                    number="2"
+                    icon="user"
+                    icon-type="solid"
+                    icon-dir=""
+                    class="profile-step" />
+                <x-bladewind::stepper.content name="profile" has-border="false" class="profile-panel">
+                    <x-bladewind::card has-shadow="false">
+                        <x-bladewind::input label="Display name" />
+                    </x-bladewind::card>
+                </x-bladewind::stepper.content>
+            </x-bladewind::stepper>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$stepperExample6"></x-bladewind::code-block>
+
+    <h2 id="livewire">Using Stepper Inside Livewire</h2>
+    <p>
+        The current step lives in the stepper's own DOM rather than in Livewire's component state. If a Livewire component
+        re-renders this markup for a reason that has nothing to do with the stepper, the current step resets back to its initial
+        value. If your stepper lives inside a component that can re-render for other reasons, wrap the stepper in
+        <code class="inline">wire:ignore</code>. The bindings that drive the stepper are delegated and safe to re-run, so a
+        re-render will not leave behind duplicate listeners.
+    </p>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; stepper &gt; index.blade.php</code>
@@ -409,6 +448,7 @@ resetStepper('account-setup');</code></pre>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Attributes</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#slots">Slots</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#javascript-api">JavaScript API</a></div>
+        <div class="flex items-center"><div class="dot"></div><a href="#livewire">Using Stepper inside Livewire</a></div>
     </x-slot:side_nav>
     <x-slot:scripts><script>selectNavigationItem('.component-stepper');</script></x-slot:scripts>
 </x-app>

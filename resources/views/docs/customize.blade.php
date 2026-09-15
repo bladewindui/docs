@@ -8,37 +8,41 @@
         <code class="inline">vendor/bladewindui/table</code>. However, they all share
         the same <code class="inline text-red-400">bladewind::</code> view namespace.  This Laravel convention means you’ll need to type the <code class="inline text-red-400">&lt;x-bladewind</code> prefix every time you use a BladewindUI component.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;<b>x-bladewind</b>::button&gt;Save User&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+    @php
+        $customizeExample1 = <<<'HTML'
+            <<b>x-bladewind</b>::button>Save User</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$customizeExample1"></x-bladewind::code-block>
     <p>
         Once you <a href="/install#publishing">publish</a> the BladewindUI components, the files get moved to your project's <code class="inline">resources > views > components > <span class="text-red-400">bladewind</span></code> directory.
         You can then use the dot, instead of the colon syntax to access a component.
     </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind.button&gt;Save User&lt;/x-bladewind.button&gt;
-        </code>
-    </pre>
+    @php
+        $customizeExample2 = <<<'HTML'
+            <x-bladewind.button>Save User</x-bladewind.button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$customizeExample2"></x-bladewind::code-block>
     <h2 id="noprefix">Getting rid of the <b class="font-bold">bladewind</b> prefix </h2>
     <p>It is possible to get rid of the bladewind prefix entirely. </p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind.button&gt;Save User&lt;/x-bladewind.button&gt;
+    @php
+        $customizeExample3 = <<<'HTML'
+            <x-bladewind.button>Save User</x-bladewind.button>
 
             // or
 
-            &lt;x-bladewind::button&gt;Save User&lt;/x-bladewind::button&gt;
-        </code>
-    </pre>
+            <x-bladewind::button>Save User</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$customizeExample3"></x-bladewind::code-block>
     becomes
-    <pre class="language-markup">
-        <code>
-            &lt;x.button&gt;Save User&lt;/x-button&gt;
-        </code>
-    </pre>
+    @php
+        $customizeExample4 = <<<'HTML'
+            <x.button>Save User</x-button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$customizeExample4"></x-bladewind::code-block>
     <p>
         To achieve this, you should have already <a href="/install#publishing">published the Bladewind components</a>. Next you will move all the blade files in <code class="inline">resources > views > components > bladewind</code> into <code class="inline">resources > views > components</code>.
         You can then delete the <span>bladewind</span> folder from your <code class="inline">resources > views > components</code> folder since it should technically be empty at this point.
@@ -61,7 +65,12 @@
     <p>
         Updates that touch the css and js files require the library's assets to be republished. Run the command below to republish the library's css and js files.
     </p>
-     <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-public --force</code></pre>
+     @php
+        $customizeExample5 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-public --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$customizeExample5"></x-bladewind::code-block>
      <p>
          <x-bladewind::alert type="info" show_close_icon="false">
              To prevent any changes you made earlier from being overwritten by updates, we advise you to make all changes that overwrite Bladewind css classes in your project's css file instead of editing the Bladewind css file directly. Your project's css file should always be included <b>after</b> the Bladewind css file.
@@ -75,7 +84,12 @@
         </code>. Currently the available languages contributed by the community are English, French, Italian, Arabic, German, Chinese, Spanish and Indonesian. You can add more languages as you see fit or even modify the existing translations. If you want to do this for just your project you will first need to publish the language files by running the command below from the root of your project.
         You can <a href="/contribute">contribute</a> a new language translation.
     </p>
-    <pre class="lang-bash command-line"><code>php artisan vendor:publish --tag=bladewind-lang --force</code></pre><br />
+    @php
+        $customizeExample6 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-lang --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$customizeExample6"></x-bladewind::code-block><br />
     <p>
         The language files will now be available in your project's <code class="inline">lang > vendor > bladewind</code> directory. You can now add more languages or edit the language files that were published.
     </p>
@@ -87,27 +101,43 @@
         If you need all your buttons in lowercase, that means you will be typing a lot of <code class="inline text-red-500">uppercasing="false"</code>.
         Now what if you also need all your buttons to be <b>small</b> and to have <b>no focus rings</b>, your code every time will be
     </p>
-    <pre class="lang-markup">
-        <code> &lt;x-bladewind::button show_focus_ring="false" size="small" uppercasing="false"&gt
-            Save
-        &lt;/x-bladewind::button&gt;</code>
-    </pre>
+    @php
+        $customizeExample7 = <<<'HTML'
+            <x-bladewind::button show_focus_ring="false" size="small" uppercasing="false">
+                       Save
+                   </x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$customizeExample7"></x-bladewind::code-block>
     <p>
         This is tedious. Won't it be great to just type the code below to get a button looking the way you'd want for your project?
     </p>
-    <pre class="lang-markup">
-        <code> &lt;x-bladewind::button&gtSave&lt;/x-bladewind::button&gt;</code>
-    </pre>
+    @php
+        $customizeExample8 = <<<'HTML'
+            <x-bladewind::button>Save</x-bladewind::button>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$customizeExample8"></x-bladewind::code-block>
     <p>
         To achieve this, create a <code class="inline">config/bladewind.php</code> file in the root of your project. If you installed the full
         <code class="inline">bladewindui/ui</code> package you can have Laravel generate this file for you:
     </p>
-    <pre class="lang-bash"><code>php artisan vendor:publish --tag=bladewind-config --force</code></pre>
+    @php
+        $customizeExample9 = <<<'HTML'
+            php artisan vendor:publish --tag=bladewind-config --force
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$customizeExample9"></x-bladewind::code-block>
     <p>
         If you installed individual component packages (e.g. <code class="inline">bladewindui/button</code>) the <code class="inline">bladewind-config</code>
         publish tag is not available. Simply create the file manually instead:
     </p>
-    <pre class="lang-bash"><code>touch config/bladewind.php</code></pre>
+    @php
+        $customizeExample10 = <<<'HTML'
+            touch config/bladewind.php
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$customizeExample10"></x-bladewind::code-block>
     <p>
         Either way, you will end up with a <code class="inline">config/bladewind.php</code> file you can edit.
         You only need to define the components and attributes you want to change. You do not have to copy the full default configuration.
@@ -116,32 +146,33 @@
         focus rings and not be uppercase.
     </p>
     <p>
-    <pre class="lang-php">
-    <code>
-        // config/bladewind.php
+    @php
+        $customizeExample11 = <<<'HTML'
+                // config/bladewind.php
 
-    ...
+            ...
 
-    /*
-    |--------------------------------------------------------------------------
-    | Button component
-    |--------------------------------------------------------------------------
-    */
-    'button' => [
-        'size' => 'small',
-        'show_focus_ring' => false,
-        'uppercasing' => false,
-        'radius' => 'medium',
-        'tag' => 'button',
+            /*
+            |--------------------------------------------------------------------------
+            | Button component
+            |--------------------------------------------------------------------------
+            */
+            'button' => [
+                'size' => 'small',
+                'show_focus_ring' => false,
+                'uppercasing' => false,
+                'radius' => 'medium',
+                'tag' => 'button',
 
-        // define default attributes for all circular buttons
-        'circle' => [
-            'size' => 'regular',
-        ]
-    ],
-    ...
-    </code>
-    </pre>
+                // define default attributes for all circular buttons
+                'circle' => [
+                    'size' => 'regular',
+                ]
+            ],
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" :code="$customizeExample11"></x-bladewind::code-block>
     </p>
     <x-bladewind::alert type="warning" show_close_icon="false">
         It is very important to ensure the attribute spelling as defined in the docs matches what you define in the config file.
@@ -151,7 +182,12 @@
     <x-bladewind::alert type="error" show_close_icon="false">
         Remember to always to clear your configuration cache if you make any changes to the configuration file by running the command below from the root of your project.
     </x-bladewind::alert>
-    <pre class="lang-bash"><code>php artisan config:clear</code></pre>
+    @php
+        $customizeExample12 = <<<'HTML'
+            php artisan config:clear
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="bash" :code="$customizeExample12"></x-bladewind::code-block>
     <br />
 
     <h2 id="new-config-groups">Newer Config Groups</h2>
@@ -159,52 +195,53 @@
         A few groups are worth knowing about because they are not simply a mirror of a
         component's attributes.
     </p>
-    <pre class="lang-php">
-    <code>
-        // config/bladewind.php
+    @php
+        $customizeExample13 = <<<'HTML'
+                // config/bladewind.php
 
-    ...
+            ...
 
-    'card' =&gt; [
-        // house style once, rather than on every card. border on + shadow on is
-        // the shipped pairing, but border off + shadow on is what most apps land on
-        'has_border' =&gt; false,
-        'has_shadow' =&gt; true,
-        // a padding scale, or any tailwind padding utility
-        'padding' =&gt; 'regular',
-    ],
+            'card' => [
+                // house style once, rather than on every card. border on + shadow on is
+                // the shipped pairing, but border off + shadow on is what most apps land on
+                'has_border' => false,
+                'has_shadow' => true,
+                // a padding scale, or any tailwind padding utility
+                'padding' => 'regular',
+            ],
 
-    'icon' =&gt; [
-        // tiny small regular medium big large, or a utility like size-[18px]
-        'size' =&gt; 'medium',
-    ],
+            'icon' => [
+                // tiny small regular medium big large, or a utility like size-[18px]
+                'size' => 'medium',
+            ],
 
-    'statistic' =&gt; [
-        // neutral positive negative warning info
-        'tone' =&gt; 'neutral',
-        // for metrics where down is good, like arrears or churn
-        'invert_direction' =&gt; false,
-    ],
+            'statistic' => [
+                // neutral positive negative warning info
+                'tone' => 'neutral',
+                // for metrics where down is good, like arrears or churn
+                'invert_direction' => false,
+            ],
 
-    'input_group' =&gt; [
-        // run attached controls flush against each other
-        'attached' =&gt; true,
-    ],
+            'input_group' => [
+                // run attached controls flush against each other
+                'attached' => true,
+            ],
 
-    'pagination' =&gt; [
-        // server mode, used when the component is handed a Laravel paginator
-        'per_page_options' =&gt; [15, 30, 50],
-        'per_page_name' =&gt; 'per_page',
-        'on_each_side' =&gt; 1,
-    ],
+            'pagination' => [
+                // server mode, used when the component is handed a Laravel paginator
+                'per_page_options' => [15, 30, 50],
+                'per_page_name' => 'per_page',
+                'on_each_side' => 1,
+            ],
 
-    'table' =&gt; [
-        // most apps that care about density set this
-        'divider' =&gt; 'thin',
-    ],
-    ...
-    </code>
-    </pre>
+            'table' => [
+                // most apps that care about density set this
+                'divider' => 'thin',
+            ],
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" :code="$customizeExample13"></x-bladewind::code-block>
 
     <h2 id="form-state">Laravel Form State</h2>
     <p>
@@ -215,30 +252,31 @@
         <code class="inline">filepicker</code>. Unlike the other sections here, this one is not
         named after a component &mdash; it is shared by all of them.
     </p>
-    <pre class="lang-php">
-    <code>
-        // config/bladewind.php
+    @php
+        $customizeExample14 = <<<'HTML'
+                // config/bladewind.php
 
-    ...
+            ...
 
-    /*
-    |--------------------------------------------------------------------------
-    | Laravel form-state integration
-    |--------------------------------------------------------------------------
-    */
-    'forms' => [
-        // repopulate fields from old() after a failed validation
-        'fill_from_old' => true,
+            /*
+            |--------------------------------------------------------------------------
+            | Laravel form-state integration
+            |--------------------------------------------------------------------------
+            */
+            'forms' => [
+                // repopulate fields from old() after a failed validation
+                'fill_from_old' => true,
 
-        // give a field its error state and print $errors->first() beneath it
-        'show_validation_error' => true,
+                // give a field its error state and print $errors->first() beneath it
+                'show_validation_error' => true,
 
-        // which error bag to read. null uses Laravel's default bag
-        'error_bag' => null,
-    ],
-    ...
-    </code>
-    </pre>
+                // which error bag to read. null uses Laravel's default bag
+                'error_bag' => null,
+            ],
+            ...
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="php" :code="$customizeExample14"></x-bladewind::code-block>
     <p>
         With that in place a plain <code class="inline">&lt;x-bladewind::input name="email" /&gt;</code>
         keeps whatever the user typed after a validation redirect and prints its own error message.

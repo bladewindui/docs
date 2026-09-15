@@ -6,45 +6,70 @@ url: /component/verification-code
 
 # Verification Code
 
-Displays a set of input fields to accept a verification code from a user. It is common place on websites these days to send verification codes via email or mobile. These codes range from four to six digits. The default number of digits displayed by the component is four (4). In this documentation, we may interchange the words PIN, PIN code and verification code. We mean the same thing.
+Displays a set of input fields to accept a verification code (PIN/OTP) from a user, typically sent via email or SMS. Codes usually range from four to six digits, with four as the default.
 
 ## Basic Usage
 
 ```blade
-<x-bladewind::code  />
+<x-bladewind::code />
 ```
 
 ```blade
-<x-bladewind::code size="big"  />
+<x-bladewind::code size="big" />
 ```
 
-The verification code component allows you to specify how many boxes you want to display by specifying the `total_digits` attribute. There is no restriction on the maximum value you can specify. In a finance app, you could use this to collect account numbers.
+The component lets you specify how many boxes to display via `total_digits`. There's no maximum restriction, so you could use it to collect longer values like account numbers.
 
 ```blade
-<x-bladewind::code total_digits="5"  />
+<x-bladewind::code total_digits="5" />
 ```
 
-If you don't want the code being entered to be visible, set the `mask="true"` attribute.
+If you don't want the entered code to be visible, set `hide-input="true"`. Each box then behaves like a password field, showing a dot instead of the number typed.
 
 ```blade
-<x-bladewind::code mask="true"  />
+<x-bladewind::code hide-input="true" />
+```
+
+The `mask` attribute did the same thing in earlier versions and still works, but `hide-input` is the name to use going forward — `mask` will be removed in a future major release.
+
+If you want the boxes split into two groups with a separator between them, similar to how a bank card number is shown, set `has-separator="true"`. When the total number of boxes doesn't split evenly, the left group gets the extra box (e.g. seven digits split into four on the left, three on the right).
+
+```blade
+<x-bladewind::code total_digits="7" has-separator="true" />
+```
+
+`has-separator` and `hide-input` can be combined with each other and with any other attribute.
+
+```blade
+<x-bladewind::code total_digits="7" has-separator="true" hide-input="true" />
 ```
 
 ## Access the Verification Code
 
-What happens after the user enters their verification code? The component creates a hidden input field with the name that was passed as the `name` attribute.
+The component creates a hidden input field with the name passed as the `name` attribute.
 
 ```blade
-<x-bladewind::code name="pin_code"  />
+<x-bladewind::code name="pin_code" />
 ```
 
-The above will create the input fields for the verification codes and create the hidden input below:
+The above creates the input fields and a hidden input:
 
 ```blade
-<input type="hidden" name="pin_code" class="pin_code ..." id="pin_code"  />
+<input type="hidden" name="pin_code" class="pin_code ..." id="pin_code" />
 ```
 
-You can access the value of `pin_code` either via Javascript or via PHP if you intend to post it in a form to your backend. The `onverify` attribute allows you to specify a function that should be called when the user has entered a value into the last verification code field. This should just be the function name without parentheses and parameters. If you wish to call `verifyPin()` after the user enters the code, just type `onverify="verifyPin"`. The component passes the code entered by the user to your function, as well as the name of the component, so your function declaration needs to expect one or two parameters.
+You can access the value of `pin_code` via JavaScript or PHP if posting it in a form. The `onverify` attribute specifies a function to call after the user enters a value into the last input field — just the function name, no parentheses. The component passes the code and the component's name to your function, so your function should expect one or two parameters:
+
+```js
+// NOTE: this is not a Bladewind helper function
+// it should be a function in your project
+
+verifyPin = (code, name) => {
+    // do something here with the code
+}
+```
+
+Example: enter a code and get notified of what you entered.
 
 ```blade
 <x-bladewind::code onverify="checkPin" />
@@ -58,161 +83,127 @@ You can access the value of `pin_code` either via Javascript or via PHP if you i
 
 ## Clear PIN/Code
 
-There are cases where you will want to clear the verification code input field probably because the user entered a wrong pin and you want them to try entering the pin again. `clearPin(name)` is a Bladewind helper function that easily lets you reset your verification codes.
+`clearPin(name)` is a Bladewind helper function that resets a verification code's input fields — useful when the user entered a wrong pin and needs to try again, or in an SPA flow where a popup may still hold a previously entered code.
 
 ```blade
 <x-bladewind::code name="clear_me" onverify="checkPinAndClear" />
 ```
 
-```blade
-<script>
-    checkPinAndClear = (code) => {
-        if(code !== 2024) {
-            clearPin('clear_me');
-            showNotification('Wrong Code', 'Please enter your code again', 'error');
-        }
+```js
+checkPinAndClear = (code) => {
+    if (code !== 2024) {
+        clearPin('clear_me');
+        showNotification('Wrong Code', 'Please enter your code again', 'error');
     }
-</script>
+}
 ```
 
 ## Displaying Errors
 
-The verification code component comes with a hidden field that has the error message to display when validation fails for the code the user entered. To allow for translatable messages, the error message is defined on the component using the `error_message` attribute.
+The component has a hidden field holding the error message shown when validation fails. To support translatable messages, it's defined on the component via the `error_message` attribute. The example below expects `2024` as the code.
 
 ```blade
-<x-bladewind::code
-    name="pcode"
-    error_message="Yoh! check your code"
-    onverify="checkPinShowError" />
+<x-bladewind::code name="pcode" error_message="Yoh! check your code" onverify="checkPinShowError" />
 ```
 
-```blade
-<script>
-    checkPinShowError = (code) => {
-        if( code !== 2024) {
-            clearPin('pcode');
-            showPinError('pcode');
-        }
+```js
+checkPinShowError = (code) => {
+    if (code !== '2024') {
+        clearPin('pcode');
+        showPinError('pcode');
     }
-</script>
+}
 ```
 
-The error message is displayed by invoking the Javascript helper function `showPinError(name)`. It accepts the name provided to the code component as a parameter. The error message is automatically hidden by calling the `hidePinError(name)` Javascript helper function. The second parameter to this function is what controls the automatic hiding of the error message. If you do not want to automatically close the error message, set the parameter to false.
+The error message is shown by calling `showPinError(name)` and hidden by calling `hidePinError(name)`. The second parameter to `showPinError` controls whether the message auto-hides after 10 seconds — pass `false` to disable that:
 
-```blade
-<script>
-    checkPinShowError = (code) => {
-        ...
-        // the error message will not hide after 10 seconds
-        showPinError('pcode', false);
-        ...
-    }
-</script>
+```js
+showPinError('pcode', false);
 ```
+
+The error message can also be shown via a notification instead of the inline error, as in the Clear PIN example above — either approach works.
 
 ## Show the Spinner
 
-The verification code component comes with a hidden spinner that can be made visible by invoking the `showSpinner(name)` Javascript helper function. It accepts the name provided to the code component as a parameter. The verification code spinner can be useful if your verification is done via an ajax call to an API that may take a second or two. Showing the spinner will let the user know you are performing an action.
+The component has a hidden spinner shown via `showSpinner(name)`, useful when verification happens over an ajax call that may take a moment.
 
 ```blade
-<x-bladewind::code name="spin_me" onverify="validatePin"  />
+<x-bladewind::code name="spin_me" onverify="validatePin" />
 ```
 
-```blade
-<script>
-    validatePin = (code, name) => {
-        showSpinner(name);
-        ajaxCall('/verify/pin', `code=${code}`, ...
-    }
-</script>
+```js
+validatePin = (code, name) => {
+    showSpinner(name);
+    ajaxCall('/verify/pin', `code=${code}`, ...)
+}
 ```
 
-Since Bladewind does not know how long your Ajax call might take or when your process is complete, it cannot automatically hide the spinner for you. You can do that by calling `hideSpinner(name)`, where `name` is the name of your verification code field.
-
-```blade
-<script>
-    ...
-    hideSpinner('spin_me');
-    ...
-</script>
-```
+Bladewind can't know how long your ajax call takes, so you hide the spinner yourself by calling `hideSpinner(name)`.
 
 ## Show Success Icon
 
-The verification code component also comes with a hidden checkmark to show when a pin is valid. This can be invoked using the `showPinSuccess(name)` Javascript helper function. It accepts the name provided to the code component as a parameter. In the example below, the spinner shows after the code is entered and disappears to give way to the checkmark after 5 seconds.
+The component also has a hidden checkmark, shown via `showPinSuccess(name)`. In the example below, the spinner shows after the code is entered, then gives way to the checkmark after 5 seconds.
 
 ```blade
-<x-bladewind::code name="spin_me_yes" onverify="spinAndSucceed"  />
+<x-bladewind::code name="spin_me_yes" onverify="spinAndSucceed" />
 ```
 
-```blade
-<script>
-    spinAndSucceed = (code, name) => {
-        showSpinner(name);
-        setTimeout( () => { showPinSuccess(name); }, 5000);
-    }
-</script>
+```js
+spinAndSucceed = (code, name) => {
+    showSpinner(name);
+    setTimeout(() => {
+        showPinSuccess(name);
+    }, 5000);
+}
 ```
 
 ## Countdown To Resend Code
 
-This can be useful for two scenarios. The user never received the code you sent so they will need to request another. The user received a code that somehow does not seem to work and will need to request for a new one. Specifying a value for the `timer` attribute automatically shows a countdown timer. The attributes accepts number of seconds to countdown to.
+Useful when a user never received their code, or received one that doesn't work and needs a new one. Setting the `timer` attribute (number of seconds) automatically shows a countdown timer.
 
-Bladewind expects you to have an HTML element on your page with `class="bw-code-timer-done"`. Ideally this should be hidden. The innerHTML (content) of that element is what will be displayed when the timer is done. This approach provides you the flexibility of handling your code resend anyway you want.
-
-```blade
-<x-bladewind::code name="time_me" timer="30"  />
-```
+Bladewind expects an HTML element on the page with `class="bw-code-timer-done"`, ideally hidden — its innerHTML is what displays once the timer finishes, giving you flexibility in how you handle the resend action.
 
 ```blade
-<!-- the DIV that contains the content to display when timer is done -->
-
 <div class="bw-code-timer-done hidden">
-    <x-bladewind.button
-        name="send-code"
-        size="tiny"
-        type="secondary"
-        has_spinner="true"
-        onclick="sendNewCode()">
+    <x-bladewind::button name="send-code" size="tiny" type="secondary" has_spinner="true" onclick="sendNewCode()">
         send me another code
-    </x-bladewind.button>
+    </x-bladewind::button>
 </div>
+
+<x-bladewind::code name="time_me" timer="30" />
 ```
 
-Once the countdown is done, the content of your `bw-code-timer-done` DIV is copied into a DIV that can be accessed using the class `.bw-[name-of-code-field]-pin-timer .done`.
-
-```blade
-<script>
-    sendNewCode = () => {
-       showButtonSpinner('.bw-time_me-timer .done .send-code');
-       setTimeout( () => {
-           showNotification('Code Sent','Please check your email or SMS for a new verification code');
-            hideButtonSpinner('.bw-time_me-pin-timer .done .send-code');
-            hide('.bw-time_me-pin-timer .done .send-code')
-            setFocus('time_me');
-            clearTimeout();
-       }, 5000);
-    }
-</script>
+```js
+sendNewCode = () => {
+    showButtonSpinner('.bw-time_me-pin-timer .done .send-code');
+    setTimeout(() => {
+        showNotification('Code Sent', 'Please check your email or SMS for a new verification code');
+        hideButtonSpinner('.bw-time_me-pin-timer .done .send-code');
+        hide('.bw-time_me-pin-timer .done .send-code');
+        setFocus('time_me');
+    }, 5000);
+}
 ```
+
+Once the countdown finishes, the content of your `bw-code-timer-done` div is copied into a div accessible via `.bw-[name-of-code-field]-pin-timer .done` — e.g. `.bw-time_me-pin-timer .done` for a field named `time_me`.
 
 ### Manually Trigger the Timer
 
-There are cases where you may want to manually trigger the timer. For example, you first want the user to have at least entered the code wrongly once or twice before you trigger a countdown. You can do this by calling the `showTimer(name, duration)` helper function.
+You can manually trigger the timer via the `showTimer(name, duration)` helper — for example, only starting a countdown after the user has entered the wrong code once or twice. The example below expects `2024` as the code; enter it wrong twice to trigger the timer.
 
 ```blade
-<x-bladewind::code name="trigger_me" onverify="triggerTimerManually"  />
+<x-bladewind::code name="trigger_me" onverify="triggerTimerManually" />
 ```
 
-```blade
+```js
 let attempts = 0;
 triggerTimerManually = (code, name) => {
-    if(parseInt(code) !== 2024) {
-        attempts++
+    if (parseInt(code) !== 2024) {
+        attempts++;
         showPinError(name);
         clearPin(name);
     }
-    if(attempts >= 2) showTimer(name, 15);
+    if (attempts >= 2) showTimer(name, 15);
 }
 ```
 
@@ -220,14 +211,16 @@ triggerTimerManually = (code, name) => {
 
 | Attribute | Default | Description |
 |---|---|---|
-| name | pin-code-{uniqid()} | Unique name for the component. The code entered by the end user will be available in an input field with the specified name. |
-| total_digits | 4 | Determines number of input boxes to be created for entry of the verification code. Any realistic number. |
-| size | small | Displays the input boxes at either small or big sizes. `small` \| `big` |
-| onverify | _(blank)_ | Function to call after user has finished entering the codes. This should just be the function name without parentheses and parameters. |
-| error_message | Verification code is invalid | Error message to display when the verification code entered is invalid. |
-| mask | false | Should the text being entered be hidden like a password field. `true` \| `false` |
-| timer | null | Determines if the component should automatically display a timer for user to resend verification code. Accepts any positive integer counted in seconds. |
-| nonce | null | Used when implementing context security policies and require to pass a nonce to inline scripts. |
+| name | pin-code-{uniqid()} | Unique name for the component. The code entered will be available in a hidden input field with this name. |
+| total_digits | 4 | Number of input boxes to create for entry of the verification code. No restriction on the value. |
+| size | small | Displays the input boxes at either size. `small` \| `big` |
+| onverify | _(blank)_ | Function to call after the user finishes entering the code. Just the function name, no parentheses — the code is passed as the argument. |
+| error_message | Verification code is invalid | Error message to display when the entered code is invalid. |
+| hide_input | false | Whether the text being entered should be hidden like a password field. `true` \| `false` |
+| mask | false | Older name for `hide_input`, kept for backward compatibility. Use `hide_input` instead — this attribute will be removed in a future major release. `true` \| `false` |
+| has_separator | false | Splits the boxes into two groups with a dash between them. When `total_digits` doesn't split evenly, the left group gets the extra box. `true` \| `false` |
+| timer | null | Whether to automatically display a countdown timer for resending the code, in seconds. |
+| nonce | null | Used with content security policies that require a nonce on inline scripts. Can also be set globally via the `script` key in `config/bladewind.php`. |
 
 ## Full Example
 
@@ -236,8 +229,8 @@ triggerTimerManually = (code, name) => {
     name="pin-code"
     total_digits="5"
     onverify="verifyPin"
-    has_spinner="false"
-    mask="false"
+    hide_input="false"
+    has_separator="false"
     timer="15"
-    error_message="please enter the correct code"  />
+    error_message="please enter the correct code" />
 ```

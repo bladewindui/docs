@@ -22,9 +22,6 @@
         <aside class="hidden lg:block">
             <nav class="docs-nav sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-4 pb-10">
                 @include('docs/nav')
-                <a href="https://github.com/sponsors/mkocansey" target="_blank" class="mt-5 flex items-center gap-2 rounded-xl border border-pink-200 bg-pink-50 px-4 py-3 !text-xs !font-semibold text-pink-700 transition hover:border-pink-300 hover:bg-pink-100 dark:border-pink-400/10 dark:bg-pink-400/5 dark:text-pink-300">
-                    <x-bladewind::icon name="heart" class="!size-4" /> Sponsor BladewindUI
-                </a>
             </nav>
         </aside>
 

@@ -20,49 +20,55 @@
     <x-bladewind::spinner color="fuchsia"  />
 </div>
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::spinner  /&gt;
-        </code>
-    </pre>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::spinner color="purple"  /&gt;
-        </code>
-    </pre>
+    @php
+        $spinnerExample1 = <<<'HTML'
+            <x-bladewind::spinner  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$spinnerExample1"></x-bladewind::code-block>
+    @php
+        $spinnerExample2 = <<<'HTML'
+            <x-bladewind::spinner color="purple"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$spinnerExample2"></x-bladewind::code-block>
 
 
     <x-bladewind::spinner size="medium"  />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::spinner size="medium"  /&gt;
-        </code>
-    </pre>
+    @php
+        $spinnerExample3 = <<<'HTML'
+            <x-bladewind::spinner size="medium"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$spinnerExample3"></x-bladewind::code-block>
 
     <x-bladewind::spinner size="big"  />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::spinner size="big"  /&gt;
-        </code>
-    </pre>
+    @php
+        $spinnerExample4 = <<<'HTML'
+            <x-bladewind::spinner size="big"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$spinnerExample4"></x-bladewind::code-block>
 
     <x-bladewind::spinner size="xl"  />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::spinner size="xl"  /&gt;
-        </code>
-    </pre>
+    @php
+        $spinnerExample5 = <<<'HTML'
+            <x-bladewind::spinner size="xl"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$spinnerExample5"></x-bladewind::code-block>
 
     <x-bladewind::spinner size="omg"  />
 
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::spinner size="omg"  /&gt;
-        </code>
-    </pre>
+    @php
+        $spinnerExample6 = <<<'HTML'
+            <x-bladewind::spinner size="omg"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$spinnerExample6"></x-bladewind::code-block>
 
 
     <h2 id="attributes">Full List Of Attributes</h2>
@@ -95,13 +101,14 @@
     </x-bladewind::table>
 
     <h3>Spinner with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::spinner
+    @php
+        $spinnerExample7 = <<<'HTML'
+            <x-bladewind::spinner
                 size="medium"
-                class="m-0" /&gt;
-        </code>
-    </pre>
+                class="m-0" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$spinnerExample7"></x-bladewind::code-block>
 
 
     <x-bladewind::alert show_close_icon="false">

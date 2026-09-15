@@ -11,13 +11,14 @@
     <x-bladewind::tooltip text="This is a tooltip">
         <x-bladewind::button>Hover over me</x-bladewind::button>
     </x-bladewind::tooltip>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tooltip text="This is a tooltip"&gt;
-                &lt;x-bladewind::button&gt;Hover over me&lt;/x-bladewind::button&gt;
-            &lt;/x-bladewind::tooltip&gt;
-        </code>
-    </pre>
+    @php
+        $tooltipExample1 = <<<'HTML'
+            <x-bladewind::tooltip text="This is a tooltip">
+                <x-bladewind::button>Hover over me</x-bladewind::button>
+            </x-bladewind::tooltip>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tooltipExample1"></x-bladewind::code-block>
 
     <p>
         Any element can be wrapped — a button, an icon, a link, a table cell, or plain text.
@@ -27,13 +28,14 @@
     <x-bladewind::tooltip text="View user profile">
         <x-bladewind::icon name="user-circle" class="size-6 text-slate-500 cursor-pointer" />
     </x-bladewind::tooltip>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tooltip text="View user profile"&gt;
-                &lt;x-bladewind::icon name="user-circle" class="size-6 text-slate-500 cursor-pointer" /&gt;
-            &lt;/x-bladewind::tooltip&gt;
-        </code>
-    </pre>
+    @php
+        $tooltipExample2 = <<<'HTML'
+            <x-bladewind::tooltip text="View user profile">
+                <x-bladewind::icon name="user-circle" class="size-6 text-slate-500 cursor-pointer" />
+            </x-bladewind::tooltip>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tooltipExample2"></x-bladewind::code-block>
 
     <h2 id="position">Position</h2>
     <p>
@@ -56,14 +58,15 @@
             <x-bladewind::button size="small">left</x-bladewind::button>
         </x-bladewind::tooltip>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tooltip text="Appears on top" position="top"&gt;...&lt;/x-bladewind::tooltip&gt;
-            &lt;x-bladewind::tooltip text="Appears on the right" position="right"&gt;...&lt;/x-bladewind::tooltip&gt;
-            &lt;x-bladewind::tooltip text="Appears at the bottom" position="bottom"&gt;...&lt;/x-bladewind::tooltip&gt;
-            &lt;x-bladewind::tooltip text="Appears on the left" position="left"&gt;...&lt;/x-bladewind::tooltip&gt;
-        </code>
-    </pre>
+    @php
+        $tooltipExample3 = <<<'HTML'
+            <x-bladewind::tooltip text="Appears on top" position="top">...</x-bladewind::tooltip>
+            <x-bladewind::tooltip text="Appears on the right" position="right">...</x-bladewind::tooltip>
+            <x-bladewind::tooltip text="Appears at the bottom" position="bottom">...</x-bladewind::tooltip>
+            <x-bladewind::tooltip text="Appears on the left" position="left">...</x-bladewind::tooltip>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tooltipExample3"></x-bladewind::code-block>
 
     <h2 id="colour">Colour</h2>
     <p>
@@ -80,12 +83,13 @@
             <x-bladewind::button size="small">light</x-bladewind::button>
         </x-bladewind::tooltip>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tooltip text="I am dark (default)" color="dark"&gt;...&lt;/x-bladewind::tooltip&gt;
-            &lt;x-bladewind::tooltip text="I am light" color="light"&gt;...&lt;/x-bladewind::tooltip&gt;
-        </code>
-    </pre>
+    @php
+        $tooltipExample4 = <<<'HTML'
+            <x-bladewind::tooltip text="I am dark (default)" color="dark">...</x-bladewind::tooltip>
+            <x-bladewind::tooltip text="I am light" color="light">...</x-bladewind::tooltip>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tooltipExample4"></x-bladewind::code-block>
 
     <h2 id="scrolling">Tooltips In Scrolling Containers</h2>
     <p>
@@ -149,18 +153,19 @@
     </x-bladewind::table>
 
     <h3 class="pb-2">Tooltip with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::tooltip
+    @php
+        $tooltipExample5 = <<<'HTML'
+            <x-bladewind::tooltip
                 text="Delete this record"
                 position="right"
                 color="light"
                 size="regular"
-                class="ml-2"&gt;
-                &lt;x-bladewind::icon name="trash" class="size-5 text-red-500 cursor-pointer" /&gt;
-            &lt;/x-bladewind::tooltip&gt;
-        </code>
-    </pre>
+                class="ml-2">
+                <x-bladewind::icon name="trash" class="size-5 text-red-500 cursor-pointer" />
+            </x-bladewind::tooltip>
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$tooltipExample5"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; tooltip.blade.php</code>

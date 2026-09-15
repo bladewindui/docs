@@ -83,37 +83,39 @@
         BladewindUI internally uses <code class="inline">primary</code> as the colour key for all component accents.
         Here is what the library's default theme definition looks like:
     </p>
-    <pre class="language-css line-numbers" data-line="4">
-<code>
-/* vendor/bladewindui/ui, default theme */
-@theme {
-    /* primary → blue (default) */
-    --color-primary-50:  #eff6ff;
-    --color-primary-100: #dbeafe;
-    --color-primary-200: #bfdbfe;
-    --color-primary-300: #93c5fd;
-    --color-primary-400: #60a5fa;
-    --color-primary-500: #3b82f6;
-    --color-primary-600: #2563eb;
-    --color-primary-700: #1d4ed8;
-    --color-primary-800: #1e40af;
-    --color-primary-900: #1e3a8a;
-    --color-primary-950: #172554;
+    @php
+        $coloursExample1 = <<<'HTML'
+            /* vendor/bladewindui/ui, default theme */
+            BWATSIGNPLACEHOLDERtheme {
+                /* primary → blue (default) */
+                --color-primary-50:  #eff6ff;
+                --color-primary-100: #dbeafe;
+                --color-primary-200: #bfdbfe;
+                --color-primary-300: #93c5fd;
+                --color-primary-400: #60a5fa;
+                --color-primary-500: #3b82f6;
+                --color-primary-600: #2563eb;
+                --color-primary-700: #1d4ed8;
+                --color-primary-800: #1e40af;
+                --color-primary-900: #1e3a8a;
+                --color-primary-950: #172554;
 
-    /* dark colour scale */
-    --color-dark-100: #f0f1f2;
-    --color-dark-200: #d2d4d7;
-    --color-dark-300: #a7aaad;
-    --color-dark-400: #6c7075;
-    --color-dark-500: #4a4e53;
-    --color-dark-600: #33373c;
-    --color-dark-700: #262a2f;
-    --color-dark-800: #1C1F24;
-    --color-dark-900: #101114;
-    --color-dark-950: #0a0b0d;
-}
-</code>
-    </pre>
+                /* dark colour scale */
+                --color-dark-100: #f0f1f2;
+                --color-dark-200: #d2d4d7;
+                --color-dark-300: #a7aaad;
+                --color-dark-400: #6c7075;
+                --color-dark-500: #4a4e53;
+                --color-dark-600: #33373c;
+                --color-dark-700: #262a2f;
+                --color-dark-800: #1C1F24;
+                --color-dark-900: #101114;
+                --color-dark-950: #0a0b0d;
+            }
+            HTML;
+        $coloursExample1 = str_replace('BWATSIGNPLACEHOLDER', '@', $coloursExample1);
+    @endphp
+    <x-bladewind::code-block language="css" line_numbers="true" highlight_lines="4" :code="$coloursExample1"></x-bladewind::code-block>
 
     <h2 id="changing-colours">Changing the Primary Colour</h2>
     <p>
@@ -121,47 +123,51 @@
         <code class="inline">app.css</code> file after importing Tailwind. Your values will win because they appear later in the cascade.
     </p>
     <p>This documentation website uses indigo as its primary colour:</p>
-    <pre class="language-css line-numbers" data-line="5">
-<code>
-/* resources/css/app.css */
-@import "tailwindcss";
+    @php
+        $coloursExample2 = <<<'HTML'
+            /* resources/css/app.css */
+            BWATSIGNPLACEHOLDERimport "tailwindcss";
 
-@theme {
-    /* Override primary with indigo */
-    --color-primary-50:  #eef2ff;
-    --color-primary-100: #e0e7ff;
-    --color-primary-200: #c7d2fe;
-    --color-primary-300: #a5b4fc;
-    --color-primary-400: #818cf8;
-    --color-primary-500: #6366f1;
-    --color-primary-600: #4f46e5;
-    --color-primary-700: #4338ca;
-    --color-primary-800: #3730a3;
-    --color-primary-900: #312e81;
-    --color-primary-950: #1e1b4b;
-}
-</code>
-    </pre>
+            BWATSIGNPLACEHOLDERtheme {
+                /* Override primary with indigo */
+                --color-primary-50:  #eef2ff;
+                --color-primary-100: #e0e7ff;
+                --color-primary-200: #c7d2fe;
+                --color-primary-300: #a5b4fc;
+                --color-primary-400: #818cf8;
+                --color-primary-500: #6366f1;
+                --color-primary-600: #4f46e5;
+                --color-primary-700: #4338ca;
+                --color-primary-800: #3730a3;
+                --color-primary-900: #312e81;
+                --color-primary-950: #1e1b4b;
+            }
+            HTML;
+        $coloursExample2 = str_replace('BWATSIGNPLACEHOLDER', '@', $coloursExample2);
+    @endphp
+    <x-bladewind::code-block language="css" line_numbers="true" highlight_lines="5" :code="$coloursExample2"></x-bladewind::code-block>
     <p>
         You can use any hex, rgb, hsl, or oklch value. If you prefer a custom palette that does not map to a Tailwind built-in scale,
         simply supply your own hex values:
     </p>
-    <pre class="language-css line-numbers">
-<code>
-@theme {
-    /* Custom purple palette */
-    --color-primary-100: #f3e8ff;
-    --color-primary-200: #e9d5ff;
-    --color-primary-300: #d8b4fe;
-    --color-primary-400: #c084fc;
-    --color-primary-500: #a855f7;
-    --color-primary-600: #9333ea;
-    --color-primary-700: #7e22ce;
-    --color-primary-800: #6d28d9;
-    --color-primary-900: #4c1d95;
-}
-</code>
-    </pre>
+    @php
+        $coloursExample3 = <<<'HTML'
+            BWATSIGNPLACEHOLDERtheme {
+                /* Custom purple palette */
+                --color-primary-100: #f3e8ff;
+                --color-primary-200: #e9d5ff;
+                --color-primary-300: #d8b4fe;
+                --color-primary-400: #c084fc;
+                --color-primary-500: #a855f7;
+                --color-primary-600: #9333ea;
+                --color-primary-700: #7e22ce;
+                --color-primary-800: #6d28d9;
+                --color-primary-900: #4c1d95;
+            }
+            HTML;
+        $coloursExample3 = str_replace('BWATSIGNPLACEHOLDER', '@', $coloursExample3);
+    @endphp
+    <x-bladewind::code-block language="css" line_numbers="true" :code="$coloursExample3"></x-bladewind::code-block>
     <p>
         All BladewindUI components read from the <code class="inline">primary</code> scale, so every component updates automatically
         without any further changes.
@@ -173,14 +179,16 @@
         <code class="inline">@custom-variant</code> instead of the old <code class="inline">darkMode: 'class'</code> config key.
         Add this line once in your <code class="inline">app.css</code>, above your <code class="inline">@theme</code> block:
     </p>
-    <pre class="language-css line-numbers">
-<code>
-/* resources/css/app.css */
-@import "tailwindcss";
+    @php
+        $coloursExample4 = <<<'HTML'
+            /* resources/css/app.css */
+            BWATSIGNPLACEHOLDERimport "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-</code>
-    </pre>
+            BWATSIGNPLACEHOLDERcustom-variant dark (&:where(.dark, .dark *));
+            HTML;
+        $coloursExample4 = str_replace('BWATSIGNPLACEHOLDER', '@', $coloursExample4);
+    @endphp
+    <x-bladewind::code-block language="css" line_numbers="true" :code="$coloursExample4"></x-bladewind::code-block>
     <p>
         Then toggle the <code class="inline">dark</code> class on your <code class="inline">&lt;html&gt;</code> element to switch modes.
         BladewindUI's <a href="/component/theme-switcher">Theme Switcher</a> component handles this for you automatically.
@@ -197,16 +205,18 @@
         <code class="inline">vendor/bladewindui/ui</code> and are not scanned by default. You need to add an
         <code class="inline">@source</code> directive so Tailwind knows to look there:
     </p>
-    <pre class="language-css line-numbers" data-line="5">
-<code>
-/* resources/css/app.css */
-@import "tailwindcss";
+    @php
+        $coloursExample5 = <<<'HTML'
+            /* resources/css/app.css */
+            BWATSIGNPLACEHOLDERimport "tailwindcss";
 
-/* Tell Tailwind to scan vendor BladewindUI files */
-@source "../../vendor/bladewindui/ui/**/*.blade.php";
-@source "../../public/vendor/bladewind/js/*.js";
-</code>
-    </pre>
+            /* Tell Tailwind to scan vendor BladewindUI files */
+            BWATSIGNPLACEHOLDERsource "../../vendor/bladewindui/ui/**/*.blade.php";
+            BWATSIGNPLACEHOLDERsource "../../public/vendor/bladewind/js/*.js";
+            HTML;
+        $coloursExample5 = str_replace('BWATSIGNPLACEHOLDER', '@', $coloursExample5);
+    @endphp
+    <x-bladewind::code-block language="css" line_numbers="true" highlight_lines="5" :code="$coloursExample5"></x-bladewind::code-block>
     <p>
         The paths are relative to your CSS file. If your <code class="inline">app.css</code> is at
         <code class="inline">resources/css/app.css</code>, two levels of <code class="inline">../../</code> will reach the project root.

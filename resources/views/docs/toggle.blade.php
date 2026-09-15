@@ -6,43 +6,47 @@
         Display a toggle input. Under the hood, the toggle component is a checkbox spiced up nicely.
     </p>
     <p><x-bladewind::toggle /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::toggle  /&gt;
-        </code>
-    </pre>
+    @php
+        $toggleExample1 = <<<'HTML'
+            <x-bladewind::toggle  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample1"></x-bladewind::code-block>
     <p>
         You can display the toggle component with a label that can be positioned either on the left or right of the component.
         The default position is left but can easily be flipped to the right by setting the attribute <code class="inline text-red-500">label_position="right"</code>.
         Clicking on the label toggles the component.
     </p>
     <p><x-bladewind::toggle label="Send me quarterly newsletters" /></p>
-    <pre class="language-markup">
-        <code>
-            &lt;x-bladewind::toggle label="Send me quarterly newsletters"  /&gt;
-        </code>
-    </pre>
+    @php
+        $toggleExample2 = <<<'HTML'
+            <x-bladewind::toggle label="Send me quarterly newsletters"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample2"></x-bladewind::code-block>
     <p><x-bladewind::toggle label="Send me quarterly newsletters" label_position="right" /></p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample3 = <<<'HTML'
+            <x-bladewind::toggle
                 label="Send me quarterly newsletters"
-                label_position="right"  /&gt;
-        </code>
-    </pre>
+                label_position="right"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$toggleExample3"></x-bladewind::code-block>
 
     <p>
         The toggle component by default is displayed as an inline-flex element to enable you sit multiple toggles side by side.
         If you prefer your toggles to fill up their parent containers and be justified with the label, set <code class="inline text-red-500">justified="true"</code>.
     </p>
     <p><x-bladewind::toggle label="Send me quarterly newsletters" justified="true" /></p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample4 = <<<'HTML'
+            <x-bladewind::toggle
                 label="Send me quarterly newsletters"
-                justified="true"  /&gt;
-        </code>
-    </pre>
+                justified="true"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$toggleExample4"></x-bladewind::code-block>
 
     <h2 id="thin-thicker-bar">Thin and Thicker Bars</h2>
     <p>
@@ -50,50 +54,55 @@
         Set <code class="inline text-red-500">bar="thin"</code> or <code class="inline text-red-500">bar="thicker"</code>. The default bar is set at <code class="inline text-red-500">bar="thick"</code>.
     </p>
     <p><x-bladewind::toggle label="Send me quarterly newsletters" bar="thin" /></p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample5 = <<<'HTML'
+            <x-bladewind::toggle
                 label="Send me quarterly newsletters"
-                bar="thin"  /&gt;
-        </code>
-    </pre>
+                bar="thin"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$toggleExample5"></x-bladewind::code-block>
     <p><x-bladewind::toggle label="Send me quarterly newsletters" bar="thicker" /></p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample6 = <<<'HTML'
+            <x-bladewind::toggle
                 label="Send me quarterly newsletters"
-                bar="thicker"  /&gt;
-        </code>
-    </pre>
+                bar="thicker"  />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="3" :code="$toggleExample6"></x-bladewind::code-block>
 
     <h2 id="checked">Checked and Disabled</h2>
     <p>
         The toggle component can be checked and/or disabled by default. To check the component set <code class="inline text-red-500">checked="true"</code>. To mark the toggle as disabled, set <code class="inline text-red-500">disabled="true"</code>.
     </p>
     <p><x-bladewind::toggle label="I am checked at birth" checked="true" /></p>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample7 = <<<'HTML'
+            <x-bladewind::toggle
                 checked="true"
-                label="I am checked at birth" /&gt;
-        </code>
-    </pre>
+                label="I am checked at birth" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$toggleExample7"></x-bladewind::code-block>
     <p><x-bladewind::toggle label="You can't push me around" disabled="true" /></p>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample8 = <<<'HTML'
+            <x-bladewind::toggle
                 disabled="true"
-                label="I am checked at birth" /&gt;
-        </code>
-    </pre>
+                label="I am checked at birth" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$toggleExample8"></x-bladewind::code-block>
     <p><x-bladewind::toggle label="I am checked but you still can't push me around" disabled="true" checked="true" /></p>
-    <pre class="language-markup line-numbers" data-line="2">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample9 = <<<'HTML'
+            <x-bladewind::toggle
                 checked="true" disabled="true"
-                label="I am checked at birth" /&gt;
-        </code>
-    </pre>
+                label="I am checked at birth" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" highlight_lines="2" :code="$toggleExample9"></x-bladewind::code-block>
 
     <h2 id="colours">Different Colours</h2>
     <p>
@@ -106,15 +115,60 @@
         <x-bladewind::toggle color="purple" checked="true" /> &nbsp;&nbsp; <x-bladewind::toggle color="orange" checked="true" /> &nbsp;&nbsp;
         <x-bladewind::toggle checked="true" /> &nbsp;&nbsp;
     </p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="red" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="yellow" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="green" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="pink" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="cyan" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="gray" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="purple" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="orange" /&gt;</code></pre></p>
-    <p><pre class="language-markup"><code>&lt;x-bladewind::toggle color="blue" /&gt;</code></pre></p>
+    <p>@php
+        $toggleExample10 = <<<'HTML'
+            <x-bladewind::toggle color="red" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample10"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample11 = <<<'HTML'
+            <x-bladewind::toggle color="yellow" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample11"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample12 = <<<'HTML'
+            <x-bladewind::toggle color="green" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample12"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample13 = <<<'HTML'
+            <x-bladewind::toggle color="pink" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample13"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample14 = <<<'HTML'
+            <x-bladewind::toggle color="cyan" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample14"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample15 = <<<'HTML'
+            <x-bladewind::toggle color="gray" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample15"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample16 = <<<'HTML'
+            <x-bladewind::toggle color="purple" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample16"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample17 = <<<'HTML'
+            <x-bladewind::toggle color="orange" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample17"></x-bladewind::code-block></p>
+    <p>@php
+        $toggleExample18 = <<<'HTML'
+            <x-bladewind::toggle color="blue" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" :code="$toggleExample18"></x-bladewind::code-block></p>
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Toggle component.</p>
@@ -175,9 +229,9 @@
     </x-bladewind::table>
 
     <h3>Toggle with all attributes defined</h3>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-bladewind::toggle
+    @php
+        $toggleExample19 = <<<'HTML'
+            <x-bladewind::toggle
                 color="purple"
                 label="Send me quarterly newsletters"
                 label_position="right"
@@ -186,9 +240,10 @@
                 disabled="false"
                 bar="thin"
                 checked="false"
-                onclick="alert('hey there')" /&gt;
-        </code>
-    </pre>
+                onclick="alert('hey there')" />
+            HTML;
+    @endphp
+    <x-bladewind::code-block language="markup" line_numbers="true" :code="$toggleExample19"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > toggle.blade.php</code>

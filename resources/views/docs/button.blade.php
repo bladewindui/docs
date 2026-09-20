@@ -75,7 +75,6 @@
     <p>The secondary buttons depend on the secondary colour defined in your project's <code class="inline">tailwind.config.js</code>. <a href="/customize/colours">Please ensure</a> this is defined. </p>
     <div class="text-center space-y-4 space-x-4">
         <x-bladewind::button type="secondary">Secondary Button</x-bladewind::button>
-        <x-bladewind::button type="secondary" outline="true">Secondary Button</x-bladewind::button>
     </div>
     @php
         $buttonExample6 = <<<'HTML'

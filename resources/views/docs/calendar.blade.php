@@ -308,41 +308,41 @@
     <x-bladewind::code-block language="javascript" :code="$calendarExample9"></x-bladewind::code-block>
 
     <h3>Calendar with all attributes defined</h3>
-    @php
-        $calendarExample10 = <<<'HTML'
-            <x-bladewind::calendar
-                name="team-calendar"
-                label="Team calendar"
-                view="week"
-                date="2026-08-14"
-                week-starts="monday"
-                selectable="multiple"
-                :selected="['2026-08-10', '2026-08-14']"
-                min-date="2026-01-01"
-                max-date="2026-12-31"
-                :disabled-dates="['2026-12-25']"
-                :events="[
-                    [
-                        'date' => '2026-08-14 15:00',
-                        'end' => '2026-08-14 16:00',
-                        'label' => 'Sprint planning',
-                        'type' => 'info',
-                        'href' => '/events/sprint-planning',
-                        'description' => 'Review the roadmap and assign owners for Q3.',
-                    ],
-                ]"
-                max-events-per-day="3"
-                show-other-month-days="true"
-                show-week-numbers="false"
-                highlight-today="true"
-                height="40rem"
-                client-navigation="true"
-                today-label="Today"
-                previous-label="Previous"
-                next-label="Next"
-                class="shadow-sm" />
-            HTML;
-    @endphp
+@php
+$calendarExample10 = <<<'HTML'
+<x-bladewind::calendar
+    name="team-calendar"
+    label="Team calendar"
+    view="week"
+    date="2026-08-14"
+    week-starts="monday"
+    selectable="multiple"
+    :selected="['2026-08-10', '2026-08-14']"
+    min-date="2026-01-01"
+    max-date="2026-12-31"
+    :disabled-dates="['2026-12-25']"
+    :events="[
+        [
+            'date' => '2026-08-14 15:00',
+            'end' => '2026-08-14 16:00',
+            'label' => 'Sprint planning',
+            'type' => 'info',
+            'href' => '/events/sprint-planning',
+            'description' => 'Review the roadmap and assign owners for Q3.',
+        ],
+    ]"
+    max-events-per-day="3"
+    show-other-month-days="true"
+    show-week-numbers="false"
+    highlight-today="true"
+    height="40rem"
+    client-navigation="true"
+    today-label="Today"
+    previous-label="Previous"
+    next-label="Next"
+    class="shadow-sm" />
+HTML;
+@endphp
     <x-bladewind::code-block language="markup" line_numbers="true" :code="$calendarExample10"></x-bladewind::code-block>
 
     <x-bladewind::alert show_close_icon="false">The source files for this component are available in <code class="inline">resources &gt; views &gt; components &gt; bladewind &gt; calendar.blade.php</code></x-bladewind::alert>
